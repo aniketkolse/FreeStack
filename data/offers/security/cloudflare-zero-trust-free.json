@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "cloudflare-zero-trust-free",
+    "name": "Cloudflare Zero Trust Free",
+    "slug": "cloudflare-zero-trust-free",
+    "provider": "Cloudflare",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "security-networking",
+    "subcategory": "Network Utilities",
+    "resource_type": "cloud_service",
+    "pricing_model": "free_tier",
+    "tags": ["Zero Trust", "Tunnels", "VPN", "Security", "Access Control"]
+  },
+  "description": "Cloudflare Access, Gateway DNS filtering, and Cloudflare Tunnels for exposing local dev environments or private apps securely for up to 50 users.",
+  "access": {
+    "free_limits": [
+      { "name": "Active seats", "value": 50, "period": "users" },
+      { "name": "Cloudflare Tunnels", "value": "Included", "period": "free plan" }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "unknown",
+      "payment_method_notes": "Dashboard onboarding sometimes prompts for a billing method on Zero Trust plan selection even at $0; status marked unknown pending re-check."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "Zero Trust Free plan remains $0 for up to 50 seats."
+    },
+    "restrictions": [
+      "Limited to 50 users; 24-hour activity log retention on Free."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Cloudflare account required; card prompt behavior varies by account age."
+  },
+  "links": {
+    "official": "https://www.cloudflare.com/zero-trust/",
+    "signup": "https://one.dash.cloudflare.com/",
+    "documentation": "https://developers.cloudflare.com/cloudflare-one/",
+    "pricing": "https://www.cloudflare.com/plans/zero-trust-services/"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "cf-zt-pricing",
+        "url": "https://www.cloudflare.com/plans/zero-trust-services/",
+        "source_type": "official_pricing",
+        "checked_at": "2026-11-03"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "cf-zt-pricing",
+        "field_path": "access.free_limits",
+        "quote": "Zero Trust Free supports up to 50 users for Access, Gateway, and Cloudflare Tunnels.",
+        "confidence": "high",
+        "notes": "Onboarding payment card requirement differs across regions/accounts and is marked unknown."
+      }
+    ]
+  },
+  "verification": {
+    "status": "needs_review",
+    "last_verified_at": "2026-11-03",
+    "notes": "Needs human check to confirm whether Zero Trust Free checkout requires entering a card on newly created accounts."
+  },
+  "metadata": {
+    "created_at": "2026-10-18",
+    "updated_at": "2026-11-03",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

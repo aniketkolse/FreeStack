@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "cloudflare-pages-workers",
+    "name": "Cloudflare Pages & Workers",
+    "slug": "cloudflare-pages-workers",
+    "provider": "Cloudflare",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "cloud-hosting",
+    "subcategory": "Serverless Platforms",
+    "resource_type": "cloud_service",
+    "pricing_model": "free_tier",
+    "tags": ["Hosting", "Serverless", "Edge", "CDN", "Static Sites", "No Card"]
+  },
+  "description": "Global edge hosting for static sites, Next.js or React apps, and serverless Workers with unlimited static bandwidth.",
+  "access": {
+    "free_limits": [
+      { "name": "Static site bandwidth", "value": "Unlimited", "period": "monthly" },
+      { "name": "Workers requests", "value": 100000, "period": "per day" },
+      { "name": "Pages builds", "value": 500, "period": "per month" }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "Start building on the Free plan without entering credit card details."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "No auto-upgrade; requests above 100k/day return limit errors until reset."
+    },
+    "restrictions": [
+      "10ms CPU execution time limit per Worker invocation on Free plan."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Available to individuals and teams; commercial static sites allowed on Pages."
+  },
+  "links": {
+    "official": "https://pages.cloudflare.com",
+    "signup": "https://dash.cloudflare.com/sign-up",
+    "documentation": "https://developers.cloudflare.com/workers/platform/pricing/",
+    "pricing": "https://www.cloudflare.com/plans/developer-platform/"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "cf-workers-pricing",
+        "url": "https://developers.cloudflare.com/workers/platform/pricing/",
+        "source_type": "official_pricing",
+        "checked_at": "2026-11-12"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "cf-workers-pricing",
+        "field_path": "access.free_limits",
+        "quote": "Workers Free includes 100,000 requests per day with 10ms CPU time per invocation.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-12",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-01",
+    "updated_at": "2026-11-12",
+    "featured": true,
+    "contributor": "freestack-core"
+  }
+}

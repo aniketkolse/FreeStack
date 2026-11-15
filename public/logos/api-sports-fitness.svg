@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Sports &amp; Fitness API icon">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#55D764" stroke="#101014" stroke-width="3"/>
+  <g fill="#101014">
+    <path d="M20 14h24v12a12 12 0 0 1-24 0V14z"/><line x1="32" y1="38" x2="32" y2="48" stroke="#101014" stroke-width="4"/><rect x="22" y="48" width="20" height="5" rx="2"/>
+  </g>
+</svg>

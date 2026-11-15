@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "freecodecamp-curriculum",
+    "name": "freeCodeCamp Core Curriculum",
+    "slug": "freecodecamp-curriculum",
+    "provider": "freeCodeCamp.org",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "learning",
+    "subcategory": "Programming Courses",
+    "resource_type": "course",
+    "pricing_model": "completely_free",
+    "tags": ["React", "JavaScript", "Python", "Web Development", "Certifications", "No Card"]
+  },
+  "description": "Self-paced interactive coding curriculum covering responsive web design, JavaScript algorithms, React frontends, relational databases, and Python.",
+  "access": {
+    "free_limits": [
+      { "name": "Full interactive curriculum", "value": "All certifications", "period": "unlimited" },
+      { "name": "Verified certificates", "value": "Included free", "period": "per completion" }
+    ],
+    "requirements": {
+      "account_required": "not_required",
+      "card_required": "not_required",
+      "payment_method_notes": "Donor-supported nonprofit; optional free account saves progress."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "Permanent free access with no trial limits."
+    },
+    "restrictions": [
+      "Account required only if saving progress or claiming free certifications."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Open to everyone worldwide."
+  },
+  "links": {
+    "official": "https://www.freecodecamp.org",
+    "signup": "https://www.freecodecamp.org/learn",
+    "documentation": "https://www.freecodecamp.org/news",
+    "pricing": null
+  },
+  "learning": {
+    "format": "course",
+    "difficulty": "beginner",
+    "topics": ["Web Development", "JavaScript", "React", "Python", "SQL", "Algorithms"],
+    "language": "English (localized tracks available)"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "fcc-about",
+        "url": "https://www.freecodecamp.org/learn",
+        "source_type": "official_docs",
+        "checked_at": "2026-11-08"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "fcc-about",
+        "field_path": "classification.pricing_model",
+        "quote": "Learn to code — for free. Build projects. Earn certifications.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-08",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-05",
+    "updated_at": "2026-11-08",
+    "featured": true,
+    "contributor": "freestack-core"
+  }
+}

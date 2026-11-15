@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Customer Data Platforms MCP icon">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#54A7FF" stroke="#101014" stroke-width="3"/>
+  <g fill="#101014">
+    <circle cx="32" cy="23" r="8"/><path d="M16 48c0-8 7-13 16-13s16 5 16 13"/>
+  </g>
+</svg>

@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "github-pages-static",
+    "name": "GitHub Pages",
+    "slug": "github-pages-static",
+    "provider": "GitHub",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "cloud-hosting",
+    "subcategory": "Deployment Platforms",
+    "resource_type": "cloud_service",
+    "pricing_model": "completely_free",
+    "tags": ["Static Sites", "Hosting", "GitHub", "Custom Domain", "HTTPS", "No Card"]
+  },
+  "description": "Host static websites, project docs, and portfolios directly from a GitHub repository with free custom domain TLS.",
+  "access": {
+    "free_limits": [
+      { "name": "Published site size", "value": 1, "period": "GB recommended max" },
+      { "name": "Soft bandwidth limit", "value": 100, "period": "GB per month" },
+      { "name": "Builds", "value": 10, "period": "per hour" }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "Included with every free GitHub account."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": null
+    },
+    "restrictions": [
+      "Static sites only (no server-side runtime).",
+      "GitHub Pages on private repositories requires GitHub Pro or Team."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Public repositories on GitHub Free; not intended for commercial e-commerce."
+  },
+  "links": {
+    "official": "https://pages.github.com",
+    "signup": null,
+    "documentation": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits",
+    "pricing": null
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "gh-pages-limits",
+        "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits",
+        "source_type": "official_docs",
+        "checked_at": "2026-11-11"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "gh-pages-limits",
+        "field_path": "access.free_limits",
+        "quote": "GitHub Pages sites have a soft bandwidth limit of 100 GB per month and 1 GB published size.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-11",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-11-01",
+    "updated_at": "2026-11-11",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

@@ -1,0 +1,824 @@
+[
+  {
+    "slug": "ai-ml",
+    "name": "AI Models",
+    "shortName": "AI Models",
+    "description": "Verified free AI models sorted by modality and use case — Text & Reasoning, Text + Image (Vision), Image & Video Generation, Code & Agents, Audio & Speech, Embeddings, and Free Inference APIs.",
+    "color": "sky-blue",
+    "popular": true,
+    "subcategories": [
+      {
+        "slug": "text-reasoning-llms",
+        "name": "Text & Reasoning LLMs"
+      },
+      {
+        "slug": "text-image-multimodal",
+        "name": "Text + Image (Vision)"
+      },
+      {
+        "slug": "image-video-generation",
+        "name": "Image & Video Generation"
+      },
+      {
+        "slug": "code-agentic-models",
+        "name": "Code & Agentic Models"
+      },
+      {
+        "slug": "audio-speech-models",
+        "name": "Audio & Speech Models"
+      },
+      {
+        "slug": "embeddings-rerankers",
+        "name": "Embeddings & Rerankers"
+      },
+      {
+        "slug": "llm-inference-apis",
+        "name": "Inference APIs"
+      },
+      {
+        "slug": "ai-models-llms",
+        "name": "AI Models & LLMs"
+      },
+      {
+        "slug": "ai-agents-frameworks",
+        "name": "AI Agents & Frameworks"
+      },
+      {
+        "slug": "ml-frameworks",
+        "name": "Machine-Learning Frameworks"
+      },
+      {
+        "slug": "datasets-notebooks",
+        "name": "Datasets & Notebooks"
+      }
+    ]
+  },
+  {
+    "slug": "mcp",
+    "name": "MCP",
+    "shortName": "MCP",
+    "description": "Official Model Context Protocol (MCP) servers, SDKs, remote edge MCP connectors, database context tools, and inspectors.",
+    "color": "sunshine-yellow",
+    "popular": true,
+    "subcategories": [
+      {
+        "slug": "official-mcp-servers",
+        "name": "Official MCP Servers"
+      },
+      {
+        "slug": "mcp-sdks-inspector",
+        "name": "MCP SDKs & Inspector"
+      },
+      {
+        "slug": "remote-edge-mcp",
+        "name": "Remote & Edge MCP"
+      },
+      {
+        "slug": "database-data-mcp",
+        "name": "Database & Data MCP"
+      },
+      {
+        "slug": "aggregators",
+        "name": "Aggregators"
+      },
+      {
+        "slug": "aerospace-astrodynamics",
+        "name": "Aerospace & Astrodynamics"
+      },
+      {
+        "slug": "agreements-coordination",
+        "name": "Agreements & Coordination"
+      },
+      {
+        "slug": "accessibility",
+        "name": "Accessibility"
+      },
+      {
+        "slug": "art-culture",
+        "name": "Art & Culture"
+      },
+      {
+        "slug": "architecture-design",
+        "name": "Architecture & Design"
+      },
+      {
+        "slug": "biology-medicine-bioinformatics",
+        "name": "Biology, Medicine & Bioinformatics"
+      },
+      {
+        "slug": "browser-automation",
+        "name": "Browser Automation"
+      },
+      {
+        "slug": "cloud-platforms",
+        "name": "Cloud Platforms"
+      },
+      {
+        "slug": "code-execution",
+        "name": "Code Execution"
+      },
+      {
+        "slug": "coding-agents",
+        "name": "Coding Agents"
+      },
+      {
+        "slug": "command-line",
+        "name": "Command Line"
+      },
+      {
+        "slug": "communication",
+        "name": "Communication"
+      },
+      {
+        "slug": "conversational-ai",
+        "name": "Conversational AI"
+      },
+      {
+        "slug": "cryptography",
+        "name": "Cryptography"
+      },
+      {
+        "slug": "customer-data-platforms",
+        "name": "Customer Data Platforms"
+      },
+      {
+        "slug": "databases",
+        "name": "Databases"
+      },
+      {
+        "slug": "data-platforms",
+        "name": "Data Platforms"
+      },
+      {
+        "slug": "developer-tools",
+        "name": "Developer Tools"
+      },
+      {
+        "slug": "delivery",
+        "name": "Delivery"
+      },
+      {
+        "slug": "data-science-tools",
+        "name": "Data Science Tools"
+      },
+      {
+        "slug": "data-visualization",
+        "name": "Data Visualization"
+      },
+      {
+        "slug": "embedded-systems",
+        "name": "Embedded Systems"
+      },
+      {
+        "slug": "education",
+        "name": "Education"
+      },
+      {
+        "slug": "e-commerce",
+        "name": "E-Commerce"
+      },
+      {
+        "slug": "environment-nature",
+        "name": "Environment & Nature"
+      },
+      {
+        "slug": "file-systems",
+        "name": "File Systems"
+      },
+      {
+        "slug": "finance-fintech",
+        "name": "Finance & Fintech"
+      },
+      {
+        "slug": "gaming",
+        "name": "Gaming"
+      },
+      {
+        "slug": "health-wellness",
+        "name": "Health & Wellness"
+      },
+      {
+        "slug": "home-automation",
+        "name": "Home Automation"
+      },
+      {
+        "slug": "identity",
+        "name": "Identity"
+      },
+      {
+        "slug": "industrial-iot",
+        "name": "Industrial & IoT"
+      },
+      {
+        "slug": "knowledge-memory",
+        "name": "Knowledge & Memory"
+      },
+      {
+        "slug": "legal",
+        "name": "Legal"
+      },
+      {
+        "slug": "location-services",
+        "name": "Location Services"
+      },
+      {
+        "slug": "marketing",
+        "name": "Marketing"
+      },
+      {
+        "slug": "monitoring",
+        "name": "Monitoring"
+      },
+      {
+        "slug": "multimedia-process",
+        "name": "Multimedia Process"
+      },
+      {
+        "slug": "os-automation",
+        "name": "OS Automation"
+      },
+      {
+        "slug": "podcasts",
+        "name": "Podcasts"
+      },
+      {
+        "slug": "product-management",
+        "name": "Product Management"
+      },
+      {
+        "slug": "real-estate",
+        "name": "Real Estate"
+      },
+      {
+        "slug": "research",
+        "name": "Research"
+      },
+      {
+        "slug": "end-to-end-rag-platforms",
+        "name": "End-to-End RAG Platforms"
+      },
+      {
+        "slug": "search-data-extraction",
+        "name": "Search & Data Extraction"
+      },
+      {
+        "slug": "jobs",
+        "name": "Jobs"
+      },
+      {
+        "slug": "security",
+        "name": "Security"
+      },
+      {
+        "slug": "social-media",
+        "name": "Social Media"
+      },
+      {
+        "slug": "spirituality-esoterica",
+        "name": "Spirituality & Esoterica"
+      },
+      {
+        "slug": "sports",
+        "name": "Sports"
+      },
+      {
+        "slug": "support-service-management",
+        "name": "Support & Service Management"
+      },
+      {
+        "slug": "translation-services",
+        "name": "Translation Services"
+      },
+      {
+        "slug": "speech-to-text",
+        "name": "Speech-to-Text"
+      },
+      {
+        "slug": "text-to-speech",
+        "name": "Text-to-Speech"
+      },
+      {
+        "slug": "travel-transportation",
+        "name": "Travel & Transportation"
+      },
+      {
+        "slug": "version-control",
+        "name": "Version Control"
+      },
+      {
+        "slug": "workplace-productivity",
+        "name": "Workplace & Productivity"
+      },
+      {
+        "slug": "other-tools-integrations",
+        "name": "Other Tools & Integrations"
+      },
+      {
+        "slug": "mcp-frameworks-sdks",
+        "name": "MCP Frameworks & SDKs"
+      }
+    ]
+  },
+  {
+    "slug": "apis-integrations",
+    "name": "APIs",
+    "shortName": "APIs",
+    "description": "Free public REST and GraphQL APIs, SDKs and webhooks, weather and location endpoints, email APIs, and testing sandboxes.",
+    "color": "sky-blue",
+    "popular": true,
+    "subcategories": [
+      {
+        "slug": "public-apis",
+        "name": "Public APIs"
+      },
+      {
+        "slug": "sdks-webhooks",
+        "name": "SDKs & Webhooks"
+      },
+      {
+        "slug": "maps-location",
+        "name": "Maps & Location APIs"
+      },
+      {
+        "slug": "payment-sandboxes",
+        "name": "Payment Sandboxes"
+      },
+      {
+        "slug": "testing-apis",
+        "name": "Testing APIs"
+      },
+      {
+        "slug": "animals",
+        "name": "Animals"
+      },
+      {
+        "slug": "anime",
+        "name": "Anime"
+      },
+      {
+        "slug": "anti-malware",
+        "name": "Anti-Malware"
+      },
+      {
+        "slug": "art-design",
+        "name": "Art & Design"
+      },
+      {
+        "slug": "authentication-authorization",
+        "name": "Authentication & Authorization"
+      },
+      {
+        "slug": "blockchain",
+        "name": "Blockchain"
+      },
+      {
+        "slug": "books",
+        "name": "Books"
+      },
+      {
+        "slug": "business",
+        "name": "Business"
+      },
+      {
+        "slug": "calendar",
+        "name": "Calendar"
+      },
+      {
+        "slug": "cloud-storage-file-sharing",
+        "name": "Cloud Storage & File Sharing"
+      },
+      {
+        "slug": "continuous-integration",
+        "name": "Continuous Integration"
+      },
+      {
+        "slug": "cryptocurrency",
+        "name": "Cryptocurrency"
+      },
+      {
+        "slug": "currency-exchange",
+        "name": "Currency Exchange"
+      },
+      {
+        "slug": "data-validation",
+        "name": "Data Validation"
+      },
+      {
+        "slug": "development",
+        "name": "Development"
+      },
+      {
+        "slug": "dictionaries",
+        "name": "Dictionaries"
+      },
+      {
+        "slug": "documents-productivity",
+        "name": "Documents & Productivity"
+      },
+      {
+        "slug": "email",
+        "name": "Email"
+      },
+      {
+        "slug": "entertainment",
+        "name": "Entertainment"
+      },
+      {
+        "slug": "environment",
+        "name": "Environment"
+      },
+      {
+        "slug": "events",
+        "name": "Events"
+      },
+      {
+        "slug": "finance",
+        "name": "Finance"
+      },
+      {
+        "slug": "food-drink",
+        "name": "Food & Drink"
+      },
+      {
+        "slug": "games-comics",
+        "name": "Games & Comics"
+      },
+      {
+        "slug": "geocoding",
+        "name": "Geocoding"
+      },
+      {
+        "slug": "government",
+        "name": "Government"
+      },
+      {
+        "slug": "health",
+        "name": "Health"
+      },
+      {
+        "slug": "jobs",
+        "name": "Jobs"
+      },
+      {
+        "slug": "machine-learning",
+        "name": "Machine Learning"
+      },
+      {
+        "slug": "music",
+        "name": "Music"
+      },
+      {
+        "slug": "news",
+        "name": "News"
+      },
+      {
+        "slug": "open-data",
+        "name": "Open Data"
+      },
+      {
+        "slug": "open-source-projects",
+        "name": "Open Source Projects"
+      },
+      {
+        "slug": "patent",
+        "name": "Patent"
+      },
+      {
+        "slug": "personality",
+        "name": "Personality"
+      },
+      {
+        "slug": "phone",
+        "name": "Phone"
+      },
+      {
+        "slug": "photography",
+        "name": "Photography"
+      },
+      {
+        "slug": "programming",
+        "name": "Programming"
+      },
+      {
+        "slug": "science-math",
+        "name": "Science & Math"
+      },
+      {
+        "slug": "security",
+        "name": "Security"
+      },
+      {
+        "slug": "shopping",
+        "name": "Shopping"
+      },
+      {
+        "slug": "social",
+        "name": "Social"
+      },
+      {
+        "slug": "sports-fitness",
+        "name": "Sports & Fitness"
+      },
+      {
+        "slug": "test-data",
+        "name": "Test Data"
+      },
+      {
+        "slug": "text-analysis",
+        "name": "Text Analysis"
+      },
+      {
+        "slug": "tracking",
+        "name": "Tracking"
+      },
+      {
+        "slug": "transportation",
+        "name": "Transportation"
+      },
+      {
+        "slug": "url-shorteners",
+        "name": "URL Shorteners"
+      },
+      {
+        "slug": "vehicle",
+        "name": "Vehicle"
+      },
+      {
+        "slug": "video",
+        "name": "Video"
+      },
+      {
+        "slug": "weather",
+        "name": "Weather"
+      }
+    ]
+  },
+  {
+    "slug": "design-creative",
+    "name": "Frontend & Design Tools",
+    "shortName": "Frontend & Design",
+    "description": "AI design engineering & DESIGN.md libraries, frontend CSS & React UI frameworks, interface design platforms, colors & gradients, motion & 3D, vector icons, typography, and mockup tools.",
+    "color": "bubblegum-pink",
+    "popular": true,
+    "subcategories": [
+      {
+        "slug": "ai-design-tools",
+        "name": "AI Design & DESIGN.md Tools"
+      },
+      {
+        "slug": "frontend-ui-libraries",
+        "name": "Frontend & UI Libraries"
+      },
+      {
+        "slug": "ui-graphic-design",
+        "name": "UI & Graphic Design"
+      },
+      {
+        "slug": "css-colors-gradients",
+        "name": "CSS, Colors & Gradients"
+      },
+      {
+        "slug": "motion-3d-dataviz",
+        "name": "Motion, 3D & Data Visualization"
+      },
+      {
+        "slug": "icons-illustrations",
+        "name": "Icons & Illustrations"
+      },
+      {
+        "slug": "fonts-typography",
+        "name": "Fonts"
+      },
+      {
+        "slug": "image-video-tools",
+        "name": "Image & Video Tools"
+      }
+    ]
+  },
+  {
+    "slug": "cloud-hosting",
+    "name": "Cloud & Hosting",
+    "shortName": "Cloud & Host",
+    "description": "Cloud credits, VPS and hosting, serverless platforms, object storage, and deployment platforms.",
+    "color": "grass-green",
+    "popular": true,
+    "subcategories": [
+      {
+        "slug": "serverless-edge",
+        "name": "Serverless Platforms"
+      },
+      {
+        "slug": "deployment-platforms",
+        "name": "Deployment Platforms"
+      },
+      {
+        "slug": "vps-hosting",
+        "name": "VPS & Hosting"
+      },
+      {
+        "slug": "cloud-credits",
+        "name": "Cloud Credits"
+      },
+      {
+        "slug": "cloud-storage",
+        "name": "Storage"
+      }
+    ]
+  },
+  {
+    "slug": "databases-backend",
+    "name": "Databases & Backend",
+    "shortName": "Databases",
+    "description": "SQL and NoSQL databases, Backend-as-a-Service, authentication, object storage, and caching.",
+    "color": "tangerine",
+    "popular": true,
+    "subcategories": [
+      {
+        "slug": "sql-databases",
+        "name": "SQL Databases"
+      },
+      {
+        "slug": "baas-auth",
+        "name": "Backend-as-a-Service"
+      },
+      {
+        "slug": "authentication",
+        "name": "Authentication"
+      },
+      {
+        "slug": "backend-storage",
+        "name": "Storage"
+      },
+      {
+        "slug": "caching-nosql",
+        "name": "Caching & NoSQL"
+      }
+    ]
+  },
+  {
+    "slug": "developer-tools",
+    "name": "Developer Tools",
+    "shortName": "Dev Tools",
+    "description": "IDEs and code editors, Git collaboration, API testing, debugging, CI/CD, observability & static analysis, CLI & terminals, build tools & runtimes, testing frameworks, and container environments.",
+    "color": "bubblegum-pink",
+    "popular": true,
+    "subcategories": [
+      {
+        "slug": "ides-editors",
+        "name": "IDEs & Editors"
+      },
+      {
+        "slug": "git-collaboration",
+        "name": "Git & Code Collaboration"
+      },
+      {
+        "slug": "api-testing",
+        "name": "API Testing"
+      },
+      {
+        "slug": "debugging-tools",
+        "name": "Debugging"
+      },
+      {
+        "slug": "ci-cd",
+        "name": "CI/CD"
+      },
+      {
+        "slug": "monitoring-security",
+        "name": "Monitoring & Security Tools"
+      },
+      {
+        "slug": "cli-terminal",
+        "name": "CLI & Terminal Tools"
+      },
+      {
+        "slug": "build-tools-runtimes",
+        "name": "Build Tools, Bundlers & Runtimes"
+      },
+      {
+        "slug": "testing-qa",
+        "name": "Testing & QA Frameworks"
+      },
+      {
+        "slug": "containers-local-dev",
+        "name": "Containers & Local Dev"
+      }
+    ]
+  },
+  {
+    "slug": "learning",
+    "name": "Learning & Study Materials",
+    "shortName": "Learning",
+    "description": "Programming courses, documentation, tutorials, technical books, learning roadmaps, CS fundamentals, and coding practice.",
+    "color": "sunshine-yellow",
+    "popular": false,
+    "subcategories": [
+      {
+        "slug": "programming-courses",
+        "name": "Programming Courses"
+      },
+      {
+        "slug": "docs-tutorials",
+        "name": "Documentation & Tutorials"
+      },
+      {
+        "slug": "technical-books",
+        "name": "E-books & Docs"
+      },
+      {
+        "slug": "learning-roadmaps",
+        "name": "Learning Roadmaps"
+      },
+      {
+        "slug": "cs-fundamentals",
+        "name": "CS Fundamentals"
+      },
+      {
+        "slug": "practice-challenges",
+        "name": "Practice & Challenges"
+      }
+    ]
+  },
+  {
+    "slug": "student-benefits",
+    "name": "Student Benefits",
+    "shortName": "Students",
+    "description": "Student developer packs, educational software, student cloud credits, certifications, and academic AI tools.",
+    "color": "grass-green",
+    "popular": false,
+    "subcategories": [
+      {
+        "slug": "student-packs",
+        "name": "Student Developer Packs"
+      },
+      {
+        "slug": "educational-software",
+        "name": "Educational Software"
+      },
+      {
+        "slug": "student-cloud-credits",
+        "name": "Student Cloud Credits"
+      },
+      {
+        "slug": "certifications-learning",
+        "name": "Certifications & Learning Benefits"
+      },
+      {
+        "slug": "student-ai-tools",
+        "name": "Student AI & Dev Tools"
+      }
+    ]
+  },
+  {
+    "slug": "security-networking",
+    "name": "Security & Networking",
+    "shortName": "Security",
+    "description": "Security testing tools, TLS certificates, scanning utilities, Zero Trust tunnels, and practice labs.",
+    "color": "tangerine",
+    "popular": true,
+    "subcategories": [
+      {
+        "slug": "security-testing",
+        "name": "Security Testing Tools"
+      },
+      {
+        "slug": "scanning-utilities",
+        "name": "Scanning Utilities"
+      },
+      {
+        "slug": "network-utilities",
+        "name": "Network Utilities"
+      },
+      {
+        "slug": "practice-labs",
+        "name": "Practice Labs"
+      }
+    ]
+  },
+  {
+    "slug": "productivity-collaboration",
+    "name": "Productivity & Collaboration",
+    "shortName": "Productivity",
+    "description": "Project management, notes and documents, diagramming whiteboards, team communication, and workflow automation.",
+    "color": "sunshine-yellow",
+    "popular": true,
+    "subcategories": [
+      {
+        "slug": "project-management",
+        "name": "Project Management"
+      },
+      {
+        "slug": "notes-documents",
+        "name": "Notes & Documents"
+      },
+      {
+        "slug": "communication",
+        "name": "Communication"
+      },
+      {
+        "slug": "workflow-automation",
+        "name": "Workflow Automation"
+      }
+    ]
+  }
+]

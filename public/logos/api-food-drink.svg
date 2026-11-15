@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Food &amp; Drink API icon">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#FF8A3D" stroke="#101014" stroke-width="3"/>
+  <g fill="#101014">
+    <path d="M16 26h26v12a13 13 0 0 1-26 0V26z"/><path d="M42 28h5a5 5 0 0 1 0 10h-5" fill="none" stroke="#101014" stroke-width="4"/><line x1="14" y1="48" x2="44" y2="48" stroke="#101014" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

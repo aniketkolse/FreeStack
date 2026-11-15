@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "mdn-web-docs",
+    "name": "MDN Web Docs & Curriculum",
+    "slug": "mdn-web-docs",
+    "provider": "Mozilla / Open Web Docs",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "learning",
+    "subcategory": "E-books & Docs",
+    "resource_type": "documentation",
+    "pricing_model": "completely_free",
+    "tags": ["Documentation", "HTML", "CSS", "JavaScript", "Web APIs"]
+  },
+  "description": "Authoritative reference documentation and structured front-end developer learning path for HTML, CSS, JavaScript, Web APIs, accessibility, and HTTP.",
+  "access": {
+    "free_limits": [
+      { "name": "Reference docs & guides", "value": "Full open access", "period": "unlimited" },
+      { "name": "Interactive playgrounds", "value": "Free", "period": "no login needed" }
+    ],
+    "requirements": {
+      "account_required": "not_required",
+      "card_required": "not_required",
+      "payment_method_notes": "All reference documentation and tutorials are free without login."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "Free open documentation with optional paid MDN Plus workspace extras."
+    },
+    "restrictions": [
+      "MDN Plus features like saved article collections and offline sync are optional paid add-ons."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Open to all web developers."
+  },
+  "links": {
+    "official": "https://developer.mozilla.org",
+    "signup": null,
+    "documentation": "https://developer.mozilla.org/en-US/docs/Learn_web_development",
+    "pricing": null
+  },
+  "learning": {
+    "format": "documentation",
+    "difficulty": "all_levels",
+    "topics": ["Web Development", "HTML", "CSS", "JavaScript", "Accessibility"],
+    "language": "English (multiple translations)"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "mdn-learn",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development",
+        "source_type": "official_docs",
+        "checked_at": "2026-11-11"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "mdn-learn",
+        "field_path": "access.requirements.card_required",
+        "quote": "MDN Web Docs reference material and structured web development tutorials are completely free.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-11",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-11-09",
+    "updated_at": "2026-11-11",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

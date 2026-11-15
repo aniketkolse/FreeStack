@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "notion-plus-education",
+    "name": "Notion Plus for Students & Educators",
+    "slug": "notion-plus-education",
+    "provider": "Notion",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "student-benefits",
+    "subcategory": "Student AI & Dev Tools",
+    "resource_type": "student_benefit",
+    "pricing_model": "student_exclusive",
+    "tags": ["Notes", "Docs", "Students", "Notion", "Workspace"]
+  },
+  "description": "Free Notion Plus plan for individual verified university students, including unlimited file uploads, unlimited blocks, and 30-day page history.",
+  "access": {
+    "free_limits": [
+      { "name": "Notion Plus workspace", "value": "Free 1-member Plus", "period": "while student email active" },
+      { "name": "File upload limit", "value": "Unlimited", "period": "ongoing" }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "No credit card required for the free Education Plus plan; Notion AI add-on is a separate paid discount, not included free."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": "While university email domain remains verified",
+      "auto_renewal": "Stays free as long as educational email is active."
+    },
+    "restrictions": [
+      "Notion AI add-on is offered at a paid student discount (50% off), NOT free — FreeStack lists only the core free Plus plan here."
+    ]
+  },
+  "eligibility": {
+    "student_access": "exclusive",
+    "regions": ["Global (accredited higher-ed domains)"],
+    "conditions": "Valid university email address verified inside Notion workspace settings."
+  },
+  "links": {
+    "official": "https://www.notion.com/product/notion-for-education",
+    "signup": "https://www.notion.com/product/notion-for-education",
+    "documentation": "https://www.notion.com/help/notion-for-education",
+    "pricing": "https://www.notion.com/pricing"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "notion-edu-page",
+        "url": "https://www.notion.com/product/notion-for-education",
+        "source_type": "student_page",
+        "checked_at": "2026-11-10"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "notion-edu-page",
+        "field_path": "access.restrictions",
+        "quote": "Plus Plan is free for verified students and educators; Notion AI add-on is available as an optional 50% student discount.",
+        "confidence": "high",
+        "notes": "Free tier vs AI discount explicitly separated."
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-10",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-11-05",
+    "updated_at": "2026-11-10",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

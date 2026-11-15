@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "the-odin-project",
+    "name": "The Odin Project",
+    "slug": "the-odin-project",
+    "provider": "The Odin Project Contributors",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "learning",
+    "subcategory": "Programming Courses",
+    "resource_type": "course",
+    "pricing_model": "open_source",
+    "tags": ["Full Stack", "JavaScript", "React", "Node.js", "Ruby on Rails", "Git"]
+  },
+  "description": "Project-based open-source full-stack web development curriculum teaching HTML, CSS, Git, JavaScript, React, Node.js, and SQL in your real local dev environment.",
+  "access": {
+    "free_limits": [
+      { "name": "Full-stack paths & projects", "value": "100% open source", "period": "unlimited" },
+      { "name": "Paywalls or upsells", "value": 0, "period": "none" }
+    ],
+    "requirements": {
+      "account_required": "not_required",
+      "card_required": "not_required",
+      "payment_method_notes": "Completely free and open source under MIT license; optional account tracks lessons."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "Forever free with no subscription model."
+    },
+    "restrictions": [
+      "Self-directed project workflow; no formal accredited diploma."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Open to anyone."
+  },
+  "links": {
+    "official": "https://www.theodinproject.com",
+    "signup": "https://www.theodinproject.com/sign_up",
+    "documentation": "https://www.theodinproject.com/paths",
+    "pricing": null
+  },
+  "learning": {
+    "format": "course",
+    "difficulty": "beginner",
+    "topics": ["Web Development", "JavaScript", "React", "Node.js", "Git", "SQL"],
+    "language": "English"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "odin-about",
+        "url": "https://www.theodinproject.com/about",
+        "source_type": "official_docs",
+        "checked_at": "2026-11-05"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "odin-about",
+        "field_path": "classification.pricing_model",
+        "quote": "The Odin Project is a free open source coding curriculum maintained by an active community.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-05",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-08",
+    "updated_at": "2026-11-05",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

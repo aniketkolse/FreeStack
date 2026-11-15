@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "supabase-free-plan",
+    "name": "Supabase Free Plan",
+    "slug": "supabase-free-plan",
+    "provider": "Supabase",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "databases-backend",
+    "subcategory": "Backend-as-a-Service",
+    "resource_type": "cloud_service",
+    "pricing_model": "free_tier",
+    "tags": ["PostgreSQL", "Database", "Auth", "Storage", "Backend", "No Card"]
+  },
+  "description": "Managed PostgreSQL database with built-in authentication, auto-generated REST APIs, row-level security, and S3-compatible object storage.",
+  "access": {
+    "free_limits": [
+      { "name": "Database size", "value": "500 MB", "period": "per project" },
+      { "name": "Active free projects", "value": 2, "period": "concurrent" },
+      { "name": "Monthly active users (Auth)", "value": 50000, "period": "per month" },
+      { "name": "File storage", "value": "1 GB", "period": "total" }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "No credit card required to start on the Free plan."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "No automatic charges; inactive free projects pause after 7 days of zero traffic."
+    },
+    "restrictions": [
+      "Free projects pause after 7 days of inactivity and can be restored from the dashboard.",
+      "No daily automatic backups on the Free tier."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global multi-region selection"],
+    "conditions": "Available to any developer account."
+  },
+  "links": {
+    "official": "https://supabase.com",
+    "signup": "https://supabase.com/dashboard",
+    "documentation": "https://supabase.com/docs",
+    "pricing": "https://supabase.com/pricing"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "supabase-pricing",
+        "url": "https://supabase.com/pricing",
+        "source_type": "official_pricing",
+        "checked_at": "2026-11-11"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "supabase-pricing",
+        "field_path": "access.free_limits",
+        "quote": "Free plan includes 500 MB database space, 50,000 monthly active users, and 2 active projects.",
+        "confidence": "high",
+        "notes": null
+      },
+      {
+        "source_id": "supabase-pricing",
+        "field_path": "access.requirements.card_required",
+        "quote": "No credit card required to start on the Free plan.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-11",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-03",
+    "updated_at": "2026-11-11",
+    "featured": true,
+    "contributor": "freestack-core"
+  }
+}

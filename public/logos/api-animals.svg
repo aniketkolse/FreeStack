@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Animals API icon">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#55D764" stroke="#101014" stroke-width="3"/>
+  <g fill="#101014">
+    <circle cx="19" cy="19" r="4"/><circle cx="32" cy="15" r="4"/><circle cx="45" cy="19" r="4"/><circle cx="14" cy="30" r="3.5"/><circle cx="50" cy="30" r="3.5"/><path d="M22 38c0-6 5-10 10-10s10 4 10 10c0 5-4 8-10 8s-10-3-10-8z"/>
+  </g>
+</svg>

@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "offer-supabase-mcp-server",
+    "name": "Supabase Official MCP Server",
+    "slug": "supabase-mcp-server",
+    "provider": "Supabase",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "mcp",
+    "subcategory": "Database & Data MCP",
+    "resource_type": "mcp_server",
+    "pricing_model": "open_source",
+    "tags": ["mcp", "supabase", "postgresql", "sql", "migrations", "edge-functions"]
+  },
+  "description": "Official Supabase MCP server that connects Cursor, Windsurf, Claude Desktop, and AI agents directly to your Supabase Postgres tables, SQL migrations, logs, and Edge Functions.",
+  "access": {
+    "free_limits": [
+      {
+        "name": "Supabase MCP Server Package",
+        "value": "Free (Apache-2.0)",
+        "period": "ongoing"
+      },
+      {
+        "name": "Connected Free Projects",
+        "value": "2 active projects (500 MB DB each)",
+        "period": "ongoing"
+      }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "No credit card required for Supabase Free plan or running @supabase/mcp-server-supabase."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "Ongoing free access."
+    },
+    "restrictions": [
+      "Free-tier Supabase databases pause after 7 days of inactivity unless resumed in the dashboard."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Open to all developers globally."
+  },
+  "links": {
+    "official": "https://supabase.com/docs/guides/getting-started/mcp",
+    "signup": "https://supabase.com/dashboard",
+    "documentation": "https://supabase.com/docs/guides/getting-started/mcp",
+    "pricing": "https://supabase.com/pricing"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "src-supabase-mcp",
+        "url": "https://supabase.com/docs/guides/getting-started/mcp",
+        "source_type": "official_docs",
+        "checked_at": "2026-11-12"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "src-supabase-mcp",
+        "field_path": "access.free_limits",
+        "quote": "The Supabase MCP server is free and open-source, working with all Supabase plans including the Free tier.",
+        "confidence": "high",
+        "notes": "Verified from official Supabase MCP guide."
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-12",
+    "notes": "Verified official Supabase MCP documentation."
+  },
+  "metadata": {
+    "created_at": "2026-11-12",
+    "updated_at": "2026-11-12",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

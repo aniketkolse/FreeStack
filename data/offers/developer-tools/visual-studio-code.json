@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "visual-studio-code",
+    "name": "Visual Studio Code",
+    "slug": "visual-studio-code",
+    "provider": "Microsoft",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "developer-tools",
+    "subcategory": "IDEs & Editors",
+    "resource_type": "developer_tool",
+    "pricing_model": "completely_free",
+    "tags": ["IDE", "C++", "Python", "TypeScript", "Editor", "Open Source"]
+  },
+  "description": "Lightweight, extensible source-code editor for Windows, macOS, and Linux with built-in Git, debugging, IntelliSense, and C++, Python, and TypeScript tooling.",
+  "access": {
+    "free_limits": [
+      { "name": "Personal & commercial use", "value": "Unlimited", "period": "ongoing" },
+      { "name": "Extension marketplace", "value": "Full access", "period": "unlimited" }
+    ],
+    "requirements": {
+      "account_required": "not_required",
+      "card_required": "not_required",
+      "payment_method_notes": "No account or billing required."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": null
+    },
+    "restrictions": [
+      "Core codebase is MIT-licensed (Code - OSS); official Microsoft binary adds Microsoft branding and telemetry settings."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Free for personal, academic, and commercial development."
+  },
+  "links": {
+    "official": "https://code.visualstudio.com",
+    "signup": null,
+    "documentation": "https://code.visualstudio.com/docs",
+    "pricing": null
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "vscode-home",
+        "url": "https://code.visualstudio.com",
+        "source_type": "official_docs",
+        "checked_at": "2026-11-11"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "vscode-home",
+        "field_path": "classification.pricing_model",
+        "quote": "Free. Built on open source. Runs everywhere.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-11",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-01",
+    "updated_at": "2026-11-11",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

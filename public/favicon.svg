@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="18" fill="#101014" />
+  <defs>
+    <linearGradient id="c1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8DC8FF" />
+      <stop offset="42%" stop-color="#59ACFF" />
+      <stop offset="100%" stop-color="#2B7ED9" />
+    </linearGradient>
+    <linearGradient id="c2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#96F096" />
+      <stop offset="42%" stop-color="#62D962" />
+      <stop offset="100%" stop-color="#35A935" />
+    </linearGradient>
+    <linearGradient id="c3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF099" />
+      <stop offset="42%" stop-color="#FFE359" />
+      <stop offset="100%" stop-color="#DFB81C" />
+    </linearGradient>
+    <linearGradient id="c4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFB6D5" />
+      <stop offset="42%" stop-color="#FF8CBC" />
+      <stop offset="100%" stop-color="#DF5492" />
+    </linearGradient>
+    <linearGradient id="c5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFA07E" />
+      <stop offset="42%" stop-color="#FF7040" />
+      <stop offset="100%" stop-color="#D44618" />
+    </linearGradient>
+  </defs>
+  <!-- 5 stacked horizontal cylindrical capsules forming Capital F -->
+  <rect x="13" y="10" width="38" height="7.5" rx="3.75" fill="url(#c1)" />
+  <rect x="15" y="11.2" width="34" height="1.5" rx="0.75" fill="#FFFFFF" opacity="0.45" />
+
+  <rect x="13" y="19.5" width="16" height="7.5" rx="3.75" fill="url(#c2)" />
+  <rect x="15" y="20.7" width="12" height="1.5" rx="0.75" fill="#FFFFFF" opacity="0.45" />
+
+  <rect x="13" y="29" width="31" height="7.5" rx="3.75" fill="url(#c3)" />
+  <rect x="15" y="30.2" width="27" height="1.5" rx="0.75" fill="#FFFFFF" opacity="0.45" />
+
+  <rect x="13" y="38.5" width="16" height="7.5" rx="3.75" fill="url(#c4)" />
+  <rect x="15" y="39.7" width="12" height="1.5" rx="0.75" fill="#FFFFFF" opacity="0.45" />
+
+  <rect x="13" y="48" width="16" height="7.5" rx="3.75" fill="url(#c5)" />
+  <rect x="15" y="49.2" width="12" height="1.5" rx="0.75" fill="#FFFFFF" opacity="0.45" />
+</svg>

@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "figma-education",
+    "name": "Figma Professional for Education",
+    "slug": "figma-education",
+    "provider": "Figma",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "student-benefits",
+    "subcategory": "Educational Software",
+    "resource_type": "student_benefit",
+    "pricing_model": "student_exclusive",
+    "tags": ["Design", "UI/UX", "Students", "Figma", "Prototyping"]
+  },
+  "description": "Free upgrade to the Figma Professional team plan for verified students and educators with unlimited files, shared libraries, and Dev Mode.",
+  "access": {
+    "free_limits": [
+      { "name": "Figma Design & FigJam files", "value": "Unlimited", "period": "while verified" },
+      { "name": "Plan cost", "value": 0, "period": "USD per seat" }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "No credit card required for Education plan verification."
+    },
+    "validity": {
+      "type": "fixed_period",
+      "duration": "2 years per verification",
+      "auto_renewal": "Re-verify student status before expiry; does not automatically convert to paid billing."
+    },
+    "restrictions": [
+      "Limited to verified students, instructors, and qualifying bootcamps for classroom/learning work."
+    ]
+  },
+  "eligibility": {
+    "student_access": "exclusive",
+    "regions": ["Global"],
+    "conditions": "Higher-education, K-12, or eligible bootcamp enrollment verified via SheerID."
+  },
+  "links": {
+    "official": "https://www.figma.com/education/",
+    "signup": "https://www.figma.com/education/apply/",
+    "documentation": "https://help.figma.com/hc/en-us/articles/360041061214-Figma-for-Education",
+    "pricing": "https://www.figma.com/pricing/"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "figma-edu",
+        "url": "https://www.figma.com/education/",
+        "source_type": "student_page",
+        "checked_at": "2026-11-09"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "figma-edu",
+        "field_path": "access.validity.duration",
+        "quote": "Figma Professional is free for verified students and educators for two years.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-09",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-14",
+    "updated_at": "2026-11-09",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Health API icon">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#55D764" stroke="#101014" stroke-width="3"/>
+  <g fill="#101014">
+    <path d="M32 52S12 39 12 24a11 11 0 0 1 20-6 11 11 0 0 1 20 6c0 15-20 28-20 28z"/><polyline points="18,30 26,30 30,22 35,38 39,30 46,30" fill="none" stroke="#55D764" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

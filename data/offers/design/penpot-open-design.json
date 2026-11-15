@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "penpot-open-design",
+    "name": "Penpot Open Design Platform",
+    "slug": "penpot-open-design",
+    "provider": "Kaleidos / Penpot",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "design-creative",
+    "subcategory": "UI & Graphic Design",
+    "resource_type": "software",
+    "pricing_model": "open_source",
+    "tags": ["Open Source", "SVG", "UI Design", "CSS Grid", "Self-Hostable"]
+  },
+  "description": "Open-source web-based UI design and prototyping platform using native SVG, CSS Flexbox, and CSS Grid layouts with unlimited files on the hosted cloud.",
+  "access": {
+    "free_limits": [
+      { "name": "Design files & editors", "value": "Unlimited", "period": "hosted Starter tier" },
+      { "name": "Self-hosting license", "value": "MPL-2.0 Open Source", "period": "unrestricted" }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "Hosted free plan requires no payment card; Docker self-hosting needs no external account."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "No paywalls on core design or self-hosted deployments."
+    },
+    "restrictions": [
+      "Hosted Unlimited/Enterprise plans charge only for advanced team storage and enterprise compliance."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Open to individuals, teams, and self-hosters."
+  },
+  "links": {
+    "official": "https://penpot.app",
+    "signup": "https://design.penpot.app",
+    "documentation": "https://help.penpot.app",
+    "pricing": "https://penpot.app/pricing"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "penpot-pricing",
+        "url": "https://penpot.app/pricing",
+        "source_type": "official_pricing",
+        "checked_at": "2026-11-06"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "penpot-pricing",
+        "field_path": "classification.pricing_model",
+        "quote": "Penpot is open-source design & prototyping software with unlimited files and editors on the free Starter plan.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-06",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-16",
+    "updated_at": "2026-11-06",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

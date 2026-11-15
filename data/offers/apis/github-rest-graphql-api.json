@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "offer-github-rest-graphql-api",
+    "name": "GitHub REST & GraphQL API",
+    "slug": "github-rest-graphql-api",
+    "provider": "GitHub",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "apis-integrations",
+    "subcategory": "Public APIs",
+    "resource_type": "api",
+    "pricing_model": "free_tier",
+    "tags": ["api", "rest", "graphql", "github", "webhooks", "oauth", "git"]
+  },
+  "description": "Official GitHub REST v3 and GraphQL v4 APIs with webhooks and Octokit SDKs for querying repositories, commits, releases, issues, and developer activity.",
+  "access": {
+    "free_limits": [
+      {
+        "name": "Authenticated REST API",
+        "value": "5,000 requests",
+        "period": "per hour"
+      },
+      {
+        "name": "GraphQL API Points",
+        "value": "5,000 points",
+        "period": "per hour"
+      },
+      {
+        "name": "Unauthenticated Public Requests",
+        "value": "60 requests",
+        "period": "per hour"
+      }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "No credit card required for free GitHub accounts or personal access tokens."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "Ongoing free quota that resets every hour."
+    },
+    "restrictions": [
+      "Secondary rate limits apply to burst concurrent requests or rapid content creation."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Open to all developers globally."
+  },
+  "links": {
+    "official": "https://docs.github.com/en/rest",
+    "signup": "https://github.com/signup",
+    "documentation": "https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api",
+    "pricing": "https://github.com/pricing"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "src-gh-api-limits",
+        "url": "https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api",
+        "source_type": "official_docs",
+        "checked_at": "2026-11-12"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "src-gh-api-limits",
+        "field_path": "access.free_limits",
+        "quote": "All personal authenticated requests receive a rate limit of 5,000 requests per hour.",
+        "confidence": "high",
+        "notes": "Verified from official GitHub REST API rate-limit documentation."
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-12",
+    "notes": "Verified hourly REST and GraphQL rate limits."
+  },
+  "metadata": {
+    "created_at": "2026-11-12",
+    "updated_at": "2026-11-12",
+    "featured": true,
+    "contributor": "freestack-core"
+  }
+}

@@ -1,0 +1,226 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FreeStack Resource Record",
+  "description": "Canonical FreeStack resource data contract aligned with Section 9 of the Master Blueprint",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "identity",
+    "classification",
+    "description",
+    "access",
+    "eligibility",
+    "links",
+    "evidence",
+    "verification",
+    "metadata"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0.0" },
+    "identity": {
+      "type": "object",
+      "required": ["id", "name", "slug", "provider"],
+      "properties": {
+        "id": { "type": "string", "minLength": 2 },
+        "name": { "type": "string", "minLength": 2 },
+        "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "provider": { "type": "string", "minLength": 1 },
+        "logo_url": { "type": ["string", "null"], "format": "uri" }
+      }
+    },
+    "classification": {
+      "type": "object",
+      "required": ["category", "subcategory", "resource_type", "pricing_model", "tags"],
+      "properties": {
+        "category": {
+          "type": "string",
+          "enum": [
+            "ai-ml",
+            "mcp",
+            "cloud-hosting",
+            "developer-tools",
+            "databases-backend",
+            "learning",
+            "student-benefits",
+            "apis-integrations",
+            "design-creative",
+            "security-networking",
+            "productivity-collaboration"
+          ]
+        },
+        "subcategory": { "type": "string", "minLength": 2 },
+        "resource_type": {
+          "type": "string",
+          "enum": [
+            "software",
+            "ai_model",
+            "mcp_server",
+            "api",
+            "course",
+            "book",
+            "documentation",
+            "tutorial",
+            "roadmap",
+            "dataset",
+            "cloud_service",
+            "developer_tool",
+            "student_benefit",
+            "practice",
+            "other"
+          ]
+        },
+        "pricing_model": {
+          "type": "string",
+          "enum": [
+            "completely_free",
+            "free_tier",
+            "free_credits",
+            "student_exclusive",
+            "open_source",
+            "free_learning_material",
+            "free_trial",
+            "freemium"
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "description": { "type": "string", "minLength": 10 },
+    "access": {
+      "type": "object",
+      "required": ["free_limits", "requirements", "validity", "restrictions"],
+      "properties": {
+        "free_limits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "value", "period"],
+            "properties": {
+              "name": { "type": "string" },
+              "value": { "type": ["string", "number", "null"] },
+              "period": { "type": ["string", "null"] }
+            }
+          }
+        },
+        "requirements": {
+          "type": "object",
+          "required": ["account_required", "card_required", "payment_method_notes"],
+          "properties": {
+            "account_required": { "type": "string", "enum": ["required", "not_required", "unknown"] },
+            "card_required": { "type": "string", "enum": ["required", "not_required", "unknown"] },
+            "payment_method_notes": { "type": ["string", "null"] }
+          }
+        },
+        "validity": {
+          "type": "object",
+          "required": ["type", "duration", "auto_renewal"],
+          "properties": {
+            "type": { "type": "string", "enum": ["ongoing", "fixed_period", "credit_based", "trial_period", "unknown"] },
+            "duration": { "type": ["string", "null"] },
+            "auto_renewal": { "type": ["string", "null"] }
+          }
+        },
+        "restrictions": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "eligibility": {
+      "type": "object",
+      "required": ["student_access", "regions", "conditions"],
+      "properties": {
+        "student_access": { "type": "string", "enum": ["eligible", "exclusive", "not_eligible", "unknown"] },
+        "regions": { "type": "array", "items": { "type": "string" } },
+        "conditions": { "type": ["string", "null"] }
+      }
+    },
+    "links": {
+      "type": "object",
+      "required": ["official"],
+      "properties": {
+        "official": { "type": "string", "format": "uri" },
+        "signup": { "type": ["string", "null"], "format": "uri" },
+        "documentation": { "type": ["string", "null"], "format": "uri" },
+        "pricing": { "type": ["string", "null"], "format": "uri" }
+      }
+    },
+    "learning": {
+      "type": "object",
+      "required": ["format", "difficulty", "topics", "language"],
+      "properties": {
+        "format": {
+          "type": "string",
+          "enum": ["course", "book", "documentation", "tutorial", "roadmap", "video", "practice", "challenge", "other"]
+        },
+        "difficulty": {
+          "type": "string",
+          "enum": ["beginner", "intermediate", "advanced", "all_levels", "unknown"]
+        },
+        "topics": { "type": "array", "items": { "type": "string" } },
+        "language": { "type": ["string", "null"] }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["sources", "claims"],
+      "properties": {
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "url", "source_type", "checked_at"],
+            "properties": {
+              "id": { "type": "string" },
+              "url": { "type": "string", "format": "uri" },
+              "source_type": {
+                "type": "string",
+                "enum": ["official_pricing", "official_docs", "official_terms", "student_page", "official_repo", "other"]
+              },
+              "checked_at": { "type": "string" }
+            }
+          }
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["source_id", "field_path", "quote", "confidence"],
+            "properties": {
+              "source_id": { "type": "string" },
+              "field_path": { "type": "string" },
+              "quote": { "type": "string" },
+              "confidence": { "type": "string", "enum": ["high", "medium", "low"] },
+              "notes": { "type": ["string", "null"] }
+            }
+          }
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "required": ["status", "last_verified_at", "notes"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["verified", "needs_review", "expired", "unavailable", "unverified"]
+        },
+        "last_verified_at": { "type": ["string", "null"] },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["created_at", "updated_at"],
+      "properties": {
+        "created_at": { "type": "string" },
+        "updated_at": { "type": "string" },
+        "featured": { "type": "boolean" },
+        "contributor": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

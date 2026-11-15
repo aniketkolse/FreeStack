@@ -1,0 +1,6 @@
+{
+  "name": "FreeStack",
+  "description": "One place for everything free that helps you build, learn and create — a curated, verified directory of free AI models, APIs, cloud hosting, developer tools, learning materials, and student benefits.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

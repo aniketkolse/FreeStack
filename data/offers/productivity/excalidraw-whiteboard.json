@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "excalidraw-whiteboard",
+    "name": "Excalidraw Open Whiteboard",
+    "slug": "excalidraw-whiteboard",
+    "provider": "Excalidraw",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "productivity-collaboration",
+    "subcategory": "Project Management",
+    "resource_type": "software",
+    "pricing_model": "open_source",
+    "tags": ["Whiteboard", "Diagrams", "Architecture", "Open Source", "No Account"]
+  },
+  "description": "Hand-drawn style virtual whiteboard for system architecture diagrams, wireframes, and live end-to-end encrypted collaboration right in the browser.",
+  "access": {
+    "free_limits": [
+      { "name": "Whiteboard canvases & exports", "value": "Unlimited", "period": "PNG / SVG / JSON" },
+      { "name": "Live collaboration links", "value": "Free", "period": "E2E encrypted" }
+    ],
+    "requirements": {
+      "account_required": "not_required",
+      "card_required": "not_required",
+      "payment_method_notes": "MIT-licensed open-source web app usable immediately with zero signup."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "Open-source editor at excalidraw.com is free forever; Excalidraw+ is an optional paid team cloud."
+    },
+    "restrictions": [
+      "Cloud-saved multi-scene workspaces require paid Excalidraw+ subscription."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Open to anyone."
+  },
+  "links": {
+    "official": "https://excalidraw.com",
+    "signup": null,
+    "documentation": "https://docs.excalidraw.com",
+    "pricing": "https://plus.excalidraw.com/pricing"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "excalidraw-docs",
+        "url": "https://docs.excalidraw.com",
+        "source_type": "official_docs",
+        "checked_at": "2026-11-12"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "excalidraw-docs",
+        "field_path": "access.requirements.account_required",
+        "quote": "Excalidraw is an open-source virtual collaborative whiteboard usable without registration.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-12",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-11-10",
+    "updated_at": "2026-11-12",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

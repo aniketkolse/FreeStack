@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "lucide-icons",
+    "name": "Lucide Open Source Icons",
+    "slug": "lucide-icons",
+    "provider": "Lucide Contributors",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "design-creative",
+    "subcategory": "Icons & Illustrations",
+    "resource_type": "developer_tool",
+    "pricing_model": "open_source",
+    "tags": ["Icons", "SVG", "React", "Open Source", "ISC License", "No Account"]
+  },
+  "description": "1,500+ crisp, consistent open-source SVG icons under the ISC license with tree-shakeable packages for React, Vue, Svelte, and Figma.",
+  "access": {
+    "free_limits": [
+      { "name": "Icon library", "value": "1,500+ icons", "period": "unlimited commercial & personal" },
+      { "name": "Account or attribution", "value": "None required", "period": "ISC license" }
+    ],
+    "requirements": {
+      "account_required": "not_required",
+      "card_required": "not_required",
+      "payment_method_notes": "Completely free open-source npm packages and SVG downloads."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "Permissive ISC open-source license."
+    },
+    "restrictions": [
+      "Keep ISC copyright notice when redistributing the icon library itself."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Open to everyone for personal and commercial software."
+  },
+  "links": {
+    "official": "https://lucide.dev",
+    "signup": null,
+    "documentation": "https://lucide.dev/guide/",
+    "pricing": null
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "lucide-license",
+        "url": "https://lucide.dev/license",
+        "source_type": "official_docs",
+        "checked_at": "2026-11-11"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "lucide-license",
+        "field_path": "access.requirements.account_required",
+        "quote": "Lucide is licensed under the ISC license — free to use in personal and commercial projects without signing up.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-11",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-11-08",
+    "updated_at": "2026-11-11",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

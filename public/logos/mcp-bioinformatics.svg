@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Biology, Medicine &amp; Bioinformatics MCP icon">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#55D764" stroke="#101014" stroke-width="3"/>
+  <g fill="#101014">
+    <path d="M22 12c0 12 20 12 20 24s-20 12-20 24M42 12c0 12-20 12-20 24s20 12 20 24" fill="none" stroke="#101014" stroke-width="4" stroke-linecap="round"/><line x1="24" y1="20" x2="40" y2="20" stroke="#101014" stroke-width="3"/><line x1="24" y1="44" x2="40" y2="44" stroke="#101014" stroke-width="3"/>
+  </g>
+</svg>

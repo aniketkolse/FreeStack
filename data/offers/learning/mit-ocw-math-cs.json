@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "mit-ocw-math-cs",
+    "name": "MIT OpenCourseWare (6.006 & Linear Algebra)",
+    "slug": "mit-ocw-math-cs",
+    "provider": "Massachusetts Institute of Technology",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "learning",
+    "subcategory": "CS Fundamentals",
+    "resource_type": "course",
+    "pricing_model": "free_learning_material",
+    "tags": ["Mathematics", "Linear Algebra", "Algorithms", "MIT", "University"]
+  },
+  "description": "Full MIT university lecture videos, syllabi, exams, and problem sets for Linear Algebra (18.06), Algorithms (6.006), and Machine Learning math foundations.",
+  "access": {
+    "free_limits": [
+      { "name": "Undergraduate & graduate courses", "value": "2,500+ courses", "period": "unlimited" },
+      { "name": "Video lectures & exams", "value": "Free download", "period": "Creative Commons" }
+    ],
+    "requirements": {
+      "account_required": "not_required",
+      "card_required": "not_required",
+      "payment_method_notes": "No registration, login, or payment ever required."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "Open educational license with no expiration."
+    },
+    "restrictions": [
+      "Does not grant MIT course credit or a graded certificate."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Open to learners everywhere."
+  },
+  "links": {
+    "official": "https://ocw.mit.edu",
+    "signup": null,
+    "documentation": "https://ocw.mit.edu/collections/introductory-programming/",
+    "pricing": null
+  },
+  "learning": {
+    "format": "video",
+    "difficulty": "advanced",
+    "topics": ["Mathematics", "Linear Algebra", "Algorithms & Data Structures", "Computer Science"],
+    "language": "English"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "mit-ocw-about",
+        "url": "https://ocw.mit.edu/about/",
+        "source_type": "official_docs",
+        "checked_at": "2026-11-01"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "mit-ocw-about",
+        "field_path": "access.requirements.account_required",
+        "quote": "MIT OpenCourseWare makes MIT course materials freely available online with no registration required.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-01",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-09",
+    "updated_at": "2026-11-01",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

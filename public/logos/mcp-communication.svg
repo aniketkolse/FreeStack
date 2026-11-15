@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Communication MCP icon">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#54A7FF" stroke="#101014" stroke-width="3"/>
+  <g fill="#101014">
+    <path d="M14 16h36a4 4 0 0 1 4 4v20a4 4 0 0 1-4 4H26l-12 8V20a4 4 0 0 1 4-4z"/><circle cx="24" cy="30" r="3" fill="#FFF550"/><circle cx="32" cy="30" r="3" fill="#FFF550"/><circle cx="40" cy="30" r="3" fill="#FFF550"/>
+  </g>
+</svg>

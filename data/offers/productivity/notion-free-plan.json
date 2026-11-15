@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "notion-free-plan",
+    "name": "Notion Free Workspace",
+    "slug": "notion-free-plan",
+    "provider": "Notion",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "productivity-collaboration",
+    "subcategory": "Notes & Documents",
+    "resource_type": "software",
+    "pricing_model": "freemium",
+    "tags": ["Notes", "Docs", "Wiki", "Tasks", "No Card"]
+  },
+  "description": "All-in-one notes, markdown docs, project wikis, and structured databases with unlimited pages for individual builders.",
+  "access": {
+    "free_limits": [
+      { "name": "Individual pages & blocks", "value": "Unlimited", "period": "1 member" },
+      { "name": "File upload size", "value": "5 MB", "period": "per file" },
+      { "name": "Guest collaborators", "value": 10, "period": "per workspace" }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "No credit card needed for Notion Free."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "Permanent free personal plan; adding 2+ workspace members triggers a 1,000-block team trial limit."
+    },
+    "restrictions": [
+      "Collaborative multi-member workspaces are capped at a 1,000-block trial.",
+      "7-day page version history only on Free."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Open to everyone; university students get Notion Plus free."
+  },
+  "links": {
+    "official": "https://www.notion.com",
+    "signup": "https://www.notion.com/signup",
+    "documentation": "https://www.notion.com/help",
+    "pricing": "https://www.notion.com/pricing"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "notion-pricing",
+        "url": "https://www.notion.com/pricing",
+        "source_type": "official_pricing",
+        "checked_at": "2026-11-10"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "notion-pricing",
+        "field_path": "access.free_limits",
+        "quote": "Free for individuals: unlimited pages & blocks for 1 member, 5 MB file upload limit, and up to 10 guests.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-10",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-20",
+    "updated_at": "2026-11-10",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

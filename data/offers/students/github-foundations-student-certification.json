@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "offer-github-foundations-student-cert",
+    "name": "GitHub Foundations Certification Voucher (Student Pack)",
+    "slug": "github-foundations-student-certification",
+    "provider": "GitHub",
+    "logo_url": "https://github.githubassets.com/favicons/favicon.svg"
+  },
+  "classification": {
+    "category": "student-benefits",
+    "subcategory": "Certifications & Learning Benefits",
+    "resource_type": "student_benefit",
+    "pricing_model": "student_exclusive",
+    "tags": ["certification", "github", "git", "exam-voucher", "student-pack", "career"]
+  },
+  "description": "Free exam voucher for the official GitHub Foundations certification exam included with verified GitHub Student Developer Pack membership, covering Git, repositories, collaboration, and GitHub Actions fundamentals.",
+  "access": {
+    "free_limits": [
+      {
+        "name": "GitHub Foundations exam voucher",
+        "value": "100% free exam voucher (1 attempt)",
+        "period": "per verified student membership"
+      },
+      {
+        "name": "Microsoft Learn study path",
+        "value": "Unlimited self-paced modules",
+        "period": "ongoing"
+      }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "No payment card required when redeeming the 100% student voucher through GitHub Education."
+    },
+    "validity": {
+      "type": "fixed_period",
+      "duration": "Valid until voucher expiration date while enrolled",
+      "auto_renewal": "Does not auto-charge; single-use certification exam voucher."
+    },
+    "restrictions": [
+      "Requires approved GitHub Student Developer Pack verification.",
+      "Applies specifically to the GitHub Foundations exam; advanced specialty exams may have separate pricing."
+    ]
+  },
+  "eligibility": {
+    "student_access": "exclusive",
+    "regions": ["Global"],
+    "conditions": "Verified degree- or diploma-granting student aged 13+ enrolled in an accredited institution and approved for GitHub Education."
+  },
+  "links": {
+    "official": "https://education.github.com/pack",
+    "signup": "https://education.github.com/discount_requests/application",
+    "documentation": "https://docs.github.com/en/get-started/learning-about-github/about-github-certifications",
+    "pricing": "https://education.github.com/pack"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "src-gh-cert-pack",
+        "url": "https://education.github.com/pack",
+        "source_type": "student_page",
+        "checked_at": "2026-11-10"
+      },
+      {
+        "id": "src-gh-cert-docs",
+        "url": "https://docs.github.com/en/get-started/learning-about-github/about-github-certifications",
+        "source_type": "official_docs",
+        "checked_at": "2026-11-10"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "src-gh-cert-pack",
+        "field_path": "access.free_limits[0]",
+        "quote": "Students verified for the GitHub Student Developer Pack receive a complimentary exam voucher for the GitHub Foundations certification.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-10",
+    "notes": "Verified via GitHub Education partner directory and GitHub Certifications documentation."
+  },
+  "metadata": {
+    "created_at": "2026-10-18",
+    "updated_at": "2026-11-10",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

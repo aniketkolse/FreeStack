@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "eloquent-javascript-book",
+    "name": "Eloquent JavaScript (4th Edition)",
+    "slug": "eloquent-javascript-book",
+    "provider": "Marijn Haverbeke",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "learning",
+    "subcategory": "E-books & Docs",
+    "resource_type": "book",
+    "pricing_model": "free_learning_material",
+    "tags": ["JavaScript", "Book", "Programming", "Web Development"]
+  },
+  "description": "Acclaimed modern introduction to JavaScript programming, asynchronous code, the DOM, Node.js, and interactive browser code sandboxes.",
+  "access": {
+    "free_limits": [
+      { "name": "Full web & PDF editions", "value": "All 21 chapters", "period": "unlimited" },
+      { "name": "Interactive code sandbox", "value": "Included", "period": "in browser" }
+    ],
+    "requirements": {
+      "account_required": "not_required",
+      "card_required": "not_required",
+      "payment_method_notes": "Free online HTML, PDF, and EPUB under Creative Commons; print edition sold separately."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "Always free online."
+    },
+    "restrictions": [
+      "Only the digital edition is free; physical print book is commercial."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Open to all readers."
+  },
+  "links": {
+    "official": "https://eloquentjavascript.net",
+    "signup": null,
+    "documentation": "https://eloquentjavascript.net/Eloquent_JavaScript.pdf",
+    "pricing": null
+  },
+  "learning": {
+    "format": "book",
+    "difficulty": "intermediate",
+    "topics": ["JavaScript", "Programming Languages", "Web Development", "Node.js"],
+    "language": "English"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "eloquent-js-home",
+        "url": "https://eloquentjavascript.net",
+        "source_type": "official_docs",
+        "checked_at": "2026-11-09"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "eloquent-js-home",
+        "field_path": "classification.pricing_model",
+        "quote": "Licensed under a Creative Commons attribution-noncommercial license; all chapters are readable free online.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-09",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-11-07",
+    "updated_at": "2026-11-09",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

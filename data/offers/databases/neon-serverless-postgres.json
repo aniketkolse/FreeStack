@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "neon-serverless-postgres",
+    "name": "Neon Serverless Postgres",
+    "slug": "neon-serverless-postgres",
+    "provider": "Neon",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "databases-backend",
+    "subcategory": "SQL Databases",
+    "resource_type": "cloud_service",
+    "pricing_model": "free_tier",
+    "tags": ["PostgreSQL", "pgvector", "Serverless", "SQL", "Branching", "No Card"]
+  },
+  "description": "Serverless PostgreSQL with instant database branching, scale-to-zero compute, and pgvector support for AI embeddings.",
+  "access": {
+    "free_limits": [
+      { "name": "Storage", "value": "0.5 GB", "period": "per project" },
+      { "name": "Compute hours", "value": 100, "period": "CU-hours per month" },
+      { "name": "Projects", "value": 10, "period": "concurrent" },
+      { "name": "Data transfer", "value": "5 GB", "period": "per month" }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "No credit card required for the Free plan."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "Compute suspends when monthly CU-hours run out; never auto-charges."
+    },
+    "restrictions": [
+      "Compute scales to zero after 5 minutes of inactivity."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["AWS US, EU, and APAC regions"],
+    "conditions": "Open to all developers."
+  },
+  "links": {
+    "official": "https://neon.tech",
+    "signup": "https://console.neon.tech/signup",
+    "documentation": "https://neon.tech/docs/introduction",
+    "pricing": "https://neon.tech/pricing"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "neon-pricing",
+        "url": "https://neon.tech/pricing",
+        "source_type": "official_pricing",
+        "checked_at": "2026-11-10"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "neon-pricing",
+        "field_path": "access.free_limits",
+        "quote": "Free tier includes 0.5 GB storage, 100 CU-hours per month, and database branching.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-10",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-10",
+    "updated_at": "2026-11-10",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

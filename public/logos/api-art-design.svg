@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Art &amp; Design API icon">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#FF86C8" stroke="#101014" stroke-width="3"/>
+  <g fill="#101014">
+    <path d="M32 12a20 20 0 1 0 0 40c3.5 0 6-2.5 6-5.5 0-1.5-.6-2.8-1.5-3.8-.9-1-1.5-2.1-1.5-3.7 0-3 2.5-5.5 6-5.5h3A18 18 0 0 0 32 12z"/><circle cx="22" cy="24" r="3" fill="#FFF550"/><circle cx="30" cy="20" r="3" fill="#54A7FF"/><circle cx="40" cy="24" r="3" fill="#55D764"/>
+  </g>
+</svg>

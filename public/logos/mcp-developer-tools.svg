@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Developer Tools MCP icon">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#FFF550" stroke="#101014" stroke-width="3"/>
+  <g fill="#101014">
+    <polyline points="22,20 10,32 22,44" fill="none" stroke="#101014" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="42,20 54,32 42,44" fill="none" stroke="#101014" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="36" y1="16" x2="28" y2="48" stroke="#101014" stroke-width="4.5" stroke-linecap="round"/>
+  </g>
+</svg>

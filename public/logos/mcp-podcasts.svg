@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Podcasts MCP icon">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#FF86C8" stroke="#101014" stroke-width="3"/>
+  <g fill="#101014">
+    <rect x="25" y="14" width="14" height="22" rx="7"/><path d="M19 26a13 13 0 0 0 26 0M32 39v11M24 50h16" fill="none" stroke="#101014" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

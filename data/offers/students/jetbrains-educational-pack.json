@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "jetbrains-educational-pack",
+    "name": "JetBrains All Products Educational License",
+    "slug": "jetbrains-educational-pack",
+    "provider": "JetBrains",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "student-benefits",
+    "subcategory": "Educational Software",
+    "resource_type": "software",
+    "pricing_model": "student_exclusive",
+    "tags": ["IDEs", "IntelliJ", "PyCharm", "WebStorm", "Students", "Desktop"]
+  },
+  "description": "Free annual academic access to IntelliJ IDEA Ultimate, PyCharm Professional, WebStorm, CLion, DataGrip, and all JetBrains desktop IDEs.",
+  "access": {
+    "free_limits": [
+      { "name": "JetBrains All Products Pack", "value": "Full Professional IDEs", "period": "1 year (renewable)" },
+      { "name": "Renewal cost while enrolled", "value": 0, "period": "USD" }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "Zero payment details needed; verify via university email, ISIC card, or GitHub Student Pack."
+    },
+    "validity": {
+      "type": "fixed_period",
+      "duration": "1 year (renewable annually while enrolled)",
+      "auto_renewal": "Does not auto-charge; manual re-verification required annually. Graduation discount (40% off) is separate from free access."
+    },
+    "restrictions": [
+      "Strictly limited to non-commercial educational learning and academic coursework.",
+      "Post-graduation transition offers a paid discount (not free)."
+    ]
+  },
+  "eligibility": {
+    "student_access": "exclusive",
+    "regions": ["Global (except sanctioned regions)"],
+    "conditions": "Enrolled students and accredited faculty members."
+  },
+  "links": {
+    "official": "https://www.jetbrains.com/community/education/",
+    "signup": "https://www.jetbrains.com/shop/eform/students",
+    "documentation": "https://www.jetbrains.com/support/sales/students/",
+    "pricing": "https://www.jetbrains.com/store/"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "jb-students",
+        "url": "https://www.jetbrains.com/community/education/",
+        "source_type": "student_page",
+        "checked_at": "2026-11-08"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "jb-students",
+        "field_path": "access.requirements.card_required",
+        "quote": "Free educational licenses for all JetBrains IDEs are available to verified students and teachers for non-commercial use.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-08",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-04",
+    "updated_at": "2026-11-08",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

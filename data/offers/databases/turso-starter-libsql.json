@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "turso-starter-libsql",
+    "name": "Turso Starter",
+    "slug": "turso-starter-libsql",
+    "provider": "Turso",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "databases-backend",
+    "subcategory": "SQL Databases",
+    "resource_type": "cloud_service",
+    "pricing_model": "free_tier",
+    "tags": ["SQLite", "libSQL", "Edge", "Database", "No Card"]
+  },
+  "description": "Edge-replicated SQLite (libSQL) database offering ultra-low latency reads and generous storage for hobby and side projects.",
+  "access": {
+    "free_limits": [
+      { "name": "Total storage", "value": "5 GB", "period": "ongoing" },
+      { "name": "Row reads", "value": "500M", "period": "per month" },
+      { "name": "Row writes", "value": "10M", "period": "per month" },
+      { "name": "Databases", "value": 100, "period": "concurrent" }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "No credit card on file; hard quota caps prevent accidental bills."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": null
+    },
+    "restrictions": [
+      "Starter tier is capped at 3 edge replication locations."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global edge locations"],
+    "conditions": "Open to all developers."
+  },
+  "links": {
+    "official": "https://turso.tech",
+    "signup": "https://turso.tech/app",
+    "documentation": "https://docs.turso.tech",
+    "pricing": "https://turso.tech/pricing"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "turso-pricing",
+        "url": "https://turso.tech/pricing",
+        "source_type": "official_pricing",
+        "checked_at": "2026-11-06"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "turso-pricing",
+        "field_path": "access.free_limits",
+        "quote": "Starter plan is free forever with 5 GB storage, 500M row reads, and 10M row writes.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-06",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-11",
+    "updated_at": "2026-11-06",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

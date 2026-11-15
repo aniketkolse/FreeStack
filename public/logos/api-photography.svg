@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Photography API icon">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#FF86C8" stroke="#101014" stroke-width="3"/>
+  <g fill="#101014">
+    <rect x="10" y="18" width="44" height="30" rx="5"/><path d="M22 18l3-5h14l3 5"/><circle cx="32" cy="33" r="8" fill="#FFF550"/>
+  </g>
+</svg>

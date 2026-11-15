@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Cloud Platforms MCP icon">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#54A7FF" stroke="#101014" stroke-width="3"/>
+  <g fill="#101014">
+    <path d="M20 46h25a10 10 0 0 0 1-19.9A14 14 0 0 0 19 23a11 11 0 0 0 1 23z"/>
+  </g>
+</svg>

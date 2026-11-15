@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="deck" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#feda75"/>
+      <stop offset="0.45" stop-color="#fa7e1e"/>
+      <stop offset="0.75" stop-color="#d62976"/>
+      <stop offset="1" stop-color="#962fbf"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#08090a"/>
+  <!-- The GradientDeck mark (src/components/site/logo.tsx), scaled into the tile. -->
+  <g transform="translate(9.5 11.5) scale(1.6) skewX(-14)">
+    <rect x="13" y="1" width="13" height="10.5" rx="2.4" fill="#737373"/>
+    <rect x="9.5" y="5" width="13" height="10.5" rx="2.4" fill="#e5e7eb"/>
+    <rect x="6" y="9" width="13" height="10.5" rx="2.4" fill="url(#deck)"/>
+  </g>
+</svg>

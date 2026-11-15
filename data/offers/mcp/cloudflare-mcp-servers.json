@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "offer-cloudflare-mcp-servers",
+    "name": "Cloudflare Official MCP Servers",
+    "slug": "cloudflare-mcp-servers",
+    "provider": "Cloudflare",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "mcp",
+    "subcategory": "Remote & Edge MCP",
+    "resource_type": "mcp_server",
+    "pricing_model": "free_tier",
+    "tags": ["mcp", "cloudflare", "workers", "remote-mcp", "d1", "kv", "r2"]
+  },
+  "description": "Official Cloudflare MCP servers and remote MCP Worker templates for managing Workers, D1 databases, KV namespaces, R2 storage, and docs search directly from MCP clients.",
+  "access": {
+    "free_limits": [
+      {
+        "name": "Open-Source MCP Servers",
+        "value": "Unlimited (Apache-2.0)",
+        "period": "ongoing"
+      },
+      {
+        "name": "Remote MCP on Workers Free Tier",
+        "value": "100,000 requests",
+        "period": "per day"
+      }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "Cloudflare Free account and Workers Free tier do not require a credit card."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "Ongoing free tier with no automatic upgrade."
+    },
+    "restrictions": [
+      "Remote MCP servers hosted on Cloudflare Workers share the 100,000 daily request quota of the Workers Free plan."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Available to all developers with a free Cloudflare account."
+  },
+  "links": {
+    "official": "https://github.com/cloudflare/mcp-server-cloudflare",
+    "signup": "https://dash.cloudflare.com/sign-up",
+    "documentation": "https://developers.cloudflare.com/agents/model-context-protocol/",
+    "pricing": "https://www.cloudflare.com/plans/developer-platform/"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "src-cf-mcp-repo",
+        "url": "https://github.com/cloudflare/mcp-server-cloudflare",
+        "source_type": "official_repo",
+        "checked_at": "2026-11-12"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "src-cf-mcp-repo",
+        "field_path": "classification.pricing_model",
+        "quote": "Connect your MCP client to Cloudflare services including Workers, KV, R2, and D1 on the Cloudflare Free plan.",
+        "confidence": "high",
+        "notes": "Verified from official Cloudflare MCP documentation and repository."
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-12",
+    "notes": "Verified official Cloudflare MCP server suite."
+  },
+  "metadata": {
+    "created_at": "2026-11-12",
+    "updated_at": "2026-11-12",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

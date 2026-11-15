@@ -1,0 +1,170 @@
+{
+  "schema_version": "1.0.0",
+  "sources": [
+    {
+      "id": "src-google-ai-pricing",
+      "name": "Google AI Gemini API Pricing",
+      "domain": "ai.google.dev",
+      "entry_url": "https://ai.google.dev/pricing",
+      "source_type": "official_pricing",
+      "category": "ai-ml",
+      "crawl_policy": {
+        "respect_robots_txt": true,
+        "rate_limit_rpm": 6,
+        "max_retries": 3,
+        "primary_fetcher": "crawl4ai"
+      },
+      "active": true
+    },
+    {
+      "id": "src-groq-rate-limits",
+      "name": "GroqCloud Rate Limits Documentation",
+      "domain": "console.groq.com",
+      "entry_url": "https://console.groq.com/docs/rate-limits",
+      "source_type": "official_docs",
+      "category": "ai-ml",
+      "crawl_policy": {
+        "respect_robots_txt": true,
+        "rate_limit_rpm": 6,
+        "max_retries": 3,
+        "primary_fetcher": "crawl4ai"
+      },
+      "active": true
+    },
+    {
+      "id": "src-cloudflare-workers-limits",
+      "name": "Cloudflare Workers & Pages Plans",
+      "domain": "developers.cloudflare.com",
+      "entry_url": "https://developers.cloudflare.com/workers/platform/pricing/",
+      "source_type": "official_pricing",
+      "category": "cloud-hosting",
+      "crawl_policy": {
+        "respect_robots_txt": true,
+        "rate_limit_rpm": 10,
+        "max_retries": 3,
+        "primary_fetcher": "crawl4ai"
+      },
+      "active": true
+    },
+    {
+      "id": "src-github-education-pack",
+      "name": "GitHub Student Developer Pack Partner Directory",
+      "domain": "education.github.com",
+      "entry_url": "https://education.github.com/pack",
+      "source_type": "student_page",
+      "category": "student-benefits",
+      "crawl_policy": {
+        "respect_robots_txt": true,
+        "rate_limit_rpm": 6,
+        "max_retries": 3,
+        "primary_fetcher": "crawl4ai"
+      },
+      "active": true
+    },
+    {
+      "id": "src-supabase-pricing",
+      "name": "Supabase Official Pricing & Free Plan Quotas",
+      "domain": "supabase.com",
+      "entry_url": "https://supabase.com/pricing",
+      "source_type": "official_pricing",
+      "category": "databases-backend",
+      "crawl_policy": {
+        "respect_robots_txt": true,
+        "rate_limit_rpm": 6,
+        "max_retries": 3,
+        "primary_fetcher": "crawl4ai"
+      },
+      "active": true
+    },
+    {
+      "id": "src-neon-pricing",
+      "name": "Neon Serverless Postgres Free Plan Documentation",
+      "domain": "neon.tech",
+      "entry_url": "https://neon.tech/pricing",
+      "source_type": "official_pricing",
+      "category": "databases-backend",
+      "crawl_policy": {
+        "respect_robots_txt": true,
+        "rate_limit_rpm": 6,
+        "max_retries": 3,
+        "primary_fetcher": "crawl4ai"
+      },
+      "active": true
+    },
+    {
+      "id": "src-azure-students",
+      "name": "Microsoft Azure for Students Starter & $100 Credit",
+      "domain": "azure.microsoft.com",
+      "entry_url": "https://azure.microsoft.com/en-us/free/students/",
+      "source_type": "student_page",
+      "category": "student-benefits",
+      "crawl_policy": {
+        "respect_robots_txt": true,
+        "rate_limit_rpm": 6,
+        "max_retries": 3,
+        "primary_fetcher": "crawl4ai"
+      },
+      "active": true
+    },
+    {
+      "id": "src-mdn-curriculum",
+      "name": "MDN Web Docs Open Reference & Curriculum",
+      "domain": "developer.mozilla.org",
+      "entry_url": "https://developer.mozilla.org/en-US/curriculum/",
+      "source_type": "official_docs",
+      "category": "learning",
+      "crawl_policy": {
+        "respect_robots_txt": true,
+        "rate_limit_rpm": 12,
+        "max_retries": 3,
+        "primary_fetcher": "crawl4ai"
+      },
+      "active": true
+    },
+    {
+      "id": "src-mcp-official-docs",
+      "name": "Model Context Protocol Official Specification & Servers",
+      "domain": "modelcontextprotocol.io",
+      "entry_url": "https://modelcontextprotocol.io/introduction",
+      "source_type": "official_docs",
+      "category": "mcp",
+      "crawl_policy": {
+        "respect_robots_txt": true,
+        "rate_limit_rpm": 10,
+        "max_retries": 3,
+        "primary_fetcher": "crawl4ai"
+      },
+      "active": true
+    },
+    {
+      "id": "src-public-apis-repo",
+      "name": "Public APIs Official GitHub Repository",
+      "domain": "github.com",
+      "entry_url": "https://github.com/public-apis/public-apis",
+      "source_type": "official_repo",
+      "category": "apis-integrations",
+      "crawl_policy": {
+        "respect_robots_txt": true,
+        "rate_limit_rpm": 15,
+        "max_retries": 3,
+        "primary_fetcher": "crawl4ai"
+      },
+      "active": true
+    },
+    {
+      "id": "src-awesome-mcp-servers",
+      "name": "Awesome MCP Servers Official Directory (punkpeye/awesome-mcp-servers)",
+      "domain": "github.com",
+      "entry_url": "https://github.com/punkpeye/awesome-mcp-servers",
+      "source_type": "official_repo",
+      "category": "mcp",
+      "crawl_policy": {
+        "respect_robots_txt": true,
+        "rate_limit_rpm": 15,
+        "max_retries": 3,
+        "primary_fetcher": "crawl4ai"
+      },
+      "active": true
+    }
+  ]
+}

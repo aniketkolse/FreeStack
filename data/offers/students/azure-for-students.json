@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "azure-for-students",
+    "name": "Azure for Students ($100 Credit)",
+    "slug": "azure-for-students",
+    "provider": "Microsoft Azure",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "student-benefits",
+    "subcategory": "Student Cloud Credits",
+    "resource_type": "cloud_service",
+    "pricing_model": "student_exclusive",
+    "tags": ["Cloud Credits", "Azure", "No Card", "Students", "AI", "Hosting"]
+  },
+  "description": "$100 in Azure cloud credits valid for 12 months plus selected always-free developer services without requiring a credit card.",
+  "access": {
+    "free_limits": [
+      { "name": "Cloud credits", "value": "$100", "period": "12 months" },
+      { "name": "Selected free services", "value": "25+ services", "period": "12 months" }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "No credit card required during student signup; school email verification required."
+    },
+    "validity": {
+      "type": "credit_based",
+      "duration": "12 months",
+      "auto_renewal": "Subscription disables at $0 credit or 12 months without automatic charges unless upgraded to Pay-As-You-Go."
+    },
+    "restrictions": [
+      "Full-time accredited degree students aged 18+ (16+ in select regions).",
+      "Limit one Azure for Students subscription per eligible person."
+    ]
+  },
+  "eligibility": {
+    "student_access": "exclusive",
+    "regions": ["Global (supported Azure regions)"],
+    "conditions": "Verified academic institutional email address required."
+  },
+  "links": {
+    "official": "https://azure.microsoft.com/en-us/free/students/",
+    "signup": "https://azure.microsoft.com/en-us/free/students/",
+    "documentation": "https://learn.microsoft.com/en-us/azure/education-hub/azure-dev-tools-teaching/program-faq",
+    "pricing": "https://azure.microsoft.com/en-us/pricing/free-services/"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "azure-students-faq",
+        "url": "https://azure.microsoft.com/en-us/free/students/",
+        "source_type": "student_page",
+        "checked_at": "2026-11-11"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "azure-students-faq",
+        "field_path": "access.requirements.card_required",
+        "quote": "Start with $100 in Azure credits plus free services — no credit card required to sign up.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-11",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-03",
+    "updated_at": "2026-11-11",
+    "featured": true,
+    "contributor": "freestack-core"
+  }
+}

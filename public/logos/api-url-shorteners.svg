@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="URL Shorteners API icon">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#FFF550" stroke="#101014" stroke-width="3"/>
+  <g fill="#101014">
+    <path d="M26 38l-4 4a8 8 0 0 1-11-11l8-8a8 8 0 0 1 11 0M38 26l4-4a8 8 0 0 1 11 11l-8 8a8 8 0 0 1-11 0M24 40l16-16" fill="none" stroke="#101014" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

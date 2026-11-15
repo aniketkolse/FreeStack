@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Security MCP icon">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#FF8A3D" stroke="#101014" stroke-width="3"/>
+  <g fill="#101014">
+    <path d="M32 10l18 7v13c0 12-7.5 20.5-18 24-10.5-3.5-18-12-18-24V17l18-7z"/><circle cx="32" cy="31" r="5" fill="#FFF550"/>
+  </g>
+</svg>

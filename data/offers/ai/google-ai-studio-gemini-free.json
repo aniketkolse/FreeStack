@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "google-ai-studio-gemini-free",
+    "name": "Google AI Studio (Gemini API)",
+    "slug": "google-ai-studio-gemini-free",
+    "provider": "Google",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "ai-ml",
+    "subcategory": "Inference APIs",
+    "resource_type": "api",
+    "pricing_model": "free_tier",
+    "tags": ["LLM", "AI API", "Python", "Multimodal", "Gemini", "No Card"]
+  },
+  "description": "Direct browser prototyping and Gemini API free tier for text, multimodal reasoning, and structured JSON extraction in Python, JS, or REST.",
+  "access": {
+    "free_limits": [
+      { "name": "Requests per minute", "value": "Rate-limited by model", "period": "per minute (RPM)" },
+      { "name": "Input & output token cost", "value": 0, "period": "USD on free tier" },
+      { "name": "Context window", "value": "Up to 1M+", "period": "tokens" }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "No credit card required to generate a free-tier API key."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "Stays on free tier indefinitely unless billing is manually linked."
+    },
+    "restrictions": [
+      "Lower RPM/RPD quotas apply compared to pay-as-you-go billing.",
+      "Free-tier prompts and responses may be used to improve Google products unless upgraded."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global (supported countries)"],
+    "conditions": "Available to developers in supported countries with a Google account."
+  },
+  "links": {
+    "official": "https://aistudio.google.com",
+    "signup": "https://aistudio.google.com/apikey",
+    "documentation": "https://ai.google.dev/gemini-api/docs",
+    "pricing": "https://ai.google.dev/gemini-api/docs/pricing"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "gemini-pricing-docs",
+        "url": "https://ai.google.dev/gemini-api/docs/pricing",
+        "source_type": "official_pricing",
+        "checked_at": "2026-11-10"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "gemini-pricing-docs",
+        "field_path": "access.requirements.card_required",
+        "quote": "The Gemini API free tier is offered through Google AI Studio with no credit card required to generate an API key.",
+        "confidence": "high",
+        "notes": null
+      },
+      {
+        "source_id": "gemini-pricing-docs",
+        "field_path": "access.free_limits",
+        "quote": "Lower rate limits apply per model on the free tier for prototyping and testing.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-10",
+    "notes": "Free tier and pay-as-you-go billing remain strictly separated."
+  },
+  "metadata": {
+    "created_at": "2026-10-15",
+    "updated_at": "2026-11-10",
+    "featured": true,
+    "contributor": "freestack-core"
+  }
+}

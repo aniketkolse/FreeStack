@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "lets-encrypt",
+    "name": "Let's Encrypt TLS Certificates",
+    "slug": "lets-encrypt",
+    "provider": "ISRG (Internet Security Research Group)",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "security-networking",
+    "subcategory": "Security Testing Tools",
+    "resource_type": "other",
+    "pricing_model": "completely_free",
+    "tags": ["HTTPS", "SSL", "TLS", "Certificates", "ACME", "No Account"]
+  },
+  "description": "Free, automated, and open Certificate Authority issuing trusted DV TLS/HTTPS certificates via ACME (Certbot, Caddy, Traefik).",
+  "access": {
+    "free_limits": [
+      { "name": "Certificates per registered domain", "value": 50, "period": "per week" },
+      { "name": "Cost per certificate", "value": 0, "period": "USD forever" }
+    ],
+    "requirements": {
+      "account_required": "not_required",
+      "card_required": "not_required",
+      "payment_method_notes": "Nonprofit CA; no account login or payment method exists."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": "90-day certs (auto-renewed via ACME)",
+      "auto_renewal": "Automated ACME clients renew certificates every 60 days at zero cost."
+    },
+    "restrictions": [
+      "Domain Validation (DV) certificates only; wildcard certs require DNS-01 challenge."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Anyone controlling a public domain name."
+  },
+  "links": {
+    "official": "https://letsencrypt.org",
+    "signup": null,
+    "documentation": "https://letsencrypt.org/docs/",
+    "pricing": null
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "le-rate-limits",
+        "url": "https://letsencrypt.org/docs/rate-limits/",
+        "source_type": "official_docs",
+        "checked_at": "2026-11-11"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "le-rate-limits",
+        "field_path": "classification.pricing_model",
+        "quote": "Let's Encrypt is a free, automated, and open certificate authority operated for the public's benefit.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-11",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-19",
+    "updated_at": "2026-11-11",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

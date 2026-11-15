@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Education MCP icon">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#FFF550" stroke="#101014" stroke-width="3"/>
+  <g fill="#101014">
+    <polygon points="32,14 54,25 32,36 10,25"/><path d="M18 30v12c0 4 6 8 14 8s14-4 14-8V30" fill="none" stroke="#101014" stroke-width="4"/>
+  </g>
+</svg>

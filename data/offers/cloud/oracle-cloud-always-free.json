@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "oracle-cloud-always-free",
+    "name": "Oracle Cloud Always Free",
+    "slug": "oracle-cloud-always-free",
+    "provider": "Oracle",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "cloud-hosting",
+    "subcategory": "VPS & Hosting",
+    "resource_type": "cloud_service",
+    "pricing_model": "free_tier",
+    "tags": ["VPS", "Linux", "Arm", "Cloud", "Self-Hosting"]
+  },
+  "description": "Generous permanent cloud compute allocation featuring up to 4 Arm Ampere A1 cores, 24 GB RAM, and 200 GB block volume storage.",
+  "access": {
+    "free_limits": [
+      { "name": "Ampere A1 Arm compute", "value": "Up to 4 OCPUs & 24 GB RAM", "period": "ongoing" },
+      { "name": "AMD Micro VMs", "value": 2, "period": "instances (1/8 OCPU each)" },
+      { "name": "Block storage", "value": 200, "period": "GB total" },
+      { "name": "Outbound transfer", "value": 10, "period": "TB per month" }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "required",
+      "payment_method_notes": "Requires identity verification with an accepted credit or debit card (prepaid cards are often declined)."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": "Includes 30-day $300 trial + permanent Always Free shapes",
+      "auto_renewal": "Does not auto-upgrade to Pay As You Go unless manually switched."
+    },
+    "restrictions": [
+      "Arm A1 capacity may be unavailable in popular home regions.",
+      "Idle Always Free compute instances can be reclaimed after 7 days below utilization thresholds."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Home region selected at signup"],
+    "conditions": "Valid payment card identity verification required at signup."
+  },
+  "links": {
+    "official": "https://www.oracle.com/cloud/free/",
+    "signup": "https://signup.cloud.oracle.com/",
+    "documentation": "https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm",
+    "pricing": "https://www.oracle.com/cloud/free/"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "oracle-free-tier",
+        "url": "https://www.oracle.com/cloud/free/",
+        "source_type": "official_pricing",
+        "checked_at": "2026-10-19"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "oracle-free-tier",
+        "field_path": "access.requirements.card_required",
+        "quote": "A valid credit card is required to verify your identity during account registration.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "needs_review",
+    "last_verified_at": "2026-10-19",
+    "notes": "Flagged for periodic Arm A1 regional capacity check."
+  },
+  "metadata": {
+    "created_at": "2026-09-28",
+    "updated_at": "2026-10-19",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

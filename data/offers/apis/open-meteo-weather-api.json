@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "open-meteo-weather-api",
+    "name": "Open-Meteo Weather API",
+    "slug": "open-meteo-weather-api",
+    "provider": "Open-Meteo",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "apis-integrations",
+    "subcategory": "Public APIs",
+    "resource_type": "api",
+    "pricing_model": "completely_free",
+    "tags": ["Weather", "Public API", "JSON", "Open Source", "No Account"]
+  },
+  "description": "High-resolution global weather forecast, air quality, and historical climate JSON API requiring zero API keys or authentication for non-commercial use.",
+  "access": {
+    "free_limits": [
+      { "name": "Non-commercial requests", "value": "10,000", "period": "calls per day" },
+      { "name": "API key requirement", "value": "None", "period": "keyless" }
+    ],
+    "requirements": {
+      "account_required": "not_required",
+      "card_required": "not_required",
+      "payment_method_notes": "Keyless access; no billing or account needed for non-commercial use."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": null
+    },
+    "restrictions": [
+      "Commercial production applications require a commercial API plan."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Free for personal, academic, and non-commercial projects."
+  },
+  "links": {
+    "official": "https://open-meteo.com",
+    "signup": null,
+    "documentation": "https://open-meteo.com/en/docs",
+    "pricing": "https://open-meteo.com/en/pricing"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "open-meteo-docs",
+        "url": "https://open-meteo.com/en/docs",
+        "source_type": "official_docs",
+        "checked_at": "2026-11-05"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "open-meteo-docs",
+        "field_path": "access.requirements.card_required",
+        "quote": "Free for non-commercial use with no API key, no registration, and no credit card required.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-05",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-17",
+    "updated_at": "2026-11-05",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

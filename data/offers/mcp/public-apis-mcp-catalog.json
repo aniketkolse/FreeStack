@@ -1,0 +1,4237 @@
+[
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-ipstack-mcp-mcp",
+      "name": "IPstack MCP MCP",
+      "slug": "ipstack-mcp-mcp",
+      "provider": "IPstack MCP",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Official MCP Servers",
+      "resource_type": "mcp_server",
+      "pricing_model": "free_tier",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "ipstack-mcp",
+        "stdio",
+        "http"
+      ]
+    },
+    "description": "IP geolocation, threat and timezone lookups for agents. Official Model Context Protocol (MCP) server supporting stdio, HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "apiKey (stdio, HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Requires apiKey authentication when connecting your MCP client."
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Requires apiKey credentials; no credit card required for free access."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://ipstack.com/mcp",
+      "signup": "https://ipstack.com/mcp",
+      "documentation": "https://ipstack.com/mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "IPstack MCP: IP geolocation, threat and timezone lookups for agents (Auth: apiKey, Transport: stdio, HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-agent-nexus-mcp",
+      "name": "Agent Nexus MCP",
+      "slug": "agent-nexus-mcp",
+      "provider": "Agent Nexus",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "agent-nexus",
+        "http"
+      ]
+    },
+    "description": "Find agent-callable APIs, MCP servers and CLIs by capability, with live health and uptime data. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://agentnexus.app",
+      "signup": null,
+      "documentation": "https://agentnexus.app",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Agent Nexus: Find agent-callable APIs, MCP servers and CLIs by capability, with live health and uptime data (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-blockvectra-mcp",
+      "name": "BlockVectra MCP",
+      "slug": "blockvectra-mcp",
+      "provider": "BlockVectra",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Official MCP Servers",
+      "resource_type": "mcp_server",
+      "pricing_model": "free_tier",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "blockvectra",
+        "stdio",
+        "http"
+      ]
+    },
+    "description": "Blockchain RPC and indexed data; keyless documentation and chain discovery. Official Model Context Protocol (MCP) server supporting stdio, HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "apiKey (stdio, HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Requires apiKey authentication when connecting your MCP client."
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Requires apiKey credentials; no credit card required for free access."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://github.com/blockvectra/mcp",
+      "signup": "https://github.com/blockvectra/mcp",
+      "documentation": "https://github.com/blockvectra/mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "BlockVectra: Blockchain RPC and indexed data; keyless documentation and chain discovery (Auth: apiKey, Transport: stdio, HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-cartviral-mcp",
+      "name": "CartViral MCP",
+      "slug": "cartviral-mcp",
+      "provider": "CartViral",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "free_tier",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "cartviral",
+        "http"
+      ]
+    },
+    "description": "AI product videos, photos and ads for e-commerce from a product link or photos. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "OAuth (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Requires OAuth authentication when connecting your MCP client."
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Requires OAuth credentials; no credit card required for free access."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://cartviral.com/mcp",
+      "signup": "https://cartviral.com/mcp",
+      "documentation": "https://cartviral.com/mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "CartViral: AI product videos, photos and ads for e-commerce from a product link or photos (Auth: OAuth, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-catastro-gps-mcp",
+      "name": "Catastro GPS MCP",
+      "slug": "catastro-gps-mcp",
+      "provider": "Catastro GPS",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Official MCP Servers",
+      "resource_type": "mcp_server",
+      "pricing_model": "free_tier",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "catastro-gps",
+        "stdio"
+      ]
+    },
+    "description": "Cadastral parcels in 29 European countries by reference, point or address. Official Model Context Protocol (MCP) server supporting stdio transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "apiKey (stdio)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Requires apiKey authentication when connecting your MCP client."
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Requires apiKey credentials; no credit card required for free access."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://github.com/TheHiddenPandaDev/catastro_gps_mcp",
+      "signup": "https://github.com/TheHiddenPandaDev/catastro_gps_mcp",
+      "documentation": "https://github.com/TheHiddenPandaDev/catastro_gps_mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Catastro GPS: Cadastral parcels in 29 European countries by reference, point or address (Auth: apiKey, Transport: stdio)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-company-facts-mcp",
+      "name": "Company Facts MCP",
+      "slug": "company-facts-mcp",
+      "provider": "Company Facts",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "company-facts",
+        "http"
+      ]
+    },
+    "description": "New US businesses from state registers, company registers, tech stack and hiring, each sourced. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://companyfacts.dev",
+      "signup": null,
+      "documentation": "https://companyfacts.dev",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Company Facts: New US businesses from state registers, company registers, tech stack and hiring, each sourced (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-contextfetch-mcp",
+      "name": "ContextFetch MCP",
+      "slug": "contextfetch-mcp",
+      "provider": "ContextFetch",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Official MCP Servers",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "contextfetch",
+        "stdio",
+        "http"
+      ]
+    },
+    "description": "Web search and any page as Markdown pruned to the query, plus research, crawl and site maps. Official Model Context Protocol (MCP) server supporting stdio, HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (stdio, HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://github.com/lachy3433/contextfetch-mcp",
+      "signup": null,
+      "documentation": "https://github.com/lachy3433/contextfetch-mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "ContextFetch: Web search and any page as Markdown pruned to the query, plus research, crawl and site maps (Auth: No, Transport: stdio, HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-corpusai-cloud-pricing-mcp",
+      "name": "corpusAI Cloud Pricing MCP",
+      "slug": "corpusai-cloud-pricing-mcp",
+      "provider": "corpusAI Cloud Pricing",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Official MCP Servers",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "corpusai-cloud-pricing",
+        "stdio",
+        "http"
+      ]
+    },
+    "description": "Cloud, GPU and LLM token prices for agents, free discovery tools and paid per-call data. Official Model Context Protocol (MCP) server supporting stdio, HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (stdio, HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://cloud.trycorpus.ai/docs#quick-start-for-agents",
+      "signup": null,
+      "documentation": "https://cloud.trycorpus.ai/docs#quick-start-for-agents",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "corpusAI Cloud Pricing: Cloud, GPU and LLM token prices for agents, free discovery tools and paid per-call data (Auth: No, Transport: stdio, HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-council-of-ai-mcp",
+      "name": "Council of AI MCP",
+      "slug": "council-of-ai-mcp",
+      "provider": "Council of AI",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "council-of-ai",
+        "http"
+      ]
+    },
+    "description": "Read a signed AI measurement board and verify its signed records and Merkle proofs. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://councilof.ai/connect/claude/",
+      "signup": null,
+      "documentation": "https://councilof.ai/connect/claude/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Council of AI: Read a signed AI measurement board and verify its signed records and Merkle proofs (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-coworkingview-mcp",
+      "name": "CoworkingView MCP",
+      "slug": "coworkingview-mcp",
+      "provider": "CoworkingView",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "coworkingview",
+        "http"
+      ]
+    },
+    "description": "Search coworking spaces, private offices and operator-published prices in 70+ cities. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://coworkingview.com/en/mcp",
+      "signup": null,
+      "documentation": "https://coworkingview.com/en/mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "CoworkingView: Search coworking spaces, private offices and operator-published prices in 70+ cities (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-crawlbrulee-mcp",
+      "name": "crawlbrulee MCP",
+      "slug": "crawlbrulee-mcp",
+      "provider": "crawlbrulee",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Official MCP Servers",
+      "resource_type": "mcp_server",
+      "pricing_model": "free_tier",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "crawlbrulee",
+        "stdio"
+      ]
+    },
+    "description": "EU-native web scraping for AI agents & developers: turn any page into markdown, screenshots and more. Official Model Context Protocol (MCP) server supporting stdio transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "apiKey (stdio)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Requires apiKey authentication when connecting your MCP client."
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Requires apiKey credentials; no credit card required for free access."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://github.com/crawlbrulee/crawlbrulee-mcp",
+      "signup": "https://github.com/crawlbrulee/crawlbrulee-mcp",
+      "documentation": "https://github.com/crawlbrulee/crawlbrulee-mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "crawlbrulee: EU-native web scraping for AI agents & developers: turn any page into markdown, screenshots and more (Auth: apiKey, Transport: stdio)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-data-and-apis-mcp",
+      "name": "Data and APIs MCP",
+      "slug": "data-and-apis-mcp",
+      "provider": "Data and APIs",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "free_tier",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "data-and-apis",
+        "http"
+      ]
+    },
+    "description": "Search, read and call 125+ data APIs: sanctions, barcodes, IP intelligence, companies, holidays. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "apiKey (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Requires apiKey authentication when connecting your MCP client."
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Requires apiKey credentials; no credit card required for free access."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://dataandapis.com/mcp/setup",
+      "signup": "https://dataandapis.com/mcp/setup",
+      "documentation": "https://dataandapis.com/mcp/setup",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Data and APIs: Search, read and call 125+ data APIs: sanctions, barcodes, IP intelligence, companies, holidays (Auth: apiKey, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-edgepedia-mcp",
+      "name": "Edgepedia MCP",
+      "slug": "edgepedia-mcp",
+      "provider": "Edgepedia",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "edgepedia",
+        "http"
+      ]
+    },
+    "description": "Search and read Edgepedia, a free and growing encyclopedia with citations. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://github.com/EdgePlat/edgepedia-mcp",
+      "signup": null,
+      "documentation": "https://github.com/EdgePlat/edgepedia-mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Edgepedia: Search and read Edgepedia, a free and growing encyclopedia with citations (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-eu-nordic-open-data-mcp",
+      "name": "EU Nordic Open Data MCP",
+      "slug": "eu-nordic-open-data-mcp",
+      "provider": "EU Nordic Open Data",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Official MCP Servers",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "eu-nordic-open-data",
+        "stdio"
+      ]
+    },
+    "description": "EU tenders, sanctions, VIES VAT, ECB FX, ENISA EUVD, GLEIF LEI and Finnish/Norwegian registries. Official Model Context Protocol (MCP) server supporting stdio transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (stdio)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://github.com/itulo/eu-nordic-open-data-mcp",
+      "signup": null,
+      "documentation": "https://github.com/itulo/eu-nordic-open-data-mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "EU Nordic Open Data: EU tenders, sanctions, VIES VAT, ECB FX, ENISA EUVD, GLEIF LEI and Finnish/Norwegian registries (Auth: No, Transport: stdio)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-filesystem-mcp",
+      "name": "Filesystem MCP",
+      "slug": "filesystem-mcp",
+      "provider": "Filesystem",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Official MCP Servers",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "filesystem",
+        "stdio"
+      ]
+    },
+    "description": "Read/write local files. Official Model Context Protocol (MCP) server supporting stdio transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (stdio)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+      "signup": null,
+      "documentation": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Filesystem: Read/write local files (Auth: No, Transport: stdio)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-findip-mcp-mcp",
+      "name": "FindIP MCP MCP",
+      "slug": "findip-mcp-mcp",
+      "provider": "FindIP MCP",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Official MCP Servers",
+      "resource_type": "mcp_server",
+      "pricing_model": "free_tier",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "findip-mcp",
+        "stdio"
+      ]
+    },
+    "description": "IP lookups and FindIP Shield risky-event checks for agents. Official Model Context Protocol (MCP) server supporting stdio transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "apiKey (stdio)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Requires apiKey authentication when connecting your MCP client."
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Requires apiKey credentials; no credit card required for free access."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://github.com/findip-net/findip-mcp",
+      "signup": "https://github.com/findip-net/findip-mcp",
+      "documentation": "https://github.com/findip-net/findip-mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "FindIP MCP: IP lookups and FindIP Shield risky-event checks for agents (Auth: apiKey, Transport: stdio)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-git-mcp",
+      "name": "Git MCP",
+      "slug": "git-mcp",
+      "provider": "Git",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Official MCP Servers",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "git",
+        "stdio"
+      ]
+    },
+    "description": "Read, search, diff, and commit to local Git repositories. Official Model Context Protocol (MCP) server supporting stdio transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (stdio)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://github.com/modelcontextprotocol/servers/tree/main/src/git",
+      "signup": null,
+      "documentation": "https://github.com/modelcontextprotocol/servers/tree/main/src/git",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Git: Read, search, diff, and commit to local Git repositories (Auth: No, Transport: stdio)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-hey-research-lab-mcp",
+      "name": "HEY Research Lab MCP",
+      "slug": "hey-research-lab-mcp",
+      "provider": "HEY Research Lab",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Official MCP Servers",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "hey-research-lab",
+        "stdio",
+        "http"
+      ]
+    },
+    "description": "Is a Robinhood Chain token or project still being built? Ships and contracts, each with its source. Official Model Context Protocol (MCP) server supporting stdio, HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (stdio, HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://heyresearch.xyz/developers/agents",
+      "signup": null,
+      "documentation": "https://heyresearch.xyz/developers/agents",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "HEY Research Lab: Is a Robinhood Chain token or project still being built? Ships and contracts, each with its source (Auth: No, Transport: stdio, HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-igaming-tools-mcp",
+      "name": "iGaming Tools MCP",
+      "slug": "igaming-tools-mcp",
+      "provider": "iGaming Tools",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "igaming-tools",
+        "http"
+      ]
+    },
+    "description": "Online slot specs, RTP variants, providers, regulators, news, jobs and search demand. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://i-gaming.tools/docs/mcp/",
+      "signup": null,
+      "documentation": "https://i-gaming.tools/docs/mcp/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "iGaming Tools: Online slot specs, RTP variants, providers, regulators, news, jobs and search demand (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-indiainsurances-mcp",
+      "name": "IndiaInsurances MCP",
+      "slug": "indiainsurances-mcp",
+      "provider": "IndiaInsurances",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "indiainsurances",
+        "http"
+      ]
+    },
+    "description": "Indian insurance policy wordings read clause by clause, with verbatim quotes. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://indiainsurances.com/for-agents",
+      "signup": null,
+      "documentation": "https://indiainsurances.com/for-agents",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "IndiaInsurances: Indian insurance policy wordings read clause by clause, with verbatim quotes (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-injectscan-mcp",
+      "name": "InjectScan MCP",
+      "slug": "injectscan-mcp",
+      "provider": "InjectScan",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Official MCP Servers",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "injectscan",
+        "stdio",
+        "http"
+      ]
+    },
+    "description": "Scores text, web pages and MCP tool definitions for prompt injection with deterministic rules. Official Model Context Protocol (MCP) server supporting stdio, HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (stdio, HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://github.com/Duffey234/injectscan",
+      "signup": null,
+      "documentation": "https://github.com/Duffey234/injectscan",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "InjectScan: Scores text, web pages and MCP tool definitions for prompt injection with deterministic rules (Auth: No, Transport: stdio, HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-kuro-mcp",
+      "name": "Kuro MCP",
+      "slug": "kuro-mcp",
+      "provider": "Kuro",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "free_tier",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "kuro",
+        "http"
+      ]
+    },
+    "description": "Create AI images, video clips, voice-overs, music and editable storyboard films. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "OAuth (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Requires OAuth authentication when connecting your MCP client."
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Requires OAuth credentials; no credit card required for free access."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://meetkuro.com/agents/",
+      "signup": "https://meetkuro.com/agents/",
+      "documentation": "https://meetkuro.com/agents/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Kuro: Create AI images, video clips, voice-overs, music and editable storyboard films (Auth: OAuth, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-lucyesl-mcp",
+      "name": "LucyESL MCP",
+      "slug": "lucyesl-mcp",
+      "provider": "LucyESL",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "lucyesl",
+        "http"
+      ]
+    },
+    "description": "English-teaching jobs in South Korea with pay, hours and housing as facts, plus salary statistics. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://lucyesl.com/developers",
+      "signup": null,
+      "documentation": "https://lucyesl.com/developers",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "LucyESL: English-teaching jobs in South Korea with pay, hours and housing as facts, plus salary statistics (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-master-setter-mcp",
+      "name": "Master Setter MCP",
+      "slug": "master-setter-mcp",
+      "provider": "Master Setter",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "free_tier",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "master-setter",
+        "http"
+      ]
+    },
+    "description": "Pokémon TCG cards, sets and printings in 14 languages, searchable by name in any language. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "apiKey (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Requires apiKey authentication when connecting your MCP client."
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Requires apiKey credentials; no credit card required for free access."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://api.master-setter.com",
+      "signup": "https://api.master-setter.com",
+      "documentation": "https://api.master-setter.com",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Master Setter: Pokémon TCG cards, sets and printings in 14 languages, searchable by name in any language (Auth: apiKey, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-monocrawl-mcp",
+      "name": "Monocrawl MCP",
+      "slug": "monocrawl-mcp",
+      "provider": "Monocrawl",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Official MCP Servers",
+      "resource_type": "mcp_server",
+      "pricing_model": "free_tier",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "monocrawl",
+        "stdio",
+        "http"
+      ]
+    },
+    "description": "Public posts, profiles, comments and products from 70+ social, shopping and search platforms. Official Model Context Protocol (MCP) server supporting stdio, HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "apiKey (stdio, HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Requires apiKey authentication when connecting your MCP client."
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Requires apiKey credentials; no credit card required for free access."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://github.com/monocrawl/monocrawl-mcp",
+      "signup": "https://github.com/monocrawl/monocrawl-mcp",
+      "documentation": "https://github.com/monocrawl/monocrawl-mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Monocrawl: Public posts, profiles, comments and products from 70+ social, shopping and search platforms (Auth: apiKey, Transport: stdio, HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-openapps-mcp",
+      "name": "OpenApps MCP",
+      "slug": "openapps-mcp",
+      "provider": "OpenApps",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "openapps",
+        "http"
+      ]
+    },
+    "description": "Rankings, launches and featuring across the ChatGPT, Claude, Cursor and Grok Bot app stores. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://theopenapps.com/docs/mcp",
+      "signup": null,
+      "documentation": "https://theopenapps.com/docs/mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "OpenApps: Rankings, launches and featuring across the ChatGPT, Claude, Cursor and Grok Bot app stores (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-openpath-mcp",
+      "name": "Openpath MCP",
+      "slug": "openpath-mcp",
+      "provider": "Openpath",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "openpath",
+        "http"
+      ]
+    },
+    "description": "US job listings and local businesses for agents, with apply links and owner inboxes. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://openpath.sh/docs/connect",
+      "signup": null,
+      "documentation": "https://openpath.sh/docs/connect",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Openpath: US job listings and local businesses for agents, with apply links and owner inboxes (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-openswissdata-mcp",
+      "name": "OpenSwissData MCP",
+      "slug": "openswissdata-mcp",
+      "provider": "OpenSwissData",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Official MCP Servers",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "openswissdata",
+        "stdio",
+        "http"
+      ]
+    },
+    "description": "Swiss customs tariff (TARES), FINMA register and warnings, NOGA/NACE/ISIC code crosswalks. Official Model Context Protocol (MCP) server supporting stdio, HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (stdio, HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://github.com/cammac-creator/openswissdata/tree/main/sdks/mcp-server",
+      "signup": null,
+      "documentation": "https://github.com/cammac-creator/openswissdata/tree/main/sdks/mcp-server",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "OpenSwissData: Swiss customs tariff (TARES), FINMA register and warnings, NOGA/NACE/ISIC code crosswalks (Auth: No, Transport: stdio, HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-optimistfi-mcp",
+      "name": "OptimistFi MCP",
+      "slug": "optimistfi-mcp",
+      "provider": "OptimistFi",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "optimistfi",
+        "http"
+      ]
+    },
+    "description": "Perps funding, open interest, liquidations, Hyperliquid positions, prop firms and US stock theses. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://optimistfi.com/mcp",
+      "signup": null,
+      "documentation": "https://optimistfi.com/mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "OptimistFi: Perps funding, open interest, liquidations, Hyperliquid positions, prop firms and US stock theses (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-pourwire-mcp",
+      "name": "PourWire MCP",
+      "slug": "pourwire-mcp",
+      "provider": "PourWire",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "pourwire",
+        "http"
+      ]
+    },
+    "description": "New US liquor license filings: restaurants and bars about to open in 7 metros, plus metro stats. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://pourwire.com/mcp",
+      "signup": null,
+      "documentation": "https://pourwire.com/mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "PourWire: New US liquor license filings: restaurants and bars about to open in 7 metros, plus metro stats (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-realmarket-mcp",
+      "name": "RealMarket MCP",
+      "slug": "realmarket-mcp",
+      "provider": "RealMarket",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "free_tier",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "realmarket",
+        "http"
+      ]
+    },
+    "description": "Live gold, forex, crypto and stock prices, indicators and market analysis for AI agents. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "apiKey (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Requires apiKey authentication when connecting your MCP client."
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Requires apiKey credentials; no credit card required for free access."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://realmarketapi.com/docs/mcp",
+      "signup": "https://realmarketapi.com/docs/mcp",
+      "documentation": "https://realmarketapi.com/docs/mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "RealMarket: Live gold, forex, crypto and stock prices, indicators and market analysis for AI agents (Auth: apiKey, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-refnusa-mcp",
+      "name": "Refnusa MCP",
+      "slug": "refnusa-mcp",
+      "provider": "Refnusa",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "refnusa",
+        "http"
+      ]
+    },
+    "description": "Indonesian holidays, wages, regions, postal codes, tax, food prices and NIK/plate checks (31 tools). Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://refnusa.dev/",
+      "signup": null,
+      "documentation": "https://refnusa.dev/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Refnusa: Indonesian holidays, wages, regions, postal codes, tax, food prices and NIK/plate checks (31 tools) (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-regsentry-mcp",
+      "name": "RegSentry MCP",
+      "slug": "regsentry-mcp",
+      "provider": "RegSentry",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "regsentry",
+        "http"
+      ]
+    },
+    "description": "Inspect authorized static tracking signals and review supplied consent evidence. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://regsentry.com/mcp-guide",
+      "signup": null,
+      "documentation": "https://regsentry.com/mcp-guide",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "RegSentry: Inspect authorized static tracking signals and review supplied consent evidence (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-requstory-mcp",
+      "name": "Requstory MCP",
+      "slug": "requstory-mcp",
+      "provider": "Requstory",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "requstory",
+        "http"
+      ]
+    },
+    "description": "Map how a company works, who owns each process, and which steps AI agents can run. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://requstory.com/developers/api/",
+      "signup": null,
+      "documentation": "https://requstory.com/developers/api/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Requstory: Map how a company works, who owns each process, and which steps AI agents can run (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-scalekit-mcp",
+      "name": "Scalekit MCP",
+      "slug": "scalekit-mcp",
+      "provider": "Scalekit",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Official MCP Servers",
+      "resource_type": "mcp_server",
+      "pricing_model": "free_tier",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "scalekit",
+        "stdio",
+        "http"
+      ]
+    },
+    "description": "Manage auth for AI agents and MCP servers: environments, orgs, users, SSO connections and roles. Official Model Context Protocol (MCP) server supporting stdio, HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "OAuth (stdio, HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Requires OAuth authentication when connecting your MCP client."
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Requires OAuth credentials; no credit card required for free access."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://github.com/scalekit-inc/scalekit-mcp-server",
+      "signup": "https://github.com/scalekit-inc/scalekit-mcp-server",
+      "documentation": "https://github.com/scalekit-inc/scalekit-mcp-server",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Scalekit: Manage auth for AI agents and MCP servers: environments, orgs, users, SSO connections and roles (Auth: OAuth, Transport: stdio, HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-shapelessai-mcp",
+      "name": "ShapelessAI MCP",
+      "slug": "shapelessai-mcp",
+      "provider": "ShapelessAI",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Official MCP Servers",
+      "resource_type": "mcp_server",
+      "pricing_model": "free_tier",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "shapelessai",
+        "stdio",
+        "http"
+      ]
+    },
+    "description": "Write, schedule and publish social posts, carousels and short video to 8 networks. Official Model Context Protocol (MCP) server supporting stdio, HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "OAuth (stdio, HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Requires OAuth authentication when connecting your MCP client."
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Requires OAuth credentials; no credit card required for free access."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://shapelessai.com/docs/mcp",
+      "signup": "https://shapelessai.com/docs/mcp",
+      "documentation": "https://shapelessai.com/docs/mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "ShapelessAI: Write, schedule and publish social posts, carousels and short video to 8 networks (Auth: OAuth, Transport: stdio, HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-signal-lab-mcp",
+      "name": "Signal Lab MCP",
+      "slug": "signal-lab-mcp",
+      "provider": "Signal Lab",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "signal-lab",
+        "http"
+      ]
+    },
+    "description": "Catalog of free market, macro, weather, news and OSINT data sources, with terms links and skills. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://signal-lab-jet.vercel.app/mcp",
+      "signup": null,
+      "documentation": "https://signal-lab-jet.vercel.app/mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Signal Lab: Catalog of free market, macro, weather, news and OSINT data sources, with terms links and skills (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-silicon-floor-mcp",
+      "name": "Silicon Floor MCP",
+      "slug": "silicon-floor-mcp",
+      "provider": "Silicon Floor",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "silicon-floor",
+        "http"
+      ]
+    },
+    "description": "Who owns AI and chip stocks, what insiders sell, how fast they grow: answers from SEC filings. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://siliconfloor.com/docs/mcp",
+      "signup": null,
+      "documentation": "https://siliconfloor.com/docs/mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Silicon Floor: Who owns AI and chip stocks, what insiders sell, how fast they grow: answers from SEC filings (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-site-shot-mcp",
+      "name": "Site-Shot MCP",
+      "slug": "site-shot-mcp",
+      "provider": "Site-Shot",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Official MCP Servers",
+      "resource_type": "mcp_server",
+      "pricing_model": "free_tier",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "site-shot",
+        "stdio"
+      ]
+    },
+    "description": "Website screenshots for AI agents: full-page, country proxies, ad and cookie removal; free plan. Official Model Context Protocol (MCP) server supporting stdio transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "apiKey (stdio)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Requires apiKey authentication when connecting your MCP client."
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Requires apiKey credentials; no credit card required for free access."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://github.com/site-shot/site-shot-mcp",
+      "signup": "https://github.com/site-shot/site-shot-mcp",
+      "documentation": "https://github.com/site-shot/site-shot-mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Site-Shot: Website screenshots for AI agents: full-page, country proxies, ad and cookie removal; free plan (Auth: apiKey, Transport: stdio)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-skyaccess-mcp",
+      "name": "SkyAccess MCP",
+      "slug": "skyaccess-mcp",
+      "provider": "SkyAccess",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "skyaccess",
+        "http"
+      ]
+    },
+    "description": "Search 5,000+ live empty leg flights, get charter price estimates and booking links. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://github.com/sky-access/skyaccess-mcp",
+      "signup": null,
+      "documentation": "https://github.com/sky-access/skyaccess-mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "SkyAccess: Search 5,000+ live empty leg flights, get charter price estimates and booking links (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-textkit-mcp",
+      "name": "TextKit MCP",
+      "slug": "textkit-mcp",
+      "provider": "TextKit",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "free_tier",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "textkit",
+        "http"
+      ]
+    },
+    "description": "Send and receive SMS, verify phones and buy US and Canada numbers from an agent. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "OAuth (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Requires OAuth authentication when connecting your MCP client."
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Requires OAuth credentials; no credit card required for free access."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://jointextkit.com/docs/mcp",
+      "signup": "https://jointextkit.com/docs/mcp",
+      "documentation": "https://jointextkit.com/docs/mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "TextKit: Send and receive SMS, verify phones and buy US and Canada numbers from an agent (Auth: OAuth, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-toolalize-mcp",
+      "name": "Toolalize MCP",
+      "slug": "toolalize-mcp",
+      "provider": "Toolalize",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "toolalize",
+        "http"
+      ]
+    },
+    "description": "Unit and live currency conversion tools for agents, no key needed. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://github.com/Vertisky/toolalize-mcp",
+      "signup": null,
+      "documentation": "https://github.com/Vertisky/toolalize-mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Toolalize: Unit and live currency conversion tools for agents, no key needed (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-transcript-dock-mcp",
+      "name": "Transcript Dock MCP",
+      "slug": "transcript-dock-mcp",
+      "provider": "Transcript Dock",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Official MCP Servers",
+      "resource_type": "mcp_server",
+      "pricing_model": "free_tier",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "transcript-dock",
+        "stdio",
+        "http"
+      ]
+    },
+    "description": "Transcripts of YouTube, TikTok and Instagram videos in one tool call, with SRT and VTT exports. Official Model Context Protocol (MCP) server supporting stdio, HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "OAuth (stdio, HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Requires OAuth authentication when connecting your MCP client."
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Requires OAuth credentials; no credit card required for free access."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://github.com/TranscriptDock/transcriptdock-mcp",
+      "signup": "https://github.com/TranscriptDock/transcriptdock-mcp",
+      "documentation": "https://github.com/TranscriptDock/transcriptdock-mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Transcript Dock: Transcripts of YouTube, TikTok and Instagram videos in one tool call, with SRT and VTT exports (Auth: OAuth, Transport: stdio, HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-twinbay-mcp",
+      "name": "Twinbay MCP",
+      "slug": "twinbay-mcp",
+      "provider": "Twinbay",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "free_tier",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "twinbay",
+        "http"
+      ]
+    },
+    "description": "Spin up stateful API twins, read request logs and grade agent runs. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "OAuth (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Requires OAuth authentication when connecting your MCP client."
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Requires OAuth credentials; no credit card required for free access."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://docs.twinbay.ai/mcp-server",
+      "signup": "https://docs.twinbay.ai/mcp-server",
+      "documentation": "https://docs.twinbay.ai/mcp-server",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Twinbay: Spin up stateful API twins, read request logs and grade agent runs (Auth: OAuth, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-us-recalls-mcp",
+      "name": "US Recalls MCP",
+      "slug": "us-recalls-mcp",
+      "provider": "US Recalls",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "free_tier",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "us-recalls",
+        "http"
+      ]
+    },
+    "description": "Check US recalls from 9 agencies by UPC, model, NDC, lot or VIN; 4 read-only tools. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "apiKey (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Requires apiKey authentication when connecting your MCP client."
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Requires apiKey credentials; no credit card required for free access."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://recallsapi.com/docs/mcp",
+      "signup": "https://recallsapi.com/docs/mcp",
+      "documentation": "https://recallsapi.com/docs/mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "US Recalls: Check US recalls from 9 agencies by UPC, model, NDC, lot or VIN; 4 read-only tools (Auth: apiKey, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-vitalityfit-mcp",
+      "name": "Vitalityfit MCP",
+      "slug": "vitalityfit-mcp",
+      "provider": "Vitalityfit",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "vitalityfit",
+        "http"
+      ]
+    },
+    "description": "Cheapest offers for health products from German online shops and pharmacies by name, PZN or EAN. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://vitality-fit.de/mcp/#english",
+      "signup": null,
+      "documentation": "https://vitality-fit.de/mcp/#english",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Vitalityfit: Cheapest offers for health products from German online shops and pharmacies by name, PZN or EAN (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-vuntum-mcp",
+      "name": "Vuntum MCP",
+      "slug": "vuntum-mcp",
+      "provider": "Vuntum",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "vuntum",
+        "http"
+      ]
+    },
+    "description": "Sourced, dated data on consumer robots and physical AI: specs, prices, evidence. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://github.com/RAAAAAGEEEEE/vuntum-mcp",
+      "signup": null,
+      "documentation": "https://github.com/RAAAAAGEEEEE/vuntum-mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "Vuntum: Sourced, dated data on consumer robots and physical AI: specs, prices, evidence (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-pubmcp-xposedornot-mcp",
+      "name": "XposedOrNot MCP",
+      "slug": "xposedornot-mcp",
+      "provider": "XposedOrNot",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "mcp",
+      "subcategory": "Remote & Edge MCP",
+      "resource_type": "mcp_server",
+      "pricing_model": "completely_free",
+      "tags": [
+        "mcp",
+        "ai-agents",
+        "xposedornot",
+        "http"
+      ]
+    },
+    "description": "Check an email against known data breaches, read its breach history and get domain breach counts. Official Model Context Protocol (MCP) server supporting HTTP transport.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MCP Transport & Auth",
+          "value": "No Auth Required (HTTP)",
+          "period": "ongoing"
+        }
+      ],
+      "restrictions": [
+        "Public MCP server callable without API credentials."
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or payment card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Ongoing MCP server access",
+        "auto_renewal": "Free MCP server endpoint; no automatic billing."
+      }
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to developers, AI agents, Claude, Cursor, and VS Code MCP clients."
+    },
+    "links": {
+      "official": "https://xposedornot.com/mcp",
+      "signup": null,
+      "documentation": "https://xposedornot.com/mcp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-public-apis-repo",
+          "url": "https://github.com/public-apis/public-apis",
+          "source_type": "official_repo",
+          "checked_at": "2026-11-13",
+          "title": "Public APIs Official GitHub Repository (MCP Servers)"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "access.free_limits",
+          "quote": "XposedOrNot: Check an email against known data breaches, read its breach history and get domain breach counts (Auth: No, Transport: HTTP)",
+          "source_id": "src-public-apis-repo",
+          "confidence": "high",
+          "notes": "Verified active HTTPS MCP server in public-apis/public-apis."
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-13",
+      "notes": "Verified live HTTPS & DNS reachability from public-apis/public-apis."
+    },
+    "metadata": {
+      "featured": false,
+      "created_at": "2026-11-13",
+      "updated_at": "2026-11-13"
+    }
+  }
+]

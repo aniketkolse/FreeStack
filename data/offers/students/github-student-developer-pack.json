@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "github-student-developer-pack",
+    "name": "GitHub Student Developer Pack",
+    "slug": "github-student-developer-pack",
+    "provider": "GitHub",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "student-benefits",
+    "subcategory": "Student Developer Packs",
+    "resource_type": "student_benefit",
+    "pricing_model": "student_exclusive",
+    "tags": ["Students", "Developer Pack", "Copilot", "Domains", "Cloud Credits"]
+  },
+  "description": "Bundled academic developer pack including GitHub Copilot Pro, partner cloud credits, domain registrations, and monitoring tools for verified students.",
+  "access": {
+    "free_limits": [
+      { "name": "GitHub Pro & Copilot Pro", "value": "Included free", "period": "while student verified" },
+      { "name": "Partner tool bundles", "value": "80+ offers", "period": "varies by partner" }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "No card required for GitHub Pack enrollment; individual third-party partners may have their own billing verification rules."
+    },
+    "validity": {
+      "type": "fixed_period",
+      "duration": "1–2 years (renewable while enrolled)",
+      "auto_renewal": "Academic status requires re-verification; paid GitHub Pro reverts unless subscribed."
+    },
+    "restrictions": [
+      "Requires academic verification (school email or dated student ID / enrollment letter).",
+      "Bundle contains both 100% free tools and time-limited discounts/credits — check each partner term."
+    ]
+  },
+  "eligibility": {
+    "student_access": "exclusive",
+    "regions": ["Global (supported institutions)"],
+    "conditions": "Verified degree/diploma-granting secondary or higher-education students aged 13+."
+  },
+  "links": {
+    "official": "https://education.github.com/pack",
+    "signup": "https://education.github.com/discount_requests/application",
+    "documentation": "https://docs.github.com/en/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-education-for-students/apply-to-github-education-as-a-student",
+    "pricing": null
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "gh-edu-pack",
+        "url": "https://education.github.com/pack",
+        "source_type": "student_page",
+        "checked_at": "2026-11-10"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "gh-edu-pack",
+        "field_path": "eligibility.conditions",
+        "quote": "Free access to GitHub Pro, Copilot, and partner developer tools for verified students.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-10",
+    "notes": "Distinguish completely free GitHub Copilot benefit from third-party partner discounts."
+  },
+  "metadata": {
+    "created_at": "2026-10-02",
+    "updated_at": "2026-11-10",
+    "featured": true,
+    "contributor": "freestack-core"
+  }
+}

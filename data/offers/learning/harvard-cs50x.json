@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "harvard-cs50x",
+    "name": "Harvard CS50x",
+    "slug": "harvard-cs50x",
+    "provider": "Harvard University",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "learning",
+    "subcategory": "CS Fundamentals",
+    "resource_type": "course",
+    "pricing_model": "free_learning_material",
+    "tags": ["Computer Science", "C", "Python", "SQL", "Web", "University Course"]
+  },
+  "description": "Harvard University's flagship introduction to computer science covering C, arrays, algorithms, memory, Python, SQL, and web programming.",
+  "access": {
+    "free_limits": [
+      { "name": "Lectures, notes & problem sets", "value": "100% free", "period": "unlimited" },
+      { "name": "CS50x open courseware certificate", "value": "Free", "period": "after problem sets" }
+    ],
+    "requirements": {
+      "account_required": "not_required",
+      "card_required": "not_required",
+      "payment_method_notes": "OpenCourseWare on cs50.harvard.edu is completely free; edX verified track is optional and paid."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "Self-paced annual cohorts with no payment needed."
+    },
+    "restrictions": [
+      "Optional edX verified certificate costs extra, while the official Harvard CS50 certificate is free."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Open to all learners globally."
+  },
+  "links": {
+    "official": "https://cs50.harvard.edu/x/",
+    "signup": null,
+    "documentation": "https://cs50.harvard.edu/x/syllabus/",
+    "pricing": null
+  },
+  "learning": {
+    "format": "video",
+    "difficulty": "beginner",
+    "topics": ["Computer Science", "C Programming", "Python", "Algorithms", "SQL"],
+    "language": "English"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "cs50-faqs",
+        "url": "https://cs50.harvard.edu/x/faqs/",
+        "source_type": "official_docs",
+        "checked_at": "2026-11-06"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "cs50-faqs",
+        "field_path": "access.free_limits",
+        "quote": "You may take CS50x for free via OpenCourseWare and earn a free CS50 certificate upon completing all assignments.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-06",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-06",
+    "updated_at": "2026-11-06",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "ollama-local-models",
+    "name": "Ollama",
+    "slug": "ollama-local-models",
+    "provider": "Ollama",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "ai-ml",
+    "subcategory": "AI Models & LLMs",
+    "resource_type": "ai_model",
+    "pricing_model": "open_source",
+    "tags": ["modality:text-image", "ctx:1m", "Local AI", "Open Source", "LLM", "Offline", "Python"]
+  },
+  "description": "Run open-weight text, vision, coding, and embedding models locally on macOS, Linux, and Windows with a clean CLI and OpenAI-compatible local REST API.",
+  "access": {
+    "free_limits": [
+      { "name": "Context window", "value": "1M", "period": "tokens (model-dependent)" },
+      { "name": "Local inference usage", "value": "Unlimited", "period": "local hardware" },
+      { "name": "Model library access", "value": "All open weights", "period": "unlimited" }
+    ],
+    "requirements": {
+      "account_required": "not_required",
+      "card_required": "not_required",
+      "payment_method_notes": "Runs locally; zero account or billing needed."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": null
+    },
+    "restrictions": [
+      "Requires local RAM/VRAM matching the chosen model size.",
+      "Individual model weights retain their respective upstream licenses."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "MIT-licensed open source software for everyone."
+  },
+  "links": {
+    "official": "https://ollama.com",
+    "signup": null,
+    "documentation": "https://github.com/ollama/ollama/blob/main/README.md",
+    "pricing": null
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "ollama-github",
+        "url": "https://github.com/ollama/ollama",
+        "source_type": "official_repo",
+        "checked_at": "2026-11-11"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "ollama-github",
+        "field_path": "classification.pricing_model",
+        "quote": "Open source local runner licensed under MIT; no account or API billing required.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-11",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-12",
+    "updated_at": "2026-11-11",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

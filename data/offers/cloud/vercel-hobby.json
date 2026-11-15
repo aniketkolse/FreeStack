@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "vercel-hobby",
+    "name": "Vercel Hobby",
+    "slug": "vercel-hobby",
+    "provider": "Vercel",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "cloud-hosting",
+    "subcategory": "Deployment Platforms",
+    "resource_type": "cloud_service",
+    "pricing_model": "free_tier",
+    "tags": ["Hosting", "Next.js", "React", "Deploy", "Frontend"]
+  },
+  "description": "Zero-config Git deployments for Next.js, React, and Astro with preview URLs, edge middleware, and automatic HTTPS.",
+  "access": {
+    "free_limits": [
+      { "name": "Fast Data Transfer", "value": 100, "period": "GB per month" },
+      { "name": "Function invocations", "value": 1000000, "period": "per month" },
+      { "name": "Team seats", "value": 1, "period": "personal account" }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "No credit card required for Hobby."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "Usage pauses at quota without automatic billing."
+    },
+    "restrictions": [
+      "Strictly restricted to personal, non-commercial projects."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Personal and non-commercial projects only."
+  },
+  "links": {
+    "official": "https://vercel.com",
+    "signup": "https://vercel.com/signup",
+    "documentation": "https://vercel.com/docs/limits/overview",
+    "pricing": "https://vercel.com/pricing"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "vercel-pricing",
+        "url": "https://vercel.com/pricing",
+        "source_type": "official_pricing",
+        "checked_at": "2026-11-04"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "vercel-pricing",
+        "field_path": "eligibility.conditions",
+        "quote": "Hobby is free forever for personal, non-commercial projects with no credit card required.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-04",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-02",
+    "updated_at": "2026-11-04",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

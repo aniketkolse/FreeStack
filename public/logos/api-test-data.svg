@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Test Data API icon">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#FFF550" stroke="#101014" stroke-width="3"/>
+  <g fill="#101014">
+    <path d="M24 12h16M27 12v14L15 46a4 4 0 0 0 3.5 6h27a4 4 0 0 0 3.5-6L37 26V12" fill="none" stroke="#101014" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

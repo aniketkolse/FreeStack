@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "hoppscotch-api-client",
+    "name": "Hoppscotch",
+    "slug": "hoppscotch-api-client",
+    "provider": "Hoppscotch",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "developer-tools",
+    "subcategory": "API Testing",
+    "resource_type": "developer_tool",
+    "pricing_model": "open_source",
+    "tags": ["REST", "GraphQL", "API Testing", "Open Source", "WebSocket"]
+  },
+  "description": "Open-source, browser-first API development ecosystem for testing REST, GraphQL, WebSocket, and gRPC endpoints without heavy installs.",
+  "access": {
+    "free_limits": [
+      { "name": "API requests", "value": "Unlimited", "period": "ongoing" },
+      { "name": "Personal collections", "value": "Unlimited", "period": "ongoing" }
+    ],
+    "requirements": {
+      "account_required": "not_required",
+      "card_required": "not_required",
+      "payment_method_notes": "No card required; optional free account syncs cloud workspaces."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": null
+    },
+    "restrictions": [
+      "Hosted team organization seats follow commercial cloud pricing; self-hosted community edition is MIT."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Open to everyone in browser or self-hosted."
+  },
+  "links": {
+    "official": "https://hoppscotch.io",
+    "signup": null,
+    "documentation": "https://docs.hoppscotch.io",
+    "pricing": "https://hoppscotch.com/pricing"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "hoppscotch-repo",
+        "url": "https://github.com/hoppscotch/hoppscotch",
+        "source_type": "official_repo",
+        "checked_at": "2026-11-02"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "hoppscotch-repo",
+        "field_path": "classification.pricing_model",
+        "quote": "Open source API development ecosystem under MIT license.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-02",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-08",
+    "updated_at": "2026-11-02",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

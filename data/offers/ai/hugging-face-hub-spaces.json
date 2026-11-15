@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "hugging-face-hub-spaces",
+    "name": "Hugging Face Hub & Spaces",
+    "slug": "hugging-face-hub-spaces",
+    "provider": "Hugging Face",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "ai-ml",
+    "subcategory": "Datasets & Notebooks",
+    "resource_type": "dataset",
+    "pricing_model": "free_tier",
+    "tags": ["modality:gateway", "ctx:256k", "AI", "Datasets", "ML", "Gradio", "Models", "Notebooks"]
+  },
+  "description": "Host unlimited public ML models, open weights, datasets, and interactive Gradio or Streamlit demos on free 2 vCPU, 16 GB RAM CPU Spaces.",
+  "access": {
+    "free_limits": [
+      { "name": "Context window", "value": "256K", "period": "tokens (hosted open weights)" },
+      { "name": "Public model & dataset repos", "value": "Unlimited", "period": "ongoing" },
+      { "name": "Free Spaces hardware", "value": "2 vCPU / 16 GB RAM", "period": "per Space" }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "Paid card only required when attaching dedicated GPU hardware."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "Free CPU Spaces sleep after 48 hours of inactivity."
+    },
+    "restrictions": [
+      "GPU hardware upgrades and persistent storage require paid plans."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Free for any registered builder or researcher."
+  },
+  "links": {
+    "official": "https://huggingface.co",
+    "signup": "https://huggingface.co/join",
+    "documentation": "https://huggingface.co/docs/hub/spaces-overview",
+    "pricing": "https://huggingface.co/pricing"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "hf-pricing",
+        "url": "https://huggingface.co/pricing",
+        "source_type": "official_pricing",
+        "checked_at": "2026-11-05"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "hf-pricing",
+        "field_path": "access.free_limits",
+        "quote": "Free tier includes unlimited public models, datasets, and CPU basic Spaces (2 vCPU, 16GB RAM).",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-05",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-05",
+    "updated_at": "2026-11-05",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "neetcode-dsa-practice",
+    "name": "NeetCode 150 & DSA Roadmap",
+    "slug": "neetcode-dsa-practice",
+    "provider": "NeetCode",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "learning",
+    "subcategory": "Practice & Challenges",
+    "resource_type": "practice",
+    "pricing_model": "freemium",
+    "tags": ["DSA", "Algorithms", "Interview Prep", "Python", "Practice"]
+  },
+  "description": "Structured coding interview roadmap covering 150 curated data structure and algorithm problems with free Python/Java/C++ video explanations.",
+  "access": {
+    "free_limits": [
+      { "name": "NeetCode 150 & Blind 75 problem lists", "value": "Full access", "period": "unlimited" },
+      { "name": "Video walkthroughs", "value": "Free on problem list", "period": "ongoing" }
+    ],
+    "requirements": {
+      "account_required": "not_required",
+      "card_required": "not_required",
+      "payment_method_notes": "Problem roadmap and video walkthroughs require no card; NeetCode Pro courses are optional paid upgrades."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "Core DSA roadmap and solution guides are permanently free."
+    },
+    "restrictions": [
+      "Structured system design and advanced algorithm video courses require NeetCode Pro."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global"],
+    "conditions": "Open to everyone preparing for technical interviews."
+  },
+  "links": {
+    "official": "https://neetcode.io/roadmap",
+    "signup": null,
+    "documentation": "https://neetcode.io/practice",
+    "pricing": "https://neetcode.io/pro"
+  },
+  "learning": {
+    "format": "practice",
+    "difficulty": "intermediate",
+    "topics": ["Algorithms & Data Structures", "Interview Prep", "Python", "Dynamic Programming"],
+    "language": "English"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "neetcode-practice",
+        "url": "https://neetcode.io/practice",
+        "source_type": "official_docs",
+        "checked_at": "2026-11-02"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "neetcode-practice",
+        "field_path": "access.free_limits",
+        "quote": "Blind 75 and NeetCode 150 curated DSA practice lists and walkthroughs are accessible free of charge.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-02",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-12",
+    "updated_at": "2026-11-02",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}

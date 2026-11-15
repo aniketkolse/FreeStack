@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "id": "github-free",
+    "name": "GitHub Free",
+    "slug": "github-free",
+    "provider": "GitHub",
+    "logo_url": null
+  },
+  "classification": {
+    "category": "developer-tools",
+    "subcategory": "Git & Code Collaboration",
+    "resource_type": "developer_tool",
+    "pricing_model": "free_tier",
+    "tags": ["Git", "CI/CD", "Open Source", "Actions", "Collaboration"]
+  },
+  "description": "Unlimited public and private Git repositories, Dependabot security alerts, and 2,000 CI/CD Actions minutes per month.",
+  "access": {
+    "free_limits": [
+      { "name": "Public & private repos", "value": "Unlimited", "period": "ongoing" },
+      { "name": "GitHub Actions (private repos)", "value": 2000, "period": "minutes per month" },
+      { "name": "GitHub Actions (public repos)", "value": "Unlimited", "period": "standard runners" },
+      { "name": "Packages storage", "value": 500, "period": "MB" }
+    ],
+    "requirements": {
+      "account_required": "required",
+      "card_required": "not_required",
+      "payment_method_notes": "Spending limit defaults to $0 unless explicitly raised."
+    },
+    "validity": {
+      "type": "ongoing",
+      "duration": null,
+      "auto_renewal": "No charges unless a spending limit above $0 is manually configured."
+    },
+    "restrictions": [
+      "Branch protection rules on private repositories require GitHub Pro or Team."
+    ]
+  },
+  "eligibility": {
+    "student_access": "eligible",
+    "regions": ["Global (except sanctioned territories)"],
+    "conditions": "Available for individuals and organizations."
+  },
+  "links": {
+    "official": "https://github.com",
+    "signup": "https://github.com/signup",
+    "documentation": "https://docs.github.com/en/get-started/learning-about-github/githubs-plans",
+    "pricing": "https://github.com/pricing"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "github-pricing",
+        "url": "https://github.com/pricing",
+        "source_type": "official_pricing",
+        "checked_at": "2026-11-09"
+      }
+    ],
+    "claims": [
+      {
+        "source_id": "github-pricing",
+        "field_path": "access.free_limits",
+        "quote": "Includes unlimited public/private repositories, unlimited collaborators, and 2,000 CI/CD minutes/month.",
+        "confidence": "high",
+        "notes": null
+      }
+    ]
+  },
+  "verification": {
+    "status": "verified",
+    "last_verified_at": "2026-11-09",
+    "notes": null
+  },
+  "metadata": {
+    "created_at": "2026-10-01",
+    "updated_at": "2026-11-09",
+    "featured": false,
+    "contributor": "freestack-core"
+  }
+}
