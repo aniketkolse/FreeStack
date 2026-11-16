@@ -1,0 +1,1961 @@
+[
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "todoist-beginner-free-task-manager",
+      "name": "Todoist Beginner Free Plan (Cross-Platform Task & GTD Project Manager)",
+      "slug": "todoist-beginner-free-task-manager",
+      "provider": "Doist",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Project Management",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Task Management", "GTD", "Natural Language Dates", "Kanban Boards", "Cross-Platform"]
+    },
+    "description": "Fast, natural-language task and personal project manager supporting recurring due dates ('every Friday at 9am'), list and Kanban board views, priority levels, labels, filters, and instant sync across Web, macOS, Windows, Linux, iOS, Android, and CLI.",
+    "access": {
+      "free_limits": [
+        { "name": "Active projects & collaborators", "value": "5 active personal projects + up to 5 collaborators per project", "period": "always free" },
+        { "name": "Natural-language task input, Kanban boards & 3 filter views", "value": "Included", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free Forever Beginner plan requires no credit card."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Custom reminders and calendar layout require Todoist Pro."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://www.todoist.com",
+      "signup": "https://app.todoist.com/auth/signup",
+      "documentation": "https://www.todoist.com/help",
+      "pricing": "https://www.todoist.com/pricing"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-todoist-beginner-free-task-manager",
+          "url": "https://www.todoist.com/pricing",
+          "source_type": "pricing_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-todoist-beginner-free-task-manager",
+          "field_path": "access.free_limits",
+          "quote": "Todoist Beginner Plan is $0 forever and includes up to 5 personal projects, list & board layouts, and 5 collaborators per project.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "ticktick-free-tasks-pomodoro-habit-tracker",
+      "name": "TickTick Free Plan (Tasks, Pomodoro Focus Timer, Habit Tracker & Eisenhower Matrix)",
+      "slug": "ticktick-free-tasks-pomodoro-habit-tracker",
+      "provider": "Appest / TickTick",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Project Management",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Tasks & Checklists", "Pomodoro Timer", "Eisenhower Matrix", "Habit Tracker", "Cross-Platform"]
+    },
+    "description": "All-in-one productivity app combining smart task lists, a built-in Pomodoro focus timer with white noise, an Eisenhower Priority Matrix (Urgent/Important 4-quadrant view), and daily habit tracking across all platforms.",
+    "access": {
+      "free_limits": [
+        { "name": "Task lists, Pomodoro timer, Eisenhower Matrix & Habit Tracker", "value": "9 lists, 99 tasks per list, 5 habits & built-in Pomo timer", "period": "always free" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free Forever plan with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Timeline Gantt view and full monthly calendar grid require TickTick Premium."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://ticktick.com",
+      "signup": "https://ticktick.com/signup",
+      "documentation": "https://help.ticktick.com",
+      "pricing": "https://ticktick.com/upgrade"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-ticktick-free-tasks-pomodoro-habit-tracker",
+          "url": "https://ticktick.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-ticktick-free-tasks-pomodoro-habit-tracker",
+          "field_path": "access.free_limits",
+          "quote": "TickTick offers a free tier with task management, Pomodoro timer, Eisenhower Matrix, and habit tracking across devices.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "youtrack-jetbrains-free-10-users",
+      "name": "JetBrains YouTrack Free Plan (Full Agile Issue Tracker & Knowledge Base for 10 Users)",
+      "slug": "youtrack-jetbrains-free-10-users",
+      "provider": "JetBrains",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Project Management",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Issue Tracking", "Agile & Scrum", "Gantt Charts", "Knowledge Base", "Time Tracking", "JetBrains"]
+    },
+    "description": "JetBrains' full-featured issue tracker, agile project management board, interactive Gantt planner, time tracker, helpdesk, and built-in Knowledge Base — 100% free forever for teams of up to 10 users on either YouTrack Cloud or self-hosted Server.",
+    "access": {
+      "free_limits": [
+        { "name": "YouTrack Cloud or Self-Hosted Server for up to 10 users", "value": "All features unlocked (Agile boards, Gantt, Knowledge Base, VCS integration)", "period": "always free" },
+        { "name": "Cloud storage & helpdesk agents", "value": "30 GB storage + 3 helpdesk agents & unlimited reporters", "period": "always free" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Always free for up to 10 users with zero feature restrictions and no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Teams of 11+ users move to per-user pricing."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all teams up to 10 users."
+    },
+    "links": {
+      "official": "https://www.jetbrains.com/youtrack/",
+      "signup": "https://www.jetbrains.com/youtrack/download/get_youtrack.html",
+      "documentation": "https://www.jetbrains.com/help/youtrack/",
+      "pricing": "https://www.jetbrains.com/youtrack/buy/"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-youtrack-jetbrains-free-10-users",
+          "url": "https://www.jetbrains.com/youtrack/buy/",
+          "source_type": "pricing_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-youtrack-jetbrains-free-10-users",
+          "field_path": "access.free_limits",
+          "quote": "YouTrack is free for up to 10 users on both Cloud and Server with all features included.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "shortcut-free-software-project-management",
+      "name": "Shortcut Free Plan (Fast Agile Software Project Management for up to 10 Users)",
+      "slug": "shortcut-free-software-project-management",
+      "provider": "Shortcut (formerly Clubhouse.io)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Project Management",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Software Project Management", "Stories & Epics", "Roadmaps", "GitHub / GitLab Sync", "Keyboard-First"]
+    },
+    "description": "Keyboard-driven project management platform built specifically for software engineering teams — linking Stories, Epics, Iterations, Milestones, Roadmaps, and Docs directly to GitHub, GitLab, and Bitbucket branches and PRs.",
+    "access": {
+      "free_limits": [
+        { "name": "Shortcut Free Plan for up to 10 users", "value": "Unlimited Stories, Epics, Roadmaps, Docs & Git integrations", "period": "always free" },
+        { "name": "Observer accounts", "value": "Unlimited free read/comment observers", "period": "always free" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required for teams of up to 10 users."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Limited to 1 workspace team on the Free plan."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all teams up to 10 users."
+    },
+    "links": {
+      "official": "https://www.shortcut.com",
+      "signup": "https://app.shortcut.com/signup",
+      "documentation": "https://help.shortcut.com",
+      "pricing": "https://www.shortcut.com/pricing"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-shortcut-free-software-project-management",
+          "url": "https://www.shortcut.com/pricing",
+          "source_type": "pricing_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-shortcut-free-software-project-management",
+          "field_path": "access.free_limits",
+          "quote": "Shortcut Free Plan is $0 forever for up to 10 users with unlimited stories, epics, roadmaps, and VCS integrations.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "twenty-open-source-crm-workspace",
+      "name": "Twenty (Open-Source Modern CRM, Tasks, Notes & Workflow Workspace)",
+      "slug": "twenty-open-source-crm-workspace",
+      "provider": "Twenty.com",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Project Management",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Open-Source CRM", "Notion/Linear-Style UI", "Tasks & Notes", "Workflows", "GraphQL & REST API"]
+    },
+    "description": "The #1 open-source modern CRM and collaborative team workspace built with React, NestJS, TypeScript, and PostgreSQL — offering customizable data objects, Kanban pipelines, tasks, rich notes, email sync, and visual workflow automation.",
+    "access": {
+      "free_limits": [
+        { "name": "Twenty Self-Hosted Open-Source Workspace (Docker)", "value": "100% free & open source (AGPLv3)", "period": "unlimited users" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Self-host with 1-click Docker Compose for free."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Managed Twenty Cloud is a paid subscription after trial."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://twenty.com",
+      "signup": null,
+      "documentation": "https://twenty.com/developers",
+      "pricing": "https://twenty.com/pricing"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-twenty-open-source-crm-workspace",
+          "url": "https://twenty.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-twenty-open-source-crm-workspace",
+          "field_path": "classification.pricing_model",
+          "quote": "Twenty is the #1 open-source CRM, community-powered and freely self-hostable.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "siyuan-local-first-markdown-block-notes",
+      "name": "SiYuan (Privacy-First Open-Source Block-Level Markdown & PKM Workspace)",
+      "slug": "siyuan-local-first-markdown-block-notes",
+      "provider": "B3log Open Source",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Notes & Documents",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Local-First PKM", "Block-Level References", "Relational Databases", "Spaced Repetition Flashcards", "AGPLv3"]
+    },
+    "description": "Privacy-first, local-first open-source personal knowledge management (PKM) system combining Notion-style WYSIWYG block editing and relational databases with Roam/Obsidian-style bidirectional block links, SQL queries over notes, and built-in FSRS spaced-repetition flashcards.",
+    "access": {
+      "free_limits": [
+        { "name": "SiYuan Desktop, Mobile & Docker Self-Hosted Server", "value": "100% free & open source (AGPLv3), including S3/WebDAV sync", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "100% offline-capable with free custom S3/WebDAV encrypted sync included."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Only official managed SiYuan Cloud sync requires a paid subscription; third-party S3/WebDAV sync is free."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://b3log.org/siyuan/en/",
+      "signup": null,
+      "documentation": "https://github.com/siyuan-note/siyuan",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-siyuan-local-first-markdown-block-notes",
+          "url": "https://b3log.org/siyuan/en/",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-siyuan-local-first-markdown-block-notes",
+          "field_path": "classification.pricing_model",
+          "quote": "SiYuan is a privacy-first personal knowledge management system that supports complete offline usage and end-to-end encrypted data sync.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "capacities-studio-object-based-notetaking",
+      "name": "Capacities Free Plan (Object-Based Note-Taking & Networked PKM Studio)",
+      "slug": "capacities-studio-object-based-notetaking",
+      "provider": "Capacities",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Notes & Documents",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Object-Based Notes", "PKM", "Daily Notes Calendar", "Knowledge Graph", "Offline & Multi-Device Sync"]
+    },
+    "description": "Studio for your mind that replaces rigid folder hierarchies with typed objects (Books, People, Meetings, Projects, Code Snippets, Zettels), bidirectional graph views, and a unified daily calendar journal with free multi-device sync.",
+    "access": {
+      "free_limits": [
+        { "name": "Unlimited spaces, objects, blocks & multi-device sync", "value": "Free forever (Web, macOS, Windows, Linux, iOS, Android)", "period": "unlimited" },
+        { "name": "Media storage", "value": "5 GB free media uploads", "period": "always free" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free Forever core plan with unlimited objects and sync across all devices."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "AI assistant and task management integrations require Capacities Pro."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://capacities.io",
+      "signup": "https://app.capacities.io",
+      "documentation": "https://docs.capacities.io",
+      "pricing": "https://capacities.io/pricing"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-capacities-studio-object-based-notetaking",
+          "url": "https://capacities.io/pricing",
+          "source_type": "pricing_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-capacities-studio-object-based-notetaking",
+          "field_path": "access.free_limits",
+          "quote": "Capacities Basic is free forever with unlimited objects, unlimited spaces, sync across all devices, and 5 GB media storage.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "memos-open-source-self-hosted-notes",
+      "name": "Memos (Lightweight Self-Hosted Open-Source Markdown Notes & Micro-Blog)",
+      "slug": "memos-open-source-self-hosted-notes",
+      "provider": "usememos",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Notes & Documents",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Self-Hosted Notes", "Markdown", "Go & React", "SQLite / Postgres", "REST & gRPC API", "MIT"]
+    },
+    "description": "Fast, privacy-first, lightweight self-hosted note-taking service written in Go and React — running in a single Docker container with SQLite/PostgreSQL/MySQL storage, instant Markdown capture, activity heatmap, tags, and full REST/gRPC APIs.",
+    "access": {
+      "free_limits": [
+        { "name": "Memos Server & Web App", "value": "100% free & open source (MIT)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "MIT-licensed open-source software (`docker run -p 5230:5230 neosmemo/memos`)."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://www.usememos.com",
+      "signup": null,
+      "documentation": "https://www.usememos.com/docs",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-memos-open-source-self-hosted-notes",
+          "url": "https://www.usememos.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-memos-open-source-self-hosted-notes",
+          "field_path": "classification.pricing_model",
+          "quote": "Memos is an open-source, self-hosted note-taking service with zero telemetry and MIT license.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "hedgedoc-collaborative-realtime-markdown",
+      "name": "HedgeDoc (Open-Source Real-Time Collaborative Markdown Notes & Slides)",
+      "slug": "hedgedoc-collaborative-realtime-markdown",
+      "provider": "HedgeDoc Community",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Notes & Documents",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Collaborative Markdown", "Real-Time Co-Editing", "Mermaid & MathJax", "Reveal.js Slide Mode", "AGPLv3"]
+    },
+    "description": "Open-source web-based, real-time collaborative Markdown editor (formerly CodiMD) supporting simultaneous multi-user editing, Mermaid/PlantUML diagrams, MathJax LaTeX equations, and instant Reveal.js presentation mode.",
+    "access": {
+      "free_limits": [
+        { "name": "HedgeDoc Server & Public Demo Instance", "value": "100% free & open source (AGPLv3)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free and open source."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://hedgedoc.org",
+      "signup": null,
+      "documentation": "https://docs.hedgedoc.org",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-hedgedoc-collaborative-realtime-markdown",
+          "url": "https://hedgedoc.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-hedgedoc-collaborative-realtime-markdown",
+          "field_path": "classification.pricing_model",
+          "quote": "HedgeDoc is an open-source, web-based, self-hosted, collaborative markdown editor.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "etherpad-open-source-realtime-collaborative-editor",
+      "name": "Etherpad (Open-Source Real-Time Collaborative Document Editor)",
+      "slug": "etherpad-open-source-realtime-collaborative-editor",
+      "provider": "Etherpad Foundation",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Notes & Documents",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Real-Time Collaboration", "Document Editor", "300+ Plugins", "Time Slider History", "Apache 2.0"]
+    },
+    "description": "Highly customizable open-source online editor providing collaborative editing in real time with per-author color highlighting, infinite revision time-slider playback, built-in chat, and 300+ community plugins.",
+    "access": {
+      "free_limits": [
+        { "name": "Etherpad Server & Plugin Ecosystem", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache 2.0 open source."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://etherpad.org",
+      "signup": null,
+      "documentation": "https://docs.etherpad.org",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-etherpad-open-source-realtime-collaborative-editor",
+          "url": "https://etherpad.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-etherpad-open-source-realtime-collaborative-editor",
+          "field_path": "classification.pricing_model",
+          "quote": "Etherpad is a highly customizable open source online editor providing collaborative editing in really real-time.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "wiki-js-open-source-wiki-engine",
+      "name": "Wiki.js (Modern Open-Source Node.js, PostgreSQL & Git-Synced Wiki Engine)",
+      "slug": "wiki-js-open-source-wiki-engine",
+      "provider": "Requarks",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Notes & Documents",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Team Wiki", "Knowledge Base", "Git Bidirectional Sync", "Markdown & Visual Editor", "SSO & LDAP", "AGPLv3"]
+    },
+    "description": "Powerful, extensible open-source wiki software running on Node.js and PostgreSQL — featuring Markdown, WYSIWYG, and AsciiDoc editors, bidirectional Git repository synchronization, fine-grained ACL permissions, and 50+ built-in authentication/search/storage modules.",
+    "access": {
+      "free_limits": [
+        { "name": "Wiki.js Full Server (including SSO, LDAP, Git sync & GraphQL API)", "value": "100% free & open source (AGPLv3)", "period": "unlimited users" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Completely free with zero enterprise feature paywalls."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://js.wiki",
+      "signup": null,
+      "documentation": "https://docs.requarks.io",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-wiki-js-open-source-wiki-engine",
+          "url": "https://js.wiki",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-wiki-js-open-source-wiki-engine",
+          "field_path": "classification.pricing_model",
+          "quote": "Wiki.js is the most powerful and extensible open source Wiki software, completely free under the AGPLv3 license.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "docmost-open-source-collaborative-wiki",
+      "name": "Docmost (Open-Source Collaborative Wiki & Confluence/Notion Alternative)",
+      "slug": "docmost-open-source-collaborative-wiki",
+      "provider": "Docmost",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Notes & Documents",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Collaborative Wiki", "Confluence Alternative", "Real-Time Co-Editing", "Excalidraw & Mermaid Built-in"]
+    },
+    "description": "Modern open-source collaborative wiki and documentation platform featuring real-time multiplayer rich-text editing, spaces, nested page trees, permissions, inline comments, and built-in Excalidraw, Draw.io, and Mermaid diagramming.",
+    "access": {
+      "free_limits": [
+        { "name": "Docmost Community Edition (Docker Compose)", "value": "100% free & open source", "period": "unlimited users & spaces" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free to self-host via Docker Compose."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "SAML/OIDC enterprise SSO requires Enterprise license."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://docmost.com",
+      "signup": null,
+      "documentation": "https://docmost.com/docs/",
+      "pricing": "https://docmost.com/pricing/"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-docmost-open-source-collaborative-wiki",
+          "url": "https://docmost.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-docmost-open-source-collaborative-wiki",
+          "field_path": "classification.pricing_model",
+          "quote": "Docmost is an open-source collaborative wiki and documentation software — an open-source alternative to Confluence and Notion.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "tldraw-infinite-canvas-whiteboard",
+      "name": "tldraw (Free Collaborative Infinite Canvas Whiteboard & React Canvas SDK)",
+      "slug": "tldraw-infinite-canvas-whiteboard",
+      "provider": "tldraw",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Whiteboards, Diagramming & Mind Mapping",
+      "resource_type": "cloud_service",
+      "pricing_model": "completely_free",
+      "tags": ["Infinite Canvas", "Multiplayer Whiteboard", "React Canvas SDK", "Diagramming", "Zero Signup"]
+    },
+    "description": "Delightfully fast collaborative digital whiteboard on `tldraw.com` with instant multiplayer rooms, smart arrows, hand-drawn or crisp geometric styles, laser pointer, and an embeddable React `<Tldraw />` infinite-canvas SDK.",
+    "access": {
+      "free_limits": [
+        { "name": "tldraw.com web whiteboard & multiplayer rooms", "value": "100% free with no account required", "period": "unlimited" },
+        { "name": "tldraw React SDK (with watermark or non-commercial)", "value": "Free", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Open tldraw.com and start drawing or sharing multiplayer links immediately without logging in."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Removing the 'Made with tldraw' watermark in commercial SDK embeddings requires a commercial license."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://www.tldraw.com",
+      "signup": null,
+      "documentation": "https://tldraw.dev",
+      "pricing": "https://tldraw.dev/pricing"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-tldraw-infinite-canvas-whiteboard",
+          "url": "https://www.tldraw.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-tldraw-infinite-canvas-whiteboard",
+          "field_path": "access.free_limits",
+          "quote": "tldraw.com is a free collaborative digital whiteboard in your browser.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": true,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "freeplane-open-source-mind-mapping",
+      "name": "Freeplane (Open-Source Mind Mapping & Knowledge Management Application)",
+      "slug": "freeplane-open-source-mind-mapping",
+      "provider": "Freeplane Project",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Whiteboards, Diagramming & Mind Mapping",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Mind Mapping", "Knowledge Graph", "LaTeX Formulas", "Groovy Scripting", "Cross-Platform Desktop", "GPLv2"]
+    },
+    "description": "Powerful cross-platform open-source desktop application for creating mind maps, concept maps, and structured outlines — supporting conditional node styling, LaTeX math formulas, attributes, encrypted nodes, and Groovy automation scripts.",
+    "access": {
+      "free_limits": [
+        { "name": "Freeplane Desktop Application (Windows, macOS, Linux)", "value": "100% free & open source (GPLv2+)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Completely free open-source desktop software."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://docs.freeplane.org",
+      "signup": null,
+      "documentation": "https://github.com/freeplane/freeplane",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-freeplane-open-source-mind-mapping",
+          "url": "https://docs.freeplane.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-freeplane-open-source-mind-mapping",
+          "field_path": "classification.pricing_model",
+          "quote": "Freeplane is a free and open source software application that supports thinking, sharing information and getting things done at work, in school and at home.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "graphviz-open-source-graph-visualization",
+      "name": "Graphviz (Open-Source DOT Language Graph & Network Diagram Engine)",
+      "slug": "graphviz-open-source-graph-visualization",
+      "provider": "Graphviz Authors / AT&T Labs Research",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Whiteboards, Diagramming & Mind Mapping",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["Diagram-as-Code", "DOT Language", "Directed & Undirected Graphs", "State Machines", "EPL-1.0"]
+    },
+    "description": "The foundational open-source graph visualization toolkit (`dot`, `neato`, `fdp`, `sfdp`, `twopi`, `circo`) that renders declarative DOT text descriptions into publication-quality SVG, PNG, and PDF architecture diagrams, dependency graphs, and finite state machines.",
+    "access": {
+      "free_limits": [
+        { "name": "Graphviz CLI layout engines, C libraries & WebAssembly builds", "value": "100% free & open source (Eclipse Public License 1.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Open source with zero cost."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://graphviz.org",
+      "signup": null,
+      "documentation": "https://graphviz.org/documentation/",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-graphviz-open-source-graph-visualization",
+          "url": "https://graphviz.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-graphviz-open-source-graph-visualization",
+          "field_path": "classification.pricing_model",
+          "quote": "Graphviz is open source graph visualization software.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "chatwoot-open-source-customer-team-inbox",
+      "name": "Chatwoot Community Edition & Hacker Cloud Plan (Omnichannel Shared Inbox)",
+      "slug": "chatwoot-open-source-customer-team-inbox",
+      "provider": "Chatwoot",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Communication",
+      "resource_type": "cloud_service",
+      "pricing_model": "open_source",
+      "tags": ["Shared Team Inbox", "Live Website Chat", "Help Center", "Slack & WhatsApp Integration", "MIT"]
+    },
+    "description": "Open-source omnichannel customer support and team communication platform unifying live website chat, email, Slack, WhatsApp, Telegram, and help-center articles — available as an MIT-licensed self-hosted Community Edition or a free Chatwoot Cloud Hacker plan.",
+    "access": {
+      "free_limits": [
+        { "name": "Chatwoot Self-Hosted Community Edition", "value": "100% free & open source (MIT) for unlimited agents", "period": "unlimited" },
+        { "name": "Chatwoot Cloud Hacker Plan", "value": "2 agents & 500 conversations/month", "period": "monthly" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "MIT self-hosted edition has no user limits; Cloud Hacker plan requires no credit card."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Cloud Hacker plan is capped at 2 agents and 500 monthly conversations."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://www.chatwoot.com",
+      "signup": "https://app.chatwoot.com/app/auth/signup",
+      "documentation": "https://www.chatwoot.com/docs/",
+      "pricing": "https://www.chatwoot.com/pricing"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-chatwoot-open-source-customer-team-inbox",
+          "url": "https://www.chatwoot.com/pricing",
+          "source_type": "pricing_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-chatwoot-open-source-customer-team-inbox",
+          "field_path": "access.free_limits",
+          "quote": "Chatwoot Community Edition is free and open-source under MIT, and Chatwoot Cloud offers a free Hacker plan for 2 agents.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "livekit-open-source-realtime-voice-video",
+      "name": "LiveKit Open Source & Cloud Build Plan (Real-Time WebRTC Video, Audio & Meet)",
+      "slug": "livekit-open-source-realtime-voice-video",
+      "provider": "LiveKit",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Communication",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["WebRTC Video Conferencing", "Screen Sharing", "LiveKit Meet", "Voice & Video SDK", "Apache 2.0"]
+    },
+    "description": "Open-source WebRTC Selective Forwarding Unit (SFU), collaborative video conferencing app (`LiveKit Meet`), and real-time audio/video infrastructure — offering an Apache 2.0 self-hosted server plus a free LiveKit Cloud Build plan with 5,000 participant minutes/month.",
+    "access": {
+      "free_limits": [
+        { "name": "LiveKit Open-Source SFU Server & LiveKit Meet", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" },
+        { "name": "LiveKit Cloud Build Plan", "value": "5,000 WebRTC participant minutes + 50 GB bandwidth/month", "period": "monthly" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required for LiveKit Cloud Build Plan or self-hosted server."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Renews monthly."
+      },
+      "restrictions": [
+        "Cloud Build plan supports up to 100 concurrent participants."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://livekit.io",
+      "signup": "https://cloud.livekit.io",
+      "documentation": "https://docs.livekit.io",
+      "pricing": "https://livekit.io/pricing"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-livekit-open-source-realtime-voice-video",
+          "url": "https://livekit.io/pricing",
+          "source_type": "pricing_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-livekit-open-source-realtime-voice-video",
+          "field_path": "access.free_limits",
+          "quote": "Start building for free with 5,000 participant minutes and 50GB of bandwidth every month on the LiveKit Cloud Build plan, or self-host open source.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "thunderbird-open-source-email-calendar-pim",
+      "name": "Mozilla Thunderbird (Open-Source Email, Calendar, Tasks, Contacts & Matrix Chat)",
+      "slug": "thunderbird-open-source-email-calendar-pim",
+      "provider": "MZLA Technologies / Mozilla",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Communication",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Email Client", "Calendar & CalDAV", "OpenPGP & S/MIME", "Tasks & RSS", "Matrix / IRC / XMPP"]
+    },
+    "description": "Free, open-source cross-platform personal information manager combining multi-account IMAP/JMAP email, built-in OpenPGP & S/MIME encryption, CalDAV calendars, tasks, CardDAV address books, RSS feeds, and Matrix/XMPP chat.",
+    "access": {
+      "free_limits": [
+        { "name": "Thunderbird Desktop & Android App", "value": "100% free & open source (MPL 2.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Community-funded open-source application with zero ads or telemetry."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://www.thunderbird.net",
+      "signup": null,
+      "documentation": "https://support.mozilla.org/en-US/products/thunderbird",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-thunderbird-open-source-email-calendar-pim",
+          "url": "https://www.thunderbird.net",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-thunderbird-open-source-email-calendar-pim",
+          "field_path": "classification.pricing_model",
+          "quote": "Thunderbird is a free and open-source email, calendar, and productivity application.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "budibase-open-source-internal-tools-forms",
+      "name": "Budibase Open Source & Cloud Free Tier (No-Code Databases, Forms & Internal Apps)",
+      "slug": "budibase-open-source-internal-tools-forms",
+      "provider": "Budibase",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Spreadsheets, No-Code Databases & Forms",
+      "resource_type": "cloud_service",
+      "pricing_model": "open_source",
+      "tags": ["No-Code Database", "Form Builder", "Internal Tools", "PostgreSQL / MySQL / REST", "GPLv3"]
+    },
+    "description": "Open-source low-code platform that turns PostgreSQL, MySQL, MongoDB, SQL Server, REST APIs, or its built-in database into multi-step forms, approval workflows, CRUD portals, and admin dashboards in minutes.",
+    "access": {
+      "free_limits": [
+        { "name": "Budibase Self-Hosted Open Source (Docker / Kubernetes)", "value": "Unlimited apps & up to 20 users free (or unlimited via OSS build)", "period": "always free" },
+        { "name": "Budibase Cloud Free Tier", "value": "Up to 5 users & unlimited apps", "period": "always free" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required for Cloud Free or Docker deployment."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "SSO and custom branding require Budibase Premium."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://budibase.com",
+      "signup": "https://account.budibase.app/register",
+      "documentation": "https://docs.budibase.com",
+      "pricing": "https://budibase.com/pricing/"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-budibase-open-source-internal-tools-forms",
+          "url": "https://budibase.com/pricing/",
+          "source_type": "pricing_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-budibase-open-source-internal-tools-forms",
+          "field_path": "access.free_limits",
+          "quote": "Budibase is open-source under GPLv3 and offers a Free Forever tier on both Cloud and Self-Hosted.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "opnform-open-source-notion-style-forms",
+      "name": "OpnForm (Open-Source Form Builder with Unlimited Free Responses)",
+      "slug": "opnform-open-source-notion-style-forms",
+      "provider": "OpnForm",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Spreadsheets, No-Code Databases & Forms",
+      "resource_type": "cloud_service",
+      "pricing_model": "open_source",
+      "tags": ["Form Builder", "Unlimited Submissions", "Conditional Logic", "Webhooks & Slack", "AGPLv3"]
+    },
+    "description": "Beautiful open-source form builder offering unlimited forms, unlimited fields, and unlimited monthly responses on both its hosted Cloud Free plan and its AGPLv3 self-hosted Docker edition — complete with conditional logic, webhooks, and file uploads.",
+    "access": {
+      "free_limits": [
+        { "name": "OpnForm Cloud Free Plan", "value": "Unlimited forms, unlimited fields & unlimited responses (5 MB file uploads)", "period": "always free" },
+        { "name": "OpnForm Self-Hosted Open Source", "value": "100% free & open source (AGPLv3)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Custom domains and removing OpnForm branding on Cloud require OpnForm Pro."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://opnform.com",
+      "signup": "https://opnform.com/register",
+      "documentation": "https://docs.opnform.com",
+      "pricing": "https://opnform.com/pricing"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-opnform-open-source-notion-style-forms",
+          "url": "https://opnform.com/pricing",
+          "source_type": "pricing_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-opnform-open-source-notion-style-forms",
+          "field_path": "access.free_limits",
+          "quote": "OpnForm Free tier includes unlimited forms, unlimited fields, unlimited responses, and webhooks.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "ifttt-free-applet-automation",
+      "name": "IFTTT Free Plan (Cross-App Webhook & Applet Automation Across 900+ Services)",
+      "slug": "ifttt-free-applet-automation",
+      "provider": "IFTTT",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Workflow Automation",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["If This Then That", "Webhooks", "900+ App Integrations", "Mobile Widgets", "No-Code Automation"]
+    },
+    "description": "No-code 'If This Then That' automation platform connecting 900+ web services, GitHub, Discord, Slack, Google Workspace, Notion, RSS feeds, and custom Webhooks with unlimited applet runs.",
+    "access": {
+      "free_limits": [
+        { "name": "Active Applets with unlimited runs", "value": "2 custom Applets with unlimited monthly executions", "period": "always free" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free Forever plan requires no credit card."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Multi-action applets and filter code require IFTTT Pro."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://ifttt.com",
+      "signup": "https://ifttt.com/join",
+      "documentation": "https://help.ifttt.com",
+      "pricing": "https://ifttt.com/plans"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-ifttt-free-applet-automation",
+          "url": "https://ifttt.com/plans",
+          "source_type": "pricing_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-ifttt-free-applet-automation",
+          "field_path": "access.free_limits",
+          "quote": "IFTTT Free includes 2 Applets with unlimited Applet runs across 900+ services.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "dagu-open-source-dag-workflow-runner",
+      "name": "Dagu (Lightweight Single-Binary YAML DAG Workflow Runner & Cron UI)",
+      "slug": "dagu-open-source-dag-workflow-runner",
+      "provider": "Dagu Organization",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Workflow Automation",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["DAG Workflow Engine", "Cron Alternative", "Single Go Binary", "No Database Needed", "YAML Pipelines"]
+    },
+    "description": "Self-contained, zero-dependency open-source workflow engine written in Go that executes Directed Acyclic Graphs (DAGs) defined in simple declarative YAML files — complete with a live Web UI, cron scheduler, retries, and Docker/SSH executors without needing any external database.",
+    "access": {
+      "free_limits": [
+        { "name": "Dagu CLI, Scheduler & Web UI", "value": "100% free & open source (GPLv3)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Single binary download via Homebrew, Docker, or GitHub Releases."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://github.com/dagu-org/dagu",
+      "signup": null,
+      "documentation": "https://github.com/dagu-org/dagu#readme",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-dagu-open-source-dag-workflow-runner",
+          "url": "https://github.com/dagu-org/dagu",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-dagu-open-source-dag-workflow-runner",
+          "field_path": "classification.pricing_model",
+          "quote": "Dagu is a compact, portable workflow engine written in Go with a Web UI and zero DBMS dependencies.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "flameshot-open-source-screenshot-annotation",
+      "name": "Flameshot (Open-Source Cross-Platform Screenshot & In-App Annotation Suite)",
+      "slug": "flameshot-open-source-screenshot-annotation",
+      "provider": "Flameshot Project",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Async Video, Screen Recording & File Collaboration",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Screenshots & Annotation", "Pixelation / Redaction", "Numbered Callouts", "Linux / macOS / Windows", "GPLv3"]
+    },
+    "description": "Fast, customizable open-source screenshot and instant on-screen annotation tool for Linux, macOS, and Windows — featuring arrows, numbered step callouts, sensitive-text pixelation/blurring, pinned floating captures, and CLI automation.",
+    "access": {
+      "free_limits": [
+        { "name": "Flameshot Desktop & CLI (Linux, macOS, Windows)", "value": "100% free & open source (GPLv3)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free and open source."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://flameshot.org",
+      "signup": null,
+      "documentation": "https://flameshot.org/docs/",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-flameshot-open-source-screenshot-annotation",
+          "url": "https://flameshot.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-flameshot-open-source-screenshot-annotation",
+          "field_path": "classification.pricing_model",
+          "quote": "Flameshot is a powerful yet simple to use open-source screenshot software for Linux, macOS, and Windows.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "rustdesk-open-source-remote-desktop-collab",
+      "name": "RustDesk (Open-Source Self-Hostable Remote Desktop & Screen Sharing)",
+      "slug": "rustdesk-open-source-remote-desktop-collab",
+      "provider": "RustDesk",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Async Video, Screen Recording & File Collaboration",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Remote Desktop", "TeamViewer Alternative", "Self-Hosted Relay Server", "End-to-End Encrypted", "AGPLv3"]
+    },
+    "description": "Fast, open-source remote desktop and screen-sharing application written in Rust — working out of the box with zero configuration or with your own lightweight self-hosted rendezvous/relay server (`hbbs`/`hbbr`) on Docker.",
+    "access": {
+      "free_limits": [
+        { "name": "RustDesk Client (Windows, macOS, Linux, iOS, Android) & Self-Hosted OSS Server", "value": "100% free & open source (AGPLv3)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free to use with public relay servers or your own self-hosted Docker server."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://rustdesk.com",
+      "signup": null,
+      "documentation": "https://rustdesk.com/docs/en/",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-rustdesk-open-source-remote-desktop-collab",
+          "url": "https://rustdesk.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-rustdesk-open-source-remote-desktop-collab",
+          "field_path": "classification.pricing_model",
+          "quote": "RustDesk is a fast open-source remote desktop client and server software, written in Rust.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "flow-launcher-open-source-windows-launcher",
+      "name": "Flow Launcher (Open-Source Command Palette & Instant File Search for Windows)",
+      "slug": "flow-launcher-open-source-windows-launcher",
+      "provider": "Flow Launcher Community",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "productivity-collaboration",
+      "subcategory": "Desktop Launchers, Document Signing & Office Suites",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Command Launcher", "Windows Productivity", "Everything Search Integration", "150+ Plugins", "MIT"]
+    },
+    "description": "Fast, open-source Spotlight/Alfred-style keyboard launcher for Windows featuring sub-millisecond file search (powered by Everything), calculator, window switcher, shell commands, clipboard history, and 150+ community plugins in Python, C#, and TypeScript.",
+    "access": {
+      "free_limits": [
+        { "name": "Flow Launcher & Plugin Store", "value": "100% free & open source (MIT)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "MIT-licensed open-source software with zero ads or account requirement."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Windows 10/11 only."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://www.flowlauncher.com",
+      "signup": null,
+      "documentation": "https://www.flowlauncher.com/docs/",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-flow-launcher-open-source-windows-launcher",
+          "url": "https://www.flowlauncher.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-flow-launcher-open-source-windows-launcher",
+          "field_path": "classification.pricing_model",
+          "quote": "Flow Launcher is an open-source quick file search and app launcher for Windows under the MIT license.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  }
+]

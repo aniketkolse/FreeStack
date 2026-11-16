@@ -174,12 +174,12 @@ test('Frontend & Design Tools category contains 104 verified offers across 8 sub
   );
 });
 
-test('Databases & Backend category contains 100 verified offers across 10 subcategories with Supabase, Render, Railway, AWS, and MongoDB at top by default', async () => {
+test('Databases & Backend category contains 125 verified offers across 10 subcategories ordered from Most Popular to Least Popular by default', async () => {
   const { filterAndSortOffers, DEFAULT_FILTER_STATE } = await import('../filters/filterOffers');
   const offers = loadOffersFromDisk();
   const dbBackend = offers.filter((o) => o.classification.category === 'databases-backend');
 
-  assert.equal(dbBackend.length, 100, `Expected 100 verified Databases & Backend offers, found ${dbBackend.length}`);
+  assert.equal(dbBackend.length, 125, `Expected 125 verified Databases & Backend offers, found ${dbBackend.length}`);
 
   const subcategories = new Set<string>();
   for (const offer of dbBackend) {
@@ -204,24 +204,33 @@ test('Databases & Backend category contains 100 verified offers across 10 subcat
   });
 
   assert.deepEqual(
-    defaultSorted.slice(0, 5).map((o) => o.identity.slug),
+    defaultSorted.slice(0, 8).map((o) => o.identity.slug),
     [
       'supabase-free-plan',
       'render-free-postgres-redis-backend',
       'railway-backend-databases-trial',
       'aws-free-tier-databases-backend',
       'mongodb-atlas-free-forever-m0',
+      'firebase-spark-firestore-baas',
+      'neon-serverless-postgres',
+      'postgresql-open-source-rdbms',
     ],
-    'Supabase, Render, Railway, AWS, and MongoDB must appear as the top 5 default offers in Databases & Backend'
+    'Most popular Databases & Backend offers (Supabase, Render, Railway, AWS, MongoDB, Firebase, Neon, PostgreSQL) must appear at the top by default'
+  );
+
+  assert.equal(
+    defaultSorted[defaultSorted.length - 1].identity.slug,
+    'manifest-1-file-yaml-backend',
+    'Least popular Databases & Backend offer in the curated 125-item popularity sequence must appear at the bottom (#125)'
   );
 });
 
-test('Security & Networking category contains 100 verified offers across 10 subcategories with most popular tools at top by default', async () => {
+test('Security & Networking category contains 125 verified offers across 10 subcategories ordered from Most Popular to Least Popular by default', async () => {
   const { filterAndSortOffers, DEFAULT_FILTER_STATE } = await import('../filters/filterOffers');
   const offers = loadOffersFromDisk();
   const secNet = offers.filter((o) => o.classification.category === 'security-networking');
 
-  assert.equal(secNet.length, 100, `Expected 100 verified Security & Networking offers, found ${secNet.length}`);
+  assert.equal(secNet.length, 125, `Expected 125 verified Security & Networking offers, found ${secNet.length}`);
 
   const subcategories = new Set<string>();
   for (const offer of secNet) {
@@ -246,7 +255,7 @@ test('Security & Networking category contains 100 verified offers across 10 subc
   });
 
   assert.deepEqual(
-    defaultSorted.slice(0, 6).map((o) => o.identity.slug),
+    defaultSorted.slice(0, 8).map((o) => o.identity.slug),
     [
       'cloudflare-zero-trust-free',
       'tailscale-free-wireguard-mesh-vpn',
@@ -254,17 +263,25 @@ test('Security & Networking category contains 100 verified offers across 10 subc
       'nmap-network-mapper-scanner',
       'owasp-zap-zed-attack-proxy',
       'lets-encrypt',
+      'burp-suite-community-edition',
+      'bitwarden-open-source-password-manager',
     ],
-    'Most popular Security & Networking tools (Cloudflare Zero Trust, Tailscale, Wireshark, Nmap, OWASP ZAP, Let\'s Encrypt) must appear at the top by default'
+    'Most popular Security & Networking tools (Cloudflare Zero Trust, Tailscale, Wireshark, Nmap, OWASP ZAP, Let\'s Encrypt, Burp Suite, Bitwarden) must appear at the top by default'
+  );
+
+  assert.equal(
+    defaultSorted[defaultSorted.length - 1].identity.slug,
+    'doggo-modern-command-line-dns-client',
+    'Least popular Security & Networking offer in the curated 125-item popularity sequence must appear at the bottom (#125)'
   );
 });
 
-test('Productivity & Collaboration category contains 100 verified offers across 10 subcategories with most popular tools at top by default', async () => {
+test('Productivity & Collaboration category contains 125 verified offers across 10 subcategories ordered from Most Popular to Least Popular by default', async () => {
   const { filterAndSortOffers, DEFAULT_FILTER_STATE } = await import('../filters/filterOffers');
   const offers = loadOffersFromDisk();
   const prodCollab = offers.filter((o) => o.classification.category === 'productivity-collaboration');
 
-  assert.equal(prodCollab.length, 100, `Expected 100 verified Productivity & Collaboration offers, found ${prodCollab.length}`);
+  assert.equal(prodCollab.length, 125, `Expected 125 verified Productivity & Collaboration offers, found ${prodCollab.length}`);
 
   const subcategories = new Set<string>();
   for (const offer of prodCollab) {
@@ -301,6 +318,12 @@ test('Productivity & Collaboration category contains 100 verified offers across 
       'miro-free-collaborative-whiteboard',
     ],
     'Most popular Productivity & Collaboration tools (Notion, Linear, Slack, Obsidian, Excalidraw, n8n, Jira, Miro) must appear at the top by default'
+  );
+
+  assert.equal(
+    defaultSorted[defaultSorted.length - 1].identity.slug,
+    'espanso-cross-platform-text-expander',
+    'Least popular Productivity & Collaboration offer in the curated 125-item popularity sequence must appear at the bottom (#125)'
   );
 });
 

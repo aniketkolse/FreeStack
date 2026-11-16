@@ -1,0 +1,1959 @@
+[
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "edgedb-gel-graph-relational-db",
+      "name": "Gel (formerly EdgeDB) & Gel Cloud Free Tier",
+      "slug": "edgedb-gel-graph-relational-db",
+      "provider": "Gel Data",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "SQL Databases",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Graph-Relational", "PostgreSQL", "EdgeQL", "TypeScript", "Python", "Auth & AI Built-in"]
+    },
+    "description": "Next-generation open-source graph-relational database built on PostgreSQL featuring declarative object schemas, strictly typed EdgeQL queries, built-in authentication, and pgvector AI embeddings — plus a free Gel Cloud serverless tier.",
+    "access": {
+      "free_limits": [
+        { "name": "Gel Open-Source Database Server & CLI", "value": "Unlimited", "period": "open source (Apache 2.0)" },
+        { "name": "Gel Cloud Free Tier instance", "value": "1 free cloud instance (0.25 compute units, 1 GB storage)", "period": "always free" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required for Gel Cloud Free Tier or self-hosted open-source deployment."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Gel Cloud Free Tier instances sleep after inactivity and wake on connection."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://www.geldata.com",
+      "signup": "https://cloud.geldata.com",
+      "documentation": "https://docs.geldata.com",
+      "pricing": "https://www.geldata.com/pricing"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-edgedb-gel-graph-relational-db",
+          "url": "https://www.geldata.com/pricing",
+          "source_type": "pricing_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-edgedb-gel-graph-relational-db",
+          "field_path": "access.free_limits",
+          "quote": "Gel is 100% open source under Apache 2.0 and offers a Free Tier on Gel Cloud with no credit card required.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "dolt-dolthub-version-controlled-sql",
+      "name": "Dolt & DoltHub (Git-Style Version-Controlled SQL Database)",
+      "slug": "dolt-dolthub-version-controlled-sql",
+      "provider": "DoltHub",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "SQL Databases",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["MySQL", "Postgres", "Git for Data", "Branch & Merge", "Open Source"]
+    },
+    "description": "The world's first version-controlled SQL database (Dolt for MySQL and DoltgreSQL for PostgreSQL) allowing you to fork, clone, branch, merge, diff, and push/pull relational database tables just like Git repositories — with free public hosting on DoltHub.",
+    "access": {
+      "free_limits": [
+        { "name": "Dolt & DoltgreSQL open-source database engine", "value": "Unlimited", "period": "open source (Apache 2.0)" },
+        { "name": "DoltHub public versioned SQL repositories", "value": "Unlimited public databases (up to 100 GB)", "period": "always free" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "CLI and server are open source with no account needed; free DoltHub account for cloud remotes."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Private repositories on DoltHub beyond starter limits require DoltHub Pro."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://www.dolthub.com",
+      "signup": "https://www.dolthub.com/signin",
+      "documentation": "https://docs.dolthub.com",
+      "pricing": "https://www.dolthub.com/pricing"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-dolt-dolthub-version-controlled-sql",
+          "url": "https://www.dolthub.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-dolt-dolthub-version-controlled-sql",
+          "field_path": "access.free_limits",
+          "quote": "Dolt is a SQL database that you can fork, clone, branch, merge, push and pull just like a git repository.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "vitess-horizontal-mysql-clustering",
+      "name": "Vitess (CNCF Graduated Horizontal MySQL Sharding & Clustering)",
+      "slug": "vitess-horizontal-mysql-clustering",
+      "provider": "Cloud Native Computing Foundation (CNCF)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "SQL Databases",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["MySQL", "Horizontal Sharding", "CNCF Graduated", "Kubernetes", "High Availability"]
+    },
+    "description": "CNCF-graduated database clustering system for horizontal scaling of MySQL through generalized sharding, connection pooling, automated failover, and online schema migrations at planet scale.",
+    "access": {
+      "free_limits": [
+        { "name": "Vitess cluster engine & Kubernetes operator", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Completely free open-source software maintained under CNCF."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Self-hosted on your own Kubernetes or Linux infrastructure."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://vitess.io",
+      "signup": null,
+      "documentation": "https://vitess.io/docs/",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-vitess-horizontal-mysql-clustering",
+          "url": "https://vitess.io",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-vitess-horizontal-mysql-clustering",
+          "field_path": "classification.pricing_model",
+          "quote": "Vitess is an open-source database clustering system for horizontal scaling of MySQL.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "citus-distributed-postgresql-extension",
+      "name": "Citus (Open-Source Distributed PostgreSQL Sharding Extension)",
+      "slug": "citus-distributed-postgresql-extension",
+      "provider": "Citus Data / Microsoft",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "SQL Databases",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["PostgreSQL", "Distributed SQL", "Sharding", "Columnar Storage", "Multi-Tenant"]
+    },
+    "description": "Open-source PostgreSQL extension that transforms Postgres into a distributed database with transparent table sharding, distributed query execution, reference tables, and columnar compression.",
+    "access": {
+      "free_limits": [
+        { "name": "Citus PostgreSQL extension & Docker packages", "value": "100% free & open source (AGPLv3)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free download via apt/yum/Docker or GitHub."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Managed Azure Cosmos DB for PostgreSQL is billed per node."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://www.citusdata.com",
+      "signup": null,
+      "documentation": "https://docs.citusdata.com",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-citus-distributed-postgresql-extension",
+          "url": "https://www.citusdata.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-citus-distributed-postgresql-extension",
+          "field_path": "classification.pricing_model",
+          "quote": "Citus is an open source extension to Postgres that distributes data and queries across multiple nodes.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "spacetimedb-multiplayer-relational-db",
+      "name": "SpacetimeDB (Real-Time Relational Database + WASM Server Engine)",
+      "slug": "spacetimedb-multiplayer-relational-db",
+      "provider": "Clockwork Labs",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "Backend-as-a-Service",
+      "resource_type": "cloud_service",
+      "pricing_model": "open_source",
+      "tags": ["Real-Time Sync", "WebAssembly", "Rust", "C#", "Multiplayer Backend", "In-Memory SQL"]
+    },
+    "description": "Ultra-low-latency relational database and backend server combined into one engine where application logic runs as Rust or C# WebAssembly modules directly inside the database with automatic real-time client state synchronization.",
+    "access": {
+      "free_limits": [
+        { "name": "SpacetimeDB Standalone Server & CLI", "value": "Free & source-available", "period": "unlimited" },
+        { "name": "SpacetimeDB Maincloud Free Testnet/Developer Hosting", "value": "Free developer modules", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required for local standalone server or developer cloud deployment."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Production commercial cloud capacity above free developer quotas is usage-based."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://spacetimedb.com",
+      "signup": null,
+      "documentation": "https://spacetimedb.com/docs",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-spacetimedb-multiplayer-relational-db",
+          "url": "https://spacetimedb.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-spacetimedb-multiplayer-relational-db",
+          "field_path": "access.free_limits",
+          "quote": "SpacetimeDB combines a database and a server into one unit, letting you write your entire backend in Rust or C#.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "electric-sql-postgres-local-first-sync",
+      "name": "ElectricSQL (Open-Source Postgres Sync Engine for Local-First Apps)",
+      "slug": "electric-sql-postgres-local-first-sync",
+      "provider": "ElectricSQL",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "Backend-as-a-Service",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["PostgreSQL", "Local-First", "Real-Time Sync", "PGlite", "React", "TanStack DB"]
+    },
+    "description": "Open-source PostgreSQL sync engine that streams partial-replica 'Shapes' from any Postgres database over HTTP directly into browser/mobile apps, PGlite, React hooks, and edge caches with sub-millisecond reactivity.",
+    "access": {
+      "free_limits": [
+        { "name": "Electric Sync Service & Client SDKs", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache 2.0 open source; deploy via Docker alongside any PostgreSQL database."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://electric-sql.com",
+      "signup": null,
+      "documentation": "https://electric-sql.com/docs/intro",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-electric-sql-postgres-local-first-sync",
+          "url": "https://electric-sql.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-electric-sql-postgres-local-first-sync",
+          "field_path": "classification.pricing_model",
+          "quote": "Electric is an open-source Postgres sync engine under the Apache 2.0 license.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "zero-rocicorp-instant-web-sync",
+      "name": "Zero by Rocicorp (Open-Source Reactive Client-Side Sync Engine)",
+      "slug": "zero-rocicorp-instant-web-sync",
+      "provider": "Rocicorp",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "Backend-as-a-Service",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Local-First", "Reactive Queries", "PostgreSQL", "TypeScript", "Zero-Latency UI"]
+    },
+    "description": "Open-source general-purpose sync engine from the creators of Replicache (`zero-cache`) that replicates PostgreSQL subsets to an embedded client-side IndexedDB store with incremental view maintenance for instant UI rendering.",
+    "access": {
+      "free_limits": [
+        { "name": "Zero Sync Engine (zero-cache & zero-client)", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Completely free open-source engine compatible with any PostgreSQL database."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://zero.rocicorp.dev",
+      "signup": null,
+      "documentation": "https://zero.rocicorp.dev/docs/introduction",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-zero-rocicorp-instant-web-sync",
+          "url": "https://zero.rocicorp.dev",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-zero-rocicorp-instant-web-sync",
+          "field_path": "classification.pricing_model",
+          "quote": "Zero is an open-source sync engine for building instant web applications backed by Postgres.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "powersync-offline-first-postgres-sync",
+      "name": "PowerSync Open Edition & Cloud Free Tier (Postgres/Mongo to SQLite Sync)",
+      "slug": "powersync-offline-first-postgres-sync",
+      "provider": "Journey Mobile / PowerSync",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "Backend-as-a-Service",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Offline-First", "SQLite", "PostgreSQL", "MongoDB", "Supabase", "Flutter & React Native"]
+    },
+    "description": "Bidirectional sync layer that keeps server-side PostgreSQL, Supabase, or MongoDB databases continuously synchronized with local client-side SQLite across Web, React Native, Flutter, Kotlin, and Swift — available as both a self-hosted Open Edition and a Cloud Free Tier.",
+    "access": {
+      "free_limits": [
+        { "name": "PowerSync Self-Hosted Open Edition", "value": "Free forever", "period": "unlimited" },
+        { "name": "PowerSync Cloud Free Plan", "value": "2 GB storage & 5 GB data synced/month", "period": "monthly" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required for PowerSync Cloud Free Tier or Docker Open Edition."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Renews monthly."
+      },
+      "restrictions": [
+        "Cloud Free instances pause after 7 days of inactivity."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://www.powersync.com",
+      "signup": "https://portal.powersync.com",
+      "documentation": "https://docs.powersync.com",
+      "pricing": "https://www.powersync.com/pricing"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-powersync-offline-first-postgres-sync",
+          "url": "https://www.powersync.com/pricing",
+          "source_type": "pricing_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-powersync-offline-first-postgres-sync",
+          "field_path": "access.free_limits",
+          "quote": "Start free on PowerSync Cloud with no credit card required or self-host the PowerSync Open Edition for free.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "garnet-microsoft-remote-cache-store",
+      "name": "Microsoft Garnet (High-Performance RESP-Compatible Cache Store)",
+      "slug": "garnet-microsoft-remote-cache-store",
+      "provider": "Microsoft Research",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "Caching & NoSQL",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Redis Alternative", "RESP Protocol", ".NET", "Tiered Storage", "MIT License"]
+    },
+    "description": "Open-source remote cache-store from Microsoft Research supporting the Redis RESP wire protocol with multi-threaded scalability, Tsavorite larger-than-memory tiered storage (RAM + SSD), clustering, and ultra-low tail latency.",
+    "access": {
+      "free_limits": [
+        { "name": "Garnet cache server, Docker image & NuGet library", "value": "100% free & open source (MIT)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "MIT-licensed open-source project on GitHub."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://microsoft.github.io/garnet/",
+      "signup": null,
+      "documentation": "https://microsoft.github.io/garnet/docs",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-garnet-microsoft-remote-cache-store",
+          "url": "https://microsoft.github.io/garnet/",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-garnet-microsoft-remote-cache-store",
+          "field_path": "classification.pricing_model",
+          "quote": "Garnet is a remote cache-store from Microsoft Research, open-sourced under the MIT license.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "apache-ignite-distributed-in-memory-db",
+      "name": "Apache Ignite (Distributed In-Memory Database & Compute Platform)",
+      "slug": "apache-ignite-distributed-in-memory-db",
+      "provider": "Apache Software Foundation",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "Caching & NoSQL",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["In-Memory Database", "Distributed Caching", "ANSI SQL", "ACID Transactions", "Java"]
+    },
+    "description": "Distributed in-memory computing platform and multi-tiered database combining key-value caching, ANSI-99 SQL queries, ACID transactions, and co-located distributed compute across petabytes of RAM and SSD.",
+    "access": {
+      "free_limits": [
+        { "name": "Apache Ignite distributed cluster engine", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache 2.0 open source."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://ignite.apache.org",
+      "signup": null,
+      "documentation": "https://ignite.apache.org/docs/latest/",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-apache-ignite-distributed-in-memory-db",
+          "url": "https://ignite.apache.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-apache-ignite-distributed-in-memory-db",
+          "field_path": "classification.pricing_model",
+          "quote": "Apache Ignite is a distributed database for high-performance computing with in-memory speed, licensed under Apache 2.0.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "rocksdb-meta-embedded-key-value-store",
+      "name": "RocksDB (Meta High-Performance Embedded Key-Value Storage Engine)",
+      "slug": "rocksdb-meta-embedded-key-value-store",
+      "provider": "Meta Open Source",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "Caching & NoSQL",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["LSM-Tree", "Embedded Database", "Key-Value Store", "C++", "Rust & Go Bindings"]
+    },
+    "description": "Embeddable persistent key-value store based on Log-Structured Merge-Trees (LSM) developed by Meta Engineering and optimized for fast NVMe flash storage — powering TiKV, CockroachDB, MyRocks, Kafka Streams, and Flink.",
+    "access": {
+      "free_limits": [
+        { "name": "RocksDB C++ library & language bindings", "value": "100% free & open source (Apache 2.0 / GPLv2)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Dual-licensed under Apache 2.0 and GPLv2."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://rocksdb.org",
+      "signup": null,
+      "documentation": "https://github.com/facebook/rocksdb/wiki",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-rocksdb-meta-embedded-key-value-store",
+          "url": "https://rocksdb.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-rocksdb-meta-embedded-key-value-store",
+          "field_path": "classification.pricing_model",
+          "quote": "RocksDB is an embeddable persistent key-value store for fast storage open-sourced by Meta.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "scylladb-open-source-nosql-database",
+      "name": "ScyllaDB Open Source (Ultra-Low-Latency C++ Wide-Column NoSQL)",
+      "slug": "scylladb-open-source-nosql-database",
+      "provider": "ScyllaDB",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "Caching & NoSQL",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Wide-Column NoSQL", "Cassandra Compatible", "DynamoDB Alternator", "C++", "Seastar"]
+    },
+    "description": "Monstrously fast wide-column NoSQL database written in C++ on the Seastar async framework — drop-in wire-compatible with both Apache Cassandra (CQL) and Amazon DynamoDB (Alternator API) with sub-millisecond P99 latencies.",
+    "access": {
+      "free_limits": [
+        { "name": "ScyllaDB Docker, Linux & Kubernetes Operator", "value": "Free & source-available", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free to deploy via Docker, Linux packages, or Helm charts."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "ScyllaDB Cloud managed service is paid after trial."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://www.scylladb.com",
+      "signup": null,
+      "documentation": "https://docs.scylladb.com",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-scylladb-open-source-nosql-database",
+          "url": "https://www.scylladb.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-scylladb-open-source-nosql-database",
+          "field_path": "access.free_limits",
+          "quote": "ScyllaDB is the database for monstrously fast and scalable applications, compatible with Apache Cassandra and Amazon DynamoDB.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "lancedb-serverless-multimodal-vector-db",
+      "name": "LanceDB Open Source & Cloud Free (Embedded Multimodal Vector Database)",
+      "slug": "lancedb-serverless-multimodal-vector-db",
+      "provider": "LanceDB",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "Vector, Graph & Search Databases",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Vector Database", "Multimodal AI", "Apache Arrow", "Rust", "Python & TypeScript", "RAG"]
+    },
+    "description": "Open-source developer-friendly vector database built in Rust on the Lance columnar format — running embedded in-process (like SQLite/DuckDB for vectors and multimodal data) or serverless on object storage with zero infrastructure to manage.",
+    "access": {
+      "free_limits": [
+        { "name": "LanceDB Open Source (Python, TypeScript, Rust)", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" },
+        { "name": "LanceDB Cloud Starter", "value": "Free starter credits on signup", "period": "one-time" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Embedded LanceDB OSS requires zero account or credit card (`pip install lancedb` / `npm i @lancedb/lancedb`)."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None for LanceDB Open Source."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://lancedb.com",
+      "signup": null,
+      "documentation": "https://lancedb.github.io/lancedb/",
+      "pricing": "https://lancedb.com/pricing"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-lancedb-serverless-multimodal-vector-db",
+          "url": "https://lancedb.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-lancedb-serverless-multimodal-vector-db",
+          "field_path": "classification.pricing_model",
+          "quote": "LanceDB is an open-source database for vector-search built with persistent storage, which greatly simplifies retrieval, filtering and management of embeddings.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "vespa-ai-big-data-vector-search-engine",
+      "name": "Vespa.ai (Open-Source Vector, Lexical & Hybrid Search Engine)",
+      "slug": "vespa-ai-big-data-vector-search-engine",
+      "provider": "Vespa.ai",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "Vector, Graph & Search Databases",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Vector Search", "Hybrid BM25 + HNSW", "ColBERT", "RAG", "Tensor Compute"]
+    },
+    "description": "Battle-tested open-source big data serving engine supporting billion-scale vector search (HNSW), lexical BM25 search, multi-vector ColBERT late interaction, and real-time ONNX machine-learning ranking in a single query.",
+    "access": {
+      "free_limits": [
+        { "name": "Vespa Open Source Engine & Container Image", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache 2.0 open source on GitHub and Docker Hub."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Managed Vespa Cloud is billed per node after free trial."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://vespa.ai",
+      "signup": null,
+      "documentation": "https://docs.vespa.ai",
+      "pricing": "https://vespa.ai/pricing"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-vespa-ai-big-data-vector-search-engine",
+          "url": "https://vespa.ai",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-vespa-ai-big-data-vector-search-engine",
+          "field_path": "classification.pricing_model",
+          "quote": "Vespa is the open-source platform for applications that combine data, vectors, and machine-learned models in real time.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "opensearch-open-source-search-analytics",
+      "name": "OpenSearch (Linux Foundation Open-Source Search, Vector & Log Engine)",
+      "slug": "opensearch-open-source-search-analytics",
+      "provider": "OpenSearch Software Foundation (Linux Foundation)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "Vector, Graph & Search Databases",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Full-Text Search", "k-NN Vector Search", "Log Analytics", "OpenSearch Dashboards", "Apache 2.0"]
+    },
+    "description": "Community-driven Apache 2.0 search, analytics, and vector database suite governed by the Linux Foundation — including distributed full-text search, k-NN vector search, OpenSearch Dashboards, anomaly detection, and enterprise security plugins.",
+    "access": {
+      "free_limits": [
+        { "name": "OpenSearch Engine, Dashboards & all enterprise security/ML plugins", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Completely free Apache 2.0 open source with RBAC/SSO security included out of the box."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://opensearch.org",
+      "signup": null,
+      "documentation": "https://opensearch.org/docs/latest/",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-opensearch-open-source-search-analytics",
+          "url": "https://opensearch.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-opensearch-open-source-search-analytics",
+          "field_path": "classification.pricing_model",
+          "quote": "OpenSearch is a community-driven, Apache 2.0-licensed open source search and analytics suite.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "falkordb-low-latency-graph-database",
+      "name": "FalkorDB (Ultra-Low-Latency Property Graph Database for GraphRAG)",
+      "slug": "falkordb-low-latency-graph-database",
+      "provider": "FalkorDB",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "Vector, Graph & Search Databases",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Graph Database", "GraphRAG", "OpenCypher", "Sparse Matrices", "AI Knowledge Graph"]
+    },
+    "description": "High-speed property graph database powered by GraphBLAS sparse matrix algebra and OpenCypher queries — purpose-built for multi-tenant LLM Knowledge Graphs and GraphRAG with both self-hosted Docker images and a FalkorDB Cloud Free Tier.",
+    "access": {
+      "free_limits": [
+        { "name": "FalkorDB Self-Hosted Server & GraphRAG SDK", "value": "Free & source-available", "period": "unlimited" },
+        { "name": "FalkorDB Cloud Free Sandbox", "value": "Free managed graph database instance", "period": "always free" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Run locally via Docker with no account, or sign up for FalkorDB Cloud Free without a credit card."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Cloud Free tier has memory and throughput caps suitable for development and prototypes."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://www.falkordb.com",
+      "signup": "https://app.falkordb.cloud",
+      "documentation": "https://docs.falkordb.com",
+      "pricing": "https://www.falkordb.com/pricing/"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-falkordb-low-latency-graph-database",
+          "url": "https://www.falkordb.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-falkordb-low-latency-graph-database",
+          "field_path": "access.free_limits",
+          "quote": "FalkorDB is the low-latency Graph Database for GenAI and GraphRAG, available via Docker and FalkorDB Cloud Free.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "victoria-metrics-time-series-database",
+      "name": "VictoriaMetrics & VictoriaLogs (Fast Open-Source Time-Series Database)",
+      "slug": "victoria-metrics-time-series-database",
+      "provider": "VictoriaMetrics",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "Time-Series & Analytics Databases",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Time-Series Database", "Prometheus Compatible", "MetricsQL", "VictoriaLogs", "Go"]
+    },
+    "description": "High-performance, cost-effective open-source time-series database and monitoring solution compatible with Prometheus, InfluxDB, Graphite, and OpenTelemetry — using up to 7x less RAM and 7x less disk space.",
+    "access": {
+      "free_limits": [
+        { "name": "VictoriaMetrics Single-Node, Cluster & VictoriaLogs", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache 2.0 open source on GitHub and Docker Hub."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://victoriametrics.com",
+      "signup": null,
+      "documentation": "https://docs.victoriametrics.com",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-victoria-metrics-time-series-database",
+          "url": "https://victoriametrics.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-victoria-metrics-time-series-database",
+          "field_path": "classification.pricing_model",
+          "quote": "VictoriaMetrics is a fast, cost-effective and scalable monitoring solution and time series database, open-sourced under Apache 2.0.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "apache-pinot-realtime-distributed-olap",
+      "name": "Apache Pinot (Real-Time Distributed OLAP Analytics Datastore)",
+      "slug": "apache-pinot-realtime-distributed-olap",
+      "provider": "Apache Software Foundation",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "Time-Series & Analytics Databases",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Real-Time OLAP", "Kafka Streaming", "User-Facing Analytics", "Columnar Index", "Apache 2.0"]
+    },
+    "description": "Real-time distributed OLAP datastore originally built at LinkedIn and Uber to ingest streaming data from Apache Kafka/Pulsar and serve millisecond-latency analytical SQL queries to hundreds of thousands of concurrent users.",
+    "access": {
+      "free_limits": [
+        { "name": "Apache Pinot distributed OLAP engine", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache 2.0 open source."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://pinot.apache.org",
+      "signup": null,
+      "documentation": "https://docs.pinot.apache.org",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-apache-pinot-realtime-distributed-olap",
+          "url": "https://pinot.apache.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-apache-pinot-realtime-distributed-olap",
+          "field_path": "classification.pricing_model",
+          "quote": "Apache Pinot is a real-time distributed OLAP datastore, purpose-built to provide ultra-low-latency analytics.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "apache-druid-realtime-analytics-db",
+      "name": "Apache Druid (High-Performance Real-Time Analytics Database)",
+      "slug": "apache-druid-realtime-analytics-db",
+      "provider": "Apache Software Foundation",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "Time-Series & Analytics Databases",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Real-Time Analytics", "Time-Series OLAP", "Columnar Storage", "Streaming Ingestion", "SQL"]
+    },
+    "description": "Column-oriented, open-source distributed data store designed for sub-second slice-and-dice OLAP queries, interactive dashboards, and real-time event stream ingestion from Kafka, Kinesis, and S3.",
+    "access": {
+      "free_limits": [
+        { "name": "Apache Druid cluster & web console", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache 2.0 open source."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://druid.apache.org",
+      "signup": null,
+      "documentation": "https://druid.apache.org/docs/latest/",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-apache-druid-realtime-analytics-db",
+          "url": "https://druid.apache.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-apache-druid-realtime-analytics-db",
+          "field_path": "classification.pricing_model",
+          "quote": "Apache Druid is a real-time analytics database designed for fast slice-and-dice analytics on large data sets.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "mikro-orm-typescript-data-mapper-orm",
+      "name": "MikroORM (TypeScript Data-Mapper & Unit-of-Work ORM)",
+      "slug": "mikro-orm-typescript-data-mapper-orm",
+      "provider": "Martin Adámek / MikroORM",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "ORMs, Schema & Database Tooling",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["TypeScript ORM", "Unit of Work", "Identity Map", "PostgreSQL", "MySQL", "MongoDB"]
+    },
+    "description": "TypeScript ORM for Node.js based on the Data Mapper, Unit of Work, and Identity Map patterns — offering automatic transaction batching, strict type-safe QueryBuilder, schema migrations, and support for PostgreSQL, MySQL, MariaDB, SQLite, libSQL, and MongoDB.",
+    "access": {
+      "free_limits": [
+        { "name": "MikroORM Core, CLI, Migrations & Entity Generator", "value": "100% free & open source (MIT)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "MIT-licensed open-source package on npm."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://mikro-orm.io",
+      "signup": null,
+      "documentation": "https://mikro-orm.io/docs",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-mikro-orm-typescript-data-mapper-orm",
+          "url": "https://mikro-orm.io",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-mikro-orm-typescript-data-mapper-orm",
+          "field_path": "classification.pricing_model",
+          "quote": "MikroORM is an open-source TypeScript ORM for Node.js based on Data Mapper, Unit of Work and Identity Map patterns.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "sequelize-nodejs-typescript-sql-orm",
+      "name": "Sequelize (Multi-Dialect Node.js & TypeScript SQL ORM)",
+      "slug": "sequelize-nodejs-typescript-sql-orm",
+      "provider": "Sequelize Contributors",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "ORMs, Schema & Database Tooling",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["Node.js ORM", "TypeScript", "PostgreSQL", "MySQL", "MariaDB", "SQLite", "SQL Server"]
+    },
+    "description": "Feature-rich open-source Node.js and TypeScript ORM supporting PostgreSQL, MySQL, MariaDB, SQLite, Microsoft SQL Server, Oracle, and DB2 with eager/lazy associations, transactions, read replication, and CLI migrations.",
+    "access": {
+      "free_limits": [
+        { "name": "Sequelize ORM & CLI", "value": "100% free & open source (MIT)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "MIT-licensed open-source npm package."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://sequelize.org",
+      "signup": null,
+      "documentation": "https://sequelize.org/docs/v6/",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-sequelize-nodejs-typescript-sql-orm",
+          "url": "https://sequelize.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-sequelize-nodejs-typescript-sql-orm",
+          "field_path": "classification.pricing_model",
+          "quote": "Sequelize is a modern TypeScript and Node.js ORM for Oracle, Postgres, MySQL, MariaDB, SQLite and SQL Server, released under the MIT license.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "zitadel-open-source-identity-management",
+      "name": "ZITADEL Open Source & Cloud Free Tier (Identity, Passkeys & B2B SSO)",
+      "slug": "zitadel-open-source-identity-management",
+      "provider": "ZITADEL",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "Authentication",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Authentication", "OIDC", "SAML 2.0", "Passkeys", "Multi-Tenancy", "Open Source"]
+    },
+    "description": "Turnkey open-source identity and access management (IAM) platform written in Go on PostgreSQL — offering OAuth 2.0/OIDC, SAML 2.0, Passkeys/WebAuthn, B2B multi-tenancy, and audit trails with both Apache 2.0 self-hosting and a ZITADEL Cloud Free Plan (25,000 free daily authenticated requests).",
+    "access": {
+      "free_limits": [
+        { "name": "ZITADEL Self-Hosted Open Source", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" },
+        { "name": "ZITADEL Cloud Free Tier", "value": "Up to 25,000 authenticated requests/day & unlimited B2B organizations", "period": "always free" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required for ZITADEL Cloud Free Plan or self-hosted single binary."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None on self-hosted Apache 2.0 edition."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://zitadel.com",
+      "signup": "https://zitadel.com/pricing",
+      "documentation": "https://zitadel.com/docs",
+      "pricing": "https://zitadel.com/pricing"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-zitadel-open-source-identity-management",
+          "url": "https://zitadel.com/pricing",
+          "source_type": "pricing_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-zitadel-open-source-identity-management",
+          "field_path": "access.free_limits",
+          "quote": "ZITADEL is open source under Apache 2.0 and includes a Free Tier on ZITADEL Cloud with no credit card required.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "casdoor-open-source-ui-first-iam-sso",
+      "name": "Casdoor (Open-Source UI-First Identity Access Management & SSO)",
+      "slug": "casdoor-open-source-ui-first-iam-sso",
+      "provider": "Casbin Organization",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "Authentication",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["IAM", "SSO", "OAuth 2.0", "OIDC", "SAML", "Casbin RBAC", "WebAuthn"]
+    },
+    "description": "UI-first open-source Identity and Access Management (IAM) / Single-Sign-On (SSO) platform powered by Casbin — supporting OAuth 2.0, OIDC, SAML, CAS, LDAP, SCIM, WebAuthn, and 70+ social login providers out of the box.",
+    "access": {
+      "free_limits": [
+        { "name": "Casdoor Server, Admin UI & SDKs", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache 2.0 open source on GitHub and Docker Hub."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://casdoor.org",
+      "signup": null,
+      "documentation": "https://casdoor.org/docs/overview",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-casdoor-open-source-ui-first-iam-sso",
+          "url": "https://casdoor.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-casdoor-open-source-ui-first-iam-sso",
+          "field_path": "classification.pricing_model",
+          "quote": "Casdoor is an open-source UI-first Identity and Access Management (IAM) / Single-Sign-On (SSO) platform with web UI supporting OAuth 2.0, OIDC, SAML and CAS.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "seaweedfs-distributed-object-file-storage",
+      "name": "SeaweedFS (Fast Open-Source Distributed File System & S3 Object Storage)",
+      "slug": "seaweedfs-distributed-object-file-storage",
+      "provider": "SeaweedFS Contributors",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "Storage",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["S3 Object Storage", "Distributed File System", "POSIX FUSE", "Erasure Coding", "Apache 2.0"]
+    },
+    "description": "Fast, simple, highly scalable open-source distributed file system and Amazon S3-compatible object store with O(1) disk seek time, POSIX FUSE mount, WebDAV, HDFS replacement, erasure coding, and cloud tiering.",
+    "access": {
+      "free_limits": [
+        { "name": "SeaweedFS S3 Gateway, Filer & Volume Servers", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Permissive Apache 2.0 open-source license."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://seaweedfs.com",
+      "signup": null,
+      "documentation": "https://github.com/seaweedfs/seaweedfs/wiki",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-seaweedfs-distributed-object-file-storage",
+          "url": "https://seaweedfs.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-seaweedfs-distributed-object-file-storage",
+          "field_path": "classification.pricing_model",
+          "quote": "SeaweedFS is a fast distributed storage system for blobs, objects, files, and data lake, licensed under Apache 2.0.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "bullmq-redis-distributed-queues-jobs",
+      "name": "BullMQ (Fast Redis/Dragonfly Distributed Message Queue & Job Scheduler)",
+      "slug": "bullmq-redis-distributed-queues-jobs",
+      "provider": "Taskforce.sh",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "databases-backend",
+      "subcategory": "Message Queues, Workflows & Realtime",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["Job Queue", "Redis", "Node.js", "Python", "Parent-Child Flows", "Cron Jobs"]
+    },
+    "description": "Fast, robust, Redis-backed distributed message queue and background job processing library for Node.js, TypeScript, Python, and Elixir — supporting parent-child job DAG flows, rate limiting, retries, delayed jobs, and repeatable cron schedules.",
+    "access": {
+      "free_limits": [
+        { "name": "BullMQ Library (Node.js, Python & Elixir)", "value": "100% free & open source (MIT)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "MIT-licensed open-source package."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://bullmq.io",
+      "signup": null,
+      "documentation": "https://docs.bullmq.io",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-bullmq-redis-distributed-queues-jobs",
+          "url": "https://bullmq.io",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-bullmq-redis-distributed-queues-jobs",
+          "field_path": "classification.pricing_model",
+          "quote": "BullMQ is a fast and robust queue system for Node.js and Python based on Redis, open-sourced under the MIT license.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  }
+]

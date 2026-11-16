@@ -1,0 +1,1955 @@
+[
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "trivy-aqua-container-vulnerability-scanner",
+      "name": "Trivy by Aqua Security (All-in-One Container, IaC, SBOM & Secret Scanner)",
+      "slug": "trivy-aqua-container-vulnerability-scanner",
+      "provider": "Aqua Security",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "Code, Container, Cloud & Supply-Chain Security",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["Container Security", "Vulnerability Scanner", "SBOM", "IaC Security", "Kubernetes", "Apache 2.0"]
+    },
+    "description": "Comprehensive, versatile open-source security scanner by Aqua Security that finds OS/language vulnerabilities (CVEs), IaC misconfigurations, hardcoded secrets, and software bill of materials (SBOM) issues across container images, filesystems, Git repos, VM images, and Kubernetes clusters.",
+    "access": {
+      "free_limits": [
+        { "name": "Trivy CLI, Kubernetes Operator & GitHub Action", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache 2.0 open source with no account or API key required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://trivy.dev",
+      "signup": null,
+      "documentation": "https://trivy.dev/latest/docs/",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-trivy-aqua-container-vulnerability-scanner",
+          "url": "https://trivy.dev",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-trivy-aqua-container-vulnerability-scanner",
+          "field_path": "classification.pricing_model",
+          "quote": "Trivy is the most popular open source security scanner, reliable, fast, and easy to use under Apache 2.0.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": true,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "semgrep-community-static-analysis-sast",
+      "name": "Semgrep Community Edition & OSS (Fast Multi-Language SAST Scanner)",
+      "slug": "semgrep-community-static-analysis-sast",
+      "provider": "Semgrep",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "Code, Container, Cloud & Supply-Chain Security",
+      "resource_type": "developer_tool",
+      "pricing_model": "free_tier",
+      "tags": ["SAST", "Static Code Analysis", "30+ Languages", "Custom Security Rules", "CI/CD"]
+    },
+    "description": "Fast, syntax-aware static application security testing (SAST) tool supporting 30+ programming languages with 3,000+ community security rules and intuitive pattern matching that looks like the source code you already write.",
+    "access": {
+      "free_limits": [
+        { "name": "Semgrep CLI & Community Rule Registry (3,000+ rules)", "value": "Free & open source (LGPL 2.1)", "period": "unlimited" },
+        { "name": "Semgrep Cloud Platform Free Tier", "value": "Up to 10 contributors on private repos (unlimited on public repos)", "period": "always free" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "CLI runs locally with no account; free Cloud AppSec dashboard requires no credit card."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Cross-file taint analysis (Semgrep Code Pro Engine) beyond 10 contributors requires a paid plan."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://semgrep.dev",
+      "signup": "https://semgrep.dev/login",
+      "documentation": "https://semgrep.dev/docs/",
+      "pricing": "https://semgrep.dev/pricing"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-semgrep-community-static-analysis-sast",
+          "url": "https://semgrep.dev/pricing",
+          "source_type": "pricing_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-semgrep-community-static-analysis-sast",
+          "field_path": "access.free_limits",
+          "quote": "Semgrep OSS and Community Edition provide fast static analysis across 30+ languages for free.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "snyk-free-developer-security-platform",
+      "name": "Snyk Free Developer Plan (Code SAST, Open Source SCA, Container & IaC)",
+      "slug": "snyk-free-developer-security-platform",
+      "provider": "Snyk",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "Code, Container, Cloud & Supply-Chain Security",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["SAST", "SCA Dependency Scanning", "Container Security", "Terraform IaC", "IDE Extensions"]
+    },
+    "description": "Developer-first application security platform scanning custom source code (Snyk Code), open-source dependencies (Snyk Open Source), container images (Snyk Container), and Infrastructure-as-Code (Snyk IaC) directly in VS Code, JetBrains, CLI, and GitHub PRs.",
+    "access": {
+      "free_limits": [
+        { "name": "Snyk Open Source & Snyk Code tests", "value": "200 Open Source tests + 100 Snyk Code SAST tests/month", "period": "monthly" },
+        { "name": "Snyk Container & Snyk IaC tests", "value": "100 Container tests + 300 IaC tests/month", "period": "monthly" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free Forever plan for individual developers and small teams; no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Test quotas reset every month."
+      },
+      "restrictions": [
+        "Unlimited tests for open-source public projects."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://snyk.io",
+      "signup": "https://app.snyk.io/login",
+      "documentation": "https://docs.snyk.io",
+      "pricing": "https://snyk.io/plans/"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-snyk-free-developer-security-platform",
+          "url": "https://snyk.io/plans/",
+          "source_type": "pricing_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-snyk-free-developer-security-platform",
+          "field_path": "access.free_limits",
+          "quote": "Snyk Free Plan includes monthly tests across Snyk Open Source, Snyk Code, Snyk Container, and Snyk IaC with no credit card required.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "sonarqube-community-build-code-security",
+      "name": "SonarQube Community Build & SonarQube for IDE (Code Security & Quality)",
+      "slug": "sonarqube-community-build-code-security",
+      "provider": "SonarSource",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "Code, Container, Cloud & Supply-Chain Security",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Code Security", "Static Analysis", "Security Hotspots", "SonarLint", "30+ Languages"]
+    },
+    "description": "Self-hosted open-source static code analysis server (SonarQube Community Build) and free IDE extension (SonarQube for IDE / SonarLint) detecting security vulnerabilities, OWASP Top 10 security hotspots, secrets, and bugs across 30+ languages.",
+    "access": {
+      "free_limits": [
+        { "name": "SonarQube Community Build Server & SonarQube for IDE", "value": "100% free & open source (LGPLv3)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free Docker image and ZIP download with zero registration or payment."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Multi-branch analysis and advanced taint injection rules require Developer Edition or free public projects on SonarQube Cloud."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to all developers."
+    },
+    "links": {
+      "official": "https://www.sonarsource.com/open-source-editions/sonarqube-community-edition/",
+      "signup": null,
+      "documentation": "https://docs.sonarsource.com/sonarqube-community-build/",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-sonarqube-community-build-code-security",
+          "url": "https://www.sonarsource.com/open-source-editions/sonarqube-community-edition/",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-sonarqube-community-build-code-security",
+          "field_path": "classification.pricing_model",
+          "quote": "SonarQube Community Build is free and open-source static code analysis software for clean and secure code.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "authentik-open-source-identity-provider",
+      "name": "authentik (Open-Source Identity Provider — OIDC, SAML, LDAP, RADIUS & Proxy)",
+      "slug": "authentik-open-source-identity-provider",
+      "provider": "Authentik Security",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "TLS, PKI & Secrets Management",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["SSO", "Identity Provider", "OAuth2 / OIDC", "SAML", "LDAP", "Passkeys", "Reverse Proxy Auth"]
+    },
+    "description": "Flexible open-source Identity Provider (IdP) designed to drop into existing environments — supporting OAuth 2.0, OpenID Connect (OIDC), SAML 2.0, LDAP, RADIUS, SCIM, Passkeys/WebAuthn, and forward-auth reverse proxy integration with Traefik, Caddy, and NGINX.",
+    "access": {
+      "free_limits": [
+        { "name": "authentik Open-Source Server (Docker Compose & Helm)", "value": "100% free & open source (MIT)", "period": "unlimited users" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "MIT-licensed open-source software."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://goauthentik.io",
+      "signup": null,
+      "documentation": "https://docs.goauthentik.io",
+      "pricing": "https://goauthentik.io/pricing/"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-authentik-open-source-identity-provider",
+          "url": "https://goauthentik.io",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-authentik-open-source-identity-provider",
+          "field_path": "classification.pricing_model",
+          "quote": "authentik is an open-source Identity Provider focused on flexibility and versatility, licensed under MIT.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "authelia-open-source-2fa-sso-portal",
+      "name": "Authelia (Open-Source SSO, OIDC & Passkey 2FA Portal for Reverse Proxies)",
+      "slug": "authelia-open-source-2fa-sso-portal",
+      "provider": "Authelia Contributors",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "TLS, PKI & Secrets Management",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["SSO", "2FA / WebAuthn", "OpenID Connect", "Traefik & Caddy", "NGINX", "Go"]
+    },
+    "description": "Lightweight single-binary open-source authentication and authorization server providing two-factor authentication (Passkeys/WebAuthn, TOTP, Duo) and Certified OpenID Connect 1.0 SSO in front of Traefik, Caddy, NGINX, Envoy, and HAProxy.",
+    "access": {
+      "free_limits": [
+        { "name": "Authelia Server, OIDC Provider & ForwardAuth Portal", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache 2.0 open source with zero paid tiers."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://www.authelia.com",
+      "signup": null,
+      "documentation": "https://www.authelia.com/overview/prologue/introduction/",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-authelia-open-source-2fa-sso-portal",
+          "url": "https://www.authelia.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-authelia-open-source-2fa-sso-portal",
+          "field_path": "classification.pricing_model",
+          "quote": "Authelia is an open-source authentication and authorization server providing 2FA and SSO for your applications via a web portal.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "passbolt-open-source-team-password-manager",
+      "name": "Passbolt Community Edition (Open-Source OpenPGP Password Manager for Teams)",
+      "slug": "passbolt-open-source-team-password-manager",
+      "provider": "Passbolt SA",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "TLS, PKI & Secrets Management",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Password Manager", "OpenPGP Encryption", "Team Credential Sharing", "CLI & API", "AGPLv3"]
+    },
+    "description": "Open-source password and credential manager built specifically for DevOps and engineering teams — using end-to-end OpenPGP encryption, granular role-based sharing, browser extensions, mobile apps, and a full REST API.",
+    "access": {
+      "free_limits": [
+        { "name": "Passbolt Community Edition (Docker, Debian, Ubuntu, Helm)", "value": "100% free & open source (AGPLv3) for unlimited users", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Self-hosted Community Edition is completely free for unlimited users."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "LDAP/SSO sync and audit log plugins require Passbolt Pro."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://www.passbolt.com",
+      "signup": null,
+      "documentation": "https://www.passbolt.com/docs/",
+      "pricing": "https://www.passbolt.com/pricing/pro"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-passbolt-open-source-team-password-manager",
+          "url": "https://www.passbolt.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-passbolt-open-source-team-password-manager",
+          "field_path": "classification.pricing_model",
+          "quote": "Passbolt Community Edition is a free and open source password manager for teams.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "vaultwarden-lightweight-rust-bitwarden-server",
+      "name": "Vaultwarden (Lightweight Rust Self-Hosted Bitwarden Server)",
+      "slug": "vaultwarden-lightweight-rust-bitwarden-server",
+      "provider": "Dani García / Vaultwarden Contributors",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "TLS, PKI & Secrets Management",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Bitwarden Compatible", "Rust", "Password Manager", "Passkeys", "Low RAM (~15 MB)", "GPLv3"]
+    },
+    "description": "Alternative open-source implementation of the Bitwarden server API written in Rust and SQLite/PostgreSQL — running in ~15 MB of RAM while supporting organizations, collections, emergency access, Bitwarden Send, TOTP, and Passkeys.",
+    "access": {
+      "free_limits": [
+        { "name": "Vaultwarden Server & Built-In Web Vault", "value": "100% free & open source (GPLv3)", "period": "unlimited users & organizations" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Single Docker container (`vaultwarden/server`); compatible with all official Bitwarden mobile, desktop, and browser clients."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://github.com/dani-garcia/vaultwarden",
+      "signup": null,
+      "documentation": "https://github.com/dani-garcia/vaultwarden/wiki",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-vaultwarden-lightweight-rust-bitwarden-server",
+          "url": "https://github.com/dani-garcia/vaultwarden",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-vaultwarden-lightweight-rust-bitwarden-server",
+          "field_path": "classification.pricing_model",
+          "quote": "Unofficial Bitwarden compatible server written in Rust, ideal for self-hosted deployments.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "pomerium-identity-aware-zero-trust-proxy",
+      "name": "Pomerium Open Source (Identity-Aware Zero-Trust Reverse Proxy)",
+      "slug": "pomerium-identity-aware-zero-trust-proxy",
+      "provider": "Pomerium",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "Zero Trust, VPN & Mesh Networking",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Zero Trust Proxy", "BeyondCorp", "Envoy Powered", "mTLS", "OIDC", "SSH & TCP Tunneling"]
+    },
+    "description": "Open-source identity-aware access proxy built on Envoy that enables clientless Zero Trust access (Google BeyondCorp model) to internal web apps, Kubernetes clusters, SSH, and TCP services using your existing OIDC identity provider.",
+    "access": {
+      "free_limits": [
+        { "name": "Pomerium Core Open-Source Proxy & Ingress Controller", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache 2.0 open source."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None on Pomerium Core."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://www.pomerium.com",
+      "signup": null,
+      "documentation": "https://www.pomerium.com/docs",
+      "pricing": "https://www.pomerium.com/pricing"
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-pomerium-identity-aware-zero-trust-proxy",
+          "url": "https://www.pomerium.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-pomerium-identity-aware-zero-trust-proxy",
+          "field_path": "classification.pricing_model",
+          "quote": "Pomerium is an open-source identity-aware proxy that enables secure, clientless access to internal applications.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "pangolin-self-hosted-tunneled-reverse-proxy",
+      "name": "Pangolin by Fosrl (Open-Source Self-Hosted Tunneled Reverse Proxy & Zero-Trust Access)",
+      "slug": "pangolin-self-hosted-tunneled-reverse-proxy",
+      "provider": "Fosrl",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "Zero Trust, VPN & Mesh Networking",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Self-Hosted Cloudflare Tunnel", "WireGuard", "Traefik", "Zero Trust", "NAT Traversal"]
+    },
+    "description": "Self-hosted open-source alternative to Cloudflare Tunnels combining WireGuard encrypted site-to-site tunnels (Newt), Traefik automatic Let's Encrypt reverse proxying, and built-in SSO/2FA access control behind CG-NAT without opening firewall ports.",
+    "access": {
+      "free_limits": [
+        { "name": "Pangolin Server, Gerbil WireGuard Manager & Newt Tunnel Client", "value": "100% free & open source (AGPLv3)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Completely free open-source stack on GitHub."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://github.com/fosrl/pangolin",
+      "signup": null,
+      "documentation": "https://docs.fossorial.io",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-pangolin-self-hosted-tunneled-reverse-proxy",
+          "url": "https://github.com/fosrl/pangolin",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-pangolin-self-hosted-tunneled-reverse-proxy",
+          "field_path": "classification.pricing_model",
+          "quote": "Pangolin is an open-source identity-aware tunneled reverse proxy server with dashboard UI, designed to securely expose private resources.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "cloudflared-argo-tunnel-daemon",
+      "name": "cloudflared (Cloudflare Tunnel Daemon & Quick Tunnels — trycloudflare.com)",
+      "slug": "cloudflared-argo-tunnel-daemon",
+      "provider": "Cloudflare",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "Zero Trust, VPN & Mesh Networking",
+      "resource_type": "developer_tool",
+      "pricing_model": "completely_free",
+      "tags": ["Cloudflare Tunnel", "ngrok Alternative", "trycloudflare.com", "Zero Inbound Ports", "Apache 2.0"]
+    },
+    "description": "Open-source Cloudflare Tunnel client (`cloudflared`) that creates outbound-only encrypted QUIC/HTTP2 tunnels from any localhost server or private VPC to Cloudflare's global edge — including instant zero-account `trycloudflare.com` quick tunnels (`cloudflared tunnel --url http://localhost:3000`).",
+    "access": {
+      "free_limits": [
+        { "name": "Quick Tunnels (*.trycloudflare.com)", "value": "100% free with zero account required", "period": "unlimited" },
+        { "name": "Named Custom-Domain Tunnels", "value": "Up to 1,000 tunnels per account", "period": "always free" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Quick Tunnels require no signup or credit card at all."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Quick Tunnels do not support custom domains unless linked to a free Cloudflare account."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/",
+      "signup": null,
+      "documentation": "https://github.com/cloudflare/cloudflared",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-cloudflared-argo-tunnel-daemon",
+          "url": "https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-cloudflared-argo-tunnel-daemon",
+          "field_path": "access.free_limits",
+          "quote": "Cloudflare Tunnel (cloudflared) is open source under Apache 2.0 and lets you run Quick Tunnels without a Cloudflare account.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "chisel-fast-tcp-udp-tunnel-over-http",
+      "name": "Chisel (Fast Open-Source TCP/UDP Tunnel over HTTP Secured via SSH)",
+      "slug": "chisel-fast-tcp-udp-tunnel-over-http",
+      "provider": "Jaime Pillora",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "Zero Trust, VPN & Mesh Networking",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["TCP/UDP Tunnel", "SOCKS5 Proxy", "Reverse Port Forwarding", "SSH over WebSockets", "Go"]
+    },
+    "description": "Single-executable Go client and server that transports arbitrary TCP and UDP traffic plus SOCKS5 proxies over HTTP/WebSockets encrypted via SSH — ideal for crossing restrictive corporate firewalls and NATs.",
+    "access": {
+      "free_limits": [
+        { "name": "Chisel single binary (client & server)", "value": "100% free & open source (MIT)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "MIT-licensed open-source binary on GitHub."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://github.com/jpillora/chisel",
+      "signup": null,
+      "documentation": "https://github.com/jpillora/chisel#readme",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-chisel-fast-tcp-udp-tunnel-over-http",
+          "url": "https://github.com/jpillora/chisel",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-chisel-fast-tcp-udp-tunnel-over-http",
+          "field_path": "classification.pricing_model",
+          "quote": "Chisel is a fast TCP/UDP tunnel, transported over HTTP, secured via SSH, open-sourced under the MIT license.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "mitmproxy-interactive-tls-intercepting-proxy",
+      "name": "mitmproxy (Interactive Open-Source TLS-Intercepting HTTP/WebSocket Proxy)",
+      "slug": "mitmproxy-interactive-tls-intercepting-proxy",
+      "provider": "mitmproxy Project",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "Security Testing Tools",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["Intercepting Proxy", "HTTPS / TLS Inspection", "HTTP/3 & QUIC", "WebSockets", "Python Scripting"]
+    },
+    "description": "Free and open-source interactive HTTPS/TLS intercepting proxy (`mitmproxy` TUI, `mitmweb` browser UI, and `mitmdump` CLI) supporting HTTP/1, HTTP/2, HTTP/3 (QUIC), WebSockets, WireGuard transparent mode, and Python traffic-modification scripts.",
+    "access": {
+      "free_limits": [
+        { "name": "mitmproxy, mitmweb & mitmdump suite", "value": "100% free & open source (MIT)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "MIT-licensed open-source software."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://mitmproxy.org",
+      "signup": null,
+      "documentation": "https://docs.mitmproxy.org/stable/",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-mitmproxy-interactive-tls-intercepting-proxy",
+          "url": "https://mitmproxy.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-mitmproxy-interactive-tls-intercepting-proxy",
+          "field_path": "classification.pricing_model",
+          "quote": "mitmproxy is a free and open source interactive HTTPS proxy under the MIT license.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "ghidra-nsa-software-reverse-engineering",
+      "name": "Ghidra (NSA Open-Source Software Reverse Engineering & Decompiler Suite)",
+      "slug": "ghidra-nsa-software-reverse-engineering",
+      "provider": "National Security Agency (NSA)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "Security Testing Tools",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Reverse Engineering", "Decompiler", "Disassembler", "Malware Analysis", "x86 / ARM / RISC-V"]
+    },
+    "description": "Enterprise-grade open-source software reverse engineering (SRE) suite developed by the NSA Research Directorate — featuring a multi-architecture decompiler (x86_64, ARM, AArch64, MIPS, PowerPC, RISC-V), interactive disassembler, binary diffing, collaborative server, and Python/Java scripting.",
+    "access": {
+      "free_limits": [
+        { "name": "Full Ghidra Reverse Engineering Suite & Decompiler", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Public-domain / Apache 2.0 open-source release on GitHub."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://ghidra-sre.org",
+      "signup": null,
+      "documentation": "https://github.com/NationalSecurityAgency/ghidra",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-ghidra-nsa-software-reverse-engineering",
+          "url": "https://ghidra-sre.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-ghidra-nsa-software-reverse-engineering",
+          "field_path": "classification.pricing_model",
+          "quote": "Ghidra is a software reverse engineering (SRE) framework created and maintained by the National Security Agency Research Directorate and released under Apache 2.0.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "radare2-rizin-cutter-reverse-engineering",
+      "name": "Radare2 & Iaito (Open-Source Binary Reverse Engineering & Debugger)",
+      "slug": "radare2-rizin-cutter-reverse-engineering",
+      "provider": "radareorg",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "Security Testing Tools",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Reverse Engineering", "Binary Exploitation", "Disassembler", "Debugger", "Hex Editor", "LGPLv3"]
+    },
+    "description": "Portable UNIX-like open-source reverse engineering framework and command-line toolset (`r2`, `rabin2`, `radiff2`, `rafind2`) plus the official Iaito Qt GUI for disassembling, debugging, patching, and analyzing binaries across 60+ CPU architectures.",
+    "access": {
+      "free_limits": [
+        { "name": "Radare2 CLI framework, r2ghidra decompiler & Iaito GUI", "value": "100% free & open source (LGPLv3)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "LGPLv3 open source."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://rada.re",
+      "signup": null,
+      "documentation": "https://book.rada.re",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-radare2-rizin-cutter-reverse-engineering",
+          "url": "https://rada.re",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-radare2-rizin-cutter-reverse-engineering",
+          "field_path": "classification.pricing_model",
+          "quote": "radare2 is a libre and portable reverse engineering framework licensed under LGPLv3.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "frida-dynamic-instrumentation-toolkit",
+      "name": "Frida (Dynamic Binary Instrumentation Toolkit for Reverse Engineers)",
+      "slug": "frida-dynamic-instrumentation-toolkit",
+      "provider": "Ole André Vadla Ravnås / NowSecure",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "Security Testing Tools",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["Dynamic Instrumentation", "Mobile App Security", "Android & iOS", "SSL Pinning Bypass", "JavaScript Hooks"]
+    },
+    "description": "Dynamic instrumentation toolkit that lets security researchers inject JavaScript/TypeScript snippets (`gumjs`) directly into live native apps on Windows, macOS, GNU/Linux, iOS, Android, and QNX to hook functions, inspect memory, and trace crypto APIs in real time.",
+    "access": {
+      "free_limits": [
+        { "name": "Frida CLI, frida-server & language bindings", "value": "100% free & open source (wxWindows Library Licence)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Install via `pip install frida-tools` with zero account or cost."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://frida.re",
+      "signup": null,
+      "documentation": "https://frida.re/docs/home/",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-frida-dynamic-instrumentation-toolkit",
+          "url": "https://frida.re",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-frida-dynamic-instrumentation-toolkit",
+          "field_path": "classification.pricing_model",
+          "quote": "Frida is a free and open source dynamic instrumentation toolkit for developers, reverse-engineers, and security researchers.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "impacket-network-protocols-security-python",
+      "name": "Impacket by Fortra (Open-Source Python Network Protocol & Kerberos/SMB Suite)",
+      "slug": "impacket-network-protocols-security-python",
+      "provider": "Fortra Core Security",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "Security Testing Tools",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["Network Protocols", "SMB & MSRPC", "Kerberos", "Active Directory", "Python Security"]
+    },
+    "description": "Collection of open-source Python classes and CLI scripts (`psexec.py`, `secretsdump.py`, `ntlmrelayx.py`, `GetNPUsers.py`, `smbserver.py`) for constructing, decoding, and auditing low-level network protocols including IP, TCP, UDP, SMB1-3, MSRPC, NTLM, and Kerberos.",
+    "access": {
+      "free_limits": [
+        { "name": "Impacket Python Library & 40+ Protocol Assessment Scripts", "value": "100% free & open source", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Open source on GitHub and PyPI."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Authorized security testing and network administration only."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://github.com/fortra/impacket",
+      "signup": null,
+      "documentation": "https://github.com/fortra/impacket#readme",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-impacket-network-protocols-security-python",
+          "url": "https://github.com/fortra/impacket",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-impacket-network-protocols-security-python",
+          "field_path": "classification.pricing_model",
+          "quote": "Impacket is a collection of open-source Python classes for working with network protocols.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "responder-netexec-active-directory-audit",
+      "name": "NetExec (nxc — Open-Source Network Execution & Active Directory Auditor)",
+      "slug": "responder-netexec-active-directory-audit",
+      "provider": "Pennyw0rth & NetExec Community",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "Security Testing Tools",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["Active Directory Security", "SMB / WinRM / LDAP", "Pentesting", "CrackMapExec Successor", "BSD-2-Clause"]
+    },
+    "description": "Community-maintained open-source successor to CrackMapExec (`nxc`) that automates security assessment of large Active Directory networks across SMB, LDAP, WinRM, MSSQL, SSH, FTP, RDP, WMI, and VNC protocols.",
+    "access": {
+      "free_limits": [
+        { "name": "NetExec (nxc) CLI & protocol modules", "value": "100% free & open source (BSD-2-Clause)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "BSD-licensed open source on GitHub."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "For authorized enterprise security assessments and labs only."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://www.netexec.wiki",
+      "signup": null,
+      "documentation": "https://github.com/Pennyw0rth/NetExec",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-responder-netexec-active-directory-audit",
+          "url": "https://www.netexec.wiki",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-responder-netexec-active-directory-audit",
+          "field_path": "classification.pricing_model",
+          "quote": "NetExec (nxc) is an open-source network security assessment tool that helps automate assessing the security of large networks.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "bloodhound-community-edition-ad-graph",
+      "name": "BloodHound Community Edition (Active Directory & Entra ID Attack Path Graph)",
+      "slug": "bloodhound-community-edition-ad-graph",
+      "provider": "SpecterOps",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "Scanning Utilities",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Active Directory", "Entra ID / Azure", "Graph Theory", "Attack Path Management", "Apache 2.0"]
+    },
+    "description": "Open-source graph-theory security tool by SpecterOps (`BloodHound CE`, `SharpHound`, and `AzureHound`) that maps hidden identity relationships and privilege escalation paths across Active Directory and Microsoft Entra ID.",
+    "access": {
+      "free_limits": [
+        { "name": "BloodHound Community Edition Server, SharpHound & AzureHound", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache 2.0 open source deployed via Docker Compose."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://bloodhound.specterops.io",
+      "signup": null,
+      "documentation": "https://github.com/SpecterOps/BloodHound",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-bloodhound-community-edition-ad-graph",
+          "url": "https://bloodhound.specterops.io",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-bloodhound-community-edition-ad-graph",
+          "field_path": "classification.pricing_model",
+          "quote": "BloodHound Community Edition is a free and open-source attack path management tool licensed under Apache 2.0.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "lynis-cisofy-linux-security-auditing",
+      "name": "Lynis by CISOfy (Open-Source Linux/Unix Hardening & Compliance Auditor)",
+      "slug": "lynis-cisofy-linux-security-auditing",
+      "provider": "CISOfy",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "Scanning Utilities",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["Linux Hardening", "System Auditing", "Compliance", "Agentless Shell Script", "GPLv3"]
+    },
+    "description": "Battle-tested open-source security auditing tool for Linux, macOS, and BSD systems that runs hundreds of in-depth local host checks covering kernel parameters, SSH configuration, PAM, firewalls, file permissions, and systemd sandboxing.",
+    "access": {
+      "free_limits": [
+        { "name": "Lynis Security Auditing CLI", "value": "100% free & open source (GPLv3)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Zero dependencies beyond standard POSIX shell; free via apt/dnf/brew or GitHub."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://cisofy.com/lynis/",
+      "signup": null,
+      "documentation": "https://github.com/CISOfy/lynis",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-lynis-cisofy-linux-security-auditing",
+          "url": "https://cisofy.com/lynis/",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-lynis-cisofy-linux-security-auditing",
+          "field_path": "classification.pricing_model",
+          "quote": "Lynis is an open source security auditing tool for UNIX derivatives like Linux, macOS, and BSD.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "osquery-sql-powered-endpoint-visibility",
+      "name": "osquery (Linux Foundation SQL-Powered Endpoint Security & Telemetry)",
+      "slug": "osquery-sql-powered-endpoint-visibility",
+      "provider": "Linux Foundation / osquery",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "SIEM, IDS/IPS & Threat Intelligence",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Endpoint Security", "SQL Telemetry", "Linux / macOS / Windows", "File Integrity Monitoring", "Apache 2.0"]
+    },
+    "description": "Linux Foundation open-source endpoint visibility agent that exposes an operating system (Linux, macOS, Windows, FreeBSD) as a high-performance relational database — letting you query running processes, open sockets, kernel modules, and persistence hooks using standard SQL.",
+    "access": {
+      "free_limits": [
+        { "name": "osqueryi interactive shell & osqueryd daemon", "value": "100% free & open source (Apache 2.0 / GPLv2)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Open source governed by the Linux Foundation."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://osquery.io",
+      "signup": null,
+      "documentation": "https://osquery.readthedocs.io",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-osquery-sql-powered-endpoint-visibility",
+          "url": "https://osquery.io",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-osquery-sql-powered-endpoint-visibility",
+          "field_path": "classification.pricing_model",
+          "quote": "osquery is an open-source SQL-powered operating system instrumentation, monitoring, and analytics framework.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "velociraptor-digital-forensics-incident-response",
+      "name": "Velociraptor (Rapid7 Open-Source Digital Forensics & Incident Response Platform)",
+      "slug": "velociraptor-digital-forensics-incident-response",
+      "provider": "Rapid7 / Velocidex",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "SIEM, IDS/IPS & Threat Intelligence",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["DFIR", "Incident Response", "Threat Hunting", "VQL", "Endpoint Visibility"]
+    },
+    "description": "Advanced open-source endpoint monitoring, digital forensics, and cyber incident response platform powered by the Velociraptor Query Language (VQL) — enabling real-time artifact collection and threat hunting across thousands of Windows, Linux, and macOS hosts.",
+    "access": {
+      "free_limits": [
+        { "name": "Velociraptor Server, Agent & Artifact Exchange", "value": "100% free & open source", "period": "unlimited endpoints" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Open source on GitHub."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://docs.velociraptor.app",
+      "signup": null,
+      "documentation": "https://github.com/Velocidex/velociraptor",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-velociraptor-digital-forensics-incident-response",
+          "url": "https://docs.velociraptor.app",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-velociraptor-digital-forensics-incident-response",
+          "field_path": "classification.pricing_model",
+          "quote": "Velociraptor is an advanced open-source endpoint monitoring, digital forensic and cyber response platform.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "misp-open-source-threat-intelligence",
+      "name": "MISP (Open-Source Threat Intelligence & IOC Sharing Platform)",
+      "slug": "misp-open-source-threat-intelligence",
+      "provider": "MISP Project / CIRCL",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "SIEM, IDS/IPS & Threat Intelligence",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Threat Intelligence", "IOC Sharing", "STIX / TAXII", "Suricata / YARA Export", "GPLv3"]
+    },
+    "description": "Industry-standard open-source threat intelligence and malware information sharing platform used by CERTs and SOCs worldwide to collect, correlate, and export Indicators of Compromise (IOCs) directly to Suricata, Snort, Zeek, YARA, and SIEMs.",
+    "access": {
+      "free_limits": [
+        { "name": "MISP Server, Taxonomies, Threat Feeds & PyMISP API", "value": "100% free & open source (GPLv3)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free and open source."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://www.misp-project.org",
+      "signup": null,
+      "documentation": "https://www.misp-project.org/documentation/",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-misp-open-source-threat-intelligence",
+          "url": "https://www.misp-project.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-misp-open-source-threat-intelligence",
+          "field_path": "classification.pricing_model",
+          "quote": "MISP is a free and open source threat intelligence and sharing platform.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "opencti-open-cyber-threat-intelligence",
+      "name": "OpenCTI by Filigran (Open-Source Cyber Threat Intelligence Knowledge Graph)",
+      "slug": "opencti-open-cyber-threat-intelligence",
+      "provider": "Filigran",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "SIEM, IDS/IPS & Threat Intelligence",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Cyber Threat Intelligence", "MITRE ATT&CK", "STIX 2.1", "Knowledge Graph", "Apache 2.0"]
+    },
+    "description": "Modern open-source Cyber Threat Intelligence (CTI) platform built on a STIX 2.1 knowledge graph and MITRE ATT&CK framework with 300+ threat feed connectors (AlienVault OTX, VirusTotal, AbuseIPDB, MISP, Shodan).",
+    "access": {
+      "free_limits": [
+        { "name": "OpenCTI Community Edition & 300+ Connectors", "value": "100% free & open source (Apache 2.0)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache 2.0 open source on GitHub and Docker Hub."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None on Community Edition."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://www.opencti.io",
+      "signup": null,
+      "documentation": "https://docs.opencti.io",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-opencti-open-cyber-threat-intelligence",
+          "url": "https://www.opencti.io",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-opencti-open-cyber-threat-intelligence",
+          "field_path": "classification.pricing_model",
+          "quote": "OpenCTI is an open source platform allowing organizations to manage their cyber threat intelligence knowledge and observables.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "bunkerweb-open-source-next-gen-waf",
+      "name": "BunkerWeb (Open-Source Next-Generation Web Application Firewall)",
+      "slug": "bunkerweb-open-source-next-gen-waf",
+      "provider": "Bunkerity",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "security-networking",
+      "subcategory": "DNS, Firewall, WAF & DDoS Protection",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["WAF", "OWASP Core Rule Set", "Bot Mitigation", "Auto Let's Encrypt", "NGINX", "AGPLv3"]
+    },
+    "description": "Full-featured open-source Next-Gen Web Application Firewall (WAF) built on NGINX with a modern web UI — integrating ModSecurity OWASP CRS, automated Let's Encrypt TLS, rate limiting, antibot challenges, IP blackholing, and CrowdSec/ClamAV plugins.",
+    "access": {
+      "free_limits": [
+        { "name": "BunkerWeb WAF Engine, Web UI & Community Plugins", "value": "100% free & open source (AGPLv3)", "period": "unlimited" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Deploy on Linux, Docker, Swarm, or Kubernetes with zero cost."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": ["Global"],
+      "conditions": "Open to everyone."
+    },
+    "links": {
+      "official": "https://www.bunkerweb.io",
+      "signup": null,
+      "documentation": "https://docs.bunkerweb.io",
+      "pricing": null
+    },
+    "learning": null,
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-bunkerweb-open-source-next-gen-waf",
+          "url": "https://www.bunkerweb.io",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-bunkerweb-open-source-next-gen-waf",
+          "field_path": "classification.pricing_model",
+          "quote": "BunkerWeb is an open-source next-generation Web Application Firewall (WAF) that secures your web services by default.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  }
+]
