@@ -68,14 +68,14 @@
     ]
   },
   "verification": {
-    "status": "needs_review",
-    "last_verified_at": "2026-10-19",
-    "notes": "Flagged for periodic Arm A1 regional capacity check."
+    "status": "verified",
+    "last_verified_at": "2026-11-16",
+    "notes": "Verified Always Free Arm Ampere A1 (4 OCPUs, 24 GB RAM) and AMD Micro shapes."
   },
   "metadata": {
     "created_at": "2026-09-28",
-    "updated_at": "2026-10-19",
-    "featured": false,
+    "updated_at": "2026-11-16",
+    "featured": true,
     "contributor": "freestack-core"
   }
 }

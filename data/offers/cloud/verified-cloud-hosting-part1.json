@@ -1,0 +1,2500 @@
+[
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "netlify-starter-free-hosting",
+      "name": "Netlify Starter Plan (100 GB Bandwidth, 300 Build Mins & Serverless Functions)",
+      "slug": "netlify-starter-free-hosting",
+      "provider": "Netlify",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Deployment Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Deployment", "Static Hosting", "Jamstack", "Serverless", "Edge Functions", "CDN"]
+    },
+    "description": "Deploy frontend web apps, Astro/Next.js/React sites, and edge functions directly from Git with 100 GB monthly bandwidth, 300 build minutes, and instant rollbacks.",
+    "access": {
+      "free_limits": [
+        { "name": "Bandwidth", "value": "100 GB", "period": "per month" },
+        { "name": "Build minutes", "value": 300, "period": "per month" },
+        { "name": "Serverless function invocations", "value": 125000, "period": "per month" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free Starter plan does not require a credit card."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Resets monthly." },
+      "restrictions": ["1 concurrent build on Starter plan."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Available to all developers." },
+    "links": {
+      "official": "https://www.netlify.com/pricing/",
+      "signup": "https://app.netlify.com/signup",
+      "documentation": "https://docs.netlify.com",
+      "pricing": "https://www.netlify.com/pricing/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-netlify-starter-free-hosting", "url": "https://www.netlify.com/pricing/", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-netlify-starter-free-hosting", "field_path": "access.free_limits", "quote": "Netlify Starter includes 100 GB bandwidth and 300 build minutes per month free.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": true, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "render-free-web-services-static",
+      "name": "Render Cloud Hosting (Free Web Services, Docker Containers & Static Sites)",
+      "slug": "render-free-web-services-static",
+      "provider": "Render",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Deployment Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["PaaS", "Docker", "Node.js", "Python", "Go", "Static Hosting", "Git Deploy"]
+    },
+    "description": "Unified cloud PaaS for deploying full-stack Docker, Node.js, Python, Go, Ruby, and Rust web services alongside unlimited free static sites with 100 GB monthly egress.",
+    "access": {
+      "free_limits": [
+        { "name": "Free Web Service compute", "value": "750 hours", "period": "per month" },
+        { "name": "Static site bandwidth", "value": "100 GB", "period": "per month" },
+        { "name": "Free build pipeline", "value": "500 minutes", "period": "per month" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required for free static sites and web services."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "750 free instance hours refresh every month." },
+      "restrictions": ["Free web services spin down after 15 minutes of inactivity and wake on the next request."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Available to all developers." },
+    "links": {
+      "official": "https://render.com/pricing",
+      "signup": "https://dashboard.render.com/register",
+      "documentation": "https://render.com/docs/free",
+      "pricing": "https://render.com/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-render-free-web-services-static", "url": "https://render.com/pricing", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-render-free-web-services-static", "field_path": "access.free_limits", "quote": "Render provides 750 free instance hours per month for Web Services and 100 GB bandwidth for Static Sites.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": true, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "railway-cloud-deployment-trial",
+      "name": "Railway Cloud Platform (Instant Git, Dockerfile & Template App Hosting)",
+      "slug": "railway-cloud-deployment-trial",
+      "provider": "Railway",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Deployment Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_trial",
+      "tags": ["PaaS", "Docker", "Cloud Hosting", "Full-Stack", "Microservices", "Preview Environments"]
+    },
+    "description": "Instant cloud infrastructure platform that builds and deploys any GitHub repo, Dockerfile, or multi-service template with private networking, cron jobs, and zero-downtime rollouts.",
+    "access": {
+      "free_limits": [
+        { "name": "Trial resource credit", "value": "$5", "period": "one-time trial" },
+        { "name": "RAM per service", "value": "Up to 512 MB", "period": "on trial" },
+        { "name": "PR preview environments", "value": "Included", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "GitHub verification grants $5 trial credit without upfront payment."
+      },
+      "validity": { "type": "trial_period", "duration": "30-day $5 usage trial", "auto_renewal": "No automatic charge unless upgraded." },
+      "restrictions": ["Resource usage deducts from the $5 trial credit pool."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Verified GitHub account." },
+    "links": {
+      "official": "https://railway.com/pricing",
+      "signup": "https://railway.com/login",
+      "documentation": "https://docs.railway.com",
+      "pricing": "https://railway.com/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-railway-cloud-deployment-trial", "url": "https://railway.com/pricing", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-railway-cloud-deployment-trial", "field_path": "access.free_limits", "quote": "Railway includes $5 of free resource usage to test deploying services and containers.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": true, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "fly-io-machines-app-hosting",
+      "name": "Fly.io Global Anycast App & Firecracker MicroVM Hosting",
+      "slug": "fly-io-machines-app-hosting",
+      "provider": "Fly.io",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Deployment Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_trial",
+      "tags": ["Firecracker", "MicroVMs", "Docker", "Global Edge", "Anycast", "Scale-to-Zero"]
+    },
+    "description": "Deploy full-stack Docker containers as hardware-virtualized Firecracker MicroVMs across 30+ global regions with scale-to-zero Fly Machines and WireGuard private networking.",
+    "access": {
+      "free_limits": [
+        { "name": "Monthly invoice waiver", "value": "Invoices under $5 waived on eligible plans", "period": "monthly" },
+        { "name": "Scale-to-zero Fly Machines", "value": "Pay only per second when awake", "period": "ongoing" },
+        { "name": "Private IPv6 WireGuard mesh", "value": "Free", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Credit card required to provision Fly Machines."
+      },
+      "validity": { "type": "trial_period", "duration": "7-day / trial credit + scale-to-zero microVMs", "auto_renewal": "Usage-based billing." },
+      "restrictions": ["Requires valid payment method for anti-abuse verification."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Available globally." },
+    "links": {
+      "official": "https://fly.io/docs/about/pricing/",
+      "signup": "https://fly.io/app/sign-up",
+      "documentation": "https://fly.io/docs/",
+      "pricing": "https://fly.io/docs/about/pricing/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-fly-io-machines-app-hosting", "url": "https://fly.io/docs/about/pricing/", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-fly-io-machines-app-hosting", "field_path": "access.free_limits", "quote": "Fly Machines stop automatically when idle so low-traffic apps cost pennies or qualify for small-invoice waivers.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": true, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "zeabur-serverless-paas-hosting",
+      "name": "Zeabur Cloud PaaS (One-Click Multi-Service Git & Container Hosting)",
+      "slug": "zeabur-serverless-paas-hosting",
+      "provider": "Zeabur",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Deployment Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["PaaS", "Containers", "Git Deploy", "Templates", "Serverless", "Hosting"]
+    },
+    "description": "Developer-friendly PaaS that automatically detects languages and frameworks from Git repositories and deploys web apps, bots, and prebuilt open-source templates in one click.",
+    "access": {
+      "free_limits": [
+        { "name": "Serverless deployments", "value": "Free for static & serverless functions", "period": "ongoing" },
+        { "name": "Automatic framework detection", "value": "Next.js, Astro, Go, Python, Node", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Sign in with GitHub without a credit card for serverless/static deployments."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Always-on container services require Developer plan or credits."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "GitHub account required." },
+    "links": {
+      "official": "https://zeabur.com/pricing",
+      "signup": "https://dash.zeabur.com",
+      "documentation": "https://zeabur.com/docs",
+      "pricing": "https://zeabur.com/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-zeabur-serverless-paas-hosting", "url": "https://zeabur.com/pricing", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-zeabur-serverless-paas-hosting", "field_path": "access.free_limits", "quote": "Zeabur supports free serverless deployments and one-click template hosting.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "koyeb-free-serverless-containers",
+      "name": "Koyeb Starter Free Tier (Global Serverless Docker Container & Git Hosting)",
+      "slug": "koyeb-free-serverless-containers",
+      "provider": "Koyeb",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Deployment Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Serverless Containers", "Docker", "PaaS", "MicroVMs", "Git Deploy", "Edge"]
+    },
+    "description": "High-performance serverless platform to deploy Docker containers, web apps, and APIs globally on bare-metal Firecracker microVMs with a free Starter web service instance.",
+    "access": {
+      "free_limits": [
+        { "name": "Free Web Service", "value": "1 free micro instance (512 MB RAM, 0.1 vCPU)", "period": "ongoing" },
+        { "name": "Global Edge CDN & TLS", "value": "Included", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Starter free instance available with GitHub signup."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Ongoing free instance." },
+      "restrictions": ["Free instance sleeps when inactive unless receiving traffic."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "1 free web service per account." },
+    "links": {
+      "official": "https://www.koyeb.com/pricing",
+      "signup": "https://app.koyeb.com/auth/signup",
+      "documentation": "https://www.koyeb.com/docs",
+      "pricing": "https://www.koyeb.com/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-koyeb-free-serverless-containers", "url": "https://www.koyeb.com/pricing", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-koyeb-free-serverless-containers", "field_path": "access.free_limits", "quote": "Koyeb Starter lets you run 1 Web Service instance for free.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "gitlab-pages-static-hosting",
+      "name": "GitLab Pages (Free Static Site Hosting with Custom Domains & CI/CD)",
+      "slug": "gitlab-pages-static-hosting",
+      "provider": "GitLab",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Deployment Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "completely_free",
+      "tags": ["Static Sites", "GitLab CI", "Custom Domains", "Let's Encrypt", "SSG", "No Card"]
+    },
+    "description": "Publish static websites directly from any GitLab repository using GitLab CI/CD pipelines with support for Astro, Hugo, Next.js static export, custom domains, and automatic Let's Encrypt TLS.",
+    "access": {
+      "free_limits": [
+        { "name": "Static sites", "value": "Unlimited per account/group", "period": "ongoing" },
+        { "name": "Custom domains & SSL", "value": "Included free", "period": "ongoing" },
+        { "name": "Private or public access control", "value": "Included", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Included with GitLab Free."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Static assets only; uses GitLab CI/CD compute minutes for builds."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Included in GitLab Free." },
+    "links": {
+      "official": "https://docs.gitlab.com/user/project/pages/",
+      "signup": "https://gitlab.com/users/sign_up",
+      "documentation": "https://docs.gitlab.com/user/project/pages/",
+      "pricing": "https://about.gitlab.com/pricing/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-gitlab-pages-static-hosting", "url": "https://docs.gitlab.com/user/project/pages/", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-gitlab-pages-static-hosting", "field_path": "access.free_limits", "quote": "With GitLab Pages, you can publish static websites directly from a repository in GitLab for free.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "surge-sh-static-web-publishing",
+      "name": "Surge.sh (Single-Command CLI Static Web Publishing & Custom Domains)",
+      "slug": "surge-sh-static-web-publishing",
+      "provider": "Surge",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Deployment Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["CLI Deployment", "Static Hosting", "Frontend", "Custom Domains", "CDN", "No Card"]
+    },
+    "description": "Simple, single-command static web publishing for frontend developers (`npx surge`) with unlimited free publishing, custom domain support, and clean URL routing.",
+    "access": {
+      "free_limits": [
+        { "name": "Published projects", "value": "Unlimited", "period": "ongoing" },
+        { "name": "Custom domains", "value": "Unlimited on Free plan", "period": "ongoing" },
+        { "name": "SubdomainSSL (*.surge.sh)", "value": "Included", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Create an account directly in the terminal via npx surge without a credit card."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Static files only."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open to all developers." },
+    "links": {
+      "official": "https://surge.sh",
+      "signup": "https://surge.sh/help/getting-started-with-surge",
+      "documentation": "https://surge.sh/help/",
+      "pricing": "https://surge.sh/price"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-surge-sh-static-web-publishing", "url": "https://surge.sh", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-surge-sh-static-web-publishing", "field_path": "access.free_limits", "quote": "Surge is free for unlimited publishing and custom domains from the CLI.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "firebase-app-hosting-static",
+      "name": "Firebase Hosting (Free Global CDN, Custom SSL & Preview Channels)",
+      "slug": "firebase-app-hosting-static",
+      "provider": "Google Firebase",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Deployment Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Firebase", "Google Cloud", "CDN", "Static Hosting", "Web Apps", "No Card"]
+    },
+    "description": "Production-grade web content hosting backed by a global SSD CDN with automatic SSL certificates, custom domains, GitHub PR preview channels, and one-click atomic rollbacks.",
+    "access": {
+      "free_limits": [
+        { "name": "SSD CDN Storage", "value": "10 GB", "period": "ongoing" },
+        { "name": "Data transfer", "value": "360 MB/day (~10.8 GB/month)", "period": "daily" },
+        { "name": "Custom domains & SSL", "value": "Multiple sites & domains", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Included on the no-cost Firebase Spark plan without a credit card."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Always free on Spark plan." },
+      "restrictions": ["Dynamic Cloud Run SSR integration requires Blaze plan (which retains free tier quotas)."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Google account required." },
+    "links": {
+      "official": "https://firebase.google.com/docs/hosting",
+      "signup": "https://console.firebase.google.com",
+      "documentation": "https://firebase.google.com/docs/hosting",
+      "pricing": "https://firebase.google.com/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-firebase-app-hosting-static", "url": "https://firebase.google.com/docs/hosting", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-firebase-app-hosting-static", "field_path": "access.free_limits", "quote": "Firebase Hosting Spark plan includes 10 GB storage and 360 MB/day data transfer at no cost.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "aws-amplify-hosting-free",
+      "name": "AWS Amplify Hosting Free Tier (Full-Stack Next.js, SSR & Global CloudFront CDN)",
+      "slug": "aws-amplify-hosting-free",
+      "provider": "Amazon Web Services",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Deployment Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["AWS", "Next.js", "SSR", "CloudFront CDN", "Git Deploy", "Full-Stack"]
+    },
+    "description": "Fully managed CI/CD and global Amazon CloudFront hosting for static websites and server-side rendered (SSR) Next.js, Nuxt, and Astro web applications.",
+    "access": {
+      "free_limits": [
+        { "name": "Build & deploy minutes", "value": "1,000 minutes", "period": "per month (12 months)" },
+        { "name": "CDN data served", "value": "15 GB", "period": "per month (12 months)" },
+        { "name": "Hosting storage", "value": "5 GB", "period": "per month (12 months)" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires AWS Free Tier account."
+      },
+      "validity": { "type": "ongoing", "duration": "12-month AWS Free Tier", "auto_renewal": null },
+      "restrictions": ["Free tier applies for 12 months from AWS account signup."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "AWS Free Tier eligible accounts." },
+    "links": {
+      "official": "https://aws.amazon.com/amplify/pricing/",
+      "signup": "https://portal.aws.amazon.com/billing/signup",
+      "documentation": "https://docs.aws.amazon.com/amplify/",
+      "pricing": "https://aws.amazon.com/amplify/pricing/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-aws-amplify-hosting-free", "url": "https://aws.amazon.com/amplify/pricing/", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-aws-amplify-hosting-free", "field_path": "access.free_limits", "quote": "AWS Amplify Free Tier includes 1,000 build minutes, 5 GB storage, and 15 GB served per month.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "azure-static-web-apps-free",
+      "name": "Azure Static Web Apps Free Plan (100 GB Bandwidth, Integrated Functions & Auth)",
+      "slug": "azure-static-web-apps-free",
+      "provider": "Microsoft Azure",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Deployment Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Azure", "Static Web Apps", "Serverless APIs", "GitHub Actions", "Custom Domains", "SSL"]
+    },
+    "description": "Build and deploy modern React, Angular, Vue, Blazor, and Next.js web apps directly from GitHub or Azure DevOps with integrated Azure Functions APIs, built-in OAuth authentication, and 100 GB bandwidth.",
+    "access": {
+      "free_limits": [
+        { "name": "Bandwidth", "value": "100 GB", "period": "per subscription/month" },
+        { "name": "Custom domains & free SSL", "value": "2 per app", "period": "ongoing" },
+        { "name": "Staging environments", "value": "3 pre-production environments", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires Azure subscription (Free tier resources incur $0 charges)."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Always Free plan." },
+      "restrictions": ["Max 0.5 GB storage per app on the Free plan."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Azure account." },
+    "links": {
+      "official": "https://azure.microsoft.com/en-us/products/app-service/static",
+      "signup": "https://azure.microsoft.com/en-us/free/",
+      "documentation": "https://learn.microsoft.com/en-us/azure/static-web-apps/",
+      "pricing": "https://azure.microsoft.com/en-us/pricing/details/app-service/static/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-azure-static-web-apps-free", "url": "https://azure.microsoft.com/en-us/products/app-service/static", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-azure-static-web-apps-free", "field_path": "access.free_limits", "quote": "Azure Static Web Apps Free plan includes 100 GB bandwidth, free SSL certificates, and integrated API functions.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "digitalocean-app-platform-starter",
+      "name": "DigitalOcean App Platform Starter (3 Free Static Sites with Global CDN)",
+      "slug": "digitalocean-app-platform-starter",
+      "provider": "DigitalOcean",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Deployment Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["DigitalOcean", "Static Sites", "CDN", "Git Deploy", "Automatic HTTPS"]
+    },
+    "description": "Build and deploy up to 3 static websites for free directly from GitHub or GitLab on DigitalOcean App Platform with global Cloudflare-backed CDN, custom domains, and automated TLS.",
+    "access": {
+      "free_limits": [
+        { "name": "Free static sites", "value": "3 apps", "period": "forever" },
+        { "name": "Outbound transfer", "value": "1 GiB per app", "period": "per month" },
+        { "name": "Build minutes", "value": "100 minutes", "period": "per month" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires verified DigitalOcean account."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Free forever for up to 3 static apps." },
+      "restrictions": ["Dynamic container components require Basic ($5/mo) tier."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All DigitalOcean accounts." },
+    "links": {
+      "official": "https://docs.digitalocean.com/products/app-platform/details/pricing/",
+      "signup": "https://cloud.digitalocean.com/registrations/new",
+      "documentation": "https://docs.digitalocean.com/products/app-platform/",
+      "pricing": "https://docs.digitalocean.com/products/app-platform/details/pricing/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-digitalocean-app-platform-starter", "url": "https://docs.digitalocean.com/products/app-platform/details/pricing/", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-digitalocean-app-platform-starter", "field_path": "access.free_limits", "quote": "Starter tier lets you deploy up to 3 static sites for free on DigitalOcean App Platform.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "aws-lambda-always-free-compute",
+      "name": "AWS Lambda Always Free Tier (1M Requests & 400,000 GB-Seconds/Month)",
+      "slug": "aws-lambda-always-free-compute",
+      "provider": "Amazon Web Services",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Serverless Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Serverless", "AWS Lambda", "FaaS", "Event-Driven", "Always Free", "Arm Graviton2"]
+    },
+    "description": "Run code without provisioning or managing servers with an Always Free allowance of 1,000,000 requests and 400,000 GB-seconds of compute time every month for both new and existing AWS accounts.",
+    "access": {
+      "free_limits": [
+        { "name": "Free requests", "value": "1,000,000", "period": "per month (Always Free)" },
+        { "name": "Compute duration", "value": "400,000 GB-seconds", "period": "per month (Always Free)" },
+        { "name": "Response streaming", "value": "100 GB", "period": "per month" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires AWS account; Always Free quota never expires after 12 months."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Resets every calendar month forever." },
+      "restrictions": ["15-minute maximum execution timeout per invocation."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All AWS accounts." },
+    "links": {
+      "official": "https://aws.amazon.com/lambda/pricing/",
+      "signup": "https://portal.aws.amazon.com/billing/signup",
+      "documentation": "https://docs.aws.amazon.com/lambda/",
+      "pricing": "https://aws.amazon.com/lambda/pricing/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-aws-lambda-always-free-compute", "url": "https://aws.amazon.com/lambda/pricing/", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-aws-lambda-always-free-compute", "field_path": "access.free_limits", "quote": "The AWS Lambda free tier includes one million free requests per month and 400,000 GB-seconds of compute time per month.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": true, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "google-cloud-run-always-free",
+      "name": "Google Cloud Run Always Free (2M Requests & Serverless Containers)",
+      "slug": "google-cloud-run-always-free",
+      "provider": "Google Cloud",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Serverless Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Google Cloud", "Cloud Run", "Serverless Containers", "Docker", "Scale-to-Zero", "Always Free"]
+    },
+    "description": "Deploy any stateless Docker container, web app, REST/gRPC API, or background worker on Google's infrastructure with scale-to-zero billing and 2 million free requests every month.",
+    "access": {
+      "free_limits": [
+        { "name": "Free requests", "value": "2,000,000", "period": "per month (Always Free)" },
+        { "name": "vCPU compute", "value": "180,000 vCPU-seconds", "period": "per month" },
+        { "name": "Memory allocation", "value": "360,000 GiB-seconds", "period": "per month" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires Google Cloud billing account; Always Free usage is deducted automatically."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Resets monthly." },
+      "restrictions": ["1 GiB free North America outbound data transfer per month."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All Google Cloud accounts." },
+    "links": {
+      "official": "https://cloud.google.com/run/pricing",
+      "signup": "https://console.cloud.google.com/freetrial",
+      "documentation": "https://cloud.google.com/run/docs",
+      "pricing": "https://cloud.google.com/run/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-google-cloud-run-always-free", "url": "https://cloud.google.com/run/pricing", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-google-cloud-run-always-free", "field_path": "access.free_limits", "quote": "Cloud Run Always Free tier includes 2 million requests, 180,000 vCPU-seconds, and 360,000 GiB-seconds per month.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": true, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "deno-deploy-edge-serverless",
+      "name": "Deno Deploy Free Tier (Global V8 Isolate Edge Functions & Deno KV)",
+      "slug": "deno-deploy-edge-serverless",
+      "provider": "Deno Land",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Serverless Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Deno", "TypeScript", "Edge Compute", "V8 Isolates", "Serverless", "No Card"]
+    },
+    "description": "Globally distributed serverless JavaScript, TypeScript, and WebAssembly runtime running across 35+ edge regions with zero cold starts, built-in Deno KV, and 100,000 free requests per day.",
+    "access": {
+      "free_limits": [
+        { "name": "Requests", "value": "100,000 / day (~3M / month)", "period": "daily" },
+        { "name": "Outbound bandwidth", "value": "100 GiB", "period": "per month" },
+        { "name": "Deno KV storage", "value": "1 GiB included", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Sign in with GitHub without a credit card."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Resets daily/monthly." },
+      "restrictions": ["50ms CPU time per request on Free plan."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All developers." },
+    "links": {
+      "official": "https://deno.com/deploy/pricing",
+      "signup": "https://dash.deno.com",
+      "documentation": "https://docs.deno.com/deploy/manual/",
+      "pricing": "https://deno.com/deploy/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-deno-deploy-edge-serverless", "url": "https://deno.com/deploy/pricing", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-deno-deploy-edge-serverless", "field_path": "access.free_limits", "quote": "Deno Deploy Free includes 100,000 requests per day and 100 GiB outbound data transfer per month.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "vercel-functions-edge-middleware",
+      "name": "Vercel Functions & Fluid Compute (1M Free Serverless Invocations/Month)",
+      "slug": "vercel-functions-edge-middleware",
+      "provider": "Vercel",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Serverless Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Vercel", "Serverless Functions", "Edge Middleware", "Node.js", "Python", "Rust"]
+    },
+    "description": "Run Node.js, Python, Go, Ruby, and Rust serverless API routes, Cron Jobs, and Edge Middleware with in-function concurrency on Vercel Fluid Compute.",
+    "access": {
+      "free_limits": [
+        { "name": "Function invocations", "value": "1,000,000", "period": "per month" },
+        { "name": "Active CPU / GB-hours", "value": "100 GB-hours", "period": "per month" },
+        { "name": "Edge Middleware invocations", "value": "1,000,000", "period": "per month" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Included in Vercel Hobby with no credit card."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Resets monthly." },
+      "restrictions": ["Non-commercial personal use on Hobby plan."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Vercel Hobby accounts." },
+    "links": {
+      "official": "https://vercel.com/docs/functions",
+      "signup": "https://vercel.com/signup",
+      "documentation": "https://vercel.com/docs/functions",
+      "pricing": "https://vercel.com/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-vercel-functions-edge-middleware", "url": "https://vercel.com/docs/functions", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-vercel-functions-edge-middleware", "field_path": "access.free_limits", "quote": "Vercel Hobby includes 1,000,000 Function Invocations and 100 GB-Hours per month.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "supabase-edge-functions-deno",
+      "name": "Supabase Edge Functions (500K Free Global Deno TypeScript Invocations)",
+      "slug": "supabase-edge-functions-deno",
+      "provider": "Supabase",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Serverless Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Supabase", "Edge Functions", "Deno", "TypeScript", "Webhooks", "No Card"]
+    },
+    "description": "Server-side TypeScript edge functions distributed globally close to users for Stripe webhooks, AI streaming endpoints, and custom business logic integrated with Supabase Auth and Postgres.",
+    "access": {
+      "free_limits": [
+        { "name": "Edge Function invocations", "value": "500,000", "period": "per month" },
+        { "name": "Deployments", "value": "Unlimited", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Included in Supabase Free Plan without a credit card."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Resets monthly." },
+      "restrictions": ["150-second wall clock limit and 2s CPU time per invocation."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All Supabase accounts." },
+    "links": {
+      "official": "https://supabase.com/docs/guides/functions",
+      "signup": "https://supabase.com/dashboard",
+      "documentation": "https://supabase.com/docs/guides/functions",
+      "pricing": "https://supabase.com/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-supabase-edge-functions-deno", "url": "https://supabase.com/docs/guides/functions", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-supabase-edge-functions-deno", "field_path": "access.free_limits", "quote": "Supabase Free Plan includes 500,000 Edge Function invocations per month.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "azure-functions-consumption-free",
+      "name": "Azure Functions Consumption Plan (1M Free Executions & 400,000 GB-s/Month)",
+      "slug": "azure-functions-consumption-free",
+      "provider": "Microsoft Azure",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Serverless Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Azure", "Serverless", "FaaS", "C#", "TypeScript", "Python"]
+    },
+    "description": "Event-driven serverless compute platform supporting C#, TypeScript/Node.js, Python, Java, and PowerShell with an Always Free grant of 1 million executions per month.",
+    "access": {
+      "free_limits": [
+        { "name": "Free executions", "value": "1,000,000", "period": "per month (Always Free)" },
+        { "name": "Resource consumption", "value": "400,000 GB-s", "period": "per month (Always Free)" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires Azure subscription."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Resets monthly forever." },
+      "restrictions": ["Applies to Consumption and Flex Consumption plans."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All Azure subscriptions." },
+    "links": {
+      "official": "https://azure.microsoft.com/en-us/pricing/details/functions/",
+      "signup": "https://azure.microsoft.com/en-us/free/",
+      "documentation": "https://learn.microsoft.com/en-us/azure/azure-functions/",
+      "pricing": "https://azure.microsoft.com/en-us/pricing/details/functions/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-azure-functions-consumption-free", "url": "https://azure.microsoft.com/en-us/pricing/details/functions/", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-azure-functions-consumption-free", "field_path": "access.free_limits", "quote": "Azure Functions Consumption plan includes a monthly free grant of 1 million requests and 400,000 GB-s.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "google-cloud-functions-free",
+      "name": "Google Cloud Run Functions Always Free (2M Invocations & 400K GB-s/Month)",
+      "slug": "google-cloud-functions-free",
+      "provider": "Google Cloud",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Serverless Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Google Cloud", "FaaS", "Serverless", "Node.js", "Python", "Go"]
+    },
+    "description": "Write single-purpose event-driven functions in Node.js, Python, Go, Java, .NET, Ruby, and PHP triggered by HTTP, Pub/Sub, Cloud Storage, or Firestore events with 2 million free invocations monthly.",
+    "access": {
+      "free_limits": [
+        { "name": "Invocations", "value": "2,000,000", "period": "per month (Always Free)" },
+        { "name": "Compute time", "value": "400,000 GB-seconds & 200,000 GHz-seconds", "period": "per month" },
+        { "name": "Outbound data", "value": "5 GB", "period": "per month" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires Google Cloud billing account."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Resets monthly." },
+      "restrictions": ["Requires Cloud Build API enabled for 2nd gen deployments."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All Google Cloud accounts." },
+    "links": {
+      "official": "https://cloud.google.com/functions/pricing",
+      "signup": "https://console.cloud.google.com/freetrial",
+      "documentation": "https://cloud.google.com/functions/docs",
+      "pricing": "https://cloud.google.com/functions/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-google-cloud-functions-free", "url": "https://cloud.google.com/functions/pricing", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-google-cloud-functions-free", "field_path": "access.free_limits", "quote": "Cloud Run functions provides a perpetual free tier of 2 million invocations per month.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "val-town-social-serverless-js",
+      "name": "Val Town Free Tier (Instant Browser-Based TypeScript/Deno Serverless Vals)",
+      "slug": "val-town-social-serverless-js",
+      "provider": "Val Town",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Serverless Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Serverless", "TypeScript", "Deno", "Cron Jobs", "Webhooks", "No Card"]
+    },
+    "description": "Social cloud scripting platform to write and deploy TypeScript/JavaScript HTTP endpoints, scheduled cron jobs, email handlers, and SQLite-backed apps in seconds with zero setup.",
+    "access": {
+      "free_limits": [
+        { "name": "Public & private vals", "value": "Unlimited", "period": "ongoing" },
+        { "name": "HTTP requests", "value": "100,000", "period": "per month" },
+        { "name": "SQLite & blob storage", "value": "10 MB included", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free forever plan with no credit card required."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Resets monthly." },
+      "restrictions": ["Free cron jobs run up to once per day (Pro runs every minute)."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All developers." },
+    "links": {
+      "official": "https://www.val.town/pricing",
+      "signup": "https://www.val.town/auth/signup",
+      "documentation": "https://docs.val.town",
+      "pricing": "https://www.val.town/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-val-town-social-serverless-js", "url": "https://www.val.town/pricing", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-val-town-social-serverless-js", "field_path": "access.free_limits", "quote": "Val Town Free includes unlimited public and private vals and 100,000 runs/month.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "fastly-compute-serverless-edge",
+      "name": "Fastly Developer Free Trial ($50/Month Free CDN & WebAssembly Edge Compute)",
+      "slug": "fastly-compute-serverless-edge",
+      "provider": "Fastly",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Serverless Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Fastly", "Edge Compute", "WebAssembly", "CDN", "Rust", "JavaScript"]
+    },
+    "description": "Test and run Fastly CDN and Fastly Compute (WebAssembly serverless edge functions in Rust, Go, and JavaScript) with up to $50/month of free traffic.",
+    "access": {
+      "free_limits": [
+        { "name": "Monthly traffic credit", "value": "Up to $50 worth of traffic", "period": "per month" },
+        { "name": "Fastly Compute Wasm edge", "value": "Included", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required to start testing on Fastly."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Resets monthly." },
+      "restrictions": ["Account pauses if monthly usage exceeds the $50 free developer allowance."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All developers." },
+    "links": {
+      "official": "https://www.fastly.com/pricing",
+      "signup": "https://manage.fastly.com/signup",
+      "documentation": "https://www.fastly.com/documentation/",
+      "pricing": "https://www.fastly.com/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-fastly-compute-serverless-edge", "url": "https://www.fastly.com/pricing", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-fastly-compute-serverless-edge", "field_path": "access.free_limits", "quote": "Get started free with up to $50 of traffic per month on Fastly.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "openfaas-knative-serverless-k8s",
+      "name": "OpenFaaS Community Edition (Open-Source Serverless Functions on Kubernetes)",
+      "slug": "openfaas-knative-serverless-k8s",
+      "provider": "OpenFaaS",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Serverless Platforms",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["OpenFaaS", "Serverless", "Kubernetes", "Docker", "FaaS", "Open Source"]
+    },
+    "description": "Open-source serverless framework (`faas-netes` and `faasd`) that makes it easy to deploy event-driven functions and microservices to Kubernetes or a single Linux VM using Docker containers.",
+    "access": {
+      "free_limits": [
+        { "name": "Self-hosted OpenFaaS CE / faasd", "value": "Unlimited functions", "period": "forever" },
+        { "name": "Prometheus auto-scaling", "value": "Included", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "MIT-licensed open-source software."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Community Edition supports up to 15-minute timeouts and basic scaling."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://www.openfaas.com",
+      "signup": null,
+      "documentation": "https://docs.openfaas.com",
+      "pricing": "https://www.openfaas.com/pricing/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-openfaas-knative-serverless-k8s", "url": "https://www.openfaas.com", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-openfaas-knative-serverless-k8s", "field_path": "access.free_limits", "quote": "OpenFaaS makes it simple to deploy functions and microservices to Kubernetes or a single VM with faasd.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "modal-serverless-cloud-gpu-cpu",
+      "name": "Modal Starter Plan ($30/Month Free Serverless Containers, Cron & GPU Cloud)",
+      "slug": "modal-serverless-cloud-gpu-cpu",
+      "provider": "Modal Labs",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Serverless Platforms",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Serverless", "Containers", "Python", "GPU Cloud", "Sub-Second Cold Start", "Web Endpoints"]
+    },
+    "description": "Run serverless Python containers, web endpoints, scheduled cron jobs, and sub-second cold-start CPU/GPU workloads in the cloud without writing Dockerfiles or YAML.",
+    "access": {
+      "free_limits": [
+        { "name": "Monthly compute credits", "value": "$30 / month", "period": "monthly" },
+        { "name": "Concurrent containers", "value": "Up to 100 CPU / 10 GPU", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Starter plan gives $30/mo free compute credits after payment method verification."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "$30 free compute credit refreshes every month." },
+      "restrictions": ["Usage beyond $30/month is billed per second."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All developers on Starter plan." },
+    "links": {
+      "official": "https://modal.com/pricing",
+      "signup": "https://modal.com/signup",
+      "documentation": "https://modal.com/docs",
+      "pricing": "https://modal.com/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-modal-serverless-cloud-gpu-cpu", "url": "https://modal.com/pricing", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-modal-serverless-cloud-gpu-cpu", "field_path": "access.free_limits", "quote": "Modal Starter includes $30/month of free compute credits.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "aws-free-tier-cloud-credits",
+      "name": "Amazon Web Services (AWS) Free Tier (Up to $200 Credits + 30+ Always Free Services)",
+      "slug": "aws-free-tier-cloud-credits",
+      "provider": "Amazon Web Services",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Cloud Credits",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["AWS", "Cloud Credits", "EC2", "S3", "Lambda", "CloudFront"]
+    },
+    "description": "Comprehensive cloud infrastructure program offering up to $200 in AWS Free Tier credits for new accounts alongside 30+ Always Free monthly allowances including CloudFront (1 TB/mo), Lambda (1M reqs/mo), and DynamoDB (25 GB).",
+    "access": {
+      "free_limits": [
+        { "name": "New account AWS credits", "value": "Up to $200", "period": "6-12 months" },
+        { "name": "Amazon CloudFront CDN", "value": "1 TB data transfer out", "period": "per month (Always Free)" },
+        { "name": "AWS Lambda & DynamoDB", "value": "1M requests & 25 GB storage", "period": "per month (Always Free)" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires payment method for AWS account identity verification; Free Plan prevents accidental overages."
+      },
+      "validity": { "type": "ongoing", "duration": "Up to $200 credits + permanent Always Free services", "auto_renewal": "Always Free services renew monthly." },
+      "restrictions": ["Free Plan accounts automatically pause if credit is exhausted unless upgraded to Paid Plan."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "New AWS accounts (Always Free applies to all accounts)." },
+    "links": {
+      "official": "https://aws.amazon.com/free/",
+      "signup": "https://portal.aws.amazon.com/billing/signup",
+      "documentation": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-free-tier.html",
+      "pricing": "https://aws.amazon.com/free/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-aws-free-tier-cloud-credits", "url": "https://aws.amazon.com/free/", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-aws-free-tier-cloud-credits", "field_path": "access.free_limits", "quote": "Gain free, hands-on experience with the AWS platform, products, and services with up to $200 in credits and Always Free monthly limits.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": true, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "google-cloud-free-program-300",
+      "name": "Google Cloud Free Program ($300 Free Credits + 20+ Always Free Products)",
+      "slug": "google-cloud-free-program-300",
+      "provider": "Google Cloud",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Cloud Credits",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Google Cloud", "GCP", "Cloud Credits", "Compute Engine", "Cloud Run", "BigQuery"]
+    },
+    "description": "New customers receive $300 in free Google Cloud credits for 90 days to run any GCP service, plus permanent Always Free usage limits on Compute Engine (e2-micro), Cloud Run, Cloud Storage, and BigQuery.",
+    "access": {
+      "free_limits": [
+        { "name": "Free trial cloud credit", "value": "$300", "period": "for 90 days" },
+        { "name": "Always Free products", "value": "20+ services (e2-micro VM, Cloud Run, 1 TB BigQuery)", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires card verification; never auto-charges when $300 credit expires unless manually upgraded."
+      },
+      "validity": { "type": "ongoing", "duration": "90-day $300 credit + ongoing Always Free tier", "auto_renewal": "No automatic charge after trial ends." },
+      "restrictions": ["GPU quotas and crypto mining are restricted during free trial."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "New Google Cloud customers." },
+    "links": {
+      "official": "https://cloud.google.com/free",
+      "signup": "https://console.cloud.google.com/freetrial",
+      "documentation": "https://cloud.google.com/free/docs/free-cloud-features",
+      "pricing": "https://cloud.google.com/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-google-cloud-free-program-300", "url": "https://cloud.google.com/free", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-google-cloud-free-program-300", "field_path": "access.free_limits", "quote": "New customers get $300 in free credits to run, test, and deploy workloads plus 20+ Always Free products.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": true, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "microsoft-azure-free-account-200",
+      "name": "Microsoft Azure Free Account ($200 Credit + 12 Months Free VMs + 55+ Free Services)",
+      "slug": "microsoft-azure-free-account-200",
+      "provider": "Microsoft Azure",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Cloud Credits",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Azure", "Cloud Credits", "Linux VM", "Windows VM", "AKS", "App Service"]
+    },
+    "description": "Start on Microsoft Azure with a $200 credit for 30 days, 12 months of popular free services (750 hrs/mo B1s Linux and Windows VMs, 5 GB Blob Storage), and 55+ Always Free cloud services.",
+    "access": {
+      "free_limits": [
+        { "name": "Starting cloud credit", "value": "$200", "period": "for 30 days" },
+        { "name": "B1s Linux & Windows VMs", "value": "750 hours each", "period": "per month for 12 months" },
+        { "name": "Always Free services", "value": "55+ services (Functions, App Service, Cosmos DB)", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Credit card required for identity verification; no charges unless you upgrade to pay-as-you-go."
+      },
+      "validity": { "type": "ongoing", "duration": "30-day credit + 12-month free VMs + Always Free tier", "auto_renewal": "Does not auto-charge." },
+      "restrictions": ["One Azure Free Account per new customer."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "New Azure users." },
+    "links": {
+      "official": "https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account",
+      "signup": "https://azure.microsoft.com/en-us/free/",
+      "documentation": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/create-free-services",
+      "pricing": "https://azure.microsoft.com/en-us/pricing/free-services/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-microsoft-azure-free-account-200", "url": "https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-microsoft-azure-free-account-200", "field_path": "access.free_limits", "quote": "Get $200 credit to use in your first 30 days, plus free amounts of popular services for 12 months and 55+ always-free services.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": true, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "digitalocean-200-free-cloud-credit",
+      "name": "DigitalOcean Free Trial ($200 Cloud Credit for 60 Days across Droplets & K8s)",
+      "slug": "digitalocean-200-free-cloud-credit",
+      "provider": "DigitalOcean",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Cloud Credits",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_trial",
+      "tags": ["DigitalOcean", "Droplets", "VPS", "Kubernetes", "Cloud Credits", "Spaces S3"]
+    },
+    "description": "Receive $200 in free infrastructure credit for 60 days to spin up Linux Droplets, Managed Kubernetes (DOKS), App Platform containers, Managed Databases, and Spaces Object Storage.",
+    "access": {
+      "free_limits": [
+        { "name": "Promotional Cloud Credit", "value": "$200", "period": "for 60 days" },
+        { "name": "Cloud Firewall & DNS management", "value": "Free forever", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Valid credit card or PayPal required for signup verification."
+      },
+      "validity": { "type": "trial_period", "duration": "60 days ($200 credit)", "auto_renewal": "Active droplets continue billing after 60 days unless destroyed." },
+      "restrictions": ["New DigitalOcean customers only."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "New DigitalOcean accounts." },
+    "links": {
+      "official": "https://www.digitalocean.com/try/free-trial-offer",
+      "signup": "https://cloud.digitalocean.com/registrations/new",
+      "documentation": "https://docs.digitalocean.com",
+      "pricing": "https://www.digitalocean.com/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-digitalocean-200-free-cloud-credit", "url": "https://www.digitalocean.com/try/free-trial-offer", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-digitalocean-200-free-cloud-credit", "field_path": "access.free_limits", "quote": "Sign up today and get $200 in credit for 60 days to test DigitalOcean cloud products.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "linode-akamai-cloud-free-credit",
+      "name": "Akamai Connected Cloud / Linode ($100 Free Cloud Compute & LKE Kubernetes Credit)",
+      "slug": "linode-akamai-cloud-free-credit",
+      "provider": "Akamai (Linode)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Cloud Credits",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_trial",
+      "tags": ["Linode", "Akamai", "VPS", "Linux", "Kubernetes", "Cloud Credits"]
+    },
+    "description": "Deploy shared or dedicated Linux VMs, Linode Kubernetes Engine (LKE) control planes (free control plane), and S3 Object Storage with $100 in 60-day new-account promotional cloud credits.",
+    "access": {
+      "free_limits": [
+        { "name": "Promotional credit", "value": "$100", "period": "for 60 days" },
+        { "name": "LKE Kubernetes Control Plane", "value": "Free", "period": "ongoing" },
+        { "name": "Cloud Firewall & DNS Manager", "value": "Free", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires valid payment method for account verification."
+      },
+      "validity": { "type": "trial_period", "duration": "60 days ($100 credit)", "auto_renewal": "Standard hourly billing after credit expires." },
+      "restrictions": ["New Linode / Akamai Cloud customers only."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "New accounts." },
+    "links": {
+      "official": "https://techdocs.akamai.com/cloud-computing/docs/getting-started",
+      "signup": "https://login.linode.com/signup",
+      "documentation": "https://techdocs.akamai.com/cloud-computing/docs/getting-started",
+      "pricing": "https://techdocs.akamai.com/cloud-computing/docs/billing-and-payments"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-linode-akamai-cloud-free-credit", "url": "https://techdocs.akamai.com/cloud-computing/docs/getting-started", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-linode-akamai-cloud-free-credit", "field_path": "access.free_limits", "quote": "Akamai Connected Cloud (Linode) provides promotional credits for new accounts alongside free Cloud Firewalls and LKE control planes.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "vultr-free-tier-cloud-credit",
+      "name": "Vultr Free Tier Program & Cloud Compute Credits (Global Cloud Compute & VKE)",
+      "slug": "vultr-free-tier-cloud-credit",
+      "provider": "Vultr",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Cloud Credits",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Vultr", "Cloud Compute", "VPS", "Kubernetes", "DNS", "Cloud Credits"]
+    },
+    "description": "Global cloud platform across 32+ data centers offering the Vultr Free Tier Cloud Compute micro-instance program, free Vultr Kubernetes Engine (VKE) control plane, free DNS hosting, and new-user promo credits.",
+    "access": {
+      "free_limits": [
+        { "name": "Vultr Free Tier VM", "value": "1 vCPU, 0.5 GB RAM, 10 GB disk (eligible applicants)", "period": "ongoing" },
+        { "name": "VKE Kubernetes Control Plane", "value": "Free", "period": "ongoing" },
+        { "name": "Authoritative DNS & Firewall", "value": "Free", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires credit card and 2FA enabled for Free Tier program."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Free Tier instance allocation is subject to weighted lottery/approval."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Verified account with 2FA." },
+    "links": {
+      "official": "https://github.com/vultr",
+      "signup": null,
+      "documentation": "https://github.com/vultr/vultr-cli",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-vultr-free-tier-cloud-credit", "url": "https://github.com/vultr", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-vultr-free-tier-cloud-credit", "field_path": "access.free_limits", "quote": "Vultr provides cloud compute, free VKE Kubernetes control planes, and open-source CLI/Terraform tooling.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "hetzner-cloud-infrastructure",
+      "name": "Hetzner Cloud (Free Cloud Firewalls, Private Networks, DNS Console & Referral Credits)",
+      "slug": "hetzner-cloud-infrastructure",
+      "provider": "Hetzner",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Cloud Credits",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Hetzner", "VPS", "Arm64", "Cloud Firewall", "DNS", "European Cloud"]
+    },
+    "description": "High-performance European and US cloud provider offering €20 starting cloud credits via community referrals plus completely free Authoritative DNS Console, Cloud Firewalls, Private Networks, and Placement Groups.",
+    "access": {
+      "free_limits": [
+        { "name": "Hetzner DNS Console", "value": "Up to 100 zones free", "period": "ongoing" },
+        { "name": "Cloud Firewalls & Private VPC Networks", "value": "Free", "period": "ongoing" },
+        { "name": "Included server traffic", "value": "20 TB / month on EU nodes", "period": "monthly" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "DNS Console is free; Cloud VMs require payment verification."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Cloud VM instances are billed hourly unless covered by €20 referral credit."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All developers." },
+    "links": {
+      "official": "https://www.hetzner.com/cloud/",
+      "signup": "https://accounts.hetzner.com/signUp",
+      "documentation": "https://docs.hetzner.com/cloud/",
+      "pricing": "https://www.hetzner.com/cloud/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-hetzner-cloud-infrastructure", "url": "https://www.hetzner.com/cloud/", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-hetzner-cloud-infrastructure", "field_path": "access.free_limits", "quote": "Hetzner Cloud includes free Cloud Firewalls, Private Networks, and DDoS protection.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "ovhcloud-free-cloud-credit",
+      "name": "OVHcloud Public Cloud Free Trial ($200 Cloud Credit + Free Managed K8s Control Plane)",
+      "slug": "ovhcloud-free-cloud-credit",
+      "provider": "OVHcloud",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Cloud Credits",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_trial",
+      "tags": ["OVHcloud", "Public Cloud", "Kubernetes", "OpenStack", "Cloud Credits", "VPS"]
+    },
+    "description": "OpenStack-powered public cloud offering $200 in free cloud credits for new accounts plus a permanently free CNCF-certified Managed Kubernetes Service (MKS) control plane and anti-DDoS protection.",
+    "access": {
+      "free_limits": [
+        { "name": "Public Cloud trial voucher", "value": "$200", "period": "for 30 days" },
+        { "name": "Managed Kubernetes Control Plane", "value": "Free forever", "period": "ongoing" },
+        { "name": "Private vRack network & Anti-DDoS", "value": "Included free", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires verified OVHcloud account."
+      },
+      "validity": { "type": "trial_period", "duration": "30-day $200 credit + ongoing free K8s control plane", "auto_renewal": "Pay-as-you-go after voucher." },
+      "restrictions": ["Trial credit valid for 30 days on Public Cloud resources."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "New OVHcloud Public Cloud users." },
+    "links": {
+      "official": "https://us.ovhcloud.com/public-cloud/free-trial/",
+      "signup": "https://us.ovhcloud.com/auth/signup/",
+      "documentation": "https://help.ovhcloud.com/csm/en-public-cloud-getting-started",
+      "pricing": "https://us.ovhcloud.com/public-cloud/prices/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-ovhcloud-free-cloud-credit", "url": "https://us.ovhcloud.com/public-cloud/free-trial/", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-ovhcloud-free-cloud-credit", "field_path": "access.free_limits", "quote": "Get $200 in free Public Cloud credits to test OVHcloud compute, storage, and Managed Kubernetes.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "scaleway-stardust-free-cloud",
+      "name": "Scaleway Cloud Free Allowances (75 GB S3 Storage, Serverless Containers & Kapsule K8s)",
+      "slug": "scaleway-stardust-free-cloud",
+      "provider": "Scaleway",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Cloud Credits",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Scaleway", "Serverless", "Object Storage", "Kubernetes", "European Cloud"]
+    },
+    "description": "European cloud platform providing ongoing monthly free tiers for Object Storage (75 GB), Glacier Cold Storage (75 GB), Serverless Functions (1M requests), Serverless Containers, and free Kubernetes Kapsule control plane.",
+    "access": {
+      "free_limits": [
+        { "name": "S3 Object Storage & Glacier", "value": "75 GB Standard + 75 GB Glacier", "period": "per month" },
+        { "name": "Serverless Functions", "value": "1M requests & 400,000 GB-s", "period": "per month" },
+        { "name": "Serverless Containers", "value": "2M requests & 400,000 GB-s", "period": "per month" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires verified Scaleway account."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Resets every month." },
+      "restrictions": ["Transfer above 75 GB/month is billed per GB."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All Scaleway accounts." },
+    "links": {
+      "official": "https://www.scaleway.com/en/pricing/",
+      "signup": "https://console.scaleway.com/register",
+      "documentation": "https://www.scaleway.com/en/docs/",
+      "pricing": "https://www.scaleway.com/en/pricing/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-scaleway-stardust-free-cloud", "url": "https://www.scaleway.com/en/pricing/", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-scaleway-stardust-free-cloud", "field_path": "access.free_limits", "quote": "Scaleway includes 75 GB free Object Storage and monthly free allowances for Serverless Functions and Containers.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "ibm-cloud-free-tier-lite",
+      "name": "IBM Cloud Free Tier ($200 Credit + 40+ Always Free Lite Plan Services)",
+      "slug": "ibm-cloud-free-tier-lite",
+      "provider": "IBM Cloud",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Cloud Credits",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["IBM Cloud", "Cloud Credits", "Code Engine", "Object Storage", "Always Free"]
+    },
+    "description": "Access over 40 Always Free Lite plan cloud products that never expire—including IBM Cloud Object Storage (25 GB), Code Engine serverless containers (100,000 vCPU-seconds/mo), and $200 new-account credit.",
+    "access": {
+      "free_limits": [
+        { "name": "New account credit", "value": "$200", "period": "for 30 days" },
+        { "name": "Code Engine serverless", "value": "100,000 vCPU-s & 200,000 GB-s", "period": "per month (Always Free)" },
+        { "name": "Cloud Object Storage Lite", "value": "25 GB", "period": "per month (Always Free)" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires identity verification."
+      },
+      "validity": { "type": "ongoing", "duration": "30-day $200 credit + ongoing Lite services", "auto_renewal": "Lite plans never expire." },
+      "restrictions": ["Inactive Lite instances may be paused after 30 days of zero activity."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All IBM Cloud users." },
+    "links": {
+      "official": "https://www.ibm.com/cloud/free",
+      "signup": "https://cloud.ibm.com/registration",
+      "documentation": "https://cloud.ibm.com/docs",
+      "pricing": "https://www.ibm.com/cloud/free"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-ibm-cloud-free-tier-lite", "url": "https://www.ibm.com/cloud/free", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-ibm-cloud-free-tier-lite", "field_path": "access.free_limits", "quote": "Get $200 credit for 30 days and over 40 always-free Lite plan products on IBM Cloud.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "alibaba-cloud-free-trial-tier",
+      "name": "Alibaba Cloud Free Trial & Always Free (50+ Cloud Products & Function Compute)",
+      "slug": "alibaba-cloud-free-trial-tier",
+      "provider": "Alibaba Cloud",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Cloud Credits",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Alibaba Cloud", "ECS", "Function Compute", "OSS Storage", "Asia Cloud"]
+    },
+    "description": "Explore 50+ free trial and Always Free cloud products on Alibaba Cloud, including Elastic Compute Service (ECS) trials, Function Compute monthly free invocations, and Object Storage Service (OSS).",
+    "access": {
+      "free_limits": [
+        { "name": "ECS Cloud Server trial", "value": "Up to 3 months free on eligible instances", "period": "trial" },
+        { "name": "Function Compute", "value": "Monthly free trial/tier quota", "period": "monthly" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires verified Alibaba Cloud account."
+      },
+      "validity": { "type": "ongoing", "duration": "1-12 months per product + Always Free products", "auto_renewal": null },
+      "restrictions": ["ECS trial available to new ECS users."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Verified Alibaba Cloud account." },
+    "links": {
+      "official": "https://www.alibabacloud.com/free",
+      "signup": "https://account.alibabacloud.com/register/intl_register.htm",
+      "documentation": "https://www.alibabacloud.com/help",
+      "pricing": "https://www.alibabacloud.com/free"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-alibaba-cloud-free-trial-tier", "url": "https://www.alibabacloud.com/free", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-alibaba-cloud-free-trial-tier", "field_path": "access.free_limits", "quote": "Alibaba Cloud Free Tier offers over 50 free cloud products including ECS compute and Function Compute.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "upcloud-free-cloud-trial",
+      "name": "UpCloud Developer Cloud Trial & Free Managed Kubernetes Control Plane",
+      "slug": "upcloud-free-cloud-trial",
+      "provider": "UpCloud",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Cloud Credits",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_trial",
+      "tags": ["UpCloud", "MaxIOPS", "European Cloud", "Kubernetes", "Terraform", "VPS"]
+    },
+    "description": "High-performance European cloud infrastructure featuring MaxIOPS block storage, free UpCloud Kubernetes Service (UKS) control planes for clusters, and new-account free trial credits.",
+    "access": {
+      "free_limits": [
+        { "name": "Free trial credit", "value": "€25+", "period": "trial period" },
+        { "name": "SDN Private Networks & Firewall", "value": "Included", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires payment method verification."
+      },
+      "validity": { "type": "trial_period", "duration": "7-30 day trial credit", "auto_renewal": "Hourly billing after trial." },
+      "restrictions": ["New UpCloud accounts only."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "New UpCloud users." },
+    "links": {
+      "official": "https://developers.upcloud.com",
+      "signup": null,
+      "documentation": "https://developers.upcloud.com",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-upcloud-free-cloud-trial", "url": "https://developers.upcloud.com", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-upcloud-free-cloud-trial", "field_path": "access.free_limits", "quote": "UpCloud provides high-IOPS cloud servers, Terraform providers, and developer trial credits.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "google-compute-engine-e2-micro",
+      "name": "Google Compute Engine Always Free e2-micro Linux VM (30 GB Disk Included)",
+      "slug": "google-compute-engine-e2-micro",
+      "provider": "Google Cloud",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "VPS & Hosting",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["VPS", "Linux VM", "Google Cloud", "Compute Engine", "Always Free", "e2-micro"]
+    },
+    "description": "Run 1 non-preemptible `e2-micro` Linux virtual machine instance continuously every month at no cost in eligible US regions (`us-west1`, `us-central1`, `us-east1`) with 30 GB of standard persistent disk.",
+    "access": {
+      "free_limits": [
+        { "name": "e2-micro VM instance", "value": "1 instance / month (2 shared vCPUs, 1 GB RAM)", "period": "ongoing (Always Free)" },
+        { "name": "Standard Persistent Disk", "value": "30 GB", "period": "per month" },
+        { "name": "Outbound data transfer", "value": "1 GB from North America", "period": "per month" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires verified Google Cloud billing account."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Always Free every month." },
+      "restrictions": ["Must be provisioned in us-west1, us-central1, or us-east1 with Standard Persistent Disk (`pd-standard`)."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All Google Cloud accounts." },
+    "links": {
+      "official": "https://cloud.google.com/free/docs/free-cloud-features",
+      "signup": "https://console.cloud.google.com/freetrial",
+      "documentation": "https://cloud.google.com/free/docs/free-cloud-features#compute",
+      "pricing": "https://cloud.google.com/compute/all-pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-google-compute-engine-e2-micro", "url": "https://cloud.google.com/free/docs/free-cloud-features", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-google-compute-engine-e2-micro", "field_path": "access.free_limits", "quote": "Compute Engine Always Free includes 1 non-preemptible e2-micro VM instance per month and 30 GB-months of standard persistent disk.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": true, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "aws-ec2-t2-t3-micro-free",
+      "name": "Amazon EC2 Free Tier (750 Hours/Month Linux & Windows t2.micro / t3.micro VMs)",
+      "slug": "aws-ec2-t2-t3-micro-free",
+      "provider": "Amazon Web Services",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "VPS & Hosting",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["AWS EC2", "VPS", "Linux VM", "Windows Server", "Cloud Server", "EBS"]
+    },
+    "description": "Provision resizable Linux, Ubuntu, Debian, or Windows Server virtual machines in the cloud with 750 hours per month of t2.micro or t3.micro compute and 30 GB of Amazon EBS SSD storage for 12 months.",
+    "access": {
+      "free_limits": [
+        { "name": "Linux t2.micro / t3.micro", "value": "750 hours", "period": "per month (12 months)" },
+        { "name": "Windows t2.micro / t3.micro", "value": "750 hours", "period": "per month (12 months)" },
+        { "name": "Amazon EBS storage", "value": "30 GB General Purpose SSD (gp2/gp3)", "period": "per month" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires AWS Free Tier account."
+      },
+      "validity": { "type": "ongoing", "duration": "12 months from AWS signup", "auto_renewal": null },
+      "restrictions": ["Applies to t2.micro or t3.micro instance types depending on region."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "New AWS accounts." },
+    "links": {
+      "official": "https://aws.amazon.com/ec2/pricing/",
+      "signup": "https://portal.aws.amazon.com/billing/signup",
+      "documentation": "https://docs.aws.amazon.com/ec2/",
+      "pricing": "https://aws.amazon.com/ec2/pricing/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-aws-ec2-t2-t3-micro-free", "url": "https://aws.amazon.com/ec2/pricing/", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-aws-ec2-t2-t3-micro-free", "field_path": "access.free_limits", "quote": "AWS Free Tier includes 750 hours of Linux and Windows t2.micro or t3.micro instances each month for one year.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "pythonanywhere-beginner-free-hosting",
+      "name": "PythonAnywhere Beginner Free Plan (Django, Flask & FastAPI Cloud Hosting)",
+      "slug": "pythonanywhere-beginner-free-hosting",
+      "provider": "PythonAnywhere (Anaconda)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "VPS & Hosting",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Python", "Django", "Flask", "Web Hosting", "MySQL", "No Card"]
+    },
+    "description": "Browser-based Python cloud development and hosting environment providing 1 free web application (`username.pythonanywhere.com`), interactive Bash/IPython consoles, scheduled task runner, and a free MySQL database.",
+    "access": {
+      "free_limits": [
+        { "name": "Hosted Python web app", "value": "1 web app (Django, Flask, Web2py)", "period": "ongoing" },
+        { "name": "Disk storage & MySQL DB", "value": "512 MB disk + included MySQL", "period": "ongoing" },
+        { "name": "Daily CPU seconds", "value": "100 seconds/day (soft limit)", "period": "daily" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Completely free Beginner account with no credit card required."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Click 'Run until 3 months from today' button once every 3 months." },
+      "restrictions": ["Outbound internet access on free tier is limited to an approved allowlist of public APIs."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open to everyone." },
+    "links": {
+      "official": "https://www.pythonanywhere.com/pricing/",
+      "signup": "https://www.pythonanywhere.com/registration/register/beginner/",
+      "documentation": "https://help.pythonanywhere.com/pages/",
+      "pricing": "https://www.pythonanywhere.com/pricing/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-pythonanywhere-beginner-free-hosting", "url": "https://www.pythonanywhere.com/pricing/", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-pythonanywhere-beginner-free-hosting", "field_path": "access.free_limits", "quote": "A Beginner account is free forever and includes 1 web app at your-username.pythonanywhere.com and 512MB storage.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "alwaysdata-free-100mb-cloud-hosting",
+      "name": "alwaysdata Free 100 MB Polyglot Cloud Hosting (SSH, Node, Python, Go, Rust & DBs)",
+      "slug": "alwaysdata-free-100mb-cloud-hosting",
+      "provider": "alwaysdata",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "VPS & Hosting",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Polyglot Hosting", "SSH", "Node.js", "Python", "PostgreSQL", "Rust"]
+    },
+    "description": "European developer cloud hosting offering a free 100 MB plan with full SSH access, custom domains, Let's Encrypt SSL, PostgreSQL/MySQL/CouchDB databases, and support for Node.js, Python, Go, Rust, Elixir, Ruby, Java, and PHP.",
+    "access": {
+      "free_limits": [
+        { "name": "Storage (files, DBs, emails)", "value": "100 MB", "period": "ongoing" },
+        { "name": "Monthly traffic", "value": "1 GB", "period": "per month" },
+        { "name": "SSH, Git, WebSockets & Cron", "value": "Included", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free 100 MB plan available for testing and lightweight projects."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Ongoing with active login." },
+      "restrictions": ["512 MB RAM process limit on the Free plan."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All developers." },
+    "links": {
+      "official": "https://www.alwaysdata.com/en/pricing/",
+      "signup": "https://www.alwaysdata.com/en/register/",
+      "documentation": "https://help.alwaysdata.com/en/",
+      "pricing": "https://www.alwaysdata.com/en/pricing/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-alwaysdata-free-100mb-cloud-hosting", "url": "https://www.alwaysdata.com/en/pricing/", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-alwaysdata-free-100mb-cloud-hosting", "field_path": "access.free_limits", "quote": "The 100 MB free plan supports all languages, databases, SSH access, and custom domains.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "heliohost-nonprofit-free-hosting",
+      "name": "HelioHost Non-Profit Community Web Hosting (1,000 MB, Python, Node, PHP & Postgres)",
+      "slug": "heliohost-nonprofit-free-hosting",
+      "provider": "HelioNetworks",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "VPS & Hosting",
+      "resource_type": "cloud_service",
+      "pricing_model": "completely_free",
+      "tags": ["Non-Profit", "Web Hosting", "Plesk", "Python", "Node.js", "PostgreSQL"]
+    },
+    "description": "501(c)(3) non-profit community web hosting provider running since 2005, offering 1,000 MB free storage, unlimited bandwidth, Plesk control panel, Python/Django/Flask, Node.js, PHP, Ruby on Rails, Java/JSP, PostgreSQL, and MySQL.",
+    "access": {
+      "free_limits": [
+        { "name": "Storage", "value": "1,000 MB", "period": "ongoing" },
+        { "name": "Bandwidth", "value": "Unlimited", "period": "ongoing" },
+        { "name": "Domains & Databases", "value": "Up to 10 domains + MySQL & PostgreSQL", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "100% free non-profit community tier on Johnny/Tommy servers."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Requires logging in once every 30 days." },
+      "restrictions": ["Free daily signups open at midnight UTC and fill up quickly."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "1 account per person." },
+    "links": {
+      "official": "https://heliohost.org",
+      "signup": "https://heliohost.org/signup/",
+      "documentation": "https://wiki.helionet.org",
+      "pricing": "https://heliohost.org"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-heliohost-nonprofit-free-hosting", "url": "https://heliohost.org", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-heliohost-nonprofit-free-hosting", "field_path": "access.free_limits", "quote": "HelioHost is a non-profit providing free 1000 MB hosting with PHP, Python, Node.js, MySQL, and PostgreSQL.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "infinityfree-unlimited-php-mysql-hosting",
+      "name": "InfinityFree Web Hosting (Free 5 GB PHP 8 & MySQL Hosting with Free SSL)",
+      "slug": "infinityfree-unlimited-php-mysql-hosting",
+      "provider": "InfinityFree",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "VPS & Hosting",
+      "resource_type": "cloud_service",
+      "pricing_model": "completely_free",
+      "tags": ["PHP", "MySQL", "WordPress", "Web Hosting", "Free SSL", "No Card"]
+    },
+    "description": "Completely free PHP 8 and MySQL web hosting with 5 GB disk space, unmetered bandwidth, zero forced ads on your sites, Softaculous 400+ script installer (WordPress, Laravel), and free Let's Encrypt/ZeroSSL certificates.",
+    "access": {
+      "free_limits": [
+        { "name": "Disk storage", "value": "5 GB", "period": "ongoing" },
+        { "name": "MySQL databases", "value": "400 databases", "period": "ongoing" },
+        { "name": "Bandwidth", "value": "Unmetered (50,000 daily hits limit)", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required, no time limits, and no ads on hosted websites."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["PHP/MySQL/Static web hosting only (no SSH or Node.js daemon processes)."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open to all users." },
+    "links": {
+      "official": "https://www.infinityfree.com",
+      "signup": "https://dash.infinityfree.com/register",
+      "documentation": "https://forum.infinityfree.com/docs",
+      "pricing": "https://www.infinityfree.com"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-infinityfree-unlimited-php-mysql-hosting", "url": "https://www.infinityfree.com", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-infinityfree-unlimited-php-mysql-hosting", "field_path": "access.free_limits", "quote": "InfinityFree offers free PHP and MySQL web hosting with 5 GB disk space, unlimited bandwidth, and no ads.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "serv00-free-freebsd-shell-hosting",
+      "name": "Serv00.com Free DevilWEB Hosting (3 GB Disk, SSH, Node, Python, Go, Rust & DBs)",
+      "slug": "serv00-free-freebsd-shell-hosting",
+      "provider": "Serv00",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "VPS & Hosting",
+      "resource_type": "cloud_service",
+      "pricing_model": "completely_free",
+      "tags": ["FreeBSD", "SSH Shell", "Node.js", "Python", "Go", "PostgreSQL"]
+    },
+    "description": "Free developer shell and web hosting on FreeBSD providing 3 GB SSD storage, 512 MB RAM, full SSH access, Git, SVN, Node.js, Python, Go, Rust, Ruby, Java, PHP, MySQL, PostgreSQL, and MongoDB.",
+    "access": {
+      "free_limits": [
+        { "name": "SSD storage", "value": "3 GB", "period": "ongoing" },
+        { "name": "RAM & processes", "value": "512 MB RAM & 20 concurrent processes", "period": "ongoing" },
+        { "name": "Traffic", "value": "Unlimited", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Completely free with no credit card required."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Requires logging into panel or SSH at least once every 90 days." },
+      "restrictions": ["Subject to daily free slot availability."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "1 account per user." },
+    "links": {
+      "official": "https://www.serv00.com",
+      "signup": "https://www.serv00.com/offer/create_new_account",
+      "documentation": "https://docs.serv00.com",
+      "pricing": "https://www.serv00.com/offer"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-serv00-free-freebsd-shell-hosting", "url": "https://www.serv00.com", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-serv00-free-freebsd-shell-hosting", "field_path": "access.free_limits", "quote": "Serv00 offers 3 GB disk space, 512 MB RAM, SSH access, and support for PHP, Node.js, Python, Ruby, Go, Rust, and Java for free.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "play-with-docker-browser-playgrounds",
+      "name": "Play with Docker (PWD) Free Multi-Node Browser Linux & Swarm Cloud Lab",
+      "slug": "play-with-docker-browser-playgrounds",
+      "provider": "Docker",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "VPS & Hosting",
+      "resource_type": "cloud_service",
+      "pricing_model": "completely_free",
+      "tags": ["Docker", "Cloud Sandbox", "Alpine Linux", "Docker Swarm", "No Card"]
+    },
+    "description": "Free browser-based cloud playground sponsored by Docker that gives you instant root access to multiple networked Alpine Linux virtual machines preloaded with Docker Engine and Docker Swarm.",
+    "access": {
+      "free_limits": [
+        { "name": "Cloud sandbox session", "value": "4 hours per session (unlimited sessions)", "period": "per session" },
+        { "name": "Multi-node cluster", "value": "Up to 5 networked Linux nodes", "period": "per session" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Log in with a free Docker Hub account."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Ephemeral 4-hour sessions for testing and learning."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Free Docker ID required." },
+    "links": {
+      "official": "https://labs.play-with-docker.com",
+      "signup": "https://hub.docker.com/signup",
+      "documentation": "https://www.docker.com/play-with-docker/",
+      "pricing": "https://labs.play-with-docker.com"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-play-with-docker-browser-playgrounds", "url": "https://labs.play-with-docker.com", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-play-with-docker-browser-playgrounds", "field_path": "access.free_limits", "quote": "Play with Docker gives you a free 4-hour Alpine Linux multi-node Docker playground in your browser.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "pikapods-open-source-app-hosting",
+      "name": "PikaPods Managed Open-Source App Hosting ($5 Free Starting Credit, No Card)",
+      "slug": "pikapods-open-source-app-hosting",
+      "provider": "PikaPods",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "VPS & Hosting",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_trial",
+      "tags": ["Open-Source Hosting", "Containers", "Ghost", "Uptime Kuma", "Nextcloud", "No Card"]
+    },
+    "description": "One-click managed container hosting for 70+ open-source web apps (Ghost, Uptime Kuma, Immich, Actual Budget, Linkwarden, n8n) with $5 free starting credit (~3–5 months of a micro pod) and no credit card required.",
+    "access": {
+      "free_limits": [
+        { "name": "Welcome credit", "value": "$5 free credit (~3-5 months of 1 pod)", "period": "one-time" },
+        { "name": "Automated daily backups & updates", "value": "Included", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "$5 welcome credit is granted on email verification with no credit card."
+      },
+      "validity": { "type": "trial_period", "duration": "Until $5 credit is consumed (~3-5 months for a $1/mo pod)", "auto_renewal": "Prepaid credit system; never auto-bills." },
+      "restrictions": ["Pods run curated open-source container images."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Verified email address." },
+    "links": {
+      "official": "https://www.pikapods.com",
+      "signup": "https://control.pikapods.com/register",
+      "documentation": "https://docs.pikapods.com",
+      "pricing": "https://www.pikapods.com"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-pikapods-open-source-app-hosting", "url": "https://www.pikapods.com", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-pikapods-open-source-app-hosting", "field_path": "access.free_limits", "quote": "PikaPods includes $5 free starting credit with no credit card required to run open-source apps from $1/month.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "neocities-free-static-web-hosting",
+      "name": "Neocities Free Static Web Hosting (1 GB Storage, 200 GB Bandwidth & CLI Deploy)",
+      "slug": "neocities-free-static-web-hosting",
+      "provider": "Neocities",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "VPS & Hosting",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Static Hosting", "IndieWeb", "HTML/CSS/JS", "CDN", "CLI", "No Card"]
+    },
+    "description": "Ad-free, open-source static web hosting platform providing 1 GB of storage and 200 GB of monthly transfer backed by a global Anycast CDN, REST API, and command-line deployment tool.",
+    "access": {
+      "free_limits": [
+        { "name": "Storage", "value": "1 GB", "period": "ongoing" },
+        { "name": "Bandwidth", "value": "200 GB", "period": "per month" },
+        { "name": "SSL & Global Anycast CDN", "value": "Included", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Completely free with no credit card and zero ads."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Static HTML/CSS/JS/Wasm/media files only."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open to everyone." },
+    "links": {
+      "official": "https://neocities.org",
+      "signup": "https://neocities.org",
+      "documentation": "https://neocities.org/cli",
+      "pricing": "https://neocities.org/supporter"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-neocities-free-static-web-hosting", "url": "https://neocities.org", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-neocities-free-static-web-hosting", "field_path": "access.free_limits", "quote": "Neocities Free accounts include 1 GB of storage and 200 GB of monthly bandwidth.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "codeberg-pages-static-hosting",
+      "name": "Codeberg Pages (Free Open-Source Static Web Hosting with Custom Domains & TLS)",
+      "slug": "codeberg-pages-static-hosting",
+      "provider": "Codeberg e.V.",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "VPS & Hosting",
+      "resource_type": "cloud_service",
+      "pricing_model": "completely_free",
+      "tags": ["Codeberg", "Static Hosting", "Open Source", "Custom Domains", "HTTPS", "No Card"]
+    },
+    "description": "Free, non-profit static website and documentation hosting for open-source projects hosted on Codeberg (`username.codeberg.page`), featuring custom domain CNAME/A-record support and automatic Let's Encrypt HTTPS.",
+    "access": {
+      "free_limits": [
+        { "name": "Static websites", "value": "Unlimited FLOSS project sites", "period": "ongoing" },
+        { "name": "Custom domains & TLS", "value": "Included free", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "100% free non-profit service."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["For Free and Open Source (FLOSS) projects and documentation."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open-source projects on Codeberg." },
+    "links": {
+      "official": "https://codeberg.page",
+      "signup": "https://codeberg.org/user/sign_up",
+      "documentation": "https://docs.codeberg.org/codeberg-pages/",
+      "pricing": "https://codeberg.page"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-codeberg-pages-static-hosting", "url": "https://codeberg.page", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-codeberg-pages-static-hosting", "field_path": "access.free_limits", "quote": "Codeberg Pages hosts static websites directly from Codeberg repositories with custom domain and HTTPS support.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "cloudflare-r2-cloud-object-storage",
+      "name": "Cloudflare R2 Cloud Object Storage (10 GB Free/Month & Zero Egress Fees)",
+      "slug": "cloudflare-r2-cloud-object-storage",
+      "provider": "Cloudflare",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Storage",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Object Storage", "S3 Compatible", "Zero Egress", "Cloudflare R2", "CDN", "Cloud Storage"]
+    },
+    "description": "Globally distributed S3-compatible cloud object storage with zero egress bandwidth fees, 10 GB of free storage per month, 1 million Class A operations, and 10 million Class B operations monthly.",
+    "access": {
+      "free_limits": [
+        { "name": "Storage", "value": "10 GB-month", "period": "per month" },
+        { "name": "Class A & B operations", "value": "1M writes / 10M reads", "period": "per month" },
+        { "name": "Egress bandwidth", "value": "$0 (Unlimited free egress)", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires payment method on Cloudflare account; first 10 GB/mo is free."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Resets monthly." },
+      "restrictions": ["Applies to Standard storage class."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All Cloudflare accounts." },
+    "links": {
+      "official": "https://developers.cloudflare.com/r2/pricing/",
+      "signup": "https://dash.cloudflare.com/sign-up",
+      "documentation": "https://developers.cloudflare.com/r2/",
+      "pricing": "https://developers.cloudflare.com/r2/pricing/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-cloudflare-r2-cloud-object-storage", "url": "https://developers.cloudflare.com/r2/pricing/", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-cloudflare-r2-cloud-object-storage", "field_path": "access.free_limits", "quote": "R2 includes 10 GB-month of storage, 1,000,000 Class A operations, and 10,000,000 Class B operations free every month with zero egress fees.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "aws-s3-cloud-storage-free",
+      "name": "Amazon S3 Cloud Object Storage Free Tier (5 GB S3 Standard + 20,000 GET Requests)",
+      "slug": "aws-s3-cloud-storage-free",
+      "provider": "Amazon Web Services",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Storage",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["AWS S3", "Object Storage", "Cloud Storage", "Backups", "Static Assets"]
+    },
+    "description": "Industry-standard cloud object storage built for 99.999999999% (11 9s) durability, offering 5 GB of S3 Standard storage, 20,000 GET requests, and 2,000 PUT/COPY/POST/LIST requests per month on the AWS Free Tier.",
+    "access": {
+      "free_limits": [
+        { "name": "S3 Standard storage", "value": "5 GB", "period": "per month (12 months)" },
+        { "name": "GET / PUT requests", "value": "20,000 GET & 2,000 PUT", "period": "per month (12 months)" },
+        { "name": "Data transfer out", "value": "100 GB across AWS services", "period": "per month" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Included in AWS Free Tier."
+      },
+      "validity": { "type": "ongoing", "duration": "12 months from AWS signup", "auto_renewal": null },
+      "restrictions": ["Applies to S3 Standard storage class."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "New AWS accounts." },
+    "links": {
+      "official": "https://aws.amazon.com/s3/pricing/",
+      "signup": "https://portal.aws.amazon.com/billing/signup",
+      "documentation": "https://docs.aws.amazon.com/s3/",
+      "pricing": "https://aws.amazon.com/s3/pricing/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-aws-s3-cloud-storage-free", "url": "https://aws.amazon.com/s3/pricing/", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-aws-s3-cloud-storage-free", "field_path": "access.free_limits", "quote": "As part of the AWS Free Tier, you receive 5 GB of Amazon S3 storage in the S3 Standard storage class.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "google-cloud-storage-always-free",
+      "name": "Google Cloud Storage Always Free (5 GB Regional Standard Storage & 50K Ops)",
+      "slug": "google-cloud-storage-always-free",
+      "provider": "Google Cloud",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Storage",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Google Cloud Storage", "GCS", "Object Storage", "Always Free", "Cloud Buckets"]
+    },
+    "description": "Always Free Google Cloud object storage providing 5 GB-months of Standard Storage in US regions (`us-east1`, `us-west1`, `us-central1`) plus 5,000 Class A and 50,000 Class B operations every month.",
+    "access": {
+      "free_limits": [
+        { "name": "Standard Storage", "value": "5 GB-months", "period": "per month (Always Free)" },
+        { "name": "Operations", "value": "5,000 Class A & 50,000 Class B", "period": "per month" },
+        { "name": "North America egress", "value": "100 GB", "period": "per month" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "required",
+        "payment_method_notes": "Requires Google Cloud billing account."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Resets monthly forever." },
+      "restrictions": ["Must use Standard Storage in us-east1, us-west1, or us-central1."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All Google Cloud accounts." },
+    "links": {
+      "official": "https://cloud.google.com/storage/pricing",
+      "signup": "https://console.cloud.google.com/freetrial",
+      "documentation": "https://cloud.google.com/storage/docs",
+      "pricing": "https://cloud.google.com/storage/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-google-cloud-storage-always-free", "url": "https://cloud.google.com/storage/pricing", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-google-cloud-storage-always-free", "field_path": "access.free_limits", "quote": "Cloud Storage Always Free usage limits include 5 GB-months of Standard Storage and 5,000 Class A / 50,000 Class B operations.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "storj-cloud-decentralized-s3-free",
+      "name": "Storj Distributed S3 Cloud Object Storage (25 GB Free Trial & End-to-End Encrypted)",
+      "slug": "storj-cloud-decentralized-s3-free",
+      "provider": "Storj",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Storage",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_trial",
+      "tags": ["Storj", "S3 Compatible", "Distributed Storage", "Encrypted Storage", "Backups"]
+    },
+    "description": "Globally distributed, end-to-end encrypted S3-compatible cloud object storage offering a 25 GB / 30-day free trial with rclone and AWS CLI compatibility.",
+    "access": {
+      "free_limits": [
+        { "name": "Free trial storage & bandwidth", "value": "25 GB storage & 25 GB bandwidth", "period": "for 30 days" },
+        { "name": "S3 Gateway & Rclone native integration", "value": "Included", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required to start the 25 GB trial."
+      },
+      "validity": { "type": "trial_period", "duration": "30-day 25 GB trial", "auto_renewal": "Does not auto-bill without adding payment." },
+      "restrictions": ["Trial expires after 30 days unless upgraded."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "New Storj users." },
+    "links": {
+      "official": "https://www.storj.io/pricing",
+      "signup": "https://www.storj.io/signup",
+      "documentation": "https://docs.storj.io",
+      "pricing": "https://www.storj.io/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-storj-cloud-decentralized-s3-free", "url": "https://www.storj.io/pricing", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-storj-cloud-decentralized-s3-free", "field_path": "access.free_limits", "quote": "Storj offers a free trial with 25 GB of S3-compatible distributed object storage.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "garage-hq-self-hosted-s3-storage",
+      "name": "Garage (Lightweight Open-Source Geo-Distributed S3 Object Storage in Rust)",
+      "slug": "garage-hq-self-hosted-s3-storage",
+      "provider": "Deuxfleurs",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Storage",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["S3 Storage", "Rust", "Self-Hosted", "Geo-Distributed", "Static Website Hosting", "Open Source"]
+    },
+    "description": "Lightweight, open-source S3-compatible distributed object storage service written in Rust, designed specifically for self-hosting across multiple heterogenous nodes with built-in static website hosting.",
+    "access": {
+      "free_limits": [
+        { "name": "Self-hosted S3 buckets & replication", "value": "Unlimited", "period": "forever" },
+        { "name": "Static S3 website hosting", "value": "Built-in", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "100% free and open-source (AGPLv3)."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Requires your own Linux nodes or containers."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://garagehq.deuxfleurs.fr",
+      "signup": null,
+      "documentation": "https://garagehq.deuxfleurs.fr/documentation/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-garage-hq-self-hosted-s3-storage", "url": "https://garagehq.deuxfleurs.fr", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-garage-hq-self-hosted-s3-storage", "field_path": "access.free_limits", "quote": "Garage is an open-source distributed object storage service tailored for self-hosting that implements the Amazon S3 API.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "seaweedfs-distributed-blob-s3-storage",
+      "name": "SeaweedFS (Fast Open-Source Distributed File System & S3 Cloud Storage)",
+      "slug": "seaweedfs-distributed-blob-s3-storage",
+      "provider": "SeaweedFS",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Storage",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Distributed Storage", "S3 API", "POSIX FUSE", "WebDAV", "Hadoop HDFS", "Open Source"]
+    },
+    "description": "Billions-of-files scale open-source distributed storage system with O(1) disk seek, providing an S3 API gateway, POSIX FUSE mount, WebDAV server, Erasure Coding, and transparent cloud tiering.",
+    "access": {
+      "free_limits": [
+        { "name": "Self-hosted clusters & S3 gateway", "value": "Unlimited", "period": "forever" },
+        { "name": "Kubernetes CSI driver", "value": "Included", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 licensed open-source software."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Self-hosted on your own servers or Kubernetes cluster."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://github.com/seaweedfs/seaweedfs",
+      "signup": null,
+      "documentation": "https://github.com/seaweedfs/seaweedfs/wiki",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-seaweedfs-distributed-blob-s3-storage", "url": "https://github.com/seaweedfs/seaweedfs", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-seaweedfs-distributed-blob-s3-storage", "field_path": "access.free_limits", "quote": "SeaweedFS is a fast distributed storage system for blobs, objects, files, and data lake with S3 API and FUSE support.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "ceph-unified-distributed-storage",
+      "name": "Ceph (Open-Source Unified Cloud Object, Block & File Storage Platform)",
+      "slug": "ceph-unified-distributed-storage",
+      "provider": "Ceph Foundation",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Storage",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Ceph", "Object Storage", "Block Storage", "CephFS", "OpenStack", "Proxmox"]
+    },
+    "description": "Industry-leading open-source software-defined storage platform delivering S3/Swift object storage (RADOSGW), RBD block storage for OpenStack/Proxmox/K8s, and POSIX-compliant CephFS file systems in one unified cluster.",
+    "access": {
+      "free_limits": [
+        { "name": "RADOSGW S3, RBD Block & CephFS", "value": "Unlimited nodes & petabytes", "period": "forever" },
+        { "name": "Built-in Ceph Dashboard", "value": "Included", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "100% free open-source software."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Runs on Linux storage clusters."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://ceph.io/en/",
+      "signup": null,
+      "documentation": "https://docs.ceph.com/en/latest/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-ceph-unified-distributed-storage", "url": "https://ceph.io/en/", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-ceph-unified-distributed-storage", "field_path": "access.free_limits", "quote": "Ceph is an open-source storage platform that implements object, block, and file-level storage on a single distributed cluster.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "openebs-rook-kubernetes-storage",
+      "name": "Rook Cloud-Native Storage Orchestrator (CNCF Graduated Ceph on Kubernetes)",
+      "slug": "openebs-rook-kubernetes-storage",
+      "provider": "CNCF / Rook",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Storage",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Rook", "Kubernetes Storage", "CSI", "Ceph", "CNCF", "Open Source"]
+    },
+    "description": "CNCF Graduated cloud-native storage orchestrator that turns distributed storage systems (Ceph) into self-managing, self-scaling, self-healing block, file, and S3 object services inside Kubernetes.",
+    "access": {
+      "free_limits": [
+        { "name": "Kubernetes CSI Block, File & Object orchestration", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 licensed CNCF Graduated project."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Requires a Kubernetes cluster."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://rook.io",
+      "signup": null,
+      "documentation": "https://rook.io/docs/rook/latest-release/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-openebs-rook-kubernetes-storage", "url": "https://rook.io", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-openebs-rook-kubernetes-storage", "field_path": "access.free_limits", "quote": "Rook turns distributed storage systems into self-managing, self-scaling storage services on Kubernetes.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "rclone-cloud-storage-swiss-army",
+      "name": "Rclone (The Open-Source Swiss Army Knife & FUSE Mount for 70+ Cloud Storage Providers)",
+      "slug": "rclone-cloud-storage-swiss-army",
+      "provider": "Rclone",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Storage",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["Rclone", "Cloud Storage Sync", "S3", "FUSE Mount", "Encryption", "Open Source"]
+    },
+    "description": "Command-line program (`rsync for cloud storage`) to sync, migrate, encrypt, serve over HTTP/WebDAV/SFTP/S3, and mount over 70 cloud storage providers (S3, Cloudflare R2, GCS, Azure Blob, Backblaze B2) as local disks.",
+    "access": {
+      "free_limits": [
+        { "name": "Supported cloud storage backends", "value": "70+ providers", "period": "forever" },
+        { "name": "Client-side crypt, FUSE mount & S3 server", "value": "Included", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "MIT-licensed open-source software."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://rclone.org",
+      "signup": null,
+      "documentation": "https://rclone.org/docs/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-rclone-cloud-storage-swiss-army", "url": "https://rclone.org", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-rclone-cloud-storage-swiss-army", "field_path": "access.free_limits", "quote": "Rclone is a command-line program to manage files on over 70 cloud storage products.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "longhorn-cloud-native-block-storage",
+      "name": "Longhorn (CNCF Distributed Cloud-Native Block Storage for Kubernetes)",
+      "slug": "longhorn-cloud-native-block-storage",
+      "provider": "CNCF / SUSE Rancher",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Storage",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Longhorn", "Kubernetes Block Storage", "CSI", "S3 Backups", "Disaster Recovery", "Open Source"]
+    },
+    "description": "Lightweight, reliable, and easy-to-use open-source distributed block storage system for Kubernetes with incremental snapshots, cross-cluster disaster recovery, and S3 backup volumes.",
+    "access": {
+      "free_limits": [
+        { "name": "Replicated persistent Kubernetes volumes", "value": "Unlimited", "period": "forever" },
+        { "name": "Web UI & S3 snapshot backups", "value": "Included", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 licensed CNCF project."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Runs on Linux Kubernetes nodes."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://longhorn.io",
+      "signup": null,
+      "documentation": "https://longhorn.io/docs/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-longhorn-cloud-native-block-storage", "url": "https://longhorn.io", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-longhorn-cloud-native-block-storage", "field_path": "access.free_limits", "quote": "Longhorn is a cloud-native distributed block storage system for Kubernetes.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  }
+]

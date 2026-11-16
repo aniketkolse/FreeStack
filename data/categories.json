@@ -599,29 +599,49 @@
     "slug": "cloud-hosting",
     "name": "Cloud & Hosting",
     "shortName": "Cloud & Host",
-    "description": "Cloud credits, VPS and hosting, serverless platforms, object storage, and deployment platforms.",
+    "description": "Deployment platforms, serverless & edge compute, cloud credits & free tiers, VPS & web hosting, S3 object & block storage, self-hosted PaaS panels, Kubernetes orchestration, Infrastructure as Code, CDN/DNS, and virtualization.",
     "color": "grass-green",
     "popular": true,
     "subcategories": [
-      {
-        "slug": "serverless-edge",
-        "name": "Serverless Platforms"
-      },
       {
         "slug": "deployment-platforms",
         "name": "Deployment Platforms"
       },
       {
-        "slug": "vps-hosting",
-        "name": "VPS & Hosting"
+        "slug": "serverless-edge",
+        "name": "Serverless Platforms"
       },
       {
         "slug": "cloud-credits",
         "name": "Cloud Credits"
       },
       {
+        "slug": "vps-hosting",
+        "name": "VPS & Hosting"
+      },
+      {
         "slug": "cloud-storage",
         "name": "Storage"
+      },
+      {
+        "slug": "self-hosted-paas",
+        "name": "Self-Hosted PaaS & Server Panels"
+      },
+      {
+        "slug": "kubernetes-containers",
+        "name": "Kubernetes, Containers & Orchestration"
+      },
+      {
+        "slug": "iac-provisioning",
+        "name": "Infrastructure as Code & Provisioning"
+      },
+      {
+        "slug": "cdn-dns-edge",
+        "name": "CDN, DNS, Edge & Tunnels"
+      },
+      {
+        "slug": "virtualization-private-cloud",
+        "name": "Virtualization, Private Cloud & Cloud OS"
       }
     ]
   },

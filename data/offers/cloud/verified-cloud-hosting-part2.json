@@ -1,0 +1,2304 @@
+[
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "coolify-open-source-heroku-vercel",
+      "name": "Coolify (Open-Source Self-Hostable Heroku, Netlify & Vercel Alternative)",
+      "slug": "coolify-open-source-heroku-vercel",
+      "provider": "CoolLabs",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Self-Hosted PaaS & Server Panels",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Coolify", "Self-Hosted PaaS", "Docker", "Git Deploy", "Let's Encrypt", "Open Source"]
+    },
+    "description": "Open-source and self-hostable Heroku, Netlify, and Vercel alternative that turns any Linux VPS or Raspberry Pi into a full-featured cloud PaaS with automatic Git PR previews, Let's Encrypt SSL, Docker Compose, and one-click databases.",
+    "access": {
+      "free_limits": [
+        { "name": "Self-hosted servers, apps & databases", "value": "Unlimited", "period": "forever" },
+        { "name": "280+ one-click open-source services", "value": "Included", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "100% free and open-source (Apache-2.0) when self-hosted on any VPS."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Requires a Linux server with SSH and Docker."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://coolify.io",
+      "signup": null,
+      "documentation": "https://coolify.io/docs/",
+      "pricing": "https://coolify.io/pricing/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-coolify-open-source-heroku-vercel", "url": "https://coolify.io", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-coolify-open-source-heroku-vercel", "field_path": "access.free_limits", "quote": "Coolify is an open-source and self-hostable Heroku / Netlify / Vercel alternative.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": true, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "dokploy-open-source-paas-docker",
+      "name": "Dokploy (Open-Source Docker & Traefik Cloud PaaS for Any VPS)",
+      "slug": "dokploy-open-source-paas-docker",
+      "provider": "Dokploy",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Self-Hosted PaaS & Server Panels",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Dokploy", "Self-Hosted PaaS", "Docker Swarm", "Traefik", "Nixpacks", "Open Source"]
+    },
+    "description": "Free open-source deployment platform powered by Docker and Traefik that deploys Nixpacks/Buildpacks apps, Dockerfiles, Docker Compose stacks, and multi-node Swarm clusters on any VPS.",
+    "access": {
+      "free_limits": [
+        { "name": "Self-hosted applications & Compose stacks", "value": "Unlimited", "period": "forever" },
+        { "name": "Automated S3 database backups & monitoring", "value": "Included", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 open-source self-hosted PaaS."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Requires a Linux VPS."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://dokploy.com",
+      "signup": null,
+      "documentation": "https://docs.dokploy.com",
+      "pricing": "https://dokploy.com"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-dokploy-open-source-paas-docker", "url": "https://dokploy.com", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-dokploy-open-source-paas-docker", "field_path": "access.free_limits", "quote": "Dokploy is a free, open-source PaaS for deploying applications and databases on any VPS.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "caprover-open-source-paas",
+      "name": "CapRover (Open-Source Docker Swarm PaaS & One-Click App Manager)",
+      "slug": "caprover-open-source-paas",
+      "provider": "CapRover",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Self-Hosted PaaS & Server Panels",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["CapRover", "PaaS", "Docker Swarm", "NGINX", "Let's Encrypt", "Open Source"]
+    },
+    "description": "Extremely easy-to-use open-source PaaS for Node.js, Python, PHP, Ruby, Go, and Docker apps with built-in NGINX load balancing, automatic Let's Encrypt SSL, CLI git push deployment, and 200+ one-click apps.",
+    "access": {
+      "free_limits": [
+        { "name": "Self-hosted PaaS clusters & apps", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 open-source software."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Requires a Linux VPS with 1 GB+ RAM."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://caprover.com",
+      "signup": null,
+      "documentation": "https://caprover.com/docs/get-started.html",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-caprover-open-source-paas", "url": "https://caprover.com", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-caprover-open-source-paas", "field_path": "access.free_limits", "quote": "CapRover is a free and open-source web server manager and PaaS.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "dokku-docker-powered-mini-heroku",
+      "name": "Dokku (Docker-Powered Open-Source Mini-Heroku with `git push` Deploys)",
+      "slug": "dokku-docker-powered-mini-heroku",
+      "provider": "Dokku",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Self-Hosted PaaS & Server Panels",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Dokku", "Heroku Alternative", "Git Push Deploy", "Buildpacks", "Docker", "Open Source"]
+    },
+    "description": "The smallest open-source PaaS implementation you've ever seen—deploy Heroku-compatible apps via `git push dokku main` using Cloud Native Buildpacks, Herokuish, or Dockerfiles on any $5 VPS.",
+    "access": {
+      "free_limits": [
+        { "name": "Apps, plugins (Postgres, Redis, Let's Encrypt)", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "MIT-licensed open-source software."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["CLI-driven (optional paid Pro web UI is separate; core Dokku + all plugins are 100% free)."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://dokku.com",
+      "signup": null,
+      "documentation": "https://dokku.com/docs/getting-started/installation/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-dokku-docker-powered-mini-heroku", "url": "https://dokku.com", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-dokku-docker-powered-mini-heroku", "field_path": "access.free_limits", "quote": "Dokku is an extensible, open-source Docker-powered mini-Heroku.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "cloudpanel-free-server-control-panel",
+      "name": "CloudPanel (Free High-Performance NGINX Server Control Panel for Node, Python & PHP)",
+      "slug": "cloudpanel-free-server-control-panel",
+      "provider": "MGT-Commerce / CloudPanel",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Self-Hosted PaaS & Server Panels",
+      "resource_type": "software",
+      "pricing_model": "completely_free",
+      "tags": ["CloudPanel", "Server Control Panel", "NGINX", "Node.js", "Python", "PHP"]
+    },
+    "description": "Free, ultra-lightweight web hosting control panel built on NGINX, MySQL/MariaDB, and Redis for managing Node.js, Python, PHP, Reverse Proxy, and Static websites on AWS, DigitalOcean, Hetzner, GCP, and Oracle Cloud.",
+    "access": {
+      "free_limits": [
+        { "name": "Hosted websites, domains & users", "value": "Unlimited (100% Free)", "period": "forever" },
+        { "name": "Cloudflare, Let's Encrypt & S3 backup integration", "value": "Included", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Completely free software with no license fees or domain limits."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Installs on Ubuntu or Debian x86_64 and Arm64 servers."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Free for all personal and commercial use." },
+    "links": {
+      "official": "https://www.cloudpanel.io",
+      "signup": null,
+      "documentation": "https://www.cloudpanel.io/docs/v2/getting-started/",
+      "pricing": "https://www.cloudpanel.io"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-cloudpanel-free-server-control-panel", "url": "https://www.cloudpanel.io", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-cloudpanel-free-server-control-panel", "field_path": "access.free_limits", "quote": "CloudPanel is a free server control panel for PHP, Node.js, Python, and static sites.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "hestiacp-open-source-web-server-panel",
+      "name": "Hestia Control Panel (Open-Source Linux Web, Mail, DNS & Database Hosting Panel)",
+      "slug": "hestiacp-open-source-web-server-panel",
+      "provider": "HestiaCP",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Self-Hosted PaaS & Server Panels",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["HestiaCP", "cPanel Alternative", "NGINX", "Apache", "DNS Server", "Mail Server"]
+    },
+    "description": "Lightweight, open-source Linux web server control panel (fork of VestaCP) offering multi-PHP NGINX/Apache hosting, BIND9 DNS clustering, Exim4/Dovecot mail server, MariaDB/PostgreSQL, and Let's Encrypt TLS.",
+    "access": {
+      "free_limits": [
+        { "name": "Domains, mail accounts & databases", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "GPLv3 open-source control panel."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Runs on Debian and Ubuntu LTS servers."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://hestiacp.com",
+      "signup": null,
+      "documentation": "https://docs.hestiacp.com",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-hestiacp-open-source-web-server-panel", "url": "https://hestiacp.com", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-hestiacp-open-source-web-server-panel", "field_path": "access.free_limits", "quote": "Hestia Control Panel is an open-source web server control panel with web, mail, DNS, and database management.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "cyberpanel-openlitespeed-control-panel",
+      "name": "CyberPanel (Free OpenLiteSpeed Web Hosting Control Panel & Docker Manager)",
+      "slug": "cyberpanel-openlitespeed-control-panel",
+      "provider": "CyberPanel",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Self-Hosted PaaS & Server Panels",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["CyberPanel", "OpenLiteSpeed", "HTTP/3 QUIC", "WordPress", "Docker", "Open Source"]
+    },
+    "description": "Next-generation open-source hosting control panel powered by OpenLiteSpeed with built-in HTTP/3 QUIC, LSCache, Docker container management, Git webhook deployment, and unlimited domains.",
+    "access": {
+      "free_limits": [
+        { "name": "CyberPanel + OpenLiteSpeed", "value": "Unlimited domains & websites", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "CyberPanel with OpenLiteSpeed is 100% free and open-source."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["LiteSpeed Enterprise edition is paid; OpenLiteSpeed edition is completely free for unlimited domains."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://cyberpanel.net",
+      "signup": null,
+      "documentation": "https://community.cyberpanel.net/docs",
+      "pricing": "https://cyberpanel.net/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-cyberpanel-openlitespeed-control-panel", "url": "https://cyberpanel.net", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-cyberpanel-openlitespeed-control-panel", "field_path": "access.free_limits", "quote": "CyberPanel powered by OpenLiteSpeed is completely free for an unlimited number of domains and worker processes.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "aa-panel-1panel-linux-server-panel",
+      "name": "1Panel (Modern Open-Source Linux Server & Docker Hosting Management Panel)",
+      "slug": "aa-panel-1panel-linux-server-panel",
+      "provider": "FIT2CLOUD / 1Panel",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Self-Hosted PaaS & Server Panels",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["1Panel", "Linux Server Panel", "Docker App Store", "OpenResty", "Firewall", "Open Source"]
+    },
+    "description": "Modern, open-source Linux server web control panel built in Go that manages Docker containers, OpenResty reverse proxies, SSL certificates, databases, host firewalls, and a curated 150+ self-hosted app store.",
+    "access": {
+      "free_limits": [
+        { "name": "Community Edition server & container management", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "GPLv3 open-source project on GitHub."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Runs on any modern Linux distribution."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://github.com/1Panel-dev/1Panel",
+      "signup": null,
+      "documentation": "https://github.com/1Panel-dev/1Panel",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-aa-panel-1panel-linux-server-panel", "url": "https://github.com/1Panel-dev/1Panel", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-aa-panel-1panel-linux-server-panel", "field_path": "access.free_limits", "quote": "1Panel is a modern, open-source Linux server management and Docker hosting panel.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "casaos-runtipi-homeserver-paas",
+      "name": "CasaOS (Open-Source Personal Cloud OS & One-Click Docker Home Server Dashboard)",
+      "slug": "casaos-runtipi-homeserver-paas",
+      "provider": "IceWhale",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Self-Hosted PaaS & Server Panels",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["CasaOS", "Personal Cloud", "Home Lab", "Docker App Store", "Self-Hosting", "Open Source"]
+    },
+    "description": "Simple, easy-to-use, elegant open-source personal cloud system built around the Docker ecosystem with a one-click app store, local/cloud drive mounting, and resource monitoring.",
+    "access": {
+      "free_limits": [
+        { "name": "Self-hosted personal cloud & Docker apps", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 licensed open-source software."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Installs on Debian, Ubuntu, Raspberry Pi OS, and Armbian."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://casaos.zimaspace.com",
+      "signup": null,
+      "documentation": "https://github.com/IceWhaleTech/CasaOS",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-casaos-runtipi-homeserver-paas", "url": "https://casaos.zimaspace.com", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-casaos-runtipi-homeserver-paas", "field_path": "access.free_limits", "quote": "CasaOS is a simple, easy-to-use, open-source personal cloud system based on the Docker ecosystem.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "yunohost-self-hosting-os-platform",
+      "name": "YunoHost (Open-Source Debian Self-Hosting Server OS with SSO & 500+ Apps)",
+      "slug": "yunohost-self-hosting-os-platform",
+      "provider": "YunoHost",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Self-Hosted PaaS & Server Panels",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["YunoHost", "Self-Hosting", "Debian", "Single Sign-On", "Mail Server", "Open Source"]
+    },
+    "description": "Debian-based server operating system aiming to make self-hosting accessible to everyone, complete with unified LDAP Single Sign-On (SSO), full email server (DKIM/SPF/DMARC), free `.nohost.me` dynamic DNS, and 500+ one-click web apps.",
+    "access": {
+      "free_limits": [
+        { "name": "Self-hosted server OS & 500+ catalog apps", "value": "Unlimited", "period": "forever" },
+        { "name": "Free dynamic DNS subdomain", "value": "Included (*.nohost.me / *.noho.st)", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "100% free and open-source non-profit project."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Requires a dedicated Debian VPS, ARM board, or old PC."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://yunohost.org",
+      "signup": null,
+      "documentation": "https://yunohost.org/en/docs",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-yunohost-self-hosting-os-platform", "url": "https://yunohost.org", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-yunohost-self-hosting-os-platform", "field_path": "access.free_limits", "quote": "YunoHost is an open-source operating system aiming to make server self-hosting accessible to everyone.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "cosmos-cloud-self-hosted-gateway",
+      "name": "Cosmos Cloud (Secure Self-Hosted Cloud Platform with Reverse Proxy, Auth & Docker)",
+      "slug": "cosmos-cloud-self-hosted-gateway",
+      "provider": "Cosmos Cloud",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Self-Hosted PaaS & Server Panels",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Cosmos Cloud", "Reverse Proxy", "SmartShield", "OpenID SSO", "Docker", "Open Source"]
+    },
+    "description": "Security-first self-hosted cloud platform combining a Docker container manager, hardened reverse proxy with SmartShield anti-bot/anti-DDoS protection, OpenID Connect SSO, and built-in VPN tunnel.",
+    "access": {
+      "free_limits": [
+        { "name": "Self-hosted Cosmos Server", "value": "Free & Open Source", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free open-source self-hosted server."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Runs via Docker on any Linux host."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://cosmos-cloud.io",
+      "signup": null,
+      "documentation": "https://cosmos-cloud.io/doc/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-cosmos-cloud-self-hosted-gateway", "url": "https://cosmos-cloud.io", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-cosmos-cloud-self-hosted-gateway", "field_path": "access.free_limits", "quote": "Cosmos is an all-in-one secure self-hosted cloud platform with reverse proxy, authentication, and container management.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "kubernetes-cncf-container-orchestration",
+      "name": "Kubernetes (K8s) Production-Grade Open-Source Cloud Container Orchestration",
+      "slug": "kubernetes-cncf-container-orchestration",
+      "provider": "Cloud Native Computing Foundation (CNCF)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Kubernetes, Containers & Orchestration",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Kubernetes", "K8s", "Container Orchestration", "CNCF", "Cloud Native", "Open Source"]
+    },
+    "description": "Industry-standard open-source container orchestration system for automating software deployment, scaling, load balancing, self-healing, and secret/configuration management across cloud and bare-metal clusters.",
+    "access": {
+      "free_limits": [
+        { "name": "Self-managed Kubernetes clusters", "value": "Unlimited nodes & pods", "period": "forever" },
+        { "name": "Managed K8s free control planes", "value": "Free on EKS/GKE (1 zonal cluster), AKS, DOKS, LKE, OVH", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "100% free open-source Apache-2.0 project."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://kubernetes.io",
+      "signup": null,
+      "documentation": "https://kubernetes.io/docs/home/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-kubernetes-cncf-container-orchestration", "url": "https://kubernetes.io", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-kubernetes-cncf-container-orchestration", "field_path": "access.free_limits", "quote": "Kubernetes is an open-source system for automating deployment, scaling, and management of containerized applications.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "k3s-lightweight-kubernetes-rancher",
+      "name": "K3s Lightweight Kubernetes (Single-Binary CNCF K8s for VPS, Edge & ARM64)",
+      "slug": "k3s-lightweight-kubernetes-rancher",
+      "provider": "CNCF / SUSE Rancher",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Kubernetes, Containers & Orchestration",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["K3s", "Lightweight Kubernetes", "Edge Cloud", "ARM64", "Single Binary", "Open Source"]
+    },
+    "description": "Fully compliant, lightweight CNCF Kubernetes distribution packaged as a single <70 MB binary with embedded SQLite/etcd, Traefik ingress, CoreDNS, and Flannel—ideal for small cloud VPS nodes and ARM64 instances.",
+    "access": {
+      "free_limits": [
+        { "name": "Single-node or HA Kubernetes clusters", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 open-source CNCF Sandbox project."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Runs on Linux with as little as 512 MB RAM."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://k3s.io",
+      "signup": null,
+      "documentation": "https://docs.k3s.io",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-k3s-lightweight-kubernetes-rancher", "url": "https://k3s.io", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-k3s-lightweight-kubernetes-rancher", "field_path": "access.free_limits", "quote": "K3s is a certified lightweight Kubernetes distribution built for IoT, Edge, and cloud VPS environments.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "talos-linux-immutable-kubernetes-os",
+      "name": "Talos Linux (Secure, Immutable, API-Driven Linux OS for Cloud Kubernetes)",
+      "slug": "talos-linux-immutable-kubernetes-os",
+      "provider": "Sidero Labs",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Kubernetes, Containers & Orchestration",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Talos Linux", "Immutable OS", "Kubernetes OS", "Bare Metal", "gRPC API", "Open Source"]
+    },
+    "description": "Modern, minimal, immutable Linux distribution designed exclusively to host Kubernetes across AWS, GCP, Azure, Hetzner, Proxmox, and bare metal—managed entirely via mutual-TLS gRPC API (`talosctl`) with no SSH or shell.",
+    "access": {
+      "free_limits": [
+        { "name": "Talos Linux OS & Image Factory", "value": "Unlimited nodes", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "MPL-2.0 open-source Linux operating system."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Purpose-built for running Kubernetes workloads only."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://www.talos.dev",
+      "signup": null,
+      "documentation": "https://www.talos.dev/latest/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-talos-linux-immutable-kubernetes-os", "url": "https://www.talos.dev", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-talos-linux-immutable-kubernetes-os", "field_path": "access.free_limits", "quote": "Talos Linux is Linux designed for Kubernetes – secure, immutable, and minimal.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "portainer-community-container-management",
+      "name": "Portainer Community Edition + 3-Nodes-Free Business Edition (Docker & K8s UI)",
+      "slug": "portainer-community-container-management",
+      "provider": "Portainer",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Kubernetes, Containers & Orchestration",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Portainer", "Docker UI", "Kubernetes UI", "Docker Swarm", "GitOps", "Open Source"]
+    },
+    "description": "Universal container management GUI for Docker, Docker Compose, Swarm, and Kubernetes—available both as unlimited open-source Community Edition and a free 3-node Business Edition license.",
+    "access": {
+      "free_limits": [
+        { "name": "Portainer Community Edition (CE)", "value": "Unlimited nodes", "period": "forever" },
+        { "name": "Portainer Business Edition (3 Nodes Free)", "value": "3 nodes with RBAC & GitOps", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "CE requires no account; 3-Nodes-Free BE requires only an email for license key."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None for Community Edition."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://www.portainer.io",
+      "signup": "https://www.portainer.io/take-3",
+      "documentation": "https://docs.portainer.io",
+      "pricing": "https://www.portainer.io/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-portainer-community-container-management", "url": "https://www.portainer.io", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-portainer-community-container-management", "field_path": "access.free_limits", "quote": "Portainer offers open-source Community Edition plus Portainer Business Edition free for your first 3 nodes.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "helm-kubernetes-package-manager",
+      "name": "Helm (The CNCF Graduated Package Manager for Kubernetes Cloud Deployments)",
+      "slug": "helm-kubernetes-package-manager",
+      "provider": "CNCF / Helm",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Kubernetes, Containers & Orchestration",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["Helm", "Kubernetes Charts", "Package Manager", "CNCF", "Cloud Deployment", "Open Source"]
+    },
+    "description": "The standard package manager for Kubernetes that helps you define, install, template, upgrade, and roll back even the most complex cloud-native applications using reusable Helm Charts.",
+    "access": {
+      "free_limits": [
+        { "name": "Helm CLI & Artifact Hub charts", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 licensed CNCF Graduated project."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://helm.sh",
+      "signup": null,
+      "documentation": "https://helm.sh/docs/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-helm-kubernetes-package-manager", "url": "https://helm.sh", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-helm-kubernetes-package-manager", "field_path": "access.free_limits", "quote": "Helm is the package manager for Kubernetes and a graduated CNCF project.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "argo-cd-gitops-kubernetes-delivery",
+      "name": "Argo CD (Declarative GitOps Continuous Delivery for Kubernetes Clusters)",
+      "slug": "argo-cd-gitops-kubernetes-delivery",
+      "provider": "CNCF / Argo Project",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Kubernetes, Containers & Orchestration",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Argo CD", "GitOps", "Kubernetes", "Continuous Delivery", "Helm", "Kustomize"]
+    },
+    "description": "CNCF Graduated declarative GitOps continuous delivery tool for Kubernetes that continuously monitors Git repositories and synchronizes Helm, Kustomize, and YAML manifests across multi-cloud clusters with a rich web UI.",
+    "access": {
+      "free_limits": [
+        { "name": "Multi-cluster GitOps sync & Web UI", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 open-source CNCF Graduated project."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://argo-cd.readthedocs.io",
+      "signup": null,
+      "documentation": "https://argo-cd.readthedocs.io/en/stable/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-argo-cd-gitops-kubernetes-delivery", "url": "https://argo-cd.readthedocs.io", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-argo-cd-gitops-kubernetes-delivery", "field_path": "access.free_limits", "quote": "Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "flux-cd-gitops-kubernetes",
+      "name": "Flux CD (CNCF Graduated GitOps Continuous Delivery for Kubernetes)",
+      "slug": "flux-cd-gitops-kubernetes",
+      "provider": "CNCF / Flux Project",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Kubernetes, Containers & Orchestration",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Flux CD", "GitOps", "Kubernetes", "OCI Artifacts", "Helm", "CNCF"]
+    },
+    "description": "Open and extensible continuous delivery solution for Kubernetes that keeps clusters in sync with Git repositories, OCI registries, and S3 buckets while automating container image updates.",
+    "access": {
+      "free_limits": [
+        { "name": "GitOps Toolkit controllers & CLI", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 licensed CNCF Graduated project."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://fluxcd.io",
+      "signup": null,
+      "documentation": "https://fluxcd.io/flux/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-flux-cd-gitops-kubernetes", "url": "https://fluxcd.io", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-flux-cd-gitops-kubernetes", "field_path": "access.free_limits", "quote": "Flux is a set of continuous and progressive delivery solutions for Kubernetes that are open and extensible.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "k9s-kubernetes-cli-cluster-manager",
+      "name": "K9s (Terminal UI to Interact with & Manage Live Kubernetes Cloud Clusters)",
+      "slug": "k9s-kubernetes-cli-cluster-manager",
+      "provider": "Derailed / K9s",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Kubernetes, Containers & Orchestration",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["K9s", "Kubernetes TUI", "Cluster Management", "Logs", "Port Forwarding", "Open Source"]
+    },
+    "description": "Fast terminal-based UI (`k9s`) that continually watches Kubernetes clusters in real time and provides instant keybindings to inspect pods, stream logs, exec shells, port-forward, and debug cloud workloads.",
+    "access": {
+      "free_limits": [
+        { "name": "Cluster contexts, X-Ray & Pulses views", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 open-source CLI/TUI."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://k9scli.io",
+      "signup": null,
+      "documentation": "https://k9scli.io/topics/install/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-k9s-kubernetes-cli-cluster-manager", "url": "https://k9scli.io", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-k9s-kubernetes-cli-cluster-manager", "field_path": "access.free_limits", "quote": "K9s provides a terminal UI to interact with your Kubernetes clusters.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "lens-openlens-headlamp-k8s-ui",
+      "name": "Headlamp (Official CNCF Extensible Kubernetes Web UI & Desktop Dashboard)",
+      "slug": "lens-openlens-headlamp-k8s-ui",
+      "provider": "CNCF / Headlamp",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Kubernetes, Containers & Orchestration",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Headlamp", "Kubernetes Dashboard", "Desktop App", "In-Cluster UI", "CNCF", "Open Source"]
+    },
+    "description": "Official CNCF open-source Kubernetes web UI and cross-platform desktop application (successor to Kubernetes Dashboard and open-source alternative to Lens) with RBAC-aware views and plugins for Flux, Argo, and Karpenter.",
+    "access": {
+      "free_limits": [
+        { "name": "Desktop & in-cluster Kubernetes dashboard", "value": "Unlimited clusters", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "100% open-source Apache-2.0 CNCF project."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://headlamp.dev",
+      "signup": null,
+      "documentation": "https://headlamp.dev/docs/latest/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-lens-openlens-headlamp-k8s-ui", "url": "https://headlamp.dev", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-lens-openlens-headlamp-k8s-ui", "field_path": "access.free_limits", "quote": "Headlamp is an easy-to-use and extensible Kubernetes web UI and desktop application.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "nomad-hashicorp-workload-orchestrator",
+      "name": "HashiCorp Nomad Community Edition (Lightweight Container, VM & Binary Orchestrator)",
+      "slug": "nomad-hashicorp-workload-orchestrator",
+      "provider": "HashiCorp",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Kubernetes, Containers & Orchestration",
+      "resource_type": "software",
+      "pricing_model": "free_tier",
+      "tags": ["Nomad", "HashiCorp", "Orchestration", "Docker", "Java/Go Binaries", "QEMU"]
+    },
+    "description": "Single-binary workload orchestrator capable of deploying and scaling Docker containers, static Go/Rust binaries, Java JARs, and QEMU virtual machines across public cloud and on-prem clusters with a fraction of Kubernetes' overhead.",
+    "access": {
+      "free_limits": [
+        { "name": "Self-managed Nomad Community clusters", "value": "Unlimited nodes", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free single binary download."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Governed by BSL 1.1 license."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Free for internal/production deployment." },
+    "links": {
+      "official": "https://developer.hashicorp.com/nomad",
+      "signup": null,
+      "documentation": "https://developer.hashicorp.com/nomad/docs",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-nomad-hashicorp-workload-orchestrator", "url": "https://developer.hashicorp.com/nomad", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-nomad-hashicorp-workload-orchestrator", "field_path": "access.free_limits", "quote": "Nomad is a simple and flexible workload orchestrator to deploy and manage containers and non-containerized applications.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "docker-hub-ghcr-container-registries",
+      "name": "GitHub Container Registry (GHCR) Free Tier (Unlimited Public OCI & Docker Images)",
+      "slug": "docker-hub-ghcr-container-registries",
+      "provider": "GitHub",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Kubernetes, Containers & Orchestration",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["GHCR", "Container Registry", "Docker Images", "OCI Artifacts", "Helm Charts", "No Card"]
+    },
+    "description": "Host and distribute Docker container images, Helm charts, and OCI artifacts on `ghcr.io` with completely free storage and bandwidth for public images plus 500 MB private storage on GitHub Free.",
+    "access": {
+      "free_limits": [
+        { "name": "Public container images & pulls", "value": "Unlimited & Free", "period": "ongoing" },
+        { "name": "Private package storage", "value": "500 MB", "period": "ongoing" },
+        { "name": "Private data transfer out", "value": "1 GB", "period": "per month" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Included with every free GitHub account."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Resets monthly." },
+      "restrictions": ["Private storage beyond 500 MB requires GitHub Pro or pay-as-you-go."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "GitHub account." },
+    "links": {
+      "official": "https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry",
+      "signup": "https://github.com/signup",
+      "documentation": "https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry",
+      "pricing": "https://github.com/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-docker-hub-ghcr-container-registries", "url": "https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-docker-hub-ghcr-container-registries", "field_path": "access.free_limits", "quote": "GitHub Packages Container Registry is free for public container images and includes 500 MB of private storage on GitHub Free.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "skaffold-tilt-kubernetes-dev-loops",
+      "name": "Tilt (Open-Source Multi-Service Kubernetes Cloud Development Environment)",
+      "slug": "skaffold-tilt-kubernetes-dev-loops",
+      "provider": "Tilt / Docker",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Kubernetes, Containers & Orchestration",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["Tilt", "Kubernetes Dev", "Microservices", "Hot Reload", "Docker", "Open Source"]
+    },
+    "description": "Open-source development environment (`tilt up`) that builds, pushes, and live-updates multi-container microservices on local or remote cloud Kubernetes clusters with a real-time web HUD.",
+    "access": {
+      "free_limits": [
+        { "name": "Tilt CLI & Web HUD", "value": "Unlimited services", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 open-source tool."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://tilt.dev",
+      "signup": null,
+      "documentation": "https://docs.tilt.dev",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-skaffold-tilt-kubernetes-dev-loops", "url": "https://tilt.dev", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-skaffold-tilt-kubernetes-dev-loops", "field_path": "access.free_limits", "quote": "Tilt powers multi-service development and live container updates on Kubernetes.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "opentofu-open-source-terraform-iac",
+      "name": "OpenTofu (Linux Foundation Open-Source Multi-Cloud Infrastructure as Code)",
+      "slug": "opentofu-open-source-terraform-iac",
+      "provider": "Linux Foundation / OpenTofu",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Infrastructure as Code & Provisioning",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["OpenTofu", "Terraform Alternative", "IaC", "Linux Foundation", "Multi-Cloud", "Open Source"]
+    },
+    "description": "100% open-source, community-driven Linux Foundation drop-in replacement for Terraform (`tofu init / plan / apply`) featuring built-in client-side state encryption, OpenTofu Registry, and support for 3,000+ cloud providers.",
+    "access": {
+      "free_limits": [
+        { "name": "OpenTofu CLI & Public Provider Registry", "value": "Unlimited resources", "period": "forever" },
+        { "name": "Native S3/GCS state locking & encryption", "value": "Included", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "MPL-2.0 open-source Linux Foundation project."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://opentofu.org",
+      "signup": null,
+      "documentation": "https://opentofu.org/docs/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-opentofu-open-source-terraform-iac", "url": "https://opentofu.org", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-opentofu-open-source-terraform-iac", "field_path": "access.free_limits", "quote": "OpenTofu is an open-source infrastructure as code tool and drop-in Terraform replacement hosted by the Linux Foundation.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "terraform-cloud-hcp-free-tier",
+      "name": "HashiCorp Terraform CLI & HCP Terraform Free (Remote State for 500 Cloud Resources)",
+      "slug": "terraform-cloud-hcp-free-tier",
+      "provider": "HashiCorp",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Infrastructure as Code & Provisioning",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Terraform", "HashiCorp", "IaC", "Cloud Provisioning", "Remote State", "No Card"]
+    },
+    "description": "Provision and manage infrastructure across AWS, GCP, Azure, Cloudflare, and Kubernetes using the Terraform CLI plus HCP Terraform Free for remote state management, VCS runs, and private module registry up to 500 resources.",
+    "access": {
+      "free_limits": [
+        { "name": "Terraform CLI (local/S3 state)", "value": "Unlimited resources", "period": "forever" },
+        { "name": "HCP Terraform managed cloud resources", "value": "Up to 500 resources", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "CLI requires no account; HCP Terraform Free requires no credit card."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Always free up to 500 managed resources." },
+      "restrictions": ["HCP Terraform Free is capped at 500 managed resources."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All developers and teams." },
+    "links": {
+      "official": "https://developer.hashicorp.com/terraform",
+      "signup": "https://app.terraform.io/public/signup/account",
+      "documentation": "https://developer.hashicorp.com/terraform/docs",
+      "pricing": "https://www.hashicorp.com/products/terraform/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-terraform-cloud-hcp-free-tier", "url": "https://developer.hashicorp.com/terraform", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-terraform-cloud-hcp-free-tier", "field_path": "access.free_limits", "quote": "HCP Terraform Free includes remote state management and VCS integration for up to 500 resources.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "pulumi-open-source-cloud-iac",
+      "name": "Pulumi Individual Free & Open-Source IaC (TypeScript, Python, Go & C# Cloud Provisioning)",
+      "slug": "pulumi-open-source-cloud-iac",
+      "provider": "Pulumi",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Infrastructure as Code & Provisioning",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Pulumi", "IaC", "TypeScript", "Python", "Go", "Multi-Cloud"]
+    },
+    "description": "Open-source Infrastructure as Code SDK and CLI that lets you define, deploy, and manage cloud infrastructure on AWS, Azure, GCP, Cloudflare, and Kubernetes using real programming languages, with Pulumi Cloud Individual Freeforever.",
+    "access": {
+      "free_limits": [
+        { "name": "Pulumi Cloud Individual state & secrets", "value": "Unlimited resources for 1 user", "period": "forever" },
+        { "name": "Self-managed S3/GCS/Local state", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 CLI; Pulumi Cloud Individual requires no credit card."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Pulumi Cloud Individual is for single-user workspaces."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All developers." },
+    "links": {
+      "official": "https://www.pulumi.com/pricing/",
+      "signup": "https://app.pulumi.com/signup",
+      "documentation": "https://www.pulumi.com/docs/",
+      "pricing": "https://www.pulumi.com/pricing/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-pulumi-open-source-cloud-iac", "url": "https://www.pulumi.com/pricing/", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-pulumi-open-source-cloud-iac", "field_path": "access.free_limits", "quote": "Pulumi Individual is free forever with unlimited updates and resources for solo developers.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "ansible-automation-configuration-mgmt",
+      "name": "Ansible Community (Agentless Open-Source Server Configuration & Cloud Provisioning)",
+      "slug": "ansible-automation-configuration-mgmt",
+      "provider": "Red Hat / Ansible",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Infrastructure as Code & Provisioning",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["Ansible", "Configuration Management", "Agentless SSH", "Playbooks", "Cloud Automation", "Open Source"]
+    },
+    "description": "Radically simple, agentless IT automation engine that configures Linux/Windows cloud servers over SSH/WinRM, deploys applications, and orchestrates zero-downtime cloud infrastructure updates using YAML playbooks and Ansible Galaxy roles.",
+    "access": {
+      "free_limits": [
+        { "name": "Ansible Core, Community Package & Galaxy", "value": "Unlimited managed hosts", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "GPLv3 open-source tool."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://docs.ansible.com",
+      "signup": null,
+      "documentation": "https://docs.ansible.com",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-ansible-automation-configuration-mgmt", "url": "https://docs.ansible.com", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-ansible-automation-configuration-mgmt", "field_path": "access.free_limits", "quote": "Ansible is an open-source IT automation engine that automates provisioning, configuration management, and application deployment.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "crossplane-cloud-native-control-planes",
+      "name": "Crossplane (CNCF Cloud-Native Control Planes & Kubernetes Infrastructure Provisioning)",
+      "slug": "crossplane-cloud-native-control-planes",
+      "provider": "CNCF / Crossplane",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Infrastructure as Code & Provisioning",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Crossplane", "Control Planes", "Kubernetes CRDs", "Multi-Cloud", "GitOps IaC", "CNCF"]
+    },
+    "description": "CNCF Incubating cloud-native framework that extends the Kubernetes API to provision and continuously reconcile cloud infrastructure (AWS RDS/S3, GCP Cloud SQL, Azure) using declarative Custom Resource Definitions (CRDs).",
+    "access": {
+      "free_limits": [
+        { "name": "Crossplane control plane & cloud providers", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 open-source CNCF project."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://www.crossplane.io",
+      "signup": null,
+      "documentation": "https://docs.crossplane.io",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-crossplane-cloud-native-control-planes", "url": "https://www.crossplane.io", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-crossplane-cloud-native-control-planes", "field_path": "access.free_limits", "quote": "Crossplane is an open-source framework for building cloud-native control planes without needing to write code.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "packer-automated-machine-images",
+      "name": "HashiCorp Packer (Automated Multi-Cloud Golden VM & Container Image Builder)",
+      "slug": "packer-automated-machine-images",
+      "provider": "HashiCorp",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Infrastructure as Code & Provisioning",
+      "resource_type": "developer_tool",
+      "pricing_model": "free_tier",
+      "tags": ["Packer", "Golden Images", "AWS AMI", "Proxmox", "QEMU", "Immutable Infrastructure"]
+    },
+    "description": "Create identical golden machine and container images for multiple platforms (AWS AMI, GCE, Azure, DigitalOcean, Hetzner, Proxmox, QEMU, Docker) in parallel from a single HCL2 configuration file.",
+    "access": {
+      "free_limits": [
+        { "name": "Packer CLI & multi-cloud builder plugins", "value": "Unlimited builds", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free CLI download."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["BSL 1.1 license."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All developers." },
+    "links": {
+      "official": "https://developer.hashicorp.com/packer",
+      "signup": null,
+      "documentation": "https://developer.hashicorp.com/packer/docs",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-packer-automated-machine-images", "url": "https://developer.hashicorp.com/packer", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-packer-automated-machine-images", "field_path": "access.free_limits", "quote": "Packer lets you create identical machine images for multiple platforms from a single source configuration.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "cloud-init-multi-distribution-boot",
+      "name": "cloud-init (The Standard Cross-Cloud Linux Instance Initialization Tool)",
+      "slug": "cloud-init-multi-distribution-boot",
+      "provider": "Canonical / cloud-init",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Infrastructure as Code & Provisioning",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["cloud-init", "Cloud Provisioning", "User Data", "SSH Keys", "Linux Boot", "Open Source"]
+    },
+    "description": "Industry-standard open-source package supported across every major public cloud (AWS, GCP, Azure, Oracle, Hetzner, DigitalOcean) and private hypervisor (Proxmox, OpenStack, LXD) for automating first-boot SSH keys, packages, filesystems, and WireGuard/Docker setup.",
+    "access": {
+      "free_limits": [
+        { "name": "Cloud instance initialization", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Dual-licensed GPLv3 / Apache-2.0 open-source software."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://cloud-init.io",
+      "signup": null,
+      "documentation": "https://cloudinit.readthedocs.io",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-cloud-init-multi-distribution-boot", "url": "https://cloud-init.io", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-cloud-init-multi-distribution-boot", "field_path": "access.free_limits", "quote": "cloud-init is the industry standard multi-distribution method for cross-platform cloud instance initialization.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "vagrant-reproducible-vm-environments",
+      "name": "HashiCorp Vagrant (Declarative Portable Virtual Machine Environments)",
+      "slug": "vagrant-reproducible-vm-environments",
+      "provider": "HashiCorp",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Infrastructure as Code & Provisioning",
+      "resource_type": "developer_tool",
+      "pricing_model": "free_tier",
+      "tags": ["Vagrant", "Virtual Machines", "QEMU", "Libvirt", "VirtualBox", "Provisioning"]
+    },
+    "description": "Command-line utility (`vagrant up`) for building and managing reproducible virtual machine topologies in a single `Vagrantfile` across QEMU/libvirt, VirtualBox, Docker, and cloud providers.",
+    "access": {
+      "free_limits": [
+        { "name": "Vagrant CLI & HCP Vagrant Box Registry", "value": "Unlimited local VMs", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free download."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["BSL 1.1 license."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All developers." },
+    "links": {
+      "official": "https://developer.hashicorp.com/vagrant",
+      "signup": null,
+      "documentation": "https://developer.hashicorp.com/vagrant/docs",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-vagrant-reproducible-vm-environments", "url": "https://developer.hashicorp.com/vagrant", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-vagrant-reproducible-vm-environments", "field_path": "access.free_limits", "quote": "Vagrant is the command-line utility for managing the lifecycle of virtual machines.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "sst-serverless-stack-ion-iac",
+      "name": "SST v3 (Open-Source Framework to Deploy Full-Stack Apps to AWS, Cloudflare & Kubernetes)",
+      "slug": "sst-serverless-stack-ion-iac",
+      "provider": "Anomaly Innovations / SST",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Infrastructure as Code & Provisioning",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["SST", "AWS", "Cloudflare", "TypeScript IaC", "Next.js", "Open Source"]
+    },
+    "description": "Open-source TypeScript infrastructure framework (`sst.config.ts`) built on Pulumi/Terraform providers that deploys Next.js, Astro, Remix, APIs, Cron jobs, Buckets, and Containers directly into your own AWS or Cloudflare account.",
+    "access": {
+      "free_limits": [
+        { "name": "SST CLI & open-source framework", "value": "Unlimited apps & stages", "period": "forever" },
+        { "name": "SST Console Autodeploy", "value": "Free up to 350 resources", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "MIT-licensed open-source CLI."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None for the SST CLI."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://sst.dev",
+      "signup": null,
+      "documentation": "https://sst.dev/docs/",
+      "pricing": "https://sst.dev/pricing"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-sst-serverless-stack-ion-iac", "url": "https://sst.dev", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-sst-serverless-stack-ion-iac", "field_path": "access.free_limits", "quote": "SST is an open-source framework that makes it easy to build modern full-stack applications on your own cloud.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "terragrunt-dry-terraform-opentofu",
+      "name": "Terragrunt (Open-Source Orchestration Wrapper for DRY OpenTofu & Terraform Stacks)",
+      "slug": "terragrunt-dry-terraform-opentofu",
+      "provider": "Gruntwork",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Infrastructure as Code & Provisioning",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["Terragrunt", "OpenTofu", "Terraform", "Multi-Account Cloud", "IaC", "Open Source"]
+    },
+    "description": "Flexible open-source orchestration tool that scales OpenTofu and Terraform across multiple cloud accounts and environments while keeping remote state configurations, variables, and module dependencies DRY.",
+    "access": {
+      "free_limits": [
+        { "name": "Terragrunt CLI & multi-module run-all", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "MIT-licensed open-source tool."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://terragrunt.gruntwork.io",
+      "signup": null,
+      "documentation": "https://terragrunt.gruntwork.io/docs/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-terragrunt-dry-terraform-opentofu", "url": "https://terragrunt.gruntwork.io", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-terragrunt-dry-terraform-opentofu", "field_path": "access.free_limits", "quote": "Terragrunt is a flexible orchestration tool that allows Infrastructure as Code written in OpenTofu/Terraform to scale.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "cloudflare-free-cdn-dns-ssl",
+      "name": "Cloudflare Free Plan (Global Anycast CDN, Authoritative DNS, Universal SSL & DDoS)",
+      "slug": "cloudflare-free-cdn-dns-ssl",
+      "provider": "Cloudflare",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "CDN, DNS, Edge & Tunnels",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Cloudflare", "CDN", "Anycast DNS", "Universal SSL", "DDoS Protection", "No Card"]
+    },
+    "description": "World's fastest authoritative Anycast DNS, global reverse-proxy CDN across 330+ cities, Universal SSL/TLS certificates, HTTP/3, and unmetered DDoS mitigation free for unlimited domains.",
+    "access": {
+      "free_limits": [
+        { "name": "CDN bandwidth & DNS queries", "value": "Unmetered", "period": "ongoing" },
+        { "name": "Universal SSL/TLS certificates", "value": "Included free", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Free plan requires no credit card."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Always free." },
+      "restrictions": ["Requires pointing domain nameservers to Cloudflare."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All website and domain owners." },
+    "links": {
+      "official": "https://www.cloudflare.com/plans/free/",
+      "signup": "https://dash.cloudflare.com/sign-up",
+      "documentation": "https://developers.cloudflare.com/fundamentals/",
+      "pricing": "https://www.cloudflare.com/plans/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-cloudflare-free-cdn-dns-ssl", "url": "https://www.cloudflare.com/plans/free/", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-cloudflare-free-cdn-dns-ssl", "field_path": "access.free_limits", "quote": "Cloudflare's Free plan includes unmetered DDoS mitigation, global CDN, Universal SSL, and fast DNS.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "cloudflare-tunnels-cloudflared",
+      "name": "Cloudflare Tunnel / cloudflared (Expose Self-Hosted Servers Without Opening Ports)",
+      "slug": "cloudflare-tunnels-cloudflared",
+      "provider": "Cloudflare",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "CDN, DNS, Edge & Tunnels",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Cloudflare Tunnel", "cloudflared", "Reverse Tunnel", "Self-Hosting", "NAT Traversal", "No Card"]
+    },
+    "description": "Daemon (`cloudflared`) that creates encrypted outbound-only connections from your VPS, Kubernetes cluster, or home server to Cloudflare's global edge—exposing HTTP, SSH, RDP, and TCP services without a public IP or open firewall ports.",
+    "access": {
+      "free_limits": [
+        { "name": "Quick Tunnels (`*.trycloudflare.com`)", "value": "Unlimited (no account needed)", "period": "ongoing" },
+        { "name": "Named custom-domain tunnels", "value": "Up to 1,000 tunnels per account", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Quick Tunnels require no account; Named Tunnels are included in Cloudflare Zero Trust Free."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Non-HTML streaming video over CDN requires separate Cloudflare Stream."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All developers." },
+    "links": {
+      "official": "https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/",
+      "signup": "https://dash.cloudflare.com/sign-up",
+      "documentation": "https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/",
+      "pricing": "https://www.cloudflare.com/plans/zero-trust-services/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-cloudflare-tunnels-cloudflared", "url": "https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-cloudflare-tunnels-cloudflared", "field_path": "access.free_limits", "quote": "Cloudflare Tunnel provides you with a secure way to connect your resources to Cloudflare without a publicly routable IP address.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "jsdelivr-open-source-cdn",
+      "name": "jsDelivr (Free Multi-CDN for npm Packages, GitHub Releases & ESM Modules)",
+      "slug": "jsdelivr-open-source-cdn",
+      "provider": "Prospect One / jsDelivr",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "CDN, DNS, Edge & Tunnels",
+      "resource_type": "cloud_service",
+      "pricing_model": "completely_free",
+      "tags": ["jsDelivr", "Multi-CDN", "npm", "GitHub CDN", "ESM", "No Card"]
+    },
+    "description": "Free, fast, and reliable open-source Multi-CDN (load-balanced across Cloudflare, Fastly, Gcore, and Bunny) for serving any npm package, GitHub repository file, or ESM module in production with zero configuration.",
+    "access": {
+      "free_limits": [
+        { "name": "Production CDN bandwidth & requests", "value": "Unlimited for open-source files", "period": "forever" },
+        { "name": "Automatic minification & ESM bundling", "value": "Included", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No account or API key required."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Serves public npm and GitHub assets."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Free for commercial and personal production websites." },
+    "links": {
+      "official": "https://www.jsdelivr.com",
+      "signup": null,
+      "documentation": "https://www.jsdelivr.com/documentation",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-jsdelivr-open-source-cdn", "url": "https://www.jsdelivr.com", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-jsdelivr-open-source-cdn", "field_path": "access.free_limits", "quote": "jsDelivr is a free, fast, and reliable Open Source CDN for npm and GitHub.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "unpkg-global-npm-cdn",
+      "name": "UNPKG (Fast Global Content Delivery Network for Everything on npm)",
+      "slug": "unpkg-global-npm-cdn",
+      "provider": "UNPKG",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "CDN, DNS, Edge & Tunnels",
+      "resource_type": "cloud_service",
+      "pricing_model": "completely_free",
+      "tags": ["UNPKG", "CDN", "npm", "JavaScript", "Frontend Hosting", "No Card"]
+    },
+    "description": "Fast, global content delivery network for every file in every package published to npm (`https://unpkg.com/:package@:version/:file`), backed by Cloudflare's edge network.",
+    "access": {
+      "free_limits": [
+        { "name": "Global npm asset delivery", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No registration required."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Serves files published to the public npm registry."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open to everyone." },
+    "links": {
+      "official": "https://unpkg.com",
+      "signup": null,
+      "documentation": "https://unpkg.com",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-unpkg-global-npm-cdn", "url": "https://unpkg.com", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-unpkg-global-npm-cdn", "field_path": "access.free_limits", "quote": "UNPKG is a fast, global content delivery network for everything on npm.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "cdnjs-cloudflare-oss-library-cdn",
+      "name": "cdnjs (Free & Open-Source Public Web CDN Powered by Cloudflare)",
+      "slug": "cdnjs-cloudflare-oss-library-cdn",
+      "provider": "cdnjs / Cloudflare",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "CDN, DNS, Edge & Tunnels",
+      "resource_type": "cloud_service",
+      "pricing_model": "completely_free",
+      "tags": ["cdnjs", "CDN", "Cloudflare", "JavaScript Libraries", "SRI", "No Card"]
+    },
+    "description": "Free and open-source public web CDN service trusted by over 12.5% of all websites worldwide and powered by Cloudflare, hosting 4,500+ JavaScript and CSS libraries with Subresource Integrity (SRI) hashes.",
+    "access": {
+      "free_limits": [
+        { "name": "CDN requests & bandwidth", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "100% free public CDN."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Hosts curated open-source web libraries."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open to all websites." },
+    "links": {
+      "official": "https://cdnjs.com",
+      "signup": null,
+      "documentation": "https://cdnjs.com/about",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-cdnjs-cloudflare-oss-library-cdn", "url": "https://cdnjs.com", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-cdnjs-cloudflare-oss-library-cdn", "field_path": "access.free_limits", "quote": "cdnjs is a free and open-source CDN service trusted by over 12.5% of all websites, powered by Cloudflare.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "duckdns-free-dynamic-dns",
+      "name": "DuckDNS (Free Dynamic DNS Subdomains & Let's Encrypt DNS-01 API)",
+      "slug": "duckdns-free-dynamic-dns",
+      "provider": "DuckDNS",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "CDN, DNS, Edge & Tunnels",
+      "resource_type": "cloud_service",
+      "pricing_model": "completely_free",
+      "tags": ["Dynamic DNS", "DDNS", "DuckDNS", "Let's Encrypt", "Home Server", "No Card"]
+    },
+    "description": "Completely free dynamic DNS service hosted on Amazon EC2 that provides up to 5 `*.duckdns.org` subdomains with TXT record API support for automated wildcard Let's Encrypt TLS certificates.",
+    "access": {
+      "free_limits": [
+        { "name": "Free subdomains", "value": "5 *.duckdns.org domains", "period": "forever" },
+        { "name": "IPv4, IPv6 & TXT DNS-01 API updates", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "100% free with GitHub/Google/Reddit sign-in and no credit card."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "Never expires." },
+      "restrictions": ["Up to 5 subdomains per account."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open to everyone." },
+    "links": {
+      "official": "https://www.duckdns.org",
+      "signup": "https://www.duckdns.org",
+      "documentation": "https://www.duckdns.org/spec.jsp",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-duckdns-free-dynamic-dns", "url": "https://www.duckdns.org", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-duckdns-free-dynamic-dns", "field_path": "access.free_limits", "quote": "Duck DNS is a free dynamic DNS hosted on AWS.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "desec-io-free-secure-dnssec-hosting",
+      "name": "deSEC.io (Free Charitable Anycast DNS Hosting with Automatic DNSSEC & REST API)",
+      "slug": "desec-io-free-secure-dnssec-hosting",
+      "provider": "deSEC e.V.",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "CDN, DNS, Edge & Tunnels",
+      "resource_type": "cloud_service",
+      "pricing_model": "completely_free",
+      "tags": ["deSEC", "Authoritative DNS", "DNSSEC", "Dynamic DNS", "Anycast", "No Card"]
+    },
+    "description": "Free, non-profit German charitable authoritative Anycast DNS hosting service featuring automatic DNSSEC signing for custom domains, free `*.dedyn.io` dynamic DNS domains, and a full REST API.",
+    "access": {
+      "free_limits": [
+        { "name": "Hosted custom & dedyn.io domains", "value": "Up to 15 domains (expandable on request)", "period": "forever" },
+        { "name": "Global Anycast DNSSEC & REST API", "value": "Included free", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "100% free non-profit service."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Default limit of 15 domains per account to prevent abuse (raised free upon email request)."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open to everyone." },
+    "links": {
+      "official": "https://desec.io",
+      "signup": "https://desec.io/signup",
+      "documentation": "https://desec.readthedocs.io",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-desec-io-free-secure-dnssec-hosting", "url": "https://desec.io", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-desec-io-free-secure-dnssec-hosting", "field_path": "access.free_limits", "quote": "deSEC is a free DNS hosting service designed with security in mind, featuring automatic DNSSEC and an Anycast network.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "hurricane-electric-free-dns",
+      "name": "Hurricane Electric Free DNS (Anycast Authoritative DNS for Up to 50 Domains)",
+      "slug": "hurricane-electric-free-dns",
+      "provider": "Hurricane Electric",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "CDN, DNS, Edge & Tunnels",
+      "resource_type": "cloud_service",
+      "pricing_model": "completely_free",
+      "tags": ["Hurricane Electric", "Authoritative DNS", "IPv6", "Dynamic DNS", "Reverse DNS", "No Card"]
+    },
+    "description": "Enterprise-backbone Anycast authoritative DNS hosting from Hurricane Electric supporting up to 50 domains, Dynamic DNS A/AAAA/TXT updates, secondary slave zones, and IPv6 reverse DNS for free.",
+    "access": {
+      "free_limits": [
+        { "name": "Hosted DNS zones", "value": "Up to 50 domains", "period": "forever" },
+        { "name": "Dynamic DNS & Let's Encrypt TXT", "value": "Included", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Completely free with no credit card."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["50 zones per account."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All domain owners." },
+    "links": {
+      "official": "https://dns.he.net",
+      "signup": "https://ipv6.he.net/certification/register.php",
+      "documentation": "https://dns.he.net",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-hurricane-electric-free-dns", "url": "https://dns.he.net", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-hurricane-electric-free-dns", "field_path": "access.free_limits", "quote": "Hurricane Electric Free DNS allows you to host up to 50 domains with Dynamic DNS and IPv6 support.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "bunny-net-cdn-dns-free-trial",
+      "name": "Bunny DNS Free Tier (20 Million Free Queries/Month) & 14-Day Global CDN Trial",
+      "slug": "bunny-net-cdn-dns-free-trial",
+      "provider": "BunnyWay (bunny.net)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "CDN, DNS, Edge & Tunnels",
+      "resource_type": "cloud_service",
+      "pricing_model": "free_tier",
+      "tags": ["Bunny.net", "Bunny DNS", "CDN", "Geo-Routing", "Scriptable DNS", "No Card"]
+    },
+    "description": "Next-generation scriptable Anycast DNS offering 20 million free standard queries and 1 million smart geo-routed queries every month forever, plus a 14-day free trial of Bunny CDN across 119+ global PoPs.",
+    "access": {
+      "free_limits": [
+        { "name": "Bunny DNS Standard queries", "value": "20,000,000 queries", "period": "per month (Free Forever)" },
+        { "name": "Smart/Scriptable DNS queries", "value": "1,000,000 queries", "period": "per month (Free Forever)" },
+        { "name": "Bunny CDN trial", "value": "14 days (up to 1 TB)", "period": "trial" }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required for the 14-day trial or Bunny DNS free tier."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": "20M DNS queries reset every month." },
+      "restrictions": ["CDN after 14-day trial is pay-as-you-go; DNS remains free up to 20M queries/month."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "All developers." },
+    "links": {
+      "official": "https://bunny.net/dns/",
+      "signup": "https://dash.bunny.net/auth/register",
+      "documentation": "https://docs.bunny.net",
+      "pricing": "https://bunny.net/pricing/"
+    },
+    "evidence": {
+      "sources": [{ "id": "src-bunny-net-cdn-dns-free-trial", "url": "https://bunny.net/dns/", "source_type": "official_pricing", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-bunny-net-cdn-dns-free-trial", "field_path": "access.free_limits", "quote": "Bunny DNS includes 20 million free standard queries and 1 million smart queries per month.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "bore-localtunnel-expose-localhost",
+      "name": "bore (Minimal 400-Line Rust TCP Tunnel for Exposing Local Servers to the Cloud)",
+      "slug": "bore-localtunnel-expose-localhost",
+      "provider": "Eric Zhang (ekzhang)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "CDN, DNS, Edge & Tunnels",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["bore", "TCP Tunnel", "Rust", "Self-Hosted Tunnel", "Localhost", "Open Source"]
+    },
+    "description": "Modern, simple, 400-line open-source TCP tunnel written in Rust (`bore local 8000 --to bore.pub`) that exposes local ports to a remote cloud server or the free public `bore.pub` server, bypassing standard NAT firewalls.",
+    "access": {
+      "free_limits": [
+        { "name": "bore CLI & self-hosted `bore server`", "value": "Unlimited tunnels", "period": "forever" },
+        { "name": "Public `bore.pub` demo server", "value": "Free", "period": "ongoing" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "MIT-licensed open-source tool."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://github.com/ekzhang/bore",
+      "signup": null,
+      "documentation": "https://github.com/ekzhang/bore",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-bore-localtunnel-expose-localhost", "url": "https://github.com/ekzhang/bore", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-bore-localtunnel-expose-localhost", "field_path": "access.free_limits", "quote": "bore is a modern, simple TCP tunnel in Rust that exposes local ports to a remote server.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "proxmox-virtual-environment-ve",
+      "name": "Proxmox VE (Open-Source Enterprise Server Virtualization for KVM VMs & LXC)",
+      "slug": "proxmox-virtual-environment-ve",
+      "provider": "Proxmox Server Solutions",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Virtualization, Private Cloud & Cloud OS",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Proxmox VE", "KVM Hypervisor", "LXC Containers", "Ceph", "ZFS", "Private Cloud"]
+    },
+    "description": "Complete open-source enterprise server virtualization management platform combining KVM hypervisor virtual machines, LXC containers, software-defined storage (ZFS, Ceph), SDN networking, and high-availability clustering in a single web interface.",
+    "access": {
+      "free_limits": [
+        { "name": "Full Proxmox VE hypervisor & HA clustering", "value": "Unlimited nodes, CPUs & VMs", "period": "forever" },
+        { "name": "Proxmox Backup Server (PBS) open-source", "value": "Included", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "100% open-source (AGPLv3) with no feature locks on the No-Subscription repository."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Installs on x86_64 bare-metal servers or Debian."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://www.proxmox.com/en/products/proxmox-virtual-environment/overview",
+      "signup": null,
+      "documentation": "https://pve.proxmox.com/pve-docs/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-proxmox-virtual-environment-ve", "url": "https://www.proxmox.com/en/products/proxmox-virtual-environment/overview", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-proxmox-virtual-environment-ve", "field_path": "access.free_limits", "quote": "Proxmox VE is a complete, open-source server management platform for enterprise virtualization combining KVM and LXC.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "openstack-open-source-cloud-iaas",
+      "name": "OpenStack (Open-Source Cloud Computing & Private/Public IaaS Platform)",
+      "slug": "openstack-open-source-cloud-iaas",
+      "provider": "OpenInfra Foundation",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Virtualization, Private Cloud & Cloud OS",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["OpenStack", "Private Cloud", "IaaS", "Nova Compute", "Neutron SDN", "Swift S3"]
+    },
+    "description": "The global standard open-source cloud operating system controlling large pools of compute (Nova), SDN networking (Neutron), block storage (Cinder), and object storage (Swift) across data centers via a dashboard or API.",
+    "access": {
+      "free_limits": [
+        { "name": "Self-hosted OpenStack private/public clouds", "value": "Unlimited nodes", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 open-source software."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://www.openstack.org",
+      "signup": null,
+      "documentation": "https://docs.openstack.org",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-openstack-open-source-cloud-iaas", "url": "https://www.openstack.org", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-openstack-open-source-cloud-iaas", "field_path": "access.free_limits", "quote": "OpenStack is an open-source cloud computing platform that controls large pools of compute, storage, and networking resources.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "apache-cloudstack-iaas-cloud",
+      "name": "Apache CloudStack (Turnkey Open-Source IaaS Cloud Computing Platform)",
+      "slug": "apache-cloudstack-iaas-cloud",
+      "provider": "Apache Software Foundation",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Virtualization, Private Cloud & Cloud OS",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Apache CloudStack", "IaaS", "Multi-Hypervisor", "KVM", "XCP-ng", "Private Cloud"]
+    },
+    "description": "Turnkey open-source Infrastructure-as-a-Service (IaaS) cloud platform designed to deploy and manage large networks of virtual machines and Kubernetes clusters across KVM, XCP-ng, and VMware hypervisors.",
+    "access": {
+      "free_limits": [
+        { "name": "CloudStack management server, UI & API", "value": "Unlimited hypervisor hosts", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 open-source software."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://cloudstack.apache.org",
+      "signup": null,
+      "documentation": "https://docs.cloudstack.apache.org",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-apache-cloudstack-iaas-cloud", "url": "https://cloudstack.apache.org", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-apache-cloudstack-iaas-cloud", "field_path": "access.free_limits", "quote": "Apache CloudStack is open-source software designed to deploy and manage large networks of virtual machines as a highly available IaaS cloud.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "incus-lxd-system-containers-vms",
+      "name": "Linux Containers Incus (Open-Source System Container & Virtual Machine Manager)",
+      "slug": "incus-lxd-system-containers-vms",
+      "provider": "Linux Containers Project",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Virtualization, Private Cloud & Cloud OS",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Incus", "LXC", "QEMU VMs", "System Containers", "Private Cloud", "Open Source"]
+    },
+    "description": "Community-led fork of LXD providing a modern, secure system container (LXC), OCI application container, and virtual machine (QEMU) cloud manager with clustering, OVN SDN, and ZFS/Ceph storage.",
+    "access": {
+      "free_limits": [
+        { "name": "System containers, QEMU VMs & clusters", "value": "Unlimited", "period": "forever" },
+        { "name": "Public image server (`images.linuxcontainers.org`)", "value": "Free", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 open-source project."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Runs on Linux hosts."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://linuxcontainers.org/incus/",
+      "signup": null,
+      "documentation": "https://linuxcontainers.org/incus/docs/main/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-incus-lxd-system-containers-vms", "url": "https://linuxcontainers.org/incus/", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-incus-lxd-system-containers-vms", "field_path": "access.free_limits", "quote": "Incus is a modern, secure and powerful system container and virtual machine manager.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "xcp-ng-xen-orchestra-hypervisor",
+      "name": "XCP-ng (Turnkey Open-Source Enterprise Xen Hypervisor & Virtualization Platform)",
+      "slug": "xcp-ng-xen-orchestra-hypervisor",
+      "provider": "Vates / Linux Foundation Xen Project",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Virtualization, Private Cloud & Cloud OS",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["XCP-ng", "Xen Hypervisor", "Bare-Metal Virtualization", "Live Migration", "VMware Alternative", "Open Source"]
+    },
+    "description": "100% open-source bare-metal enterprise virtualization platform based on the Xen hypervisor, featuring live vMotion-style VM migration, high availability, SDN, and Xen Orchestra from sources without per-core licensing.",
+    "access": {
+      "free_limits": [
+        { "name": "Enterprise hypervisor features (HA, live migration)", "value": "100% unlocked & free", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "GPLv2 open-source hypervisor ISO."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Installs on bare-metal x86_64 servers."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://xcp-ng.org",
+      "signup": null,
+      "documentation": "https://docs.xcp-ng.org",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-xcp-ng-xen-orchestra-hypervisor", "url": "https://xcp-ng.org", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-xcp-ng-xen-orchestra-hypervisor", "field_path": "access.free_limits", "quote": "XCP-ng is a turnkey open-source hypervisor with all enterprise virtualization features unlocked for free.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "harvester-cloud-native-hci",
+      "name": "Harvester (Open-Source Cloud-Native Hyperconverged Infrastructure on Kubernetes)",
+      "slug": "harvester-cloud-native-hci",
+      "provider": "SUSE Rancher",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Virtualization, Private Cloud & Cloud OS",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Harvester", "HCI", "KubeVirt", "Longhorn", "Bare Metal Cloud", "Open Source"]
+    },
+    "description": "Modern open-source hyperconverged infrastructure (HCI) software built on Kubernetes, KubeVirt, and Longhorn that runs side-by-side virtual machines and container clusters on bare-metal servers.",
+    "access": {
+      "free_limits": [
+        { "name": "Bare-metal HCI clusters, VMs & Rancher integration", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 open-source software."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Requires x86_64 or ARM64 bare-metal hardware."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://harvesterhci.io",
+      "signup": null,
+      "documentation": "https://docs.harvesterhci.io",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-harvester-cloud-native-hci", "url": "https://harvesterhci.io", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-harvester-cloud-native-hci", "field_path": "access.free_limits", "quote": "Harvester is a modern, open-source hyperconverged infrastructure (HCI) software built on Kubernetes.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "firecracker-microvm-serverless-vmm",
+      "name": "AWS Firecracker (Open-Source Rust MicroVM Virtualization Powering Lambda & Fly.io)",
+      "slug": "firecracker-microvm-serverless-vmm",
+      "provider": "Amazon Web Services",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Virtualization, Private Cloud & Cloud OS",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["Firecracker", "MicroVMs", "Rust", "KVM", "Serverless Compute", "Open Source"]
+    },
+    "description": "Open-source Virtual Machine Monitor (VMM) written in Rust that uses Linux KVM to launch lightweight, hardware-isolated microVMs in under 125ms with <5 MiB memory overhead—powering AWS Lambda, Fargate, and Fly.io.",
+    "access": {
+      "free_limits": [
+        { "name": "Firecracker VMM & Jailer binary", "value": "Unlimited microVMs", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 open-source project."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["Requires Linux host with `/dev/kvm` access."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://firecracker-microvm.github.io",
+      "signup": null,
+      "documentation": "https://github.com/firecracker-microvm/firecracker/tree/main/docs",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-firecracker-microvm-serverless-vmm", "url": "https://firecracker-microvm.github.io", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-firecracker-microvm-serverless-vmm", "field_path": "access.free_limits", "quote": "Firecracker is an open-source virtualization technology purpose-built for creating and managing secure, multi-tenant container and function-based services.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "qemu-kvm-open-source-virtualization",
+      "name": "QEMU & KVM (Open-Source Hardware Emulator & Linux Kernel Hypervisor)",
+      "slug": "qemu-kvm-open-source-virtualization",
+      "provider": "QEMU Project",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Virtualization, Private Cloud & Cloud OS",
+      "resource_type": "software",
+      "pricing_model": "open_source",
+      "tags": ["QEMU", "KVM", "Hypervisor", "Virtualization", "x86/ARM64/RISC-V", "Open Source"]
+    },
+    "description": "Generic and open-source machine emulator and virtualizer that achieves near-native hardware performance when paired with KVM (Linux) or Hypervisor.framework (macOS), forming the foundation of modern cloud computing.",
+    "access": {
+      "free_limits": [
+        { "name": "Full-system emulation & KVM virtualization", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "GPLv2 open-source software."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://www.qemu.org",
+      "signup": null,
+      "documentation": "https://www.qemu.org/documentation/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-qemu-kvm-open-source-virtualization", "url": "https://www.qemu.org", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-qemu-kvm-open-source-virtualization", "field_path": "access.free_limits", "quote": "QEMU is a generic and open-source machine emulator and virtualizer.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "multipass-canonical-ubuntu-vms",
+      "name": "Canonical Multipass (Instant On-Demand Ubuntu Cloud VMs with cloud-init)",
+      "slug": "multipass-canonical-ubuntu-vms",
+      "provider": "Canonical",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Virtualization, Private Cloud & Cloud OS",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["Multipass", "Canonical", "Ubuntu Cloud VMs", "cloud-init", "Local Cloud", "Open Source"]
+    },
+    "description": "Lightweight VM manager (`multipass launch`) for Linux, macOS, and Windows that spins up fresh Ubuntu LTS cloud images in seconds with native `cloud-init` metadata simulation for testing cloud deployments locally.",
+    "access": {
+      "free_limits": [
+        { "name": "Local Ubuntu cloud instances & snapshots", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "GPLv3 open-source tool from Canonical."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://canonical.com/multipass",
+      "signup": null,
+      "documentation": "https://canonical.com/multipass/docs",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-multipass-canonical-ubuntu-vms", "url": "https://canonical.com/multipass", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-multipass-canonical-ubuntu-vms", "field_path": "access.free_limits", "quote": "Multipass orchestrates virtual Ubuntu instances on Linux, macOS, and Windows with cloud-init support.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "lima-linux-virtual-machines-mac",
+      "name": "Lima (CNCF Open-Source Linux Virtual Machines with Automatic File Sharing & Port Forwarding)",
+      "slug": "lima-linux-virtual-machines-mac",
+      "provider": "CNCF / Lima",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "cloud-hosting",
+      "subcategory": "Virtualization, Private Cloud & Cloud OS",
+      "resource_type": "developer_tool",
+      "pricing_model": "open_source",
+      "tags": ["Lima", "Linux VMs", "containerd", "Apple Silicon VZ", "CNCF", "Open Source"]
+    },
+    "description": "CNCF Incubating project (`limactl`) that launches Linux virtual machines (Ubuntu, Debian, Fedora, Arch, Alpine, Rocky) on macOS and Linux with automatic file sharing, localhost port forwarding, and built-in containerd/nerdctl/Docker/K8s templates.",
+    "access": {
+      "free_limits": [
+        { "name": "Linux VMs & container/Kubernetes templates", "value": "Unlimited", "period": "forever" }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Apache-2.0 open-source CNCF project."
+      },
+      "validity": { "type": "ongoing", "duration": null, "auto_renewal": null },
+      "restrictions": ["None."]
+    },
+    "eligibility": { "student_access": "eligible", "regions": ["Global"], "conditions": "Open source." },
+    "links": {
+      "official": "https://lima-vm.io",
+      "signup": null,
+      "documentation": "https://lima-vm.io/docs/",
+      "pricing": null
+    },
+    "evidence": {
+      "sources": [{ "id": "src-lima-linux-virtual-machines-mac", "url": "https://lima-vm.io", "source_type": "official_docs", "checked_at": "2026-11-16" }],
+      "claims": [{ "source_id": "src-lima-linux-virtual-machines-mac", "field_path": "access.free_limits", "quote": "Lima launches Linux virtual machines with automatic file sharing and port forwarding.", "confidence": "high", "notes": null }]
+    },
+    "verification": { "status": "verified", "last_verified_at": "2026-11-16", "notes": "Live-verified 200 OK." },
+    "metadata": { "created_at": "2026-11-16", "updated_at": "2026-11-16", "featured": false, "contributor": "freestack-core" }
+  }
+]
