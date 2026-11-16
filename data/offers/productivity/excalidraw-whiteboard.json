@@ -9,7 +9,7 @@
   },
   "classification": {
     "category": "productivity-collaboration",
-    "subcategory": "Project Management",
+    "subcategory": "Whiteboards, Diagramming & Mind Mapping",
     "resource_type": "software",
     "pricing_model": "open_source",
     "tags": ["Whiteboard", "Diagrams", "Architecture", "Open Source", "No Account"]
@@ -51,7 +51,7 @@
         "id": "excalidraw-docs",
         "url": "https://docs.excalidraw.com",
         "source_type": "official_docs",
-        "checked_at": "2026-11-12"
+        "checked_at": "2026-11-16"
       }
     ],
     "claims": [
@@ -66,13 +66,13 @@
   },
   "verification": {
     "status": "verified",
-    "last_verified_at": "2026-11-12",
+    "last_verified_at": "2026-11-16",
     "notes": null
   },
   "metadata": {
     "created_at": "2026-11-10",
-    "updated_at": "2026-11-12",
-    "featured": false,
+    "updated_at": "2026-11-16",
+    "featured": true,
     "contributor": "freestack-core"
   }
 }

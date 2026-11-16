@@ -167,6 +167,15 @@ export function filterAndSortOffers(offers: Offer[], filters: FilterState): Offe
     'lets-encrypt': 6,
     'burp-suite-community-edition': 7,
     'bitwarden-open-source-password-manager': 8,
+    // Productivity & Collaboration pinned defaults (most popular at top)
+    'notion-free-plan': 1,
+    'linear-free-issue-tracking': 2,
+    'slack-free-team-messaging': 3,
+    'obsidian-markdown-knowledge-base': 4,
+    'excalidraw-whiteboard': 5,
+    'n8n-workflow-automation-self-hosted': 6,
+    'atlassian-jira-free-plan': 7,
+    'miro-free-collaborative-whiteboard': 8,
   };
 
   return [...list].sort((a, b) => {

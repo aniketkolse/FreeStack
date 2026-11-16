@@ -843,17 +843,21 @@
     "slug": "productivity-collaboration",
     "name": "Productivity & Collaboration",
     "shortName": "Productivity",
-    "description": "Project management, notes and documents, diagramming whiteboards, team communication, and workflow automation.",
+    "description": "Notes, wikis & knowledge graphs, agile project management & issue tracking, collaborative whiteboards & diagramming, team chat & video, workflow automation, no-code databases & forms, scheduling & time tracking, async screen recording, developer docs & slides, and desktop productivity.",
     "color": "sunshine-yellow",
     "popular": true,
     "subcategories": [
+      {
+        "slug": "notes-documents",
+        "name": "Notes & Documents"
+      },
       {
         "slug": "project-management",
         "name": "Project Management"
       },
       {
-        "slug": "notes-documents",
-        "name": "Notes & Documents"
+        "slug": "whiteboards-diagramming",
+        "name": "Whiteboards, Diagramming & Mind Mapping"
       },
       {
         "slug": "communication",
@@ -862,6 +866,26 @@
       {
         "slug": "workflow-automation",
         "name": "Workflow Automation"
+      },
+      {
+        "slug": "spreadsheets-databases-forms",
+        "name": "Spreadsheets, No-Code Databases & Forms"
+      },
+      {
+        "slug": "scheduling-time-tracking",
+        "name": "Calendars, Scheduling & Time Tracking"
+      },
+      {
+        "slug": "async-video-file-sharing",
+        "name": "Async Video, Screen Recording & File Collaboration"
+      },
+      {
+        "slug": "docs-presentations-publishing",
+        "name": "Documentation Sites, Presentations & Publishing"
+      },
+      {
+        "slug": "launchers-signing-office",
+        "name": "Desktop Launchers, Document Signing & Office Suites"
       }
     ]
   }

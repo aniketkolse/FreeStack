@@ -43,11 +43,12 @@ test('every cataloged offer resolves to an existing official logo file in public
       offer.classification.category === 'developer-tools' ||
       offer.classification.category === 'design-creative' ||
       offer.classification.category === 'databases-backend' ||
-      offer.classification.category === 'security-networking'
+      offer.classification.category === 'security-networking' ||
+      offer.classification.category === 'productivity-collaboration'
     ) {
       assert.ok(
         brandSrc,
-        `Every AI model, Developer Tool, Frontend & Design Tool, Databases & Backend, and Security & Networking offer must resolve to a specific official model or company logo: ${offer.identity.slug}`
+        `Every AI model, Developer Tool, Frontend & Design Tool, Databases & Backend, Security & Networking, and Productivity & Collaboration offer must resolve to a specific official model or company logo: ${offer.identity.slug}`
       );
     }
 
@@ -256,5 +257,47 @@ test('Security & Networking category contains 100 verified offers across 10 subc
   );
 });
 
+test('Productivity & Collaboration category contains 100 verified offers across 10 subcategories with most popular tools at top by default', async () => {
+  const { filterAndSortOffers, DEFAULT_FILTER_STATE } = await import('../filters/filterOffers');
+  const offers = loadOffersFromDisk();
+  const prodCollab = offers.filter((o) => o.classification.category === 'productivity-collaboration');
 
+  assert.equal(prodCollab.length, 100, `Expected 100 verified Productivity & Collaboration offers, found ${prodCollab.length}`);
 
+  const subcategories = new Set<string>();
+  for (const offer of prodCollab) {
+    assert.equal(offer.verification.status, 'verified', `Productivity & Collaboration offer ${offer.identity.slug} must be verified`);
+    subcategories.add(offer.classification.subcategory);
+    assert.ok(
+      resolveOfferBrandLogoSrc(offer),
+      `Productivity & Collaboration offer ${offer.identity.slug} must resolve to an official brand logo`
+    );
+  }
+
+  assert.equal(
+    subcategories.size,
+    10,
+    `Expected 10 Productivity & Collaboration subcategories, found ${subcategories.size}: ${Array.from(subcategories).join(', ')}`
+  );
+
+  const defaultSorted = filterAndSortOffers(prodCollab, {
+    ...DEFAULT_FILTER_STATE,
+    category: 'productivity-collaboration',
+    sortBy: 'relevance',
+  });
+
+  assert.deepEqual(
+    defaultSorted.slice(0, 8).map((o) => o.identity.slug),
+    [
+      'notion-free-plan',
+      'linear-free-issue-tracking',
+      'slack-free-team-messaging',
+      'obsidian-markdown-knowledge-base',
+      'excalidraw-whiteboard',
+      'n8n-workflow-automation-self-hosted',
+      'atlassian-jira-free-plan',
+      'miro-free-collaborative-whiteboard',
+    ],
+    'Most popular Productivity & Collaboration tools (Notion, Linear, Slack, Obsidian, Excalidraw, n8n, Jira, Miro) must appear at the top by default'
+  );
+});

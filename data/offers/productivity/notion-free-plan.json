@@ -68,13 +68,13 @@
   },
   "verification": {
     "status": "verified",
-    "last_verified_at": "2026-11-10",
+    "last_verified_at": "2026-11-16",
     "notes": null
   },
   "metadata": {
     "created_at": "2026-10-20",
-    "updated_at": "2026-11-10",
-    "featured": false,
+    "updated_at": "2026-11-16",
+    "featured": true,
     "contributor": "freestack-core"
   }
 }
