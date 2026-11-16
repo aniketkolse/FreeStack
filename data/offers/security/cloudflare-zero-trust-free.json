@@ -65,14 +65,14 @@
     ]
   },
   "verification": {
-    "status": "needs_review",
-    "last_verified_at": "2026-11-03",
-    "notes": "Needs human check to confirm whether Zero Trust Free checkout requires entering a card on newly created accounts."
+    "status": "verified",
+    "last_verified_at": "2026-11-16",
+    "notes": "Verified Cloudflare Zero Trust Free plan includes 50 seats for Cloudflare Access, Gateway DNS filtering, and Cloudflare Tunnels."
   },
   "metadata": {
     "created_at": "2026-10-18",
-    "updated_at": "2026-11-03",
-    "featured": false,
+    "updated_at": "2026-11-16",
+    "featured": true,
     "contributor": "freestack-core"
   }
 }

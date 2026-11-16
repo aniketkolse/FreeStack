@@ -42,11 +42,12 @@ test('every cataloged offer resolves to an existing official logo file in public
       offer.classification.category === 'ai-ml' ||
       offer.classification.category === 'developer-tools' ||
       offer.classification.category === 'design-creative' ||
-      offer.classification.category === 'databases-backend'
+      offer.classification.category === 'databases-backend' ||
+      offer.classification.category === 'security-networking'
     ) {
       assert.ok(
         brandSrc,
-        `Every AI model, Developer Tool, Frontend & Design Tool, and Databases & Backend offer must resolve to a specific official model or company logo: ${offer.identity.slug}`
+        `Every AI model, Developer Tool, Frontend & Design Tool, Databases & Backend, and Security & Networking offer must resolve to a specific official model or company logo: ${offer.identity.slug}`
       );
     }
 
@@ -211,5 +212,49 @@ test('Databases & Backend category contains 100 verified offers across 10 subcat
     'Supabase, Render, Railway, AWS, and MongoDB must appear as the top 5 default offers in Databases & Backend'
   );
 });
+
+test('Security & Networking category contains 100 verified offers across 10 subcategories with most popular tools at top by default', async () => {
+  const { filterAndSortOffers, DEFAULT_FILTER_STATE } = await import('../filters/filterOffers');
+  const offers = loadOffersFromDisk();
+  const secNet = offers.filter((o) => o.classification.category === 'security-networking');
+
+  assert.equal(secNet.length, 100, `Expected 100 verified Security & Networking offers, found ${secNet.length}`);
+
+  const subcategories = new Set<string>();
+  for (const offer of secNet) {
+    assert.equal(offer.verification.status, 'verified', `Security & Networking offer ${offer.identity.slug} must be verified`);
+    subcategories.add(offer.classification.subcategory);
+    assert.ok(
+      resolveOfferBrandLogoSrc(offer),
+      `Security & Networking offer ${offer.identity.slug} must resolve to an official brand logo`
+    );
+  }
+
+  assert.equal(
+    subcategories.size,
+    10,
+    `Expected 10 Security & Networking subcategories, found ${subcategories.size}: ${Array.from(subcategories).join(', ')}`
+  );
+
+  const defaultSorted = filterAndSortOffers(secNet, {
+    ...DEFAULT_FILTER_STATE,
+    category: 'security-networking',
+    sortBy: 'relevance',
+  });
+
+  assert.deepEqual(
+    defaultSorted.slice(0, 6).map((o) => o.identity.slug),
+    [
+      'cloudflare-zero-trust-free',
+      'tailscale-free-wireguard-mesh-vpn',
+      'wireshark-network-protocol-analyzer',
+      'nmap-network-mapper-scanner',
+      'owasp-zap-zed-attack-proxy',
+      'lets-encrypt',
+    ],
+    'Most popular Security & Networking tools (Cloudflare Zero Trust, Tailscale, Wireshark, Nmap, OWASP ZAP, Let\'s Encrypt) must appear at the top by default'
+  );
+});
+
 
 

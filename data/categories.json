@@ -793,10 +793,18 @@
     "slug": "security-networking",
     "name": "Security & Networking",
     "shortName": "Security",
-    "description": "Security testing tools, TLS certificates, scanning utilities, Zero Trust tunnels, and practice labs.",
+    "description": "Network packet & protocol analyzers, Zero Trust & WireGuard mesh VPNs, penetration testing & web security scanners, TLS/PKI & secrets management, DNS/WAF/firewalls, reverse proxies & service mesh, SIEM/IDS threat intelligence, cloud/container security, and CTF practice labs.",
     "color": "tangerine",
     "popular": true,
     "subcategories": [
+      {
+        "slug": "network-utilities",
+        "name": "Network Utilities"
+      },
+      {
+        "slug": "zero-trust-vpn-mesh",
+        "name": "Zero Trust, VPN & Mesh Networking"
+      },
       {
         "slug": "security-testing",
         "name": "Security Testing Tools"
@@ -806,8 +814,24 @@
         "name": "Scanning Utilities"
       },
       {
-        "slug": "network-utilities",
-        "name": "Network Utilities"
+        "slug": "tls-pki-secrets",
+        "name": "TLS, PKI & Secrets Management"
+      },
+      {
+        "slug": "dns-firewall-waf",
+        "name": "DNS, Firewall, WAF & DDoS Protection"
+      },
+      {
+        "slug": "proxies-load-balancers-mesh",
+        "name": "Reverse Proxies, Load Balancers & Service Mesh"
+      },
+      {
+        "slug": "siem-ids-threat-intel",
+        "name": "SIEM, IDS/IPS & Threat Intelligence"
+      },
+      {
+        "slug": "code-container-cloud-security",
+        "name": "Code, Container, Cloud & Supply-Chain Security"
       },
       {
         "slug": "practice-labs",

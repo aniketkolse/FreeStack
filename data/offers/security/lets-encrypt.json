@@ -9,7 +9,7 @@
   },
   "classification": {
     "category": "security-networking",
-    "subcategory": "Security Testing Tools",
+    "subcategory": "TLS, PKI & Secrets Management",
     "resource_type": "other",
     "pricing_model": "completely_free",
     "tags": ["HTTPS", "SSL", "TLS", "Certificates", "ACME", "No Account"]
@@ -66,13 +66,13 @@
   },
   "verification": {
     "status": "verified",
-    "last_verified_at": "2026-11-11",
+    "last_verified_at": "2026-11-16",
     "notes": null
   },
   "metadata": {
     "created_at": "2026-10-19",
-    "updated_at": "2026-11-11",
-    "featured": false,
+    "updated_at": "2026-11-16",
+    "featured": true,
     "contributor": "freestack-core"
   }
 }

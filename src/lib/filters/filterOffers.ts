@@ -158,6 +158,15 @@ export function filterAndSortOffers(offers: Offer[], filters: FilterState): Offe
     'railway-backend-databases-trial': 3,
     'aws-free-tier-databases-backend': 4,
     'mongodb-atlas-free-forever-m0': 5,
+    // Security & Networking pinned defaults (most popular at top)
+    'cloudflare-zero-trust-free': 1,
+    'tailscale-free-wireguard-mesh-vpn': 2,
+    'wireshark-network-protocol-analyzer': 3,
+    'nmap-network-mapper-scanner': 4,
+    'owasp-zap-zed-attack-proxy': 5,
+    'lets-encrypt': 6,
+    'burp-suite-community-edition': 7,
+    'bitwarden-open-source-password-manager': 8,
   };
 
   return [...list].sort((a, b) => {
