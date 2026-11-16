@@ -9,10 +9,10 @@
   },
   "classification": {
     "category": "student-benefits",
-    "subcategory": "Educational Software",
+    "subcategory": "Student AI & Dev Tools",
     "resource_type": "software",
     "pricing_model": "student_exclusive",
-    "tags": ["IDEs", "IntelliJ", "PyCharm", "WebStorm", "Students", "Desktop"]
+    "tags": ["Student ID / .edu Required", "IDEs", "IntelliJ", "PyCharm", "WebStorm", "Students"]
   },
   "description": "Free annual academic access to IntelliJ IDEA Ultimate, PyCharm Professional, WebStorm, CLion, DataGrip, and all JetBrains desktop IDEs.",
   "access": {
@@ -38,7 +38,7 @@
   "eligibility": {
     "student_access": "exclusive",
     "regions": ["Global (except sanctioned regions)"],
-    "conditions": "Enrolled students and accredited faculty members."
+    "conditions": "Requires Student ID / .edu email: verify with university .edu email, ISIC/ITIC card, GitHub Student Developer Pack, or official enrollment document."
   },
   "links": {
     "official": "https://www.jetbrains.com/community/education/",
@@ -73,7 +73,7 @@
   "metadata": {
     "created_at": "2026-10-04",
     "updated_at": "2026-11-08",
-    "featured": false,
+    "featured": true,
     "contributor": "freestack-core"
   }
 }

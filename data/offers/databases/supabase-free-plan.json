@@ -12,9 +12,9 @@
     "subcategory": "Backend-as-a-Service",
     "resource_type": "cloud_service",
     "pricing_model": "free_tier",
-    "tags": ["PostgreSQL", "Database", "Auth", "Storage", "Backend", "No Card"]
+    "tags": ["PostgreSQL", "PostgreSQL Hosting", "Hosting", "Database", "Auth", "Storage", "Backend", "No Card"]
   },
-  "description": "Managed PostgreSQL database with built-in authentication, auto-generated REST APIs, row-level security, and S3-compatible object storage.",
+  "description": "Free managed PostgreSQL database hosting with built-in authentication, auto-generated REST APIs, row-level security, and S3-compatible object storage.",
   "access": {
     "free_limits": [
       { "name": "Database size", "value": "500 MB", "period": "per project" },

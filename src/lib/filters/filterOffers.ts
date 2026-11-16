@@ -176,6 +176,30 @@ export function filterAndSortOffers(offers: Offer[], filters: FilterState): Offe
     'n8n-workflow-automation-self-hosted': 6,
     'atlassian-jira-free-plan': 7,
     'miro-free-collaborative-whiteboard': 8,
+    // Cloud & Hosting pinned defaults (most popular at top)
+    'cloudflare-pages-workers': 1,
+    'vercel-hobby': 2,
+    'aws-free-tier-cloud-credits': 3,
+    'google-cloud-free-program-300': 4,
+    'oracle-cloud-always-free': 5,
+    'microsoft-azure-free-account-200': 6,
+    'netlify-starter-free-hosting': 7,
+    'render-free-web-services-static': 8,
+    'fly-io-machines-app-hosting': 9,
+    'github-pages-static': 10,
+    // Student Benefits pinned defaults (most popular at top)
+    'github-student-developer-pack': 1,
+    'jetbrains-educational-pack': 2,
+    'azure-for-students': 3,
+    'github-copilot-pro-students': 4,
+    'cursor-pro-student-free': 5,
+    'figma-education': 6,
+    'notion-plus-education': 7,
+    'google-one-ai-premium-students': 8,
+    'autodesk-education-free-plan': 9,
+    'aws-educate-cloud-skills': 10,
+    'namecheap-nc-me-student-domain': 11,
+    'canva-education-free': 12,
   };
 
   return [...list].sort((a, b) => {

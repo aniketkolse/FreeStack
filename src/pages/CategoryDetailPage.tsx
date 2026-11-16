@@ -95,6 +95,7 @@ export function CategoryDetailPage({
   const category = getCategoryBySlug(slug);
   const isMcpCategory = slug === 'mcp';
   const isAiCategory = slug === 'ai-ml';
+  const isStudentCategory = slug === 'student-benefits';
   const usesMacroGroups = category ? hasMacroTypeGroups(category.slug) : false;
   const defaultSort: SortOption = isMcpCategory ? 'use_case' : 'relevance';
 
@@ -117,6 +118,9 @@ export function CategoryDetailPage({
   const [selectedPricing, setSelectedPricing] = useState<PricingModel[]>(initialPricing);
   const [studentFriendlyOnly, setStudentFriendlyOnly] = useState<boolean>(
     searchParams?.get('student') === '1'
+  );
+  const [studentVerificationFilter, setStudentVerificationFilter] = useState<'all' | 'exclusive' | 'eligible'>(
+    (searchParams?.get('verify') as 'all' | 'exclusive' | 'eligible') || 'all'
   );
   const [mcpOfficialOnly, setMcpOfficialOnly] = useState<boolean>(
     searchParams?.get('official') === '1'
@@ -171,6 +175,7 @@ export function CategoryDetailPage({
     const rawPricing = searchParams?.get('pricing');
     setSelectedPricing(rawPricing ? (rawPricing.split(',').filter(Boolean) as PricingModel[]) : []);
     setStudentFriendlyOnly(searchParams?.get('student') === '1');
+    setStudentVerificationFilter((searchParams?.get('verify') as 'all' | 'exclusive' | 'eligible') || 'all');
     setMcpOfficialOnly(searchParams?.get('official') === '1');
     setMcpScope(searchParams?.get('scope') || 'all');
     setMcpLang(searchParams?.get('lang') || 'all');
@@ -191,6 +196,7 @@ export function CategoryDetailPage({
     cardFilter,
     selectedPricing,
     studentFriendlyOnly,
+    studentVerificationFilter,
     mcpOfficialOnly,
     mcpScope,
     mcpLang,
@@ -209,6 +215,7 @@ export function CategoryDetailPage({
     sort?: SortOption;
     pricing?: PricingModel[];
     student?: boolean;
+    verify?: 'all' | 'exclusive' | 'eligible';
     official?: boolean;
     scope?: string;
     lang?: string;
@@ -224,6 +231,7 @@ export function CategoryDetailPage({
     const sortVal = next.sort !== undefined ? next.sort : sortBy;
     const pricingVal = next.pricing !== undefined ? next.pricing : selectedPricing;
     const studentVal = next.student !== undefined ? next.student : studentFriendlyOnly;
+    const verifyVal = next.verify !== undefined ? next.verify : studentVerificationFilter;
     const officialVal = next.official !== undefined ? next.official : mcpOfficialOnly;
     const scopeVal = next.scope !== undefined ? next.scope : mcpScope;
     const langVal = next.lang !== undefined ? next.lang : mcpLang;
@@ -239,6 +247,7 @@ export function CategoryDetailPage({
     if (cardVal !== 'all') qs.set('card', cardVal);
     if (pricingVal.length > 0) qs.set('pricing', pricingVal.join(','));
     if (studentVal) qs.set('student', '1');
+    if (verifyVal !== 'all') qs.set('verify', verifyVal);
     if (officialVal) qs.set('official', '1');
     if (scopeVal !== 'all') qs.set('scope', scopeVal);
     if (langVal !== 'all') qs.set('lang', langVal);
@@ -410,6 +419,9 @@ export function CategoryDetailPage({
           o.eligibility.student_access === 'exclusive'
       );
     }
+    if (isStudentCategory && studentVerificationFilter !== 'all') {
+      list = list.filter((o) => o.eligibility.student_access === studentVerificationFilter);
+    }
     if (isMcpCategory) {
       if (mcpOfficialOnly) {
         list = list.filter(
@@ -454,6 +466,8 @@ export function CategoryDetailPage({
     cardFilter,
     selectedPricing,
     studentFriendlyOnly,
+    isStudentCategory,
+    studentVerificationFilter,
     isMcpCategory,
     mcpOfficialOnly,
     mcpScope,
@@ -464,6 +478,16 @@ export function CategoryDetailPage({
     aiMinContext,
     sortBy,
   ]);
+
+  const studentVerificationCounts = useMemo(() => {
+    let exclusive = 0;
+    let eligible = 0;
+    for (const o of categoryOffers) {
+      if (o.eligibility.student_access === 'exclusive') exclusive++;
+      else if (o.eligibility.student_access === 'eligible') eligible++;
+    }
+    return { exclusive, eligible, total: categoryOffers.length };
+  }, [categoryOffers]);
 
   const togglePricing = (model: PricingModel) => {
     const next = selectedPricing.includes(model)
@@ -481,6 +505,7 @@ export function CategoryDetailPage({
     cardFilter !== 'all' ||
     selectedPricing.length > 0 ||
     studentFriendlyOnly ||
+    studentVerificationFilter !== 'all' ||
     mcpOfficialOnly ||
     mcpScope !== 'all' ||
     mcpLang !== 'all' ||
@@ -496,6 +521,7 @@ export function CategoryDetailPage({
     setCardFilter('all');
     setSelectedPricing([]);
     setStudentFriendlyOnly(false);
+    setStudentVerificationFilter('all');
     setMcpOfficialOnly(false);
     setMcpScope('all');
     setMcpLang('all');
@@ -1144,6 +1170,50 @@ export function CategoryDetailPage({
                         />
                       </div>
                     </>
+                  )}
+
+                  {isStudentCategory && (
+                    <div
+                      role="group"
+                      aria-label="Student ID requirement filter"
+                      data-testid="student-verification-filter-group"
+                      className="inline-flex items-center bg-daylight/90 p-0.5 rounded-full border border-midnight-mouth/15 gap-0.5"
+                    >
+                      {[
+                        {
+                          val: 'all' as const,
+                          label: `All Verification (${studentVerificationCounts.total})`,
+                        },
+                        {
+                          val: 'exclusive' as const,
+                          label: `Student ID / .edu Req. (${studentVerificationCounts.exclusive})`,
+                        },
+                        {
+                          val: 'eligible' as const,
+                          label: `No Student ID Req. (${studentVerificationCounts.eligible})`,
+                        },
+                      ].map((opt) => {
+                        const active = studentVerificationFilter === opt.val;
+                        return (
+                          <button
+                            key={opt.val}
+                            type="button"
+                            data-testid={`student-verify-filter-${opt.val}`}
+                            onClick={() => {
+                              setStudentVerificationFilter(opt.val);
+                              syncUrl({ verify: opt.val });
+                            }}
+                            className={`font-[var(--font-wallop)] font-semibold text-[11px] rounded-full px-2.5 py-0.5 min-h-[24px] whitespace-nowrap filter-pill cursor-pointer ${
+                              active
+                                ? 'bg-midnight-mouth text-daylight shadow-2xs'
+                                : 'text-midnight-mouth/85 hover:bg-sunshine-yellow/55'
+                            }`}
+                          >
+                            {opt.label}
+                          </button>
+                        );
+                      })}
+                    </div>
                   )}
 
                   {/* Pricing Model Quick Toggles */}

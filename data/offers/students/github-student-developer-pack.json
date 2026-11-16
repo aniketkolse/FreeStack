@@ -12,7 +12,7 @@
     "subcategory": "Student Developer Packs",
     "resource_type": "student_benefit",
     "pricing_model": "student_exclusive",
-    "tags": ["Students", "Developer Pack", "Copilot", "Domains", "Cloud Credits"]
+    "tags": ["Student ID / .edu Required", "Students", "Developer Pack", "Copilot", "Domains", "Cloud Credits"]
   },
   "description": "Bundled academic developer pack including GitHub Copilot Pro, partner cloud credits, domain registrations, and monitoring tools for verified students.",
   "access": {

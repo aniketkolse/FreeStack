@@ -12,7 +12,7 @@
     "subcategory": "Certifications & Learning Benefits",
     "resource_type": "student_benefit",
     "pricing_model": "student_exclusive",
-    "tags": ["certification", "github", "git", "exam-voucher", "student-pack", "career"]
+    "tags": ["Student ID / .edu Required", "certification", "github", "git", "exam-voucher", "student-pack"]
   },
   "description": "Free exam voucher for the official GitHub Foundations certification exam included with verified GitHub Student Developer Pack membership, covering Git, repositories, collaboration, and GitHub Actions fundamentals.",
   "access": {

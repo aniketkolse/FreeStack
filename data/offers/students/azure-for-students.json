@@ -12,7 +12,7 @@
     "subcategory": "Student Cloud Credits",
     "resource_type": "cloud_service",
     "pricing_model": "student_exclusive",
-    "tags": ["Cloud Credits", "Azure", "No Card", "Students", "AI", "Hosting"]
+    "tags": ["Student ID / .edu Required", "Cloud Credits", "Azure", "No Card", "Students", "AI"]
   },
   "description": "$100 in Azure cloud credits valid for 12 months plus selected always-free developer services without requiring a credit card.",
   "access": {

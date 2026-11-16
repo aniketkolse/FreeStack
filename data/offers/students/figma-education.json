@@ -12,7 +12,7 @@
     "subcategory": "Educational Software",
     "resource_type": "student_benefit",
     "pricing_model": "student_exclusive",
-    "tags": ["Design", "UI/UX", "Students", "Figma", "Prototyping"]
+    "tags": ["Student ID / .edu Required", "Design", "UI/UX", "Students", "Figma", "Prototyping"]
   },
   "description": "Free upgrade to the Figma Professional team plan for verified students and educators with unlimited files, shared libraries, and Dev Mode.",
   "access": {
@@ -37,7 +37,7 @@
   "eligibility": {
     "student_access": "exclusive",
     "regions": ["Global"],
-    "conditions": "Higher-education, K-12, or eligible bootcamp enrollment verified via SheerID."
+    "conditions": "Requires Student ID / .edu email: higher-education, K-12, or eligible bootcamp enrollment verified via SheerID."
   },
   "links": {
     "official": "https://www.figma.com/education/",
@@ -72,7 +72,7 @@
   "metadata": {
     "created_at": "2026-10-14",
     "updated_at": "2026-11-09",
-    "featured": false,
+    "featured": true,
     "contributor": "freestack-core"
   }
 }

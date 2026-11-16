@@ -1,0 +1,4469 @@
+[
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-cisco-networking-academy-free-courses",
+      "name": "Cisco Networking Academy / Skills for All (Free CCNA & Cyber Courses)",
+      "slug": "cisco-networking-academy-free-courses",
+      "provider": "Cisco",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Certifications & Learning Benefits",
+      "resource_type": "student_benefit",
+      "pricing_model": "completely_free",
+      "tags": [
+        "No Student ID Required",
+        "Cisco NetAcad",
+        "CCNA",
+        "Packet Tracer",
+        "Cybersecurity",
+        "Exam Vouchers"
+      ]
+    },
+    "description": "Free self-paced Cisco Networking Academy courses, Cisco Packet Tracer network simulator download, verified Credly digital badges, and up to 58% discount vouchers on CCNA/CyberOps exams — open to all learners with no student ID required.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Self-paced Networking, Python & Cybersecurity courses",
+          "value": "100% free courses + Credly badges",
+          "period": "forever"
+        },
+        {
+          "name": "Cisco Packet Tracer simulator",
+          "value": "Free full desktop network simulator download",
+          "period": "forever"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card and no student ID required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "No expiration",
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Official proctored Cisco certification exams are discounted (up to 58–70% off upon qualifying course completion)."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required: open to all students and self-learners worldwide with any email."
+    },
+    "links": {
+      "official": "https://www.netacad.com",
+      "signup": "https://www.netacad.com",
+      "documentation": "https://www.netacad.com/catalogs/learn",
+      "pricing": "https://www.netacad.com"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-cisco-netacad",
+          "url": "https://www.netacad.com",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-cisco-netacad",
+          "field_path": "access.free_limits[0]",
+          "quote": "Free online courses in cybersecurity, networking, OS, and programming with Cisco Packet Tracer and digital badges.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-fortinet-training-institute-nse-free",
+      "name": "Fortinet Training Institute (Free NSE Cybersecurity Certifications)",
+      "slug": "fortinet-training-institute-nse-free",
+      "provider": "Fortinet",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Certifications & Learning Benefits",
+      "resource_type": "student_benefit",
+      "pricing_model": "completely_free",
+      "tags": [
+        "No Student ID Required",
+        "Fortinet",
+        "NSE Certification",
+        "FCF",
+        "FCA",
+        "Network Security"
+      ]
+    },
+    "description": "Free self-paced cybersecurity training and official Fortinet Certified Fundamentals (FCF) & Fortinet Certified Associate (FCA) digital certifications — open to all students without requiring a student ID or credit card.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Fortinet Certified Fundamentals (FCF) & Associate (FCA)",
+          "value": "100% free self-paced courses & online exams",
+          "period": "forever"
+        },
+        {
+          "name": "Technical NSE library",
+          "value": "Free self-paced curriculum across FortiOS & SOC security",
+          "period": "ongoing"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card and no student ID required; register a free public Fortinet Training account."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Certifications valid for 2 years; training always free",
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Higher-tier Pearson VUE proctored exams (FCP/FCSS/FCX) have exam fees, while FCF and FCA certifications are 100% free."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required: open to all students and learners worldwide with any email."
+    },
+    "links": {
+      "official": "https://training.fortinet.com",
+      "signup": "https://training.fortinet.com",
+      "documentation": "https://training.fortinet.com",
+      "pricing": "https://training.fortinet.com"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-fortinet-nse",
+          "url": "https://training.fortinet.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-fortinet-nse",
+          "field_path": "access.free_limits[0]",
+          "quote": "Fortinet makes all self-paced cybersecurity training courses available for free to students and learners worldwide.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-oracle-university-free-student-learning",
+      "name": "Oracle MyLearn Free Tier (Free OCI Foundations & AI Certifications)",
+      "slug": "oracle-university-free-student-learning",
+      "provider": "Oracle University",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Certifications & Learning Benefits",
+      "resource_type": "student_benefit",
+      "pricing_model": "completely_free",
+      "tags": [
+        "No Student ID Required",
+        "Oracle MyLearn",
+        "OCI Foundations",
+        "AI Foundations",
+        "Free Certification",
+        "Cloud"
+      ]
+    },
+    "description": "Free digital training and 100% free online Foundations Associate certification exams (OCI Foundations, AI Foundations, Data Management Foundations) on Oracle MyLearn — open to all students without a student ID or credit card.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "OCI & AI Foundations Certification Exams",
+          "value": "100% free online certification exams + digital badges",
+          "period": "forever"
+        },
+        {
+          "name": "Oracle MyLearn video courses",
+          "value": "Hundreds of hours of Cloud, Java, SQL & AI training",
+          "period": "forever"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card and no student ID required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "No expiration",
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Foundations Associate exams are always free; Professional/Architect exams are free during periodic Oracle Race to Certification promos."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required: open to all students and learners with a free Oracle account."
+    },
+    "links": {
+      "official": "https://education.oracle.com",
+      "signup": "https://mylearn.oracle.com",
+      "documentation": "https://education.oracle.com",
+      "pricing": "https://education.oracle.com"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-oracle-mylearn",
+          "url": "https://education.oracle.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-oracle-mylearn",
+          "field_path": "access.free_limits[0]",
+          "quote": "Get free OCI training and free Foundations certification exams on Oracle MyLearn.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-microsoft-learn-student-hub",
+      "name": "Microsoft Learn Student Hub (Free Sandboxes & Student Exam Discounts)",
+      "slug": "microsoft-learn-student-hub",
+      "provider": "Microsoft",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Certifications & Learning Benefits",
+      "resource_type": "student_benefit",
+      "pricing_model": "completely_free",
+      "tags": [
+        "No Student ID Required",
+        "Microsoft Learn",
+        "Azure Sandboxes",
+        "AI-900",
+        "AZ-900",
+        "Student Hub"
+      ]
+    },
+    "description": "Free interactive Microsoft Learn modules with built-in browser Azure sandboxes (no card or student ID needed), plus Microsoft Learn Student Ambassadors and 30%–45% student certification discounts when verifying academic status.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Microsoft Learn interactive modules & Azure sandboxes",
+          "value": "Unlimited free courses + browser cloud sandboxes",
+          "period": "forever"
+        },
+        {
+          "name": "Applied Skills credentials",
+          "value": "100% free interactive lab assessments & credentials",
+          "period": "forever"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card and no student ID required for all learning paths, Applied Skills credentials, and Azure sandboxes."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "No expiration",
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Microsoft Applied Skills lab credentials are 100% free; Pearson VUE Fundamentals/Associate exams offer 30%–45% student discounts."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required for learning paths, Azure sandboxes, and Applied Skills credentials."
+    },
+    "links": {
+      "official": "https://learn.microsoft.com/en-us/training/student-hub/",
+      "signup": "https://learn.microsoft.com/en-us/training/student-hub/",
+      "documentation": "https://learn.microsoft.com/en-us/credentials/certifications/student-discounts",
+      "pricing": "https://learn.microsoft.com/en-us/training/student-hub/"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-mslearn-student",
+          "url": "https://learn.microsoft.com/en-us/training/student-hub/",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-mslearn-student",
+          "field_path": "access.free_limits[0]",
+          "quote": "Build technical skills for free with interactive modules, Azure sandboxes, and Microsoft Applied Skills.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-redhat-academy-student-program",
+      "name": "Red Hat Academy & Developer Subscription for Students (Free RHEL)",
+      "slug": "redhat-academy-student-program",
+      "provider": "Red Hat",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Certifications & Learning Benefits",
+      "resource_type": "student_benefit",
+      "pricing_model": "completely_free",
+      "tags": [
+        "No Student ID Required",
+        "Red Hat",
+        "RHEL",
+        "OpenShift",
+        "Ansible",
+        "Linux"
+      ]
+    },
+    "description": "No-cost Red Hat Developer Subscription providing up to 16 free Red Hat Enterprise Linux (RHEL) systems, OpenShift Local, Ansible interactive labs, and Red Hat Academy curriculum for students.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Red Hat Enterprise Linux (RHEL) licenses",
+          "value": "Up to 16 free physical or virtual nodes",
+          "period": "1 year (renewable)"
+        },
+        {
+          "name": "Interactive OpenShift & Ansible browser labs",
+          "value": "Unlimited browser-based Linux & Kubernetes labs",
+          "period": "forever"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card and no student ID required for Red Hat Developer Subscription."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Renewable annually at $0 cost",
+        "auto_renewal": "Never charges."
+      },
+      "restrictions": [
+        "Individual developer, learning, and testing workloads."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required: any student can register a free Red Hat Developer account (Red Hat Academy partner schools also unlock 50% RHCSA exam vouchers)."
+    },
+    "links": {
+      "official": "https://www.redhat.com/en/services/training/red-hat-academy",
+      "signup": "https://developers.redhat.com/register",
+      "documentation": "https://developers.redhat.com/articles/faqs-no-cost-red-hat-enterprise-linux",
+      "pricing": "https://www.redhat.com/en/services/training/red-hat-academy"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-redhat-academy",
+          "url": "https://www.redhat.com/en/services/training/red-hat-academy",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-redhat-academy",
+          "field_path": "access.free_limits[0]",
+          "quote": "Red Hat Developer Subscription for Individuals is a no-cost offering that includes Red Hat Enterprise Linux and interactive labs.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-linux-foundation-lift-scholarships",
+      "name": "Linux Foundation Free Courses & LiFT Student Scholarships",
+      "slug": "linux-foundation-lift-scholarships",
+      "provider": "The Linux Foundation",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Certifications & Learning Benefits",
+      "resource_type": "student_benefit",
+      "pricing_model": "completely_free",
+      "tags": [
+        "No Student ID Required",
+        "Linux Foundation",
+        "CKA",
+        "Kubernetes",
+        "LiFT Scholarship",
+        "Open Source"
+      ]
+    },
+    "description": "70+ free self-paced Linux, Kubernetes, OpenTofu, Cybersecurity, and RISC-V courses from the Linux Foundation, plus annual LiFT (Linux Foundation Training) scholarships awarding 100% free CKA/LFCS certification vouchers to students (‘ Linux Newbies’ & ‘Teens-in-Training’).",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Free Linux Foundation & CNCF courses",
+          "value": "70+ self-paced courses (LFS101, LFS158 Kubernetes, Green Software)",
+          "period": "forever"
+        },
+        {
+          "name": "LiFT Student Scholarship",
+          "value": "Free training course + 100% free certification exam voucher for recipients",
+          "period": "annual cohort"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card and no .edu email required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "No expiration on free courses",
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Free course catalog is open year-round; LiFT full exam scholarships are awarded in annual cohorts."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required: open to all students and learners worldwide."
+    },
+    "links": {
+      "official": "https://training.linuxfoundation.org",
+      "signup": "https://training.linuxfoundation.org/resources/?_sft_content_type=free-course",
+      "documentation": "https://training.linuxfoundation.org",
+      "pricing": "https://training.linuxfoundation.org"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-lf-training",
+          "url": "https://training.linuxfoundation.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-lf-training",
+          "field_path": "access.free_limits[0]",
+          "quote": "Explore dozens of free Linux Foundation and CNCF training courses and annual LiFT scholarships.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-palo-alto-cybersecurity-academy",
+      "name": "Palo Alto Networks Cybersecurity Academy & Beacon Free Training",
+      "slug": "palo-alto-cybersecurity-academy",
+      "provider": "Palo Alto Networks",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Certifications & Learning Benefits",
+      "resource_type": "student_benefit",
+      "pricing_model": "completely_free",
+      "tags": [
+        "No Student ID Required",
+        "Palo Alto Networks",
+        "Cybersecurity",
+        "SOC",
+        "Cloud Security",
+        "Firewall"
+      ]
+    },
+    "description": "Free digital cybersecurity curriculum covering Network Security, Cloud Security (Prisma), and Security Operations (Cortex) through Palo Alto Networks Beacon and Cybersecurity Academy.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Beacon Digital Learning courses",
+          "value": "100% free self-paced cybersecurity & cloud security courses",
+          "period": "forever"
+        },
+        {
+          "name": "Academy student exam discounts",
+          "value": "40%–50% off entry-level cybersecurity certification exams",
+          "period": "ongoing"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card and no student ID required for Beacon self-paced courses."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "No expiration",
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Self-paced Beacon courses are open to everyone; instructor-led virtual firewall labs are delivered via partner schools."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required for Beacon digital cybersecurity courses."
+    },
+    "links": {
+      "official": "https://www.paloaltonetworks.com/services/education/academy",
+      "signup": "https://www.paloaltonetworks.com/services/education/academy",
+      "documentation": "https://www.paloaltonetworks.com/services/education/academy",
+      "pricing": "https://www.paloaltonetworks.com/services/education/academy"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-paloalto-academy",
+          "url": "https://www.paloaltonetworks.com/services/education/academy",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-paloalto-academy",
+          "field_path": "access.free_limits[0]",
+          "quote": "Palo Alto Networks Cybersecurity Academy prepares students for careers in network, cloud, and SOC security.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-juniper-open-learning-students",
+      "name": "Juniper Networks Open Learning (Free JNCIA Courses & 75% Voucher)",
+      "slug": "juniper-open-learning-students",
+      "provider": "Juniper Networks",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Certifications & Learning Benefits",
+      "resource_type": "student_benefit",
+      "pricing_model": "completely_free",
+      "tags": [
+        "No Student ID Required",
+        "Juniper Networks",
+        "JNCIA",
+        "Junos",
+        "Routing & Switching",
+        "Exam Voucher"
+      ]
+    },
+    "description": "Free Juniper Open Learning courses for JNCIA-Junos, JNCIA-Cloud, JNCIA-SEC, and JNCIA-MistAI plus Juniper vLabs virtual router/switch sandboxes and a 75% discount exam voucher upon passing the free voucher assessment test.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "JNCIA Open Learning courses & Juniper vLabs",
+          "value": "100% free courses + browser Junos router/switch sandboxes",
+          "period": "forever"
+        },
+        {
+          "name": "Exam voucher reward",
+          "value": "75% off Pearson VUE JNCIA exam upon passing free assessment",
+          "period": "ongoing"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card and no student ID required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "No expiration",
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Up to 3 attempts on the free voucher assessment exam per track."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required: open to all students and network learners worldwide."
+    },
+    "links": {
+      "official": "https://learningportal.juniper.net",
+      "signup": "https://learningportal.juniper.net",
+      "documentation": "https://learningportal.juniper.net/juniper/user_activity_info.aspx?id=JUNIPER-OPEN-LEARNING",
+      "pricing": "https://learningportal.juniper.net"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-juniper-openlearning",
+          "url": "https://learningportal.juniper.net",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-juniper-openlearning",
+          "field_path": "access.free_limits[0]",
+          "quote": "Juniper Open Learning provides free training for Associate-level certifications and 75% discount exam vouchers.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-comptia-academic-student-membership",
+      "name": "CompTIA Academic Store & Student Career Resources",
+      "slug": "comptia-academic-student-membership",
+      "provider": "CompTIA",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Certifications & Learning Benefits",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "CompTIA",
+        "Security+",
+        "Network+",
+        "A+",
+        "Academic Store"
+      ]
+    },
+    "description": "Official CompTIA Academic benefit for verified college and high school students providing free IT career pathway guides, student webinars, and up to 40%–50% academic discounts on CompTIA A+, Network+, Security+, and Linux+ vouchers.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "CompTIA Student Career Hub & Webinars",
+          "value": "100% free student resources & practice quizzes",
+          "period": "while enrolled"
+        },
+        {
+          "name": "Academic Store exam vouchers",
+          "value": "Up to 40%–50% off official CompTIA exam vouchers",
+          "period": "while enrolled"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Academic eligibility verified instantly during CompTIA Academic account setup."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Valid while enrolled at a degree-granting institution",
+        "auto_renewal": "Never charges."
+      },
+      "restrictions": [
+        "Limit 4 academic exam voucher purchases within a 6-month period."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global (supported academic countries)"
+      ],
+      "conditions": "Requires Student ID / .edu email: college or university student status verified via SheerID / academic email."
+    },
+    "links": {
+      "official": "https://www.comptia.org",
+      "signup": "https://www.comptia.org",
+      "documentation": "https://www.comptia.org",
+      "pricing": "https://www.comptia.org"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-comptia-student",
+          "url": "https://www.comptia.org",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-comptia-student",
+          "field_path": "access.free_limits[0]",
+          "quote": "Verified college students receive exclusive academic pricing and free IT career resources from CompTIA.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-ibm-skillsbuild-for-students",
+      "name": "IBM SkillsBuild for Students (Free AI, Quantum & Cloud Badges)",
+      "slug": "ibm-skillsbuild-for-students",
+      "provider": "IBM",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Certifications & Learning Benefits",
+      "resource_type": "student_benefit",
+      "pricing_model": "completely_free",
+      "tags": [
+        "No Student ID Required",
+        "IBM SkillsBuild",
+        "Credly Badges",
+        "Artificial Intelligence",
+        "Quantum Computing",
+        "Cybersecurity"
+      ]
+    },
+    "description": "1,000+ free courses and official IBM-issued Credly digital credentials in Artificial Intelligence, watsonx, Cybersecurity, Data Science, and Quantum Computing (Qiskit) — open to all students with no student ID or credit card required.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "IBM Courses & Official Credly Badges",
+          "value": "100% free across 1,000+ courses & industry badges",
+          "period": "forever"
+        },
+        {
+          "name": "watsonx & Cloud Lite lab sandboxes",
+          "value": "Free hands-on AI & cloud project labs",
+          "period": "ongoing"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card and no .edu email required; sign in with Google, GitHub, LinkedIn, or any email."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "No expiration",
+        "auto_renewal": "Always 100% free."
+      },
+      "restrictions": [
+        "None; completely free for high school, college, and adult learners worldwide."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required: open to all students and learners worldwide with any email."
+    },
+    "links": {
+      "official": "https://skillsbuild.org/students",
+      "signup": "https://skillsbuild.org/students",
+      "documentation": "https://skillsbuild.org/college-students",
+      "pricing": "https://skillsbuild.org/students"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-ibm-skillsbuild",
+          "url": "https://skillsbuild.org/students",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-ibm-skillsbuild",
+          "field_path": "access.free_limits[0]",
+          "quote": "IBM SkillsBuild is a free education program offering over 1,000 courses and IBM-branded digital credentials.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-kaggle-learn-free-certificates",
+      "name": "Kaggle Learn (Free ML Certificates + 30 Hrs/Wk Cloud GPU Notebooks)",
+      "slug": "kaggle-learn-free-certificates",
+      "provider": "Google (Kaggle)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Certifications & Learning Benefits",
+      "resource_type": "student_benefit",
+      "pricing_model": "completely_free",
+      "tags": [
+        "No Student ID Required",
+        "Kaggle Learn",
+        "Free GPU",
+        "Python",
+        "Machine Learning",
+        "SQL Certificates"
+      ]
+    },
+    "description": "Free hands-on micro-courses with verifiable completion certificates in Python, Pandas, Machine Learning, Deep Learning, SQL, and Computer Vision — backed by 30 hours/week of free NVIDIA T4x2 / P100 GPU & TPU v5e cloud notebooks with no student ID or card required.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Kaggle Learn Courses & Certificates",
+          "value": "100% free interactive courses + shareable certificates",
+          "period": "forever"
+        },
+        {
+          "name": "Free Cloud GPU & TPU Notebooks",
+          "value": "30 hrs/week NVIDIA T4x2/P100 GPU + 20 hrs/week TPU",
+          "period": "weekly"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card and no student ID required (phone verification unlocks GPU/TPU quota)."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "No expiration",
+        "auto_renewal": "Weekly GPU/TPU quota resets every 7 days."
+      },
+      "restrictions": [
+        "Max 12 hours per continuous interactive notebook session."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required: open to all students and data science learners worldwide."
+    },
+    "links": {
+      "official": "https://www.kaggle.com/learn",
+      "signup": "https://www.kaggle.com/learn",
+      "documentation": "https://www.kaggle.com/docs/notebooks",
+      "pricing": "https://www.kaggle.com/learn"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-kaggle-learn",
+          "url": "https://www.kaggle.com/learn",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-kaggle-learn",
+          "field_path": "access.free_limits[0]",
+          "quote": "Gain the skills you need to do independent data science projects with free courses, certificates, and free GPU notebooks.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-frontend-masters-github-student",
+      "name": "Frontend Masters for Students (6 Months Free Full Course Library)",
+      "slug": "frontend-masters-github-student",
+      "provider": "Frontend Masters",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Coding Courses & Interactive Platforms for Students",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "Frontend Masters",
+        "React",
+        "TypeScript",
+        "Node.js",
+        "GitHub Pack"
+      ]
+    },
+    "description": "Free 6-month full access ($234 value) to all 200+ in-depth Frontend Masters engineering courses and learning paths (TypeScript, React, Next.js, Go, Rust, Algorithms, System Design) via the GitHub Student Developer Pack.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Full Frontend Masters Course Library",
+          "value": "6 months 100% free ($234 value)",
+          "period": "6 months"
+        },
+        {
+          "name": "Included courses",
+          "value": "200+ production workshops taught by principal engineers",
+          "period": "during 6-month access"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required; connect your verified GitHub Student Developer Pack account."
+      },
+      "validity": {
+        "type": "fixed_period",
+        "duration": "6 months",
+        "auto_renewal": "Expires automatically after 6 months with zero charges."
+      },
+      "restrictions": [
+        "One 6-month redemption per verified GitHub Student Developer Pack member."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack."
+    },
+    "links": {
+      "official": "https://frontendmasters.com/welcome/github-student-developers/",
+      "signup": "https://frontendmasters.com/welcome/github-student-developers/",
+      "documentation": "https://frontendmasters.com/learn/",
+      "pricing": "https://frontendmasters.com/welcome/github-student-developers/"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-fem-students",
+          "url": "https://frontendmasters.com/welcome/github-student-developers/",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-fem-students",
+          "field_path": "access.free_limits[0]",
+          "quote": "Students in the GitHub Student Developer Pack receive 6 months of free access to all courses on Frontend Masters.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": true,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-educative-github-student-access",
+      "name": "Educative.io for Students (6 Months Free to 70+ Coding Courses)",
+      "slug": "educative-github-student-access",
+      "provider": "Educative",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Coding Courses & Interactive Platforms for Students",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "Educative.io",
+        "System Design",
+        "Coding Interviews",
+        "Interactive Labs",
+        "GitHub Pack"
+      ]
+    },
+    "description": "6 months of free interactive browser-based coding courses on Educative.io covering 70+ practical tracks in Python, C++, Java, React, Docker, Kubernetes, and Machine Learning via the GitHub Student Developer Pack.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Educative GitHub Student Bundle",
+          "value": "6 months free access to 70+ interactive courses",
+          "period": "6 months"
+        },
+        {
+          "name": "In-browser coding playgrounds",
+          "value": "Zero-setup cloud execution environments",
+          "period": "while active"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required; sign in via GitHub Student Developer Pack."
+      },
+      "validity": {
+        "type": "fixed_period",
+        "duration": "6 months (+ 30% discount on full Unlimited upgrades)",
+        "auto_renewal": "Does not auto-charge."
+      },
+      "restrictions": [
+        "Requires verified GitHub Student Developer Pack membership."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack."
+    },
+    "links": {
+      "official": "https://www.educative.io/github-students",
+      "signup": "https://www.educative.io/github-students",
+      "documentation": "https://www.educative.io/github-students",
+      "pricing": "https://www.educative.io/unlimited"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-educative-students",
+          "url": "https://www.educative.io/github-students",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-educative-students",
+          "field_path": "access.free_limits[0]",
+          "quote": "Get 6 free months of 70+ hands-on courses with the GitHub Student Developer Pack.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-datacamp-github-student-free",
+      "name": "DataCamp for Students & Classrooms (3 Months Free via GitHub Pack)",
+      "slug": "datacamp-github-student-free",
+      "provider": "DataCamp",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Coding Courses & Interactive Platforms for Students",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "DataCamp",
+        "Python",
+        "SQL",
+        "R",
+        "Data Science",
+        "GitHub Pack"
+      ]
+    },
+    "description": "Free 3-month individual DataCamp subscription ($75+ value) for verified GitHub Student Developer Pack members — plus 6 months of 100% free access for entire university/high-school classes via DataCamp Classrooms.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "DataCamp Individual Student Access",
+          "value": "3 months free access to 450+ Python, SQL, R & AI courses",
+          "period": "3 months"
+        },
+        {
+          "name": "DataCamp Classrooms",
+          "value": "6 months free for educators & their enrolled students",
+          "period": "per semester"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Redeem through your verified GitHub Student Developer Pack dashboard."
+      },
+      "validity": {
+        "type": "fixed_period",
+        "duration": "3 months (individual via GitHub Pack); 6 months renewable (Classrooms)",
+        "auto_renewal": "Does not auto-charge without payment info."
+      },
+      "restrictions": [
+        "Requires verified GitHub Student Developer Pack membership."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack or teacher's DataCamp Classroom."
+    },
+    "links": {
+      "official": "https://education.github.com/pack",
+      "signup": "https://education.github.com/pack",
+      "documentation": "https://education.github.com/pack",
+      "pricing": "https://education.github.com/pack"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-datacamp-pack",
+          "url": "https://education.github.com/pack",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-datacamp-pack",
+          "field_path": "access.free_limits[0]",
+          "quote": "Free 3-month individual subscription for students when you sign up with your GitHub Student Developer Pack account.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-scrimba-pro-github-student",
+      "name": "Scrimba Pro for Students (Interactive Frontend & AI Career Path)",
+      "slug": "scrimba-pro-github-student",
+      "provider": "Scrimba",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Coding Courses & Interactive Platforms for Students",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "Scrimba Pro",
+        "Frontend Career Path",
+        "React",
+        "JavaScript",
+        "GitHub Pack"
+      ]
+    },
+    "description": "1 month of free Scrimba Pro access (including the 70+ hour Frontend Developer Career Path, AI Engineer Path, and interactive clickable screencasts) via the GitHub Student Developer Pack, plus 40+ permanently free courses.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Scrimba Pro subscription",
+          "value": "1 month 100% free via GitHub Student Pack",
+          "period": "1 month"
+        },
+        {
+          "name": "Free Scrimba course library",
+          "value": "40+ interactive HTML, CSS, JS, React & Python courses free forever",
+          "period": "forever"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required when activating via GitHub Student Developer Pack."
+      },
+      "validity": {
+        "type": "fixed_period",
+        "duration": "30 days of full Pro + unlimited free tier forever",
+        "auto_renewal": "Never charges."
+      },
+      "restrictions": [
+        "Pro benefit requires verified GitHub Student Developer Pack status."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack."
+    },
+    "links": {
+      "official": "https://scrimba.com",
+      "signup": "https://education.github.com/pack",
+      "documentation": "https://scrimba.com/allcourses",
+      "pricing": "https://scrimba.com/pricing"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-scrimba-student",
+          "url": "https://scrimba.com",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-scrimba-student",
+          "field_path": "access.free_limits[0]",
+          "quote": "Get 1 month of free access to Scrimba Pro courses and the Frontend Developer Career Path via the GitHub Student Developer Pack.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-codedex-club-github-student",
+      "name": "Codédex Club for Students (6 Months Free Gamified Coding)",
+      "slug": "codedex-club-github-student",
+      "provider": "Codédex",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Coding Courses & Interactive Platforms for Students",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "Codedex",
+        "Python",
+        "React",
+        "SQL",
+        "GitHub Pack"
+      ]
+    },
+    "description": "Free 6 months of Verified Codédex Club membership via the GitHub Student Developer Pack — unlocking all RPG-style courses in Python, HTML/CSS/JS, React, SQL, Command Line, Git, C++, and Data Structures plus 1-on-1 code reviews and certificates.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Codédex Club Pro Membership",
+          "value": "6 months 100% free",
+          "period": "6 months"
+        },
+        {
+          "name": "Code mentor reviews & certificates",
+          "value": "Included for all completed course projects",
+          "period": "while active"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required; link your verified GitHub Student Pack account."
+      },
+      "validity": {
+        "type": "fixed_period",
+        "duration": "6 months",
+        "auto_renewal": "Does not auto-charge."
+      },
+      "restrictions": [
+        "Requires verified GitHub Student Developer Pack status."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack."
+    },
+    "links": {
+      "official": "https://www.codedex.io/github-students",
+      "signup": "https://www.codedex.io/github-students",
+      "documentation": "https://www.codedex.io/courses",
+      "pricing": "https://www.codedex.io/pricing"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-codedex-students",
+          "url": "https://www.codedex.io/github-students",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-codedex-students",
+          "field_path": "access.free_limits[0]",
+          "quote": "Verified students in the GitHub Student Developer Pack get 6 months of Codédex Club for free.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-interview-cake-github-student",
+      "name": "Interview Cake for Students (Free Full Coding Interview Course)",
+      "slug": "interview-cake-github-student",
+      "provider": "Interview Cake",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Coding Courses & Interactive Platforms for Students",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "Interview Cake",
+        "Technical Interviews",
+        "Algorithms",
+        "Data Structures",
+        "GitHub Pack"
+      ]
+    },
+    "description": "Free access to the full Interview Cake coding interview preparation course via the GitHub Student Developer Pack — featuring step-by-step algorithmic hints, Big-O space/time breakdowns, and practice questions in Python, Java, C++, and JavaScript.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Interview Cake Full Course Access",
+          "value": "100% free via GitHub Student Developer Pack",
+          "period": "per redemption window"
+        },
+        {
+          "name": "Interactive DSA questions & hints",
+          "value": "All 11 modules & 50+ in-depth interview breakdowns",
+          "period": "while active"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required; activate directly with GitHub Student Developer Pack."
+      },
+      "validity": {
+        "type": "fixed_period",
+        "duration": "Valid for the active student redemption period",
+        "auto_renewal": "Never charges."
+      },
+      "restrictions": [
+        "Requires verified GitHub Student Developer Pack membership."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack."
+    },
+    "links": {
+      "official": "https://www.interviewcake.com/github-students",
+      "signup": "https://www.interviewcake.com/github-students",
+      "documentation": "https://www.interviewcake.com",
+      "pricing": "https://www.interviewcake.com"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-interviewcake-students",
+          "url": "https://www.interviewcake.com/github-students",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-interviewcake-students",
+          "field_path": "access.free_limits[0]",
+          "quote": "Access the full Interview Cake coding interview prep course for free with the GitHub Student Developer Pack.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-gorails-github-student-access",
+      "name": "GoRails for Students (12 Months Free Ruby on Rails Screencasts)",
+      "slug": "gorails-github-student-access",
+      "provider": "GoRails",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Coding Courses & Interactive Platforms for Students",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "GoRails",
+        "Ruby on Rails",
+        "Hotwire",
+        "Backend",
+        "GitHub Pack"
+      ]
+    },
+    "description": "Free 12-month subscription ($190+ value) to all GoRails Pro video screencasts, learning paths, and Ruby on Rails / Hotwire / PostgreSQL tutorials for verified GitHub Student Developer Pack members.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "GoRails Pro subscription",
+          "value": "12 months 100% free",
+          "period": "1 year"
+        },
+        {
+          "name": "Video library",
+          "value": "600+ Ruby on Rails, Hotwire, Stimulus & deployment screencasts",
+          "period": "while active"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required; connect your verified GitHub Student account."
+      },
+      "validity": {
+        "type": "fixed_period",
+        "duration": "12 months",
+        "auto_renewal": "Does not auto-charge."
+      },
+      "restrictions": [
+        "Requires verified GitHub Student Developer Pack membership."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack."
+    },
+    "links": {
+      "official": "https://gorails.com/github-students",
+      "signup": "https://gorails.com/github-students",
+      "documentation": "https://gorails.com/series",
+      "pricing": "https://gorails.com/pricing"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-gorails-students",
+          "url": "https://gorails.com/github-students",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-gorails-students",
+          "field_path": "access.free_limits[0]",
+          "quote": "Students in the GitHub Student Developer Pack get 12 months of free access to all GoRails lessons.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-symfonycasts-student-subscription",
+      "name": "SymfonyCasts for Students (3 Months Free PHP & Symfony Courses)",
+      "slug": "symfonycasts-student-subscription",
+      "provider": "SymfonyCasts",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Coding Courses & Interactive Platforms for Students",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "SymfonyCasts",
+        "PHP",
+        "Symfony",
+        "API Platform",
+        "GitHub Pack"
+      ]
+    },
+    "description": "Free 3-month all-access subscription to SymfonyCasts video tutorials and interactive coding challenges covering modern PHP 8, Symfony, Doctrine ORM, and API Platform via the GitHub Student Developer Pack.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "SymfonyCasts All-Access Subscription",
+          "value": "3 months 100% free",
+          "period": "3 months"
+        },
+        {
+          "name": "Course downloads & code challenges",
+          "value": "Included across all PHP & Symfony tracks",
+          "period": "while active"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required; redeem with GitHub Student Developer Pack."
+      },
+      "validity": {
+        "type": "fixed_period",
+        "duration": "3 months",
+        "auto_renewal": "Does not auto-charge."
+      },
+      "restrictions": [
+        "Requires verified GitHub Student Developer Pack membership."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack."
+    },
+    "links": {
+      "official": "https://symfonycasts.com/github-student",
+      "signup": "https://symfonycasts.com/github-student",
+      "documentation": "https://symfonycasts.com",
+      "pricing": "https://symfonycasts.com/pricing"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-symfonycasts-student",
+          "url": "https://symfonycasts.com/github-student",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-symfonycasts-student",
+          "field_path": "access.free_limits[0]",
+          "quote": "Free 3-month subscription for students with the GitHub Student Developer Pack.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-jetbrains-academy-hyperskill-free",
+      "name": "JetBrains Academy / Hyperskill Free Track (IDE-Integrated Learning)",
+      "slug": "jetbrains-academy-hyperskill-free",
+      "provider": "JetBrains / Hyperskill",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Coding Courses & Interactive Platforms for Students",
+      "resource_type": "student_benefit",
+      "pricing_model": "free_tier",
+      "tags": [
+        "No Student ID Required",
+        "Hyperskill",
+        "JetBrains Academy",
+        "Kotlin",
+        "Java",
+        "Python"
+      ]
+    },
+    "description": "Free project-based computer science learning on Hyperskill and the JetBrains Academy IDE plugin — allowing students to solve real coding tasks directly inside IntelliJ IDEA, PyCharm, WebStorm, and Android Studio without needing a student ID.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Hyperskill Free Plan + IDE Marketplace Courses",
+          "value": "Free daily theory topics, coding problems & IDE courses",
+          "period": "forever"
+        },
+        {
+          "name": "JetBrains Academy Plugin",
+          "value": "100% free interactive courses inside JetBrains IDEs",
+          "period": "forever"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card and no student ID required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "No expiration",
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Premium project hints and certificates on Hyperskill web require Premium, while all JetBrains Marketplace IDE courses are 100% free."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required: open to all students and learners worldwide."
+    },
+    "links": {
+      "official": "https://hyperskill.org",
+      "signup": "https://hyperskill.org",
+      "documentation": "https://www.jetbrains.com/help/education/educational-products.html",
+      "pricing": "https://hyperskill.org/pricing"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-hyperskill",
+          "url": "https://hyperskill.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-hyperskill",
+          "field_path": "access.free_limits[0]",
+          "quote": "Learn programming by building real applications integrated with JetBrains IDEs.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-exercism-open-source-mentored-coding",
+      "name": "Exercism (100% Free Human-Mentored Coding in 75+ Languages)",
+      "slug": "exercism-open-source-mentored-coding",
+      "provider": "Exercism",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Coding Courses & Interactive Platforms for Students",
+      "resource_type": "student_benefit",
+      "pricing_model": "completely_free",
+      "tags": [
+        "No Student ID Required",
+        "Exercism",
+        "1-on-1 Code Mentorship",
+        "Rust",
+        "Go",
+        "Python",
+        "75+ Languages"
+      ]
+    },
+    "description": "100% free, not-for-profit coding platform offering 7,000+ programming exercises across 75+ languages (Rust, Go, Python, C++, TypeScript, Haskell, Zig, Elixir) with free 1-on-1 code reviews from experienced human mentors — no student ID required.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "75+ language tracks & 7,000+ exercises",
+          "value": "100% free forever",
+          "period": "forever"
+        },
+        {
+          "name": "1-on-1 Human Code Mentoring",
+          "value": "Unlimited free code reviews from volunteer mentors",
+          "period": "forever"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Zero paywalls, zero credit card, and zero student ID required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "No expiration",
+        "auto_renewal": "Always 100% free."
+      },
+      "restrictions": [
+        "None; Exercism is a registered charity that is 100% free for everyone forever."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required: open to all students and learners worldwide."
+    },
+    "links": {
+      "official": "https://exercism.org",
+      "signup": "https://exercism.org/users/sign_up",
+      "documentation": "https://exercism.org/docs",
+      "pricing": "https://exercism.org"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-exercism",
+          "url": "https://exercism.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-exercism",
+          "field_path": "access.free_limits[0]",
+          "quote": "Develop fluency in 75+ programming languages with our unique blend of learning, practice and mentoring. Exercism is fun, effective and 100% free, forever.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-sentry-sponsored-student-plan",
+      "name": "Sentry for Education (500K Errors/Mo & Unlimited Projects Free)",
+      "slug": "sentry-sponsored-student-plan",
+      "provider": "Sentry",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "APIs, Observability & DevOps Student Perks",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "Sentry",
+        "Error Tracking",
+        "APM",
+        "Session Replay",
+        "GitHub Pack"
+      ]
+    },
+    "description": "Free Sponsored Sentry Team Plan for verified students via the GitHub Student Developer Pack — including 500,000 error events/month, 1,000,000 performance transactions, 500 session replays, and unlimited projects/members for 1 year.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Monthly Error & Transaction Quota",
+          "value": "500K errors + 1M transactions + 500 replays/month",
+          "period": "monthly"
+        },
+        {
+          "name": "Projects & Team Members",
+          "value": "Unlimited projects & team seats",
+          "period": "while student verified"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required; link your verified GitHub Student Developer Pack account."
+      },
+      "validity": {
+        "type": "fixed_period",
+        "duration": "1 year (renewable while in the GitHub Student Pack)",
+        "auto_renewal": "Reverts to Developer Free tier if not renewed."
+      },
+      "restrictions": [
+        "Requires active GitHub Student Developer Pack verification."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack."
+    },
+    "links": {
+      "official": "https://sentry.io/for/education/",
+      "signup": "https://sentry.io/for/education/",
+      "documentation": "https://docs.sentry.io",
+      "pricing": "https://sentry.io/for/education/"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-sentry-edu",
+          "url": "https://sentry.io/for/education/",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-sentry-edu",
+          "field_path": "access.free_limits[0]",
+          "quote": "Students in the GitHub Student Developer Pack get 500K errors, 1M transactions, and unlimited projects free.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-datadog-pro-github-student",
+      "name": "Datadog Pro for Students (Free 10-Server Monitoring for 2 Years)",
+      "slug": "datadog-pro-github-student",
+      "provider": "Datadog",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "APIs, Observability & DevOps Student Perks",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "Datadog Pro",
+        "Infrastructure Monitoring",
+        "Kubernetes",
+        "DevOps",
+        "GitHub Pack"
+      ]
+    },
+    "description": "Free Datadog Pro account for 2 full years ($3,600+ value) covering up to 10 cloud/bare-metal servers and container infrastructure metrics for verified GitHub Student Developer Pack members.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Datadog Pro Infrastructure Monitoring",
+          "value": "10 servers monitored 100% free for 2 years",
+          "period": "24 months"
+        },
+        {
+          "name": "Dashboards, Alerting & 600+ Integrations",
+          "value": "Full Datadog Pro feature set",
+          "period": "while active"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required; sign up via the GitHub Student Developer Pack Datadog link."
+      },
+      "validity": {
+        "type": "fixed_period",
+        "duration": "2 years (24 months)",
+        "auto_renewal": "Does not auto-charge."
+      },
+      "restrictions": [
+        "Valid for new Datadog student accounts verified through GitHub Education."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack."
+    },
+    "links": {
+      "official": "https://www.datadoghq.com",
+      "signup": "https://education.github.com/pack",
+      "documentation": "https://docs.datadoghq.com",
+      "pricing": "https://www.datadoghq.com/pricing/"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-datadog-students",
+          "url": "https://www.datadoghq.com",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-datadog-students",
+          "field_path": "access.free_limits[0]",
+          "quote": "GitHub Student Developer Pack members get a Datadog Pro account, including 10 servers, free for 2 years.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-new-relic-student-observability",
+      "name": "New Relic for Students (Free Full-Stack Observability $300/Mo Value)",
+      "slug": "new-relic-student-observability",
+      "provider": "New Relic",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "APIs, Observability & DevOps Student Perks",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "New Relic",
+        "Observability",
+        "APM",
+        "OpenTelemetry",
+        "GitHub Pack"
+      ]
+    },
+    "description": "Free New Relic observability suite ($300/month value) for verified students — including up to 3 Full Platform users and 500 GB/month of metrics, events, logs, and traces ingest with no credit card required.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Monthly Telemetry Data Ingest",
+          "value": "Up to 500 GB/month free for students (vs 100 GB standard)",
+          "period": "monthly"
+        },
+        {
+          "name": "Full Platform Users",
+          "value": "3 Full Platform users + unlimited Basic users",
+          "period": "while enrolled"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Valid while a verified student",
+        "auto_renewal": "Reverts to 100 GB/mo free tier upon graduation."
+      },
+      "restrictions": [
+        "Requires verification via GitHub Student Developer Pack or student email."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack or student verification on newrelic.com/students."
+    },
+    "links": {
+      "official": "https://newrelic.com/students",
+      "signup": "https://newrelic.com/students",
+      "documentation": "https://docs.newrelic.com",
+      "pricing": "https://newrelic.com/pricing"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-newrelic-students",
+          "url": "https://newrelic.com/students",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-newrelic-students",
+          "field_path": "access.free_limits[0]",
+          "quote": "Free New Relic while you are a student ($300/month value).",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-browserstack-automate-github-student",
+      "name": "BrowserStack for Students (1 Year Free Cross-Browser & Mobile Testing)",
+      "slug": "browserstack-automate-github-student",
+      "provider": "BrowserStack",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "APIs, Observability & DevOps Student Perks",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "BrowserStack",
+        "E2E Testing",
+        "Real Devices",
+        "Selenium",
+        "GitHub Pack"
+      ]
+    },
+    "description": "Free BrowserStack Automate Mobile Plan for 1 year (1 parallel test & 1 user across 3,000+ real desktop browsers and iOS/Android devices) for verified members of the GitHub Student Developer Pack.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "BrowserStack Automate Mobile Plan",
+          "value": "1 year 100% free (1 parallel & 1 user)",
+          "period": "12 months"
+        },
+        {
+          "name": "Real device & browser cloud",
+          "value": "3,000+ real iOS, Android, macOS & Windows browsers",
+          "period": "while active"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required; activate via GitHub Student Developer Pack."
+      },
+      "validity": {
+        "type": "fixed_period",
+        "duration": "1 year",
+        "auto_renewal": "Does not auto-charge."
+      },
+      "restrictions": [
+        "Requires verified GitHub Student Developer Pack status."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack."
+    },
+    "links": {
+      "official": "https://www.browserstack.com/github-students",
+      "signup": "https://www.browserstack.com/github-students",
+      "documentation": "https://www.browserstack.com/docs",
+      "pricing": "https://www.browserstack.com/github-students"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-browserstack-students",
+          "url": "https://www.browserstack.com/github-students",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-browserstack-students",
+          "field_path": "access.free_limits[0]",
+          "quote": "Free BrowserStack Automate Mobile Plan for 1 year with the GitHub Student Developer Pack.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-lambdatest-live-github-student",
+      "name": "LambdaTest for Students (1 Year Free Live Cross-Browser Testing)",
+      "slug": "lambdatest-live-github-student",
+      "provider": "LambdaTest",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "APIs, Observability & DevOps Student Perks",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "LambdaTest",
+        "Cross-Browser Testing",
+        "Playwright",
+        "QA",
+        "GitHub Pack"
+      ]
+    },
+    "description": "Free 1-year LambdaTest Live Plan ($180/year value) for verified GitHub Student Developer Pack members — offering unlimited real-time interactive cross-browser and mobile testing across 3,000+ environments.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "LambdaTest Live Plan",
+          "value": "1 year 100% free ($180 value)",
+          "period": "12 months"
+        },
+        {
+          "name": "Interactive browser testing",
+          "value": "Unlimited real-time sessions across 3,000+ browsers & OSs",
+          "period": "while active"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required; sign in with your verified GitHub Student account."
+      },
+      "validity": {
+        "type": "fixed_period",
+        "duration": "12 months",
+        "auto_renewal": "Does not auto-charge."
+      },
+      "restrictions": [
+        "Requires verified GitHub Student Developer Pack membership."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack."
+    },
+    "links": {
+      "official": "https://www.lambdatest.com/github-students",
+      "signup": "https://www.lambdatest.com/github-students",
+      "documentation": "https://www.lambdatest.com/support/docs/",
+      "pricing": "https://www.lambdatest.com/github-students"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-lambdatest-students",
+          "url": "https://www.lambdatest.com/github-students",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-lambdatest-students",
+          "field_path": "access.free_limits[0]",
+          "quote": "Free LambdaTest Live Plan for 1 year for verified GitHub Student Developer Pack members.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-stripe-waived-fees-github-student",
+      "name": "Stripe for Students (Waived Fees on First $1,000 in Payments)",
+      "slug": "stripe-waived-fees-github-student",
+      "provider": "Stripe",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "APIs, Observability & DevOps Student Perks",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "Stripe",
+        "Payments API",
+        "Student SaaS",
+        "Waived Fees",
+        "GitHub Pack"
+      ]
+    },
+    "description": "Waived Stripe transaction fees on your first $1,000 in processed revenue plus unlimited free Stripe Test Mode sandbox API calls for student SaaS projects via the GitHub Student Developer Pack.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Fee-free payment processing",
+          "value": "Waived Stripe fees on first $1,000 in live volume",
+          "period": "one-time"
+        },
+        {
+          "name": "Stripe Test Mode & CLI",
+          "value": "Unlimited free test payments, webhooks & Checkout sandboxes",
+          "period": "forever"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Activate fee waiver through the GitHub Student Developer Pack."
+      },
+      "validity": {
+        "type": "credit_based",
+        "duration": "First $1,000 in processed payments",
+        "auto_renewal": "Standard pay-as-you-go processing fees apply after $1,000."
+      },
+      "restrictions": [
+        "Live payment processing requires standard merchant KYC in a Stripe-supported country; Test Mode is open to everyone."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global (46+ Stripe-supported countries)"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack."
+    },
+    "links": {
+      "official": "https://stripe.com/docs",
+      "signup": "https://education.github.com/pack",
+      "documentation": "https://stripe.com/docs",
+      "pricing": "https://stripe.com/pricing"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-stripe-students",
+          "url": "https://stripe.com/docs",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-stripe-students",
+          "field_path": "access.free_limits[0]",
+          "quote": "Waived transaction fees on your first $1,000 in revenue processed via the GitHub Student Developer Pack.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-honeybadger-developer-student-plan",
+      "name": "Honeybadger for Students (1 Year Free Error, Uptime & Cron Monitoring)",
+      "slug": "honeybadger-developer-student-plan",
+      "provider": "Honeybadger",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "APIs, Observability & DevOps Student Perks",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "Honeybadger",
+        "Error Monitoring",
+        "Uptime Checks",
+        "Cron Check-ins",
+        "GitHub Pack"
+      ]
+    },
+    "description": "Free Honeybadger Small Plan for 1 full year ($468 value) for verified GitHub Student Developer Pack members — combining exception tracking, uptime monitoring, status pages, and cron job check-ins.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Honeybadger Small Plan",
+          "value": "12 months 100% free ($468 value)",
+          "period": "1 year"
+        },
+        {
+          "name": "Included monitoring",
+          "value": "Error tracking, Uptime checks & Cron check-ins",
+          "period": "while active"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required; redeem through GitHub Student Developer Pack."
+      },
+      "validity": {
+        "type": "fixed_period",
+        "duration": "12 months",
+        "auto_renewal": "Does not auto-charge."
+      },
+      "restrictions": [
+        "Requires verified GitHub Student Developer Pack status."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack."
+    },
+    "links": {
+      "official": "https://www.honeybadger.io",
+      "signup": "https://education.github.com/pack",
+      "documentation": "https://docs.honeybadger.io",
+      "pricing": "https://www.honeybadger.io/pricing/"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-honeybadger-student",
+          "url": "https://www.honeybadger.io",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-honeybadger-student",
+          "field_path": "access.free_limits[0]",
+          "quote": "Free Small account for 1 year for verified GitHub Student Developer Pack members.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-blackfire-profiler-student-plan",
+      "name": "Blackfire.io for Students (Free PHP & Python Code Profiler)",
+      "slug": "blackfire-profiler-student-plan",
+      "provider": "Platform.sh (Blackfire.io)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "APIs, Observability & DevOps Student Perks",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "Blackfire.io",
+        "Code Profiler",
+        "PHP",
+        "Python",
+        "GitHub Pack"
+      ]
+    },
+    "description": "Free Blackfire Profiler subscription for verified students via the GitHub Student Developer Pack — providing call-graph CPU, wall-time, memory, network, and SQL query profiling for PHP and Python applications.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Blackfire Student Profiler Plan",
+          "value": "100% free while a verified student",
+          "period": "while enrolled"
+        },
+        {
+          "name": "Supported runtimes",
+          "value": "PHP & Python call-graph performance profiling",
+          "period": "ongoing"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required; sign in via GitHub Student Developer Pack."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Valid while verified in the GitHub Student Pack",
+        "auto_renewal": "Never charges."
+      },
+      "restrictions": [
+        "Requires verified GitHub Student Developer Pack status."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack."
+    },
+    "links": {
+      "official": "https://www.blackfire.io/students/",
+      "signup": "https://www.blackfire.io/students/",
+      "documentation": "https://docs.blackfire.io",
+      "pricing": "https://www.blackfire.io/pricing/"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-blackfire-students",
+          "url": "https://www.blackfire.io/students/",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-blackfire-students",
+          "field_path": "access.free_limits[0]",
+          "quote": "Blackfire offers a free Profiler subscription for students through the GitHub Student Developer Pack.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-doppler-team-github-student",
+      "name": "Doppler for Students (Free Team Secrets Manager via GitHub Pack)",
+      "slug": "doppler-team-github-student",
+      "provider": "Doppler",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "APIs, Observability & DevOps Student Perks",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "Doppler",
+        "Secrets Management",
+        "Environment Variables",
+        "DevSecOps",
+        "GitHub Pack"
+      ]
+    },
+    "description": "Free Doppler Team subscription while you are a verified student via the GitHub Student Developer Pack — providing centralized environment variables, automatic secret syncing to Vercel/AWS/GitHub Actions, and audit logs.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Doppler Team Plan for Students",
+          "value": "100% free while enrolled",
+          "period": "while student verified"
+        },
+        {
+          "name": "Projects, environments & cloud syncs",
+          "value": "Unlimited projects & cloud provider secret integrations",
+          "period": "ongoing"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required; redeem through GitHub Student Developer Pack."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Valid while verified as a student",
+        "auto_renewal": "Reverts to free Developer plan upon graduation."
+      },
+      "restrictions": [
+        "Requires verified GitHub Student Developer Pack status."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack."
+    },
+    "links": {
+      "official": "https://www.doppler.com",
+      "signup": "https://education.github.com/pack",
+      "documentation": "https://docs.doppler.com",
+      "pricing": "https://www.doppler.com/pricing"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-doppler-students",
+          "url": "https://www.doppler.com",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-doppler-students",
+          "field_path": "access.free_limits[0]",
+          "quote": "Students in the GitHub Student Developer Pack receive a free Doppler Team subscription.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-simple-analytics-student-starter",
+      "name": "Simple Analytics for Students (1 Year Free Privacy-First Web Analytics)",
+      "slug": "simple-analytics-student-starter",
+      "provider": "Simple Analytics",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "APIs, Observability & DevOps Student Perks",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "Simple Analytics",
+        "Privacy Analytics",
+        "GDPR",
+        "Cookie-Free",
+        "GitHub Pack"
+      ]
+    },
+    "description": "Free 1-year Starter Plan on Simple Analytics (up to 100,000 pageviews/month across 10 websites) via the GitHub Student Developer Pack — providing cookie-free, GDPR-compliant web and event analytics.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Simple Analytics Starter Plan",
+          "value": "1 year 100% free (100K pageviews/mo & 10 sites)",
+          "period": "12 months"
+        },
+        {
+          "name": "Cookie-free & AI analytics assistant",
+          "value": "Included with zero cookie banners needed",
+          "period": "while active"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required; sign in with your verified GitHub Student account."
+      },
+      "validity": {
+        "type": "fixed_period",
+        "duration": "12 months",
+        "auto_renewal": "Does not auto-charge."
+      },
+      "restrictions": [
+        "Requires verified GitHub Student Developer Pack membership."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack."
+    },
+    "links": {
+      "official": "https://www.simpleanalytics.com/students",
+      "signup": "https://www.simpleanalytics.com/students",
+      "documentation": "https://docs.simpleanalytics.com",
+      "pricing": "https://www.simpleanalytics.com/pricing"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-simpleanalytics-students",
+          "url": "https://www.simpleanalytics.com/students",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-simpleanalytics-students",
+          "field_path": "access.free_limits[0]",
+          "quote": "Starter plan free for one year, including 100k page views per month, via the GitHub Student Developer Pack.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-testmail-app-essential-student",
+      "name": "Testmail.app for Students (Free Essential Plan Forever via GitHub Pack)",
+      "slug": "testmail-app-essential-student",
+      "provider": "Testmail.app",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "APIs, Observability & DevOps Student Perks",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "Testmail.app",
+        "Email Testing",
+        "GraphQL API",
+        "E2E Testing",
+        "GitHub Pack"
+      ]
+    },
+    "description": "Free Testmail.app Essential Plan forever while you are a verified student in the GitHub Student Developer Pack — offering unlimited test email addresses, GraphQL API querying, and Playwright/Cypress email verification.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Testmail Essential Plan",
+          "value": "Free while a verified student ($228/yr value)",
+          "period": "while enrolled"
+        },
+        {
+          "name": "Test inboxes & GraphQL API",
+          "value": "Unlimited namespaces & automated email assertions",
+          "period": "ongoing"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required; authenticate with your GitHub Student Developer Pack account."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Valid for the duration of your student status",
+        "auto_renewal": "Never charges."
+      },
+      "restrictions": [
+        "Requires verified GitHub Student Developer Pack membership."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack."
+    },
+    "links": {
+      "official": "https://testmail.app/github-students",
+      "signup": "https://testmail.app/github-students",
+      "documentation": "https://testmail.app/docs/",
+      "pricing": "https://testmail.app/github-students"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-testmail-students",
+          "url": "https://testmail.app/github-students",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-testmail-students",
+          "field_path": "access.free_limits[0]",
+          "quote": "Get the Essential plan for free on Testmail.app with the GitHub Student Developer Pack.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-zyte-scrapy-cloud-student-forever",
+      "name": "Zyte Scrapy Cloud for Students (1 Free Forever Cloud Scraping Unit)",
+      "slug": "zyte-scrapy-cloud-student-forever",
+      "provider": "Zyte",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "APIs, Observability & DevOps Student Perks",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "Zyte",
+        "Scrapy Cloud",
+        "Web Scraping",
+        "Python",
+        "GitHub Pack"
+      ]
+    },
+    "description": "1 Free Forever Scrapy Cloud Unit (unlimited team members, proyectos, and requests with 120-day data retention) for deploying and scheduling Python Scrapy web crawlers via the GitHub Student Developer Pack.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Zyte Scrapy Cloud Unit",
+          "value": "1 Free Forever Unit + 120-day item retention",
+          "period": "forever"
+        },
+        {
+          "name": "Projects & requests",
+          "value": "Unlimited projects, team members & crawl requests",
+          "period": "forever"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required; redeem through GitHub Student Developer Pack."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Free forever unit",
+        "auto_renewal": "Never charges."
+      },
+      "restrictions": [
+        "Requires verified GitHub Student Developer Pack status."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack."
+    },
+    "links": {
+      "official": "https://www.zyte.com/scrapy-cloud/",
+      "signup": "https://education.github.com/pack",
+      "documentation": "https://docs.zyte.com",
+      "pricing": "https://www.zyte.com/scrapy-cloud/"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-zyte-students",
+          "url": "https://www.zyte.com/scrapy-cloud/",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-zyte-students",
+          "field_path": "access.free_limits[0]",
+          "quote": "1 Free Forever Scrapy Cloud Unit with unlimited team members, projects, and requests via the GitHub Student Developer Pack.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-imgix-student-rendering-credits",
+      "name": "Imgix for Students ($1,000 Image Optimization & CDN Credits)",
+      "slug": "imgix-student-rendering-credits",
+      "provider": "Imgix",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "APIs, Observability & DevOps Student Perks",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "Imgix",
+        "Image CDN",
+        "Media Optimization",
+        "$1,000 Credit",
+        "GitHub Pack"
+      ]
+    },
+    "description": "Free Imgix account with $1,000 in real-time image rendering, AVIF/WebP optimization, and global CDN delivery credits for verified students via the GitHub Student Developer Pack.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Imgix Rendering & CDN Credits",
+          "value": "$1,000 in student account credits",
+          "period": "while student"
+        },
+        {
+          "name": "Real-time URL image transformations",
+          "value": "Resize, crop, watermark, AVIF/WebP & AI background removal",
+          "period": "ongoing"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Redeem through the GitHub Student Developer Pack."
+      },
+      "validity": {
+        "type": "credit_based",
+        "duration": "Valid while enrolled as a verified student",
+        "auto_renewal": "Does not auto-charge without a payment card."
+      },
+      "restrictions": [
+        "Requires verified GitHub Student Developer Pack membership."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack."
+    },
+    "links": {
+      "official": "https://www.imgix.com",
+      "signup": "https://education.github.com/pack",
+      "documentation": "https://docs.imgix.com",
+      "pricing": "https://www.imgix.com/pricing"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-imgix-students",
+          "url": "https://www.imgix.com",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-imgix-students",
+          "field_path": "access.free_limits[0]",
+          "quote": "Students in the GitHub Student Developer Pack receive $1,000 in Imgix image optimization and CDN credits.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-opencage-geocoding-api-student",
+      "name": "OpenCage Geocoding API (Free Student Pack API Upgrade & 2,500 Req/Day)",
+      "slug": "opencage-geocoding-api-student",
+      "provider": "OpenCage",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "APIs, Observability & DevOps Student Perks",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "OpenCage",
+        "Geocoding API",
+        "OpenStreetMap",
+        "Geospatial",
+        "GitHub Pack"
+      ]
+    },
+    "description": "Free OpenCage forward and reverse geocoding API powered by OpenStreetMap and open geospatial datasets — offering 2,500 free requests/day for all developers plus free upgraded student API quotas via the GitHub Student Developer Pack.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Forward & Reverse Geocoding API",
+          "value": "2,500 free requests/day + GitHub Student Pack upgrade",
+          "period": "daily"
+        },
+        {
+          "name": "SDKs",
+          "value": "30+ language SDKs (Python, JS, Go, Ruby, R, Java)",
+          "period": "forever"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "No expiration on 2,500/day free tier; student boost while enrolled",
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Non-commercial academic and development usage on free plan."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: verified via GitHub Student Developer Pack (base 2,500 req/day tier is also open without ID)."
+    },
+    "links": {
+      "official": "https://opencagedata.com",
+      "signup": "https://opencagedata.com/users/sign_up",
+      "documentation": "https://opencagedata.com/api",
+      "pricing": "https://opencagedata.com/pricing"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-opencage-students",
+          "url": "https://opencagedata.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-opencage-students",
+          "field_path": "access.free_limits[0]",
+          "quote": "OpenCage provides forward and reverse geocoding APIs with a generous free tier and GitHub Student Developer Pack benefits.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-overleaf-collaborative-latex-students",
+      "name": "Overleaf (Free Collaborative LaTeX Editor & University Commons)",
+      "slug": "overleaf-collaborative-latex-students",
+      "provider": "Digital Science (Overleaf)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Academic Research, Data Science & Reference Tools",
+      "resource_type": "student_benefit",
+      "pricing_model": "free_tier",
+      "tags": [
+        "No Student ID Required",
+        "Overleaf",
+        "LaTeX",
+        "Thesis Templates",
+        "IEEE / ACM Papers",
+        "Academic Writing"
+      ]
+    },
+    "description": "Free cloud-based real-time LaTeX editor with unlimited academic paper and thesis projects, 10,000+ IEEE/ACM/Springer/university templates, and visual/code modes — open to all students without a student ID (plus automatic Overleaf Professional at 1,000+ Overleaf Commons universities).",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Overleaf Free Plan",
+          "value": "Unlimited LaTeX projects & 10,000+ journal/thesis templates",
+          "period": "forever"
+        },
+        {
+          "name": "Overleaf Commons University Upgrade",
+          "value": "Automatic free Professional plan when linking a partner .edu email",
+          "period": "while enrolled"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card and no student ID required for Overleaf Free."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "No expiration",
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Free plan includes 1 collaborator per project; partner university emails unlock unlimited collaborators."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required for Overleaf Free (optional .edu linking unlocks Overleaf Commons Professional at partner universities)."
+    },
+    "links": {
+      "official": "https://www.overleaf.com/for/universities",
+      "signup": "https://www.overleaf.com/register",
+      "documentation": "https://www.overleaf.com/learn",
+      "pricing": "https://www.overleaf.com/user/subscription/plans"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-overleaf-uni",
+          "url": "https://www.overleaf.com/for/universities",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-overleaf-uni",
+          "field_path": "access.free_limits[0]",
+          "quote": "Overleaf is used by millions of students and researchers worldwide for collaborative LaTeX writing.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-zotero-open-source-reference-manager",
+      "name": "Zotero (100% Free Open-Source Citation & PDF Research Manager)",
+      "slug": "zotero-open-source-reference-manager",
+      "provider": "Corporation for Digital Scholarship",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Academic Research, Data Science & Reference Tools",
+      "resource_type": "student_benefit",
+      "pricing_model": "open_source",
+      "tags": [
+        "No Student ID Required",
+        "Zotero",
+        "Reference Manager",
+        "BibTeX",
+        "PDF Reader",
+        "Open Source"
+      ]
+    },
+    "description": "100% free, open-source academic research and citation manager for macOS, Windows, Linux, and iOS — featuring 1-click arXiv/IEEE/ACM paper capture, built-in PDF/EPUB annotation, Word/Google Docs/Overleaf BibTeX integration, and unlimited metadata sync with no student ID required.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Desktop & iOS apps + Metadata sync",
+          "value": "Unlimited citation items, folders & shared group libraries",
+          "period": "forever"
+        },
+        {
+          "name": "Cloud attachment storage",
+          "value": "300 MB free cloud PDF sync + unlimited local/WebDAV sync",
+          "period": "forever"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card and no student ID required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "No expiration (AGPLv3 open source)",
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "None for local storage or WebDAV sync."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required: open to all students and researchers worldwide."
+    },
+    "links": {
+      "official": "https://www.zotero.org",
+      "signup": "https://www.zotero.org/download/",
+      "documentation": "https://www.zotero.org/support/",
+      "pricing": "https://www.zotero.org"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-zotero",
+          "url": "https://www.zotero.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-zotero",
+          "field_path": "access.free_limits[0]",
+          "quote": "Zotero is a free, easy-to-use tool to help you collect, organize, annotate, cite, and share research.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-connected-papers-academic-graph",
+      "name": "Connected Papers (Visual Academic Literature Graph Explorer)",
+      "slug": "connected-papers-academic-graph",
+      "provider": "Connected Papers",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Academic Research, Data Science & Reference Tools",
+      "resource_type": "student_benefit",
+      "pricing_model": "free_tier",
+      "tags": [
+        "No Student ID Required",
+        "Connected Papers",
+        "Literature Review",
+        "Citation Graph",
+        "arXiv",
+        "Semantic Scholar"
+      ]
+    },
+    "description": "Visual academic discovery tool built on the Semantic Scholar corpus that generates interactive similarity graphs, Prior Works, and Derivative Works for any scientific paper — open to all students with no student ID required.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Visual Citation & Similarity Graphs",
+          "value": "5 free custom literature graphs/month + unlimited cached graphs",
+          "period": "monthly"
+        },
+        {
+          "name": "BibTeX & Zotero exports",
+          "value": "Included on free plan",
+          "period": "forever"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card and no student ID required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "No expiration",
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "5 newly computed graphs per month on the free tier."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required: usable immediately in the browser by any student."
+    },
+    "links": {
+      "official": "https://www.connectedpapers.com",
+      "signup": "https://www.connectedpapers.com",
+      "documentation": "https://www.connectedpapers.com/about",
+      "pricing": "https://www.connectedpapers.com/pricing"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-connectedpapers",
+          "url": "https://www.connectedpapers.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-connectedpapers",
+          "field_path": "access.free_limits[0]",
+          "quote": "Explore connected papers in a visual graph to build a bibliography for your thesis or research paper.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-consensus-ai-academic-search",
+      "name": "Consensus AI Academic Search Engine (200M+ Peer-Reviewed Papers)",
+      "slug": "consensus-ai-academic-search",
+      "provider": "Consensus",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Academic Research, Data Science & Reference Tools",
+      "resource_type": "student_benefit",
+      "pricing_model": "free_tier",
+      "tags": [
+        "No Student ID Required",
+        "Consensus AI",
+        "Academic Search",
+        "Peer-Reviewed Papers",
+        "Literature Review",
+        "Citations"
+      ]
+    },
+    "description": "Academic AI search engine indexing over 200 million peer-reviewed scientific papers from Semantic Scholar — providing hallucination-free cited findings, Consensus Meter syntheses, and study quality snapshots for students.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Peer-reviewed paper search",
+          "value": "Unlimited academic paper searches",
+          "period": "forever"
+        },
+        {
+          "name": "Pro AI syntheses & Consensus Meters",
+          "value": "Monthly free Pro credits included",
+          "period": "monthly"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card and no student ID required for the Free tier."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "No expiration",
+        "auto_renewal": "Monthly Pro synthesis credits refresh every 30 days."
+      },
+      "restrictions": [
+        "Unlimited Pro AI syntheses require a paid upgrade (40% student discount available with .edu email)."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required for the Free plan."
+    },
+    "links": {
+      "official": "https://consensus.app",
+      "signup": "https://consensus.app/search/",
+      "documentation": "https://consensus.app",
+      "pricing": "https://consensus.app/home/pricing/"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-consensus",
+          "url": "https://consensus.app",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-consensus",
+          "field_path": "access.free_limits[0]",
+          "quote": "Search 200M+ academic papers for free with AI-powered insights backed by real citations.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-osf-open-science-framework-research",
+      "name": "OSF / Open Science Framework (Free Academic Data, Code & Preprint Hosting)",
+      "slug": "osf-open-science-framework-research",
+      "provider": "Center for Open Science",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Academic Research, Data Science & Reference Tools",
+      "resource_type": "student_benefit",
+      "pricing_model": "completely_free",
+      "tags": [
+        "No Student ID Required",
+        "OSF",
+        "Open Science",
+        "Research Data Hosting",
+        "DOIs",
+        "Preprints"
+      ]
+    },
+    "description": "100% free open-source research management platform operated by the non-profit Center for Open Science — giving students and researchers free DOI minting, preprint hosting, study preregistration, and cloud storage (50 GB per public project, 5 GB per private project).",
+    "access": {
+      "free_limits": [
+        {
+          "name": "OSF Research Projects & DOI Minting",
+          "value": "Unlimited projects + 50 GB/public project + free DOIs",
+          "period": "forever"
+        },
+        {
+          "name": "GitHub, Google Drive, S3 & Zotero integrations",
+          "value": "Included free",
+          "period": "forever"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card and no student ID required (ORCID and institutional SSO also supported)."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "No expiration (50-year preservation fund)",
+        "auto_renewal": "Always 100% free."
+      },
+      "restrictions": [
+        "5 GB per private component; 50 GB per public component."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required: open to all students and independent researchers worldwide."
+    },
+    "links": {
+      "official": "https://osf.io",
+      "signup": "https://osf.io/register",
+      "documentation": "https://help.osf.io",
+      "pricing": "https://osf.io"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-osf",
+          "url": "https://osf.io",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-osf",
+          "field_path": "access.free_limits[0]",
+          "quote": "OSF is a free, open platform to support your research and enable collaboration.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-wolfram-alpha-mathematica-students",
+      "name": "Wolfram Education (Campus Mathematica Site License & Wolfram Cloud Basic)",
+      "slug": "wolfram-alpha-mathematica-students",
+      "provider": "Wolfram Research",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Academic Research, Data Science & Reference Tools",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "Wolfram",
+        "Mathematica",
+        "Wolfram|Alpha",
+        "Symbolic Math",
+        "STEM"
+      ]
+    },
+    "description": "Free campus-wide Wolfram Mathematica desktop & Wolfram|Alpha Pro access for students at 1,500+ partner universities using a `.edu` email, plus free Wolfram Cloud Basic and Wolfram Engine for Developers.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Campus Site License Check + Wolfram Cloud Basic",
+          "value": "Free Mathematica at partner .edu schools + free Cloud Basic notebooks",
+          "period": "while enrolled"
+        },
+        {
+          "name": "Free Wolfram Engine for Developers",
+          "value": "Free local CLI/Jupyter symbolic computation engine",
+          "period": "forever"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card required; enter your university .edu email on Wolfram's site license checker."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Valid while enrolled at a participating university; Cloud Basic is ongoing",
+        "auto_renewal": "Never charges."
+      },
+      "restrictions": [
+        "Full desktop Mathematica is free at universities holding a Wolfram Campus Site License; Wolfram Cloud Basic & Free Wolfram Engine work for all students."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: enter your university email on wolfram.com/education to claim your school's free Mathematica & Wolfram|Alpha Pro license."
+    },
+    "links": {
+      "official": "https://www.wolfram.com/education/",
+      "signup": "https://www.wolfram.com/siteinfo/",
+      "documentation": "https://reference.wolfram.com/language/",
+      "pricing": "https://www.wolfram.com/education/"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-wolfram-edu",
+          "url": "https://www.wolfram.com/education/",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-wolfram-edu",
+          "field_path": "access.free_limits[0]",
+          "quote": "Check if your school provides free access to Mathematica, Wolfram|Alpha Pro, and Wolfram|One.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-qualtrics-xm-free-academic-surveys",
+      "name": "Qualtrics XM Free Account (Academic Survey & Research Tool)",
+      "slug": "qualtrics-xm-free-academic-surveys",
+      "provider": "Qualtrics",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Academic Research, Data Science & Reference Tools",
+      "resource_type": "student_benefit",
+      "pricing_model": "free_tier",
+      "tags": [
+        "No Student ID Required",
+        "Qualtrics",
+        "Academic Surveys",
+        "HCI Research",
+        "User Studies",
+        "Statistics"
+      ]
+    },
+    "description": "Free Qualtrics survey design and academic research account offering 3 active surveys, 500 responses per survey, 8 question types, and automated statistical reporting — open to all students with no student ID required.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Qualtrics Free Account",
+          "value": "Up to 3 active surveys & 500 responses/survey",
+          "period": "forever"
+        },
+        {
+          "name": "ExpertReview survey quality analyzer",
+          "value": "Included free",
+          "period": "forever"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "No credit card and no student ID required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "No expiration",
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Up to 30 questions per survey on the free individual account (many universities also provide unlimited Qualtrics via .edu SSO)."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required for the Qualtrics Free Account."
+    },
+    "links": {
+      "official": "https://www.qualtrics.com/free-account/",
+      "signup": "https://www.qualtrics.com/free-account/",
+      "documentation": "https://www.qualtrics.com/support/",
+      "pricing": "https://www.qualtrics.com/free-account/"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-qualtrics-free",
+          "url": "https://www.qualtrics.com/free-account/",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-qualtrics-free",
+          "field_path": "access.free_limits[0]",
+          "quote": "Create, distribute, and analyze surveys for free with a Qualtrics Free Account—no credit card required.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-google-summer-of-code-gsoc",
+      "name": "Google Summer of Code / GSoC (Paid Open-Source Fellowship & Stipend)",
+      "slug": "google-summer-of-code-gsoc",
+      "provider": "Google Open Source",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Hackathons, Open-Source Fellowships & Student Grants",
+      "resource_type": "student_benefit",
+      "pricing_model": "completely_free",
+      "tags": [
+        "No Student ID Required",
+        "Google Summer of Code",
+        "GSoC",
+        "Paid Stipend",
+        "Open Source",
+        "Mentorship"
+      ]
+    },
+    "description": "Global online mentorship program from Google pairing university students and open-source beginners (aged 18+) with 180+ premier open-source organizations (Linux, Python, Rust, CNCF, Chromium, Blender) on 12+ week coding projects with a $1,500–$6,600 USD stipend.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "1-on-1 Open-Source Mentorship",
+          "value": "12 to 22 weeks of mentored engineering with top OSS orgs",
+          "period": "annual cohort"
+        },
+        {
+          "name": "Contributor Stipend",
+          "value": "$1,500 to $6,600 USD paid stipend upon milestone completion",
+          "period": "per project"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "100% free to apply; Google pays accepted contributors a stipend."
+      },
+      "validity": {
+        "type": "fixed_period",
+        "duration": "12–22 week summer program",
+        "auto_renewal": "Annual application cycle."
+      },
+      "restrictions": [
+        "Must be 18+ years old and either a student OR a beginner to open-source software development."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global (non-sanctioned countries)"
+      ],
+      "conditions": "No Student ID or .edu email required: since 2022, GSoC is open to both university students AND non-student open-source beginners aged 18+."
+    },
+    "links": {
+      "official": "https://summerofcode.withgoogle.com",
+      "signup": "https://summerofcode.withgoogle.com",
+      "documentation": "https://google.github.io/gsocguides/student/",
+      "pricing": "https://summerofcode.withgoogle.com"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-gsoc",
+          "url": "https://summerofcode.withgoogle.com",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-gsoc",
+          "field_path": "access.free_limits[0]",
+          "quote": "Google Summer of Code is a global, online program focused on bringing new contributors into open source software development.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-mlh-fellowship-student-hackathons",
+      "name": "Major League Hacking (MLH Fellowship & Student Hackathons)",
+      "slug": "mlh-fellowship-student-hackathons",
+      "provider": "Major League Hacking",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Hackathons, Open-Source Fellowships & Student Grants",
+      "resource_type": "student_benefit",
+      "pricing_model": "completely_free",
+      "tags": [
+        "No Student ID Required",
+        "MLH Fellowship",
+        "Hackathons",
+        "Open Source",
+        "Stipend",
+        "Global Hack Week"
+      ]
+    },
+    "description": "12-week remote software engineering, Site Reliability Engineering (SRE), and Web3/AI internship alternative powered by Major League Hacking — plus 300+ free weekend student hackathons and Global Hack Weeks with free sponsor API credits and swag.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "MLH Fellowship (Spring, Summer, Fall)",
+          "value": "12-week mentored open-source fellowship + educational stipend",
+          "period": "per semester"
+        },
+        {
+          "name": "Global Hack Week & MLH Hackathons",
+          "value": "100% free global hackathons, cloud credits & hardware prizes",
+          "period": "year-round"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "100% free to participate; accepted MLH Fellows receive need/merit stipends."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Year-round Global Hack Weeks & 3 annual Fellowship cohorts",
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "MLH Fellowship applicants must be 18+ (or 13+ for Global Hack Week events) and proficient in at least one programming language."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required: MLH Fellowship and Global Hack Week are open to university students, bootcampers, and self-taught student hackers."
+    },
+    "links": {
+      "official": "https://fellowship.mlh.io",
+      "signup": "https://fellowship.mlh.io",
+      "documentation": "https://fellowship.mlh.io",
+      "pricing": "https://fellowship.mlh.io"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-mlh-fellowship",
+          "url": "https://fellowship.mlh.io",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-mlh-fellowship",
+          "field_path": "access.free_limits[0]",
+          "quote": "A 12-week internship alternative for aspiring software engineers to contribute to Open Source projects used by companies around the world.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-linux-foundation-lfx-mentorship",
+      "name": "Linux Foundation LFX Mentorship (Paid Linux Kernel & CNCF Mentorships)",
+      "slug": "linux-foundation-lfx-mentorship",
+      "provider": "The Linux Foundation",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Hackathons, Open-Source Fellowships & Student Grants",
+      "resource_type": "student_benefit",
+      "pricing_model": "completely_free",
+      "tags": [
+        "No Student ID Required",
+        "LFX Mentorship",
+        "Linux Kernel",
+        "CNCF",
+        "Kubernetes",
+        "Paid Stipend"
+      ]
+    },
+    "description": "Three-term annual remote open-source mentorship program from the Linux Foundation (Spring, Summer, Fall) where mentees work directly with maintainers of the Linux Kernel, Kubernetes, Prometheus, Envoy, and Hyperledger and earn a $3,000–$6,600 USD stipend.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "12-Week Linux Foundation & CNCF Mentorship",
+          "value": "Direct mentorship from core maintainers",
+          "period": "Spring, Summer, Fall"
+        },
+        {
+          "name": "Mentee Stipend",
+          "value": "$3,000 to $6,600 USD stipend (location-adjusted)",
+          "period": "per term"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "100% free to apply."
+      },
+      "validity": {
+        "type": "fixed_period",
+        "duration": "12 weeks full-time or 24 weeks part-time",
+        "auto_renewal": "3 cohorts per year."
+      },
+      "restrictions": [
+        "Must be at least 18 years old and a first-time LFX Mentorship participant."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required: open to both university students and self-taught aspiring open-source developers aged 18+."
+    },
+    "links": {
+      "official": "https://lfx.linuxfoundation.org/tools/mentorship/",
+      "signup": "https://mentorship.lfx.linuxfoundation.org",
+      "documentation": "https://docs.linuxfoundation.org/lfx/mentorship",
+      "pricing": "https://lfx.linuxfoundation.org/tools/mentorship/"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-lfx-mentorship",
+          "url": "https://lfx.linuxfoundation.org/tools/mentorship/",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-lfx-mentorship",
+          "field_path": "access.free_limits[0]",
+          "quote": "The LFX Mentorship Program is designed to help developers with necessary skills—many of whom are first-time open source contributors—contribute effectively to open source communities.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-hack-club-hcb-student-grants",
+      "name": "Hack Club & HCB (Free Hardware Grants, PCB Fabrication & Teen Hackathons)",
+      "slug": "hack-club-hcb-student-grants",
+      "provider": "Hack Club",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Hackathons, Open-Source Fellowships & Student Grants",
+      "resource_type": "student_benefit",
+      "pricing_model": "student_exclusive",
+      "tags": [
+        "Student ID / .edu Required",
+        "Hack Club",
+        "Hardware Grants",
+        "PCB Grants",
+        "High School",
+        "Open Source"
+      ]
+    },
+    "description": "Global 501(c)(3) nonprofit network for teenage high school & secondary school coders providing free $100+ PCB/hardware fabrication grants (OnBoard), free Raspberry Pi/server grants, free stickers, and free HCB non-profit fiscal sponsorship for student hackathons.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Hardware, 3D Printer & PCB Grants",
+          "value": "Up to $100+ free custom PCB & hardware grants when you ship open-source designs",
+          "period": "ongoing"
+        },
+        {
+          "name": "Community Slack & Hackathons",
+          "value": "100% free global teen developer community & travel grants",
+          "period": "while in high school"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "100% free; Hack Club sends you grant funds or hardware directly."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "Valid for teenagers and high school students aged 18 and under",
+        "auto_renewal": "Always free."
+      },
+      "restrictions": [
+        "Hardware and travel grants require verification of high-school/secondary student status (aged ≤18)."
+      ]
+    },
+    "eligibility": {
+      "student_access": "exclusive",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Requires Student ID / .edu email: high school student ID or proof of secondary school enrollment (aged 18 and under) for hardware/grant payouts."
+    },
+    "links": {
+      "official": "https://hackclub.com",
+      "signup": "https://hackclub.com/slack/",
+      "documentation": "https://hackclub.com",
+      "pricing": "https://hackclub.com"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-hackclub",
+          "url": "https://hackclub.com",
+          "source_type": "student_page",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-hackclub",
+          "field_path": "access.free_limits[0]",
+          "quote": "Hack Club is a global nonprofit network of high school makers & student-led coding clubs offering free hardware grants and hackathons.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "offer-yc-startup-school-student-founders",
+      "name": "Y Combinator Startup School (Free Founder Curriculum & Co-Founder Matching)",
+      "slug": "yc-startup-school-student-founders",
+      "provider": "Y Combinator",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "student-benefits",
+      "subcategory": "Hackathons, Open-Source Fellowships & Student Grants",
+      "resource_type": "student_benefit",
+      "pricing_model": "completely_free",
+      "tags": [
+        "No Student ID Required",
+        "Y Combinator",
+        "Startup School",
+        "Student Founders",
+        "Co-Founder Matching",
+        "Startup Deals"
+      ]
+    },
+    "description": "Y Combinator's 100% free online course and global community for student founders and technical builders — featuring the complete YC partner curriculum, Co-Founder Matching across 100,000+ engineers, and weekly progress tracking with no student ID or equity required.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "YC Startup School Curriculum",
+          "value": "100% free 7-week self-paced YC founder curriculum",
+          "period": "forever"
+        },
+        {
+          "name": "YC Co-Founder Matching",
+          "value": "Free access to global technical & campus co-founder directory",
+          "period": "forever"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Zero cost, zero equity, and no student ID required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": "No expiration",
+        "auto_renewal": "Always 100% free."
+      },
+      "restrictions": [
+        "None; open to aspiring student founders and builders worldwide."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "No Student ID or .edu email required: open to all university and self-taught student founders worldwide."
+    },
+    "links": {
+      "official": "https://www.startupschool.org",
+      "signup": "https://www.startupschool.org",
+      "documentation": "https://www.ycombinator.com/library",
+      "pricing": "https://www.startupschool.org"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-yc-startupschool",
+          "url": "https://www.startupschool.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-yc-startupschool",
+          "field_path": "access.free_limits[0]",
+          "quote": "Startup School is a free online course from Y Combinator on how to start a company.",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": "Live-verified 200 OK."
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  }
+]

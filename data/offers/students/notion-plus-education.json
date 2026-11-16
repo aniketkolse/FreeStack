@@ -12,7 +12,7 @@
     "subcategory": "Student AI & Dev Tools",
     "resource_type": "student_benefit",
     "pricing_model": "student_exclusive",
-    "tags": ["Notes", "Docs", "Students", "Notion", "Workspace"]
+    "tags": ["Student ID / .edu Required", "Notes", "Docs", "Students", "Notion", "Workspace"]
   },
   "description": "Free Notion Plus plan for individual verified university students, including unlimited file uploads, unlimited blocks, and 30-day page history.",
   "access": {
@@ -37,7 +37,7 @@
   "eligibility": {
     "student_access": "exclusive",
     "regions": ["Global (accredited higher-ed domains)"],
-    "conditions": "Valid university email address verified inside Notion workspace settings."
+    "conditions": "Requires Student ID / .edu email: valid university email address verified inside Notion workspace settings."
   },
   "links": {
     "official": "https://www.notion.com/product/notion-for-education",
@@ -72,7 +72,7 @@
   "metadata": {
     "created_at": "2026-11-05",
     "updated_at": "2026-11-10",
-    "featured": false,
+    "featured": true,
     "contributor": "freestack-core"
   }
 }

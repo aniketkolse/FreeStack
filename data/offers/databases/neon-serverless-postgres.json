@@ -12,9 +12,9 @@
     "subcategory": "SQL Databases",
     "resource_type": "cloud_service",
     "pricing_model": "free_tier",
-    "tags": ["PostgreSQL", "pgvector", "Serverless", "SQL", "Branching", "No Card"]
+    "tags": ["PostgreSQL", "PostgreSQL Hosting", "Hosting", "pgvector", "Serverless", "SQL", "Branching", "No Card"]
   },
-  "description": "Serverless PostgreSQL with instant database branching, scale-to-zero compute, and pgvector support for AI embeddings.",
+  "description": "Free serverless PostgreSQL hosting with instant database branching, scale-to-zero compute, and pgvector support for AI embeddings.",
   "access": {
     "free_limits": [
       { "name": "Storage", "value": "0.5 GB", "period": "per project" },
@@ -74,7 +74,7 @@
   "metadata": {
     "created_at": "2026-10-10",
     "updated_at": "2026-11-10",
-    "featured": false,
+    "featured": true,
     "contributor": "freestack-core"
   }
 }

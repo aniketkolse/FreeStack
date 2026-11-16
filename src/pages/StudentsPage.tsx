@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
-import { GraduationCap, AlertTriangle, Home } from 'lucide-react';
+import { GraduationCap, AlertTriangle, Home, CheckCircle2 } from 'lucide-react';
 import { OFFERS, getStudentOffers } from '../lib/data/resources';
-import { searchOffers } from '../lib/search/searchOffers';
+import { DEFAULT_FILTER_STATE, filterAndSortOffers } from '../lib/filters/filterOffers';
 import { formatCardRequirement, formatDate } from '../lib/utils/formatters';
 import { ResourceCard } from '../components/offers/ResourceCard';
 import { SlabIllustration } from '../components/illustrations/TocaStickers';
@@ -14,27 +14,79 @@ interface StudentsPageProps {
 const STUDENT_TRACKS = [
   { id: 'all', label: 'All student benefits' },
   { id: 'Student Developer Packs', label: 'Developer packs' },
+  { id: 'Student AI & Dev Tools', label: 'Student AI & Dev tools' },
   { id: 'Student Cloud Credits', label: 'Cloud credits' },
   { id: 'Educational Software', label: 'Educational software' },
+  { id: 'Free Student Domains & Web Hosting', label: 'Domains & hosting' },
   { id: 'Certifications & Learning Benefits', label: 'Certifications & learning' },
-  { id: 'Student AI & Dev Tools', label: 'Student AI & Dev tools' },
+  { id: 'Coding Courses & Interactive Platforms for Students', label: 'Coding courses' },
+  { id: 'APIs, Observability & DevOps Student Perks', label: 'APIs & DevOps perks' },
+  { id: 'Academic Research, Data Science & Reference Tools', label: 'Academic research & data' },
+  { id: 'Hackathons, Open-Source Fellowships & Student Grants', label: 'Fellowships & grants' },
 ];
 
 export function StudentsPage({ onNavigate }: StudentsPageProps) {
   const [selectedTrack, setSelectedTrack] = useState('all');
+  const [studentIdFilter, setStudentIdFilter] = useState<'all' | 'required' | 'not_required'>('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [visibleCount, setVisibleCount] = useState(24);
 
-  const studentExclusive = useMemo(() => getStudentOffers(), []);
+  const allStudentOffers = useMemo(
+    () =>
+      filterAndSortOffers(getStudentOffers(), {
+        ...DEFAULT_FILTER_STATE,
+        category: 'student-benefits',
+        sortBy: 'relevance',
+      }),
+    []
+  );
 
-  const filteredExclusive = useMemo(() => {
-    const baseList = searchQuery.trim()
-      ? searchOffers(studentExclusive, searchQuery).map((r) => r.offer)
-      : studentExclusive;
-    if (selectedTrack === 'all') return baseList;
-    return baseList.filter(
-      (o) => o.classification.subcategory === selectedTrack
-    );
-  }, [studentExclusive, selectedTrack, searchQuery]);
+  const studentIdRequiredOffers = useMemo(
+    () =>
+      allStudentOffers.filter(
+        (o) =>
+          o.eligibility.student_access === 'exclusive' ||
+          o.classification.tags.includes('Student ID / .edu Required')
+      ),
+    [allStudentOffers]
+  );
+
+  const noStudentIdOffers = useMemo(
+    () =>
+      allStudentOffers.filter(
+        (o) =>
+          o.eligibility.student_access !== 'exclusive' &&
+          (o.classification.tags.includes('No Student ID Required') ||
+            o.eligibility.student_access === 'eligible')
+      ),
+    [allStudentOffers]
+  );
+
+  const filteredStudentOffers = useMemo(() => {
+    const baseList = filterAndSortOffers(allStudentOffers, {
+      ...DEFAULT_FILTER_STATE,
+      category: 'student-benefits',
+      subcategory: selectedTrack,
+      query: searchQuery,
+      sortBy: 'relevance',
+    });
+    if (studentIdFilter === 'required') {
+      return baseList.filter(
+        (o) =>
+          o.eligibility.student_access === 'exclusive' ||
+          o.classification.tags.includes('Student ID / .edu Required')
+      );
+    }
+    if (studentIdFilter === 'not_required') {
+      return baseList.filter(
+        (o) =>
+          o.eligibility.student_access !== 'exclusive' &&
+          (o.classification.tags.includes('No Student ID Required') ||
+            o.eligibility.student_access === 'eligible')
+      );
+    }
+    return baseList;
+  }, [allStudentOffers, selectedTrack, studentIdFilter, searchQuery]);
 
   const generalStudentEligible = useMemo(
     () =>
@@ -71,7 +123,9 @@ export function StudentsPage({ onNavigate }: StudentsPageProps) {
               className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[12.5px] rounded-full px-3.5 py-1.5 min-h-[32px] inline-flex items-center gap-1.5"
             >
               <GraduationCap className="w-3.5 h-3.5" aria-hidden="true" />
-              <span>Student ID / .edu Verification Required for {studentExclusive.length} Academic Packs</span>
+              <span>
+                {allStudentOffers.length} Verified Student Benefits ({studentIdRequiredOffers.length} Student ID / .edu · {noStudentIdOffers.length} No ID Needed)
+              </span>
             </span>
           </div>
 
@@ -79,20 +133,21 @@ export function StudentsPage({ onNavigate }: StudentsPageProps) {
             Student benefits &amp; cloud credits
           </h1>
           <p className="font-[var(--font-inter)] text-[13.5px] sm:text-[14.5px] leading-[1.45] text-ink max-w-xl">
-            Verified academic developer packs, professional desktop software, student cloud credits, and certifications — clearly marking where a <strong>Student ID / school .edu email</strong> is required vs. tools open to everyone.
+            Verified academic developer packs, AI coding assistants, desktop IDEs, student cloud credits, CAD/EDA tools, domains, certifications, and fellowships — clearly classified by whether a <strong>Student ID / school .edu email</strong> is required vs. <strong>No Student ID Required</strong>.
           </p>
 
-          {/* Explicit Top Breakdown: Where Student ID Is Needed */}
+          {/* Explicit Top Breakdown: Where Student ID Is Needed vs No Student ID Needed */}
           <div
             data-testid="student-id-needed-notice"
             className="w-full bg-paper/95 rounded-[16px] p-3.5 flex flex-col gap-1.5 border border-midnight-mouth/10"
           >
             <div className="flex items-center gap-1.5 font-[var(--font-wallop)] font-bold text-[13.5px] sm:text-[14px] text-midnight-mouth">
               <GraduationCap className="w-4 h-4 shrink-0" aria-hidden="true" />
-              <span>Where a Student ID or .edu / .ac school email is needed:</span>
+              <span>Proper Classification: Student ID / .edu Required vs. No Student ID Required</span>
             </div>
             <p className="font-[var(--font-inter)] text-[12.5px] sm:text-[13px] leading-[1.45] text-ink/90">
-              <strong>Student ID / enrollment proof required:</strong> GitHub Student Developer Pack, Microsoft Azure for Students ($100), JetBrains All Products Pack, Figma Education, Notion Plus for Education, and AWS Educate. Each card below is tagged with <span className="font-semibold text-midnight-mouth">&ldquo;Student ID / .edu Req.&rdquo;</span> so you know before clicking.
+              <strong>Student ID / .edu Required ({studentIdRequiredOffers.length} offers):</strong> GitHub Student Developer Pack, JetBrains All Products Pack, Azure for Students ($100), GitHub Copilot Pro, Cursor Pro (1 Year Free), Figma Education, Notion Plus Education, Google One AI Premium, Autodesk, Namecheap nc.me, and Canva Education.{' '}
+              <strong>No Student ID Required ({noStudentIdOffers.length} offers):</strong> AWS Educate, Harvard CS50x, Kaggle Free GPU/TPU, Google Summer of Code (GSoC), MLH Fellowships, Boot.dev, Exercism, and Zotero.
             </p>
           </div>
 
@@ -100,9 +155,15 @@ export function StudentsPage({ onNavigate }: StudentsPageProps) {
             <SearchBar
               inputId="students-search-input"
               initialQuery={searchQuery}
-              onChangeQuery={setSearchQuery}
-              onSubmitQuery={setSearchQuery}
-              placeholder="Search student packs, GitHub Student Pack, Azure $100, JetBrains..."
+              onChangeQuery={(q) => {
+                setSearchQuery(q);
+                setVisibleCount(24);
+              }}
+              onSubmitQuery={(q) => {
+                setSearchQuery(q);
+                setVisibleCount(24);
+              }}
+              placeholder="Search student packs, GitHub Student Pack, Cursor Pro, Azure $100, JetBrains..."
               label="Search student benefits"
               showSuggestions={false}
             />
@@ -130,18 +191,18 @@ export function StudentsPage({ onNavigate }: StudentsPageProps) {
         <div className="lg:col-span-7 bg-daylight rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div className="bg-paper rounded-[16px] p-4">
             <h3 className="font-[var(--font-wallop)] font-bold text-[15.5px] text-midnight-mouth mb-1">
-              Student ID / .edu proof
+              Student ID / .edu proof ({studentIdRequiredOffers.length})
             </h3>
             <p className="font-[var(--font-inter)] text-[13px] leading-[1.45] text-ink/85">
-              Programs verify via school email (.edu / .ac.in / .ac.uk), SheerID, or dated student ID card / enrollment letter.
+              Programs verify via school email (.edu / .ac.in / .ac.uk), SheerID, UNiDAYS, or dated student ID card / enrollment transcript.
             </p>
           </div>
           <div className="bg-paper rounded-[16px] p-4">
             <h3 className="font-[var(--font-wallop)] font-bold text-[15.5px] text-midnight-mouth mb-1">
-              Credit expiry
+              No Student ID needed ({noStudentIdOffers.length})
             </h3>
             <p className="font-[var(--font-inter)] text-[13px] leading-[1.45] text-ink/85">
-              Student credits (like Azure $100) expire after 12 months or depletion without auto-charging a card.
+              Self-paced student cloud labs (AWS Educate), university open courses (CS50x, MIT OCW), and fellowships open without a .edu email.
             </p>
           </div>
           <div className="bg-paper rounded-[16px] p-4">
@@ -149,69 +210,147 @@ export function StudentsPage({ onNavigate }: StudentsPageProps) {
               Annual renewal
             </h3>
             <p className="font-[var(--font-inter)] text-[13px] leading-[1.45] text-ink/85">
-              Licenses like JetBrains and Figma Education require re-verification every 1–2 years while enrolled.
+              Licenses like JetBrains, GitHub Pack, and Figma Education require re-verification every 1–2 years while enrolled.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Smooth Track Tabs */}
-      <div
-        role="tablist"
-        aria-label="Student benefit categories"
-        className="flex flex-nowrap sm:flex-wrap items-center gap-1.5 sm:gap-2 overflow-x-auto sm:overflow-visible no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 py-0.5"
-      >
-        {STUDENT_TRACKS.map((track) => {
-          const active = selectedTrack === track.id;
-          return (
-            <button
-              key={track.id}
-              type="button"
-              role="tab"
-              aria-selected={active}
-              onClick={() => setSelectedTrack(track.id)}
-              className={`font-[var(--font-wallop)] font-semibold text-[13px] rounded-full px-4 py-1.5 min-h-[36px] whitespace-nowrap shrink-0 filter-pill cursor-pointer ${
-                active
-                  ? 'bg-midnight-mouth text-daylight shadow-xs'
-                  : 'bg-daylight text-midnight-mouth hover:bg-grass-green'
-              }`}
-            >
-              {track.label}
-            </button>
-          );
-        })}
+      {/* Verification Filter + Smooth Track Tabs */}
+      <div className="flex flex-col gap-2.5">
+        <div
+          role="group"
+          aria-label="Filter by Student ID requirement"
+          className="flex flex-wrap items-center gap-2"
+        >
+          <span className="font-[var(--font-wallop)] font-bold text-[12px] uppercase tracking-wider text-midnight-mouth/70 mr-1">
+            Verification:
+          </span>
+          <button
+            type="button"
+            onClick={() => {
+              setStudentIdFilter('all');
+              setVisibleCount(24);
+            }}
+            className={`font-[var(--font-wallop)] font-semibold text-[12.5px] rounded-full px-3.5 py-1.5 min-h-[34px] inline-flex items-center gap-1.5 cursor-pointer transition-colors ${
+              studentIdFilter === 'all'
+                ? 'bg-midnight-mouth text-daylight'
+                : 'bg-daylight text-midnight-mouth hover:bg-grass-green/40'
+            }`}
+          >
+            <span>All Verification ({allStudentOffers.length})</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setStudentIdFilter('required');
+              setVisibleCount(24);
+            }}
+            className={`font-[var(--font-wallop)] font-semibold text-[12.5px] rounded-full px-3.5 py-1.5 min-h-[34px] inline-flex items-center gap-1.5 cursor-pointer transition-colors ${
+              studentIdFilter === 'required'
+                ? 'bg-sunshine-yellow text-midnight-mouth ring-2 ring-midnight-mouth'
+                : 'bg-sunshine-yellow/55 text-midnight-mouth hover:bg-sunshine-yellow'
+            }`}
+          >
+            <GraduationCap className="w-3.5 h-3.5" aria-hidden="true" />
+            <span>Student ID / .edu Req. ({studentIdRequiredOffers.length})</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setStudentIdFilter('not_required');
+              setVisibleCount(24);
+            }}
+            className={`font-[var(--font-wallop)] font-semibold text-[12.5px] rounded-full px-3.5 py-1.5 min-h-[34px] inline-flex items-center gap-1.5 cursor-pointer transition-colors ${
+              studentIdFilter === 'not_required'
+                ? 'bg-grass-green text-midnight-mouth ring-2 ring-midnight-mouth'
+                : 'bg-grass-green/45 text-midnight-mouth hover:bg-grass-green'
+            }`}
+          >
+            <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
+            <span>No Student ID Req. ({noStudentIdOffers.length})</span>
+          </button>
+        </div>
+
+        <div
+          role="tablist"
+          aria-label="Student benefit categories"
+          className="flex flex-nowrap sm:flex-wrap items-center gap-1.5 sm:gap-2 overflow-x-auto sm:overflow-visible no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 py-0.5"
+        >
+          {STUDENT_TRACKS.map((track) => {
+            const active = selectedTrack === track.id;
+            return (
+              <button
+                key={track.id}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                onClick={() => {
+                  setSelectedTrack(track.id);
+                  setVisibleCount(24);
+                }}
+                className={`font-[var(--font-wallop)] font-semibold text-[13px] rounded-full px-4 py-1.5 min-h-[36px] whitespace-nowrap shrink-0 filter-pill cursor-pointer ${
+                  active
+                    ? 'bg-midnight-mouth text-daylight shadow-xs'
+                    : 'bg-daylight text-midnight-mouth hover:bg-grass-green'
+                }`}
+              >
+                {track.label}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      {/* Student Exclusive Grid */}
+      {/* Student Benefits Grid */}
       <section className="flex flex-col gap-3.5 sm:gap-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <GraduationCap className="w-5 h-5 text-midnight-mouth shrink-0" aria-hidden="true" />
             <h2 className="font-[var(--font-wallop)] font-extrabold text-[20px] sm:text-[26px] leading-[1.1] tracking-[-0.025em] text-midnight-mouth">
-              Verified student programs — Student ID / .edu needed ({filteredExclusive.length})
+              {studentIdFilter === 'required'
+                ? `Requires Student ID / .edu Verification (${filteredStudentOffers.length})`
+                : studentIdFilter === 'not_required'
+                ? `No Student ID Required (${filteredStudentOffers.length})`
+                : `Verified Student Benefits (${filteredStudentOffers.length})`}
             </h2>
           </div>
         </div>
 
         <div
-          key={selectedTrack}
+          key={`${selectedTrack}-${studentIdFilter}`}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4"
         >
-          {filteredExclusive.map((offer) => (
+          {filteredStudentOffers.slice(0, visibleCount).map((offer) => (
             <ResourceCard key={offer.identity.id} offer={offer} onNavigate={onNavigate} />
           ))}
         </div>
+
+        {filteredStudentOffers.length > visibleCount && (
+          <div className="flex flex-col items-center gap-2 pt-2">
+            <p className="font-[var(--font-inter)] text-[13px] text-ink/70">
+              Showing {visibleCount} of {filteredStudentOffers.length} verified student benefits
+            </p>
+            <button
+              type="button"
+              onClick={() => setVisibleCount((prev) => prev + 24)}
+              className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-bold text-[14px] rounded-full px-6 py-2.5 min-h-[42px] cursor-pointer spring-pill"
+            >
+              Load more ({filteredStudentOffers.length - visibleCount} remaining)
+            </button>
+          </div>
+        )}
       </section>
 
       {/* Quick Terms Matrix for Transparency */}
       <section className="bg-daylight rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 md:p-7 flex flex-col gap-4">
         <h2 className="font-[var(--font-wallop)] font-bold text-[19px] sm:text-[22px] tracking-[-0.02em] text-midnight-mouth">
-          Eligibility, regions &amp; renewal comparison
+          Eligibility, Student ID requirement &amp; renewal comparison (Top 20 Programs)
         </h2>
 
         {/* Mobile Stacked Comparison Cards */}
         <div className="md:hidden flex flex-col gap-2.5">
-          {studentExclusive.map((offer) => (
+          {allStudentOffers.slice(0, 20).map((offer) => (
             <div key={offer.identity.id} className="bg-paper rounded-[16px] p-3.5 flex flex-col gap-2">
               <div className="flex items-start justify-between gap-2">
                 <a
@@ -266,47 +405,62 @@ export function StudentsPage({ onNavigate }: StudentsPageProps) {
             <thead>
               <tr className="border-b border-midnight-mouth/15 font-[var(--font-wallop)] font-semibold text-[13.5px] text-midnight-mouth">
                 <th className="py-2.5 pr-4">Program</th>
+                <th className="py-2.5 pr-4">Student ID / .edu?</th>
                 <th className="py-2.5 pr-4">Benefit / Credit</th>
                 <th className="py-2.5 pr-4">Card rule</th>
                 <th className="py-2.5 pr-4">Duration &amp; renewal</th>
-                <th className="py-2.5 pr-4">Regions</th>
                 <th className="py-2.5">Verified</th>
               </tr>
             </thead>
             <tbody className="font-[var(--font-inter)] text-[13px] text-ink">
-              {studentExclusive.map((offer) => (
-                <tr key={offer.identity.id} className="border-b border-midnight-mouth/10 align-top">
-                  <td className="py-3 pr-4 font-semibold text-midnight-mouth">
-                    <a
-                      href={`/offer/${offer.identity.slug}`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        onNavigate(`/offer/${offer.identity.slug}`);
-                      }}
-                      className="hover:underline"
-                    >
-                      {offer.identity.name}
-                    </a>
-                  </td>
-                  <td className="py-3 pr-4">
-                    {offer.access.free_limits[0]
-                      ? `${offer.access.free_limits[0].value ?? 'Unknown'} (${
-                          offer.access.free_limits[0].period ?? ''
-                        })`
-                      : 'See details'}
-                  </td>
-                  <td className="py-3 pr-4">
-                    {formatCardRequirement(offer.access.requirements.card_required)}
-                  </td>
-                  <td className="py-3 pr-4">
-                    {offer.access.validity.duration ?? 'While enrolled'}
-                  </td>
-                  <td className="py-3 pr-4">{offer.eligibility.regions.join(', ')}</td>
-                  <td className="py-3 tabular-nums">
-                    {formatDate(offer.verification.last_verified_at)}
-                  </td>
-                </tr>
-              ))}
+              {allStudentOffers.slice(0, 20).map((offer) => {
+                const reqId =
+                  offer.eligibility.student_access === 'exclusive' ||
+                  offer.classification.tags.includes('Student ID / .edu Required');
+                return (
+                  <tr key={offer.identity.id} className="border-b border-midnight-mouth/10 align-top">
+                    <td className="py-3 pr-4 font-semibold text-midnight-mouth">
+                      <a
+                        href={`/offer/${offer.identity.slug}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          onNavigate(`/offer/${offer.identity.slug}`);
+                        }}
+                        className="hover:underline"
+                      >
+                        {offer.identity.name}
+                      </a>
+                    </td>
+                    <td className="py-3 pr-4">
+                      <span
+                        className={`inline-flex items-center rounded-full px-2.5 py-0.5 font-[var(--font-wallop)] font-semibold text-[11.5px] ${
+                          reqId
+                            ? 'bg-sunshine-yellow/80 text-midnight-mouth'
+                            : 'bg-grass-green/75 text-midnight-mouth'
+                        }`}
+                      >
+                        {reqId ? 'Student ID / .edu Req.' : 'No Student ID Req.'}
+                      </span>
+                    </td>
+                    <td className="py-3 pr-4">
+                      {offer.access.free_limits[0]
+                        ? `${offer.access.free_limits[0].value ?? 'Unknown'} (${
+                            offer.access.free_limits[0].period ?? ''
+                          })`
+                        : 'See details'}
+                    </td>
+                    <td className="py-3 pr-4">
+                      {formatCardRequirement(offer.access.requirements.card_required)}
+                    </td>
+                    <td className="py-3 pr-4">
+                      {offer.access.validity.duration ?? 'While enrolled'}
+                    </td>
+                    <td className="py-3 tabular-nums">
+                      {formatDate(offer.verification.last_verified_at)}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

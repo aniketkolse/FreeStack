@@ -44,11 +44,13 @@ test('every cataloged offer resolves to an existing official logo file in public
       offer.classification.category === 'design-creative' ||
       offer.classification.category === 'databases-backend' ||
       offer.classification.category === 'security-networking' ||
-      offer.classification.category === 'productivity-collaboration'
+      offer.classification.category === 'productivity-collaboration' ||
+      offer.classification.category === 'cloud-hosting' ||
+      offer.classification.category === 'student-benefits'
     ) {
       assert.ok(
         brandSrc,
-        `Every AI model, Developer Tool, Frontend & Design Tool, Databases & Backend, Security & Networking, and Productivity & Collaboration offer must resolve to a specific official model or company logo: ${offer.identity.slug}`
+        `Every AI model, Developer Tool, Frontend & Design Tool, Databases & Backend, Security & Networking, Productivity & Collaboration, Cloud & Hosting, and Student Benefits offer must resolve to a specific official model or company logo: ${offer.identity.slug}`
       );
     }
 
@@ -301,3 +303,125 @@ test('Productivity & Collaboration category contains 100 verified offers across 
     'Most popular Productivity & Collaboration tools (Notion, Linear, Slack, Obsidian, Excalidraw, n8n, Jira, Miro) must appear at the top by default'
   );
 });
+
+test('Cloud & Hosting category contains 113 verified offers across 10 subcategories with most popular cloud & hosting platforms at top by default', async () => {
+  const { filterAndSortOffers, DEFAULT_FILTER_STATE } = await import('../filters/filterOffers');
+  const offers = loadOffersFromDisk();
+  const cloudHosting = offers.filter((o) => o.classification.category === 'cloud-hosting');
+
+  assert.equal(cloudHosting.length, 113, `Expected 113 verified Cloud & Hosting offers, found ${cloudHosting.length}`);
+
+  const subcategories = new Set<string>();
+  for (const offer of cloudHosting) {
+    assert.equal(offer.verification.status, 'verified', `Cloud & Hosting offer ${offer.identity.slug} must be verified`);
+    subcategories.add(offer.classification.subcategory);
+    assert.ok(
+      resolveOfferBrandLogoSrc(offer),
+      `Cloud & Hosting offer ${offer.identity.slug} must resolve to an official brand logo`
+    );
+  }
+
+  assert.equal(
+    subcategories.size,
+    10,
+    `Expected 10 Cloud & Hosting subcategories, found ${subcategories.size}: ${Array.from(subcategories).join(', ')}`
+  );
+
+  const defaultSorted = filterAndSortOffers(cloudHosting, {
+    ...DEFAULT_FILTER_STATE,
+    category: 'cloud-hosting',
+    sortBy: 'relevance',
+  });
+
+  assert.deepEqual(
+    defaultSorted.slice(0, 8).map((o) => o.identity.slug),
+    [
+      'cloudflare-pages-workers',
+      'vercel-hobby',
+      'aws-free-tier-cloud-credits',
+      'google-cloud-free-program-300',
+      'oracle-cloud-always-free',
+      'microsoft-azure-free-account-200',
+      'netlify-starter-free-hosting',
+      'render-free-web-services-static',
+    ],
+    'Most popular Cloud & Hosting tools (Cloudflare, Vercel, AWS, Google Cloud, Oracle Cloud, Azure, Netlify, Render) must appear at the top by default'
+  );
+});
+
+test('Student Benefits category contains 107 verified offers across 10 subcategories with explicit Student ID vs No Student ID classification and most popular perks at top by default', async () => {
+  const { filterAndSortOffers, DEFAULT_FILTER_STATE } = await import('../filters/filterOffers');
+  const offers = loadOffersFromDisk();
+  const studentBenefits = offers.filter((o) => o.classification.category === 'student-benefits');
+
+  assert.equal(studentBenefits.length, 107, `Expected 107 verified Student Benefits offers, found ${studentBenefits.length}`);
+
+  const subcategories = new Set<string>();
+  let requiresStudentIdCount = 0;
+  let noStudentIdRequiredCount = 0;
+
+  for (const offer of studentBenefits) {
+    assert.equal(offer.verification.status, 'verified', `Student Benefits offer ${offer.identity.slug} must be verified`);
+    subcategories.add(offer.classification.subcategory);
+    assert.ok(
+      resolveOfferBrandLogoSrc(offer),
+      `Student Benefits offer ${offer.identity.slug} must resolve to an official brand logo`
+    );
+    assert.ok(
+      offer.eligibility.conditions && offer.eligibility.conditions.length > 10,
+      `Student Benefits offer ${offer.identity.slug} must explicitly describe its Student ID / verification condition`
+    );
+
+    if (offer.eligibility.student_access === 'exclusive') {
+      requiresStudentIdCount++;
+      assert.equal(
+        offer.classification.pricing_model,
+        'student_exclusive',
+        `Exclusive student benefit ${offer.identity.slug} must use student_exclusive pricing model`
+      );
+      assert.ok(
+        offer.classification.tags.includes('Student ID / .edu Required'),
+        `Exclusive student benefit ${offer.identity.slug} must include "Student ID / .edu Required" tag`
+      );
+    } else if (offer.eligibility.student_access === 'eligible') {
+      noStudentIdRequiredCount++;
+      assert.ok(
+        offer.classification.tags.includes('No Student ID Required'),
+        `Open student benefit ${offer.identity.slug} must include "No Student ID Required" tag`
+      );
+    } else {
+      assert.fail(`Unexpected student_access "${offer.eligibility.student_access}" on ${offer.identity.slug}`);
+    }
+  }
+
+  assert.equal(
+    subcategories.size,
+    10,
+    `Expected 10 Student Benefits subcategories, found ${subcategories.size}: ${Array.from(subcategories).join(', ')}`
+  );
+  assert.equal(requiresStudentIdCount + noStudentIdRequiredCount, 107);
+  assert.ok(requiresStudentIdCount >= 75, `Expected at least 75 Student ID required offers, found ${requiresStudentIdCount}`);
+  assert.ok(noStudentIdRequiredCount >= 20, `Expected at least 20 No Student ID required offers, found ${noStudentIdRequiredCount}`);
+
+  const defaultSorted = filterAndSortOffers(studentBenefits, {
+    ...DEFAULT_FILTER_STATE,
+    category: 'student-benefits',
+    sortBy: 'relevance',
+  });
+
+  assert.deepEqual(
+    defaultSorted.slice(0, 8).map((o) => o.identity.slug),
+    [
+      'github-student-developer-pack',
+      'jetbrains-educational-pack',
+      'azure-for-students',
+      'github-copilot-pro-students',
+      'cursor-pro-student-free',
+      'figma-education',
+      'notion-plus-education',
+      'google-one-ai-premium-students',
+    ],
+    'Most popular Student Benefits (GitHub Student Pack, JetBrains, Azure for Students, Copilot Pro, Cursor Pro, Figma Education, Notion Plus, Google Gemini Advanced) must appear at the top by default'
+  );
+});
+

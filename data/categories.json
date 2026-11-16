@@ -783,29 +783,49 @@
     "slug": "student-benefits",
     "name": "Student Benefits",
     "shortName": "Students",
-    "description": "Student developer packs, educational software, student cloud credits, certifications, and academic AI tools.",
+    "description": "Student developer packs, academic AI & IDE licenses, student cloud credits, educational CAD & design software, free student domains & hosting, certifications, coding courses, observability/API perks, academic research tools, and student fellowships — classified by Student ID / .edu requirement.",
     "color": "grass-green",
-    "popular": false,
+    "popular": true,
     "subcategories": [
       {
         "slug": "student-packs",
         "name": "Student Developer Packs"
       },
       {
-        "slug": "educational-software",
-        "name": "Educational Software"
+        "slug": "student-ai-tools",
+        "name": "Student AI & Dev Tools"
       },
       {
         "slug": "student-cloud-credits",
         "name": "Student Cloud Credits"
       },
       {
+        "slug": "educational-software",
+        "name": "Educational Software"
+      },
+      {
+        "slug": "student-domains-hosting",
+        "name": "Free Student Domains & Web Hosting"
+      },
+      {
         "slug": "certifications-learning",
         "name": "Certifications & Learning Benefits"
       },
       {
-        "slug": "student-ai-tools",
-        "name": "Student AI & Dev Tools"
+        "slug": "student-coding-platforms",
+        "name": "Coding Courses & Interactive Platforms for Students"
+      },
+      {
+        "slug": "student-apis-devops",
+        "name": "APIs, Observability & DevOps Student Perks"
+      },
+      {
+        "slug": "student-research-tools",
+        "name": "Academic Research, Data Science & Reference Tools"
+      },
+      {
+        "slug": "student-hackathons-fellowships",
+        "name": "Hackathons, Open-Source Fellowships & Student Grants"
       }
     ]
   },

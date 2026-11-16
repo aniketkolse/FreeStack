@@ -40,6 +40,9 @@ export function ResourceCard({
 
   const saved = isSaved(offer.identity.slug);
   const requiresStudentId = offer.eligibility.student_access === 'exclusive';
+  const isNoStudentIdStudentBenefit =
+    offer.classification.category === 'student-benefits' &&
+    offer.eligibility.student_access === 'eligible';
 
   const category = getCategoryBySlug(offer.classification.category);
   const bgSwatchClass = category ? getCategoryBgClass(category.color) : 'bg-sky-blue';
@@ -138,6 +141,16 @@ export function ResourceCard({
               <span>Student ID / .edu Req.</span>
             </span>
           )}
+
+          {isNoStudentIdStudentBenefit && (
+            <span
+              data-testid={`no-student-id-badge-${offer.identity.slug}`}
+              className="bg-grass-green text-[#101014] font-[var(--font-wallop)] font-semibold text-[11px] leading-none rounded-full px-2.5 py-1 inline-flex items-center gap-1 shrink-0"
+            >
+              <CheckCircle2 className="w-3 h-3 shrink-0" aria-hidden="true" />
+              <span>No Student ID Req.</span>
+            </span>
+          )}
         </div>
 
         {/* Title & Summary */}
@@ -185,6 +198,14 @@ export function ResourceCard({
               <dt className="text-ink/70 shrink-0">Verification</dt>
               <dd className="font-semibold text-right text-midnight-mouth min-w-0 break-words">
                 Student ID / .edu email needed
+              </dd>
+            </div>
+          )}
+          {isNoStudentIdStudentBenefit && (
+            <div className="flex items-baseline justify-between gap-2">
+              <dt className="text-ink/70 shrink-0">Verification</dt>
+              <dd className="font-semibold text-right text-midnight-mouth min-w-0 break-words">
+                No Student ID / .edu needed
               </dd>
             </div>
           )}
