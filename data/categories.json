@@ -629,17 +629,33 @@
     "slug": "databases-backend",
     "name": "Databases & Backend",
     "shortName": "Databases",
-    "description": "SQL and NoSQL databases, Backend-as-a-Service, authentication, object storage, and caching.",
+    "description": "Backend-as-a-Service, serverless SQL and NoSQL databases, vector & graph engines, time-series OLAP, ORMs & schema tooling, authentication, S3 object storage, queues & workflows, and headless CMS backends.",
     "color": "tangerine",
     "popular": true,
     "subcategories": [
+      {
+        "slug": "baas-auth",
+        "name": "Backend-as-a-Service"
+      },
       {
         "slug": "sql-databases",
         "name": "SQL Databases"
       },
       {
-        "slug": "baas-auth",
-        "name": "Backend-as-a-Service"
+        "slug": "caching-nosql",
+        "name": "Caching & NoSQL"
+      },
+      {
+        "slug": "vector-graph-search",
+        "name": "Vector, Graph & Search Databases"
+      },
+      {
+        "slug": "timeseries-analytics-db",
+        "name": "Time-Series & Analytics Databases"
+      },
+      {
+        "slug": "orms-database-tooling",
+        "name": "ORMs, Schema & Database Tooling"
       },
       {
         "slug": "authentication",
@@ -650,8 +666,12 @@
         "name": "Storage"
       },
       {
-        "slug": "caching-nosql",
-        "name": "Caching & NoSQL"
+        "slug": "queues-workflows-realtime",
+        "name": "Message Queues, Workflows & Realtime"
+      },
+      {
+        "slug": "headless-cms-api-engines",
+        "name": "Headless CMS, GraphQL & Backend Frameworks"
       }
     ]
   },

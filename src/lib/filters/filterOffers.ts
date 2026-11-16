@@ -148,9 +148,16 @@ export function filterAndSortOffers(offers: Offer[], filters: FilterState): Offe
 
   // Default relevance when query is empty: pinned top defaults first, then featured, then recently verified
   const PINNED_DEFAULT_SLUGS: Record<string, number> = {
+    // Frontend & Design Tools pinned defaults
     'gradientdeck-ui-design-md': 1,
     'getdesign-md-website-library': 2,
     'kombai-ai-design-engineer': 3,
+    // Databases & Backend pinned defaults
+    'supabase-free-plan': 1,
+    'render-free-postgres-redis-backend': 2,
+    'railway-backend-databases-trial': 3,
+    'aws-free-tier-databases-backend': 4,
+    'mongodb-atlas-free-forever-m0': 5,
   };
 
   return [...list].sort((a, b) => {

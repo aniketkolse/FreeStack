@@ -41,11 +41,12 @@ test('every cataloged offer resolves to an existing official logo file in public
     if (
       offer.classification.category === 'ai-ml' ||
       offer.classification.category === 'developer-tools' ||
-      offer.classification.category === 'design-creative'
+      offer.classification.category === 'design-creative' ||
+      offer.classification.category === 'databases-backend'
     ) {
       assert.ok(
         brandSrc,
-        `Every AI model, Developer Tool, and Frontend & Design Tool offer must resolve to a specific official model or company logo: ${offer.identity.slug}`
+        `Every AI model, Developer Tool, Frontend & Design Tool, and Databases & Backend offer must resolve to a specific official model or company logo: ${offer.identity.slug}`
       );
     }
 
@@ -168,4 +169,47 @@ test('Frontend & Design Tools category contains 104 verified offers across 8 sub
     'GradientDeck UI, getdesign.md, and Kombai must appear as the top 3 default offers in Frontend & Design Tools'
   );
 });
+
+test('Databases & Backend category contains 100 verified offers across 10 subcategories with Supabase, Render, Railway, AWS, and MongoDB at top by default', async () => {
+  const { filterAndSortOffers, DEFAULT_FILTER_STATE } = await import('../filters/filterOffers');
+  const offers = loadOffersFromDisk();
+  const dbBackend = offers.filter((o) => o.classification.category === 'databases-backend');
+
+  assert.equal(dbBackend.length, 100, `Expected 100 verified Databases & Backend offers, found ${dbBackend.length}`);
+
+  const subcategories = new Set<string>();
+  for (const offer of dbBackend) {
+    assert.equal(offer.verification.status, 'verified', `Databases & Backend offer ${offer.identity.slug} must be verified`);
+    subcategories.add(offer.classification.subcategory);
+    assert.ok(
+      resolveOfferBrandLogoSrc(offer),
+      `Databases & Backend offer ${offer.identity.slug} must resolve to an official brand logo`
+    );
+  }
+
+  assert.equal(
+    subcategories.size,
+    10,
+    `Expected 10 Databases & Backend subcategories, found ${subcategories.size}: ${Array.from(subcategories).join(', ')}`
+  );
+
+  const defaultSorted = filterAndSortOffers(dbBackend, {
+    ...DEFAULT_FILTER_STATE,
+    category: 'databases-backend',
+    sortBy: 'relevance',
+  });
+
+  assert.deepEqual(
+    defaultSorted.slice(0, 5).map((o) => o.identity.slug),
+    [
+      'supabase-free-plan',
+      'render-free-postgres-redis-backend',
+      'railway-backend-databases-trial',
+      'aws-free-tier-databases-backend',
+      'mongodb-atlas-free-forever-m0',
+    ],
+    'Supabase, Render, Railway, AWS, and MongoDB must appear as the top 5 default offers in Databases & Backend'
+  );
+});
+
 
