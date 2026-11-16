@@ -425,3 +425,67 @@ test('Student Benefits category contains 107 verified offers across 10 subcatego
   );
 });
 
+test('Learning & Study Materials category contains 119 verified offers across 10 subcategories ordered from Most Popular to Least Popular by default', async () => {
+  const { filterAndSortOffers, DEFAULT_FILTER_STATE } = await import('../filters/filterOffers');
+  const offers = loadOffersFromDisk();
+  const learningOffers = offers.filter((o) => o.classification.category === 'learning');
+
+  assert.equal(
+    learningOffers.length,
+    119,
+    `Expected 119 verified Learning & Study Materials offers, found ${learningOffers.length}`
+  );
+
+  const subcategories = new Set<string>();
+  for (const offer of learningOffers) {
+    assert.equal(
+      offer.verification.status,
+      'verified',
+      `Learning & Study Materials offer ${offer.identity.slug} must be verified`
+    );
+    subcategories.add(offer.classification.subcategory);
+    assert.ok(
+      resolveOfferBrandLogoSrc(offer),
+      `Learning & Study Materials offer ${offer.identity.slug} must resolve to an official brand logo`
+    );
+    assert.ok(
+      offer.learning && offer.learning.topics && offer.learning.topics.length > 0,
+      `Learning & Study Materials offer ${offer.identity.slug} must include learning metadata`
+    );
+  }
+
+  assert.equal(
+    subcategories.size,
+    10,
+    `Expected 10 Learning & Study Materials subcategories, found ${subcategories.size}: ${Array.from(subcategories).join(', ')}`
+  );
+
+  const defaultSorted = filterAndSortOffers(learningOffers, {
+    ...DEFAULT_FILTER_STATE,
+    category: 'learning',
+    sortBy: 'relevance',
+  });
+
+  assert.deepEqual(
+    defaultSorted.slice(0, 10).map((o) => o.identity.slug),
+    [
+      'freecodecamp-curriculum',
+      'mdn-web-docs',
+      'harvard-cs50x',
+      'roadmap-sh',
+      'the-odin-project',
+      'leetcode-free-algorithm-practice',
+      'mit-ocw-math-cs',
+      'khan-academy-computing-math',
+      'w3schools-web-tutorials',
+      'full-stack-open-helsinki',
+    ],
+    'Most popular Learning & Study Materials (freeCodeCamp, MDN Web Docs, Harvard CS50x, roadmap.sh, The Odin Project, LeetCode, MIT OCW, Khan Academy, W3Schools, Full Stack Open) must appear at the top by default'
+  );
+
+  assert.equal(
+    defaultSorted[defaultSorted.length - 1].identity.slug,
+    'seeing-theory-brown-probability',
+    'Least popular Learning & Study Materials offer in the curated 119-item popularity sequence must appear at the bottom (#119)'
+  );
+});

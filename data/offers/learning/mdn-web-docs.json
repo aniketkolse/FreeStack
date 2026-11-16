@@ -9,7 +9,7 @@
   },
   "classification": {
     "category": "learning",
-    "subcategory": "E-books & Docs",
+    "subcategory": "Documentation & Tutorials",
     "resource_type": "documentation",
     "pricing_model": "completely_free",
     "tags": ["Documentation", "HTML", "CSS", "JavaScript", "Web APIs"]
@@ -78,7 +78,7 @@
   "metadata": {
     "created_at": "2026-11-09",
     "updated_at": "2026-11-11",
-    "featured": false,
+    "featured": true,
     "contributor": "freestack-core"
   }
 }

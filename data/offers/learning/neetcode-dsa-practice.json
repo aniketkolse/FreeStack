@@ -78,7 +78,7 @@
   "metadata": {
     "created_at": "2026-10-12",
     "updated_at": "2026-11-02",
-    "featured": false,
+    "featured": true,
     "contributor": "freestack-core"
   }
 }

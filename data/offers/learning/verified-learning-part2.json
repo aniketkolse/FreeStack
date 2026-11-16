@@ -1,0 +1,3374 @@
+[
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "pythontutor-code-execution-visualizer",
+      "name": "Python Tutor (Step-by-Step Code Execution Visualizer)",
+      "slug": "pythontutor-code-execution-visualizer",
+      "provider": "Philip Guo (UC San Diego)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Interactive Visualizers, Math & CS Sandboxes",
+      "resource_type": "tutorial",
+      "pricing_model": "completely_free",
+      "tags": [
+        "Python",
+        "JavaScript",
+        "C++",
+        "Java",
+        "Memory Visualizer"
+      ]
+    },
+    "description": "Visualizes line-by-line code execution, stack frames, heap objects, and pointers in your browser for Python, JavaScript, TypeScript, C, C++, and Java.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "All interactive code visualizations & live debugging",
+          "value": "100% free",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://pythontutor.com",
+      "signup": null,
+      "documentation": "https://pythontutor.com/visualize.html",
+      "pricing": null
+    },
+    "learning": {
+      "format": "tutorial",
+      "difficulty": "beginner",
+      "topics": [
+        "Python",
+        "JavaScript",
+        "Computer Science"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-pythontutor-code-execution-visualizer",
+          "url": "https://pythontutor.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-pythontutor-code-execution-visualizer",
+          "field_path": "access.free_limits",
+          "quote": "All interactive code visualizations & live debugging: 100% free",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "teachyourselfcs-curriculum-guide",
+      "name": "TeachYourselfCS.com (Self-Taught Computer Science Roadmap)",
+      "slug": "teachyourselfcs-curriculum-guide",
+      "provider": "Oz Nova & Myles Byrne (Bradfield CS)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Learning Roadmaps",
+      "resource_type": "roadmap",
+      "pricing_model": "completely_free",
+      "tags": [
+        "CS Curriculum",
+        "Operating Systems",
+        "Compilers",
+        "Distributed Systems",
+        "Books"
+      ]
+    },
+    "description": "Opinionated syllabus answering which 9 core Computer Science subjects to study, in what order, and using which textbook and video lecture series.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Complete 9-subject CS curriculum & book/video picks",
+          "value": "100% free",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://teachyourselfcs.com",
+      "signup": null,
+      "documentation": "https://teachyourselfcs.com/#programming",
+      "pricing": null
+    },
+    "learning": {
+      "format": "roadmap",
+      "difficulty": "intermediate",
+      "topics": [
+        "Computer Science",
+        "Algorithms & Data Structures",
+        "Distributed Systems"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-teachyourselfcs-curriculum-guide",
+          "url": "https://teachyourselfcs.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-teachyourselfcs-curriculum-guide",
+          "field_path": "access.free_limits",
+          "quote": "Complete 9-subject CS curriculum & book/video picks: 100% free",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "tech-interview-handbook-yangshun",
+      "name": "Tech Interview Handbook & Grind 75",
+      "slug": "tech-interview-handbook-yangshun",
+      "provider": "Yangshun Tay (Open Source)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Learning Roadmaps",
+      "resource_type": "roadmap",
+      "pricing_model": "open_source",
+      "tags": [
+        "Interview Prep",
+        "Grind 75",
+        "DSA",
+        "Behavioral",
+        "System Design"
+      ]
+    },
+    "description": "Open-source software engineering interview preparation guide and Grind 75 customizable study schedule created by the author of Blind 75.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Full interview study guides, algorithm cheatsheets & Grind 75 planner",
+          "value": "100% free & open source",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://www.techinterviewhandbook.org",
+      "signup": null,
+      "documentation": "https://www.techinterviewhandbook.org/grind75/",
+      "pricing": null
+    },
+    "learning": {
+      "format": "roadmap",
+      "difficulty": "intermediate",
+      "topics": [
+        "Interview Prep",
+        "Algorithms & Data Structures",
+        "Software Engineering"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-tech-interview-handbook-yangshun",
+          "url": "https://www.techinterviewhandbook.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-tech-interview-handbook-yangshun",
+          "field_path": "access.free_limits",
+          "quote": "Full interview study guides, algorithm cheatsheets & Grind 75 planner: 100% free & open source",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "frontend-interview-handbook",
+      "name": "Front End Interview Handbook",
+      "slug": "frontend-interview-handbook",
+      "provider": "Yangshun Tay & Contributors",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Learning Roadmaps",
+      "resource_type": "roadmap",
+      "pricing_model": "open_source",
+      "tags": [
+        "Frontend",
+        "JavaScript",
+        "CSS",
+        "UI System Design",
+        "Interview Prep"
+      ]
+    },
+    "description": "Open-source guide for front-end engineering interviews covering JavaScript trivia, DOM APIs, CSS layout questions, UI coding challenges, and front-end system design.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Complete frontend Q&A bank & system design guides",
+          "value": "100% open source",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://www.frontendinterviewhandbook.com",
+      "signup": null,
+      "documentation": "https://www.frontendinterviewhandbook.com/javascript-questions",
+      "pricing": null
+    },
+    "learning": {
+      "format": "roadmap",
+      "difficulty": "intermediate",
+      "topics": [
+        "Web Development",
+        "JavaScript",
+        "CSS",
+        "Interview Prep"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-frontend-interview-handbook",
+          "url": "https://www.frontendinterviewhandbook.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-frontend-interview-handbook",
+          "field_path": "access.free_limits",
+          "quote": "Complete frontend Q&A bank & system design guides: 100% open source",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "sqlbolt-interactive-sql-lessons",
+      "name": "SQLBolt (Interactive Learn SQL Lessons in Browser)",
+      "slug": "sqlbolt-interactive-sql-lessons",
+      "provider": "SQLBolt",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Programming Courses",
+      "resource_type": "tutorial",
+      "pricing_model": "completely_free",
+      "tags": [
+        "SQL",
+        "Databases",
+        "SELECT & JOIN",
+        "Interactive Sandbox"
+      ]
+    },
+    "description": "18 interactive, bite-sized lessons teaching SQL queries, filtering, multi-table JOINs, aggregations, and table mutations with a live in-browser SQL engine.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "All 18 interactive SQL lessons & exercises",
+          "value": "100% free",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://sqlbolt.com",
+      "signup": null,
+      "documentation": "https://sqlbolt.com/lesson/select_queries_introduction",
+      "pricing": null
+    },
+    "learning": {
+      "format": "tutorial",
+      "difficulty": "beginner",
+      "topics": [
+        "SQL",
+        "Databases",
+        "Data Science"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-sqlbolt-interactive-sql-lessons",
+          "url": "https://sqlbolt.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-sqlbolt-interactive-sql-lessons",
+          "field_path": "access.free_limits",
+          "quote": "All 18 interactive SQL lessons & exercises: 100% free",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "sqlzoo-interactive-sql-tutorials",
+      "name": "SQLZOO (Interactive SQL Queries & Assessments)",
+      "slug": "sqlzoo-interactive-sql-tutorials",
+      "provider": "SQLZOO (Edinburgh Napier University)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Practice & Challenges",
+      "resource_type": "practice",
+      "pricing_model": "completely_free",
+      "tags": [
+        "SQL",
+        "PostgreSQL",
+        "MySQL",
+        "JOINs",
+        "Window Functions"
+      ]
+    },
+    "description": "Hands-on SQL practice wiki executing live queries against real-world datasets (Nobel laureates, World countries, movie casts, UEFA Euro) with instant grading.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "All interactive SQL tutorials, quizzes & assessments",
+          "value": "100% free",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://sqlzoo.net/wiki/SQL_Tutorial",
+      "signup": null,
+      "documentation": "https://sqlzoo.net/wiki/SELECT_basics",
+      "pricing": null
+    },
+    "learning": {
+      "format": "practice",
+      "difficulty": "beginner",
+      "topics": [
+        "SQL",
+        "Databases",
+        "Data Science"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-sqlzoo-interactive-sql-tutorials",
+          "url": "https://sqlzoo.net/wiki/SQL_Tutorial",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-sqlzoo-interactive-sql-tutorials",
+          "field_path": "access.free_limits",
+          "quote": "All interactive SQL tutorials, quizzes & assessments: 100% free",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "regexone-interactive-regex-tutorial",
+      "name": "RegexOne (Learn Regular Expressions with Interactive Exercises)",
+      "slug": "regexone-interactive-regex-tutorial",
+      "provider": "RegexOne",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Programming Courses",
+      "resource_type": "tutorial",
+      "pricing_model": "completely_free",
+      "tags": [
+        "Regex",
+        "Regular Expressions",
+        "Pattern Matching",
+        "Text Processing"
+      ]
+    },
+    "description": "15 interactive lessons and 8 real-world practice problems (emails, HTML tags, log files, URLs) for mastering regular expressions step by step.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "All 15 Regex lessons & 8 practical problems",
+          "value": "100% free",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://regexone.com",
+      "signup": null,
+      "documentation": "https://regexone.com/problem/matching_decimal_numbers",
+      "pricing": null
+    },
+    "learning": {
+      "format": "tutorial",
+      "difficulty": "beginner",
+      "topics": [
+        "Programming Languages",
+        "Software Engineering",
+        "Web Development"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-regexone-interactive-regex-tutorial",
+          "url": "https://regexone.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-regexone-interactive-regex-tutorial",
+          "field_path": "access.free_limits",
+          "quote": "All 15 Regex lessons & 8 practical problems: 100% free",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "learngitbranching-visual-git",
+      "name": "Learn Git Branching (Interactive Visual Git Sandbox)",
+      "slug": "learngitbranching-visual-git",
+      "provider": "Peter Cottle (Open Source)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Interactive Visualizers, Math & CS Sandboxes",
+      "resource_type": "tutorial",
+      "pricing_model": "open_source",
+      "tags": [
+        "Git",
+        "Rebase",
+        "Cherry-Pick",
+        "Visual Sandbox"
+      ]
+    },
+    "description": "Interactive visual game and sandbox teaching Git commits, branching, merging, rebasing, cherry-picking, and remote workflows through animated commit graphs.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "All 30+ interactive Git levels & free-play sandbox",
+          "value": "100% free & open source",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://learngitbranching.js.org",
+      "signup": null,
+      "documentation": "https://github.com/pcottle/learnGitBranching",
+      "pricing": null
+    },
+    "learning": {
+      "format": "tutorial",
+      "difficulty": "beginner",
+      "topics": [
+        "Git",
+        "Software Engineering",
+        "DevOps"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-learngitbranching-visual-git",
+          "url": "https://learngitbranching.js.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-learngitbranching-visual-git",
+          "field_path": "access.free_limits",
+          "quote": "All 30+ interactive Git levels & free-play sandbox: 100% free & open source",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "flexbox-froggy-css-grid-garden",
+      "name": "Flexbox Froggy & Grid Garden (Interactive CSS Layout Games)",
+      "slug": "flexbox-froggy-css-grid-garden",
+      "provider": "Codepip (Thomas Park)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Interactive Visualizers, Math & CS Sandboxes",
+      "resource_type": "practice",
+      "pricing_model": "completely_free",
+      "tags": [
+        "CSS",
+        "Flexbox",
+        "CSS Grid",
+        "Frontend Games"
+      ]
+    },
+    "description": "24-level interactive coding game where you write CSS Flexbox properties to guide frogs onto lilypads, paired with the 28-level CSS Grid Garden game.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "All 24 Flexbox Froggy levels & 28 Grid Garden levels",
+          "value": "100% free",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://flexboxfroggy.com",
+      "signup": null,
+      "documentation": "https://cssgridgarden.com",
+      "pricing": null
+    },
+    "learning": {
+      "format": "practice",
+      "difficulty": "beginner",
+      "topics": [
+        "CSS",
+        "Web Development",
+        "Frontend"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-flexbox-froggy-css-grid-garden",
+          "url": "https://flexboxfroggy.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-flexbox-froggy-css-grid-garden",
+          "field_path": "access.free_limits",
+          "quote": "All 24 Flexbox Froggy levels & 28 Grid Garden levels: 100% free",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "nextjs-learn-official-courses",
+      "name": "Next.js Learn (Official App Router, React Foundations & SEO)",
+      "slug": "nextjs-learn-official-courses",
+      "provider": "Vercel",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Programming Courses",
+      "resource_type": "course",
+      "pricing_model": "completely_free",
+      "tags": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "App Router",
+        "Full Stack"
+      ]
+    },
+    "description": "Official project-based courses from the Next.js team teaching React Foundations, the Next.js App Router (building a full-stack PostgreSQL dashboard), SEO, and Web Performance.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "All 4 official Next.js & React courses",
+          "value": "100% free",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://nextjs.org/learn",
+      "signup": null,
+      "documentation": "https://nextjs.org/learn/dashboard-app",
+      "pricing": null
+    },
+    "learning": {
+      "format": "course",
+      "difficulty": "intermediate",
+      "topics": [
+        "React",
+        "Web Development",
+        "TypeScript",
+        "JavaScript"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-nextjs-learn-official-courses",
+          "url": "https://nextjs.org/learn",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-nextjs-learn-official-courses",
+          "field_path": "access.free_limits",
+          "quote": "All 4 official Next.js & React courses: 100% free",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "kubernetes-io-interactive-tutorials",
+      "name": "Kubernetes Official Documentation & Tutorials",
+      "slug": "kubernetes-io-interactive-tutorials",
+      "provider": "Cloud Native Computing Foundation (CNCF)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Cloud, DevOps, Linux & Security Training",
+      "resource_type": "tutorial",
+      "pricing_model": "open_source",
+      "tags": [
+        "Kubernetes",
+        "K8s",
+        "Containers",
+        "Cloud Native",
+        "DevOps"
+      ]
+    },
+    "description": "Official CNCF Kubernetes learning tutorials covering Cluster Basics, Stateless & Stateful Deployments, Services, ConfigMaps, RBAC Security, and Minikube.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Full Kubernetes tutorials & reference docs",
+          "value": "100% free & open source",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://kubernetes.io/docs/tutorials/",
+      "signup": null,
+      "documentation": "https://kubernetes.io/docs/tutorials/kubernetes-basics/",
+      "pricing": null
+    },
+    "learning": {
+      "format": "tutorial",
+      "difficulty": "intermediate",
+      "topics": [
+        "DevOps",
+        "Cloud Computing",
+        "Containers"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-kubernetes-io-interactive-tutorials",
+          "url": "https://kubernetes.io/docs/tutorials/",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-kubernetes-io-interactive-tutorials",
+          "field_path": "access.free_limits",
+          "quote": "Full Kubernetes tutorials & reference docs: 100% free & open source",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "docker-curriculum-hands-on",
+      "name": "Docker Curriculum (Hands-On Containerization Guide)",
+      "slug": "docker-curriculum-hands-on",
+      "provider": "Prakhar Srivastav (Open Source)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Cloud, DevOps, Linux & Security Training",
+      "resource_type": "tutorial",
+      "pricing_model": "open_source",
+      "tags": [
+        "Docker",
+        "Containers",
+        "Dockerfile",
+        "Docker Compose",
+        "AWS ECS"
+      ]
+    },
+    "description": "Comprehensive hands-on tutorial walking beginners through Docker images, containers, Dockerfiles, multi-container Docker Compose apps, and cloud deployment.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Complete Docker tutorial & sample repositories",
+          "value": "100% free & open source",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://docker-curriculum.com",
+      "signup": null,
+      "documentation": "https://github.com/prakhar1989/docker-curriculum",
+      "pricing": null
+    },
+    "learning": {
+      "format": "tutorial",
+      "difficulty": "beginner",
+      "topics": [
+        "Docker",
+        "DevOps",
+        "Cloud Computing"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-docker-curriculum-hands-on",
+          "url": "https://docker-curriculum.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-docker-curriculum-hands-on",
+          "field_path": "access.free_limits",
+          "quote": "Complete Docker tutorial & sample repositories: 100% free & open source",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "linux-journey-interactive-linux",
+      "name": "Linux Journey (Structured Linux Command Line & Kernel Lessons)",
+      "slug": "linux-journey-interactive-linux",
+      "provider": "Linux Journey",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Cloud, DevOps, Linux & Security Training",
+      "resource_type": "course",
+      "pricing_model": "open_source",
+      "tags": [
+        "Linux",
+        "Bash",
+        "Networking",
+        "File Systems",
+        "Systemd"
+      ]
+    },
+    "description": "30+ structured modules organized into Grasshopper, Journeyman, and Networking Guru tracks — teaching Linux command line, permissions, processes, packages, kernel, DNS, and subnets.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "All 30+ Linux & Networking modules",
+          "value": "100% free & open source",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://linuxjourney.com",
+      "signup": null,
+      "documentation": "https://github.com/cindyq/linuxjourney",
+      "pricing": null
+    },
+    "learning": {
+      "format": "course",
+      "difficulty": "beginner",
+      "topics": [
+        "Linux",
+        "DevOps",
+        "Computer Science"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-linux-journey-interactive-linux",
+          "url": "https://linuxjourney.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-linux-journey-interactive-linux",
+          "field_path": "access.free_limits",
+          "quote": "All 30+ Linux & Networking modules: 100% free & open source",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "sadservers-linux-troubleshooting-labs",
+      "name": "SadServers (Hands-On Linux & DevOps Debugging Scenarios)",
+      "slug": "sadservers-linux-troubleshooting-labs",
+      "provider": "SadServers",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Cloud, DevOps, Linux & Security Training",
+      "resource_type": "practice",
+      "pricing_model": "freemium",
+      "tags": [
+        "Linux Debugging",
+        "SRE",
+        "Live Cloud VMs",
+        "Docker",
+        "PostgreSQL"
+      ]
+    },
+    "description": "CTF-style troubleshooting platform spinning up real broken Linux virtual machines in your browser so you can diagnose and fix production outages under time limits.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "30+ live Linux, Docker, Nginx & Postgres troubleshooting scenarios",
+          "value": "Free without login",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://sadservers.com",
+      "signup": null,
+      "documentation": "https://sadservers.com/scenarios",
+      "pricing": null
+    },
+    "learning": {
+      "format": "challenge",
+      "difficulty": "intermediate",
+      "topics": [
+        "Linux",
+        "DevOps",
+        "System Design"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-sadservers-linux-troubleshooting-labs",
+          "url": "https://sadservers.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-sadservers-linux-troubleshooting-labs",
+          "field_path": "access.free_limits",
+          "quote": "30+ live Linux, Docker, Nginx & Postgres troubleshooting scenarios: Free without login",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "cryptohack-modern-cryptography-puzzles",
+      "name": "CryptoHack (Interactive Modern Cryptography Courses & Challenges)",
+      "slug": "cryptohack-modern-cryptography-puzzles",
+      "provider": "CryptoHack",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Cloud, DevOps, Linux & Security Training",
+      "resource_type": "practice",
+      "pricing_model": "completely_free",
+      "tags": [
+        "Cryptography",
+        "RSA",
+        "AES",
+        "Elliptic Curves",
+        "Diffie-Hellman",
+        "Python"
+      ]
+    },
+    "description": "Interactive platform teaching modern applied cryptography by breaking faulty implementations of Modular Arithmetic, AES Symmetric Ciphers, RSA, Diffie-Hellman, Elliptic Curves, and TLS.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "All cryptography courses & 200+ interactive challenges",
+          "value": "100% free",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://cryptohack.org",
+      "signup": null,
+      "documentation": "https://cryptohack.org/courses/",
+      "pricing": null
+    },
+    "learning": {
+      "format": "challenge",
+      "difficulty": "intermediate",
+      "topics": [
+        "Security",
+        "Mathematics",
+        "Python",
+        "Computer Science"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-cryptohack-modern-cryptography-puzzles",
+          "url": "https://cryptohack.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-cryptohack-modern-cryptography-puzzles",
+          "field_path": "access.free_limits",
+          "quote": "All cryptography courses & 200+ interactive challenges: 100% free",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "pwn-college-asu-cybersecurity",
+      "name": "pwn.college (ASU System Security & Binary Exploitation Dojo)",
+      "slug": "pwn-college-asu-cybersecurity",
+      "provider": "Arizona State University SEFCOM",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Cloud, DevOps, Linux & Security Training",
+      "resource_type": "course",
+      "pricing_model": "completely_free",
+      "tags": [
+        "Cybersecurity",
+        "Binary Exploitation",
+        "Reverse Engineering",
+        "Linux Kernel",
+        "CTF"
+      ]
+    },
+    "description": "First-stage cybersecurity education platform run by ASU professors offering browser-based Linux workspaces, lecture videos, and hands-on challenges from Linux Luminarium to Kernel Security.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "All university security modules & browser Linux workspaces",
+          "value": "100% free",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://pwn.college",
+      "signup": null,
+      "documentation": "https://pwn.college/dojos",
+      "pricing": null
+    },
+    "learning": {
+      "format": "course",
+      "difficulty": "intermediate",
+      "topics": [
+        "Security",
+        "Linux",
+        "Systems Programming",
+        "Computer Science"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-pwn-college-asu-cybersecurity",
+          "url": "https://pwn.college",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-pwn-college-asu-cybersecurity",
+          "field_path": "access.free_limits",
+          "quote": "All university security modules & browser Linux workspaces: 100% free",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "cmu-15-445-database-systems",
+      "name": "CMU 15-445/645: Intro to Database Systems (Andy Pavlo)",
+      "slug": "cmu-15-445-database-systems",
+      "provider": "Carnegie Mellon University",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "CS Fundamentals",
+      "resource_type": "course",
+      "pricing_model": "free_learning_material",
+      "tags": [
+        "Databases",
+        "B+ Trees",
+        "Concurrency Control",
+        "Query Optimizer",
+        "C++"
+      ]
+    },
+    "description": "Prof. Andy Pavlo's acclaimed Carnegie Mellon database internals course with full HD lecture videos, notes, and the BusTub C++ storage engine & query execution projects.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Full lecture videos, slides, reading notes & BusTub C++ project specs",
+          "value": "100% free",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://15445.courses.cs.cmu.edu",
+      "signup": null,
+      "documentation": "https://github.com/cmu-db/bustub",
+      "pricing": null
+    },
+    "learning": {
+      "format": "video",
+      "difficulty": "advanced",
+      "topics": [
+        "Databases",
+        "Computer Science",
+        "C++",
+        "Systems Programming"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-cmu-15-445-database-systems",
+          "url": "https://15445.courses.cs.cmu.edu",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-cmu-15-445-database-systems",
+          "field_path": "access.free_limits",
+          "quote": "Full lecture videos, slides, reading notes & BusTub C++ project specs: 100% free",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "uc-berkeley-cs61a-structure-interpretation",
+      "name": "UC Berkeley CS 61A: Structure and Interpretation of Computer Programs",
+      "slug": "uc-berkeley-cs61a-structure-interpretation",
+      "provider": "UC Berkeley EECS",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "CS Fundamentals",
+      "resource_type": "course",
+      "pricing_model": "free_learning_material",
+      "tags": [
+        "Python",
+        "Scheme",
+        "SQL",
+        "Interpreters",
+        "Composing Programs"
+      ]
+    },
+    "description": "UC Berkeley's foundational computer science course (taught in Python, Scheme, and SQL) with the free online textbook ComposingPrograms.com, lecture videos, labs, and Interpreter projects.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "All lecture videos, labs, projects & Composing Programs textbook",
+          "value": "100% free",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://cs61a.org",
+      "signup": null,
+      "documentation": "https://www.composingprograms.com",
+      "pricing": null
+    },
+    "learning": {
+      "format": "course",
+      "difficulty": "beginner",
+      "topics": [
+        "Computer Science",
+        "Python",
+        "SQL",
+        "Programming Languages"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-uc-berkeley-cs61a-structure-interpretation",
+          "url": "https://cs61a.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-uc-berkeley-cs61a-structure-interpretation",
+          "field_path": "access.free_limits",
+          "quote": "All lecture videos, labs, projects & Composing Programs textbook: 100% free",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "princeton-algorithms-sedgewick",
+      "name": "Algorithms, 4th Edition (Princeton University Booksite)",
+      "slug": "princeton-algorithms-sedgewick",
+      "provider": "Robert Sedgewick & Kevin Wayne (Princeton)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "CS Fundamentals",
+      "resource_type": "book",
+      "pricing_model": "free_learning_material",
+      "tags": [
+        "Algorithms",
+        "Data Structures",
+        "Graphs",
+        "Sorting",
+        "Java"
+      ]
+    },
+    "description": "Official Princeton companion booksite containing the condensed textbook chapters, 200+ runnable Java algorithm implementations, visualizations, and lecture slides.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Full web chapters, visualizations & algs4.jar source library",
+          "value": "100% free",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://algs4.cs.princeton.edu/home/",
+      "signup": null,
+      "documentation": "https://algs4.cs.princeton.edu/code/",
+      "pricing": null
+    },
+    "learning": {
+      "format": "book",
+      "difficulty": "intermediate",
+      "topics": [
+        "Algorithms & Data Structures",
+        "Computer Science",
+        "Programming Languages"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-princeton-algorithms-sedgewick",
+          "url": "https://algs4.cs.princeton.edu/home/",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-princeton-algorithms-sedgewick",
+          "field_path": "access.free_limits",
+          "quote": "Full web chapters, visualizations & algs4.jar source library: 100% free",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "nand2tetris-elements-computing-systems",
+      "name": "Nand2Tetris (Build a Modern Computer from First Principles)",
+      "slug": "nand2tetris-elements-computing-systems",
+      "provider": "Noam Nisan & Shimon Schocken",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "CS Fundamentals",
+      "resource_type": "course",
+      "pricing_model": "open_source",
+      "tags": [
+        "Computer Architecture",
+        "HDL",
+        "Assembler",
+        "VM & Compiler",
+        "Operating System"
+      ]
+    },
+    "description": "Twelve hands-on hardware and software projects guiding you from elementary NAND logic gates and an ALU to building a CPU, Assembler, Virtual Machine, Compiler, and OS.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "All 12 project specifications, open-source hardware/VM simulators & slides",
+          "value": "100% free",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://www.nand2tetris.org",
+      "signup": null,
+      "documentation": "https://www.nand2tetris.org/course",
+      "pricing": null
+    },
+    "learning": {
+      "format": "course",
+      "difficulty": "intermediate",
+      "topics": [
+        "Computer Science",
+        "Systems Programming"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-nand2tetris-elements-computing-systems",
+          "url": "https://www.nand2tetris.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-nand2tetris-elements-computing-systems",
+          "field_path": "access.free_limits",
+          "quote": "All 12 project specifications, open-source hardware/VM simulators & slides: 100% free",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "ostep-operating-systems-three-easy-pieces",
+      "name": "Operating Systems: Three Easy Pieces (OSTEP Free Textbook)",
+      "slug": "ostep-operating-systems-three-easy-pieces",
+      "provider": "Remzi & Andrea Arpaci-Dusseau (UW-Madison)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "CS Fundamentals",
+      "resource_type": "book",
+      "pricing_model": "free_learning_material",
+      "tags": [
+        "Operating Systems",
+        "Virtualization",
+        "Concurrency",
+        "File Systems",
+        "C"
+      ]
+    },
+    "description": "World's leading undergraduate Operating Systems textbook covering Virtualization (CPU & Memory), Concurrency (Threads & Locks), and Persistence (Disks & File Systems) — 100% free as PDF chapters.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "All 50+ PDF textbook chapters & homework simulation code",
+          "value": "100% free online",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://pages.cs.wisc.edu/~remzi/OSTEP/",
+      "signup": null,
+      "documentation": "https://github.com/remzi-arpacidusseau/ostep-code",
+      "pricing": null
+    },
+    "learning": {
+      "format": "book",
+      "difficulty": "intermediate",
+      "topics": [
+        "Computer Science",
+        "Systems Programming",
+        "Linux"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-ostep-operating-systems-three-easy-pieces",
+          "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-ostep-operating-systems-three-easy-pieces",
+          "field_path": "access.free_limits",
+          "quote": "All 50+ PDF textbook chapters & homework simulation code: 100% free online",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "crafting-interpreters-bob-ystrom",
+      "name": "Crafting Interpreters (Complete Free Web Book)",
+      "slug": "crafting-interpreters-bob-ystrom",
+      "provider": "Robert Nystrom",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "E-books & Docs",
+      "resource_type": "book",
+      "pricing_model": "free_learning_material",
+      "tags": [
+        "Compilers",
+        "Interpreters",
+        "Bytecode VM",
+        "Garbage Collection",
+        "Java & C"
+      ]
+    },
+    "description": "Hand-illustrated textbook teaching how to implement a programming language (Lox) twice: first as a tree-walk AST interpreter in Java, and second as a fast bytecode virtual machine with a garbage collector in C.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Entire 30-chapter illustrated web book & source code",
+          "value": "100% free online",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://craftinginterpreters.com",
+      "signup": null,
+      "documentation": "https://craftinginterpreters.com/contents.html",
+      "pricing": null
+    },
+    "learning": {
+      "format": "book",
+      "difficulty": "intermediate",
+      "topics": [
+        "Computer Science",
+        "Systems Programming",
+        "Programming Languages"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-crafting-interpreters-bob-ystrom",
+          "url": "https://craftinginterpreters.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-crafting-interpreters-bob-ystrom",
+          "field_path": "access.free_limits",
+          "quote": "Entire 30-chapter illustrated web book & source code: 100% free online",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "high-performance-browser-networking-grigorik",
+      "name": "High Performance Browser Networking (Free O'Reilly Book)",
+      "slug": "high-performance-browser-networking-grigorik",
+      "provider": "Ilya Grigorik",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "E-books & Docs",
+      "resource_type": "book",
+      "pricing_model": "free_learning_material",
+      "tags": [
+        "Networking",
+        "TCP/UDP",
+        "TLS",
+        "HTTP/2 & HTTP/3",
+        "WebRTC",
+        "WebSockets"
+      ]
+    },
+    "description": "Complete O'Reilly book readable free online covering TCP, UDP, TLS handshakes, WiFi/LTE radio latency, HTTP/1.1 vs HTTP/2, WebSockets, Server-Sent Events, and WebRTC.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "All 18 chapters of the complete O'Reilly book",
+          "value": "100% free online",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://hpbn.co",
+      "signup": null,
+      "documentation": "https://github.com/igrigorik/hpbn.co",
+      "pricing": null
+    },
+    "learning": {
+      "format": "book",
+      "difficulty": "advanced",
+      "topics": [
+        "Web Development",
+        "System Design",
+        "Distributed Systems"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-high-performance-browser-networking-grigorik",
+          "url": "https://hpbn.co",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-high-performance-browser-networking-grigorik",
+          "field_path": "access.free_limits",
+          "quote": "All 18 chapters of the complete O'Reilly book: 100% free online",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "dive-into-deep-learning-d2l",
+      "name": "Dive into Deep Learning (D2L.ai Interactive Book)",
+      "slug": "dive-into-deep-learning-d2l",
+      "provider": "Aston Zhang, Zachary Lipton, Mu Li & Alex Smola",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "AI, Machine Learning & Data Science Courses",
+      "resource_type": "book",
+      "pricing_model": "open_source",
+      "tags": [
+        "Deep Learning",
+        "PyTorch",
+        "JAX",
+        "Transformers",
+        "Computer Vision"
+      ]
+    },
+    "description": "Interactive open-source textbook adopted by 500+ universities worldwide — combining math, runnable code in PyTorch, NumPy/MXNet, JAX, and TensorFlow, and discussions on CNNs, RNNs, Attention, and Transformers.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "All 22 chapters & runnable Jupyter/Colab notebooks",
+          "value": "100% free & open source",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://d2l.ai",
+      "signup": null,
+      "documentation": "https://github.com/d2l-ai/d2l-en",
+      "pricing": null
+    },
+    "learning": {
+      "format": "book",
+      "difficulty": "intermediate",
+      "topics": [
+        "Deep Learning",
+        "AI & Machine Learning",
+        "Python",
+        "Mathematics"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-dive-into-deep-learning-d2l",
+          "url": "https://d2l.ai",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-dive-into-deep-learning-d2l",
+          "field_path": "access.free_limits",
+          "quote": "All 22 chapters & runnable Jupyter/Colab notebooks: 100% free & open source",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "mathematics-for-machine-learning-book",
+      "name": "Mathematics for Machine Learning (Cambridge University Press Book)",
+      "slug": "mathematics-for-machine-learning-book",
+      "provider": "Marc Peter Deisenroth, A. Aldo Faisal & Cheng Soon Ong",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "AI, Machine Learning & Data Science Courses",
+      "resource_type": "book",
+      "pricing_model": "free_learning_material",
+      "tags": [
+        "Linear Algebra",
+        "Matrix Decompositions",
+        "Vector Calculus",
+        "Probability",
+        "PCA & SVM"
+      ]
+    },
+    "description": "Full 400-page Cambridge University Press textbook downloadable as a free PDF — bridging undergraduate math (Linear Algebra, Analytic Geometry, Vector Calculus, Probability) directly to PCA, GMMs, and SVMs.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Complete 400-page PDF textbook & Jupyter tutorials",
+          "value": "100% free PDF download",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://mml-book.github.io",
+      "signup": null,
+      "documentation": "https://mml-book.github.io/book/mml-book.pdf",
+      "pricing": null
+    },
+    "learning": {
+      "format": "book",
+      "difficulty": "intermediate",
+      "topics": [
+        "Mathematics",
+        "Linear Algebra",
+        "AI & Machine Learning"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-mathematics-for-machine-learning-book",
+          "url": "https://mml-book.github.io",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-mathematics-for-machine-learning-book",
+          "field_path": "access.free_limits",
+          "quote": "Complete 400-page PDF textbook & Jupyter tutorials: 100% free PDF download",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "statquest-josh-starmer-ml-guides",
+      "name": "StatQuest with Josh Starmer (Visual Statistics & ML Index)",
+      "slug": "statquest-josh-starmer-ml-guides",
+      "provider": "Josh Starmer (StatQuest)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "AI, Machine Learning & Data Science Courses",
+      "resource_type": "tutorial",
+      "pricing_model": "completely_free",
+      "tags": [
+        "Statistics",
+        "Machine Learning",
+        "PCA",
+        "Gradient Boost",
+        "Neural Networks"
+      ]
+    },
+    "description": "Curated visual video and study index breaking down complex statistics, probability distributions, linear models, Random Forests, XGBoost, PCA, and Transformer architectures into clear step-by-step visuals.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Complete visual video index & StatQuest coding webinars",
+          "value": "100% free",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://statquest.org",
+      "signup": null,
+      "documentation": "https://statquest.org/video-index/",
+      "pricing": null
+    },
+    "learning": {
+      "format": "video",
+      "difficulty": "beginner",
+      "topics": [
+        "Statistics",
+        "AI & Machine Learning",
+        "Data Science"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-statquest-josh-starmer-ml-guides",
+          "url": "https://statquest.org",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-statquest-josh-starmer-ml-guides",
+          "field_path": "access.free_limits",
+          "quote": "Complete visual video index & StatQuest coding webinars: 100% free",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "made-with-ml-production-mlops",
+      "name": "Made With ML (Production Machine Learning & MLOps Course)",
+      "slug": "made-with-ml-production-mlops",
+      "provider": "Goku Mohandas",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "AI, Machine Learning & Data Science Courses",
+      "resource_type": "course",
+      "pricing_model": "open_source",
+      "tags": [
+        "MLOps",
+        "Ray",
+        "PyTorch",
+        "CI/CD for ML",
+        "Production AI"
+      ]
+    },
+    "description": "End-to-end open-source course teaching how to design, develop, test, deploy, and monitor production machine learning applications using Python, PyTorch, Ray, MLflow, and GitHub Actions.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Complete MLOps curriculum & runnable GitHub repository",
+          "value": "100% free & open source",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://madewithml.com",
+      "signup": null,
+      "documentation": "https://github.com/GokuMohandas/Made-With-ML",
+      "pricing": null
+    },
+    "learning": {
+      "format": "course",
+      "difficulty": "advanced",
+      "topics": [
+        "AI & Machine Learning",
+        "DevOps",
+        "Python",
+        "System Design"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-made-with-ml-production-mlops",
+          "url": "https://madewithml.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-made-with-ml-production-mlops",
+          "field_path": "access.free_limits",
+          "quote": "Complete MLOps curriculum & runnable GitHub repository: 100% free & open source",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "spinning-up-deep-rl-openai",
+      "name": "Spinning Up in Deep RL (OpenAI Reinforcement Learning Guide)",
+      "slug": "spinning-up-deep-rl-openai",
+      "provider": "OpenAI",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "AI, Machine Learning & Data Science Courses",
+      "resource_type": "documentation",
+      "pricing_model": "open_source",
+      "tags": [
+        "Reinforcement Learning",
+        "PPO",
+        "SAC",
+        "DQN",
+        "Policy Gradients"
+      ]
+    },
+    "description": "OpenAI's educational resource for learning Deep Reinforcement Learning from scratch — including clear mathematical introductions, key paper taxonomy, and clean PyTorch/TensorFlow reference implementations of VPG, PPO, DDPG, TD3, and SAC.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Full Deep RL curriculum, taxonomy & algorithm implementations",
+          "value": "100% free & open source",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://spinningup.openai.com",
+      "signup": null,
+      "documentation": "https://github.com/openai/spinningup",
+      "pricing": null
+    },
+    "learning": {
+      "format": "documentation",
+      "difficulty": "advanced",
+      "topics": [
+        "AI & Machine Learning",
+        "Deep Learning",
+        "Python"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-spinning-up-deep-rl-openai",
+          "url": "https://spinningup.openai.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-spinning-up-deep-rl-openai",
+          "field_path": "access.free_limits",
+          "quote": "Full Deep RL curriculum, taxonomy & algorithm implementations: 100% free & open source",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "llm-course-maxim-labonne",
+      "name": "The LLM Course & Roadmaps (Maxime Labonne)",
+      "slug": "llm-course-maxim-labonne",
+      "provider": "Maxime Labonne (Open Source)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "AI, Machine Learning & Data Science Courses",
+      "resource_type": "roadmap",
+      "pricing_model": "open_source",
+      "tags": [
+        "LLMs",
+        "Fine-Tuning",
+        "Quantization",
+        "RAG",
+        "Colab Notebooks"
+      ]
+    },
+    "description": "Comprehensive open-source Large Language Model course and visual roadmaps divided into LLM Fundamentals, The LLM Scientist (Fine-tuning, DPO, Quantization), and The LLM Engineer (RAG, Deployment, Agents).",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Complete LLM course, visual roadmaps & 25+ Colab notebooks",
+          "value": "100% free & open source",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://github.com/mlabonne/llm-course",
+      "signup": null,
+      "documentation": "https://github.com/mlabonne/llm-course#the-llm-scientist",
+      "pricing": null
+    },
+    "learning": {
+      "format": "roadmap",
+      "difficulty": "intermediate",
+      "topics": [
+        "LLMs",
+        "AI & Machine Learning",
+        "Python"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-llm-course-maxim-labonne",
+          "url": "https://github.com/mlabonne/llm-course",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-llm-course-maxim-labonne",
+          "field_path": "access.free_limits",
+          "quote": "Complete LLM course, visual roadmaps & 25+ Colab notebooks: 100% free & open source",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "prompt-engineering-guide-dair-ai",
+      "name": "Prompt Engineering Guide (DAIR.AI Open-Source Curriculum)",
+      "slug": "prompt-engineering-guide-dair-ai",
+      "provider": "DAIR.AI (Elvis Saravia)",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "AI, Machine Learning & Data Science Courses",
+      "resource_type": "documentation",
+      "pricing_model": "open_source",
+      "tags": [
+        "Prompt Engineering",
+        "Chain-of-Thought",
+        "ReAct",
+        "RAG",
+        "AI Agents"
+      ]
+    },
+    "description": "Open-source research and engineering guide to Chain-of-Thought, Tree-of-Thoughts, ReAct agents, Retrieval-Augmented Generation (RAG), Function Calling, and adversarial prompt safety.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "All 15+ prompt engineering & AI agent guides",
+          "value": "100% free & open source",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://www.promptingguide.ai",
+      "signup": null,
+      "documentation": "https://github.com/dair-ai/Prompt-Engineering-Guide",
+      "pricing": null
+    },
+    "learning": {
+      "format": "documentation",
+      "difficulty": "all_levels",
+      "topics": [
+        "LLMs",
+        "AI Agents",
+        "AI & Machine Learning"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-prompt-engineering-guide-dair-ai",
+          "url": "https://www.promptingguide.ai",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-prompt-engineering-guide-dair-ai",
+          "field_path": "access.free_limits",
+          "quote": "All 15+ prompt engineering & AI agent guides: 100% free & open source",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "fullstack-python-open-guide",
+      "name": "Full Stack Python (Open-Source Python Web & Deployment Guide)",
+      "slug": "fullstack-python-open-guide",
+      "provider": "Matt Makai",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Documentation & Tutorials",
+      "resource_type": "book",
+      "pricing_model": "open_source",
+      "tags": [
+        "Python",
+        "Django",
+        "FastAPI",
+        "Flask",
+        "WSGI/ASGI",
+        "Deployment"
+      ]
+    },
+    "description": "Open-source online book explaining every layer of the Python web stack in plain language — from virtual environments, Django, Flask, and FastAPI to PostgreSQL, Celery queues, WSGI/ASGI servers, and Linux deployment.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "All chapters & topic guides on FullStackPython.com",
+          "value": "100% free & open source",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://www.fullstackpython.com",
+      "signup": null,
+      "documentation": "https://www.fullstackpython.com/table-of-contents.html",
+      "pricing": null
+    },
+    "learning": {
+      "format": "book",
+      "difficulty": "intermediate",
+      "topics": [
+        "Python",
+        "Web Development",
+        "DevOps"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-fullstack-python-open-guide",
+          "url": "https://www.fullstackpython.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-fullstack-python-open-guide",
+          "field_path": "access.free_limits",
+          "quote": "All chapters & topic guides on FullStackPython.com: 100% free & open source",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "real-python-free-tutorials",
+      "name": "Real Python In-Depth Tutorials & Reference Guides",
+      "slug": "real-python-free-tutorials",
+      "provider": "Real Python",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Documentation & Tutorials",
+      "resource_type": "tutorial",
+      "pricing_model": "freemium",
+      "tags": [
+        "Python",
+        "AsyncIO",
+        "Pytest",
+        "Type Hints",
+        "Data Science"
+      ]
+    },
+    "description": "Thousands of editorial-reviewed, long-form written Python tutorials covering Python 3.12+ features, OOP, decorators, AsyncIO, Pytest, FastAPI, Pandas, and packaging.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "2,000+ written long-form Python tutorials",
+          "value": "Free online",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://realpython.com",
+      "signup": null,
+      "documentation": "https://realpython.com/start-here/",
+      "pricing": null
+    },
+    "learning": {
+      "format": "tutorial",
+      "difficulty": "all_levels",
+      "topics": [
+        "Python",
+        "Programming Languages",
+        "Software Engineering"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-real-python-free-tutorials",
+          "url": "https://realpython.com",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-real-python-free-tutorials",
+          "field_path": "access.free_limits",
+          "quote": "2,000+ written long-form Python tutorials: Free online",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "rust-by-example-interactive",
+      "name": "Rust By Example (Runnable Code Examples for Rust)",
+      "slug": "rust-by-example-interactive",
+      "provider": "Rust Project Developers",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Documentation & Tutorials",
+      "resource_type": "tutorial",
+      "pricing_model": "open_source",
+      "tags": [
+        "Rust",
+        "Code Examples",
+        "Macros",
+        "Traits",
+        "Cargo"
+      ]
+    },
+    "description": "Collection of runnable browser examples illustrating Rust concepts and standard library idioms — from Primitives, Enums, Pattern Matching, and Closures to Lifetimes, Macros, and Unsafe Rust.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "All 24 interactive chapters with runnable browser editor",
+          "value": "100% free & open source",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://doc.rust-lang.org/rust-by-example/",
+      "signup": null,
+      "documentation": "https://github.com/rust-lang/rust-by-example",
+      "pricing": null
+    },
+    "learning": {
+      "format": "tutorial",
+      "difficulty": "beginner",
+      "topics": [
+        "Rust",
+        "Programming Languages",
+        "Systems Programming"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-rust-by-example-interactive",
+          "url": "https://doc.rust-lang.org/rust-by-example/",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-rust-by-example-interactive",
+          "field_path": "access.free_limits",
+          "quote": "All 24 interactive chapters with runnable browser editor: 100% free & open source",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "identity": {
+      "id": "comprehensive-rust-google-android",
+      "name": "Comprehensive Rust (Google Android Team 4-Day Course)",
+      "slug": "comprehensive-rust-google-android",
+      "provider": "Google Android Security Team",
+      "logo_url": null
+    },
+    "classification": {
+      "category": "learning",
+      "subcategory": "Programming Courses",
+      "resource_type": "course",
+      "pricing_model": "open_source",
+      "tags": [
+        "Rust",
+        "Android",
+        "Bare-Metal Embedded",
+        "Concurrency",
+        "Async Rust"
+      ]
+    },
+    "description": "Multi-day Rust training course developed by the Google Android team covering Rust fundamentals, generics, error handling, unsafe Rust, bare-metal embedded development, concurrency, and async Rust.",
+    "access": {
+      "free_limits": [
+        {
+          "name": "Complete 4-day slide deck, speaker notes & exercises",
+          "value": "100% free & open source",
+          "period": "unlimited"
+        }
+      ],
+      "requirements": {
+        "account_required": "not_required",
+        "card_required": "not_required",
+        "payment_method_notes": "Verified free learning resource with no credit card required."
+      },
+      "validity": {
+        "type": "ongoing",
+        "duration": null,
+        "auto_renewal": "Permanent free access."
+      },
+      "restrictions": [
+        "Core learning materials are 100% free online."
+      ]
+    },
+    "eligibility": {
+      "student_access": "eligible",
+      "regions": [
+        "Global"
+      ],
+      "conditions": "Open to learners worldwide."
+    },
+    "links": {
+      "official": "https://google.github.io/comprehensive-rust/",
+      "signup": null,
+      "documentation": "https://github.com/google/comprehensive-rust",
+      "pricing": null
+    },
+    "learning": {
+      "format": "course",
+      "difficulty": "intermediate",
+      "topics": [
+        "Rust",
+        "Systems Programming",
+        "Programming Languages"
+      ],
+      "language": "English"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "src-comprehensive-rust-google-android",
+          "url": "https://google.github.io/comprehensive-rust/",
+          "source_type": "official_docs",
+          "checked_at": "2026-11-16"
+        }
+      ],
+      "claims": [
+        {
+          "source_id": "src-comprehensive-rust-google-android",
+          "field_path": "access.free_limits",
+          "quote": "Complete 4-day slide deck, speaker notes & exercises: 100% free & open source",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    "verification": {
+      "status": "verified",
+      "last_verified_at": "2026-11-16",
+      "notes": null
+    },
+    "metadata": {
+      "created_at": "2026-11-16",
+      "updated_at": "2026-11-16",
+      "featured": false,
+      "contributor": "freestack-core"
+    }
+  }
+]

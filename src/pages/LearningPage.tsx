@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { RotateCcw, ChevronDown, Home } from 'lucide-react';
 import { getLearningOffers } from '../lib/data/resources';
+import { DEFAULT_FILTER_STATE, filterAndSortOffers } from '../lib/filters/filterOffers';
 import { searchOffers } from '../lib/search/searchOffers';
 import type {
   LearningDifficulty,
@@ -45,8 +46,20 @@ const DIFFICULTY_OPTIONS: LearningDifficulty[] = [
 ];
 
 export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
-  const allLearning = useMemo(() => getLearningOffers(), []);
+  const allLearning = useMemo(
+    () =>
+      filterAndSortOffers(
+        getLearningOffers().filter((o) => o.classification.category === 'learning'),
+        {
+          ...DEFAULT_FILTER_STATE,
+          category: 'learning',
+          sortBy: 'relevance',
+        }
+      ),
+    []
+  );
 
+  const [visibleCount, setVisibleCount] = useState(24);
   const [searchQuery, setSearchQuery] = useState<string>(searchParams?.get('q') || '');
   const [selectedFormat, setSelectedFormat] = useState<LearningFormat | 'all'>(
     (searchParams?.get('format') as LearningFormat | 'all') || 'all'
@@ -457,19 +470,36 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
           </button>
         </div>
       ) : (
-        <div
-          key={transitionKey}
-          data-testid="learning-results-grid"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4"
-        >
-          {filtered.map((offer, idx) => (
-            <LearningCard
-              key={offer.identity.id}
-              offer={offer}
-              onNavigate={onNavigate}
-              wiggleIcon={idx % 3 === 0}
-            />
-          ))}
+        <div className="flex flex-col gap-4">
+          <div
+            key={transitionKey}
+            data-testid="learning-results-grid"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4"
+          >
+            {filtered.slice(0, visibleCount).map((offer, idx) => (
+              <LearningCard
+                key={offer.identity.id}
+                offer={offer}
+                onNavigate={onNavigate}
+                wiggleIcon={idx % 3 === 0}
+              />
+            ))}
+          </div>
+
+          {filtered.length > visibleCount && (
+            <div className="flex flex-col items-center gap-2 pt-2">
+              <p className="font-[var(--font-inter)] text-[13px] text-ink/70">
+                Showing {visibleCount} of {filtered.length} verified learning resources (most popular first)
+              </p>
+              <button
+                type="button"
+                onClick={() => setVisibleCount((prev) => prev + 24)}
+                className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-bold text-[14px] rounded-full px-6 py-2.5 min-h-[42px] cursor-pointer spring-pill"
+              >
+                Load more ({filtered.length - visibleCount} remaining)
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>

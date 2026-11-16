@@ -749,13 +749,17 @@
     "slug": "learning",
     "name": "Learning & Study Materials",
     "shortName": "Learning",
-    "description": "Programming courses, documentation, tutorials, technical books, learning roadmaps, CS fundamentals, and coding practice.",
+    "description": "Programming courses, university CS lectures, official documentation & tutorials, free technical books, developer roadmaps, coding practice & interview prep, AI/ML courses, Cloud/DevOps/Linux labs, interactive algorithm visualizers, and system design guides — ordered from most popular to least popular.",
     "color": "sunshine-yellow",
-    "popular": false,
+    "popular": true,
     "subcategories": [
       {
         "slug": "programming-courses",
         "name": "Programming Courses"
+      },
+      {
+        "slug": "cs-fundamentals",
+        "name": "CS Fundamentals"
       },
       {
         "slug": "docs-tutorials",
@@ -770,12 +774,24 @@
         "name": "Learning Roadmaps"
       },
       {
-        "slug": "cs-fundamentals",
-        "name": "CS Fundamentals"
-      },
-      {
         "slug": "practice-challenges",
         "name": "Practice & Challenges"
+      },
+      {
+        "slug": "ai-ml-data-courses",
+        "name": "AI, Machine Learning & Data Science Courses"
+      },
+      {
+        "slug": "cloud-devops-security-training",
+        "name": "Cloud, DevOps, Linux & Security Training"
+      },
+      {
+        "slug": "interactive-visualizers-math",
+        "name": "Interactive Visualizers, Math & CS Sandboxes"
+      },
+      {
+        "slug": "system-design-architecture-guides",
+        "name": "System Design, Architecture & Engineering Guides"
       }
     ]
   },
