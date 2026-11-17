@@ -15,7 +15,6 @@ import {
   Tag,
   Cpu,
   GraduationCap,
-  Globe,
 } from 'lucide-react';
 import { CATEGORIES, OFFERS, getCategoryBySlug, getCategoryCounts } from '../lib/data/resources';
 import {
@@ -578,7 +577,7 @@ export function ExplorePage({
           </div>
         </fieldset>
 
-        {/* Section 5: Student Eligibility, Region & Verification Sub-Options */}
+        {/* Section 5: Student Eligibility & Verification Sub-Options */}
         <div className="bg-paper/75 rounded-[15px] p-3 flex flex-col gap-2.5 border border-midnight-mouth/6">
           <div className="flex flex-col gap-1.5">
             <label
@@ -635,59 +634,33 @@ export function ExplorePage({
             </select>
           </div>
 
-          <div className="grid grid-cols-2 gap-2 pt-1 border-t border-midnight-mouth/8">
-            <div className="flex flex-col gap-1">
-              <label
-                htmlFor={`${idPrefix}-region`}
-                className="inline-flex items-center gap-1 font-[var(--font-wallop)] font-semibold text-[12px] text-midnight-mouth"
+          <div className="flex flex-col gap-1 pt-1 border-t border-midnight-mouth/8">
+            <label
+              htmlFor={`${idPrefix}-status`}
+              className="inline-flex items-center gap-1 font-[var(--font-wallop)] font-semibold text-[12px] text-midnight-mouth"
+            >
+              <ShieldCheck className="w-3 h-3 text-midnight-mouth/75" aria-hidden="true" />
+              <span>Status</span>
+            </label>
+            <div className="relative">
+              <select
+                id={`${idPrefix}-status`}
+                value={current.verificationStatus}
+                onChange={(e) =>
+                  setCurrent({
+                    ...current,
+                    verificationStatus: e.target.value as VerificationStatus | 'all',
+                  })
+                }
+                className="w-full appearance-none bg-daylight text-midnight-mouth font-[var(--font-inter)] font-medium text-[12px] rounded-[9px] pl-2.5 pr-6 py-1.5 min-h-[34px] border border-midnight-mouth/10 cursor-pointer"
               >
-                <Globe className="w-3 h-3 text-midnight-mouth/75" aria-hidden="true" />
-                <span>Region</span>
-              </label>
-              <div className="relative">
-                <select
-                  id={`${idPrefix}-region`}
-                  value={current.region}
-                  onChange={(e) => setCurrent({ ...current, region: e.target.value })}
-                  className="w-full appearance-none bg-daylight text-midnight-mouth font-[var(--font-inter)] font-medium text-[12px] rounded-[9px] pl-2.5 pr-6 py-1.5 min-h-[34px] border border-midnight-mouth/10 cursor-pointer"
-                >
-                  <option value="all">All regions</option>
-                  <option value="Global">Global</option>
-                  <option value="US">US / Multi</option>
-                  <option value="EU">EU</option>
-                </select>
-                <ChevronDown className="w-3.5 h-3.5 text-midnight-mouth/70 pointer-events-none absolute right-2 top-1/2 -translate-y-1/2" aria-hidden="true" />
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-1">
-              <label
-                htmlFor={`${idPrefix}-status`}
-                className="inline-flex items-center gap-1 font-[var(--font-wallop)] font-semibold text-[12px] text-midnight-mouth"
-              >
-                <ShieldCheck className="w-3 h-3 text-midnight-mouth/75" aria-hidden="true" />
-                <span>Status</span>
-              </label>
-              <div className="relative">
-                <select
-                  id={`${idPrefix}-status`}
-                  value={current.verificationStatus}
-                  onChange={(e) =>
-                    setCurrent({
-                      ...current,
-                      verificationStatus: e.target.value as VerificationStatus | 'all',
-                    })
-                  }
-                  className="w-full appearance-none bg-daylight text-midnight-mouth font-[var(--font-inter)] font-medium text-[12px] rounded-[9px] pl-2.5 pr-6 py-1.5 min-h-[34px] border border-midnight-mouth/10 cursor-pointer"
-                >
-                  <option value="all">All</option>
-                  <option value="verified">Verified</option>
-                  <option value="needs_review">Needs review</option>
-                  <option value="unverified">Unverified</option>
-                  <option value="expired">Expired</option>
-                </select>
-                <ChevronDown className="w-3.5 h-3.5 text-midnight-mouth/70 pointer-events-none absolute right-2 top-1/2 -translate-y-1/2" aria-hidden="true" />
-              </div>
+                <option value="all">All</option>
+                <option value="verified">Verified</option>
+                <option value="needs_review">Needs review</option>
+                <option value="unverified">Unverified</option>
+                <option value="expired">Expired</option>
+              </select>
+              <ChevronDown className="w-3.5 h-3.5 text-midnight-mouth/70 pointer-events-none absolute right-2 top-1/2 -translate-y-1/2" aria-hidden="true" />
             </div>
           </div>
         </div>
