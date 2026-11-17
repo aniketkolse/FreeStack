@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { RotateCcw, Home } from 'lucide-react';
+import { RotateCcw, Home, SlidersHorizontal, ChevronDown } from 'lucide-react';
 import { getLearningOffers } from '../lib/data/resources';
 import { DEFAULT_FILTER_STATE, filterAndSortOffers } from '../lib/filters/filterOffers';
 import { searchOffers } from '../lib/search/searchOffers';
@@ -80,6 +80,7 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
   const [selectedStatus, setSelectedStatus] = useState<VerificationStatus | 'all'>(
     (searchParams?.get('status') as VerificationStatus | 'all') || 'all'
   );
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState<boolean>(false);
 
   useEffect(() => {
     setSearchQuery(searchParams?.get('q') || '');
@@ -212,28 +213,28 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
   const transitionKey = `${searchQuery}-${selectedFormat}-${selectedDifficulty}-${selectedTopic}-${selectedLanguage}-${selectedPricing}-${selectedStatus}`;
 
   return (
-    <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-5 pb-12 flex flex-col gap-5 sm:gap-7">
+    <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-2.5 sm:pt-5 pb-12 flex flex-col gap-3.5 sm:gap-7">
       {/* Compact Sunshine Yellow Hero Slab */}
-      <section className="bg-sunshine-yellow rounded-[22px] sm:rounded-[26px] p-4 sm:p-7 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-center">
-        <div className="lg:col-span-7 flex flex-col items-start gap-2.5 sm:gap-3">
+      <section className="bg-sunshine-yellow rounded-[18px] sm:rounded-[26px] p-3.5 sm:p-7 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center">
+        <div className="lg:col-span-7 flex flex-col items-start gap-2 sm:gap-3">
           <a
             href="/"
             onClick={(e) => {
               e.preventDefault();
               onNavigate('/');
             }}
-            className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[13px] rounded-full px-3.5 py-1.5 min-h-[32px] inline-flex items-center gap-1.5 spring-pill"
+            className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13px] rounded-full px-3 sm:px-3.5 py-1 sm:py-1.5 min-h-[30px] sm:min-h-[32px] inline-flex items-center gap-1.5 spring-pill"
           >
             <Home className="w-3.5 h-3.5" aria-hidden="true" />
             <span>Home</span>
           </a>
-          <h1 className="font-[var(--font-wallop)] font-extrabold text-[26px] sm:text-[36px] lg:text-[44px] leading-[1.04] tracking-[-0.03em] text-midnight-mouth">
+          <h1 className="font-[var(--font-wallop)] font-extrabold text-[23px] sm:text-[36px] lg:text-[44px] leading-[1.04] tracking-[-0.03em] text-midnight-mouth">
             Learning &amp; study materials
           </h1>
-          <p className="font-[var(--font-inter)] text-[14px] sm:text-[15px] leading-[1.45] text-ink max-w-xl">
+          <p className="font-[var(--font-inter)] text-[13px] sm:text-[15px] leading-[1.4] sm:leading-[1.45] text-ink max-w-xl line-clamp-2 sm:line-clamp-none">
             Curated programming courses, reference docs, technical books, developer roadmaps, CS lectures, and algorithm practice without paywalls.
           </p>
-          <div className="w-full pt-1">
+          <div className="w-full pt-0.5 sm:pt-1">
             <SearchBar
               inputId="learning-search-input"
               initialQuery={searchQuery}
@@ -252,7 +253,7 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
             />
           </div>
         </div>
-        <div className="lg:col-span-5">
+        <div className="hidden lg:block lg:col-span-5">
           <SlabIllustration variant="learning" />
         </div>
       </section>
@@ -303,10 +304,45 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
         })}
       </div>
 
+      {/* Mobile-Only Filter Toggle (< 640px) */}
+      <div className="flex sm:hidden items-center justify-between gap-2">
+        <button
+          type="button"
+          onClick={() => setMobileFiltersOpen((prev) => !prev)}
+          className={`inline-flex items-center gap-1.5 font-[var(--font-wallop)] font-semibold text-[12px] rounded-full px-3.5 py-1.5 min-h-[34px] cursor-pointer filter-pill border ${
+            mobileFiltersOpen || hasFilters
+              ? 'bg-midnight-mouth text-daylight border-midnight-mouth'
+              : 'bg-daylight text-midnight-mouth border-midnight-mouth/15'
+          }`}
+        >
+          <SlidersHorizontal className="w-3.5 h-3.5" aria-hidden="true" />
+          <span>Filters (Difficulty, Topic, Language)</span>
+          <ChevronDown
+            className={`w-3.5 h-3.5 transition-transform duration-200 ${
+              mobileFiltersOpen ? 'rotate-180' : ''
+            }`}
+            aria-hidden="true"
+          />
+        </button>
+
+        {hasFilters && (
+          <button
+            type="button"
+            onClick={resetAll}
+            className="inline-flex items-center gap-1 font-[var(--font-wallop)] font-semibold text-[11.5px] bg-sunshine-yellow text-midnight-mouth rounded-full px-3 py-1.5 min-h-[34px] cursor-pointer"
+          >
+            <RotateCcw className="w-3 h-3" aria-hidden="true" />
+            <span>Reset</span>
+          </button>
+        )}
+      </div>
+
       {/* Multi-Criteria Learning Filters Bar */}
       <section
         aria-label="Learning filters"
-        className="bg-daylight rounded-[18px] sm:rounded-[22px] p-3.5 sm:p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 items-end"
+        className={`bg-daylight rounded-[18px] sm:rounded-[22px] p-3.5 sm:p-4 ${
+          mobileFiltersOpen ? 'grid' : 'hidden'
+        } sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 items-end`}
       >
         <div className="flex flex-col gap-1">
           <label
@@ -493,7 +529,7 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
           <div
             key={transitionKey}
             data-testid="learning-results-grid"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4"
           >
             {filtered.slice(0, visibleCount).map((offer, idx) => (
               <LearningCard

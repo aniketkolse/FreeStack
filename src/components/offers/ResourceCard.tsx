@@ -84,9 +84,39 @@ export function ResourceCard({
   return (
     <article
       data-testid={`resource-card-${offer.identity.slug}`}
-      className={`${cardBgClass} rounded-[20px] sm:rounded-[24px] p-4 sm:p-5 flex flex-col justify-between gap-3.5 spring-card card-enter min-w-0`}
+      className={`${cardBgClass} rounded-[16px] sm:rounded-[24px] p-3 sm:p-5 flex flex-col justify-between gap-2.5 sm:gap-3.5 spring-card card-enter min-w-0`}
     >
-      <div className="flex flex-col gap-2.5 min-w-0">
+      {/* Mobile-Only Compact Header: Logo + Tool Name only (< 640px) */}
+      <div className="flex sm:hidden items-center gap-3 min-w-0">
+        <div
+          className={`${bgSwatchClass} w-11 h-11 rounded-[12px] flex items-center justify-center shrink-0 p-1`}
+        >
+          <div className="w-full h-full rounded-[9px] bg-white shadow-2xs flex items-center justify-center overflow-hidden p-1">
+            <OfferLogo
+              offer={offer}
+              imgClassName="w-6 h-6 object-contain"
+              fallbackClassName="w-5 h-5"
+            />
+          </div>
+        </div>
+        <div className="min-w-0 flex-1">
+          <h3 className="font-[var(--font-wallop)] font-bold text-[15.5px] leading-[1.2] tracking-[-0.02em] text-midnight-mouth truncate">
+            <a
+              href={`/offer/${offer.identity.slug}`}
+              onClick={handleOpen}
+              className="hover:underline underline-offset-4"
+            >
+              {offer.identity.name}
+            </a>
+          </h3>
+          <span className="block font-[var(--font-inter)] text-[11.5px] leading-[1.2] text-ink/70 mt-0.5 truncate">
+            {offer.identity.provider} · {offer.classification.subcategory}
+          </span>
+        </div>
+      </div>
+
+      {/* Desktop / PC Top Content (>= 640px) — 100% unchanged */}
+      <div className="hidden sm:flex flex-col gap-2.5 min-w-0">
         {/* Top Visual Header Swatch — compact rounded graphic block */}
         <div
           className={`${bgSwatchClass} rounded-[14px] sm:rounded-[16px] p-3 sm:p-3.5 flex items-center justify-between gap-3`}
@@ -170,9 +200,9 @@ export function ResourceCard({
         </div>
       </div>
 
-      {/* Bottom Free-Tier Truth Summary + Inspect + Save & Share Actions */}
-      <div className="flex flex-col gap-3 pt-2.5 border-t border-midnight-mouth/10 min-w-0">
-        <dl className="flex flex-col gap-1 font-[var(--font-inter)] text-[12px] sm:text-[12.5px] leading-[1.35] text-ink">
+      {/* Bottom Free-Tier Truth Summary (Desktop only) + Inspect + Save & Share Actions */}
+      <div className="flex flex-col gap-3 pt-2 sm:pt-2.5 border-t border-midnight-mouth/10 min-w-0">
+        <dl className="hidden sm:flex flex-col gap-1 font-[var(--font-inter)] text-[12px] sm:text-[12.5px] leading-[1.35] text-ink">
           <div className="flex items-baseline justify-between gap-2">
             <dt className="text-ink/70 shrink-0">Access model</dt>
             <dd className="font-medium text-right text-midnight-mouth min-w-0 break-words">
@@ -216,13 +246,14 @@ export function ResourceCard({
           </div>
         </dl>
 
-        <div className="flex items-center justify-between gap-2 pt-0.5">
+        <div className="flex items-center justify-between gap-1.5 sm:gap-2 pt-0 sm:pt-0.5">
           <a
             href={`/offer/${offer.identity.slug}`}
             onClick={handleOpen}
-            className="flex-1 inline-flex items-center justify-center gap-1.5 bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[13.5px] leading-none rounded-full px-3.5 py-2 min-h-[36px] whitespace-nowrap spring-pill"
+            className="flex-1 inline-flex items-center justify-center gap-1.5 bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[13.5px] leading-none rounded-full px-3 sm:px-3.5 py-1.5 sm:py-2 min-h-[34px] sm:min-h-[36px] whitespace-nowrap spring-pill"
           >
-            <span>Inspect offer</span>
+            <span className="sm:hidden">Inspect</span>
+            <span className="hidden sm:inline">Inspect offer</span>
             <ArrowUpRight className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
           </a>
 
@@ -238,7 +269,7 @@ export function ResourceCard({
                 e.stopPropagation();
                 toggleSave(offer.identity.slug);
               }}
-              className={`inline-flex items-center justify-center gap-1 font-[var(--font-wallop)] font-semibold text-[12px] rounded-full px-3 py-1.5 min-h-[36px] filter-pill cursor-pointer border ${
+              className={`inline-flex items-center justify-center gap-1 font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[12px] rounded-full px-2.5 sm:px-3 py-1.5 min-h-[34px] sm:min-h-[36px] filter-pill cursor-pointer border ${
                 saved
                   ? 'bg-sunshine-yellow text-[#101014] border-midnight-mouth/15'
                   : 'bg-paper text-midnight-mouth border-midnight-mouth/10 hover:bg-sunshine-yellow/60'
@@ -257,7 +288,7 @@ export function ResourceCard({
               aria-label={`Share ${offer.identity.name}`}
               title="Share tool link"
               onClick={handleShare}
-              className={`inline-flex items-center justify-center gap-1 font-[var(--font-wallop)] font-semibold text-[12px] rounded-full px-2.5 py-1.5 min-h-[36px] filter-pill cursor-pointer border ${
+              className={`inline-flex items-center justify-center gap-1 font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[12px] rounded-full px-2.5 py-1.5 min-h-[34px] sm:min-h-[36px] filter-pill cursor-pointer border ${
                 sharedFeedback
                   ? 'bg-grass-green text-[#101014] border-midnight-mouth/15'
                   : 'bg-paper text-midnight-mouth border-midnight-mouth/10 hover:bg-sky-blue/50'
@@ -271,7 +302,7 @@ export function ResourceCard({
               ) : (
                 <>
                   <Share2 className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-                  <span className="sr-only sm:not-sr-only">Share</span>
+                  <span>Share</span>
                 </>
               )}
             </button>

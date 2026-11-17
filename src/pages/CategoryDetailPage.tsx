@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import {
+  ArrowLeft,
   Home,
   Sparkles,
   ShieldCheck,
@@ -13,6 +14,7 @@ import {
   Code2,
   Cpu,
   Globe,
+  SlidersHorizontal,
 } from 'lucide-react';
 import {
   CATEGORIES,
@@ -144,6 +146,7 @@ export function CategoryDetailPage({
   const [sortBy, setSortBy] = useState<SortOption>(initialSort);
   const [visibleCount, setVisibleCount] = useState<number>(24);
   const [showAllSubtypes, setShowAllSubtypes] = useState<boolean>(false);
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState<boolean>(false);
 
   const counts = getCategoryCounts();
 
@@ -190,6 +193,7 @@ export function CategoryDetailPage({
     setAiModality((searchParams?.get('modality') as AiModalityId | 'all') || 'all');
     setAiMinContext(searchParams?.get('ctx') || 'all');
     setShowAllSubtypes(false);
+    setMobileFiltersOpen(false);
     setVisibleCount(24);
   }, [slug, searchParams, category, primaryTypeGroups]);
 
@@ -520,6 +524,21 @@ export function CategoryDetailPage({
     aiModality !== 'all' ||
     aiMinContext !== 'all';
 
+  const activeFilterCount =
+    Number(selectedTypeGroup !== 'all') +
+    Number(selectedSubcategory !== 'all') +
+    Number(selectedTagSubtype !== 'all') +
+    Number(cardFilter !== 'all') +
+    selectedPricing.length +
+    Number(studentFriendlyOnly) +
+    Number(studentVerificationFilter !== 'all') +
+    Number(mcpOfficialOnly) +
+    Number(mcpScope !== 'all') +
+    Number(mcpLang !== 'all') +
+    Number(mcpOs !== 'all') +
+    Number(aiModality !== 'all') +
+    Number(aiMinContext !== 'all');
+
   const resetCategoryFilters = () => {
     setSearchQuery('');
     setSelectedTypeGroup('all');
@@ -611,8 +630,77 @@ export function CategoryDetailPage({
         ? `${activePrimaryGroup.label} (${filteredOffers.length})`
         : `All ${category.name} (${filteredOffers.length})`;
 
+  const backMeta = getBackNavigationMeta(previousPath, '/categories', {
+    getCategoryName: (catSlug) => getCategoryBySlug(catSlug)?.name,
+    getOfferName: (offerSlug) => getOfferBySlug(offerSlug)?.identity.name,
+  });
+
+  const handleBackClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (onBack) {
+      onBack('/categories');
+    } else {
+      onNavigate(backMeta.targetHref);
+    }
+  };
+
   return (
     <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-2.5 sm:pt-4 pb-12 flex flex-col gap-3 sm:gap-3.5">
+      {/* Top Back Button & Quick Navigation Bar */}
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <div className="flex items-center gap-2 min-w-0">
+          <a
+            href={backMeta.targetHref}
+            data-testid="category-back-btn"
+            onClick={handleBackClick}
+            className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[13.5px] rounded-full px-3.5 sm:px-4 py-1.5 min-h-[34px] sm:min-h-[36px] inline-flex items-center gap-1.5 spring-pill shadow-2xs max-w-full"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+            <span className="truncate max-w-[200px] sm:max-w-[320px]">{backMeta.label}</span>
+          </a>
+          <a
+            href="/categories"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('/categories');
+            }}
+            className="bg-daylight text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[13px] rounded-full px-3.5 py-1.5 min-h-[34px] sm:min-h-[36px] inline-flex items-center gap-1.5 spring-pill border border-midnight-mouth/10"
+          >
+            <Layers className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+            <span>All Categories</span>
+          </a>
+        </div>
+
+        <nav
+          aria-label="Category breadcrumb"
+          className="hidden sm:flex items-center gap-1.5 font-[var(--font-inter)] text-[12.5px] text-ink/75"
+        >
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('/');
+            }}
+            className="hover:underline"
+          >
+            Home
+          </a>
+          <span aria-hidden="true">/</span>
+          <a
+            href="/categories"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('/categories');
+            }}
+            className="hover:underline"
+          >
+            Categories
+          </a>
+          <span aria-hidden="true">/</span>
+          <span className="text-midnight-mouth font-medium">{category.name}</span>
+        </nav>
+      </div>
+
       {/* Unified Category Header, Search & Systematic 2-Tier Filter/Sort Card */}
       <section
         aria-label="Category header, search, and filters"
@@ -659,10 +747,77 @@ export function CategoryDetailPage({
           </div>
         </div>
 
+        {/* Mobile-Only Compact Filter & Sort Bar (< 640px) — keeps filters from taking full screen on mobile */}
+        <div className="flex sm:hidden items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5 min-w-0">
+            <button
+              type="button"
+              data-testid="mobile-filter-toggle"
+              aria-expanded={mobileFiltersOpen}
+              onClick={() => setMobileFiltersOpen((prev) => !prev)}
+              className={`inline-flex items-center gap-1.5 font-[var(--font-wallop)] font-semibold text-[12px] rounded-full px-3 py-1.5 min-h-[34px] cursor-pointer filter-pill border ${
+                mobileFiltersOpen || activeFilterCount > 0
+                  ? 'bg-midnight-mouth text-daylight border-midnight-mouth shadow-2xs'
+                  : 'bg-paper text-midnight-mouth border-midnight-mouth/15'
+              }`}
+            >
+              <SlidersHorizontal className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+              <span>Filters &amp; Types</span>
+              {activeFilterCount > 0 && (
+                <span className="bg-sunshine-yellow text-[#101014] text-[10.5px] font-bold rounded-full px-1.5 py-0.5 leading-none tabular-nums">
+                  {activeFilterCount}
+                </span>
+              )}
+              <ChevronDown
+                className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 ${
+                  mobileFiltersOpen ? 'rotate-180' : ''
+                }`}
+                aria-hidden="true"
+              />
+            </button>
+
+            {hasActiveFilters && (
+              <button
+                type="button"
+                onClick={resetCategoryFilters}
+                className="inline-flex items-center gap-1 font-[var(--font-wallop)] font-semibold text-[11.5px] text-[#101014] bg-sunshine-yellow rounded-full px-2.5 py-1.5 min-h-[34px] shrink-0 filter-pill cursor-pointer border border-midnight-mouth/15"
+              >
+                <RotateCcw className="w-3 h-3" aria-hidden="true" />
+                <span>Reset</span>
+              </button>
+            )}
+          </div>
+
+          <FilterDropdown
+            id="cat-sort-mobile"
+            label="Sort by"
+            variant="pill"
+            value={sortBy}
+            triggerPrefix="Sort:"
+            minMenuWidth={210}
+            menuTitle="Sort results"
+            onChange={(nextVal) => {
+              const next = nextVal as SortOption;
+              setSortBy(next);
+              syncUrl({ sort: next });
+            }}
+            options={visibleSortOptions.map((opt) => {
+              const Icon = opt.icon;
+              return {
+                value: opt.value,
+                label: opt.label,
+                icon: <Icon className="w-3.5 h-3.5" />,
+              };
+            })}
+          />
+        </div>
+
         {/* Systematic 3-Row Panel: Row 1 = Important Types, Row 2 = Subtypes under it, Row 3 = Filter & Sort */}
         <div
           data-testid="systematic-filter-panel"
-          className="bg-paper/95 rounded-[16px] px-3 py-2.5 border border-midnight-mouth/10 flex flex-col gap-2 shadow-2xs"
+          className={`bg-paper/95 rounded-[16px] px-3 py-2.5 border border-midnight-mouth/10 ${
+            mobileFiltersOpen ? 'flex' : 'hidden'
+          } sm:flex flex-col gap-2 shadow-2xs`}
         >
           {/* ROW 1: Important Primary Types (Wraps cleanly so zero pills are clipped) */}
           <div
@@ -1399,7 +1554,7 @@ export function CategoryDetailPage({
             <div
               key={transitionKey}
               data-testid="category-results-grid"
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4"
             >
               {filteredOffers.slice(0, visibleCount).map((offer) => (
                 <ResourceCard key={offer.identity.id} offer={offer} onNavigate={onNavigate} />
@@ -1425,11 +1580,11 @@ export function CategoryDetailPage({
       </section>
 
       {/* Related Categories */}
-      <section className="flex flex-col gap-4 pt-2">
+      <section className="flex flex-col gap-3.5 sm:gap-4 pt-2">
         <h2 className="font-[var(--font-wallop)] font-extrabold text-[20px] sm:text-[26px] leading-[1.1] tracking-[-0.025em] text-midnight-mouth">
           Related categories
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5 sm:gap-4">
           {relatedCategories.map((cat) => (
             <CategoryTile
               key={cat.slug}

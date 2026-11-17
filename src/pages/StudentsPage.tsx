@@ -135,26 +135,26 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
   );
 
   return (
-    <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-5 pb-12 flex flex-col gap-5 sm:gap-7">
+    <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-2.5 sm:pt-5 pb-12 flex flex-col gap-3.5 sm:gap-7">
       {/* Compact Grass Green Student Slab with Explicit Student ID Requirement Callout at Top */}
-      <section className="bg-grass-green rounded-[22px] sm:rounded-[26px] p-4 sm:p-6 md:p-7 grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-7 items-center">
-        <div className="lg:col-span-7 flex flex-col items-start gap-2.5">
+      <section className="bg-grass-green rounded-[18px] sm:rounded-[26px] p-3.5 sm:p-6 md:p-7 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-7 items-center">
+        <div className="lg:col-span-7 flex flex-col items-start gap-2 sm:gap-2.5">
           <a
             href="/"
             onClick={(e) => {
               e.preventDefault();
               onNavigate('/');
             }}
-            className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[13px] rounded-full px-3.5 py-1.5 min-h-[32px] inline-flex items-center gap-1.5 spring-pill"
+            className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13px] rounded-full px-3 sm:px-3.5 py-1 sm:py-1.5 min-h-[30px] sm:min-h-[32px] inline-flex items-center gap-1.5 spring-pill"
           >
             <Home className="w-3.5 h-3.5" aria-hidden="true" />
             <span>Home</span>
           </a>
 
-          <h1 className="font-[var(--font-wallop)] font-extrabold text-[26px] sm:text-[36px] lg:text-[42px] leading-[1.04] tracking-[-0.03em] text-midnight-mouth">
+          <h1 className="font-[var(--font-wallop)] font-extrabold text-[23px] sm:text-[36px] lg:text-[42px] leading-[1.04] tracking-[-0.03em] text-midnight-mouth">
             Student benefits &amp; cloud credits
           </h1>
-          <p className="font-[var(--font-inter)] text-[13.5px] sm:text-[14.5px] leading-[1.45] text-ink max-w-xl">
+          <p className="font-[var(--font-inter)] text-[13px] sm:text-[14.5px] leading-[1.4] sm:leading-[1.45] text-ink max-w-xl line-clamp-2 sm:line-clamp-none">
             Verified academic developer packs, AI coding assistants, desktop IDEs, student cloud credits, CAD/EDA tools, domains, certifications, and fellowships.
           </p>
 
@@ -178,19 +178,19 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
             />
           </div>
         </div>
-        <div className="lg:col-span-5">
+        <div className="hidden lg:block lg:col-span-5">
           <SlabIllustration variant="students" />
         </div>
       </section>
 
       {/* Verification Filter + Smooth Track Tabs */}
-      <div className="flex flex-col gap-2.5">
+      <div className="flex flex-col gap-2">
         <div
           role="group"
           aria-label="Filter by Student ID requirement"
-          className="flex flex-wrap items-center gap-2"
+          className="flex flex-nowrap sm:flex-wrap items-center gap-1.5 sm:gap-2 overflow-x-auto sm:overflow-visible no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 py-0.5"
         >
-          <span className="font-[var(--font-wallop)] font-bold text-[12px] uppercase tracking-wider text-midnight-mouth/70 mr-1">
+          <span className="font-[var(--font-wallop)] font-bold text-[11.5px] sm:text-[12px] uppercase tracking-wider text-midnight-mouth/70 mr-0.5 sm:mr-1 shrink-0">
             Verification:
           </span>
           <button
@@ -200,7 +200,7 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
               setVisibleCount(24);
               syncStudentsUrl({ verify: 'all' });
             }}
-            className={`font-[var(--font-wallop)] font-semibold text-[12.5px] rounded-full px-3.5 py-1.5 min-h-[34px] inline-flex items-center gap-1.5 cursor-pointer transition-colors ${
+            className={`font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[12.5px] rounded-full px-3 sm:px-3.5 py-1 sm:py-1.5 min-h-[32px] sm:min-h-[34px] whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 cursor-pointer transition-colors ${
               studentIdFilter === 'all'
                 ? 'bg-midnight-mouth text-daylight'
                 : 'bg-daylight text-midnight-mouth hover:bg-grass-green/40'
@@ -215,13 +215,13 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
               setVisibleCount(24);
               syncStudentsUrl({ verify: 'required' });
             }}
-            className={`font-[var(--font-wallop)] font-semibold text-[12.5px] rounded-full px-3.5 py-1.5 min-h-[34px] inline-flex items-center gap-1.5 cursor-pointer transition-colors ${
+            className={`font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[12.5px] rounded-full px-3 sm:px-3.5 py-1 sm:py-1.5 min-h-[32px] sm:min-h-[34px] whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 cursor-pointer transition-colors ${
               studentIdFilter === 'required'
                 ? 'bg-sunshine-yellow text-midnight-mouth ring-2 ring-midnight-mouth'
                 : 'bg-sunshine-yellow/55 text-midnight-mouth hover:bg-sunshine-yellow'
             }`}
           >
-            <GraduationCap className="w-3.5 h-3.5" aria-hidden="true" />
+            <GraduationCap className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
             <span>Student ID / .edu Req. ({studentIdRequiredOffers.length})</span>
           </button>
           <button
@@ -231,13 +231,13 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
               setVisibleCount(24);
               syncStudentsUrl({ verify: 'not_required' });
             }}
-            className={`font-[var(--font-wallop)] font-semibold text-[12.5px] rounded-full px-3.5 py-1.5 min-h-[34px] inline-flex items-center gap-1.5 cursor-pointer transition-colors ${
+            className={`font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[12.5px] rounded-full px-3 sm:px-3.5 py-1 sm:py-1.5 min-h-[32px] sm:min-h-[34px] whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 cursor-pointer transition-colors ${
               studentIdFilter === 'not_required'
                 ? 'bg-grass-green text-midnight-mouth ring-2 ring-midnight-mouth'
                 : 'bg-grass-green/45 text-midnight-mouth hover:bg-grass-green'
             }`}
           >
-            <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
+            <CheckCircle2 className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
             <span>No Student ID Req. ({noStudentIdOffers.length})</span>
           </button>
         </div>
@@ -260,7 +260,7 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
                   setVisibleCount(24);
                   syncStudentsUrl({ track: track.id });
                 }}
-                className={`font-[var(--font-wallop)] font-semibold text-[13px] rounded-full px-4 py-1.5 min-h-[36px] whitespace-nowrap shrink-0 filter-pill cursor-pointer ${
+                className={`font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13px] rounded-full px-3.5 sm:px-4 py-1 sm:py-1.5 min-h-[32px] sm:min-h-[36px] whitespace-nowrap shrink-0 filter-pill cursor-pointer ${
                   active
                     ? 'bg-midnight-mouth text-daylight shadow-xs'
                     : 'bg-daylight text-midnight-mouth hover:bg-grass-green'
@@ -274,11 +274,11 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
       </div>
 
       {/* Student Benefits Grid */}
-      <section className="flex flex-col gap-3.5 sm:gap-4">
+      <section className="flex flex-col gap-3 sm:gap-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <GraduationCap className="w-5 h-5 text-midnight-mouth shrink-0" aria-hidden="true" />
-            <h2 className="font-[var(--font-wallop)] font-extrabold text-[20px] sm:text-[26px] leading-[1.1] tracking-[-0.025em] text-midnight-mouth">
+            <h2 className="font-[var(--font-wallop)] font-extrabold text-[18px] sm:text-[26px] leading-[1.1] tracking-[-0.025em] text-midnight-mouth">
               {studentIdFilter === 'required'
                 ? `Requires Student ID / .edu Verification (${filteredStudentOffers.length})`
                 : studentIdFilter === 'not_required'
@@ -290,7 +290,7 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
 
         <div
           key={`${selectedTrack}-${studentIdFilter}`}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4"
         >
           {filteredStudentOffers.slice(0, visibleCount).map((offer) => (
             <ResourceCard key={offer.identity.id} offer={offer} onNavigate={onNavigate} />

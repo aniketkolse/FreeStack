@@ -138,15 +138,30 @@ export function OfferDetailPage({
     <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-5 pb-12 flex flex-col gap-5 sm:gap-7">
       {/* Top Back & Breadcrumb */}
       <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3">
-        <a
-          href={backMeta.targetHref}
-          data-testid="offer-back-btn"
-          onClick={handleBackClick}
-          className="bg-daylight text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[13.5px] rounded-full px-4 py-1.5 min-h-[34px] inline-flex items-center gap-1.5 spring-pill max-w-full"
-        >
-          <ArrowLeft className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-          <span className="truncate max-w-[260px] sm:max-w-[360px]">{backMeta.label}</span>
-        </a>
+        <div className="flex flex-wrap items-center gap-2 min-w-0">
+          <a
+            href={backMeta.targetHref}
+            data-testid="offer-back-btn"
+            onClick={handleBackClick}
+            className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[13.5px] rounded-full px-4 py-1.5 min-h-[36px] inline-flex items-center gap-1.5 spring-pill shadow-2xs max-w-full"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+            <span className="truncate max-w-[240px] sm:max-w-[360px]">{backMeta.label}</span>
+          </a>
+
+          {category && (
+            <a
+              href={`/category/${category.slug}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate(`/category/${category.slug}`);
+              }}
+              className="bg-daylight text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[13px] rounded-full px-3.5 py-1.5 min-h-[36px] inline-flex items-center gap-1.5 spring-pill border border-midnight-mouth/10"
+            >
+              <span>{category.name}</span>
+            </a>
+          )}
+        </div>
 
         <nav
           aria-label="Breadcrumb"
@@ -683,9 +698,19 @@ export function OfferDetailPage({
       {/* Related Resources */}
       {related.length > 0 && (
         <section className="flex flex-col gap-4 pt-2">
-          <h2 className="font-[var(--font-wallop)] font-extrabold text-[22px] sm:text-[28px] leading-[1.1] tracking-[-0.025em] text-midnight-mouth">
-            More in {category?.name}
-          </h2>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h2 className="font-[var(--font-wallop)] font-extrabold text-[22px] sm:text-[28px] leading-[1.1] tracking-[-0.025em] text-midnight-mouth">
+              More in {category?.name}
+            </h2>
+            <a
+              href={backMeta.targetHref}
+              onClick={handleBackClick}
+              className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[13.5px] rounded-full px-4 py-1.5 min-h-[36px] inline-flex items-center gap-1.5 spring-pill"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+              <span>{backMeta.label}</span>
+            </a>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4">
             {related.map((item) => (
               <ResourceCard key={item.identity.id} offer={item} onNavigate={onNavigate} />

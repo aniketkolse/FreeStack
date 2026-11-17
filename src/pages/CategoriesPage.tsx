@@ -39,26 +39,26 @@ export function CategoriesPage({ searchParams, onNavigate }: CategoriesPageProps
   }, [query]);
 
   return (
-    <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-5 pb-12 flex flex-col gap-5 sm:gap-7">
-      <section className="bg-bubblegum-pink rounded-[22px] sm:rounded-[26px] p-4 sm:p-7 md:p-8 text-center flex flex-col items-center gap-3">
+    <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-2.5 sm:pt-5 pb-12 flex flex-col gap-4 sm:gap-7">
+      <section className="bg-bubblegum-pink rounded-[18px] sm:rounded-[26px] p-3.5 sm:p-7 md:p-8 text-center flex flex-col items-center gap-2 sm:gap-3">
         <a
           href="/"
           onClick={(e) => {
             e.preventDefault();
             onNavigate('/');
           }}
-          className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[13px] rounded-full px-3.5 py-1.5 min-h-[32px] inline-flex items-center gap-1.5 spring-pill"
+          className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13px] rounded-full px-3 sm:px-3.5 py-1 sm:py-1.5 min-h-[30px] sm:min-h-[32px] inline-flex items-center gap-1.5 spring-pill"
         >
           <Home className="w-3.5 h-3.5" aria-hidden="true" />
           <span>Home</span>
         </a>
-        <h1 className="font-[var(--font-wallop)] font-extrabold text-[26px] sm:text-[36px] lg:text-[44px] leading-[1.04] tracking-[-0.03em] text-midnight-mouth">
+        <h1 className="font-[var(--font-wallop)] font-extrabold text-[23px] sm:text-[36px] lg:text-[44px] leading-[1.04] tracking-[-0.03em] text-midnight-mouth">
           All categories
         </h1>
-        <p className="font-[var(--font-inter)] text-[14px] sm:text-[15px] leading-[1.45] text-ink max-w-xl">
+        <p className="font-[var(--font-inter)] text-[13px] sm:text-[15px] leading-[1.4] sm:leading-[1.45] text-ink max-w-xl line-clamp-2 sm:line-clamp-none">
           Browse {CATEGORIES.length} structured resource categories covering AI Models, MCP servers, APIs, Frontend &amp; Design Tools, Cloud Hosting, Databases, Dev Tools, Learning, and Student Benefits.
         </p>
-        <div className="w-full pt-1">
+        <div className="w-full pt-0.5 sm:pt-1">
           <SearchBar
             inputId="categories-search-input"
             initialQuery={query}
@@ -101,7 +101,7 @@ export function CategoriesPage({ searchParams, onNavigate }: CategoriesPageProps
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
           {filteredCategories.map((category, idx) => (
             <CategoryTile
               key={category.slug}
