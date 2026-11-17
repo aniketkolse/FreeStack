@@ -20,6 +20,7 @@ export function ReportOutdatedForm({
   const [reportType, setReportType] = useState<OutdatedReport['reportType']>(defaultType);
   const [details, setDetails] = useState('');
   const [sourceUrl, setSourceUrl] = useState('');
+  const [website, setWebsite] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState<OutdatedReport | null>(null);
@@ -39,6 +40,7 @@ export function ReportOutdatedForm({
           reportType,
           details,
           sourceUrl: sourceUrl.trim() ? sourceUrl.trim() : null,
+          website,
         }),
       });
       const data = await res.json();
@@ -184,6 +186,19 @@ export function ReportOutdatedForm({
           onChange={(e) => setSourceUrl(e.target.value)}
           placeholder="https://provider.com/pricing"
           className="w-full bg-paper text-midnight-mouth font-[var(--font-inter)] text-[16px] sm:text-[15px] rounded-[16px] px-4 py-3 min-h-[44px]"
+        />
+      </div>
+
+      <div className="sr-only" aria-hidden="true">
+        <label htmlFor="report-website-hp">Leave this field blank</label>
+        <input
+          id="report-website-hp"
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={website}
+          onChange={(e) => setWebsite(e.target.value)}
         />
       </div>
 

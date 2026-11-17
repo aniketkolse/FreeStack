@@ -17,51 +17,52 @@ Security fixes are applied to the latest release on the `main` branch.
 
 ## Reporting a Vulnerability
 
-**Please do not open a public GitHub Issue for security vulnerabilities.**
+**Please do not open a public GitHub Issue or Pull Request for security vulnerabilities.**
 
-If you discover a potential security issue (such as an open redirect, XSS, SSRF, arbitrary file access, injection flaw, or malicious catalog link), please report it privately using one of the following channels:
+If you discover a potential security issue (such as an open redirect, XSS, SSRF, path traversal, injection flaw, rate-limit bypass, or compromised/malicious catalog link), please report it privately using one of the following channels:
 
-1. **GitHub Private Vulnerability Reporting**: Use the **Security → Advisories → Report a vulnerability** button in this repository (recommended).
-2. **Direct Email**: Send details to **`aniketkolse07@gmail.com`** with the subject line `[SECURITY] FreeStack Vulnerability Report`.
+1. **GitHub Private Vulnerability Reporting (Preferred)**: Use the **Security → Advisories → Report a vulnerability** button in this repository (`https://github.com/aniketkolse/FreeStack/security/advisories/new`).
+2. **Direct Security Contact**: Send details to **`aniketkolse07@gmail.com`** with the subject line `[SECURITY] FreeStack Vulnerability Report`.
 
 ### What to Include
 
 To help us investigate and resolve the issue quickly, please include:
 - A clear description of the vulnerability and its potential impact.
-- Step-by-step reproduction instructions, proof-of-concept request/payload, or affected endpoint/file path.
+- Step-by-step reproduction instructions, proof-of-concept request/payload, and affected endpoint or file path.
 - Any relevant browser, Node.js, or environment details.
 
 ### Disclosure & Response Timeline
 
-- **Acknowledgement**: Within **48 hours** of receiving your report.
-- **Triage & Assessment**: Within **5 business days**, confirming severity and reproduction.
-- **Remediation**: Critical and high-severity issues are prioritized for immediate patching on `main`.
-- **Coordinated Disclosure**: Once a fix is merged and verified, we will coordinate public disclosure and credit you (unless you prefer to remain anonymous).
+| Stage | Target SLA |
+| :--- | :--- |
+| **Initial Acknowledgement** | Within **48 hours** |
+| **Triage & Severity Assessment** | Within **5 business days** |
+| **Critical / High Fix Release** | Within **7–14 days** |
+| **Medium / Low Fix Release** | Within **30 days** |
+
+Once a fix is merged and verified, we will coordinate public disclosure via a GitHub Security Advisory and credit you (unless you prefer to remain anonymous).
 
 ---
 
-## Built-In Security Controls
+## Scope
 
-FreeStack enforces the following architectural safeguards across the server, client, and catalog pipeline:
+### In Scope
+- The Express server (`server.ts` and `src/lib/server/*`), including `/go/:slug` outbound redirects, `/api/offers`, `/api/reports`, `/sitemap.xml`, `/robots.txt`, and static/SPA routing.
+- The React frontend (`src/*`), including client-side routing, URL rendering, JSON-LD / meta tag generation, and `localStorage` handling.
+- The catalog validation and link-checking scripts (`scripts/*` and `src/lib/validation/*`).
+- Malicious, phishing, or compromised URLs in `data/offers/**`.
 
-1. **Allowlisted Outbound Redirects (`/go/:slug`)**:
-   - Outbound links only resolve from pre-validated offer entries in `data/offers/` (`official`, `signup`, `docs`, `pricing`).
-   - Every destination URL is checked with `isSafeHttpsUrl()` to enforce `https://` and prevent open redirects, `javascript:` URIs, or arbitrary query redirection.
-   - Responses set `Referrer-Policy: strict-origin-when-cross-origin` and `X-Robots-Tag: noindex`.
-2. **Strict Catalog URL & Schema Validation (`npm run validate:data`)**:
-   - Every offer JSON file is validated against `schema/offer.schema.json` to ensure official links, logo paths, and source evidence URLs use HTTPS or local safe asset paths.
-3. **API Payload & Input Bounds (`server.ts`)**:
-   - `express.json({ limit: '64kb' })` caps request payload sizes.
-   - `POST /api/reports` enforces strict length limits (`offerName` 2–160 chars, `details` 8–2000 chars), allowlisted `reportType` enums, and `isSafeHttpsUrl()` checks on optional source URLs.
-4. **Zero Runtime Secrets for Public Browsing**:
-   - Public browsing requires no user login, no database credentials, and no client-exposed API keys. User bookmarks (`Saved`) and theme preferences stay strictly client-side in `localStorage`.
-5. **Escaped XML Sitemap Output**:
-   - Dynamic `/sitemap.xml` generation escapes all XML entities (`&`, `<`, `>`, `"`, `'`).
+### Out of Scope
+- Vulnerabilities on **third-party provider websites** linked from the directory (please report those directly to the respective provider's security team; if a linked URL is compromised or malicious, report it to us so we can immediately quarantine or remove the listing).
+- Volumetric denial-of-service (DoS/DDoS) attacks or automated scanner noise without a demonstrable exploit.
+- Social engineering of project maintainers or contributors.
 
 ---
 
-## Out-of-Scope Issues
+## Safe Harbor
 
-- Vulnerabilities on **third-party provider websites** linked from the directory (please report those directly to the respective provider's security team; if a linked URL is compromised or malicious, let us know immediately so we can delist or quarantine it).
-- Automated scanner noise or missing HTTP headers that do not demonstrate an exploitable vulnerability.
-- Denial-of-service / volumetric load testing against hosted preview URLs.
+We support safe harbor for good-faith security researchers:
+
+- If you conduct security research in compliance with this policy—acting in good faith, avoiding privacy violations, service disruption, or data destruction, and reporting findings privately before public disclosure—we consider your research **authorized**.
+- We will not initiate legal action or law-enforcement referral against you for good-faith testing that adheres to this policy.
+- If a third party initiates legal action against you for activities conducted in accordance with this policy, we will take steps to make known that your actions were conducted in compliance with this Security Policy.

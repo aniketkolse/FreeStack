@@ -1,0 +1,46 @@
+name: Outdated Offer or Quota Update
+description: Report changed free-tier limits, credit card rules, expired offers, or broken links
+title: "[Catalog Update]: "
+labels: ["catalog", "needs-verification"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping keep FreeStack accurate! Please cite the official HTTPS pricing or documentation page so maintainers can verify the update.
+  - type: input
+    id: offer_slug
+    attributes:
+      label: Offer Name or Slug
+      description: The name or slug of the catalog entry (e.g., `supabase-free-plan`)
+      placeholder: e.g., supabase-free-plan
+    validations:
+      required: true
+  - type: dropdown
+    id: change_type
+    attributes:
+      label: What changed?
+      options:
+        - Free quota or rate limit changed
+        - Credit card requirement changed
+        - Free tier removed or became trial-only
+        - Broken or redirected official URL
+        - Student eligibility rules changed
+        - Other factual correction
+    validations:
+      required: true
+  - type: input
+    id: official_url
+    attributes:
+      label: Official HTTPS Source URL
+      description: Link to the official pricing page, documentation, or changelog
+      placeholder: https://provider.com/pricing
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Factual Details & Verbatim Quote
+      description: Describe what changed and paste the relevant quote from the official documentation
+      placeholder: "Current docs state: 'Free plan includes 500 MB database space, no credit card required.'"
+    validations:
+      required: true

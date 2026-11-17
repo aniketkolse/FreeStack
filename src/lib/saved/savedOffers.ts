@@ -3,13 +3,16 @@ import type { Offer } from '../../types/resource';
 import { formatCardRequirement, formatPricingModel, getPrimaryLimitSummary } from '../utils/formatters';
 
 export const SAVED_OFFERS_STORAGE_KEY = 'freestack-saved-offers-v1';
+export const MAX_SAVED_OFFERS = 500;
 const SAVED_OFFERS_EVENT = 'freestack-saved-updated';
+const SAFE_SLUG_REGEX = /^[a-z0-9-]{2,120}$/;
 
 /**
  * Pure parser for stored saved offer slugs from JSON string.
+ * Validates slug syntax, deduplicates, and caps at MAX_SAVED_OFFERS (500).
  */
 export function parseSavedSlugs(raw: string | null | undefined): string[] {
-  if (!raw) return [];
+  if (!raw || typeof raw !== 'string' || raw.length > 65536) return [];
   try {
     const parsed = JSON.parse(raw);
     if (!Array.isArray(parsed)) return [];
@@ -18,9 +21,10 @@ export function parseSavedSlugs(raw: string | null | undefined): string[] {
     for (const item of parsed) {
       if (typeof item === 'string') {
         const trimmed = item.trim();
-        if (trimmed && !seen.has(trimmed)) {
+        if (SAFE_SLUG_REGEX.test(trimmed) && !seen.has(trimmed)) {
           seen.add(trimmed);
           result.push(trimmed);
+          if (result.length >= MAX_SAVED_OFFERS) break;
         }
       }
     }
@@ -38,7 +42,7 @@ export function toggleSavedSlug(
   slug: string
 ): { next: string[]; saved: boolean } {
   const normalized = slug.trim();
-  if (!normalized) {
+  if (!SAFE_SLUG_REGEX.test(normalized)) {
     return { next: [...current], saved: false };
   }
   const exists = current.includes(normalized);
@@ -49,7 +53,7 @@ export function toggleSavedSlug(
     };
   }
   return {
-    next: [normalized, ...current],
+    next: [normalized, ...current].slice(0, MAX_SAVED_OFFERS),
     saved: true,
   };
 }
@@ -85,10 +89,11 @@ function readStoredSavedSlugs(): string[] {
 function writeStoredSavedSlugs(slugs: string[]): void {
   if (typeof window === 'undefined') return;
   try {
-    window.localStorage.setItem(SAVED_OFFERS_STORAGE_KEY, JSON.stringify(slugs));
+    const bounded = slugs.filter((s) => SAFE_SLUG_REGEX.test(s)).slice(0, MAX_SAVED_OFFERS);
+    window.localStorage.setItem(SAVED_OFFERS_STORAGE_KEY, JSON.stringify(bounded));
     window.dispatchEvent(new CustomEvent(SAVED_OFFERS_EVENT));
   } catch {
-    // Ignore storage quota errors
+    // Ignore storage quota or private-browsing errors
   }
 }
 

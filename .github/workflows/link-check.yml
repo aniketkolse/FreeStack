@@ -1,0 +1,61 @@
+name: Weekly Catalog Link Check
+
+on:
+  schedule:
+    - cron: "0 4 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check-links:
+    name: Verify Catalog Official HTTPS Links
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js 24 LTS
+        uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Run SSRF-hardened link checker
+        id: link_check
+        run: npm run check:links -- --output link-check-report.json
+
+      - name: Upload link check report artifact on failure
+        if: failure()
+        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
+        with:
+          name: link-check-report
+          path: link-check-report.json
+          retention-days: 14
+
+      - name: Open GitHub Issue on broken catalog links
+        if: failure()
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        with:
+          script: |
+            const fs = require('fs');
+            let summary = 'Weekly catalog link check detected unreachable or redirecting URLs.';
+            if (fs.existsSync('link-check-report.json')) {
+              const report = JSON.parse(fs.readFileSync('link-check-report.json', 'utf8'));
+              summary += `\n\n- Checked: ${report.checked || 0}\n- Failed: ${(report.failures || []).length}`;
+            }
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `[Automated] Broken or redirecting catalog links detected (${new Date().toISOString().slice(0, 10)})`,
+              body: `${summary}\n\nInspect the workflow run artifact \`link-check-report\` for full details.`,
+              labels: ['catalog', 'needs-verification']
+            });

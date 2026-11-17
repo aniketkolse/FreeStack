@@ -52,6 +52,12 @@ const KNOWN_LOCAL_KEYS = [
     category: 'Session UI State',
   },
   {
+    key: 'freestack-saved-offers-v1',
+    storage: 'localStorage',
+    purpose: 'Stores your bookmarked offer slugs locally in your browser (capped at 500 slugs).',
+    category: 'Client-Side Bookmarks',
+  },
+  {
     key: 'freestack-reports-v1',
     storage: 'localStorage',
     purpose: 'Stores community correction or resource suggestion drafts submitted from your browser.',
@@ -60,8 +66,8 @@ const KNOWN_LOCAL_KEYS = [
   {
     key: 'freestack-privacy-requests-v1',
     storage: 'localStorage',
-    purpose: 'Stores your statutory Privacy Request / Grievance receipts locally for your reference.',
-    category: 'Compliance Receipt Log',
+    purpose: 'Stores your local Privacy Request / Grievance receipts on your device for your reference.',
+    category: 'Local Receipt Log',
   },
 ];
 
@@ -231,7 +237,7 @@ export function LegalCenterPage({ activeTab, onNavigate }: LegalCenterPageProps)
             <span>Home</span>
           </a>
           <span className="bg-paper/85 text-midnight-mouth font-[var(--font-mono)] font-semibold text-[11.5px] rounded-full px-3 py-1">
-            Effective: November 13, 2026 · Global, India &amp; USA Compliant
+            Effective: November 17, 2026 · Privacy &amp; Legal Transparency Center
           </span>
         </div>
 
@@ -243,11 +249,11 @@ export function LegalCenterPage({ activeTab, onNavigate }: LegalCenterPageProps)
 
         <p className="font-[var(--font-inter)] text-[13.5px] sm:text-[15px] leading-[1.45] text-ink max-w-2xl">
           {activeTab === 'privacy' &&
-            'Drafted in compliance with India’s Digital Personal Data Protection Act (DPDP Act, 2023) & IT Act 2000, United States Federal & State Privacy Laws (CCPA/CPRA, VCDPA, CPA, CTDPA, TDPSA, COPPA), EU/UK GDPR, Brazil LGPD, Canada PIPEDA, and global privacy standards.'}
+            'Designed to support user privacy rights under India’s Digital Personal Data Protection Act (DPDP Act, 2023) & IT Act 2000, United States Federal & State Privacy Laws (CCPA/CPRA, VCDPA, CPA, CTDPA, TDPSA, COPPA), EU/UK GDPR, Brazil LGPD, and Canada PIPEDA. Informational template — operators should review with qualified legal counsel.'}
           {activeTab === 'privacy-requests' &&
-            'Exercise your statutory rights as a Data Principal (India DPDP Act), Consumer (US CCPA/CPRA & State Laws), or Data Subject (EU/UK GDPR & Global Laws) — or inspect and erase your local browser storage immediately.'}
+            'Inspect, export, or erase your local browser storage in one click, or generate a structured Privacy Request receipt to email directly to the site operator.'}
           {activeTab === 'terms' &&
-            'Legally binding Terms of Service governing public use of FreeStack across India (IT Act 2000, Intermediary Rules 2021, Indian Contract Act 1872), the United States (47 U.S.C. § 230, DMCA 17 U.S.C. § 512), and international jurisdictions.'}
+            'Terms of Service governing public use of the FreeStack informational directory, source citations, community correction submissions, and third-party outbound links.'}
         </p>
 
         {/* Top Legal Section Switcher Tabs */}
@@ -391,20 +397,20 @@ export function LegalCenterPage({ activeTab, onNavigate }: LegalCenterPageProps)
           <section className="grid grid-cols-1 md:grid-cols-4 gap-3.5">
             {[
               {
-                title: 'Zero Mandatory Accounts',
-                desc: 'Browse all 43+ verified developer offers, quotas, and source citations publicly without creating an account or providing personal identifiers.',
+                title: 'Zero Accounts or Cookies',
+                desc: 'Browse all 7,880+ developer offers, quotas, and source citations publicly without creating an account, setting cookies, or providing personal identifiers.',
               },
               {
-                title: 'Zero Sale or Cross-Site Ads',
-                desc: 'FreeStack never sells, rents, or shares personal data for cross-context behavioral advertising under CCPA/CPRA, DPDP Act, or GDPR.',
+                title: 'Zero Third-Party Trackers',
+                desc: 'Fonts and provider logos are self-hosted on this origin. FreeStack makes zero browser requests to Google Fonts, remote favicon CDNs, or ad networks.',
               },
               {
-                title: 'Client-Side First Storage',
-                desc: 'Theme mode and intro animation states live strictly inside your browser’s local/session storage and can be wiped in one click.',
+                title: 'Transparent Server Queue',
+                desc: 'Voluntary community reports (POST /api/reports) store only the submitted offer name, report category, factual details, and source URL in a maintainer review queue.',
               },
               {
-                title: 'Global Privacy Control (GPC)',
-                desc: 'We automatically honor Sec-GPC: 1 browser signals and universal opt-out mechanisms under California, Colorado, and Connecticut law.',
+                title: 'Standard Edge Access Logs',
+                desc: 'Our hosting infrastructure and reverse proxy process standard transient HTTP request metadata (IP address, User-Agent, rate-limit counters) strictly for security and abuse prevention.',
               },
             ].map((card) => (
               <div
@@ -570,30 +576,30 @@ export function LegalCenterPage({ activeTab, onNavigate }: LegalCenterPageProps)
                 <div className="flex items-center gap-2 text-midnight-mouth">
                   <Building2 className="w-4 h-4 shrink-0" aria-hidden="true" />
                   <h3 className="font-[var(--font-wallop)] font-bold text-[16px]">
-                    Statutory Grievance &amp; DPO Contacts
+                    Operator Privacy &amp; Grievance Contacts
                   </h3>
                 </div>
                 <div className="font-[var(--font-inter)] text-[12.5px] text-midnight-mouth space-y-1.5">
                   <p>
                     <strong>India Grievance Officer (IT Rules &amp; DPDP Act):</strong>
                     <br />
-                    Office of the Grievance Officer — FreeStack India Compliance
+                    Maintainer: Aniket Kolse (<a href="https://github.com/aniketkolse" target="_blank" rel="noopener noreferrer" className="underline">github.com/aniketkolse</a>)
                     <br />
-                    Email: <code className="font-[var(--font-mono)]">grievance-india@freestack.dev</code>
+                    Email: <code className="font-[var(--font-mono)]">aniketkolse07@gmail.com</code>
                     <br />
-                    SLA: 24h Acknowledgement · 15 Days Resolution
+                    Target SLA: 24h Acknowledgement · 15 Days Resolution
                   </p>
                   <p>
-                    <strong>US Privacy &amp; DMCA Agent:</strong>
+                    <strong>US Privacy &amp; DMCA Contact:</strong>
                     <br />
-                    Email: <code className="font-[var(--font-mono)]">privacy-us@freestack.dev</code>
+                    Email: <code className="font-[var(--font-mono)]">aniketkolse07@gmail.com</code>
                     <br />
-                    SLA: 10 Business Days Ack · 45 Days Resolution
+                    Target SLA: 10 Business Days Ack · 45 Days Resolution
                   </p>
                   <p>
-                    <strong>EU / UK / Global Data Protection Officer:</strong>
+                    <strong>EU / UK / Global Privacy Contact:</strong>
                     <br />
-                    Email: <code className="font-[var(--font-mono)]">dpo-eu@freestack.dev</code>
+                    Email: <code className="font-[var(--font-mono)]">aniketkolse07@gmail.com</code>
                   </p>
                 </div>
               </div>
@@ -623,6 +629,10 @@ export function LegalCenterPage({ activeTab, onNavigate }: LegalCenterPageProps)
               </div>
             </div>
 
+            <div className="bg-paper rounded-[14px] p-3.5 text-[12.5px] font-[var(--font-inter)] text-ink/90 border border-midnight-mouth/8">
+              <strong>How this portal works (Local-First Architecture):</strong> Submitting this form creates a timestamped receipt in your browser&apos;s <code className="font-[var(--font-mono)]">localStorage</code> and prepares a formatted email to the designated privacy contact (<code className="font-[var(--font-mono)]">{currentSpec.officerEmail}</code>). No personal data from this form is transmitted to FreeStack&apos;s server unless you send the generated email.
+            </div>
+
             {latestTicket && (
               <div
                 role="status"
@@ -633,7 +643,7 @@ export function LegalCenterPage({ activeTab, onNavigate }: LegalCenterPageProps)
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-5 h-5 shrink-0" aria-hidden="true" />
                     <span className="font-[var(--font-wallop)] font-bold text-[15px]">
-                      Statutory Request Logged — Ticket {latestTicket.ticketId}
+                      Local Receipt Generated — Ticket {latestTicket.ticketId}
                     </span>
                   </div>
                   <span className="font-[var(--font-mono)] text-[11.5px] bg-white/80 px-2.5 py-0.5 rounded-full">
@@ -641,10 +651,19 @@ export function LegalCenterPage({ activeTab, onNavigate }: LegalCenterPageProps)
                   </span>
                 </div>
                 <p className="font-[var(--font-inter)] text-[12.5px] leading-[1.45]">
-                  Applicable statute: <strong>{latestTicket.applicableLaw}</strong>. Statutory acknowledgement due by{' '}
-                  <strong>{formatDate(latestTicket.ackDueBy)}</strong> and final resolution due by{' '}
-                  <strong>{formatDate(latestTicket.resolutionDueBy)}</strong>.
+                  Saved locally in your browser under <strong>{latestTicket.applicableLaw}</strong>. Target acknowledgement window:{' '}
+                  <strong>{formatDate(latestTicket.ackDueBy)}</strong>; target resolution window:{' '}
+                  <strong>{formatDate(latestTicket.resolutionDueBy)}</strong>. To transmit this request to the site operator, click below to send via your email client:
                 </p>
+                <div>
+                  <a
+                    href={`mailto:${encodeURIComponent(currentSpec.officerEmail)}?subject=${encodeURIComponent(`[${latestTicket.ticketId}] Privacy Request (${latestTicket.requestType})`)}&body=${encodeURIComponent(`Ticket ID: ${latestTicket.ticketId}\nJurisdiction: ${latestTicket.jurisdiction}\nRequest Type: ${latestTicket.requestType}\nName: ${latestTicket.fullName}\nEmail: ${latestTicket.email}\nDetails: ${latestTicket.details}`)}`}
+                    className="inline-flex items-center gap-1.5 bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[12px] rounded-full px-3.5 py-1.5"
+                  >
+                    <Send className="w-3 h-3" aria-hidden="true" />
+                    <span>Email Receipt to {currentSpec.officerEmail}</span>
+                  </a>
+                </div>
               </div>
             )}
 
@@ -734,7 +753,7 @@ export function LegalCenterPage({ activeTab, onNavigate }: LegalCenterPageProps)
                     type="text"
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
-                    placeholder="e.g., Aniket Kolse"
+                    placeholder="e.g., Aarav Sharma / Jane Doe"
                     className="bg-paper text-midnight-mouth font-[var(--font-inter)] text-[13.5px] rounded-[12px] px-3.5 py-2.5 min-h-[40px] border border-midnight-mouth/12"
                   />
                 </div>
@@ -1051,7 +1070,7 @@ export function LegalCenterPage({ activeTab, onNavigate }: LegalCenterPageProps)
                     <strong>User Obligations under Rule 3(1)(b) of IT (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021:</strong> When submitting community corrections or resource links, you shall not host, display, upload, modify, publish, transmit, store, update, or share any information that belongs to another person without right, is defamatory, obscene, invasive of privacy, infringes any patent/trademark/copyright, deceives or misleads the addressee, contains software viruses or malicious code, or threatens the unity, integrity, defence, security or sovereignty of India.
                   </li>
                   <li>
-                    <strong>Intermediary Safe Harbour (Section 79, IT Act 2000):</strong> With respect to third-party links and community-submitted correction reports, FreeStack operates as an information curator/intermediary and responds promptly to lawful takedown notices sent to <code className="font-[var(--font-mono)]">grievance-india@freestack.dev</code> within 24 hours.
+                    <strong>Intermediary Safe Harbour (Section 79, IT Act 2000):</strong> With respect to third-party links and community-submitted correction reports, FreeStack operates as an information curator/intermediary and responds promptly to lawful takedown notices sent to <code className="font-[var(--font-mono)]">aniketkolse07@gmail.com</code> within 24 hours.
                   </li>
                 </ul>
               </article>
@@ -1071,7 +1090,7 @@ export function LegalCenterPage({ activeTab, onNavigate }: LegalCenterPageProps)
                     <strong>47 U.S.C. § 230 Protection:</strong> FreeStack is an interactive computer service cataloging third-party provider offerings and documentation. FreeStack shall not be treated as the publisher or speaker of any information provided by third-party information content providers.
                   </li>
                   <li>
-                    <strong>DMCA Copyright Policy (17 U.S.C. § 512):</strong> If you believe any content or metadata on FreeStack infringes your copyright, please send a written notice containing the elements required by 17 U.S.C. § 512(c)(3) to our Designated DMCA Agent at <code className="font-[var(--font-mono)]">dmca@freestack.dev</code>.
+                    <strong>DMCA Copyright Policy (17 U.S.C. § 512):</strong> If you believe any content or metadata on FreeStack infringes your copyright, please send a written notice containing the elements required by 17 U.S.C. § 512(c)(3) to our Designated DMCA Contact at <code className="font-[var(--font-mono)]">aniketkolse07@gmail.com</code>.
                   </li>
                   <li>
                     <strong>“AS-IS” Disclaimer of Warranties &amp; Limitation of Liability:</strong> TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW IN THE UNITED STATES, INDIA, AND GLOBALLY, FREESTACK IS PROVIDED “AS IS” AND “AS AVAILABLE” WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. IN NO EVENT SHALL FREESTACK OR ITS CONTRIBUTORS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, OR UNEXPECTED CLOUD BILLING DAMAGES.

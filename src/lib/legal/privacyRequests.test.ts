@@ -22,11 +22,11 @@ test('privacyRequests (India DPDP Act, US CCPA/CPRA, EU GDPR & Global compliance
     const validIndiaNominee = validatePrivacyRequestInput({
       jurisdiction: 'india',
       requestType: 'nominate_representative',
-      fullName: 'Aniket Kolse',
-      email: 'aniket@example.in',
+      fullName: 'Aarav Sharma',
+      email: 'aarav@example.in',
       details: 'Nominating representative under Section 14 of the DPDP Act 2023.',
-      nomineeName: 'Rohan Kolse',
-      nomineeContact: 'rohan@example.in',
+      nomineeName: 'Priya Sharma',
+      nomineeContact: 'priya@example.in',
       verifiedIdentity: true,
     });
     assert.equal(validIndiaNominee.valid, true);
@@ -39,8 +39,8 @@ test('privacyRequests (India DPDP Act, US CCPA/CPRA, EU GDPR & Global compliance
       {
         jurisdiction: 'india',
         requestType: 'grievance_redressal',
-        fullName: 'Aniket Kolse',
-        email: 'aniket@example.in',
+        fullName: 'Aarav Sharma',
+        email: 'aarav@example.in',
         stateOrRegion: 'Maharashtra, India',
         details: 'Requesting formal access summary and grievance verification under DPDP Act.',
         verifiedIdentity: true,

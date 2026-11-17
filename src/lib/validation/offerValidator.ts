@@ -109,11 +109,135 @@ export const LEARNING_RESOURCE_TYPES = new Set([
 
 const VALID_CONFIDENCES = new Set(['high', 'medium', 'low']);
 
+export const DISALLOWED_URL_SHORTENERS = new Set([
+  'bit.ly',
+  'www.bit.ly',
+  't.co',
+  'www.t.co',
+  'tinyurl.com',
+  'www.tinyurl.com',
+  'goo.gl',
+  'ow.ly',
+  'is.gd',
+  'buff.ly',
+  'rebrand.ly',
+  'cutt.ly',
+  'shorturl.at',
+  'rb.gy',
+  'tiny.cc',
+  'bitly.com',
+  'bl.ink',
+  'lnkd.in',
+  's.id',
+  'v.gd',
+]);
+
+export const ALLOWLISTED_PUNYCODE_DOMAINS = new Set([
+  'xn--shknhintanyt-gcb8w.org',
+  'www.xn--shknhintanyt-gcb8w.org',
+  'xn--80aesfpebagmfblc0a.xn--p1ai',
+  'xn--d1acpjx3f.xn--p1ai',
+]);
+
+export const ALLOWLISTED_SHORTENER_DOC_URLS = new Set([
+  'https://cutt.ly/api-documentation/cuttly-links-api',
+  'https://tinyurl.com/app/dev',
+]);
+
+const TRACKING_QUERY_PARAM_REGEX =
+  /^(?:utm_[a-z0-9_]+|ref|aff|affiliate|affiliate_id|partner|partner_id|click_id|fbclid|gclid|msclkid|mc_eid|yclid)$/i;
+
+const CONTROL_OR_BIDI_CHAR_REGEX =
+  /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F\u200B-\u200F\u202A-\u202E\u2066-\u2069\uFEFF]/;
+
+const DANGEROUS_HTML_OR_XSS_REGEX =
+  /<\s*\/?\s*(?:script|iframe|object|embed|svg|img|style|link|meta|base|form|input|button|textarea|applet|frame|frameset)\b|javascript\s*:|on(?:error|load|click|mouseover|focus)\s*=/i;
+
+export function hasUnsafeTextContent(value: string | null | undefined): string | null {
+  if (!value || typeof value !== 'string') return null;
+  if (CONTROL_OR_BIDI_CHAR_REGEX.test(value)) {
+    return 'contains disallowed control, zero-width, or bidirectional override characters';
+  }
+  if (DANGEROUS_HTML_OR_XSS_REGEX.test(value)) {
+    return 'contains disallowed HTML tags or script/event handler patterns';
+  }
+  return null;
+}
+
+export function isPrivateOrLiteralHost(hostname: string): boolean {
+  const clean = hostname.trim().toLowerCase().replace(/^\[|\]$/g, '');
+  if (!clean) return true;
+
+  if (
+    clean === 'localhost' ||
+    clean.endsWith('.localhost') ||
+    clean.endsWith('.local') ||
+    clean.endsWith('.internal') ||
+    clean.endsWith('.home.arpa') ||
+    clean.endsWith('.arpa') ||
+    clean.endsWith('.lan')
+  ) {
+    return true;
+  }
+
+  // IPv6 literal
+  if (clean.includes(':')) {
+    return true;
+  }
+
+  // IPv4 dotted quad or numeric IP encoding
+  if (/^(?:0x[0-9a-f]+|\d+)$/i.test(clean)) {
+    return true;
+  }
+  if (/^\d+(?:\.\d+){1,3}$/.test(clean)) {
+    return true;
+  }
+
+  const parts = clean.split('.');
+  if (parts.length < 2) return true;
+  const tld = parts[parts.length - 1];
+  if (!tld || tld.length < 2 || /^\d+$/.test(tld)) {
+    return true;
+  }
+
+  return false;
+}
+
+/**
+ * Validates that a URL is a safe, public HTTPS URL without credentials,
+ * IP literals, localhost/private hosts, URL shorteners, unallowlisted punycode,
+ * or affiliate/tracking query parameters.
+ */
 export function isSafeHttpsUrl(url: string | null | undefined): boolean {
   if (!url || typeof url !== 'string') return false;
+  if (url.length > 2048) return false;
+  if (/[\s\u0000-\u001F\u007F]/.test(url)) return false;
+
   try {
     const parsed = new URL(url);
-    return parsed.protocol === 'https:';
+    if (parsed.protocol !== 'https:') return false;
+    if (parsed.username !== '' || parsed.password !== '') return false;
+    if (parsed.port !== '' && parsed.port !== '443') return false;
+
+    const host = parsed.hostname.toLowerCase();
+    if (isPrivateOrLiteralHost(host)) return false;
+    if (
+      DISALLOWED_URL_SHORTENERS.has(host) &&
+      !ALLOWLISTED_SHORTENER_DOC_URLS.has(parsed.toString())
+    ) {
+      return false;
+    }
+    if (host.includes('xn--') && !ALLOWLISTED_PUNYCODE_DOMAINS.has(host)) {
+      return false;
+    }
+
+    for (const key of parsed.searchParams.keys()) {
+      if (TRACKING_QUERY_PARAM_REGEX.test(key)) {
+        return false;
+      }
+    }
+
+    return true;
   } catch {
     return false;
   }
@@ -142,18 +266,40 @@ export function validateOffer(
   if (!offer.identity || typeof offer.identity !== 'object') {
     errors.push('Missing identity block');
   } else {
-    if (!offer.identity.id || offer.identity.id.trim().length < 2) {
-      errors.push('Missing or short identity.id');
+    if (!offer.identity.id || offer.identity.id.trim().length < 2 || offer.identity.id.length > 140) {
+      errors.push('Missing or out-of-bounds identity.id (2..140 chars)');
     }
-    if (!offer.identity.name || offer.identity.name.trim().length < 2) {
-      errors.push('Missing or short identity.name');
+    if (
+      !offer.identity.name ||
+      offer.identity.name.trim().length < 2 ||
+      offer.identity.name.length > 180
+    ) {
+      errors.push('Missing or out-of-bounds identity.name (2..180 chars)');
+    } else {
+      const nameIssue = hasUnsafeTextContent(offer.identity.name);
+      if (nameIssue) errors.push(`identity.name ${nameIssue}`);
     }
-    if (!offer.identity.slug || !/^[a-z0-9-]+$/.test(offer.identity.slug)) {
+
+    if (
+      !offer.identity.slug ||
+      offer.identity.slug.length < 2 ||
+      offer.identity.slug.length > 120 ||
+      !/^[a-z0-9-]+$/.test(offer.identity.slug)
+    ) {
       errors.push(`Invalid identity.slug format: ${String(offer.identity.slug)}`);
     }
-    if (!offer.identity.provider || offer.identity.provider.trim().length < 1) {
-      errors.push('Missing identity.provider');
+
+    if (
+      !offer.identity.provider ||
+      offer.identity.provider.trim().length < 1 ||
+      offer.identity.provider.length > 140
+    ) {
+      errors.push('Missing or out-of-bounds identity.provider (1..140 chars)');
+    } else {
+      const providerIssue = hasUnsafeTextContent(offer.identity.provider);
+      if (providerIssue) errors.push(`identity.provider ${providerIssue}`);
     }
+
     if (
       offer.identity.logo_url !== undefined &&
       offer.identity.logo_url !== null &&
@@ -202,8 +348,15 @@ export function validateOffer(
   }
 
   // Description
-  if (!offer.description || offer.description.trim().length < 10) {
-    errors.push('Description must be at least 10 characters');
+  if (
+    !offer.description ||
+    offer.description.trim().length < 10 ||
+    offer.description.length > 2000
+  ) {
+    errors.push('Description must be between 10 and 2000 characters');
+  } else {
+    const descIssue = hasUnsafeTextContent(offer.description);
+    if (descIssue) errors.push(`description ${descIssue}`);
   }
 
   // Access
@@ -212,6 +365,11 @@ export function validateOffer(
   } else {
     if (!Array.isArray(offer.access.free_limits)) {
       errors.push('access.free_limits must be an array');
+    } else {
+      for (const lim of offer.access.free_limits) {
+        const limIssue = hasUnsafeTextContent(lim.name) || hasUnsafeTextContent(String(lim.value ?? ''));
+        if (limIssue) errors.push(`access.free_limits ${limIssue}`);
+      }
     }
     if (!Array.isArray(offer.access.restrictions)) {
       errors.push('access.restrictions must be an array');
@@ -269,12 +427,12 @@ export function validateOffer(
     errors.push('Missing links block');
   } else {
     if (!isSafeHttpsUrl(offer.links.official)) {
-      errors.push(`links.official must be valid HTTPS: ${String(offer.links.official)}`);
+      errors.push(`links.official must be valid safe HTTPS URL: ${String(offer.links.official)}`);
     }
     for (const key of ['signup', 'documentation', 'pricing'] as const) {
       const val = offer.links[key];
       if (val !== undefined && val !== null && !isSafeHttpsUrl(val)) {
-        errors.push(`links.${key} must be valid HTTPS when provided: ${val}`);
+        errors.push(`links.${key} must be valid safe HTTPS URL when provided: ${val}`);
       }
     }
   }
@@ -335,7 +493,7 @@ export function validateOffer(
           sourceIds.add(src.id);
         }
         if (!isSafeHttpsUrl(src.url)) {
-          errors.push(`Evidence source "${src.id}" URL must be HTTPS: ${String(src.url)}`);
+          errors.push(`Evidence source "${src.id}" URL must be safe HTTPS: ${String(src.url)}`);
         }
         if (!isIsoDateString(src.checked_at)) {
           errors.push(`Evidence source "${src.id}" checked_at must be YYYY-MM-DD`);
@@ -354,6 +512,9 @@ export function validateOffer(
         }
         if (!claim.quote || claim.quote.trim().length < 3) {
           errors.push(`Evidence claim for "${claim.field_path}" requires a supporting quote`);
+        } else {
+          const quoteIssue = hasUnsafeTextContent(claim.quote);
+          if (quoteIssue) errors.push(`Evidence claim quote ${quoteIssue}`);
         }
         if (!VALID_CONFIDENCES.has(claim.confidence)) {
           errors.push(`Invalid claim confidence: ${String(claim.confidence)}`);
@@ -488,7 +649,7 @@ export function validateSourceRegistry(registry: SourceRegistry): ValidationResu
     }
 
     if (!isSafeHttpsUrl(src.entry_url)) {
-      errors.push(`Source "${src.id}" entry_url must be HTTPS: ${String(src.entry_url)}`);
+      errors.push(`Source "${src.id}" entry_url must be safe HTTPS: ${String(src.entry_url)}`);
     }
     if (!VALID_CATEGORIES.has(src.category)) {
       errors.push(`Source "${src.id}" has invalid category: ${String(src.category)}`);
@@ -572,4 +733,3 @@ export function generateDataQualityReport(
     latestVerificationDate,
   };
 }
-

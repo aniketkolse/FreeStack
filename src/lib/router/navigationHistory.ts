@@ -20,6 +20,29 @@ export interface BackNavigationMeta {
   label: string;
 }
 
+/**
+ * Ensures any client-side navigation target is a safe, same-origin internal path
+ * starting with a single `/` (never `//`, `/\`, `http:`, `javascript:`, `data:`, or control chars).
+ */
+export function sanitizeInternalPath(rawPath: string | null | undefined, fallback = '/'): string {
+  if (!rawPath || typeof rawPath !== 'string') return fallback;
+  const cleaned = rawPath.replace(/[\u0000-\u001F\u007F]/g, '').trim();
+  if (!cleaned || cleaned.length > 512) return fallback;
+  if (!cleaned.startsWith('/')) return fallback;
+  if (cleaned.startsWith('//') || cleaned.startsWith('/\\')) return fallback;
+
+  const lower = cleaned.toLowerCase();
+  if (
+    lower.startsWith('/%2f') ||
+    lower.startsWith('/%5c') ||
+    /^[a-z][a-z0-9+.-]*:/i.test(cleaned)
+  ) {
+    return fallback;
+  }
+
+  return cleaned;
+}
+
 export function createInitialHistoryState(
   initialUrl: string,
   existingStateId?: number
@@ -28,7 +51,7 @@ export function createInitialHistoryState(
     ? existingStateId
     : 0;
   return {
-    entries: [{ id, url: initialUrl || '/', scrollY: 0 }],
+    entries: [{ id, url: sanitizeInternalPath(initialUrl, '/'), scrollY: 0 }],
     cursor: 0,
     nextId: id + 1,
   };
@@ -39,6 +62,7 @@ export function pushHistoryEntry(
   toUrl: string,
   currentScrollY = 0
 ): NavigationStackState {
+  const safeUrl = sanitizeInternalPath(toUrl, '/');
   const truncated = state.entries.slice(0, state.cursor + 1).map((entry, idx) =>
     idx === state.cursor ? { ...entry, scrollY: Math.max(0, currentScrollY) } : entry
   );
@@ -46,7 +70,7 @@ export function pushHistoryEntry(
   const nextId = state.nextId;
   const nextEntries: HistoryEntry[] = [
     ...truncated,
-    { id: nextId, url: toUrl, scrollY: 0 },
+    { id: nextId, url: safeUrl, scrollY: 0 },
   ];
 
   return {
@@ -61,11 +85,12 @@ export function replaceHistoryEntry(
   toUrl: string,
   currentScrollY?: number
 ): NavigationStackState {
+  const safeUrl = sanitizeInternalPath(toUrl, '/');
   const nextEntries = state.entries.map((entry, idx) => {
     if (idx !== state.cursor) return entry;
     return {
       ...entry,
-      url: toUrl,
+      url: safeUrl,
       scrollY:
         typeof currentScrollY === 'number'
           ? Math.max(0, currentScrollY)
@@ -84,11 +109,12 @@ export function syncPopStateEntry(
   targetUrl: string,
   historyStateId?: number
 ): NavigationStackState {
+  const safeUrl = sanitizeInternalPath(targetUrl, '/');
   if (typeof historyStateId === 'number' && Number.isFinite(historyStateId)) {
     const matchedById = state.entries.findIndex((entry) => entry.id === historyStateId);
     if (matchedById !== -1) {
       const nextEntries = state.entries.map((entry, idx) =>
-        idx === matchedById ? { ...entry, url: targetUrl } : entry
+        idx === matchedById ? { ...entry, url: safeUrl } : entry
       );
       return {
         ...state,
@@ -99,7 +125,7 @@ export function syncPopStateEntry(
   }
 
   for (let i = state.cursor - 1; i >= 0; i--) {
-    if (state.entries[i].url === targetUrl) {
+    if (state.entries[i].url === safeUrl) {
       return {
         ...state,
         cursor: i,
@@ -108,7 +134,7 @@ export function syncPopStateEntry(
   }
 
   for (let i = state.cursor + 1; i < state.entries.length; i++) {
-    if (state.entries[i].url === targetUrl) {
+    if (state.entries[i].url === safeUrl) {
       return {
         ...state,
         cursor: i,
@@ -118,7 +144,7 @@ export function syncPopStateEntry(
 
   const nextId = state.nextId;
   return {
-    entries: [...state.entries, { id: nextId, url: targetUrl, scrollY: 0 }],
+    entries: [...state.entries, { id: nextId, url: safeUrl, scrollY: 0 }],
     cursor: state.entries.length,
     nextId: nextId + 1,
   };
@@ -142,7 +168,11 @@ export function getBackNavigationMeta(
   fallbackPath: string,
   resolvers: BackLabelResolvers = {}
 ): BackNavigationMeta {
-  const targetHref = previousPath && previousPath.trim() ? previousPath : fallbackPath;
+  const safeFallback = sanitizeInternalPath(fallbackPath, '/explore');
+  const targetHref =
+    previousPath && previousPath.trim()
+      ? sanitizeInternalPath(previousPath, safeFallback)
+      : safeFallback;
   const pathname = targetHref.split(/[?#]/)[0] || '/';
 
   if (pathname === '/' || pathname === '') {

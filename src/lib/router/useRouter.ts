@@ -6,6 +6,7 @@ import {
   getPreviousUrl,
   pushHistoryEntry,
   replaceHistoryEntry,
+  sanitizeInternalPath,
   syncPopStateEntry,
   type NavigationStackState,
 } from './navigationHistory';
@@ -22,8 +23,9 @@ export interface NavigateOptions {
 }
 
 function readLocation(): RouteLocation {
-  const pathname = window.location.pathname || '/';
-  const search = window.location.search || '';
+  const pathname = sanitizeInternalPath(window.location.pathname || '/', '/');
+  const rawSearch = window.location.search || '';
+  const search = rawSearch.length <= 512 ? rawSearch : rawSearch.slice(0, 512);
   return {
     pathname,
     search,
@@ -32,7 +34,10 @@ function readLocation(): RouteLocation {
 }
 
 function readFullUrl(): string {
-  return (window.location.pathname || '/') + (window.location.search || '');
+  return sanitizeInternalPath(
+    (window.location.pathname || '/') + (window.location.search || ''),
+    '/'
+  );
 }
 
 function readStateId(state: unknown): number | undefined {
@@ -104,8 +109,9 @@ export function useRouter() {
   const navigate = useCallback(
     (to: string, options: NavigateOptions = {}) => {
       const { replace = false, scrollTop = true } = options;
+      const safeTarget = sanitizeInternalPath(to, '/');
       const current = readFullUrl();
-      if (to === current) {
+      if (safeTarget === current) {
         if (scrollTop) {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -113,14 +119,14 @@ export function useRouter() {
       }
 
       if (replace) {
-        const nextStack = replaceHistoryEntry(stackRef.current!, to, window.scrollY);
+        const nextStack = replaceHistoryEntry(stackRef.current!, safeTarget, window.scrollY);
         const entry = getCurrentHistoryEntry(nextStack);
-        window.history.replaceState(buildHistoryState(entry.id), '', to);
+        window.history.replaceState(buildHistoryState(entry.id), '', safeTarget);
         syncMetaFromStack(nextStack);
       } else {
-        const nextStack = pushHistoryEntry(stackRef.current!, to, window.scrollY);
+        const nextStack = pushHistoryEntry(stackRef.current!, safeTarget, window.scrollY);
         const entry = getCurrentHistoryEntry(nextStack);
-        window.history.pushState(buildHistoryState(entry.id), '', to);
+        window.history.pushState(buildHistoryState(entry.id), '', safeTarget);
         syncMetaFromStack(nextStack);
       }
 
@@ -139,7 +145,7 @@ export function useRouter() {
         window.history.back();
         return;
       }
-      navigate(fallbackPath);
+      navigate(sanitizeInternalPath(fallbackPath, '/explore'));
     },
     [navigate]
   );

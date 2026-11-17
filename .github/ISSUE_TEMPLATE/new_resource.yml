@@ -1,0 +1,59 @@
+name: Suggest a New Free Resource
+description: Propose a free developer tool, AI model, MCP server, API, learning resource, or student benefit
+title: "[New Resource]: "
+labels: ["new-resource", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Suggest a genuinely free developer resource. Remember: no affiliate links, no URL shorteners, and official HTTPS sources only.
+  - type: input
+    id: name
+    attributes:
+      label: Resource Name & Provider
+      placeholder: e.g., Cloudflare Workers AI (Cloudflare)
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - AI Models (ai-ml)
+        - MCP Servers (mcp)
+        - APIs & Integrations (apis-integrations)
+        - Frontend & Design Tools (design-creative)
+        - Cloud & Hosting (cloud-hosting)
+        - Databases & Backend (databases-backend)
+        - Developer Tools (developer-tools)
+        - Learning & Study Materials (learning-study)
+        - Student Benefits (student-academic-benefits)
+        - Security & Networking (security-networking)
+        - Productivity & Collaboration (productivity-collaboration)
+    validations:
+      required: true
+  - type: dropdown
+    id: card_required
+    attributes:
+      label: Payment Card Requirement
+      options:
+        - No credit card required (not_required)
+        - Credit card required for verification (required)
+        - Conditional (conditional)
+        - Unknown / not stated in docs (unknown)
+    validations:
+      required: true
+  - type: input
+    id: official_url
+    attributes:
+      label: Official HTTPS Website & Pricing/Docs URL
+      placeholder: https://developers.cloudflare.com/workers-ai/platform/pricing/
+    validations:
+      required: true
+  - type: textarea
+    id: free_limits
+    attributes:
+      label: What is free and what are the exact limits?
+      description: Quote the official free quotas, rate limits, or open-source license
+    validations:
+      required: true

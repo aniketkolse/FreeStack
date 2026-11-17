@@ -3,7 +3,6 @@ import type { Offer } from '../../types/resource';
 import {
   resolveOfferBrandLogoSrc,
   resolveOfferLogoSrc,
-  resolveOfferRemoteBrandUrl,
 } from '../../lib/offers/offerLogos';
 import { CategoryStickerIcon } from '../illustrations/TocaStickers';
 
@@ -18,32 +17,31 @@ export function OfferLogo({
   imgClassName = 'w-9 h-9 object-contain',
   fallbackClassName = 'w-9 h-9',
 }: OfferLogoProps) {
-  const [remoteFailed, setRemoteFailed] = useState(false);
   const [localFailed, setLocalFailed] = useState(false);
 
   const brandSrc = resolveOfferBrandLogoSrc(offer);
-  const remoteSrc = !brandSrc ? resolveOfferRemoteBrandUrl(offer) : null;
   const fallbackLocalSrc = resolveOfferLogoSrc(offer);
+  const candidateSrc = brandSrc || fallbackLocalSrc;
 
-  const activeSrc = brandSrc || (!remoteFailed && remoteSrc) || (!localFailed && fallbackLocalSrc);
+  // Enforce same-origin /logos/* paths only (zero third-party hotlinking or favicon leaks)
+  const safeLocalSrc =
+    !localFailed &&
+    candidateSrc &&
+    /^\/logos\/[a-z0-9-]+\.(?:svg|png|jpg)$/i.test(candidateSrc)
+      ? candidateSrc
+      : null;
 
-  if (activeSrc) {
-    const cacheBustedSrc = activeSrc.startsWith('/logos/')
-      ? `${activeSrc}?v=official4`
-      : activeSrc;
-
+  if (safeLocalSrc) {
     return (
       <img
-        src={cacheBustedSrc}
+        src={`${safeLocalSrc}?v=official4`}
         alt={`${offer.identity.provider} logo`}
         loading="lazy"
+        decoding="async"
+        referrerPolicy="no-referrer"
         className={`${imgClassName} rounded-[8px]`}
         onError={() => {
-          if (!brandSrc && remoteSrc && !remoteFailed) {
-            setRemoteFailed(true);
-          } else {
-            setLocalFailed(true);
-          }
+          setLocalFailed(true);
         }}
       />
     );

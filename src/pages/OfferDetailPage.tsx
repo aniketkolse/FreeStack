@@ -36,7 +36,7 @@ import {
 } from '../lib/utils/formatters';
 import { shareOrCopyOffer, useSavedOffers } from '../lib/saved/savedOffers';
 import { getBackNavigationMeta } from '../lib/router/navigationHistory';
-import { isSafeHttpsUrl } from '../lib/validation/offerValidator';
+import { safeExternalUrl } from '../lib/utils/safeExternalUrl';
 import { getCategoryBgClass } from '../components/illustrations/TocaStickers';
 import { OfferLogo } from '../components/offers/OfferLogo';
 import { ResourceCard } from '../components/offers/ResourceCard';
@@ -536,9 +536,9 @@ export function OfferDetailPage({
                         )}
                       </div>
 
-                      {src && isSafeHttpsUrl(src.url) && (
+                      {src && safeExternalUrl(src.url) && (
                         <a
-                          href={src.url}
+                          href={safeExternalUrl(src.url)!}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="font-[var(--font-inter)] text-[12px] text-midnight-mouth underline underline-offset-4 break-all inline-flex items-center gap-1"
@@ -663,6 +663,10 @@ export function OfferDetailPage({
                   <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
                 </a>
               )}
+            </div>
+
+            <div className="bg-paper rounded-[14px] p-3.5 font-[var(--font-inter)] text-[12px] leading-[1.45] text-ink/80">
+              <strong className="text-midnight-mouth">Independent notice:</strong> FreeStack is not affiliated with {offer.identity.provider}. Free quotas, pricing, and card rules can change at any time—verify on the official page before use. Listing a tool, API, or MCP server is not a security audit; review permissions and source code before connecting credentials.
             </div>
 
             <button

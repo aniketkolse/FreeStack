@@ -1,0 +1,11 @@
+# FreeStack CODEOWNERS
+
+*                    @aniketkolse
+/data/               @aniketkolse
+/schema/             @aniketkolse
+/scripts/            @aniketkolse
+/server.ts           @aniketkolse
+/src/lib/server/     @aniketkolse
+/src/lib/validation/ @aniketkolse
+/.github/            @aniketkolse
+/SECURITY.md         @aniketkolse

@@ -8,6 +8,7 @@ import {
   getPreviousUrl,
   pushHistoryEntry,
   replaceHistoryEntry,
+  sanitizeInternalPath,
   syncPopStateEntry,
 } from './navigationHistory.ts';
 
@@ -124,3 +125,12 @@ test('getBackNavigationMeta resolves accurate contextual labels and preserves qu
     }
   );
 });
+
+test('sanitizeInternalPath blocks protocol-relative, external, and javascript URLs', () => {
+  assert.equal(sanitizeInternalPath('/explore?q=ai'), '/explore?q=ai');
+  assert.equal(sanitizeInternalPath('//evil.example.com/phish'), '/');
+  assert.equal(sanitizeInternalPath('/\\evil.example.com'), '/');
+  assert.equal(sanitizeInternalPath('https://evil.example.com'), '/');
+  assert.equal(sanitizeInternalPath('javascript:alert(1)'), '/');
+});
+

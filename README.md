@@ -102,15 +102,15 @@ Ordered **Most Popular → Least Popular** so everyday builder essentials appear
 ## 🚀 Run Locally in 60 Seconds
 
 ### Prerequisites
-- **Node.js** `>= 20` and **npm**
+- **Node.js** `>= 24.0.0` (pinned in `.nvmrc`) and **npm**
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/<your-username>/freestack.git
-cd freestack
+git clone https://github.com/aniketkolse/FreeStack.git
+cd FreeStack
 
-# 2. Install dependencies
-npm install
+# 2. Install locked dependencies
+npm ci
 
 # 3. (Optional) Copy environment config — public browsing needs no API keys
 cp .env.example .env
@@ -123,7 +123,7 @@ For production builds:
 
 ```bash
 npm run build
-npm start
+SITE_URL=https://your-domain.example.com NODE_ENV=production npm run start:prod
 ```
 
 ### Command Reference
@@ -131,58 +131,65 @@ npm start
 | Script | What It Does |
 | :--- | :--- |
 | `npm run dev` | Starts Express + Vite middleware on port `3000` |
-| `npm run build` | Compiles optimized production bundle into `dist/` |
-| `npm start` | Serves production Express server & static bundle |
+| `npm run build` | Compiles client bundle (`dist/`) and server bundle (`dist-server/server.js`) |
+| `npm run start:prod` | Runs the compiled production server (`node dist-server/server.js`) |
+| `npm run verify` | Full release gate: `lint` + `test` (`65` tests) + `validate:data` (`7,881` offers) + `build` |
 | `npm run lint` | Runs strict TypeScript compiler checks (`tsc --noEmit`) |
-| `npm test` | Executes the full unit & catalog contract test suite |
-| `npm run validate:data` | Validates all `7,881` offers against schema & integrity rules |
-| `npm run check:links` | Audits outbound `https://` links across the catalog |
+| `npm test` | Executes the unit, catalog contract, and server security test suite |
+| `npm run validate:data` | Validates all `7,881` offers against schema, HTTPS, and XSS/URL safety rules |
+| `npm run check:links` | Audits outbound `https://` links with SSRF/private-IP protection (`--dry-run` supported) |
+| `npm run export:reports` | Exports queued community reports to a timestamped JSON backup |
+| `npm run audit:prod` | Runs `npm audit --omit=dev --audit-level=high` |
 
 ---
 
 ## 🔌 API Endpoints & Catalog Rules
 
-FreeStack also ships a lightweight Express backend with safe outbound routing and live catalog endpoints:
+FreeStack ships a hardened Express backend with safe outbound routing, strict Zod validation, and rate-limited catalog endpoints:
 
 | Endpoint | Purpose |
 | :--- | :--- |
-| `GET /api/health` | Server health with live offer, category, and source counts |
-| `GET /api/offers` | Filterable JSON feed (`?q=`, `?category=`, `?card=`, `?pricing=`, `?sort=`) |
-| `GET /api/quality-report` | Catalog verification summary & source coverage metrics |
-| `GET /api/reports` & `POST /api/reports` | Community correction & resource submission queue |
-| `GET /go/:slug` | Safe allowlisted outbound redirect (`official`, `signup`, `docs`, `pricing`) — prevents open redirects |
-| `GET /sitemap.xml` & `GET /robots.txt` | Dynamic SEO sitemap across static hubs, categories, and all `7,881` resources |
+| `GET /api/health` | Server readiness with live offer and category counts |
+| `GET /api/offers` | Paginated, Zod-validated JSON feed (`?q=`, `?category=`, `?card=`, `?pricing=`, `?sort=`, `?limit=24&offset=0`, max `limit=100`) |
+| `GET /api/quality-report` | Catalog verification breakdown (`verified`, `unverified`, `needs_review`, `expired`) & source coverage |
+| `POST /api/reports` | Same-origin, rate-limited (`5/hr`), Zod-validated community correction & resource submission queue |
+| `GET /api/reports` | Disabled by default (`404`); requires `Authorization: Bearer <ADMIN_TOKEN>` (`>= 32` chars) when enabled |
+| `GET /go/:slug` | Safe allowlisted outbound redirect (`official`, `signup`, `docs`, `pricing`) with domain-family verification |
+| `GET /sitemap.xml` & `GET /robots.txt` | Cached SEO sitemap & robots rules built strictly from `SITE_URL` |
 
 <details>
 <summary><strong>📜 Contributing & Verification Guardrails (Expand to Read)</strong></summary>
 
-Every published resource is version-controlled as a dedicated JSON file under `data/offers/<category>/<slug>.json` so pricing or quota changes have clean Git diffs.
+Every published resource is version-controlled under `data/offers/<category>/` so pricing or quota changes have clean Git diffs. See [**CONTRIBUTING.md**](./CONTRIBUTING.md) for the full contributor workflow.
 
 Before opening a Pull Request:
-1. **HTTPS Only** — Official links, logos, and cited sources must use `https://`.
-2. **Evidence-Backed** — Verified entries cite official pricing or documentation URLs and factual claim snippets.
+1. **Official HTTPS Sources Only** — Official links, docs, and cited sources must use `https://` (no URL shorteners, IP literals, credentials, or `utm_*` tracking parameters).
+2. **Evidence-Backed** — Verified entries cite official pricing or documentation URLs and factual claim snippets; bulk-imported entries default to `status: "unverified"` until human review.
 3. **No Disguised Trials** — Time-limited plans must declare `pricing_model: "free_trial"` with an explicit `trial_period`.
 4. **Honest Unknowns** — Never guess missing card rules or quotas; preserve `"unknown"` when official docs are silent.
 5. **Pass All Checks**:
    ```bash
-   npm run validate:data && npm test && npm run lint
+   npm run verify
    ```
 
 </details>
 
 ---
 
-## 🔒 Security
+## 🔒 Security & Deployment
 
-FreeStack enforces `https://`-only URL contracts across all `7,881` offers, allowlisted `/go/:slug` outbound redirects (zero open-redirect risk), bounded request validation on community reports, and zero client-side secrets.
-
-Spotted a vulnerability, broken link validation bypass, or unsafe external target? Read our [**Security Policy**](./SECURITY.md) for responsible disclosure steps.
+- **Zero Third-Party Browser Requests**: Variable fonts (`@fontsource-variable/*`) and all `7,881` provider logos (`/logos/*`) are self-hosted on-origin under a strict Content Security Policy (`default-src 'self'`, `script-src 'self'`, `img-src 'self' data:`, `frame-ancestors 'none'`).
+- **Hardened Server & Outbound Redirects**: Enforces `helmet` security headers, `express-rate-limit`, Zod input schemas, SSRF-safe link checking, and domain-verified `/go/:slug` redirects.
+- **Deployment Guide**: See [**DEPLOY.md**](./DEPLOY.md) for production environment variables, reverse-proxy/TLS setup, and the 20-point launch security checklist.
+- **Vulnerability Disclosure**: Read our [**Security Policy**](./SECURITY.md) (also published at [`/.well-known/security.txt`](./public/.well-known/security.txt)) for responsible disclosure steps.
 
 ---
 
-## 📄 License
+## 📄 License & Attributions
 
-FreeStack is open-source software licensed under the **Apache License, Version 2.0** — see [**LICENSE**](./LICENSE) for full terms and conditions.
+- **License**: FreeStack is open-source software licensed under the **Apache License, Version 2.0** — see [**LICENSE**](./LICENSE) and [**NOTICE**](./NOTICE).
+- **Third-Party Catalog & Font Attributions**: See [**THIRD_PARTY_NOTICES.md**](./THIRD_PARTY_NOTICES.md) for MIT/OFL upstream dataset and font attributions.
+- **Non-Affiliation Disclaimer**: All third-party product names and logos belong to their respective owners and are used strictly for nominative identification. Free tiers, quotas, and card requirements can change at any time — always verify current pricing on the provider's official documentation before deploying workloads.
 
 ---
 
@@ -191,3 +198,4 @@ FreeStack is open-source software licensed under the **Apache License, Version 2
 **Star ⭐ the repo if FreeStack helped you ship your next project for `$0`.**
 
 </div>
+

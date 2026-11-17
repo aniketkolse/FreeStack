@@ -77,4 +77,29 @@ describe('offerValidator (Section 9 Contract)', () => {
     assert.equal(res.valid, false);
     assert.ok(res.errors.some((e) => e.includes('Duplicate offer identity.id')));
   });
+
+  it('rejects credentialed URLs, IP literals, localhost, URL shorteners, tracking params, and punycode', () => {
+    assert.equal(isSafeHttpsUrl('https://user:pass@example.com/docs'), false);
+    assert.equal(isSafeHttpsUrl('https://127.0.0.1/admin'), false);
+    assert.equal(isSafeHttpsUrl('https://169.254.169.254/latest/meta-data/'), false);
+    assert.equal(isSafeHttpsUrl('https://localhost:3000/test'), false);
+    assert.equal(isSafeHttpsUrl('https://bit.ly/3xyz123'), false);
+    assert.equal(isSafeHttpsUrl('https://example.com/pricing?utm_source=twitter'), false);
+    assert.equal(isSafeHttpsUrl('https://xn--80ak6aa92e.com/docs'), false);
+  });
+
+  it('rejects dangerous HTML/XSS payloads and zero-width or bidirectional control characters in offer text', () => {
+    const xssOffer: Offer = structuredClone(OFFERS[0]);
+    xssOffer.description = 'Great free tier <script>alert(1)</script> for developers.';
+    const xssRes = validateOffer(xssOffer, CATEGORIES);
+    assert.equal(xssRes.valid, false);
+    assert.ok(xssRes.errors.some((e) => e.includes('disallowed HTML tags')));
+
+    const bidiOffer: Offer = structuredClone(OFFERS[0]);
+    bidiOffer.identity.name = `FreeTool\u202Eekaf`;
+    const bidiRes = validateOffer(bidiOffer, CATEGORIES);
+    assert.equal(bidiRes.valid, false);
+    assert.ok(bidiRes.errors.some((e) => e.includes('bidirectional override characters')));
+  });
 });
+

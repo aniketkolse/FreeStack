@@ -1,8 +1,57 @@
+# Dependencies & non-npm lockfiles
 node_modules/
-build/
+bun.lock
+bun.lockb
+
+# Build & compilation outputs
 dist/
+dist-server/
+server.js
+*.tsbuildinfo
+
+# Test & coverage outputs
 coverage/
-.DS_Store
+.nyc_output/
+
+# Logs
+logs/
 *.log
-.env*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables (keep .env.example tracked)
+.env
+.env.*
 !.env.example
+
+# Runtime data & user report queues
+data/reports.json
+data/reports*.json
+data/reports.tmp*
+reports.json
+link-check-report.json
+
+# Local AI / editor / automation agent directories & scratch screenshots
+.aistudio/
+.claude/
+.cursor/
+.windsurf/
+.playwright-cli/
+r7-*.png
+public/assets/aistudio/
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Security audit reports (never commit to public repo)
+SECURITY_AUDIT_REPORT.md

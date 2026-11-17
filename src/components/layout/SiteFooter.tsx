@@ -34,7 +34,7 @@ export function SiteFooter({ onNavigate, onReplayIntro }: SiteFooterProps) {
               <div className="inline-flex items-center gap-1.5 bg-paper rounded-full px-3 py-1.5 w-fit border border-midnight-mouth/8">
                 <ShieldCheck className="w-3.5 h-3.5 text-midnight-mouth shrink-0" aria-hidden="true" />
                 <span className="font-[var(--font-inter)] font-medium text-[11.5px] text-midnight-mouth">
-                  Compliant: India DPDP 2023 · US CCPA/CPRA · EU GDPR
+                  Privacy-first · No accounts · Local-first storage
                 </span>
               </div>
             </div>
@@ -197,32 +197,37 @@ export function SiteFooter({ onNavigate, onReplayIntro }: SiteFooterProps) {
           </div>
 
           {/* Standard Website Bottom Legal Bar */}
-          <div className="pt-5 border-t border-midnight-mouth/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[12px] font-[var(--font-inter)] text-ink/75">
-            <p>
-              © {new Date().getFullYear()} FreeStack Public Directory. Compliant with India DPDP Act 2023 &amp; IT Act 2000, US CCPA/CPRA &amp; State Privacy Laws, EU/UK GDPR, and Global Standards.
+          <div className="pt-5 border-t border-midnight-mouth/10 flex flex-col gap-2.5 text-[12px] font-[var(--font-inter)] text-ink/75">
+            <p className="leading-[1.5]">
+              <strong>Disclaimer:</strong> FreeStack is an independent informational directory and is not affiliated with or endorsed by listed providers. Free quotas, pricing, and card requirements can change at any time—always verify on the provider&apos;s official documentation before use. Listing a tool, API, or MCP server is not a security review; inspect source code and permissions before connecting credentials.
             </p>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 font-[var(--font-wallop)] font-semibold text-[12.5px] text-midnight-mouth">
-              <a
-                href="/privacy"
-                onClick={(e) => go(e, '/privacy')}
-                className="hover:underline underline-offset-4"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="/privacy-requests"
-                onClick={(e) => go(e, '/privacy-requests')}
-                className="hover:underline underline-offset-4"
-              >
-                Privacy Requests
-              </a>
-              <a
-                href="/terms"
-                onClick={(e) => go(e, '/terms')}
-                className="hover:underline underline-offset-4"
-              >
-                Terms of Service
-              </a>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <p>
+                © {new Date().getFullYear()} FreeStack Contributors (Apache-2.0). Designed to support privacy rights under India DPDP, US State Privacy Laws, and EU/UK GDPR.
+              </p>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 font-[var(--font-wallop)] font-semibold text-[12.5px] text-midnight-mouth">
+                <a
+                  href="/privacy"
+                  onClick={(e) => go(e, '/privacy')}
+                  className="hover:underline underline-offset-4"
+                >
+                  Privacy Policy
+                </a>
+                <a
+                  href="/privacy-requests"
+                  onClick={(e) => go(e, '/privacy-requests')}
+                  className="hover:underline underline-offset-4"
+                >
+                  Privacy Requests
+                </a>
+                <a
+                  href="/terms"
+                  onClick={(e) => go(e, '/terms')}
+                  className="hover:underline underline-offset-4"
+                >
+                  Terms of Service
+                </a>
+              </div>
             </div>
           </div>
         </div>
