@@ -11,8 +11,9 @@
 [![React](https://img.shields.io/badge/React-19-FFE359?style=for-the-badge&logo=react&logoColor=101014&labelColor=101014)](./package.json)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-FF8CBC?style=for-the-badge&logo=typescript&logoColor=white&labelColor=101014)](./tsconfig.json)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-FFA94D?style=for-the-badge&logo=tailwindcss&logoColor=white&labelColor=101014)](./src/index.css)
+[![License](https://img.shields.io/badge/License-Apache_2.0-59ACFF?style=for-the-badge&labelColor=101014)](./LICENSE)
 
-[Features](#-why-freestack) · [Catalog Stacks](#-the-11-stacks-7881-resources) · [Architecture](#-architecture) · [Quick Start](#-quick-start) · [API & Routes](#-backend-api--endpoints) · [Validation](#-data-schema--verification)
+[Features](#-why-freestack) · [Catalog Stacks](#-the-11-stacks-7881-resources) · [Architecture](#-architecture) · [Quick Start](#-quick-start) · [API & Routes](#-backend-api--endpoints) · [Security](#-security) · [License](#-license)
 
 </div>
 
@@ -239,6 +240,20 @@ To contribute a new free resource or update a quota:
 1. Add or edit the JSON file under `data/offers/<category>/<slug>.json`.
 2. Cite the official pricing or documentation page in `verification.sources`.
 3. Run `npm run validate:data && npm test && npm run lint` before opening a Pull Request.
+
+---
+
+## 🔒 Security
+
+FreeStack enforces strict `https://`-only URL validation across all `7,881` catalog offers, allowlisted `/go/:slug` outbound redirects (no open redirects), bounded `/api/reports` input validation, and zero client-exposed secrets.
+
+To report a security issue or malicious link privately, please review our [**Security Policy**](./SECURITY.md).
+
+---
+
+## 📄 License
+
+This project is licensed under the **Apache License 2.0** — see the [**LICENSE**](./LICENSE) file for full details.
 
 ---
 
