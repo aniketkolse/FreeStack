@@ -27,6 +27,7 @@ import {
 } from '../lib/legal/privacyRequests';
 import { formatDate } from '../lib/utils/formatters';
 import type { NavigateOptions } from '../lib/router/useRouter';
+import { FilterDropdown } from '../components/ui/FilterDropdown';
 
 export type LegalTab = 'privacy' | 'privacy-requests' | 'terms';
 
@@ -673,17 +674,21 @@ export function LegalCenterPage({ activeTab, onNavigate }: LegalCenterPageProps)
                   >
                     Applicable Jurisdiction
                   </label>
-                  <select
+                  <FilterDropdown
                     id="pr-jurisdiction"
+                    label="Applicable Jurisdiction"
+                    surface="paper"
+                    minMenuWidth={300}
+                    menuTitle="Applicable jurisdiction"
                     value={selectedJurisdiction}
-                    onChange={(e) => setSelectedJurisdiction(e.target.value as LegalJurisdiction)}
-                    className="bg-paper text-midnight-mouth font-[var(--font-inter)] font-medium text-[13.5px] rounded-[12px] px-3.5 py-2.5 min-h-[40px] border border-midnight-mouth/12 cursor-pointer"
-                  >
-                    <option value="india">India — DPDP Act 2023 &amp; IT Rules 2021</option>
-                    <option value="usa">United States — CCPA/CPRA, VCDPA, CPA, TDPSA</option>
-                    <option value="eu_uk">EU / EEA / UK — GDPR &amp; UK GDPR</option>
-                    <option value="global">Global — LGPD, PIPEDA, PDPA, APPI</option>
-                  </select>
+                    onChange={(val) => setSelectedJurisdiction(val as LegalJurisdiction)}
+                    options={[
+                      { value: 'india', label: 'India — DPDP Act 2023 & IT Rules 2021' },
+                      { value: 'usa', label: 'United States — CCPA/CPRA, VCDPA, CPA, TDPSA' },
+                      { value: 'eu_uk', label: 'EU / EEA / UK — GDPR & UK GDPR' },
+                      { value: 'global', label: 'Global — LGPD, PIPEDA, PDPA, APPI' },
+                    ]}
+                  />
                 </div>
 
                 <div className="flex flex-col gap-1">
@@ -693,20 +698,21 @@ export function LegalCenterPage({ activeTab, onNavigate }: LegalCenterPageProps)
                   >
                     Statutory Right / Request Type
                   </label>
-                  <select
+                  <FilterDropdown
                     id="pr-request-type"
+                    label="Statutory Right / Request Type"
+                    surface="paper"
+                    minMenuWidth={300}
+                    menuTitle="Statutory right / request type"
                     value={requestType}
-                    onChange={(e) => setRequestType(e.target.value as PrivacyRequestType)}
-                    className="bg-paper text-midnight-mouth font-[var(--font-inter)] font-medium text-[13.5px] rounded-[12px] px-3.5 py-2.5 min-h-[40px] border border-midnight-mouth/12 cursor-pointer"
-                  >
-                    {(Object.keys(PRIVACY_REQUEST_TYPE_LABELS) as PrivacyRequestType[]).map(
-                      (rt) => (
-                        <option key={rt} value={rt}>
-                          {PRIVACY_REQUEST_TYPE_LABELS[rt].title}
-                        </option>
-                      )
+                    onChange={(val) => setRequestType(val as PrivacyRequestType)}
+                    options={(Object.keys(PRIVACY_REQUEST_TYPE_LABELS) as PrivacyRequestType[]).map(
+                      (rt) => ({
+                        value: rt,
+                        label: PRIVACY_REQUEST_TYPE_LABELS[rt].title,
+                      })
                     )}
-                  </select>
+                  />
                 </div>
               </div>
 

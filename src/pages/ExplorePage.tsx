@@ -926,28 +926,31 @@ export function ExplorePage({
                 })}
               </div>
 
-              {/* Mobile / Screen-Reader Synced Sort Select */}
-              <div className="relative sm:sr-only">
-                <label htmlFor="sort-offers" className="sr-only">
-                  Sort by
-                </label>
-                <select
+              {/* Mobile Sort Dropdown */}
+              <div className="sm:hidden">
+                <FilterDropdown
                   id="sort-offers"
+                  label="Sort by"
+                  variant="pill"
+                  triggerPrefix="Sort:"
+                  minMenuWidth={220}
+                  menuTitle="Sort results"
                   value={filters.sortBy}
-                  onChange={(e) =>
+                  onChange={(val) =>
                     updateFilters((prev) => ({
                       ...prev,
-                      sortBy: e.target.value as SortOption,
+                      sortBy: val as SortOption,
                     }))
                   }
-                  className="appearance-none bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[13px] rounded-full pl-3.5 pr-8 py-1.5 min-h-[34px] border border-midnight-mouth/10 cursor-pointer"
-                >
-                  <option value="relevance">Relevance</option>
-                  <option value="recently_verified">Recently verified</option>
-                  <option value="recently_added">Recently added</option>
-                  <option value="name_asc">Name (A–Z)</option>
-                </select>
-                <ChevronDown className="w-3.5 h-3.5 text-midnight-mouth/70 pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2" aria-hidden="true" />
+                  options={SORT_ITEMS.map((item) => {
+                    const Icon = item.icon;
+                    return {
+                      value: item.value,
+                      label: item.shortLabel,
+                      icon: <Icon className="w-3.5 h-3.5" />,
+                    };
+                  })}
+                />
               </div>
             </div>
           </div>

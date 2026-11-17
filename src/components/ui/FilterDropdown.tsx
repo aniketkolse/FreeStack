@@ -22,10 +22,18 @@ interface FilterDropdownProps {
   minMenuWidth?: number;
   maxMenuHeight?: number;
   size?: 'md' | 'sm';
+  variant?: 'box' | 'pill';
+  surface?: 'daylight' | 'paper';
+  triggerIcon?: React.ReactNode;
+  triggerPrefix?: string;
+  active?: boolean;
+  testId?: string;
+  maxTriggerWidthClass?: string;
 }
 
 interface MenuCoords {
-  top: number;
+  top?: number;
+  bottom?: number;
   left: number;
   width: number;
   maxHeight: number;
@@ -43,6 +51,13 @@ export function FilterDropdown({
   minMenuWidth = 260,
   maxMenuHeight = 360,
   size = 'md',
+  variant = 'box',
+  surface = 'daylight',
+  triggerIcon,
+  triggerPrefix,
+  active = false,
+  testId,
+  maxTriggerWidthClass,
 }: FilterDropdownProps) {
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -83,25 +98,27 @@ export function FilterDropdown({
       left = edgePad;
     }
 
-    const spaceBelow = viewportH - rect.bottom - gap - edgePad;
-    const spaceAbove = rect.top - gap - edgePad;
+    const spaceBelow = Math.max(0, viewportH - rect.bottom - gap - edgePad);
+    const spaceAbove = Math.max(0, rect.top - gap - edgePad);
+    const hasHeader = Boolean(menuTitle || menuSubtitle);
+    const chromeHeight = (hasHeader ? 42 : 0) + 12;
 
     const openAbove = spaceBelow < 220 && spaceAbove > spaceBelow;
-    const availableSpace = Math.max(180, openAbove ? spaceAbove : spaceBelow);
-    const resolvedMaxHeight = Math.min(maxMenuHeight, availableSpace);
-
-    const top = openAbove
-      ? Math.max(edgePad, rect.top - gap)
-      : rect.bottom + gap;
+    const availableSpace = Math.max(120, openAbove ? spaceAbove : spaceBelow);
+    const resolvedMaxHeight = Math.max(
+      96,
+      Math.min(maxMenuHeight, availableSpace - chromeHeight)
+    );
 
     setCoords({
-      top,
+      top: openAbove ? undefined : rect.bottom + gap,
+      bottom: openAbove ? viewportH - rect.top + gap : undefined,
       left,
       width: desiredWidth,
       maxHeight: resolvedMaxHeight,
       placement: openAbove ? 'top' : 'bottom',
     });
-  }, [maxMenuHeight, minMenuWidth]);
+  }, [maxMenuHeight, menuSubtitle, menuTitle, minMenuWidth]);
 
   useEffect(() => {
     if (!open) return;
@@ -215,12 +232,15 @@ export function FilterDropdown({
   };
 
   const isSmall = size === 'sm';
+  const isPill = variant === 'pill';
+  const baseBgClass = surface === 'paper' ? 'bg-paper' : 'bg-daylight';
 
   return (
-    <div className="relative">
+    <div className={isPill ? 'relative inline-block shrink-0' : 'relative w-full'}>
       <button
         ref={triggerRef}
         id={id}
+        data-testid={testId}
         type="button"
         aria-label={`${label}: ${selectedOption?.label ?? ''}`}
         aria-haspopup="listbox"
@@ -236,49 +256,96 @@ export function FilterDropdown({
           });
         }}
         onKeyDown={handleTriggerKeyDown}
-        className={`w-full flex items-center justify-between gap-2 text-left bg-daylight text-midnight-mouth cursor-pointer transition-all duration-150 border ${
-          isSmall
-            ? 'rounded-[10px] px-2.5 py-1.5 min-h-[34px]'
-            : 'rounded-[12px] px-2.5 py-1.5 min-h-[38px]'
-        } ${
-          open
-            ? 'bg-paper border-midnight-mouth/35 ring-2 ring-midnight-mouth/10 shadow-xs'
-            : 'border-midnight-mouth/12 hover:border-midnight-mouth/28 hover:bg-paper/85'
-        }`}
+        className={
+          isPill
+            ? `inline-flex items-center gap-1.5 font-[var(--font-wallop)] font-semibold text-[11px] rounded-full px-2.5 py-0.5 min-h-[26px] whitespace-nowrap cursor-pointer transition-all duration-150 border ${
+                maxTriggerWidthClass ?? ''
+              } ${
+                active
+                  ? 'bg-midnight-mouth text-daylight border-midnight-mouth shadow-2xs'
+                  : open
+                  ? 'bg-paper text-midnight-mouth border-midnight-mouth/35 ring-2 ring-midnight-mouth/12 shadow-xs'
+                  : 'bg-daylight/80 text-midnight-mouth border-midnight-mouth/12 hover:border-midnight-mouth/30 hover:bg-sunshine-yellow/45'
+              }`
+            : `w-full flex items-center justify-between gap-2 text-left ${baseBgClass} text-midnight-mouth cursor-pointer transition-all duration-150 border ${
+                isSmall
+                  ? 'rounded-[10px] px-2.5 py-1.5 min-h-[34px]'
+                  : 'rounded-[12px] px-3 py-1.5 min-h-[38px]'
+              } ${
+                open
+                  ? 'bg-paper border-midnight-mouth/35 ring-2 ring-midnight-mouth/10 shadow-xs'
+                  : 'border-midnight-mouth/12 hover:border-midnight-mouth/28 hover:bg-paper/85'
+              }`
+        }
       >
-        <span className="flex items-center gap-2 min-w-0 flex-1">
-          {selectedOption?.icon && (
-            <span
-              className={`inline-flex items-center justify-center shrink-0 ${
-                isSmall ? 'w-5 h-5 rounded-[6px]' : 'w-6 h-6 rounded-[8px]'
-              } ${selectedOption.iconBgClass ?? 'bg-paper border border-midnight-mouth/10'}`}
+        {isPill ? (
+          <>
+            {(triggerIcon || selectedOption?.icon) && (
+              <span
+                className={`inline-flex items-center justify-center shrink-0 ${
+                  active ? 'text-daylight/90' : 'text-midnight-mouth/75'
+                }`}
+                aria-hidden="true"
+              >
+                {triggerIcon ?? selectedOption?.icon}
+              </span>
+            )}
+            <span className="truncate">
+              {triggerPrefix ? `${triggerPrefix} ${selectedOption?.label ?? ''}` : selectedOption?.label}
+            </span>
+            {selectedOption?.count !== undefined && (
+              <span
+                className={`text-[10px] tabular-nums shrink-0 ${
+                  active ? 'opacity-80' : 'opacity-65'
+                }`}
+              >
+                ({selectedOption.count})
+              </span>
+            )}
+            <ChevronDown
+              className={`w-3 h-3 shrink-0 transition-transform duration-200 ${
+                active ? 'text-daylight/80' : 'text-midnight-mouth/70'
+              } ${open ? 'rotate-180' : ''}`}
               aria-hidden="true"
-            >
-              {selectedOption.icon}
+            />
+          </>
+        ) : (
+          <>
+            <span className="flex items-center gap-2 min-w-0 flex-1">
+              {(selectedOption?.icon || triggerIcon) && (
+                <span
+                  className={`inline-flex items-center justify-center shrink-0 ${
+                    isSmall ? 'w-5 h-5 rounded-[6px]' : 'w-6 h-6 rounded-[8px]'
+                  } ${selectedOption?.iconBgClass ?? 'bg-paper border border-midnight-mouth/10'}`}
+                  aria-hidden="true"
+                >
+                  {selectedOption?.icon ?? triggerIcon}
+                </span>
+              )}
+              <span
+                className={`font-[var(--font-wallop)] font-semibold truncate ${
+                  isSmall ? 'text-[12px]' : 'text-[12.5px]'
+                }`}
+              >
+                {triggerPrefix ? `${triggerPrefix} ${selectedOption?.label ?? ''}` : selectedOption?.label}
+              </span>
             </span>
-          )}
-          <span
-            className={`font-[var(--font-wallop)] font-semibold truncate ${
-              isSmall ? 'text-[12px]' : 'text-[12.5px]'
-            }`}
-          >
-            {selectedOption?.label}
-          </span>
-        </span>
 
-        <span className="inline-flex items-center gap-1.5 shrink-0">
-          {selectedOption?.count !== undefined && (
-            <span className="font-[var(--font-mono)] text-[10.5px] font-medium text-midnight-mouth/65 bg-paper/90 border border-midnight-mouth/8 rounded-full px-1.5 py-0.5 leading-none tabular-nums">
-              {selectedOption.count}
+            <span className="inline-flex items-center gap-1.5 shrink-0">
+              {selectedOption?.count !== undefined && (
+                <span className="font-[var(--font-mono)] text-[10.5px] font-medium text-midnight-mouth/65 bg-paper/90 border border-midnight-mouth/8 rounded-full px-1.5 py-0.5 leading-none tabular-nums">
+                  {selectedOption.count}
+                </span>
+              )}
+              <ChevronDown
+                className={`w-3.5 h-3.5 text-midnight-mouth/70 transition-transform duration-200 ${
+                  open ? 'rotate-180 text-midnight-mouth' : ''
+                }`}
+                aria-hidden="true"
+              />
             </span>
-          )}
-          <ChevronDown
-            className={`w-3.5 h-3.5 text-midnight-mouth/70 transition-transform duration-200 ${
-              open ? 'rotate-180 text-midnight-mouth' : ''
-            }`}
-            aria-hidden="true"
-          />
-        </span>
+          </>
+        )}
       </button>
 
       {open &&
@@ -295,9 +362,9 @@ export function FilterDropdown({
             style={{
               position: 'fixed',
               top: coords.top,
+              bottom: coords.bottom,
               left: coords.left,
               width: coords.width,
-              transform: coords.placement === 'top' ? 'translateY(-100%)' : undefined,
               zIndex: 80,
             }}
             className="bg-paper text-midnight-mouth rounded-[18px] border border-midnight-mouth/14 shadow-[0_20px_50px_-12px_rgba(16,16,20,0.24),0_4px_14px_-4px_rgba(16,16,20,0.08)] dark:shadow-[0_24px_56px_-12px_rgba(0,0,0,0.7)] overflow-hidden outline-none dropdown-enter"

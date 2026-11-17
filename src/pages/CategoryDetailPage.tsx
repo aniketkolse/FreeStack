@@ -36,6 +36,7 @@ import { CategoryStickerIcon, getCategoryBgClass } from '../components/illustrat
 import { CategoryTile } from '../components/categories/CategoryTile';
 import { ResourceCard } from '../components/offers/ResourceCard';
 import { SearchBar } from '../components/search/SearchBar';
+import { FilterDropdown } from '../components/ui/FilterDropdown';
 import {
   AI_CONTEXT_FILTER_OPTIONS,
   AI_MODALITY_OPTIONS,
@@ -728,14 +729,14 @@ export function CategoryDetailPage({
                       syncUrl({ sub: nextSub, subtype: 'all' });
                     }
                   }}
-                  className={`font-[var(--font-wallop)] font-semibold text-[11.5px] rounded-full px-2.5 py-1 min-h-[26px] whitespace-nowrap shrink-0 cursor-pointer filter-pill inline-flex items-center gap-1 border ${
+                  className={`font-[var(--font-wallop)] font-semibold text-[11.5px] rounded-full px-2.5 py-1 min-h-[26px] max-w-full text-left leading-tight sm:whitespace-nowrap shrink-0 cursor-pointer filter-pill inline-flex items-center gap-1 border ${
                     active
                       ? 'bg-midnight-mouth text-daylight border-midnight-mouth shadow-2xs'
                       : 'bg-daylight/75 text-midnight-mouth border-midnight-mouth/10 hover:bg-sunshine-yellow/55'
                   }`}
                 >
-                  <span>{group.label}</span>
-                  <span className="text-[10px] opacity-70 tabular-nums">({group.count})</span>
+                  <span className="truncate sm:overflow-visible">{group.label}</span>
+                  <span className="text-[10px] opacity-70 tabular-nums shrink-0">({group.count})</span>
                 </button>
               );
             })}
@@ -879,15 +880,20 @@ export function CategoryDetailPage({
                   </button>
                 )}
 
-                <div className="relative shrink-0">
-                  <label htmlFor="cat-subcategory-select" className="sr-only">
-                    {isMcpCategory ? 'Use Case' : 'Subtype'}
-                  </label>
-                  <select
+                {usesMacroGroups && allPopulatedSubcategories.length > 0 && (
+                  <FilterDropdown
                     id="cat-subcategory-select"
+                    label={isMcpCategory ? 'Use Case' : 'Subtype'}
+                    variant="pill"
                     value={selectedSubcategory}
-                    onChange={(e) => {
-                      const nextSub = e.target.value;
+                    active={selectedSubcategory !== 'all'}
+                    triggerIcon={<Layers className="w-3 h-3" />}
+                    maxTriggerWidthClass="max-w-[185px]"
+                    minMenuWidth={310}
+                    maxMenuHeight={360}
+                    menuTitle={isMcpCategory ? 'Jump to use case' : 'Jump to subtype'}
+                    menuSubtitle={`${allPopulatedSubcategories.length} ${isMcpCategory ? 'use cases' : 'subtypes'}`}
+                    onChange={(nextSub) => {
                       const ownerType =
                         nextSub !== 'all'
                           ? findPrimaryTypeForSubcategory(primaryTypeGroups, nextSub)
@@ -901,28 +907,21 @@ export function CategoryDetailPage({
                         type: usesMacroGroups ? ownerType || 'all' : selectedTypeGroup,
                       });
                     }}
-                    className={
-                      usesMacroGroups
-                        ? 'appearance-none bg-daylight/75 text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[11px] rounded-full pl-2.5 pr-5 py-0.5 min-h-[25px] max-w-[165px] truncate border border-midnight-mouth/12 hover:border-midnight-mouth/30 cursor-pointer'
-                        : 'sr-only'
-                    }
-                  >
-                    <option value="all">
-                      Jump to subtype ({allPopulatedSubcategories.length})
-                    </option>
-                    {allPopulatedSubcategories.map((sub) => (
-                      <option key={sub.slug} value={sub.name}>
-                        {sub.name} ({sub.count})
-                      </option>
-                    ))}
-                  </select>
-                  {usesMacroGroups && (
-                    <ChevronDown
-                      className="w-2.5 h-2.5 text-midnight-mouth/70 pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2"
-                      aria-hidden="true"
-                    />
-                  )}
-                </div>
+                    options={[
+                      {
+                        value: 'all',
+                        label: isMcpCategory ? 'Jump to use case' : 'Jump to subtype',
+                        count: allPopulatedSubcategories.length,
+                        icon: <Layers className="w-3.5 h-3.5" />,
+                      },
+                      ...allPopulatedSubcategories.map((sub) => ({
+                        value: sub.name,
+                        label: sub.name,
+                        count: sub.count,
+                      })),
+                    ]}
+                  />
+                )}
               </div>
             </div>
 
@@ -991,198 +990,158 @@ export function CategoryDetailPage({
                     </span>
                   </button>
 
-                  {/* Compact MCP Scope Select */}
-                  <div className="relative">
-                    <label htmlFor="mcp-scope-select" className="sr-only">
-                      MCP Scope
-                    </label>
-                    <Globe
-                      className="w-3 h-3 text-midnight-mouth/70 pointer-events-none absolute left-2 top-1/2 -translate-y-1/2"
-                      aria-hidden="true"
-                    />
-                    <select
-                      id="mcp-scope-select"
-                      data-testid="mcp-scope-select"
-                      value={mcpScope}
-                      onChange={(e) => {
-                        const next = e.target.value;
-                        setMcpScope(next);
-                        syncUrl({ scope: next });
-                      }}
-                      className="appearance-none bg-daylight/75 text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[11px] rounded-full pl-6 pr-5 py-0.5 min-h-[25px] border border-midnight-mouth/10 hover:border-midnight-mouth/30 cursor-pointer"
-                    >
-                      {MCP_SCOPE_OPTIONS.map((opt) => {
-                        const cnt =
-                          opt.value === 'all'
-                            ? categoryOffers.length
-                            : mcpFilterCounts.scopes.get(opt.value) ?? 0;
-                        return (
-                          <option key={opt.value} value={opt.value}>
-                            {opt.label} ({cnt})
-                          </option>
-                        );
-                      })}
-                    </select>
-                    <ChevronDown
-                      className="w-2.5 h-2.5 text-midnight-mouth/70 pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2"
-                      aria-hidden="true"
-                    />
-                  </div>
+                  {/* Compact MCP Scope Dropdown */}
+                  <FilterDropdown
+                    id="mcp-scope-select"
+                    testId="mcp-scope-select"
+                    label="MCP Scope"
+                    variant="pill"
+                    value={mcpScope}
+                    active={mcpScope !== 'all'}
+                    triggerIcon={<Globe className="w-3 h-3" />}
+                    minMenuWidth={230}
+                    menuTitle="Execution scope"
+                    menuSubtitle="Deployment environment"
+                    onChange={(next) => {
+                      setMcpScope(next);
+                      syncUrl({ scope: next });
+                    }}
+                    options={MCP_SCOPE_OPTIONS.map((opt) => ({
+                      value: opt.value,
+                      label: opt.label,
+                      count:
+                        opt.value === 'all'
+                          ? categoryOffers.length
+                          : mcpFilterCounts.scopes.get(opt.value) ?? 0,
+                    }))}
+                  />
 
-                  {/* Compact MCP Language Select */}
-                  <div className="relative">
-                    <label htmlFor="mcp-lang-select" className="sr-only">
-                      Codebase language
-                    </label>
-                    <Code2
-                      className="w-3 h-3 text-midnight-mouth/70 pointer-events-none absolute left-2 top-1/2 -translate-y-1/2"
-                      aria-hidden="true"
-                    />
-                    <select
-                      id="mcp-lang-select"
-                      data-testid="mcp-lang-select"
-                      value={mcpLang}
-                      onChange={(e) => {
-                        const next = e.target.value;
-                        setMcpLang(next);
-                        syncUrl({ lang: next });
-                      }}
-                      className="appearance-none bg-daylight/75 text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[11px] rounded-full pl-6 pr-5 py-0.5 min-h-[25px] border border-midnight-mouth/10 hover:border-midnight-mouth/30 cursor-pointer"
-                    >
-                      <option value="all">All Languages</option>
-                      {MCP_LANGUAGE_OPTIONS.map((lang) => (
-                        <option key={lang.value} value={lang.value}>
-                          {lang.label} ({mcpFilterCounts.langs.get(lang.value) ?? 0})
-                        </option>
-                      ))}
-                    </select>
-                    <ChevronDown
-                      className="w-2.5 h-2.5 text-midnight-mouth/70 pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2"
-                      aria-hidden="true"
-                    />
-                  </div>
+                  {/* Compact MCP Language Dropdown */}
+                  <FilterDropdown
+                    id="mcp-lang-select"
+                    testId="mcp-lang-select"
+                    label="Codebase language"
+                    variant="pill"
+                    value={mcpLang}
+                    active={mcpLang !== 'all'}
+                    triggerIcon={<Code2 className="w-3 h-3" />}
+                    minMenuWidth={240}
+                    menuTitle="Codebase language"
+                    menuSubtitle="SDK / runtime"
+                    onChange={(next) => {
+                      setMcpLang(next);
+                      syncUrl({ lang: next });
+                    }}
+                    options={[
+                      { value: 'all', label: 'All Languages' },
+                      ...MCP_LANGUAGE_OPTIONS.map((lang) => ({
+                        value: lang.value,
+                        label: lang.label,
+                        count: mcpFilterCounts.langs.get(lang.value) ?? 0,
+                      })),
+                    ]}
+                  />
 
-                  {/* Compact MCP OS Select */}
-                  <div className="relative">
-                    <label htmlFor="mcp-os-select" className="sr-only">
-                      Operating system
-                    </label>
-                    <Cpu
-                      className="w-3 h-3 text-midnight-mouth/70 pointer-events-none absolute left-2 top-1/2 -translate-y-1/2"
-                      aria-hidden="true"
-                    />
-                    <select
-                      id="mcp-os-select"
-                      data-testid="mcp-os-select"
-                      value={mcpOs}
-                      onChange={(e) => {
-                        const next = e.target.value;
-                        setMcpOs(next);
-                        syncUrl({ os: next });
-                      }}
-                      className="appearance-none bg-daylight/75 text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[11px] rounded-full pl-6 pr-5 py-0.5 min-h-[25px] border border-midnight-mouth/10 hover:border-midnight-mouth/30 cursor-pointer"
-                    >
-                      <option value="all">All OS</option>
-                      {MCP_OS_OPTIONS.map((osOpt) => (
-                        <option key={osOpt.value} value={osOpt.value}>
-                          {osOpt.label} ({mcpFilterCounts.os.get(osOpt.value) ?? 0})
-                        </option>
-                      ))}
-                    </select>
-                    <ChevronDown
-                      className="w-2.5 h-2.5 text-midnight-mouth/70 pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2"
-                      aria-hidden="true"
-                    />
-                  </div>
+                  {/* Compact MCP OS Dropdown */}
+                  <FilterDropdown
+                    id="mcp-os-select"
+                    testId="mcp-os-select"
+                    label="Operating system"
+                    variant="pill"
+                    value={mcpOs}
+                    active={mcpOs !== 'all'}
+                    triggerIcon={<Cpu className="w-3 h-3" />}
+                    minMenuWidth={220}
+                    menuTitle="Operating system"
+                    menuSubtitle="Host support"
+                    onChange={(next) => {
+                      setMcpOs(next);
+                      syncUrl({ os: next });
+                    }}
+                    options={[
+                      { value: 'all', label: 'All OS' },
+                      ...MCP_OS_OPTIONS.map((osOpt) => ({
+                        value: osOpt.value,
+                        label: osOpt.label,
+                        count: mcpFilterCounts.os.get(osOpt.value) ?? 0,
+                      })),
+                    ]}
+                  />
 
-                  {/* Compact MCP Access Model Select */}
-                  <div className="relative">
-                    <label htmlFor="mcp-access-select" className="sr-only">
-                      Access model
-                    </label>
-                    <select
-                      id="mcp-access-select"
-                      value={selectedPricing[0] || 'all'}
-                      onChange={(e) => {
-                        const val = e.target.value;
-                        const next = val === 'all' ? [] : ([val] as PricingModel[]);
-                        setSelectedPricing(next);
-                        syncUrl({ pricing: next });
-                      }}
-                      className="appearance-none bg-daylight/75 text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[11px] rounded-full pl-2.5 pr-5 py-0.5 min-h-[25px] border border-midnight-mouth/10 hover:border-midnight-mouth/30 cursor-pointer"
-                    >
-                      <option value="all">All Access ({categoryOffers.length})</option>
-                      {categoryPricingOptions.map(({ model, count }) => (
-                        <option key={model} value={model}>
-                          {formatPricingModel(model)} ({count})
-                        </option>
-                      ))}
-                    </select>
-                    <ChevronDown
-                      className="w-2.5 h-2.5 text-midnight-mouth/70 pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2"
-                      aria-hidden="true"
-                    />
-                  </div>
+                  {/* Compact MCP Access Model Dropdown */}
+                  <FilterDropdown
+                    id="mcp-access-select"
+                    label="Access model"
+                    variant="pill"
+                    value={selectedPricing[0] || 'all'}
+                    active={selectedPricing.length > 0}
+                    triggerIcon={<Sparkles className="w-3 h-3" />}
+                    minMenuWidth={240}
+                    menuTitle="Access model"
+                    menuSubtitle="Pricing rule"
+                    onChange={(val) => {
+                      const next = val === 'all' ? [] : ([val] as PricingModel[]);
+                      setSelectedPricing(next);
+                      syncUrl({ pricing: next });
+                    }}
+                    options={[
+                      { value: 'all', label: 'All Access', count: categoryOffers.length },
+                      ...categoryPricingOptions.map(({ model, count }) => ({
+                        value: model,
+                        label: formatPricingModel(model),
+                        count,
+                      })),
+                    ]}
+                  />
                 </>
               ) : (
                 <>
                   {isAiCategory && (
                     <>
-                      {/* AI Modality Select (Text, Text+Image, Image, Code, Audio, Embeddings) */}
-                      <div className="relative">
-                        <label htmlFor="ai-modality-select" className="sr-only">
-                          AI Modality
-                        </label>
-                        <select
-                          id="ai-modality-select"
-                          data-testid="ai-modality-select"
-                          value={aiModality}
-                          onChange={(e) => {
-                            const next = e.target.value as AiModalityId | 'all';
-                            setAiModality(next);
-                            syncUrl({ modality: next });
-                          }}
-                          className="appearance-none bg-daylight/75 text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[11px] rounded-full pl-2.5 pr-5 py-0.5 min-h-[25px] border border-midnight-mouth/12 hover:border-midnight-mouth/30 cursor-pointer"
-                        >
-                          {AI_MODALITY_OPTIONS.map((opt) => (
-                            <option key={opt.id} value={opt.id}>
-                              {opt.label}
-                            </option>
-                          ))}
-                        </select>
-                        <ChevronDown
-                          className="w-2.5 h-2.5 text-midnight-mouth/70 pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2"
-                          aria-hidden="true"
-                        />
-                      </div>
+                      {/* AI Modality Dropdown */}
+                      <FilterDropdown
+                        id="ai-modality-select"
+                        testId="ai-modality-select"
+                        label="AI Modality"
+                        variant="pill"
+                        value={aiModality}
+                        active={aiModality !== 'all'}
+                        triggerIcon={<Sparkles className="w-3 h-3" />}
+                        minMenuWidth={250}
+                        menuTitle="Model modality"
+                        menuSubtitle="Input & output capability"
+                        onChange={(next) => {
+                          const typed = next as AiModalityId | 'all';
+                          setAiModality(typed);
+                          syncUrl({ modality: typed });
+                        }}
+                        options={AI_MODALITY_OPTIONS.map((opt) => ({
+                          value: opt.id,
+                          label: opt.label,
+                        }))}
+                      />
 
-                      {/* AI Context Window Filter Select */}
-                      <div className="relative">
-                        <label htmlFor="ai-context-select" className="sr-only">
-                          Minimum context window
-                        </label>
-                        <select
-                          id="ai-context-select"
-                          data-testid="ai-context-select"
-                          value={aiMinContext}
-                          onChange={(e) => {
-                            const next = e.target.value;
-                            setAiMinContext(next);
-                            syncUrl({ ctx: next });
-                          }}
-                          className="appearance-none bg-daylight/75 text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[11px] rounded-full pl-2.5 pr-5 py-0.5 min-h-[25px] border border-midnight-mouth/12 hover:border-midnight-mouth/30 cursor-pointer"
-                        >
-                          {AI_CONTEXT_FILTER_OPTIONS.map((opt) => (
-                            <option key={opt.value} value={opt.value}>
-                              {opt.label}
-                            </option>
-                          ))}
-                        </select>
-                        <ChevronDown
-                          className="w-2.5 h-2.5 text-midnight-mouth/70 pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2"
-                          aria-hidden="true"
-                        />
-                      </div>
+                      {/* AI Context Window Filter Dropdown */}
+                      <FilterDropdown
+                        id="ai-context-select"
+                        testId="ai-context-select"
+                        label="Minimum context window"
+                        variant="pill"
+                        value={aiMinContext}
+                        active={aiMinContext !== 'all'}
+                        triggerIcon={<Cpu className="w-3 h-3" />}
+                        minMenuWidth={240}
+                        menuTitle="Context window"
+                        menuSubtitle="Minimum token limit"
+                        onChange={(next) => {
+                          setAiMinContext(next);
+                          syncUrl({ ctx: next });
+                        }}
+                        options={AI_CONTEXT_FILTER_OPTIONS.map((opt) => ({
+                          value: opt.value,
+                          label: opt.label,
+                        }))}
+                      />
                     </>
                   )}
 
@@ -1191,7 +1150,7 @@ export function CategoryDetailPage({
                       role="group"
                       aria-label="Student ID requirement filter"
                       data-testid="student-verification-filter-group"
-                      className="inline-flex items-center bg-daylight/90 p-0.5 rounded-full border border-midnight-mouth/15 gap-0.5"
+                      className="inline-flex flex-wrap items-center max-w-full bg-daylight/90 p-0.5 rounded-[14px] sm:rounded-full border border-midnight-mouth/15 gap-0.5"
                     >
                       {[
                         {
@@ -1369,34 +1328,28 @@ export function CategoryDetailPage({
                 })}
               </div>
 
-              <div className="relative sm:sr-only">
-                <label htmlFor="cat-sort" className="sr-only">
-                  Sort by
-                </label>
-                <select
+              <div className="sm:hidden">
+                <FilterDropdown
                   id="cat-sort"
+                  label="Sort by"
+                  variant="pill"
                   value={sortBy}
-                  onChange={(e) => {
-                    const next = e.target.value as SortOption;
+                  triggerPrefix="Sort:"
+                  minMenuWidth={220}
+                  menuTitle="Sort results"
+                  onChange={(nextVal) => {
+                    const next = nextVal as SortOption;
                     setSortBy(next);
                     syncUrl({ sort: next });
                   }}
-                  className="appearance-none bg-daylight/75 text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[11px] rounded-full pl-2.5 pr-6 py-0.5 min-h-[25px] border border-midnight-mouth/10 cursor-pointer"
-                >
-                  {(isMcpCategory || isAiCategory) && (
-                    <option value="use_case">Sort: Use Case</option>
-                  )}
-                  {isAiCategory && (
-                    <option value="context_desc">Sort: Context Size</option>
-                  )}
-                  <option value="relevance">Sort: Featured</option>
-                  <option value="recently_verified">Sort: Verified</option>
-                  <option value="recently_added">Sort: Newest</option>
-                  <option value="name_asc">Sort: A–Z</option>
-                </select>
-                <ChevronDown
-                  className="w-3 h-3 text-midnight-mouth/70 pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2"
-                  aria-hidden="true"
+                  options={visibleSortOptions.map((opt) => {
+                    const Icon = opt.icon;
+                    return {
+                      value: opt.value,
+                      label: opt.label,
+                      icon: <Icon className="w-3.5 h-3.5" />,
+                    };
+                  })}
                 />
               </div>
             </div>

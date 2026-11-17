@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { RotateCcw, ChevronDown, Home } from 'lucide-react';
+import { RotateCcw, Home } from 'lucide-react';
 import { getLearningOffers } from '../lib/data/resources';
 import { DEFAULT_FILTER_STATE, filterAndSortOffers } from '../lib/filters/filterOffers';
 import { searchOffers } from '../lib/search/searchOffers';
@@ -19,6 +19,7 @@ import type { NavigateOptions } from '../lib/router/useRouter';
 import { LearningCard } from '../components/offers/LearningCard';
 import { SlabIllustration } from '../components/illustrations/TocaStickers';
 import { SearchBar } from '../components/search/SearchBar';
+import { FilterDropdown } from '../components/ui/FilterDropdown';
 
 interface LearningPageProps {
   searchParams?: URLSearchParams;
@@ -314,26 +315,27 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
           >
             Difficulty
           </label>
-          <div className="relative">
-            <select
-              id="learning-difficulty"
-              value={selectedDifficulty}
-              onChange={(e) => {
-                const next = e.target.value as LearningDifficulty | 'all';
-                setSelectedDifficulty(next);
-                syncLearningUrl({ difficulty: next });
-              }}
-              className="w-full appearance-none bg-paper text-midnight-mouth font-[var(--font-inter)] font-medium text-[13px] rounded-[10px] pl-3 pr-8 py-2 min-h-[36px] border border-midnight-mouth/10 cursor-pointer"
-            >
-              <option value="all">All difficulties</option>
-              {DIFFICULTY_OPTIONS.map((d) => (
-                <option key={d} value={d}>
-                  {formatLearningDifficulty(d)}
-                </option>
-              ))}
-            </select>
-            <ChevronDown className="w-3.5 h-3.5 text-midnight-mouth/70 pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2" aria-hidden="true" />
-          </div>
+          <FilterDropdown
+            id="learning-difficulty"
+            label="Difficulty"
+            surface="paper"
+            size="sm"
+            minMenuWidth={220}
+            menuTitle="Skill level"
+            value={selectedDifficulty}
+            onChange={(val) => {
+              const next = val as LearningDifficulty | 'all';
+              setSelectedDifficulty(next);
+              syncLearningUrl({ difficulty: next });
+            }}
+            options={[
+              { value: 'all', label: 'All difficulties' },
+              ...DIFFICULTY_OPTIONS.map((d) => ({
+                value: d,
+                label: formatLearningDifficulty(d),
+              })),
+            ]}
+          />
         </div>
 
         <div className="flex flex-col gap-1">
@@ -343,26 +345,27 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
           >
             Topic
           </label>
-          <div className="relative">
-            <select
-              id="learning-topic"
-              value={selectedTopic}
-              onChange={(e) => {
-                const next = e.target.value;
-                setSelectedTopic(next);
-                syncLearningUrl({ topic: next });
-              }}
-              className="w-full appearance-none bg-paper text-midnight-mouth font-[var(--font-inter)] font-medium text-[13px] rounded-[10px] pl-3 pr-8 py-2 min-h-[36px] border border-midnight-mouth/10 cursor-pointer"
-            >
-              <option value="all">All topics</option>
-              {availableTopics.map((topic) => (
-                <option key={topic} value={topic}>
-                  {topic}
-                </option>
-              ))}
-            </select>
-            <ChevronDown className="w-3.5 h-3.5 text-midnight-mouth/70 pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2" aria-hidden="true" />
-          </div>
+          <FilterDropdown
+            id="learning-topic"
+            label="Topic"
+            surface="paper"
+            size="sm"
+            minMenuWidth={250}
+            menuTitle="Learning topic"
+            menuSubtitle={`${availableTopics.length} topics`}
+            value={selectedTopic}
+            onChange={(next) => {
+              setSelectedTopic(next);
+              syncLearningUrl({ topic: next });
+            }}
+            options={[
+              { value: 'all', label: 'All topics' },
+              ...availableTopics.map((topic) => ({
+                value: topic,
+                label: topic,
+              })),
+            ]}
+          />
         </div>
 
         <div className="flex flex-col gap-1">
@@ -372,26 +375,27 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
           >
             Language
           </label>
-          <div className="relative">
-            <select
-              id="learning-language"
-              value={selectedLanguage}
-              onChange={(e) => {
-                const next = e.target.value;
-                setSelectedLanguage(next);
-                syncLearningUrl({ language: next });
-              }}
-              className="w-full appearance-none bg-paper text-midnight-mouth font-[var(--font-inter)] font-medium text-[13px] rounded-[10px] pl-3 pr-8 py-2 min-h-[36px] border border-midnight-mouth/10 cursor-pointer"
-            >
-              <option value="all">All languages</option>
-              {availableLanguages.map((lang) => (
-                <option key={lang} value={lang}>
-                  {lang}
-                </option>
-              ))}
-            </select>
-            <ChevronDown className="w-3.5 h-3.5 text-midnight-mouth/70 pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2" aria-hidden="true" />
-          </div>
+          <FilterDropdown
+            id="learning-language"
+            label="Language"
+            surface="paper"
+            size="sm"
+            minMenuWidth={220}
+            menuTitle="Language"
+            menuSubtitle={`${availableLanguages.length} languages`}
+            value={selectedLanguage}
+            onChange={(next) => {
+              setSelectedLanguage(next);
+              syncLearningUrl({ language: next });
+            }}
+            options={[
+              { value: 'all', label: 'All languages' },
+              ...availableLanguages.map((lang) => ({
+                value: lang,
+                label: lang,
+              })),
+            ]}
+          />
         </div>
 
         <div className="flex flex-col gap-1">
@@ -401,26 +405,27 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
           >
             Access classification
           </label>
-          <div className="relative">
-            <select
-              id="learning-pricing"
-              value={selectedPricing}
-              onChange={(e) => {
-                const next = e.target.value as PricingModel | 'all';
-                setSelectedPricing(next);
-                syncLearningUrl({ pricing: next });
-              }}
-              className="w-full appearance-none bg-paper text-midnight-mouth font-[var(--font-inter)] font-medium text-[13px] rounded-[10px] pl-3 pr-8 py-2 min-h-[36px] border border-midnight-mouth/10 cursor-pointer"
-            >
-              <option value="all">All free types</option>
-              {availablePricing.map((pm) => (
-                <option key={pm} value={pm}>
-                  {formatPricingModel(pm)}
-                </option>
-              ))}
-            </select>
-            <ChevronDown className="w-3.5 h-3.5 text-midnight-mouth/70 pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2" aria-hidden="true" />
-          </div>
+          <FilterDropdown
+            id="learning-pricing"
+            label="Access classification"
+            surface="paper"
+            size="sm"
+            minMenuWidth={230}
+            menuTitle="Access classification"
+            value={selectedPricing}
+            onChange={(val) => {
+              const next = val as PricingModel | 'all';
+              setSelectedPricing(next);
+              syncLearningUrl({ pricing: next });
+            }}
+            options={[
+              { value: 'all', label: 'All free types' },
+              ...availablePricing.map((pm) => ({
+                value: pm,
+                label: formatPricingModel(pm),
+              })),
+            ]}
+          />
         </div>
 
         <div className="flex flex-col gap-1 sm:col-span-2 lg:col-span-1">
@@ -431,29 +436,33 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
             Verification status
           </label>
           <div className="flex items-center gap-1.5">
-            <div className="relative flex-1">
-              <select
+            <div className="flex-1 min-w-0">
+              <FilterDropdown
                 id="learning-status"
+                label="Verification status"
+                surface="paper"
+                size="sm"
+                minMenuWidth={220}
+                menuTitle="Verification status"
                 value={selectedStatus}
-                onChange={(e) => {
-                  const next = e.target.value as VerificationStatus | 'all';
+                onChange={(val) => {
+                  const next = val as VerificationStatus | 'all';
                   setSelectedStatus(next);
                   syncLearningUrl({ status: next });
                 }}
-                className="w-full appearance-none bg-paper text-midnight-mouth font-[var(--font-inter)] font-medium text-[13px] rounded-[10px] pl-3 pr-8 py-2 min-h-[36px] border border-midnight-mouth/10 cursor-pointer"
-              >
-                <option value="all">Any status</option>
-                <option value="verified">{formatVerificationStatus('verified')}</option>
-                <option value="needs_review">{formatVerificationStatus('needs_review')}</option>
-              </select>
-              <ChevronDown className="w-3.5 h-3.5 text-midnight-mouth/70 pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2" aria-hidden="true" />
+                options={[
+                  { value: 'all', label: 'Any status' },
+                  { value: 'verified', label: formatVerificationStatus('verified') },
+                  { value: 'needs_review', label: formatVerificationStatus('needs_review') },
+                ]}
+              />
             </div>
             {hasFilters && (
               <button
                 type="button"
                 onClick={resetAll}
                 aria-label="Reset learning filters"
-                className="bg-paper hover:bg-sunshine-yellow text-midnight-mouth rounded-[10px] p-2 min-w-[36px] min-h-[36px] inline-flex items-center justify-center cursor-pointer filter-pill"
+                className="bg-paper hover:bg-sunshine-yellow text-midnight-mouth rounded-[10px] p-2 min-w-[36px] min-h-[36px] inline-flex items-center justify-center cursor-pointer filter-pill shrink-0"
               >
                 <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
               </button>

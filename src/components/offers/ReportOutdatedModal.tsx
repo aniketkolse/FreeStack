@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { X, CheckCircle2, Flag } from 'lucide-react';
 import type { OutdatedReport } from '../../types/resource';
+import { FilterDropdown } from '../ui/FilterDropdown';
 
 interface ReportOutdatedFormProps {
   defaultOfferSlug?: string | null;
@@ -131,18 +132,22 @@ export function ReportOutdatedForm({
         >
           What changed or needs review?
         </label>
-        <select
+        <FilterDropdown
           id="report-type"
+          label="What changed or needs review?"
+          surface="paper"
+          minMenuWidth={300}
+          menuTitle="Select report type"
           value={reportType}
-          onChange={(e) => setReportType(e.target.value as OutdatedReport['reportType'])}
-          className="w-full bg-paper text-midnight-mouth font-[var(--font-inter)] text-[16px] sm:text-[15px] rounded-[16px] px-4 py-3 min-h-[44px] cursor-pointer"
-        >
-          <option value="outdated_limit">Free-tier quota or limit changed</option>
-          <option value="card_changed">Credit card requirement changed</option>
-          <option value="broken_link">Broken official or pricing link</option>
-          <option value="new_resource">Suggest a new free resource</option>
-          <option value="other">Other correction</option>
-        </select>
+          onChange={(val) => setReportType(val as OutdatedReport['reportType'])}
+          options={[
+            { value: 'outdated_limit', label: 'Free-tier quota or limit changed' },
+            { value: 'card_changed', label: 'Credit card requirement changed' },
+            { value: 'broken_link', label: 'Broken official or pricing link' },
+            { value: 'new_resource', label: 'Suggest a new free resource' },
+            { value: 'other', label: 'Other correction' },
+          ]}
+        />
       </div>
 
       <div className="flex flex-col gap-1.5">
