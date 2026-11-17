@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter, type NavigateOptions } from './lib/router/useRouter';
+import { getBackNavigationMeta } from './lib/router/navigationHistory';
+import { getCategoryBySlug, getOfferBySlug } from './lib/data/resources';
 import { SiteHeader } from './components/layout/SiteHeader';
 import { SiteFooter } from './components/layout/SiteFooter';
 import { FreeStackIntroSplash } from './components/layout/FreeStackIntroSplash';
@@ -16,7 +18,7 @@ import { LegalCenterPage } from './pages/LegalCenterPage';
 import { SavedOffersPage } from './pages/SavedOffersPage';
 
 export default function App() {
-  const { pathname, params, navigate } = useRouter();
+  const { pathname, params, previousPath, navigate, goBack } = useRouter();
   const [replaySplash, setReplaySplash] = useState(false);
 
   useEffect(() => {
@@ -41,6 +43,10 @@ export default function App() {
     navigate(to, options);
   };
 
+  const handleBack = (fallbackPath?: string) => {
+    goBack(fallbackPath);
+  };
+
   const renderPage = () => {
     if (pathname === '/' || pathname === '') {
       return <HomePage onNavigate={handleNavigate} />;
@@ -52,7 +58,7 @@ export default function App() {
       return <ExplorePage searchParams={params} onNavigate={handleNavigate} mode="search" />;
     }
     if (pathname === '/categories') {
-      return <CategoriesPage onNavigate={handleNavigate} />;
+      return <CategoriesPage searchParams={params} onNavigate={handleNavigate} />;
     }
     if (pathname.startsWith('/category/')) {
       const slug = pathname.replace('/category/', '').replace(/\/$/, '');
@@ -62,21 +68,37 @@ export default function App() {
           slug={slug}
           searchParams={params}
           onNavigate={handleNavigate}
+          onBack={handleBack}
+          previousPath={previousPath}
         />
       );
     }
     if (pathname.startsWith('/offer/')) {
       const slug = pathname.replace('/offer/', '').replace(/\/$/, '');
-      return <OfferDetailPage slug={slug} onNavigate={handleNavigate} />;
+      return (
+        <OfferDetailPage
+          key={slug}
+          slug={slug}
+          onNavigate={handleNavigate}
+          onBack={handleBack}
+          previousPath={previousPath}
+        />
+      );
     }
     if (pathname === '/learning') {
       return <LearningPage searchParams={params} onNavigate={handleNavigate} />;
     }
     if (pathname === '/students') {
-      return <StudentsPage onNavigate={handleNavigate} />;
+      return <StudentsPage searchParams={params} onNavigate={handleNavigate} />;
     }
     if (pathname === '/saved') {
-      return <SavedOffersPage onNavigate={handleNavigate} />;
+      return (
+        <SavedOffersPage
+          onNavigate={handleNavigate}
+          onBack={handleBack}
+          previousPath={previousPath}
+        />
+      );
     }
     if (pathname === '/about') {
       return <AboutPage onNavigate={handleNavigate} />;
@@ -94,10 +116,18 @@ export default function App() {
       return (
         <DesignSystemPage
           onNavigate={handleNavigate}
+          onBack={handleBack}
+          previousPath={previousPath}
           onReplayIntro={() => setReplaySplash(true)}
         />
       );
     }
+
+    const notFoundBackMeta = getBackNavigationMeta(previousPath, '/', {
+      getCategoryName: (slug) => getCategoryBySlug(slug)?.name,
+      getOfferName: (slug) => getOfferBySlug(slug)?.identity.name,
+    });
+
     return (
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center flex flex-col items-center gap-6">
         <h1 className="font-[var(--font-wallop)] font-extrabold text-[40px] sm:text-[64px] leading-[1] tracking-[-0.04em] text-midnight-mouth">
@@ -108,14 +138,14 @@ export default function App() {
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <a
-            href="/"
+            href={notFoundBackMeta.targetHref}
             onClick={(e) => {
               e.preventDefault();
-              handleNavigate('/');
+              handleBack('/');
             }}
             className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[17px] rounded-full px-6 py-3.5 min-h-[48px] inline-flex items-center spring-pill"
           >
-            Back to Home
+            {notFoundBackMeta.label}
           </a>
           <a
             href="/explore"

@@ -1,14 +1,16 @@
-import React, { useMemo, useState } from 'react';
-import { GraduationCap, AlertTriangle, Home, CheckCircle2 } from 'lucide-react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { GraduationCap, Home, CheckCircle2 } from 'lucide-react';
 import { OFFERS, getStudentOffers } from '../lib/data/resources';
 import { DEFAULT_FILTER_STATE, filterAndSortOffers } from '../lib/filters/filterOffers';
+import type { NavigateOptions } from '../lib/router/useRouter';
 import { formatCardRequirement, formatDate } from '../lib/utils/formatters';
 import { ResourceCard } from '../components/offers/ResourceCard';
 import { SlabIllustration } from '../components/illustrations/TocaStickers';
 import { SearchBar } from '../components/search/SearchBar';
 
 interface StudentsPageProps {
-  onNavigate: (path: string) => void;
+  searchParams?: URLSearchParams;
+  onNavigate: (path: string, options?: NavigateOptions) => void;
 }
 
 const STUDENT_TRACKS = [
@@ -25,11 +27,43 @@ const STUDENT_TRACKS = [
   { id: 'Hackathons, Open-Source Fellowships & Student Grants', label: 'Fellowships & grants' },
 ];
 
-export function StudentsPage({ onNavigate }: StudentsPageProps) {
-  const [selectedTrack, setSelectedTrack] = useState('all');
-  const [studentIdFilter, setStudentIdFilter] = useState<'all' | 'required' | 'not_required'>('all');
-  const [searchQuery, setSearchQuery] = useState('');
+export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
+  const [selectedTrack, setSelectedTrack] = useState<string>(
+    searchParams?.get('track') || 'all'
+  );
+  const [studentIdFilter, setStudentIdFilter] = useState<'all' | 'required' | 'not_required'>(
+    (searchParams?.get('verify') as 'all' | 'required' | 'not_required') || 'all'
+  );
+  const [searchQuery, setSearchQuery] = useState<string>(searchParams?.get('q') || '');
   const [visibleCount, setVisibleCount] = useState(24);
+
+  useEffect(() => {
+    setSelectedTrack(searchParams?.get('track') || 'all');
+    setStudentIdFilter(
+      (searchParams?.get('verify') as 'all' | 'required' | 'not_required') || 'all'
+    );
+    setSearchQuery(searchParams?.get('q') || '');
+  }, [searchParams]);
+
+  const syncStudentsUrl = (next: {
+    q?: string;
+    track?: string;
+    verify?: 'all' | 'required' | 'not_required';
+  }) => {
+    const qVal = next.q !== undefined ? next.q : searchQuery;
+    const trackVal = next.track ?? selectedTrack;
+    const verifyVal = next.verify ?? studentIdFilter;
+
+    const qs = new URLSearchParams();
+    if (qVal.trim()) qs.set('q', qVal.trim());
+    if (trackVal !== 'all') qs.set('track', trackVal);
+    if (verifyVal !== 'all') qs.set('verify', verifyVal);
+    const queryStr = qs.toString();
+    onNavigate(queryStr ? `/students?${queryStr}` : '/students', {
+      replace: true,
+      scrollTop: false,
+    });
+  };
 
   const allStudentOffers = useMemo(
     () =>
@@ -106,50 +140,24 @@ export function StudentsPage({ onNavigate }: StudentsPageProps) {
       {/* Compact Grass Green Student Slab with Explicit Student ID Requirement Callout at Top */}
       <section className="bg-grass-green rounded-[22px] sm:rounded-[26px] p-4 sm:p-6 md:p-7 grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-7 items-center">
         <div className="lg:col-span-7 flex flex-col items-start gap-2.5">
-          <div className="flex flex-wrap items-center gap-2">
-            <a
-              href="/"
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('/');
-              }}
-              className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[13px] rounded-full px-3.5 py-1.5 min-h-[32px] inline-flex items-center gap-1.5 spring-pill"
-            >
-              <Home className="w-3.5 h-3.5" aria-hidden="true" />
-              <span>Home</span>
-            </a>
-            <span
-              data-testid="student-id-top-badge"
-              className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[12.5px] rounded-full px-3.5 py-1.5 min-h-[32px] inline-flex items-center gap-1.5"
-            >
-              <GraduationCap className="w-3.5 h-3.5" aria-hidden="true" />
-              <span>
-                {allStudentOffers.length} Verified Student Benefits ({studentIdRequiredOffers.length} Student ID / .edu · {noStudentIdOffers.length} No ID Needed)
-              </span>
-            </span>
-          </div>
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('/');
+            }}
+            className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[13px] rounded-full px-3.5 py-1.5 min-h-[32px] inline-flex items-center gap-1.5 spring-pill"
+          >
+            <Home className="w-3.5 h-3.5" aria-hidden="true" />
+            <span>Home</span>
+          </a>
 
           <h1 className="font-[var(--font-wallop)] font-extrabold text-[26px] sm:text-[36px] lg:text-[42px] leading-[1.04] tracking-[-0.03em] text-midnight-mouth">
             Student benefits &amp; cloud credits
           </h1>
           <p className="font-[var(--font-inter)] text-[13.5px] sm:text-[14.5px] leading-[1.45] text-ink max-w-xl">
-            Verified academic developer packs, AI coding assistants, desktop IDEs, student cloud credits, CAD/EDA tools, domains, certifications, and fellowships — clearly classified by whether a <strong>Student ID / school .edu email</strong> is required vs. <strong>No Student ID Required</strong>.
+            Verified academic developer packs, AI coding assistants, desktop IDEs, student cloud credits, CAD/EDA tools, domains, certifications, and fellowships.
           </p>
-
-          {/* Explicit Top Breakdown: Where Student ID Is Needed vs No Student ID Needed */}
-          <div
-            data-testid="student-id-needed-notice"
-            className="w-full bg-paper/95 rounded-[16px] p-3.5 flex flex-col gap-1.5 border border-midnight-mouth/10"
-          >
-            <div className="flex items-center gap-1.5 font-[var(--font-wallop)] font-bold text-[13.5px] sm:text-[14px] text-midnight-mouth">
-              <GraduationCap className="w-4 h-4 shrink-0" aria-hidden="true" />
-              <span>Proper Classification: Student ID / .edu Required vs. No Student ID Required</span>
-            </div>
-            <p className="font-[var(--font-inter)] text-[12.5px] sm:text-[13px] leading-[1.45] text-ink/90">
-              <strong>Student ID / .edu Required ({studentIdRequiredOffers.length} offers):</strong> GitHub Student Developer Pack, JetBrains All Products Pack, Azure for Students ($100), GitHub Copilot Pro, Cursor Pro (1 Year Free), Figma Education, Notion Plus Education, Google One AI Premium, Autodesk, Namecheap nc.me, and Canva Education.{' '}
-              <strong>No Student ID Required ({noStudentIdOffers.length} offers):</strong> AWS Educate, Harvard CS50x, Kaggle Free GPU/TPU, Google Summer of Code (GSoC), MLH Fellowships, Boot.dev, Exercism, and Zotero.
-            </p>
-          </div>
 
           <div className="w-full pt-0.5">
             <SearchBar
@@ -158,10 +166,12 @@ export function StudentsPage({ onNavigate }: StudentsPageProps) {
               onChangeQuery={(q) => {
                 setSearchQuery(q);
                 setVisibleCount(24);
+                syncStudentsUrl({ q });
               }}
               onSubmitQuery={(q) => {
                 setSearchQuery(q);
                 setVisibleCount(24);
+                syncStudentsUrl({ q });
               }}
               placeholder="Search student packs, GitHub Student Pack, Cursor Pro, Azure $100, JetBrains..."
               label="Search student benefits"
@@ -171,48 +181,6 @@ export function StudentsPage({ onNavigate }: StudentsPageProps) {
         </div>
         <div className="lg:col-span-5">
           <SlabIllustration variant="students" />
-        </div>
-      </section>
-
-      {/* Free Benefit vs Discount Distinction + Eligibility Guidance */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-3.5 sm:gap-4">
-        <div className="lg:col-span-5 bg-sunshine-yellow rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 flex flex-col gap-2">
-          <div className="flex items-center gap-2 text-midnight-mouth">
-            <AlertTriangle className="w-5 h-5 shrink-0" aria-hidden="true" />
-            <h2 className="font-[var(--font-wallop)] font-bold text-[17px] sm:text-[19px] leading-[1.15] text-midnight-mouth">
-              Free benefit vs. student discount
-            </h2>
-          </div>
-          <p className="font-[var(--font-inter)] text-[13.5px] sm:text-[14px] leading-[1.5] text-midnight-mouth">
-            <strong>A student discount is not free access.</strong> FreeStack only grants &ldquo;Student exclusive&rdquo; status when core software, packs, or cloud credits cost $0 during enrollment (for example, Notion Plus or Azure $100 credits). Paid student discounts are flagged explicitly in restrictions so you never hit an unexpected paywall.
-          </p>
-        </div>
-
-        <div className="lg:col-span-7 bg-daylight rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div className="bg-paper rounded-[16px] p-4">
-            <h3 className="font-[var(--font-wallop)] font-bold text-[15.5px] text-midnight-mouth mb-1">
-              Student ID / .edu proof ({studentIdRequiredOffers.length})
-            </h3>
-            <p className="font-[var(--font-inter)] text-[13px] leading-[1.45] text-ink/85">
-              Programs verify via school email (.edu / .ac.in / .ac.uk), SheerID, UNiDAYS, or dated student ID card / enrollment transcript.
-            </p>
-          </div>
-          <div className="bg-paper rounded-[16px] p-4">
-            <h3 className="font-[var(--font-wallop)] font-bold text-[15.5px] text-midnight-mouth mb-1">
-              No Student ID needed ({noStudentIdOffers.length})
-            </h3>
-            <p className="font-[var(--font-inter)] text-[13px] leading-[1.45] text-ink/85">
-              Self-paced student cloud labs (AWS Educate), university open courses (CS50x, MIT OCW), and fellowships open without a .edu email.
-            </p>
-          </div>
-          <div className="bg-paper rounded-[16px] p-4">
-            <h3 className="font-[var(--font-wallop)] font-bold text-[15.5px] text-midnight-mouth mb-1">
-              Annual renewal
-            </h3>
-            <p className="font-[var(--font-inter)] text-[13px] leading-[1.45] text-ink/85">
-              Licenses like JetBrains, GitHub Pack, and Figma Education require re-verification every 1–2 years while enrolled.
-            </p>
-          </div>
         </div>
       </section>
 
@@ -231,6 +199,7 @@ export function StudentsPage({ onNavigate }: StudentsPageProps) {
             onClick={() => {
               setStudentIdFilter('all');
               setVisibleCount(24);
+              syncStudentsUrl({ verify: 'all' });
             }}
             className={`font-[var(--font-wallop)] font-semibold text-[12.5px] rounded-full px-3.5 py-1.5 min-h-[34px] inline-flex items-center gap-1.5 cursor-pointer transition-colors ${
               studentIdFilter === 'all'
@@ -245,6 +214,7 @@ export function StudentsPage({ onNavigate }: StudentsPageProps) {
             onClick={() => {
               setStudentIdFilter('required');
               setVisibleCount(24);
+              syncStudentsUrl({ verify: 'required' });
             }}
             className={`font-[var(--font-wallop)] font-semibold text-[12.5px] rounded-full px-3.5 py-1.5 min-h-[34px] inline-flex items-center gap-1.5 cursor-pointer transition-colors ${
               studentIdFilter === 'required'
@@ -260,6 +230,7 @@ export function StudentsPage({ onNavigate }: StudentsPageProps) {
             onClick={() => {
               setStudentIdFilter('not_required');
               setVisibleCount(24);
+              syncStudentsUrl({ verify: 'not_required' });
             }}
             className={`font-[var(--font-wallop)] font-semibold text-[12.5px] rounded-full px-3.5 py-1.5 min-h-[34px] inline-flex items-center gap-1.5 cursor-pointer transition-colors ${
               studentIdFilter === 'not_required'
@@ -288,6 +259,7 @@ export function StudentsPage({ onNavigate }: StudentsPageProps) {
                 onClick={() => {
                   setSelectedTrack(track.id);
                   setVisibleCount(24);
+                  syncStudentsUrl({ track: track.id });
                 }}
                 className={`font-[var(--font-wallop)] font-semibold text-[13px] rounded-full px-4 py-1.5 min-h-[36px] whitespace-nowrap shrink-0 filter-pill cursor-pointer ${
                   active

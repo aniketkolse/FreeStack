@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { RotateCcw, ChevronDown, Home } from 'lucide-react';
 import { getLearningOffers } from '../lib/data/resources';
 import { DEFAULT_FILTER_STATE, filterAndSortOffers } from '../lib/filters/filterOffers';
@@ -79,6 +79,16 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
   const [selectedStatus, setSelectedStatus] = useState<VerificationStatus | 'all'>(
     (searchParams?.get('status') as VerificationStatus | 'all') || 'all'
   );
+
+  useEffect(() => {
+    setSearchQuery(searchParams?.get('q') || '');
+    setSelectedFormat((searchParams?.get('format') as LearningFormat | 'all') || 'all');
+    setSelectedDifficulty((searchParams?.get('difficulty') as LearningDifficulty | 'all') || 'all');
+    setSelectedTopic(searchParams?.get('topic') || 'all');
+    setSelectedLanguage(searchParams?.get('language') || 'all');
+    setSelectedPricing((searchParams?.get('pricing') as PricingModel | 'all') || 'all');
+    setSelectedStatus((searchParams?.get('status') as VerificationStatus | 'all') || 'all');
+  }, [searchParams]);
 
   const syncLearningUrl = (next: {
     q?: string;

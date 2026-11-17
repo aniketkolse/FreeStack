@@ -7,18 +7,29 @@ import {
   Share2,
   Trash2,
 } from 'lucide-react';
-import { OFFERS } from '../lib/data/resources';
+import { getCategoryBySlug, getOfferBySlug, OFFERS } from '../lib/data/resources';
+import { getBackNavigationMeta } from '../lib/router/navigationHistory';
 import { useSavedOffers } from '../lib/saved/savedOffers';
 import { ResourceCard } from '../components/offers/ResourceCard';
 import { LearningCard } from '../components/offers/LearningCard';
 
 interface SavedOffersPageProps {
   onNavigate: (path: string) => void;
+  onBack?: (fallbackPath?: string) => void;
+  previousPath?: string | null;
 }
 
-export function SavedOffersPage({ onNavigate }: SavedOffersPageProps) {
+export function SavedOffersPage({
+  onNavigate,
+  onBack,
+  previousPath = null,
+}: SavedOffersPageProps) {
   const { savedSlugs, clearSaved } = useSavedOffers();
   const [copiedStack, setCopiedStack] = useState(false);
+  const backMeta = getBackNavigationMeta(previousPath, '/', {
+    getCategoryName: (slug) => getCategoryBySlug(slug)?.name,
+    getOfferName: (slug) => getOfferBySlug(slug)?.identity.name,
+  });
 
   const savedOffers = useMemo(() => {
     const bySlug = new Map(OFFERS.map((offer) => [offer.identity.slug, offer]));
@@ -136,15 +147,19 @@ export function SavedOffersPage({ onNavigate }: SavedOffersPageProps) {
               <span>Explore tools</span>
             </a>
             <a
-              href="/"
+              href={backMeta.targetHref}
               onClick={(e) => {
                 e.preventDefault();
-                onNavigate('/');
+                if (onBack) {
+                  onBack('/');
+                } else {
+                  onNavigate(backMeta.targetHref);
+                }
               }}
               className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[14px] rounded-full px-5 py-2.5 min-h-[40px] inline-flex items-center gap-2 spring-pill"
             >
               <Home className="w-4 h-4" aria-hidden="true" />
-              <span>Back to Home</span>
+              <span>{backMeta.label}</span>
             </a>
           </div>
         </section>

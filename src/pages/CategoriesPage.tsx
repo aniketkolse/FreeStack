@@ -1,16 +1,30 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Home } from 'lucide-react';
 import { CATEGORIES, getCategoryCounts } from '../lib/data/resources';
+import type { NavigateOptions } from '../lib/router/useRouter';
 import { CategoryTile } from '../components/categories/CategoryTile';
 import { SearchBar } from '../components/search/SearchBar';
 
 interface CategoriesPageProps {
-  onNavigate: (path: string) => void;
+  searchParams?: URLSearchParams;
+  onNavigate: (path: string, options?: NavigateOptions) => void;
 }
 
-export function CategoriesPage({ onNavigate }: CategoriesPageProps) {
+export function CategoriesPage({ searchParams, onNavigate }: CategoriesPageProps) {
   const counts = getCategoryCounts();
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState<string>(searchParams?.get('q') || '');
+
+  useEffect(() => {
+    setQuery(searchParams?.get('q') || '');
+  }, [searchParams]);
+
+  const syncCategoriesUrl = (nextQuery: string) => {
+    const trimmed = nextQuery.trim();
+    onNavigate(trimmed ? `/categories?q=${encodeURIComponent(trimmed)}` : '/categories', {
+      replace: true,
+      scrollTop: false,
+    });
+  };
 
   const filteredCategories = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -48,8 +62,14 @@ export function CategoriesPage({ onNavigate }: CategoriesPageProps) {
           <SearchBar
             inputId="categories-search-input"
             initialQuery={query}
-            onChangeQuery={setQuery}
-            onSubmitQuery={setQuery}
+            onChangeQuery={(nextQ) => {
+              setQuery(nextQ);
+              syncCategoriesUrl(nextQ);
+            }}
+            onSubmitQuery={(nextQ) => {
+              setQuery(nextQ);
+              syncCategoriesUrl(nextQ);
+            }}
             placeholder="Search categories or subcategories (e.g., AI Models, MCP, Frontend, Cloud)..."
             label="Search categories"
             showSuggestions={true}

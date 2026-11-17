@@ -34,7 +34,7 @@ export function SearchBar({
   const [value, setValue] = useState(initialQuery);
 
   useEffect(() => {
-    setValue(initialQuery);
+    setValue((prev) => (prev.trim() === initialQuery.trim() ? prev : initialQuery));
   }, [initialQuery]);
 
   const handleSubmit = (e: React.FormEvent) => {

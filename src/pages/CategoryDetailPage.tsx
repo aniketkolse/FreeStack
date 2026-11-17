@@ -18,8 +18,10 @@ import {
   CATEGORIES,
   getCategoryBySlug,
   getCategoryCounts,
+  getOfferBySlug,
   getOffersByCategory,
 } from '../lib/data/resources';
+import { getBackNavigationMeta } from '../lib/router/navigationHistory';
 import { filterAndSortOffers, DEFAULT_FILTER_STATE } from '../lib/filters/filterOffers';
 import {
   findPrimaryTypeForSubcategory,
@@ -46,6 +48,8 @@ interface CategoryDetailPageProps {
   slug: string;
   searchParams?: URLSearchParams;
   onNavigate: (path: string, options?: NavigateOptions) => void;
+  onBack?: (fallbackPath?: string) => void;
+  previousPath?: string | null;
 }
 
 const SORT_OPTIONS: Array<{
@@ -91,6 +95,8 @@ export function CategoryDetailPage({
   slug,
   searchParams,
   onNavigate,
+  onBack,
+  previousPath = null,
 }: CategoryDetailPageProps) {
   const category = getCategoryBySlug(slug);
   const isMcpCategory = slug === 'mcp';
@@ -534,6 +540,10 @@ export function CategoryDetailPage({
   };
 
   if (!category) {
+    const notFoundBackMeta = getBackNavigationMeta(previousPath, '/categories', {
+      getCategoryName: (catSlug) => getCategoryBySlug(catSlug)?.name,
+      getOfferName: (offerSlug) => getOfferBySlug(offerSlug)?.identity.name,
+    });
     return (
       <div className="max-w-[1360px] mx-auto px-6 py-16 text-center flex flex-col items-center gap-4">
         <h1 className="font-[var(--font-wallop)] font-extrabold text-[32px] text-midnight-mouth">
@@ -555,14 +565,18 @@ export function CategoryDetailPage({
             <span>Home</span>
           </a>
           <a
-            href="/categories"
+            href={notFoundBackMeta.targetHref}
             onClick={(e) => {
               e.preventDefault();
-              onNavigate('/categories');
+              if (onBack) {
+                onBack('/categories');
+              } else {
+                onNavigate(notFoundBackMeta.targetHref);
+              }
             }}
             className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[14px] rounded-full px-5 py-2.5 spring-pill"
           >
-            Back to Categories
+            {notFoundBackMeta.label}
           </a>
         </div>
       </div>

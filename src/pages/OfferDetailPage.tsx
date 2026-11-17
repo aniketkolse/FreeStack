@@ -35,6 +35,7 @@ import {
   getSafeGoUrl,
 } from '../lib/utils/formatters';
 import { shareOrCopyOffer, useSavedOffers } from '../lib/saved/savedOffers';
+import { getBackNavigationMeta } from '../lib/router/navigationHistory';
 import { isSafeHttpsUrl } from '../lib/validation/offerValidator';
 import { getCategoryBgClass } from '../components/illustrations/TocaStickers';
 import { OfferLogo } from '../components/offers/OfferLogo';
@@ -44,14 +45,36 @@ import { ReportOutdatedModal } from '../components/offers/ReportOutdatedModal';
 interface OfferDetailPageProps {
   slug: string;
   onNavigate: (path: string) => void;
+  onBack?: (fallbackPath?: string) => void;
+  previousPath?: string | null;
 }
 
-export function OfferDetailPage({ slug, onNavigate }: OfferDetailPageProps) {
+export function OfferDetailPage({
+  slug,
+  onNavigate,
+  onBack,
+  previousPath = null,
+}: OfferDetailPageProps) {
   const [reportOpen, setReportOpen] = useState(false);
   const [sharedFeedback, setSharedFeedback] = useState(false);
   const { isSaved, toggleSave } = useSavedOffers();
 
   const offer = getOfferBySlug(slug);
+  const category = offer ? getCategoryBySlug(offer.classification.category) : undefined;
+  const fallbackPath = category ? `/category/${category.slug}` : '/explore';
+  const backMeta = getBackNavigationMeta(previousPath, fallbackPath, {
+    getCategoryName: (catSlug) => getCategoryBySlug(catSlug)?.name,
+    getOfferName: (offerSlug) => getOfferBySlug(offerSlug)?.identity.name,
+  });
+
+  const handleBackClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (onBack) {
+      onBack(fallbackPath);
+    } else {
+      onNavigate(backMeta.targetHref);
+    }
+  };
 
   if (!offer) {
     return (
@@ -63,14 +86,13 @@ export function OfferDetailPage({ slug, onNavigate }: OfferDetailPageProps) {
           This listing could not be found in the FreeStack catalog.
         </p>
         <a
-          href="/explore"
-          onClick={(e) => {
-            e.preventDefault();
-            onNavigate('/explore');
-          }}
-          className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[14px] rounded-full px-5 py-2.5 spring-pill"
+          href={backMeta.targetHref}
+          data-testid="offer-not-found-back-btn"
+          onClick={handleBackClick}
+          className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[14px] rounded-full px-5 py-2.5 inline-flex items-center gap-1.5 spring-pill"
         >
-          Back to Explore
+          <ArrowLeft className="w-3.5 h-3.5" aria-hidden="true" />
+          <span>{backMeta.label}</span>
         </a>
       </div>
     );
@@ -78,7 +100,6 @@ export function OfferDetailPage({ slug, onNavigate }: OfferDetailPageProps) {
 
   const saved = isSaved(offer.identity.slug);
   const requiresStudentId = offer.eligibility.student_access === 'exclusive';
-  const category = getCategoryBySlug(offer.classification.category);
   const bgClass = category ? getCategoryBgClass(category.color) : 'bg-sky-blue';
   const related = getRelatedOffers(offer, 3);
   const sourceById = new Map(offer.evidence.sources.map((s) => [s.id, s]));
@@ -118,15 +139,13 @@ export function OfferDetailPage({ slug, onNavigate }: OfferDetailPageProps) {
       {/* Top Back & Breadcrumb */}
       <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3">
         <a
-          href="/explore"
-          onClick={(e) => {
-            e.preventDefault();
-            onNavigate('/explore');
-          }}
-          className="bg-daylight text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[13.5px] rounded-full px-4 py-1.5 min-h-[34px] inline-flex items-center gap-1.5 spring-pill"
+          href={backMeta.targetHref}
+          data-testid="offer-back-btn"
+          onClick={handleBackClick}
+          className="bg-daylight text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[13.5px] rounded-full px-4 py-1.5 min-h-[34px] inline-flex items-center gap-1.5 spring-pill max-w-full"
         >
-          <ArrowLeft className="w-3.5 h-3.5" aria-hidden="true" />
-          <span>Back to Explore</span>
+          <ArrowLeft className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+          <span className="truncate max-w-[260px] sm:max-w-[360px]">{backMeta.label}</span>
         </a>
 
         <nav

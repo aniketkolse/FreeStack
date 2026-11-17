@@ -1,12 +1,21 @@
 import React from 'react';
 import { Sparkles, ArrowLeft } from 'lucide-react';
-import { CATEGORIES, OFFERS, getLearningOffers } from '../lib/data/resources';
+import {
+  CATEGORIES,
+  OFFERS,
+  getCategoryBySlug,
+  getLearningOffers,
+  getOfferBySlug,
+} from '../lib/data/resources';
+import { getBackNavigationMeta } from '../lib/router/navigationHistory';
 import { FreeStackLogo, CategoryStickerIcon } from '../components/illustrations/TocaStickers';
 import { ResourceCard } from '../components/offers/ResourceCard';
 import { LearningCard } from '../components/offers/LearningCard';
 
 interface DesignSystemPageProps {
   onNavigate: (path: string) => void;
+  onBack?: (fallbackPath?: string) => void;
+  previousPath?: string | null;
   onReplayIntro: () => void;
 }
 
@@ -22,23 +31,37 @@ const COLOR_SWATCHES = [
   { name: 'Ink', hex: '#0A0A0A', token: '--color-ink', bg: 'bg-[#0A0A0A] text-white' },
 ];
 
-export function DesignSystemPage({ onNavigate, onReplayIntro }: DesignSystemPageProps) {
+export function DesignSystemPage({
+  onNavigate,
+  onBack,
+  previousPath = null,
+  onReplayIntro,
+}: DesignSystemPageProps) {
   const sampleOffer = OFFERS[0];
   const sampleLearning = getLearningOffers()[0];
+  const backMeta = getBackNavigationMeta(previousPath, '/about', {
+    getCategoryName: (slug) => getCategoryBySlug(slug)?.name,
+    getOfferName: (slug) => getOfferBySlug(slug)?.identity.name,
+  });
 
   return (
     <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-5 pb-12 flex flex-col gap-6 sm:gap-9">
       <div className="flex flex-wrap items-center justify-between gap-2.5">
         <a
-          href="/about"
+          href={backMeta.targetHref}
+          data-testid="design-system-back-btn"
           onClick={(e) => {
             e.preventDefault();
-            onNavigate('/about');
+            if (onBack) {
+              onBack('/about');
+            } else {
+              onNavigate(backMeta.targetHref);
+            }
           }}
           className="bg-daylight text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[13.5px] rounded-full px-4 py-1.5 min-h-[34px] inline-flex items-center gap-1.5 spring-pill"
         >
           <ArrowLeft className="w-3.5 h-3.5" aria-hidden="true" />
-          <span>Back to About</span>
+          <span>{backMeta.label}</span>
         </a>
 
         <button
