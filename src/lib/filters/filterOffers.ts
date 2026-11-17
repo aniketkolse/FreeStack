@@ -148,6 +148,8 @@ export function filterAndSortOffers(offers: Offer[], filters: FilterState): Offe
 
   // Default relevance when query is empty: pinned top defaults first, then featured, then recently verified
   const PINNED_DEFAULT_SLUGS: Record<string, number> = {
+    // AI Models pinned top default
+    'nvidia-nim-free-api-catalog': 1,
     // Frontend & Design Tools pinned defaults
     'gradientdeck-ui-design-md': 1,
     'getdesign-md-website-library': 2,

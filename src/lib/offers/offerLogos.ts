@@ -2,6 +2,7 @@ import type { Offer } from '../../types/resource';
 
 const SLUG_TO_LOGO_PATH: Record<string, string> = {
   // AI Models & Specific Model Logos
+  'nvidia-nim-free-api-catalog': '/logos/brand-nvidia.svg',
   'google-ai-studio-gemini-free': '/logos/brand-aistudio.svg',
   'gemini-3-8-flash-free': '/logos/model-gemini.svg',
   'gemini-2-5-flash-multimodal': '/logos/model-gemini.svg',

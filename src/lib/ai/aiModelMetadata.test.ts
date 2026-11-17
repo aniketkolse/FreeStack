@@ -83,4 +83,16 @@ describe('AI Models Catalog, Modality Differentiation, Context Window & Brand Lo
     assert.equal(firstTokens, 10_000_000);
     assert.ok(firstTokens > lastTokens);
   });
+
+  it('places NVIDIA Build Models (https://build.nvidia.com/models) at #1 default in AI Models with official NVIDIA logo', () => {
+    const defaultSorted = filterAndSortOffers(aiOffers, {
+      ...DEFAULT_FILTER_STATE,
+      category: 'ai-ml',
+      sortBy: 'relevance',
+    });
+
+    assert.equal(defaultSorted[0].identity.slug, 'nvidia-nim-free-api-catalog');
+    assert.equal(defaultSorted[0].links.official, 'https://build.nvidia.com/models');
+    assert.equal(resolveOfferLogoSrc(defaultSorted[0]), '/logos/brand-nvidia.svg');
+  });
 });
