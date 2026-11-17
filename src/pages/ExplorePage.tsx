@@ -42,7 +42,8 @@ import {
 } from '../lib/utils/formatters';
 import { SearchBar } from '../components/search/SearchBar';
 import { ResourceCard } from '../components/offers/ResourceCard';
-import { CategoryStickerIcon } from '../components/illustrations/TocaStickers';
+import { CategoryStickerIcon, getCategoryBgClass } from '../components/illustrations/TocaStickers';
+import { FilterDropdown, type FilterDropdownOption } from '../components/ui/FilterDropdown';
 
 interface ExplorePageProps {
   searchParams: URLSearchParams;
@@ -117,6 +118,45 @@ export function ExplorePage({
       map[pm] = (map[pm] ?? 0) + 1;
     }
     return map;
+  }, []);
+
+  const categoryDropdownOptions = useMemo<FilterDropdownOption[]>(() => {
+    return [
+      {
+        value: 'all',
+        label: 'All categories',
+        count: OFFERS.length,
+        icon: <Layers className="w-3.5 h-3.5 text-midnight-mouth" aria-hidden="true" />,
+        iconBgClass: 'bg-paper border border-midnight-mouth/12',
+      },
+      ...CATEGORIES.map((cat) => ({
+        value: cat.slug,
+        label: cat.name,
+        count: counts[cat.slug] ?? 0,
+        icon: <CategoryStickerIcon slug={cat.slug} className="w-4.5 h-4.5" />,
+        iconBgClass: `${getCategoryBgClass(cat.color)} border border-midnight-mouth/10`,
+      })),
+    ];
+  }, [counts]);
+
+  const resourceTypeDropdownOptions = useMemo<FilterDropdownOption[]>(() => {
+    return [
+      { value: 'all', label: 'All resource types' },
+      ...RESOURCE_TYPE_OPTIONS.map((rt) => ({
+        value: rt,
+        label: formatResourceType(rt),
+      })),
+    ];
+  }, []);
+
+  const statusDropdownOptions = useMemo<FilterDropdownOption[]>(() => {
+    return [
+      { value: 'all', label: 'All statuses' },
+      { value: 'verified', label: 'Verified' },
+      { value: 'needs_review', label: 'Needs review' },
+      { value: 'unverified', label: 'Unverified' },
+      { value: 'expired', label: 'Expired' },
+    ];
   }, []);
 
   useEffect(() => {
@@ -284,28 +324,23 @@ export function ExplorePage({
             )}
           </div>
 
-          <div className="relative">
-            <select
-              id={`${idPrefix}-category`}
-              value={current.category}
-              onChange={(e) =>
-                setCurrent({
-                  ...current,
-                  category: e.target.value as CategorySlug | 'all',
-                  subcategory: 'all',
-                })
-              }
-              className="w-full appearance-none bg-daylight text-midnight-mouth font-[var(--font-inter)] font-medium text-[13px] rounded-[11px] pl-3 pr-8 py-2 min-h-[36px] border border-midnight-mouth/10 cursor-pointer transition-colors hover:border-midnight-mouth/25"
-            >
-              <option value="all">All categories ({OFFERS.length})</option>
-              {CATEGORIES.map((cat) => (
-                <option key={cat.slug} value={cat.slug}>
-                  {cat.name} ({counts[cat.slug] ?? 0})
-                </option>
-              ))}
-            </select>
-            <ChevronDown className="w-3.5 h-3.5 text-midnight-mouth/70 pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2" aria-hidden="true" />
-          </div>
+          <FilterDropdown
+            id={`${idPrefix}-category`}
+            label="Category"
+            value={current.category}
+            options={categoryDropdownOptions}
+            menuTitle="Browse by category"
+            menuSubtitle={`${CATEGORIES.length} stacks`}
+            minMenuWidth={286}
+            maxMenuHeight={380}
+            onChange={(val) =>
+              setCurrent({
+                ...current,
+                category: val as CategorySlug | 'all',
+                subcategory: 'all',
+              })
+            }
+          />
 
           {/* Interactive Subcategory Sub-Options when a category is selected */}
           {selectedCategory && selectedCategory.subcategories.length > 0 ? (
@@ -497,26 +532,23 @@ export function ExplorePage({
             })}
           </div>
 
-          <div className="relative pt-0.5">
-            <select
+          <div className="pt-0.5">
+            <FilterDropdown
               id={`${idPrefix}-resource-type`}
+              label="Resource type"
               value={current.resourceType}
-              onChange={(e) =>
+              options={resourceTypeDropdownOptions}
+              menuTitle="Resource format"
+              size="sm"
+              minMenuWidth={230}
+              maxMenuHeight={300}
+              onChange={(val) =>
                 setCurrent({
                   ...current,
-                  resourceType: e.target.value as ResourceType | 'all',
+                  resourceType: val as ResourceType | 'all',
                 })
               }
-              className="w-full appearance-none bg-daylight text-midnight-mouth font-[var(--font-inter)] font-medium text-[12.5px] rounded-[10px] pl-3 pr-8 py-1.5 min-h-[34px] border border-midnight-mouth/10 cursor-pointer transition-colors hover:border-midnight-mouth/25"
-            >
-              <option value="all">All resource types</option>
-              {RESOURCE_TYPE_OPTIONS.map((rt) => (
-                <option key={rt} value={rt}>
-                  {formatResourceType(rt)}
-                </option>
-              ))}
-            </select>
-            <ChevronDown className="w-3.5 h-3.5 text-midnight-mouth/70 pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2" aria-hidden="true" />
+            />
           </div>
         </div>
 
@@ -642,26 +674,21 @@ export function ExplorePage({
               <ShieldCheck className="w-3 h-3 text-midnight-mouth/75" aria-hidden="true" />
               <span>Status</span>
             </label>
-            <div className="relative">
-              <select
-                id={`${idPrefix}-status`}
-                value={current.verificationStatus}
-                onChange={(e) =>
-                  setCurrent({
-                    ...current,
-                    verificationStatus: e.target.value as VerificationStatus | 'all',
-                  })
-                }
-                className="w-full appearance-none bg-daylight text-midnight-mouth font-[var(--font-inter)] font-medium text-[12px] rounded-[9px] pl-2.5 pr-6 py-1.5 min-h-[34px] border border-midnight-mouth/10 cursor-pointer"
-              >
-                <option value="all">All</option>
-                <option value="verified">Verified</option>
-                <option value="needs_review">Needs review</option>
-                <option value="unverified">Unverified</option>
-                <option value="expired">Expired</option>
-              </select>
-              <ChevronDown className="w-3.5 h-3.5 text-midnight-mouth/70 pointer-events-none absolute right-2 top-1/2 -translate-y-1/2" aria-hidden="true" />
-            </div>
+            <FilterDropdown
+              id={`${idPrefix}-status`}
+              label="Verification status"
+              value={current.verificationStatus}
+              options={statusDropdownOptions}
+              size="sm"
+              minMenuWidth={200}
+              maxMenuHeight={240}
+              onChange={(val) =>
+                setCurrent({
+                  ...current,
+                  verificationStatus: val as VerificationStatus | 'all',
+                })
+              }
+            />
           </div>
         </div>
       </div>
