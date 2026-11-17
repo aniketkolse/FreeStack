@@ -3,7 +3,6 @@ import { GraduationCap, Home, CheckCircle2 } from 'lucide-react';
 import { OFFERS, getStudentOffers } from '../lib/data/resources';
 import { DEFAULT_FILTER_STATE, filterAndSortOffers } from '../lib/filters/filterOffers';
 import type { NavigateOptions } from '../lib/router/useRouter';
-import { formatCardRequirement, formatDate } from '../lib/utils/formatters';
 import { ResourceCard } from '../components/offers/ResourceCard';
 import { SlabIllustration } from '../components/illustrations/TocaStickers';
 import { SearchBar } from '../components/search/SearchBar';
@@ -312,130 +311,6 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
             </button>
           </div>
         )}
-      </section>
-
-      {/* Quick Terms Matrix for Transparency */}
-      <section className="bg-daylight rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 md:p-7 flex flex-col gap-4">
-        <h2 className="font-[var(--font-wallop)] font-bold text-[19px] sm:text-[22px] tracking-[-0.02em] text-midnight-mouth">
-          Eligibility, Student ID requirement &amp; renewal comparison (Top 20 Programs)
-        </h2>
-
-        {/* Mobile Stacked Comparison Cards */}
-        <div className="md:hidden flex flex-col gap-2.5">
-          {allStudentOffers.slice(0, 20).map((offer) => (
-            <div key={offer.identity.id} className="bg-paper rounded-[16px] p-3.5 flex flex-col gap-2">
-              <div className="flex items-start justify-between gap-2">
-                <a
-                  href={`/offer/${offer.identity.slug}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onNavigate(`/offer/${offer.identity.slug}`);
-                  }}
-                  className="font-[var(--font-wallop)] font-bold text-[15px] text-midnight-mouth hover:underline"
-                >
-                  {offer.identity.name}
-                </a>
-                <span className="font-[var(--font-inter)] text-[11.5px] text-ink/70 tabular-nums shrink-0">
-                  {formatDate(offer.verification.last_verified_at)}
-                </span>
-              </div>
-              <dl className="grid grid-cols-2 gap-x-3 gap-y-1 font-[var(--font-inter)] text-[12.5px] text-ink">
-                <div>
-                  <dt className="text-ink/65">Benefit</dt>
-                  <dd className="font-medium text-midnight-mouth">
-                    {offer.access.free_limits[0]
-                      ? `${offer.access.free_limits[0].value ?? 'Unknown'} (${
-                          offer.access.free_limits[0].period ?? ''
-                        })`
-                      : 'See details'}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-ink/65">Card rule</dt>
-                  <dd className="font-medium text-midnight-mouth">
-                    {formatCardRequirement(offer.access.requirements.card_required)}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-ink/65">Duration</dt>
-                  <dd className="font-medium text-midnight-mouth">
-                    {offer.access.validity.duration ?? 'While enrolled'}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-ink/65">Regions</dt>
-                  <dd className="font-medium text-midnight-mouth">{offer.eligibility.regions.join(', ')}</dd>
-                </div>
-              </dl>
-            </div>
-          ))}
-        </div>
-
-        {/* Desktop & Tablet Comparison Matrix */}
-        <div className="hidden md:block overflow-x-auto">
-          <table className="w-full text-left border-collapse min-w-[680px]">
-            <thead>
-              <tr className="border-b border-midnight-mouth/15 font-[var(--font-wallop)] font-semibold text-[13.5px] text-midnight-mouth">
-                <th className="py-2.5 pr-4">Program</th>
-                <th className="py-2.5 pr-4">Student ID / .edu?</th>
-                <th className="py-2.5 pr-4">Benefit / Credit</th>
-                <th className="py-2.5 pr-4">Card rule</th>
-                <th className="py-2.5 pr-4">Duration &amp; renewal</th>
-                <th className="py-2.5">Verified</th>
-              </tr>
-            </thead>
-            <tbody className="font-[var(--font-inter)] text-[13px] text-ink">
-              {allStudentOffers.slice(0, 20).map((offer) => {
-                const reqId =
-                  offer.eligibility.student_access === 'exclusive' ||
-                  offer.classification.tags.includes('Student ID / .edu Required');
-                return (
-                  <tr key={offer.identity.id} className="border-b border-midnight-mouth/10 align-top">
-                    <td className="py-3 pr-4 font-semibold text-midnight-mouth">
-                      <a
-                        href={`/offer/${offer.identity.slug}`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          onNavigate(`/offer/${offer.identity.slug}`);
-                        }}
-                        className="hover:underline"
-                      >
-                        {offer.identity.name}
-                      </a>
-                    </td>
-                    <td className="py-3 pr-4">
-                      <span
-                        className={`inline-flex items-center rounded-full px-2.5 py-0.5 font-[var(--font-wallop)] font-semibold text-[11.5px] ${
-                          reqId
-                            ? 'bg-sunshine-yellow/80 text-midnight-mouth'
-                            : 'bg-grass-green/75 text-midnight-mouth'
-                        }`}
-                      >
-                        {reqId ? 'Student ID / .edu Req.' : 'No Student ID Req.'}
-                      </span>
-                    </td>
-                    <td className="py-3 pr-4">
-                      {offer.access.free_limits[0]
-                        ? `${offer.access.free_limits[0].value ?? 'Unknown'} (${
-                            offer.access.free_limits[0].period ?? ''
-                          })`
-                        : 'See details'}
-                    </td>
-                    <td className="py-3 pr-4">
-                      {formatCardRequirement(offer.access.requirements.card_required)}
-                    </td>
-                    <td className="py-3 pr-4">
-                      {offer.access.validity.duration ?? 'While enrolled'}
-                    </td>
-                    <td className="py-3 tabular-nums">
-                      {formatDate(offer.verification.last_verified_at)}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
       </section>
 
       {/* Open-to-All Tools Commonly Used by Students */}
