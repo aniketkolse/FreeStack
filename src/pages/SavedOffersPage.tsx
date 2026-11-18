@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Bookmark,
   Check,
@@ -7,11 +7,13 @@ import {
   Share2,
   Trash2,
 } from 'lucide-react';
-import { getCategoryBySlug, getOfferBySlug, OFFERS } from '../lib/data/resources';
+import { getCategoryBySlug, getOfferBySlug } from '../lib/data/resources';
+import { useSavedOffersBatch } from '../lib/data/useOffersApi';
 import { getBackNavigationMeta } from '../lib/router/navigationHistory';
 import { useSavedOffers } from '../lib/saved/savedOffers';
 import { ResourceCard } from '../components/offers/ResourceCard';
 import { LearningCard } from '../components/offers/LearningCard';
+import { CardGridSkeleton, OffersErrorState } from '../components/offers/CardGridSkeleton';
 
 interface SavedOffersPageProps {
   onNavigate: (path: string) => void;
@@ -31,12 +33,7 @@ export function SavedOffersPage({
     getOfferName: (slug) => getOfferBySlug(slug)?.identity.name,
   });
 
-  const savedOffers = useMemo(() => {
-    const bySlug = new Map(OFFERS.map((offer) => [offer.identity.slug, offer]));
-    return savedSlugs
-      .map((slug) => bySlug.get(slug))
-      .filter((offer): offer is NonNullable<typeof offer> => Boolean(offer));
-  }, [savedSlugs]);
+  const { offers: savedOffers, isLoading, error, retry } = useSavedOffersBatch(savedSlugs);
 
   const handleShareStack = async () => {
     if (savedOffers.length === 0) return;
@@ -123,7 +120,11 @@ export function SavedOffersPage({
         )}
       </section>
 
-      {savedOffers.length === 0 ? (
+      {isLoading && savedSlugs.length > 0 && savedOffers.length === 0 ? (
+        <CardGridSkeleton count={Math.min(savedSlugs.length, 6)} />
+      ) : error && savedOffers.length === 0 ? (
+        <OffersErrorState message={error} onRetry={retry} />
+      ) : savedSlugs.length === 0 || savedOffers.length === 0 ? (
         <section className="bg-daylight rounded-[20px] sm:rounded-[24px] p-8 sm:p-12 text-center flex flex-col items-center gap-3.5">
           <div className="w-12 h-12 rounded-full bg-paper flex items-center justify-center text-midnight-mouth">
             <Bookmark className="w-6 h-6" aria-hidden="true" />
@@ -170,9 +171,9 @@ export function SavedOffersPage({
         >
           {savedOffers.map((offer) =>
             offer.learning ? (
-              <LearningCard key={offer.identity.id} offer={offer} onNavigate={onNavigate} />
+              <LearningCard key={offer.identity.slug} offer={offer} onNavigate={onNavigate} />
             ) : (
-              <ResourceCard key={offer.identity.id} offer={offer} onNavigate={onNavigate} />
+              <ResourceCard key={offer.identity.slug} offer={offer} onNavigate={onNavigate} />
             )
           )}
         </section>

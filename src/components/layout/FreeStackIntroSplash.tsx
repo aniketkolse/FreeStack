@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ShieldCheck, Sparkles } from 'lucide-react';
-import { CATEGORIES, OFFERS } from '../../lib/data/resources';
+import { CATEGORIES, TOTAL_OFFERS_COUNT } from '../../lib/data/resources';
 import { SparkBurstDoodle } from '../illustrations/TocaStickers';
 
 interface FreeStackIntroSplashProps {
@@ -16,7 +16,7 @@ const STACK_LAYERS = [
     barWidthClass: 'w-[132px] sm:w-[172px]',
     bgStyle: 'linear-gradient(180deg, #8DC8FF 0%, #59ACFF 45%, #267CD9 100%)',
     chipBg: 'bg-sky-blue',
-    delayMs: 40,
+    delayMs: 10,
   },
   {
     id: 'row-2',
@@ -25,7 +25,7 @@ const STACK_LAYERS = [
     barWidthClass: 'w-[58px] sm:w-[76px]',
     bgStyle: 'linear-gradient(180deg, #94F094 0%, #62D962 45%, #32A832 100%)',
     chipBg: 'bg-grass-green',
-    delayMs: 130,
+    delayMs: 45,
   },
   {
     id: 'row-3',
@@ -34,7 +34,7 @@ const STACK_LAYERS = [
     barWidthClass: 'w-[104px] sm:w-[136px]',
     bgStyle: 'linear-gradient(180deg, #FFF099 0%, #FFE359 45%, #DFB617 100%)',
     chipBg: 'bg-sunshine-yellow',
-    delayMs: 220,
+    delayMs: 80,
   },
   {
     id: 'row-4',
@@ -43,7 +43,7 @@ const STACK_LAYERS = [
     barWidthClass: 'w-[58px] sm:w-[76px]',
     bgStyle: 'linear-gradient(180deg, #FFB6D5 0%, #FF8CBC 45%, #DD528F 100%)',
     chipBg: 'bg-bubblegum-pink',
-    delayMs: 310,
+    delayMs: 115,
   },
   {
     id: 'row-5',
@@ -52,7 +52,7 @@ const STACK_LAYERS = [
     barWidthClass: 'w-[58px] sm:w-[76px]',
     bgStyle: 'linear-gradient(180deg, #FFC988 0%, #FFA94D 45%, #E07B1A 100%)',
     chipBg: 'bg-tangerine',
-    delayMs: 400,
+    delayMs: 150,
   },
 ];
 
@@ -64,11 +64,19 @@ export function FreeStackIntroSplash({ forceOpen = false, onFinish }: FreeStackI
     if (typeof window === 'undefined') return false;
     const params = new URLSearchParams(window.location.search);
     if (params.get('autostart') === '1') return false;
-    if (params.get('splash') === '1') return true;
+    if (params.get('splash') === '1' || params.get('splash') === 'hold') return true;
+    // Skip on deep links or prefers-reduced-motion
+    if (window.location.pathname !== '/' && window.location.pathname !== '') return false;
+    if (
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      return false;
+    }
     try {
       return sessionStorage.getItem(SESSION_KEY) !== '1';
     } catch {
-      return true;
+      return false;
     }
   });
   const [exiting, setExiting] = useState(false);
@@ -90,14 +98,20 @@ export function FreeStackIntroSplash({ forceOpen = false, onFinish }: FreeStackI
     window.setTimeout(() => {
       setVisible(false);
       onFinish?.();
-    }, 240);
+    }, 120);
   };
 
   useEffect(() => {
     if (!visible) return;
+    try {
+      sessionStorage.setItem(SESSION_KEY, '1');
+    } catch {
+      // Ignore storage errors
+    }
     const params = new URLSearchParams(window.location.search);
     const holdSplash = params.get('splash') === 'hold';
-    const durationMs = holdSplash ? 8000 : 1450;
+    // Strictly <= 600ms total splash duration (420ms display + 120ms fade = 540ms)
+    const durationMs = holdSplash ? 8000 : 420;
 
     const timer = window.setTimeout(() => {
       dismiss();
@@ -125,8 +139,8 @@ export function FreeStackIntroSplash({ forceOpen = false, onFinish }: FreeStackI
       aria-live="polite"
       aria-label="Assembling verified FreeStack directory"
       onClick={dismiss}
-      className={`fixed inset-0 z-[100] bg-paper text-ink flex flex-col items-center justify-center p-4 sm:p-6 select-none cursor-pointer transition-all duration-240 ${
-        exiting ? 'opacity-0 scale-[0.985] pointer-events-none' : 'opacity-100 scale-100'
+      className={`fixed inset-0 z-[100] bg-paper/92 text-ink flex flex-col items-center justify-center p-4 sm:p-6 select-none cursor-pointer transition-opacity duration-120 ${
+        exiting ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
       <div className="max-w-[580px] w-full bg-daylight rounded-[26px] p-5 sm:p-8 flex flex-col items-center gap-5 sm:gap-6 relative overflow-hidden">
@@ -173,7 +187,7 @@ export function FreeStackIntroSplash({ forceOpen = false, onFinish }: FreeStackI
                 FreeStack
               </span>
               <span
-                style={{ animationDelay: '480ms' }}
+                style={{ animationDelay: '180ms' }}
                 className="freestack-stamp-badge bg-grass-green text-[#101014] font-[var(--font-wallop)] font-extrabold text-[11px] sm:text-[12px] px-2.5 py-0.5 rounded-full inline-flex items-center gap-1"
               >
                 <ShieldCheck className="w-3 h-3" aria-hidden="true" />
@@ -181,7 +195,7 @@ export function FreeStackIntroSplash({ forceOpen = false, onFinish }: FreeStackI
               </span>
             </div>
             <p className="font-[var(--font-inter)] text-[13px] sm:text-[13.5px] text-ink/80 mt-1">
-              {OFFERS.length} verified resources across {CATEGORIES.length} stacks — real quotas, no card traps.
+              {TOTAL_OFFERS_COUNT} verified resources across {CATEGORIES.length} stacks — real quotas, no card traps.
             </p>
           </div>
 

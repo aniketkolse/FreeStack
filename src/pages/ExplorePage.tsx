@@ -16,11 +16,20 @@ import {
   Cpu,
   GraduationCap,
 } from 'lucide-react';
-import { CATEGORIES, OFFERS, getCategoryBySlug, getCategoryCounts } from '../lib/data/resources';
+import {
+  CATEGORIES,
+  PRICING_COUNTS,
+  TOTAL_OFFERS_COUNT,
+  getCategoryBySlug,
+  getCategoryCounts,
+} from '../lib/data/resources';
+import {
+  useDebouncedValue,
+  usePaginatedOffersQuery,
+} from '../lib/data/useOffersApi';
 import {
   countActiveFilters,
   DEFAULT_FILTER_STATE,
-  filterAndSortOffers,
   filtersToSearchParams,
   searchParamsToFilters,
 } from '../lib/filters/filterOffers';
@@ -42,6 +51,11 @@ import {
 } from '../lib/utils/formatters';
 import { SearchBar } from '../components/search/SearchBar';
 import { ResourceCard } from '../components/offers/ResourceCard';
+import {
+  CardGridSkeleton,
+  InfiniteLoadMore,
+  OffersErrorState,
+} from '../components/offers/CardGridSkeleton';
 import { CategoryStickerIcon, getCategoryBgClass } from '../components/illustrations/TocaStickers';
 import { FilterDropdown, type FilterDropdownOption } from '../components/ui/FilterDropdown';
 
@@ -98,7 +112,7 @@ const SORT_ITEMS: Array<{ value: SortOption; label: string; shortLabel: string; 
   { value: 'name_asc', label: 'Name (A–Z)', shortLabel: 'A–Z', icon: ArrowDownAZ },
 ];
 
-const PAGE_SIZE = 12;
+const PAGE_SIZE = 24;
 
 export function ExplorePage({
   searchParams,
@@ -107,25 +121,23 @@ export function ExplorePage({
 }: ExplorePageProps) {
   const filters = useMemo(() => searchParamsToFilters(searchParams), [searchParams]);
   const counts = useMemo(() => getCategoryCounts(), []);
-  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [searchInput, setSearchInput] = useState(filters.query);
+  const debouncedQuery = useDebouncedValue(searchInput, 150);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [draftFilters, setDraftFilters] = useState<FilterState>(filters);
 
-  const pricingCounts = useMemo(() => {
-    const map: Record<string, number> = {};
-    for (const o of OFFERS) {
-      const pm = o.classification.pricing_model;
-      map[pm] = (map[pm] ?? 0) + 1;
-    }
-    return map;
-  }, []);
+  useEffect(() => {
+    setSearchInput((prev) => (prev.trim() === filters.query.trim() ? prev : filters.query));
+  }, [filters.query]);
+
+  const pricingCounts = PRICING_COUNTS;
 
   const categoryDropdownOptions = useMemo<FilterDropdownOption[]>(() => {
     return [
       {
         value: 'all',
         label: 'All categories',
-        count: OFFERS.length,
+        count: TOTAL_OFFERS_COUNT,
         icon: <Layers className="w-3.5 h-3.5 text-midnight-mouth" aria-hidden="true" />,
         iconBgClass: 'bg-paper border border-midnight-mouth/12',
       },
@@ -161,7 +173,6 @@ export function ExplorePage({
 
   useEffect(() => {
     setDraftFilters(filters);
-    setVisibleCount(PAGE_SIZE);
   }, [filters]);
 
   useEffect(() => {
@@ -188,18 +199,36 @@ export function ExplorePage({
     onNavigate(target, { replace: true, scrollTop: false });
   };
 
-  const results = useMemo(() => filterAndSortOffers(OFFERS, filters), [filters]);
+  // Sync debounced search query to URL without blocking input typing
+  useEffect(() => {
+    if (debouncedQuery.trim() === filters.query.trim()) return;
+    updateFilters((prev) => ({ ...prev, query: debouncedQuery }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedQuery]);
+
+  const apiFilterQuery = useMemo(() => {
+    const effectiveFilters: FilterState = {
+      ...filters,
+      query: debouncedQuery,
+    };
+    return filtersToSearchParams(effectiveFilters).toString();
+  }, [filters, debouncedQuery]);
+
+  const {
+    items: displayedResults,
+    total: totalResultsCount,
+    hasMore,
+    isInitialLoading,
+    isFetchingMore,
+    isTransitioning,
+    error,
+    loadMore,
+    retry,
+  } = usePaginatedOffersQuery(apiFilterQuery, PAGE_SIZE);
+
   const activeCount = useMemo(() => countActiveFilters(filters), [filters]);
-  const displayedResults = results.slice(0, visibleCount);
   const activeCategoryObj =
     filters.category !== 'all' ? getCategoryBySlug(filters.category) : undefined;
-
-  // Animation key so cards smoothly animate whenever filter or sort state changes
-  const transitionKey = useMemo(
-    () =>
-      `${filters.category}-${filters.subcategory}-${filters.resourceType}-${filters.cardRequired}-${filters.studentAccess}-${filters.sortBy}-${filters.query}-${filters.pricingModels.join(',')}`,
-    [filters]
-  );
 
   const togglePricingType = (
     state: FilterState,
@@ -215,6 +244,7 @@ export function ExplorePage({
   };
 
   const resetAll = () => {
+    setSearchInput('');
     onNavigate('/explore', { replace: true, scrollTop: false });
     setDrawerOpen(false);
   };
@@ -224,7 +254,10 @@ export function ExplorePage({
     activeChips.push({
       key: 'q',
       label: `"${filters.query.trim()}"`,
-      onClear: () => updateFilters((p) => ({ ...p, query: '' })),
+      onClear: () => {
+        setSearchInput('');
+        updateFilters((p) => ({ ...p, query: '' }));
+      },
     });
   }
   if (filters.category !== 'all') {
@@ -722,9 +755,12 @@ export function ExplorePage({
         </p>
         <div className="w-full pt-0.5">
           <SearchBar
-            initialQuery={filters.query}
-            onChangeQuery={(q) => updateFilters((prev) => ({ ...prev, query: q }))}
-            onSubmitQuery={(q) => updateFilters((prev) => ({ ...prev, query: q }))}
+            initialQuery={searchInput}
+            onChangeQuery={(q) => setSearchInput(q)}
+            onSubmitQuery={(q) => {
+              setSearchInput(q);
+              updateFilters((prev) => ({ ...prev, query: q }));
+            }}
           />
         </div>
       </section>
@@ -747,7 +783,7 @@ export function ExplorePage({
           }`}
         >
           <span>All Stacks</span>
-          <span className="text-[11px] opacity-75 tabular-nums">({OFFERS.length})</span>
+          <span className="text-[11px] opacity-75 tabular-nums">({TOTAL_OFFERS_COUNT})</span>
         </button>
 
         {CATEGORIES.map((cat) => {
@@ -864,8 +900,8 @@ export function ExplorePage({
                 data-testid="explore-results-count"
                 className="font-[var(--font-wallop)] font-bold text-[14px] sm:text-[15px] text-midnight-mouth tabular-nums"
               >
-                Showing {displayedResults.length} of {results.length}{' '}
-                {results.length === 1 ? 'resource' : 'resources'}
+                Showing {displayedResults.length} of {totalResultsCount}{' '}
+                {totalResultsCount === 1 ? 'resource' : 'resources'}
               </p>
 
               {/* Desktop One-Click No-Card Pill */}
@@ -984,8 +1020,12 @@ export function ExplorePage({
             </div>
           )}
 
-          {/* Resource Grid or Empty State */}
-          {results.length === 0 ? (
+          {/* Resource Grid, Skeleton, Error, or Empty State */}
+          {isInitialLoading && displayedResults.length === 0 ? (
+            <CardGridSkeleton count={6} />
+          ) : error && displayedResults.length === 0 ? (
+            <OffersErrorState message={error} onRetry={retry} />
+          ) : !isInitialLoading && !isTransitioning && displayedResults.length === 0 ? (
             <div className="bg-daylight rounded-[22px] p-8 sm:p-10 text-center flex flex-col items-center gap-3 card-enter">
               <h3 className="font-[var(--font-wallop)] font-bold text-[20px] sm:text-[24px] text-midnight-mouth">
                 No matching free resources
@@ -1004,30 +1044,28 @@ export function ExplorePage({
           ) : (
             <>
               <div
-                key={transitionKey}
                 data-testid="explore-results-grid"
-                className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2.5 sm:gap-4"
+                aria-busy={isTransitioning}
+                className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2.5 sm:gap-4 transition-opacity duration-150 ${
+                  isTransitioning ? 'opacity-75' : 'opacity-100'
+                }`}
               >
-                {displayedResults.map((offer) => (
+                {displayedResults.map((offer, idx) => (
                   <ResourceCard
-                    key={offer.identity.id}
+                    key={offer.identity.slug}
                     offer={offer}
                     onNavigate={onNavigate}
+                    priority={idx < 4}
                   />
                 ))}
               </div>
 
-              {visibleCount < results.length && (
-                <div className="flex justify-center pt-2">
-                  <button
-                    type="button"
-                    onClick={() => setVisibleCount((prev) => prev + PAGE_SIZE)}
-                    className="w-full sm:w-auto bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[14px] rounded-full px-6 py-3 min-h-[42px] spring-pill cursor-pointer"
-                  >
-                    Load more resources ({results.length - visibleCount} remaining)
-                  </button>
-                </div>
-              )}
+              <InfiniteLoadMore
+                hasMore={hasMore}
+                isFetchingMore={isFetchingMore}
+                remainingCount={Math.max(0, totalResultsCount - displayedResults.length)}
+                onLoadMore={loadMore}
+              />
             </>
           )}
         </div>

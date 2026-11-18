@@ -19,8 +19,9 @@ import {
 import {
   getCategoryBySlug,
   getOfferBySlug,
-  getRelatedOffers,
 } from '../lib/data/resources';
+import { useOfferDetailQuery } from '../lib/data/useOffersApi';
+import { OffersErrorState } from '../components/offers/CardGridSkeleton';
 import {
   formatAccountRequirement,
   formatCardRequirement,
@@ -59,7 +60,7 @@ export function OfferDetailPage({
   const [sharedFeedback, setSharedFeedback] = useState(false);
   const { isSaved, toggleSave } = useSavedOffers();
 
-  const offer = getOfferBySlug(slug);
+  const { offer, related, isLoading, notFound, error, retry } = useOfferDetailQuery(slug);
   const category = offer ? getCategoryBySlug(offer.classification.category) : undefined;
   const fallbackPath = category ? `/category/${category.slug}` : '/explore';
   const backMeta = getBackNavigationMeta(previousPath, fallbackPath, {
@@ -76,7 +77,39 @@ export function OfferDetailPage({
     }
   };
 
-  if (!offer) {
+  if (isLoading && !offer) {
+    return (
+      <div
+        data-testid="offer-detail-skeleton"
+        aria-busy="true"
+        className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-5 pb-12 flex flex-col gap-5 sm:gap-7 animate-pulse"
+      >
+        <div className="h-9 w-40 rounded-full bg-daylight" />
+        <div className="bg-daylight rounded-[22px] sm:rounded-[26px] p-6 sm:p-8 min-h-[210px] flex flex-col justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-[14px] bg-paper" />
+            <div className="h-5 w-48 rounded-full bg-paper" />
+          </div>
+          <div className="h-9 w-2/3 rounded-full bg-paper" />
+          <div className="h-4 w-3/4 rounded-full bg-paper" />
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6">
+          <div className="lg:col-span-8 h-80 rounded-[24px] bg-daylight" />
+          <div className="lg:col-span-4 h-72 rounded-[24px] bg-daylight" />
+        </div>
+      </div>
+    );
+  }
+
+  if (error && !offer && !notFound) {
+    return (
+      <div className="max-w-[1360px] mx-auto px-6 py-12">
+        <OffersErrorState message={error} onRetry={retry} />
+      </div>
+    );
+  }
+
+  if (!offer || notFound) {
     return (
       <div className="max-w-[1360px] mx-auto px-6 py-16 text-center flex flex-col items-center gap-4">
         <h1 className="font-[var(--font-wallop)] font-extrabold text-[32px] text-midnight-mouth">
@@ -101,8 +134,7 @@ export function OfferDetailPage({
   const saved = isSaved(offer.identity.slug);
   const requiresStudentId = offer.eligibility.student_access === 'exclusive';
   const bgClass = category ? getCategoryBgClass(category.color) : 'bg-sky-blue';
-  const related = getRelatedOffers(offer, 3);
-  const sourceById = new Map(offer.evidence.sources.map((s) => [s.id, s]));
+  const sourceById = new Map((offer.evidence?.sources ?? []).map((s) => [s.id, s]));
 
   const handleShare = async () => {
     const res = await shareOrCopyOffer(offer);
@@ -202,7 +234,12 @@ export function OfferDetailPage({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0">
             <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[14px] sm:rounded-[16px] bg-white shadow-xs flex items-center justify-center shrink-0 overflow-hidden p-2">
-              <OfferLogo offer={offer} imgClassName="w-8 h-8 sm:w-9 sm:h-9 object-contain" fallbackClassName="w-7 h-7 sm:w-8 sm:h-8" />
+              <OfferLogo
+                offer={offer}
+                priority
+                imgClassName="w-8 h-8 sm:w-9 sm:h-9 object-contain"
+                fallbackClassName="w-7 h-7 sm:w-8 sm:h-8"
+              />
             </div>
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2">

@@ -6,7 +6,7 @@ import {
   XCircle,
   HelpCircle,
 } from 'lucide-react';
-import { OFFERS, CATEGORIES } from '../lib/data/resources';
+import { TOTAL_OFFERS_COUNT, CATEGORIES } from '../lib/data/resources';
 import { SlabIllustration } from '../components/illustrations/TocaStickers';
 
 interface AboutPageProps {
@@ -61,7 +61,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             About FreeStack
           </h1>
           <p className="font-[var(--font-inter)] text-[14px] sm:text-[15.5px] leading-[1.5] text-ink max-w-xl">
-            FreeStack is a public, login-free directory built on one principle: make free digital resources easier to discover, compare, and trust. Across {OFFERS.length} verified records and {CATEGORIES.length} categories, we explain exact limits, card rules, eligibility, and expiry terms backed by official sources.
+            FreeStack is a public, login-free directory built on one principle: make free digital resources easier to discover, compare, and trust. Across {TOTAL_OFFERS_COUNT} verified records and {CATEGORIES.length} categories, we explain exact limits, card rules, eligibility, and expiry terms backed by official sources.
           </p>
           <div className="pt-1 flex flex-wrap items-center gap-2">
             <a

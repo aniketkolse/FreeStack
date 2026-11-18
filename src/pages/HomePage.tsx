@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import {
   CATEGORIES,
   getCategoryCounts,
   getLearningOffers,
   getRecentlyVerifiedOffers,
+  prefetchOffersQuery,
 } from '../lib/data/resources';
 import { SearchBar } from '../components/search/SearchBar';
 import { ResourceCard } from '../components/offers/ResourceCard';
@@ -26,6 +27,15 @@ export function HomePage({ onNavigate }: HomePageProps) {
   const popularCategories = CATEGORIES.filter((c) => c.popular);
   const learningHighlights = getLearningOffers().slice(0, 4);
   const recentlyVerified = getRecentlyVerifiedOffers(4);
+
+  // Idle-prefetch Explore page chunk and page-1 data when not on Save-Data
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      import('./ExplorePage').catch(() => {});
+      prefetchOffersQuery('limit=48&offset=0&fields=card&facets=1');
+    }, 1500);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   const handleSearch = (query: string) => {
     if (!query) {
@@ -116,7 +126,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* 4. Learning Highlights */}
-      <section className="max-w-[1360px] w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-[1360px] w-full mx-auto px-4 sm:px-6 lg:px-8 content-visibility-auto">
         <div className="bg-sunshine-yellow rounded-[18px] sm:rounded-[26px] p-4 sm:p-8 md:p-10">
           <div className="text-center max-w-2xl mx-auto mb-3.5 sm:mb-8">
             <h2 className="font-[var(--font-wallop)] font-extrabold text-[21px] sm:text-[32px] lg:text-[38px] leading-[1.08] tracking-[-0.03em] text-midnight-mouth">
@@ -130,7 +140,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 mb-4 sm:mb-7">
             {learningHighlights.map((item, idx) => (
               <LearningCard
-                key={item.identity.id}
+                key={item.identity.slug}
                 offer={item}
                 onNavigate={onNavigate}
                 surface="paper"
@@ -153,7 +163,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* 5. Recently Verified Resources */}
-      <section className="max-w-[1360px] w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-[1360px] w-full mx-auto px-4 sm:px-6 lg:px-8 content-visibility-auto">
         <div className="text-center max-w-2xl mx-auto mb-3.5 sm:mb-8">
           <h2 className="font-[var(--font-wallop)] font-extrabold text-[21px] sm:text-[32px] lg:text-[38px] leading-[1.08] tracking-[-0.03em] text-midnight-mouth">
             Recently verified
@@ -165,13 +175,13 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
           {recentlyVerified.map((offer) => (
-            <ResourceCard key={offer.identity.id} offer={offer} onNavigate={onNavigate} />
+            <ResourceCard key={offer.identity.slug} offer={offer} onNavigate={onNavigate} />
           ))}
         </div>
       </section>
 
       {/* 10. Closing Call to Action */}
-      <section className="max-w-[1360px] w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-[1360px] w-full mx-auto px-4 sm:px-6 lg:px-8 content-visibility-auto">
         <div className="bg-sky-blue rounded-[18px] sm:rounded-[26px] p-4 sm:p-8 md:p-10 grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-center">
           <div className="hidden lg:block lg:col-span-5">
             <SlabIllustration variant="verify" />

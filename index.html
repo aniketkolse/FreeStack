@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0d0f15" media="(prefers-color-scheme: dark)" />
     <title>FreeStack — Everything free to build, learn and create</title>
@@ -18,9 +19,39 @@
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="preload"
+      href="/fonts/plus-jakarta-sans-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/inter-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <script src="/theme-init.js"></script>
   </head>
   <body class="bg-paper text-ink antialiased selection:bg-sunshine-yellow selection:text-midnight-mouth">
-    <div id="root"></div>
+    <div id="root">
+      <!-- Lightweight App Shell for instant First Contentful Paint before JS hydration -->
+      <div class="min-h-dvh flex flex-col">
+        <header class="w-full h-[60px] sm:h-[68px] border-b border-black/8 flex items-center justify-between px-4 sm:px-6 max-w-[1360px] mx-auto">
+          <span class="font-extrabold text-[19px] tracking-tight">FreeStack</span>
+        </header>
+        <main class="max-w-[1360px] w-full mx-auto px-4 sm:px-6 pt-6 sm:pt-10 text-center flex flex-col items-center">
+          <h1 class="font-extrabold text-[32px] sm:text-[48px] lg:text-[60px] leading-[1.1] tracking-tight">
+            Find more. Spend less. Build anything.
+          </h1>
+          <p class="text-[14.5px] sm:text-[16.5px] opacity-80 max-w-xl mt-3.5 mb-5">
+            Discover verified free AI models, MCP servers, APIs, frontend &amp; design tools, cloud credits, courses, and student packs with cited limits.
+          </p>
+        </main>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

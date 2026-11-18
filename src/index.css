@@ -2,6 +2,51 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Self-hosted Latin variable WOFF2 fonts (73.8 KB critical total) + metric-matched fallback faces */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url('/fonts/plus-jakarta-sans-latin-wght-normal.woff2') format('woff2-variations');
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans Fallback';
+  src: local('Arial'), local('Helvetica Neue'), local('Roboto');
+  size-adjust: 105.5%;
+  ascent-override: 96%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('/fonts/inter-latin-wght-normal.woff2') format('woff2-variations');
+}
+
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial'), local('Helvetica Neue'), local('Roboto');
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+/* Lazy-loaded JetBrains Mono restricted to numeric/code characters */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 800;
+  src: url('/fonts/jetbrains-mono-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0030-0039, U+0024-0025, U+002B-002F, U+003A, U+0041-005A, U+0061-007A;
+}
+
 @theme {
   /* Colors */
   --color-midnight-mouth: #101014;
@@ -14,9 +59,9 @@
   --color-sunshine-yellow: #ffe359;
   --color-ink: #0a0a0a;
 
-  /* Typography — Refined Plus Jakarta Sans + Inter + JetBrains Mono */
-  --font-wallop: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* Typography — Refined Plus Jakarta Sans + Inter + JetBrains Mono with metric-matched fallbacks */
+  --font-wallop: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-inter: 'Inter', 'Inter Fallback', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* Typography — Balanced Compact Scale */
@@ -139,6 +184,12 @@ html.dark .hover\:bg-tangerine:hover {
   }
 }
 
+/* Content visibility optimization for below-the-fold card sections */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 560px;
+}
+
 /* Hide scrollbars cleanly on mobile horizontal swipe rails */
 .no-scrollbar {
   -ms-overflow-style: none;
@@ -205,7 +256,7 @@ html.dark .hover\:bg-tangerine:hover {
 }
 
 .card-enter {
-  animation: freestack-card-enter 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: freestack-card-enter 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes freestack-chip-pop {
@@ -220,7 +271,7 @@ html.dark .hover\:bg-tangerine:hover {
 }
 
 .chip-enter {
-  animation: freestack-chip-pop 220ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation: freestack-chip-pop 200ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
 @keyframes freestack-drawer-up {
@@ -235,7 +286,7 @@ html.dark .hover\:bg-tangerine:hover {
 }
 
 .drawer-enter {
-  animation: freestack-drawer-up 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: freestack-drawer-up 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes freestack-dropdown-in {
@@ -282,11 +333,7 @@ html.dark .hover\:bg-tangerine:hover {
 @keyframes freestack-cylinder-in {
   0% {
     opacity: 0;
-    transform: translateY(-18px) scaleX(0.8);
-  }
-  70% {
-    opacity: 1;
-    transform: translateY(2px) scaleX(1.02);
+    transform: translateY(-10px) scaleX(0.85);
   }
   100% {
     opacity: 1;
@@ -297,11 +344,7 @@ html.dark .hover\:bg-tangerine:hover {
 @keyframes freestack-stamp-pop {
   0% {
     opacity: 0;
-    transform: scale(0.65) rotate(-8deg);
-  }
-  70% {
-    opacity: 1;
-    transform: scale(1.05) rotate(-2deg);
+    transform: scale(0.75) rotate(-6deg);
   }
   100% {
     opacity: 1;
@@ -311,12 +354,12 @@ html.dark .hover\:bg-tangerine:hover {
 
 .freestack-cylinder-row {
   opacity: 0;
-  animation: freestack-cylinder-in 420ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: freestack-cylinder-in 240ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .freestack-stamp-badge {
   opacity: 0;
-  animation: freestack-stamp-pop 400ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: freestack-stamp-pop 240ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 @media (prefers-reduced-motion: reduce) {

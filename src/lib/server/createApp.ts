@@ -1,20 +1,26 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
+import zlib from 'node:zlib';
 import express, { type NextFunction, type Request, type Response } from 'express';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import { z } from 'zod';
 import type {
   Category,
+  LearningDifficulty,
+  LearningFormat,
   Offer,
   OutdatedReport,
   PricingModel,
   RequirementState,
+  ResourceType,
   SortOption,
   SourceRegistry,
+  StudentAccessState,
+  VerificationStatus,
 } from '../../types/resource';
-import { DEFAULT_FILTER_STATE, filterAndSortOffers } from '../filters/filterOffers';
+import type { AiModalityId } from '../ai/aiModelMetadata';
 import { generateDataQualityReport } from '../validation/offerValidator';
 import {
   escapeXml,
@@ -26,6 +32,7 @@ import {
   verifyBearerAdminToken,
 } from './securityUtils';
 import { injectHtmlMeta, resolveRouteMeta } from './htmlMeta';
+import { OfferCatalogIndex } from './offerCatalogIndex';
 
 export interface CreateAppOptions {
   rootDir?: string;
@@ -67,6 +74,24 @@ const VALID_PRICING_VALUES = new Set<PricingModel>([
   'freemium',
 ]);
 
+const VALID_RESOURCE_TYPES = new Set<ResourceType>([
+  'software',
+  'ai_model',
+  'mcp_server',
+  'api',
+  'course',
+  'book',
+  'documentation',
+  'tutorial',
+  'roadmap',
+  'dataset',
+  'cloud_service',
+  'developer_tool',
+  'student_benefit',
+  'practice',
+  'other',
+]);
+
 const offersQuerySchema = z
   .object({
     q: z
@@ -74,10 +99,30 @@ const offersQuerySchema = z
       .max(160)
       .transform((v) => stripControlChars(v).trim())
       .optional(),
-    category: z.enum(VALID_CATEGORY_SLUGS).optional(),
+    category: z.enum([...VALID_CATEGORY_SLUGS, 'all'] as const).optional(),
+    type: z
+      .string()
+      .max(80)
+      .transform((v) => stripControlChars(v).trim())
+      .optional(),
+    typeGroup: z
+      .string()
+      .max(80)
+      .transform((v) => stripControlChars(v).trim())
+      .optional(),
+    resourceType: z
+      .string()
+      .max(80)
+      .transform((v) => stripControlChars(v).trim())
+      .optional(),
     subcategory: z
       .string()
       .max(120)
+      .transform((v) => stripControlChars(v).trim())
+      .optional(),
+    subtype: z
+      .string()
+      .max(100)
       .transform((v) => stripControlChars(v).trim())
       .optional(),
     card: z.enum(['not_required', 'required', 'conditional', 'unknown', 'all']).optional(),
@@ -85,7 +130,72 @@ const offersQuerySchema = z
       .string()
       .max(240)
       .optional(),
-    student: z.enum(['true', 'false']).optional(),
+    student: z
+      .enum(['true', 'false', '1', '0', 'all', 'eligible', 'exclusive', 'not_eligible', 'unknown'])
+      .optional(),
+    verify: z.enum(['all', 'exclusive', 'eligible', 'required', 'not_required']).optional(),
+    status: z
+      .enum(['all', 'verified', 'needs_review', 'expired', 'unavailable', 'unverified'])
+      .optional(),
+    region: z
+      .string()
+      .max(80)
+      .transform((v) => stripControlChars(v).trim())
+      .optional(),
+    official: z.enum(['1', '0', 'true', 'false', 'all']).optional(),
+    scope: z
+      .string()
+      .max(40)
+      .transform((v) => stripControlChars(v).trim())
+      .optional(),
+    lang: z
+      .string()
+      .max(40)
+      .transform((v) => stripControlChars(v).trim())
+      .optional(),
+    os: z
+      .string()
+      .max(40)
+      .transform((v) => stripControlChars(v).trim())
+      .optional(),
+    modality: z
+      .string()
+      .max(40)
+      .transform((v) => stripControlChars(v).trim())
+      .optional(),
+    ctx: z
+      .string()
+      .max(40)
+      .transform((v) => stripControlChars(v).trim())
+      .optional(),
+    format: z
+      .string()
+      .max(40)
+      .transform((v) => stripControlChars(v).trim())
+      .optional(),
+    difficulty: z
+      .string()
+      .max(40)
+      .transform((v) => stripControlChars(v).trim())
+      .optional(),
+    topic: z
+      .string()
+      .max(100)
+      .transform((v) => stripControlChars(v).trim())
+      .optional(),
+    language: z
+      .string()
+      .max(60)
+      .transform((v) => stripControlChars(v).trim())
+      .optional(),
+    learningOnly: z.enum(['1', '0', 'true', 'false']).optional(),
+    slugs: z
+      .string()
+      .max(4096)
+      .transform((v) => stripControlChars(v).trim())
+      .optional(),
+    fields: z.enum(['card', 'full']).optional(),
+    facets: z.enum(['1', '0', 'true', 'false']).optional(),
     sort: z
       .enum([
         'relevance',
@@ -243,10 +353,69 @@ export function createApp(options: CreateAppOptions) {
   const enableRateLimits = options.enableRateLimits ?? true;
 
   const { offers, categories, sourceRegistry } = options;
-  const offerBySlug = new Map<string, Offer>(offers.map((o) => [o.identity.slug, o]));
-  const categoryBySlug = new Map<string, Category>(categories.map((c) => [c.slug, c]));
+  const catalogIndex = new OfferCatalogIndex(offers, categories);
+  const offerBySlug = catalogIndex.fullBySlug;
+  const categoryBySlug = catalogIndex.categoryBySlug;
   const qualityReport = generateDataQualityReport(offers, categories);
   const cachedSitemapXml = buildSitemapXml(siteUrl, categories, offers);
+
+  function sendCompressedPayload(
+    req: Request,
+    res: Response,
+    contentType: string,
+    rawBody: string | Buffer,
+    options?: {
+      status?: number;
+      cacheControl?: string;
+      etag?: string;
+    }
+  ): void {
+    const status = options?.status ?? 200;
+    const bodyBuf = typeof rawBody === 'string' ? Buffer.from(rawBody, 'utf-8') : rawBody;
+    const etag =
+      options?.etag ??
+      `W/"${crypto.createHash('sha1').update(bodyBuf).digest('hex').slice(0, 20)}"`;
+
+    if (options?.cacheControl) {
+      res.setHeader('Cache-Control', options.cacheControl);
+    }
+    res.setHeader('ETag', etag);
+    res.setHeader('Vary', 'Accept-Encoding');
+
+    const ifNoneMatch = req.headers['if-none-match'];
+    if (ifNoneMatch && ifNoneMatch.includes(etag) && status === 200) {
+      res.status(304).end();
+      return;
+    }
+
+    res.status(status).setHeader('Content-Type', contentType);
+    if (req.method === 'HEAD') {
+      res.end();
+      return;
+    }
+
+    const acceptEncoding = String(req.headers['accept-encoding'] ?? '');
+    if (bodyBuf.byteLength >= 512) {
+      if (/\bbr\b/.test(acceptEncoding)) {
+        const compressed = zlib.brotliCompressSync(bodyBuf, {
+          params: {
+            [zlib.constants.BROTLI_PARAM_QUALITY]: 4,
+          },
+        });
+        res.setHeader('Content-Encoding', 'br');
+        res.send(compressed);
+        return;
+      }
+      if (/\bgzip\b/.test(acceptEncoding)) {
+        const compressed = zlib.gzipSync(bodyBuf, { level: 6 });
+        res.setHeader('Content-Encoding', 'gzip');
+        res.send(compressed);
+        return;
+      }
+    }
+
+    res.send(bodyBuf);
+  }
   const cachedRobotsTxt = [
     'User-agent: *',
     'Allow: /',
@@ -396,11 +565,15 @@ export function createApp(options: CreateAppOptions) {
   // Rate limiters
   const globalLimiter = rateLimit({
     windowMs: 60 * 1000,
-    limit: 240,
+    limit: 600,
     standardHeaders: true,
     legacyHeaders: false,
     skip: (req) =>
       !enableRateLimits ||
+      req.path.startsWith('/api/offers') ||
+      req.path.startsWith('/logos/') ||
+      req.path.startsWith('/fonts/') ||
+      req.path.startsWith('/assets/') ||
       (!isProd &&
         (req.path.startsWith('/src/') ||
           req.path.startsWith('/node_modules/') ||
@@ -408,6 +581,18 @@ export function createApp(options: CreateAppOptions) {
           Object.prototype.hasOwnProperty.call(req.query, 'import'))),
     handler: (_req, res) => {
       res.status(429).json({ error: 'Too many requests. Please try again in a minute.' });
+    },
+  });
+
+  // Dedicated high-capacity rate limiter for /api/offers so typing & filtering never hit 429
+  const offersApiLimiter = rateLimit({
+    windowMs: 60 * 1000,
+    limit: 1200,
+    standardHeaders: true,
+    legacyHeaders: false,
+    skip: () => !enableRateLimits,
+    handler: (_req, res) => {
+      res.status(429).json({ error: 'Too many search/filter requests. Please wait a moment.' });
     },
   });
 
@@ -476,7 +661,7 @@ export function createApp(options: CreateAppOptions) {
   });
 
   // Public GET-only /api/offers with strict Zod validation and mandatory pagination (max 100)
-  app.all('/api/offers', (req, res, next) => {
+  app.all('/api/offers', offersApiLimiter, (req, res, next) => {
     if (req.method !== 'GET' && req.method !== 'HEAD') {
       res.setHeader('Allow', 'GET, HEAD');
       res.status(405).json({ error: 'Method not allowed' });
@@ -497,7 +682,38 @@ export function createApp(options: CreateAppOptions) {
       return;
     }
 
-    const { q, category, subcategory, card, pricing, student, sort, limit = 24, offset = 0 } = parsed.data;
+    const {
+      q,
+      category,
+      type,
+      typeGroup,
+      resourceType,
+      subcategory,
+      subtype,
+      card,
+      pricing,
+      student,
+      verify,
+      status,
+      region,
+      official,
+      scope,
+      lang,
+      os,
+      modality,
+      ctx,
+      format,
+      difficulty,
+      topic,
+      language,
+      learningOnly,
+      slugs,
+      fields = 'card',
+      facets,
+      sort,
+      limit = 24,
+      offset = 0,
+    } = parsed.data;
 
     let pricingModels: PricingModel[] = [];
     if (pricing) {
@@ -511,7 +727,24 @@ export function createApp(options: CreateAppOptions) {
       }
     }
 
-    let sortBy: SortOption = 'relevance';
+    let resolvedResourceType: ResourceType | 'all' = 'all';
+    let resolvedTypeGroup = typeGroup ?? 'all';
+    if (resourceType && resourceType !== 'all') {
+      if (VALID_RESOURCE_TYPES.has(resourceType as ResourceType)) {
+        resolvedResourceType = resourceType as ResourceType;
+      } else {
+        res.status(400).json({ error: `Invalid resourceType filter: ${resourceType}` });
+        return;
+      }
+    } else if (type && type !== 'all') {
+      if (VALID_RESOURCE_TYPES.has(type as ResourceType) && (!category || category === 'all')) {
+        resolvedResourceType = type as ResourceType;
+      } else {
+        resolvedTypeGroup = type;
+      }
+    }
+
+    let sortBy: SortOption | undefined;
     if (sort === 'verified' || sort === 'recently_verified') sortBy = 'recently_verified';
     else if (sort === 'newest' || sort === 'recently_added') sortBy = 'recently_added';
     else if (sort === 'alphabetical' || sort === 'name_asc') sortBy = 'name_asc';
@@ -520,25 +753,100 @@ export function createApp(options: CreateAppOptions) {
     const normalizedCard: RequirementState | 'all' =
       card === 'not_required' || card === 'required' || card === 'unknown' ? card : 'all';
 
-    const filtered = filterAndSortOffers(offers, {
-      ...DEFAULT_FILTER_STATE,
-      query: q ?? '',
-      category: category ?? 'all',
-      subcategory: subcategory ?? 'all',
-      cardRequired: normalizedCard,
-      pricingModels,
-      studentAccess: student === 'true' ? 'exclusive' : 'all',
-      sortBy,
-    });
+    let normalizedStudent: StudentAccessState | 'all' | '1' = 'all';
+    if (student === 'true') normalizedStudent = 'exclusive';
+    else if (student === '1') normalizedStudent = '1';
+    else if (
+      student === 'eligible' ||
+      student === 'exclusive' ||
+      student === 'not_eligible' ||
+      student === 'unknown'
+    ) {
+      normalizedStudent = student;
+    }
 
-    const slice = filtered.slice(offset, offset + limit);
-    res.json({
-      count: slice.length,
-      total: filtered.length,
+    const slugList = slugs
+      ? slugs
+          .split(',')
+          .map((s) => s.trim())
+          .filter((s) => /^[a-z0-9-]{1,120}$/.test(s))
+          .slice(0, 100)
+      : undefined;
+
+    const result = catalogIndex.query({
+      q: q ?? '',
+      category: category ?? 'all',
+      type: resolvedTypeGroup,
+      typeGroup: resolvedTypeGroup,
+      resourceType: resolvedResourceType,
+      subcategory: subcategory ?? 'all',
+      subtype: subtype ?? 'all',
+      card: normalizedCard,
+      pricing: pricingModels,
+      student: normalizedStudent,
+      verify: verify ?? 'all',
+      status: (status as VerificationStatus | 'all') ?? 'all',
+      region: region ?? 'all',
+      official: official === '1' || official === 'true',
+      scope: scope ?? 'all',
+      lang: lang ?? 'all',
+      os: os ?? 'all',
+      modality: (modality as AiModalityId | 'all') ?? 'all',
+      ctx: ctx ?? 'all',
+      format: (format as LearningFormat | 'all') ?? 'all',
+      difficulty: (difficulty as LearningDifficulty | 'all') ?? 'all',
+      topic: topic ?? 'all',
+      language: language ?? 'all',
+      learningOnly: learningOnly === '1' || learningOnly === 'true',
+      slugs: slugList,
+      sort: sortBy,
       limit,
       offset,
-      hasMore: offset + slice.length < filtered.length,
-      items: slice,
+      fields,
+      includeFacets: facets === '1' || facets === 'true',
+    });
+
+    const payload = JSON.stringify({
+      count: result.count,
+      total: result.total,
+      limit: result.limit,
+      offset: result.offset,
+      hasMore: result.offset + result.count < result.total,
+      items: result.items,
+      ...(result.facets ? { facets: result.facets } : {}),
+    });
+
+    sendCompressedPayload(req, res, 'application/json; charset=utf-8', payload, {
+      cacheControl: 'public, max-age=300, stale-while-revalidate=86400',
+    });
+  });
+
+  // Public GET-only /api/offers/:slug for single offer detail + related offers on demand
+  app.all('/api/offers/:slug', offersApiLimiter, (req, res, next) => {
+    if (req.method !== 'GET' && req.method !== 'HEAD') {
+      res.setHeader('Allow', 'GET, HEAD');
+      res.status(405).json({ error: 'Method not allowed' });
+      return;
+    }
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD');
+    next();
+  });
+
+  app.get('/api/offers/:slug', (req, res) => {
+    const slug = req.params.slug;
+    if (!slug || !/^[a-z0-9-]{1,120}$/.test(slug) || !Map.prototype.has.call(offerBySlug, slug)) {
+      res.status(404).json({ error: 'Offer not found' });
+      return;
+    }
+    const detail = catalogIndex.getOfferDetail(slug, 3);
+    if (!detail) {
+      res.status(404).json({ error: 'Offer not found' });
+      return;
+    }
+    const payload = JSON.stringify(detail);
+    sendCompressedPayload(req, res, 'application/json; charset=utf-8', payload, {
+      cacheControl: 'public, max-age=300, stale-while-revalidate=86400',
     });
   });
 
@@ -741,18 +1049,23 @@ export function createApp(options: CreateAppOptions) {
   });
 
   // Cached robots.txt & sitemap.xml using SITE_URL (never Host header)
-  app.get('/robots.txt', (_req, res) => {
-    res.type('text/plain; charset=utf-8').send(cachedRobotsTxt);
+  app.get('/robots.txt', (req, res) => {
+    sendCompressedPayload(req, res, 'text/plain; charset=utf-8', cachedRobotsTxt, {
+      cacheControl: 'public, max-age=3600',
+    });
   });
 
-  app.get('/sitemap.xml', (_req, res) => {
-    res.type('application/xml; charset=utf-8').send(cachedSitemapXml);
+  app.get('/sitemap.xml', (req, res) => {
+    sendCompressedPayload(req, res, 'application/xml; charset=utf-8', cachedSitemapXml, {
+      cacheControl: 'public, max-age=3600',
+    });
   });
 
   // Serve /.well-known/security.txt
   app.get('/.well-known/security.txt', (_req, res) => {
     const secTxtPath = path.join(rootDir, 'public', '.well-known', 'security.txt');
     if (fs.existsSync(secTxtPath)) {
+      res.setHeader('Cache-Control', 'public, max-age=3600');
       res.type('text/plain; charset=utf-8').send(fs.readFileSync(secTxtPath, 'utf-8'));
       return;
     }
@@ -764,12 +1077,92 @@ export function createApp(options: CreateAppOptions) {
     res.status(404).json({ error: 'API endpoint not found' });
   });
 
+  // Serve /logos and /fonts with long-lived immutable cache headers in both dev and prod
+  const publicLogosPath = path.join(rootDir, 'public', 'logos');
+  if (fs.existsSync(publicLogosPath)) {
+    app.use(
+      '/logos',
+      express.static(publicLogosPath, {
+        dotfiles: 'ignore',
+        index: false,
+        redirect: false,
+        maxAge: '365d',
+        immutable: true,
+      }),
+      (_req, res) => {
+        res.status(404).type('text/plain; charset=utf-8').send('Logo not found');
+      }
+    );
+  }
+
+  const publicFontsPath = path.join(rootDir, 'public', 'fonts');
+  if (fs.existsSync(publicFontsPath)) {
+    app.use(
+      '/fonts',
+      express.static(publicFontsPath, {
+        dotfiles: 'ignore',
+        index: false,
+        redirect: false,
+        maxAge: '365d',
+        immutable: true,
+      }),
+      (_req, res) => {
+        res.status(404).type('text/plain; charset=utf-8').send('Font not found');
+      }
+    );
+  }
+
   // Production static asset & SPA route handler
   if (isProd) {
     const distPath = path.join(rootDir, 'dist');
     const assetsPath = path.join(distPath, 'assets');
 
     if (fs.existsSync(assetsPath)) {
+      // Serve precompressed .br / .gz assets when available
+      app.use('/assets', (req, res, next) => {
+        if (req.method !== 'GET' && req.method !== 'HEAD') {
+          next();
+          return;
+        }
+        const relPath = req.path.replace(/^\/+/, '');
+        if (!relPath || relPath.includes('..') || relPath.includes('\0')) {
+          next();
+          return;
+        }
+        const origFile = path.join(assetsPath, relPath);
+        const acceptEncoding = String(req.headers['accept-encoding'] ?? '');
+        res.setHeader('Vary', 'Accept-Encoding');
+
+        const ext = path.extname(relPath).toLowerCase();
+        const mimeMap: Record<string, string> = {
+          '.js': 'application/javascript; charset=utf-8',
+          '.css': 'text/css; charset=utf-8',
+          '.svg': 'image/svg+xml; charset=utf-8',
+          '.json': 'application/json; charset=utf-8',
+        };
+        const contentType = mimeMap[ext];
+        if (!contentType) {
+          next();
+          return;
+        }
+
+        if (/\bbr\b/.test(acceptEncoding) && fs.existsSync(`${origFile}.br`)) {
+          res.setHeader('Content-Type', contentType);
+          res.setHeader('Content-Encoding', 'br');
+          res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+          res.sendFile(`${origFile}.br`);
+          return;
+        }
+        if (/\bgzip\b/.test(acceptEncoding) && fs.existsSync(`${origFile}.gz`)) {
+          res.setHeader('Content-Type', contentType);
+          res.setHeader('Content-Encoding', 'gzip');
+          res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+          res.sendFile(`${origFile}.gz`);
+          return;
+        }
+        next();
+      });
+
       app.use(
         '/assets',
         express.static(assetsPath, {
@@ -778,7 +1171,10 @@ export function createApp(options: CreateAppOptions) {
           redirect: false,
           maxAge: '365d',
           immutable: true,
-        })
+        }),
+        (_req, res) => {
+          res.status(404).type('text/plain; charset=utf-8').send('Asset not found');
+        }
       );
     }
 
@@ -808,9 +1204,11 @@ export function createApp(options: CreateAppOptions) {
         categoryBySlug
       );
 
-      res.setHeader('Cache-Control', 'no-cache');
       const renderedHtml = injectHtmlMeta(cachedTemplateHtml, meta);
-      res.status(meta.status).type('text/html; charset=utf-8').send(renderedHtml);
+      sendCompressedPayload(req, res, 'text/html; charset=utf-8', renderedHtml, {
+        status: meta.status,
+        cacheControl: 'no-cache',
+      });
     });
   }
 

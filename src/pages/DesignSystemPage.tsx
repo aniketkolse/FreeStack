@@ -2,10 +2,10 @@ import React from 'react';
 import { Sparkles, ArrowLeft } from 'lucide-react';
 import {
   CATEGORIES,
-  OFFERS,
   getCategoryBySlug,
   getLearningOffers,
   getOfferBySlug,
+  getRecentlyVerifiedOffers,
 } from '../lib/data/resources';
 import { getBackNavigationMeta } from '../lib/router/navigationHistory';
 import { FreeStackLogo, CategoryStickerIcon } from '../components/illustrations/TocaStickers';
@@ -37,7 +37,7 @@ export function DesignSystemPage({
   previousPath = null,
   onReplayIntro,
 }: DesignSystemPageProps) {
-  const sampleOffer = OFFERS[0];
+  const sampleOffer = getRecentlyVerifiedOffers(1)[0];
   const sampleLearning = getLearningOffers()[0];
   const backMeta = getBackNavigationMeta(previousPath, '/about', {
     getCategoryName: (slug) => getCategoryBySlug(slug)?.name,

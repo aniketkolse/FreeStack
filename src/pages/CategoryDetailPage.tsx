@@ -21,14 +21,15 @@ import {
   getCategoryBySlug,
   getCategoryCounts,
   getOfferBySlug,
-  getOffersByCategory,
 } from '../lib/data/resources';
+import {
+  useDebouncedValue,
+  usePaginatedOffersQuery,
+} from '../lib/data/useOffersApi';
+import type { CategoryFacetSummary } from '../lib/server/offerCatalogIndex';
 import { getBackNavigationMeta } from '../lib/router/navigationHistory';
-import { filterAndSortOffers, DEFAULT_FILTER_STATE } from '../lib/filters/filterOffers';
 import {
   findPrimaryTypeForSubcategory,
-  getPopulatedPrimaryTypes,
-  getTagSubtypesForOffers,
   hasMacroTypeGroups,
 } from '../lib/filters/categoryGroups';
 import { formatPricingModel } from '../lib/utils/formatters';
@@ -37,13 +38,16 @@ import type { PricingModel, RequirementState, SortOption } from '../types/resour
 import { CategoryStickerIcon, getCategoryBgClass } from '../components/illustrations/TocaStickers';
 import { CategoryTile } from '../components/categories/CategoryTile';
 import { ResourceCard } from '../components/offers/ResourceCard';
+import {
+  CardGridSkeleton,
+  InfiniteLoadMore,
+  OffersErrorState,
+} from '../components/offers/CardGridSkeleton';
 import { SearchBar } from '../components/search/SearchBar';
 import { FilterDropdown } from '../components/ui/FilterDropdown';
 import {
   AI_CONTEXT_FILTER_OPTIONS,
   AI_MODALITY_OPTIONS,
-  getAiContextWindow,
-  getAiModality,
   type AiModalityId,
 } from '../lib/ai/aiModelMetadata';
 
@@ -144,33 +148,118 @@ export function CategoryDetailPage({
     searchParams?.get('ctx') || 'all'
   );
   const [sortBy, setSortBy] = useState<SortOption>(initialSort);
-  const [visibleCount, setVisibleCount] = useState<number>(24);
   const [showAllSubtypes, setShowAllSubtypes] = useState<boolean>(false);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState<boolean>(false);
+  const debouncedQuery = useDebouncedValue(searchQuery, 150);
 
   const counts = getCategoryCounts();
+  const totalInCategoryCount = category ? (counts[category.slug] ?? 0) : 0;
 
-  const categoryOffers = useMemo(
-    () => (category ? getOffersByCategory(category.slug) : []),
-    [category]
-  );
+  const apiFilterQuery = useMemo(() => {
+    if (!category) return '';
+    const qs = new URLSearchParams();
+    qs.set('category', category.slug);
+    if (debouncedQuery.trim()) qs.set('q', debouncedQuery.trim());
+    if (selectedTypeGroup !== 'all') qs.set('typeGroup', selectedTypeGroup);
+    if (selectedSubcategory !== 'all') qs.set('subcategory', selectedSubcategory);
+    if (selectedTagSubtype !== 'all') qs.set('subtype', selectedTagSubtype);
+    if (cardFilter !== 'all') qs.set('card', cardFilter);
+    if (selectedPricing.length > 0) qs.set('pricing', selectedPricing.join(','));
+    if (studentFriendlyOnly) qs.set('student', '1');
+    if (isStudentCategory && studentVerificationFilter !== 'all') {
+      qs.set('verify', studentVerificationFilter);
+    }
+    if (isMcpCategory) {
+      if (mcpOfficialOnly) qs.set('official', '1');
+      if (mcpScope !== 'all') qs.set('scope', mcpScope);
+      if (mcpLang !== 'all') qs.set('lang', mcpLang);
+      if (mcpOs !== 'all') qs.set('os', mcpOs);
+    }
+    if (isAiCategory) {
+      if (aiModality !== 'all') qs.set('modality', aiModality);
+      if (aiMinContext !== 'all') qs.set('ctx', aiMinContext);
+    }
+    qs.set('sort', sortBy);
+    return qs.toString();
+  }, [
+    category,
+    debouncedQuery,
+    selectedTypeGroup,
+    selectedSubcategory,
+    selectedTagSubtype,
+    cardFilter,
+    selectedPricing,
+    studentFriendlyOnly,
+    isStudentCategory,
+    studentVerificationFilter,
+    isMcpCategory,
+    mcpOfficialOnly,
+    mcpScope,
+    mcpLang,
+    mcpOs,
+    isAiCategory,
+    aiModality,
+    aiMinContext,
+    sortBy,
+  ]);
+
+  const {
+    items: displayedOffers,
+    total: totalFilteredCount,
+    hasMore,
+    facets,
+    isInitialLoading,
+    isFetchingMore,
+    isTransitioning,
+    error,
+    loadMore,
+    retry,
+  } = usePaginatedOffersQuery(apiFilterQuery, 24);
+
+  const [cachedSummaryBySlug, setCachedSummaryBySlug] = useState<
+    Record<string, CategoryFacetSummary>
+  >({});
+
+  useEffect(() => {
+    if (category && facets?.categorySummary) {
+      setCachedSummaryBySlug((prev) => ({
+        ...prev,
+        [category.slug]: facets.categorySummary!,
+      }));
+    }
+  }, [category, facets?.categorySummary]);
+
+  const categorySummary = category
+    ? (facets?.categorySummary ?? cachedSummaryBySlug[category.slug])
+    : undefined;
 
   // Row 1: Important Primary Types for this category
-  const primaryTypeGroups = useMemo(
-    () => (category ? getPopulatedPrimaryTypes(category, categoryOffers) : []),
-    [category, categoryOffers]
-  );
+  const primaryTypeGroups = useMemo(() => {
+    if (categorySummary?.primaryTypeGroups) {
+      return categorySummary.primaryTypeGroups;
+    }
+    if (!category || usesMacroGroups) return [];
+    return category.subcategories.map((sub) => ({
+      id: sub.slug,
+      label: sub.name,
+      subcategories: [sub.name],
+      count: 0,
+      populatedSubcategories: [{ ...sub, count: 0 }],
+    }));
+  }, [category, categorySummary, usesMacroGroups]);
 
   useEffect(() => {
     const nextDefaultSort: SortOption = slug === 'mcp' ? 'use_case' : 'relevance';
     const subParam = searchParams?.get('subcategory') || 'all';
     const typeParam = searchParams?.get('type') || 'all';
 
-    setSearchQuery(searchParams?.get('q') || '');
+    setSearchQuery((prev) => {
+      const urlQ = searchParams?.get('q') || '';
+      return prev.trim() === urlQ.trim() ? prev : urlQ;
+    });
     setSelectedSubcategory(subParam);
     setSelectedTagSubtype(searchParams?.get('subtype') || 'all');
 
-    // If URL specifies a subcategory, automatically highlight its parent Important Type
     if (typeParam !== 'all') {
       setSelectedTypeGroup(typeParam);
     } else if (subParam !== 'all' && category) {
@@ -192,30 +281,12 @@ export function CategoryDetailPage({
     setMcpOs(searchParams?.get('os') || 'all');
     setAiModality((searchParams?.get('modality') as AiModalityId | 'all') || 'all');
     setAiMinContext(searchParams?.get('ctx') || 'all');
-    setShowAllSubtypes(false);
-    setMobileFiltersOpen(false);
-    setVisibleCount(24);
   }, [slug, searchParams, category, primaryTypeGroups]);
 
   useEffect(() => {
-    setVisibleCount(24);
-  }, [
-    searchQuery,
-    selectedTypeGroup,
-    selectedSubcategory,
-    selectedTagSubtype,
-    cardFilter,
-    selectedPricing,
-    studentFriendlyOnly,
-    studentVerificationFilter,
-    mcpOfficialOnly,
-    mcpScope,
-    mcpLang,
-    mcpOs,
-    aiModality,
-    aiMinContext,
-    sortBy,
-  ]);
+    setShowAllSubtypes(false);
+    setMobileFiltersOpen(false);
+  }, [slug]);
 
   const syncUrl = (next: {
     q?: string;
@@ -273,6 +344,14 @@ export function CategoryDetailPage({
     });
   };
 
+  // Sync debounced search query to URL without blocking input typing
+  useEffect(() => {
+    const urlQ = searchParams?.get('q') || '';
+    if (debouncedQuery.trim() === urlQ.trim()) return;
+    syncUrl({ q: debouncedQuery });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedQuery]);
+
   const activePrimaryGroup = useMemo(
     () => primaryTypeGroups.find((g) => g.id === selectedTypeGroup),
     [primaryTypeGroups, selectedTypeGroup]
@@ -280,28 +359,13 @@ export function CategoryDetailPage({
 
   // All populated subcategories across the category
   const allPopulatedSubcategories = useMemo(() => {
+    if (categorySummary?.allPopulatedSubcategories) {
+      return categorySummary.allPopulatedSubcategories;
+    }
     if (!category) return [];
-    const countMap = new Map<string, number>();
-    for (const offer of categoryOffers) {
-      const sub = offer.classification.subcategory;
-      countMap.set(sub, (countMap.get(sub) ?? 0) + 1);
-    }
-    const list = category.subcategories
-      .map((sub) => ({
-        ...sub,
-        count: countMap.get(sub.name) ?? 0,
-      }))
-      .filter((sub) => sub.count > 0 || selectedSubcategory === sub.name);
+    return category.subcategories.map((sub) => ({ ...sub, count: 0 }));
+  }, [category, categorySummary]);
 
-    if (list.length > 10) {
-      return [...list].sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
-    }
-    return list;
-  }, [category, categoryOffers, selectedSubcategory]);
-
-  // Row 2 Subtypes for Macro-Group categories (MCP, APIs):
-  // If an Important Type is selected in Row 1, show ONLY the Subtypes belonging to that Important Type!
-  // If 'all' is selected in Row 1, show the top subtypes across the category.
   const activeSubtypes = useMemo(() => {
     if (!usesMacroGroups) return [];
     if (activePrimaryGroup) {
@@ -328,177 +392,40 @@ export function CategoryDetailPage({
     return topSlice;
   }, [activeSubtypes, showAllSubtypes, selectedSubcategory, isMcpCategory]);
 
-  // Row 2 Tag Subtypes for standard categories (AI Models, Frontend & Design, Cloud, Databases, etc.)
-  const standardCategoryTagSubtypes = useMemo(() => {
-    if (usesMacroGroups) return [];
-    const baseOffers =
-      selectedSubcategory === 'all'
-        ? categoryOffers
-        : categoryOffers.filter((o) => o.classification.subcategory === selectedSubcategory);
-    return getTagSubtypesForOffers(baseOffers, 7);
-  }, [usesMacroGroups, categoryOffers, selectedSubcategory]);
+  const standardCategoryTagSubtypes = useMemo(
+    () => categorySummary?.standardCategoryTagSubtypes ?? [],
+    [categorySummary]
+  );
 
-  // Available pricing models in this category with counts
-  const categoryPricingOptions = useMemo(() => {
-    const map = new Map<PricingModel, number>();
-    for (const offer of categoryOffers) {
-      const pm = offer.classification.pricing_model;
-      map.set(pm, (map.get(pm) ?? 0) + 1);
-    }
-    return Array.from(map.entries()).map(([model, count]) => ({ model, count }));
-  }, [categoryOffers]);
+  const categoryPricingOptions = useMemo(
+    () => categorySummary?.categoryPricingOptions ?? [],
+    [categorySummary]
+  );
 
-  // MCP-specific metadata counts (Official, Scope, Language, OS)
   const mcpFilterCounts = useMemo(() => {
-    if (!isMcpCategory) {
-      return {
-        officialCount: 0,
-        scopes: new Map<string, number>(),
-        langs: new Map<string, number>(),
-        os: new Map<string, number>(),
-      };
-    }
-    let officialCount = 0;
-    const scopes = new Map<string, number>();
-    const langs = new Map<string, number>();
-    const os = new Map<string, number>();
+    const raw = categorySummary?.mcpFilterCounts;
+    return {
+      officialCount: raw?.officialCount ?? 0,
+      scopes: new Map<string, number>(Object.entries(raw?.scopes ?? {})),
+      langs: new Map<string, number>(Object.entries(raw?.langs ?? {})),
+      os: new Map<string, number>(Object.entries(raw?.os ?? {})),
+    };
+  }, [categorySummary]);
 
-    for (const offer of categoryOffers) {
-      const tags = offer.classification.tags;
-      if (tags.includes('official-implementation') || offer.metadata.featured) {
-        officialCount++;
-      }
-      for (const s of MCP_SCOPE_OPTIONS) {
-        if (s.tag && tags.includes(s.tag)) {
-          scopes.set(s.value, (scopes.get(s.value) ?? 0) + 1);
-        }
-      }
-      for (const l of MCP_LANGUAGE_OPTIONS) {
-        if (tags.includes(l.tag)) {
-          langs.set(l.value, (langs.get(l.value) ?? 0) + 1);
-        }
-      }
-      for (const o of MCP_OS_OPTIONS) {
-        if (tags.includes(o.tag)) {
-          os.set(o.value, (os.get(o.value) ?? 0) + 1);
-        }
-      }
-    }
-    return { officialCount, scopes, langs, os };
-  }, [isMcpCategory, categoryOffers]);
+  const categorySuggestions = useMemo(
+    () => categorySummary?.categorySuggestions ?? [],
+    [categorySummary]
+  );
 
-  // Relevant search suggestions tailored to this specific category
-  const categorySuggestions = useMemo(() => {
-    if (!category) return [];
-    const items: string[] = [];
-    for (const offer of categoryOffers.slice(0, 3)) {
-      const shortTitle = offer.identity.name.split('(')[0].trim();
-      if (shortTitle && !items.includes(shortTitle)) items.push(shortTitle);
-    }
-    for (const sub of category.subcategories.slice(0, 2)) {
-      if (!items.includes(sub.name)) items.push(sub.name);
-    }
-    return items.slice(0, 5);
-  }, [category, categoryOffers]);
-
-  const filteredOffers = useMemo(() => {
-    if (!category) return [];
-    let list = filterAndSortOffers(categoryOffers, {
-      ...DEFAULT_FILTER_STATE,
-      query: searchQuery,
-      subcategory: selectedSubcategory,
-      cardRequired: cardFilter,
-      pricingModels: selectedPricing,
-      sortBy,
-    });
-
-    // If a Macro Primary Type is active and no single Subtype is narrowed yet, filter to all subcategories in that Primary Type
-    if (usesMacroGroups && activePrimaryGroup && selectedSubcategory === 'all') {
-      const allowedSet = new Set(activePrimaryGroup.subcategories);
-      list = list.filter((o) => allowedSet.has(o.classification.subcategory));
-    }
-
-    // If a Tag Subtype is active on a standard category, filter by that tag
-    if (!usesMacroGroups && selectedTagSubtype !== 'all') {
-      list = list.filter((o) => o.classification.tags.includes(selectedTagSubtype));
-    }
-
-    if (studentFriendlyOnly) {
-      list = list.filter(
-        (o) =>
-          o.eligibility.student_access === 'eligible' ||
-          o.eligibility.student_access === 'exclusive'
-      );
-    }
-    if (isStudentCategory && studentVerificationFilter !== 'all') {
-      list = list.filter((o) => o.eligibility.student_access === studentVerificationFilter);
-    }
-    if (isMcpCategory) {
-      if (mcpOfficialOnly) {
-        list = list.filter(
-          (o) =>
-            o.classification.tags.includes('official-implementation') ||
-            Boolean(o.metadata.featured)
-        );
-      }
-      if (mcpScope !== 'all') {
-        const targetTag = `scope:${mcpScope}`;
-        list = list.filter((o) => o.classification.tags.includes(targetTag));
-      }
-      if (mcpLang !== 'all') {
-        const targetTag = `lang:${mcpLang}`;
-        list = list.filter((o) => o.classification.tags.includes(targetTag));
-      }
-      if (mcpOs !== 'all') {
-        const targetTag = `os:${mcpOs}`;
-        list = list.filter((o) => o.classification.tags.includes(targetTag));
-      }
-    }
-    if (isAiCategory) {
-      if (aiModality !== 'all') {
-        list = list.filter((o) => getAiModality(o)?.id === aiModality);
-      }
-      if (aiMinContext !== 'all') {
-        const opt = AI_CONTEXT_FILTER_OPTIONS.find((c) => c.value === aiMinContext);
-        if (opt && opt.minTokens > 0) {
-          list = list.filter((o) => (getAiContextWindow(o)?.tokens ?? 0) >= opt.minTokens);
-        }
-      }
-    }
-    return list;
-  }, [
-    category,
-    categoryOffers,
-    searchQuery,
-    usesMacroGroups,
-    activePrimaryGroup,
-    selectedSubcategory,
-    selectedTagSubtype,
-    cardFilter,
-    selectedPricing,
-    studentFriendlyOnly,
-    isStudentCategory,
-    studentVerificationFilter,
-    isMcpCategory,
-    mcpOfficialOnly,
-    mcpScope,
-    mcpLang,
-    mcpOs,
-    isAiCategory,
-    aiModality,
-    aiMinContext,
-    sortBy,
-  ]);
-
-  const studentVerificationCounts = useMemo(() => {
-    let exclusive = 0;
-    let eligible = 0;
-    for (const o of categoryOffers) {
-      if (o.eligibility.student_access === 'exclusive') exclusive++;
-      else if (o.eligibility.student_access === 'eligible') eligible++;
-    }
-    return { exclusive, eligible, total: categoryOffers.length };
-  }, [categoryOffers]);
+  const studentVerificationCounts = useMemo(
+    () =>
+      categorySummary?.studentVerificationCounts ?? {
+        exclusive: 0,
+        eligible: 0,
+        total: totalInCategoryCount,
+      },
+    [categorySummary, totalInCategoryCount]
+  );
 
   const togglePricing = (model: PricingModel) => {
     const next = selectedPricing.includes(model)
@@ -605,16 +532,7 @@ export function CategoryDetailPage({
 
   const bgClass = getCategoryBgClass(category.color);
   const relatedCategories = CATEGORIES.filter((c) => c.slug !== category.slug).slice(0, 3);
-  const transitionKey = `${category.slug}-${searchQuery}-${selectedTypeGroup}-${selectedSubcategory}-${selectedTagSubtype}-${cardFilter}-${selectedPricing.join(',')}-${studentFriendlyOnly}-${mcpOfficialOnly}-${mcpScope}-${mcpLang}-${mcpOs}-${aiModality}-${aiMinContext}-${sortBy}`;
-  const sampleNames = Array.from(
-    new Set(
-      [...categoryOffers]
-        .sort((a, b) => Number(Boolean(b.metadata.featured)) - Number(Boolean(a.metadata.featured)))
-        .map((o) => o.identity.provider)
-    )
-  )
-    .slice(0, 3)
-    .join(', ');
+  const sampleNames = categorySummary?.sampleNames ?? '';
 
   const visibleSortOptions = SORT_OPTIONS.filter((opt) => {
     if (opt.aiOnly) return isAiCategory;
@@ -622,13 +540,15 @@ export function CategoryDetailPage({
     return true;
   });
 
+  const displayCount = isInitialLoading && !hasActiveFilters ? totalInCategoryCount : totalFilteredCount;
+
   // Heading title reflecting active Primary Type or Subtype
   const activeResultsTitle =
     selectedSubcategory !== 'all'
-      ? `${selectedSubcategory} (${filteredOffers.length})`
+      ? `${selectedSubcategory} (${displayCount})`
       : activePrimaryGroup
-        ? `${activePrimaryGroup.label} (${filteredOffers.length})`
-        : `All ${category.name} (${filteredOffers.length})`;
+        ? `${activePrimaryGroup.label} (${displayCount})`
+        : `All ${category.name} (${displayCount})`;
 
   const backMeta = getBackNavigationMeta(previousPath, '/categories', {
     getCategoryName: (catSlug) => getCategoryBySlug(catSlug)?.name,
@@ -729,7 +649,6 @@ export function CategoryDetailPage({
               initialQuery={searchQuery}
               onChangeQuery={(q) => {
                 setSearchQuery(q);
-                syncUrl({ q });
               }}
               onSubmitQuery={(q) => {
                 setSearchQuery(q);
@@ -856,7 +775,7 @@ export function CategoryDetailPage({
             >
               <span>All</span>
               <span className="text-[10px] opacity-75 tabular-nums">
-                ({categoryOffers.length})
+                ({totalInCategoryCount})
               </span>
             </button>
 
@@ -928,7 +847,7 @@ export function CategoryDetailPage({
                           : 'All Subtypes'}
                       </span>
                       <span className="text-[10px] opacity-75 tabular-nums">
-                        ({activePrimaryGroup ? activePrimaryGroup.count : categoryOffers.length})
+                        ({activePrimaryGroup ? activePrimaryGroup.count : totalInCategoryCount})
                       </span>
                     </button>
 
@@ -1166,7 +1085,7 @@ export function CategoryDetailPage({
                       label: opt.label,
                       count:
                         opt.value === 'all'
-                          ? categoryOffers.length
+                          ? totalInCategoryCount
                           : mcpFilterCounts.scopes.get(opt.value) ?? 0,
                     }))}
                   />
@@ -1240,7 +1159,7 @@ export function CategoryDetailPage({
                       syncUrl({ pricing: next });
                     }}
                     options={[
-                      { value: 'all', label: 'All Access', count: categoryOffers.length },
+                      { value: 'all', label: 'All Access', count: totalInCategoryCount },
                       ...categoryPricingOptions.map(({ model, count }) => ({
                         value: model,
                         label: formatPricingModel(model),
@@ -1536,7 +1455,14 @@ export function CategoryDetailPage({
           )}
         </div>
 
-        {filteredOffers.length === 0 ? (
+        {isInitialLoading && displayedOffers.length === 0 ? (
+          <CardGridSkeleton
+            count={6}
+            columnsClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4"
+          />
+        ) : error && displayedOffers.length === 0 ? (
+          <OffersErrorState message={error} onRetry={retry} />
+        ) : !isInitialLoading && !isTransitioning && displayedOffers.length === 0 ? (
           <div className="bg-daylight rounded-[20px] p-7 sm:p-8 text-center flex flex-col items-center gap-3 card-enter">
             <p className="font-[var(--font-inter)] text-[14px] sm:text-[15px] text-ink/85">
               No resources in {category.name} match your search or subtype filters yet.
@@ -1552,29 +1478,27 @@ export function CategoryDetailPage({
         ) : (
           <>
             <div
-              key={transitionKey}
               data-testid="category-results-grid"
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4"
+              aria-busy={isTransitioning}
+              className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4 transition-opacity duration-150 ${
+                isTransitioning ? 'opacity-75' : 'opacity-100'
+              }`}
             >
-              {filteredOffers.slice(0, visibleCount).map((offer) => (
-                <ResourceCard key={offer.identity.id} offer={offer} onNavigate={onNavigate} />
+              {displayedOffers.map((offer, idx) => (
+                <ResourceCard
+                  key={offer.identity.slug}
+                  offer={offer}
+                  onNavigate={onNavigate}
+                  priority={idx < 4}
+                />
               ))}
             </div>
-            {visibleCount < filteredOffers.length && (
-              <div className="flex flex-col items-center gap-2 pt-3">
-                <p className="font-[var(--font-inter)] text-[12.5px] text-ink/75 tabular-nums">
-                  Showing {Math.min(visibleCount, filteredOffers.length)} of {filteredOffers.length} verified resources
-                </p>
-                <button
-                  type="button"
-                  data-testid="category-load-more"
-                  onClick={() => setVisibleCount((prev) => prev + 24)}
-                  className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13.5px] rounded-full px-6 py-2.5 min-h-[40px] cursor-pointer spring-pill"
-                >
-                  Load more ({filteredOffers.length - visibleCount} remaining)
-                </button>
-              </div>
-            )}
+            <InfiniteLoadMore
+              hasMore={hasMore}
+              isFetchingMore={isFetchingMore}
+              remainingCount={Math.max(0, totalFilteredCount - displayedOffers.length)}
+              onLoadMore={loadMore}
+            />
           </>
         )}
       </section>

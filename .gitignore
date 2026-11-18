@@ -53,5 +53,7 @@ Desktop.ini
 .vscode/*
 !.vscode/extensions.json
 
-# Security audit reports (never commit to public repo)
+# Security audit reports & raw performance traces
 SECURITY_AUDIT_REPORT.md
+perf/
+

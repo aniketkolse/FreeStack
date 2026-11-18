@@ -1,9 +1,17 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { GraduationCap, Home, CheckCircle2 } from 'lucide-react';
-import { OFFERS, getStudentOffers } from '../lib/data/resources';
-import { DEFAULT_FILTER_STATE, filterAndSortOffers } from '../lib/filters/filterOffers';
+import { getCategoryCounts } from '../lib/data/resources';
+import {
+  useDebouncedValue,
+  usePaginatedOffersQuery,
+} from '../lib/data/useOffersApi';
 import type { NavigateOptions } from '../lib/router/useRouter';
 import { ResourceCard } from '../components/offers/ResourceCard';
+import {
+  CardGridSkeleton,
+  InfiniteLoadMore,
+  OffersErrorState,
+} from '../components/offers/CardGridSkeleton';
 import { SlabIllustration } from '../components/illustrations/TocaStickers';
 import { SearchBar } from '../components/search/SearchBar';
 
@@ -27,6 +35,7 @@ const STUDENT_TRACKS = [
 ];
 
 export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
+  const counts = getCategoryCounts();
   const [selectedTrack, setSelectedTrack] = useState<string>(
     searchParams?.get('track') || 'all'
   );
@@ -34,14 +43,17 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
     (searchParams?.get('verify') as 'all' | 'required' | 'not_required') || 'all'
   );
   const [searchQuery, setSearchQuery] = useState<string>(searchParams?.get('q') || '');
-  const [visibleCount, setVisibleCount] = useState(24);
+  const debouncedQuery = useDebouncedValue(searchQuery, 150);
 
   useEffect(() => {
     setSelectedTrack(searchParams?.get('track') || 'all');
     setStudentIdFilter(
       (searchParams?.get('verify') as 'all' | 'required' | 'not_required') || 'all'
     );
-    setSearchQuery(searchParams?.get('q') || '');
+    setSearchQuery((prev) => {
+      const urlQ = searchParams?.get('q') || '';
+      return prev.trim() === urlQ.trim() ? prev : urlQ;
+    });
   }, [searchParams]);
 
   const syncStudentsUrl = (next: {
@@ -64,75 +76,40 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
     });
   };
 
-  const allStudentOffers = useMemo(
-    () =>
-      filterAndSortOffers(getStudentOffers(), {
-        ...DEFAULT_FILTER_STATE,
-        category: 'student-benefits',
-        sortBy: 'relevance',
-      }),
-    []
-  );
+  useEffect(() => {
+    const urlQ = searchParams?.get('q') || '';
+    if (debouncedQuery.trim() === urlQ.trim()) return;
+    syncStudentsUrl({ q: debouncedQuery });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedQuery]);
 
-  const studentIdRequiredOffers = useMemo(
-    () =>
-      allStudentOffers.filter(
-        (o) =>
-          o.eligibility.student_access === 'exclusive' ||
-          o.classification.tags.includes('Student ID / .edu Required')
-      ),
-    [allStudentOffers]
-  );
+  const apiFilterQuery = useMemo(() => {
+    const qs = new URLSearchParams();
+    qs.set('category', 'student-benefits');
+    if (debouncedQuery.trim()) qs.set('q', debouncedQuery.trim());
+    if (selectedTrack !== 'all') qs.set('subcategory', selectedTrack);
+    if (studentIdFilter !== 'all') qs.set('verify', studentIdFilter);
+    return qs.toString();
+  }, [debouncedQuery, selectedTrack, studentIdFilter]);
 
-  const noStudentIdOffers = useMemo(
-    () =>
-      allStudentOffers.filter(
-        (o) =>
-          o.eligibility.student_access !== 'exclusive' &&
-          (o.classification.tags.includes('No Student ID Required') ||
-            o.eligibility.student_access === 'eligible')
-      ),
-    [allStudentOffers]
-  );
+  const {
+    items: displayedStudentOffers,
+    total: totalFilteredCount,
+    hasMore,
+    facets,
+    isInitialLoading,
+    isFetchingMore,
+    isTransitioning,
+    error,
+    loadMore,
+    retry,
+  } = usePaginatedOffersQuery(apiFilterQuery, 24);
 
-  const filteredStudentOffers = useMemo(() => {
-    const baseList = filterAndSortOffers(allStudentOffers, {
-      ...DEFAULT_FILTER_STATE,
-      category: 'student-benefits',
-      subcategory: selectedTrack,
-      query: searchQuery,
-      sortBy: 'relevance',
-    });
-    if (studentIdFilter === 'required') {
-      return baseList.filter(
-        (o) =>
-          o.eligibility.student_access === 'exclusive' ||
-          o.classification.tags.includes('Student ID / .edu Required')
-      );
-    }
-    if (studentIdFilter === 'not_required') {
-      return baseList.filter(
-        (o) =>
-          o.eligibility.student_access !== 'exclusive' &&
-          (o.classification.tags.includes('No Student ID Required') ||
-            o.eligibility.student_access === 'eligible')
-      );
-    }
-    return baseList;
-  }, [allStudentOffers, selectedTrack, studentIdFilter, searchQuery]);
-
-  const generalStudentEligible = useMemo(
-    () =>
-      OFFERS.filter(
-        (o) =>
-          o.classification.category !== 'student-benefits' &&
-          o.eligibility.student_access === 'eligible' &&
-          (o.eligibility.conditions?.toLowerCase().includes('student') ||
-            o.classification.category === 'cloud-hosting' ||
-            o.classification.category === 'ai-ml')
-      ).slice(0, 6),
-    []
-  );
+  const studentsSummary = facets?.studentsSummary;
+  const totalStudentCount = studentsSummary?.totalStudentOffers ?? counts['student-benefits'] ?? 0;
+  const studentIdRequiredCount = studentsSummary?.studentIdRequiredCount ?? 0;
+  const noStudentIdCount = studentsSummary?.noStudentIdCount ?? 0;
+  const generalStudentEligible = studentsSummary?.generalStudentEligible ?? [];
 
   return (
     <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-2.5 sm:pt-5 pb-12 flex flex-col gap-3.5 sm:gap-7">
@@ -164,12 +141,9 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
               initialQuery={searchQuery}
               onChangeQuery={(q) => {
                 setSearchQuery(q);
-                setVisibleCount(24);
-                syncStudentsUrl({ q });
               }}
               onSubmitQuery={(q) => {
                 setSearchQuery(q);
-                setVisibleCount(24);
                 syncStudentsUrl({ q });
               }}
               placeholder="Search student packs, GitHub Student Pack, Cursor Pro, Azure $100, JetBrains..."
@@ -197,7 +171,6 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
             type="button"
             onClick={() => {
               setStudentIdFilter('all');
-              setVisibleCount(24);
               syncStudentsUrl({ verify: 'all' });
             }}
             className={`font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[12.5px] rounded-full px-3 sm:px-3.5 py-1 sm:py-1.5 min-h-[32px] sm:min-h-[34px] whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 cursor-pointer transition-colors ${
@@ -206,13 +179,12 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
                 : 'bg-daylight text-midnight-mouth hover:bg-grass-green/40'
             }`}
           >
-            <span>All Verification ({allStudentOffers.length})</span>
+            <span>All Verification ({totalStudentCount})</span>
           </button>
           <button
             type="button"
             onClick={() => {
               setStudentIdFilter('required');
-              setVisibleCount(24);
               syncStudentsUrl({ verify: 'required' });
             }}
             className={`font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[12.5px] rounded-full px-3 sm:px-3.5 py-1 sm:py-1.5 min-h-[32px] sm:min-h-[34px] whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 cursor-pointer transition-colors ${
@@ -222,13 +194,12 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
             }`}
           >
             <GraduationCap className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-            <span>Student ID / .edu Req. ({studentIdRequiredOffers.length})</span>
+            <span>Student ID / .edu Req. ({studentIdRequiredCount})</span>
           </button>
           <button
             type="button"
             onClick={() => {
               setStudentIdFilter('not_required');
-              setVisibleCount(24);
               syncStudentsUrl({ verify: 'not_required' });
             }}
             className={`font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[12.5px] rounded-full px-3 sm:px-3.5 py-1 sm:py-1.5 min-h-[32px] sm:min-h-[34px] whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 cursor-pointer transition-colors ${
@@ -238,7 +209,7 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
             }`}
           >
             <CheckCircle2 className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-            <span>No Student ID Req. ({noStudentIdOffers.length})</span>
+            <span>No Student ID Req. ({noStudentIdCount})</span>
           </button>
         </div>
 
@@ -257,7 +228,6 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
                 aria-selected={active}
                 onClick={() => {
                   setSelectedTrack(track.id);
-                  setVisibleCount(24);
                   syncStudentsUrl({ track: track.id });
                 }}
                 className={`font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13px] rounded-full px-3.5 sm:px-4 py-1 sm:py-1.5 min-h-[32px] sm:min-h-[36px] whitespace-nowrap shrink-0 filter-pill cursor-pointer ${
@@ -280,36 +250,46 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
             <GraduationCap className="w-5 h-5 text-midnight-mouth shrink-0" aria-hidden="true" />
             <h2 className="font-[var(--font-wallop)] font-extrabold text-[18px] sm:text-[26px] leading-[1.1] tracking-[-0.025em] text-midnight-mouth">
               {studentIdFilter === 'required'
-                ? `Requires Student ID / .edu Verification (${filteredStudentOffers.length})`
+                ? `Requires Student ID / .edu Verification (${totalFilteredCount})`
                 : studentIdFilter === 'not_required'
-                ? `No Student ID Required (${filteredStudentOffers.length})`
-                : `Verified Student Benefits (${filteredStudentOffers.length})`}
+                ? `No Student ID Required (${totalFilteredCount})`
+                : `Verified Student Benefits (${totalFilteredCount})`}
             </h2>
           </div>
         </div>
 
-        <div
-          key={`${selectedTrack}-${studentIdFilter}`}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4"
-        >
-          {filteredStudentOffers.slice(0, visibleCount).map((offer) => (
-            <ResourceCard key={offer.identity.id} offer={offer} onNavigate={onNavigate} />
-          ))}
-        </div>
-
-        {filteredStudentOffers.length > visibleCount && (
-          <div className="flex flex-col items-center gap-2 pt-2">
-            <p className="font-[var(--font-inter)] text-[13px] text-ink/70">
-              Showing {visibleCount} of {filteredStudentOffers.length} verified student benefits
-            </p>
-            <button
-              type="button"
-              onClick={() => setVisibleCount((prev) => prev + 24)}
-              className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-bold text-[14px] rounded-full px-6 py-2.5 min-h-[42px] cursor-pointer spring-pill"
+        {isInitialLoading && displayedStudentOffers.length === 0 ? (
+          <CardGridSkeleton
+            count={6}
+            columnsClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4"
+          />
+        ) : error && displayedStudentOffers.length === 0 ? (
+          <OffersErrorState message={error} onRetry={retry} />
+        ) : (
+          <>
+            <div
+              aria-busy={isTransitioning}
+              className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4 transition-opacity duration-150 ${
+                isTransitioning ? 'opacity-75' : 'opacity-100'
+              }`}
             >
-              Load more ({filteredStudentOffers.length - visibleCount} remaining)
-            </button>
-          </div>
+              {displayedStudentOffers.map((offer, idx) => (
+                <ResourceCard
+                  key={offer.identity.slug}
+                  offer={offer}
+                  onNavigate={onNavigate}
+                  priority={idx < 4}
+                />
+              ))}
+            </div>
+
+            <InfiniteLoadMore
+              hasMore={hasMore}
+              isFetchingMore={isFetchingMore}
+              remainingCount={Math.max(0, totalFilteredCount - displayedStudentOffers.length)}
+              onLoadMore={loadMore}
+            />
+          </>
         )}
       </section>
 

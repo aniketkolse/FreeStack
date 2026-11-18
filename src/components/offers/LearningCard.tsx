@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useRef, useState } from 'react';
 import {
   ArrowUpRight,
   Bookmark,
@@ -14,6 +14,7 @@ import {
   formatLearningFormat,
   formatVerificationStatus,
 } from '../../lib/utils/formatters';
+import { prefetchOfferDetail } from '../../lib/data/resources';
 import { shareOrCopyOffer, useSavedOffers } from '../../lib/saved/savedOffers';
 import { OfferLogo } from './OfferLogo';
 
@@ -22,16 +23,19 @@ interface LearningCardProps {
   onNavigate: (path: string) => void;
   surface?: 'daylight' | 'paper';
   wiggleIcon?: boolean;
+  priority?: boolean;
 }
 
-export function LearningCard({
+export const LearningCard = memo(function LearningCard({
   offer,
   onNavigate,
   surface = 'daylight',
   wiggleIcon = false,
+  priority = false,
 }: LearningCardProps) {
   const { isSaved, toggleSave } = useSavedOffers();
   const [sharedFeedback, setSharedFeedback] = useState(false);
+  const hoverTimerRef = useRef<number | null>(null);
 
   const saved = isSaved(offer.identity.slug);
   const cardBgClass = surface === 'paper' ? 'bg-paper' : 'bg-daylight';
@@ -40,6 +44,20 @@ export function LearningCard({
   const handleOpen = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     onNavigate(`/offer/${offer.identity.slug}`);
+  };
+
+  const handlePrefetchStart = () => {
+    if (hoverTimerRef.current) window.clearTimeout(hoverTimerRef.current);
+    hoverTimerRef.current = window.setTimeout(() => {
+      prefetchOfferDetail(offer.identity.slug);
+    }, 100);
+  };
+
+  const handlePrefetchCancel = () => {
+    if (hoverTimerRef.current) {
+      window.clearTimeout(hoverTimerRef.current);
+      hoverTimerRef.current = null;
+    }
   };
 
   const handleShare = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -55,44 +73,46 @@ export function LearningCard({
   return (
     <article
       data-testid={`learning-card-${offer.identity.slug}`}
-      className={`${cardBgClass} rounded-[16px] sm:rounded-[24px] p-3 sm:p-5 flex flex-col justify-between gap-2.5 sm:gap-4 spring-card card-enter min-w-0`}
+      onMouseEnter={handlePrefetchStart}
+      onMouseLeave={handlePrefetchCancel}
+      onFocus={handlePrefetchStart}
+      onBlur={handlePrefetchCancel}
+      className={`${cardBgClass} rounded-[16px] sm:rounded-[24px] p-3 sm:p-5 flex flex-col justify-between gap-2.5 sm:gap-4 spring-card min-w-0`}
     >
-      {/* Mobile-Only Compact Header: Logo + Name (< 640px) */}
-      <div className="flex sm:hidden items-center gap-3 min-w-0">
-        <div
-          className={`w-10 h-10 rounded-[12px] bg-white shadow-xs flex items-center justify-center shrink-0 overflow-hidden p-1.5 ${
-            wiggleIcon ? 'wiggle-tile' : ''
-          }`}
-        >
-          <OfferLogo offer={offer} imgClassName="w-6 h-6 object-contain" fallbackClassName="w-5 h-5" />
-        </div>
-        <div className="min-w-0 flex-1">
-          <h3 className="font-[var(--font-wallop)] font-bold text-[15.5px] leading-[1.2] tracking-[-0.02em] text-midnight-mouth truncate">
-            <a
-              href={`/offer/${offer.identity.slug}`}
-              onClick={handleOpen}
-              className="hover:underline underline-offset-4"
-            >
-              {offer.identity.name}
-            </a>
-          </h3>
-          <span className="block font-[var(--font-inter)] text-[11.5px] text-ink/70 mt-0.5 truncate">
-            {offer.identity.provider} · {learning ? formatLearningFormat(learning.format) : offer.classification.subcategory}
-          </span>
-        </div>
-      </div>
-
-      {/* Desktop / PC Top Content (>= 640px) — 100% unchanged */}
-      <div className="hidden sm:flex flex-col gap-3 min-w-0">
-        <div className="flex items-center justify-between gap-3">
+      <div className="flex flex-col gap-3 min-w-0">
+        {/* Unified Top Header — mounts a single OfferLogo for both Mobile and Desktop */}
+        <div className="flex items-center gap-3 sm:justify-between min-w-0">
           <div
             className={`w-10 h-10 sm:w-11 sm:h-11 rounded-[12px] bg-white shadow-xs flex items-center justify-center shrink-0 overflow-hidden p-1.5 ${
               wiggleIcon ? 'wiggle-tile' : ''
             }`}
           >
-            <OfferLogo offer={offer} imgClassName="w-7 h-7 sm:w-8 sm:h-8 object-contain" fallbackClassName="w-6 h-6 sm:w-7 sm:h-7" />
+            <OfferLogo
+              offer={offer}
+              priority={priority}
+              imgClassName="w-6 h-6 sm:w-8 sm:h-8 object-contain"
+              fallbackClassName="w-5 h-5 sm:w-7 sm:h-7"
+            />
           </div>
-          <div className="text-right min-w-0">
+
+          {/* Mobile-only compact title + provider (< 640px) */}
+          <div className="min-w-0 flex-1 sm:hidden">
+            <h3 className="font-[var(--font-wallop)] font-bold text-[15.5px] leading-[1.2] tracking-[-0.02em] text-midnight-mouth truncate">
+              <a
+                href={`/offer/${offer.identity.slug}`}
+                onClick={handleOpen}
+                className="hover:underline underline-offset-4"
+              >
+                {offer.identity.name}
+              </a>
+            </h3>
+            <span className="block font-[var(--font-inter)] text-[11.5px] text-ink/70 mt-0.5 truncate">
+              {offer.identity.provider} · {learning ? formatLearningFormat(learning.format) : offer.classification.subcategory}
+            </span>
+          </div>
+
+          {/* Desktop-only format + provider (>= 640px) */}
+          <div className="hidden sm:block text-right min-w-0">
             <span className="block font-[var(--font-wallop)] font-semibold text-[13.5px] sm:text-[14px] leading-[1.15] text-midnight-mouth truncate">
               {learning ? formatLearningFormat(learning.format) : offer.classification.subcategory}
             </span>
@@ -102,31 +122,33 @@ export function LearningCard({
           </div>
         </div>
 
-        {/* Clean Verification Line */}
-        <div className="flex items-center gap-1.5 font-[var(--font-inter)] text-[12px] sm:text-[12.5px] text-ink/75">
-          {offer.verification.status === 'verified' ? (
-            <CheckCircle2 className="w-3.5 h-3.5 text-midnight-mouth shrink-0" aria-hidden="true" />
-          ) : (
-            <AlertCircle className="w-3.5 h-3.5 text-midnight-mouth shrink-0" aria-hidden="true" />
-          )}
-          <span>{formatVerificationStatus(offer.verification.status)}</span>
-          <span aria-hidden="true">·</span>
-          <span>{formatDate(offer.verification.last_verified_at)}</span>
-        </div>
+        {/* Desktop-only Verification + Title + Description */}
+        <div className="hidden sm:flex flex-col gap-3 min-w-0">
+          <div className="flex items-center gap-1.5 font-[var(--font-inter)] text-[12px] sm:text-[12.5px] text-ink/75">
+            {offer.verification.status === 'verified' ? (
+              <CheckCircle2 className="w-3.5 h-3.5 text-midnight-mouth shrink-0" aria-hidden="true" />
+            ) : (
+              <AlertCircle className="w-3.5 h-3.5 text-midnight-mouth shrink-0" aria-hidden="true" />
+            )}
+            <span>{formatVerificationStatus(offer.verification.status)}</span>
+            <span aria-hidden="true">·</span>
+            <span>{formatDate(offer.verification.last_verified_at)}</span>
+          </div>
 
-        <div className="min-w-0">
-          <h3 className="font-[var(--font-wallop)] font-bold text-[17px] sm:text-[18.5px] leading-[1.2] tracking-[-0.02em] text-midnight-mouth mb-1.5">
-            <a
-              href={`/offer/${offer.identity.slug}`}
-              onClick={handleOpen}
-              className="hover:underline underline-offset-4"
-            >
-              {offer.identity.name}
-            </a>
-          </h3>
-          <p className="font-[var(--font-inter)] text-[13.5px] sm:text-[14px] leading-[1.45] text-ink/85 line-clamp-3">
-            {offer.description}
-          </p>
+          <div className="min-w-0">
+            <h3 className="font-[var(--font-wallop)] font-bold text-[17px] sm:text-[18.5px] leading-[1.2] tracking-[-0.02em] text-midnight-mouth mb-1.5">
+              <a
+                href={`/offer/${offer.identity.slug}`}
+                onClick={handleOpen}
+                className="hover:underline underline-offset-4"
+              >
+                {offer.identity.name}
+              </a>
+            </h3>
+            <p className="font-[var(--font-inter)] text-[13.5px] sm:text-[14px] leading-[1.45] text-ink/85 line-clamp-3">
+              {offer.description}
+            </p>
+          </div>
         </div>
       </div>
 
@@ -217,5 +239,4 @@ export function LearningCard({
       </div>
     </article>
   );
-}
-
+});

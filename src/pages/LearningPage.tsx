@@ -1,8 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { RotateCcw, Home, SlidersHorizontal, ChevronDown } from 'lucide-react';
-import { getLearningOffers } from '../lib/data/resources';
-import { DEFAULT_FILTER_STATE, filterAndSortOffers } from '../lib/filters/filterOffers';
-import { searchOffers } from '../lib/search/searchOffers';
+import { getCategoryCounts } from '../lib/data/resources';
+import {
+  useDebouncedValue,
+  usePaginatedOffersQuery,
+} from '../lib/data/useOffersApi';
 import type {
   LearningDifficulty,
   LearningFormat,
@@ -17,6 +19,11 @@ import {
 } from '../lib/utils/formatters';
 import type { NavigateOptions } from '../lib/router/useRouter';
 import { LearningCard } from '../components/offers/LearningCard';
+import {
+  CardGridSkeleton,
+  InfiniteLoadMore,
+  OffersErrorState,
+} from '../components/offers/CardGridSkeleton';
 import { SlabIllustration } from '../components/illustrations/TocaStickers';
 import { SearchBar } from '../components/search/SearchBar';
 import { FilterDropdown } from '../components/ui/FilterDropdown';
@@ -47,21 +54,9 @@ const DIFFICULTY_OPTIONS: LearningDifficulty[] = [
 ];
 
 export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
-  const allLearning = useMemo(
-    () =>
-      filterAndSortOffers(
-        getLearningOffers().filter((o) => o.classification.category === 'learning'),
-        {
-          ...DEFAULT_FILTER_STATE,
-          category: 'learning',
-          sortBy: 'relevance',
-        }
-      ),
-    []
-  );
-
-  const [visibleCount, setVisibleCount] = useState(24);
+  const counts = getCategoryCounts();
   const [searchQuery, setSearchQuery] = useState<string>(searchParams?.get('q') || '');
+  const debouncedQuery = useDebouncedValue(searchQuery, 150);
   const [selectedFormat, setSelectedFormat] = useState<LearningFormat | 'all'>(
     (searchParams?.get('format') as LearningFormat | 'all') || 'all'
   );
@@ -83,7 +78,10 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    setSearchQuery(searchParams?.get('q') || '');
+    setSearchQuery((prev) => {
+      const urlQ = searchParams?.get('q') || '';
+      return prev.trim() === urlQ.trim() ? prev : urlQ;
+    });
     setSelectedFormat((searchParams?.get('format') as LearningFormat | 'all') || 'all');
     setSelectedDifficulty((searchParams?.get('difficulty') as LearningDifficulty | 'all') || 'all');
     setSelectedTopic(searchParams?.get('topic') || 'all');
@@ -124,64 +122,26 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
     });
   };
 
-  const availableFormats = useMemo(
-    () =>
-      FORMAT_OPTIONS.filter((fmt) => allLearning.some((o) => o.learning?.format === fmt)),
-    [allLearning]
-  );
+  useEffect(() => {
+    const urlQ = searchParams?.get('q') || '';
+    if (debouncedQuery.trim() === urlQ.trim()) return;
+    syncLearningUrl({ q: debouncedQuery });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedQuery]);
 
-  const availableTopics = useMemo(() => {
-    const set = new Set<string>();
-    for (const item of allLearning) {
-      for (const topic of item.learning?.topics ?? []) {
-        set.add(topic);
-      }
-    }
-    return Array.from(set).sort();
-  }, [allLearning]);
-
-  const availableLanguages = useMemo(() => {
-    const set = new Set<string>();
-    for (const item of allLearning) {
-      if (item.learning?.language) set.add(item.learning.language);
-    }
-    return Array.from(set).sort();
-  }, [allLearning]);
-
-  const availablePricing = useMemo(() => {
-    const set = new Set<PricingModel>();
-    for (const item of allLearning) {
-      set.add(item.classification.pricing_model);
-    }
-    return Array.from(set);
-  }, [allLearning]);
-
-  const filtered = useMemo(() => {
-    const baseList = searchQuery.trim()
-      ? searchOffers(allLearning, searchQuery).map((r) => r.offer)
-      : allLearning;
-    return baseList.filter((o) => {
-      if (selectedFormat !== 'all' && o.learning?.format !== selectedFormat) return false;
-      if (selectedDifficulty !== 'all' && o.learning?.difficulty !== selectedDifficulty) {
-        return false;
-      }
-      if (selectedTopic !== 'all' && !(o.learning?.topics ?? []).includes(selectedTopic)) {
-        return false;
-      }
-      if (selectedLanguage !== 'all' && o.learning?.language !== selectedLanguage) {
-        return false;
-      }
-      if (selectedPricing !== 'all' && o.classification.pricing_model !== selectedPricing) {
-        return false;
-      }
-      if (selectedStatus !== 'all' && o.verification.status !== selectedStatus) {
-        return false;
-      }
-      return true;
-    });
+  const apiFilterQuery = useMemo(() => {
+    const qs = new URLSearchParams();
+    qs.set('learningOnly', '1');
+    if (debouncedQuery.trim()) qs.set('q', debouncedQuery.trim());
+    if (selectedFormat !== 'all') qs.set('format', selectedFormat);
+    if (selectedDifficulty !== 'all') qs.set('difficulty', selectedDifficulty);
+    if (selectedTopic !== 'all') qs.set('topic', selectedTopic);
+    if (selectedLanguage !== 'all') qs.set('language', selectedLanguage);
+    if (selectedPricing !== 'all') qs.set('pricing', selectedPricing);
+    if (selectedStatus !== 'all') qs.set('status', selectedStatus);
+    return qs.toString();
   }, [
-    allLearning,
-    searchQuery,
+    debouncedQuery,
     selectedFormat,
     selectedDifficulty,
     selectedTopic,
@@ -189,6 +149,26 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
     selectedPricing,
     selectedStatus,
   ]);
+
+  const {
+    items: displayedLearning,
+    total: totalFilteredCount,
+    hasMore,
+    facets,
+    isInitialLoading,
+    isFetchingMore,
+    isTransitioning,
+    error,
+    loadMore,
+    retry,
+  } = usePaginatedOffersQuery(apiFilterQuery, 24);
+
+  const learningSummary = facets?.learningSummary;
+  const totalLearningCount = learningSummary?.totalLearning ?? counts.learning ?? 0;
+  const availableFormats = learningSummary?.availableFormats ?? FORMAT_OPTIONS;
+  const availableTopics = learningSummary?.availableTopics ?? [];
+  const availableLanguages = learningSummary?.availableLanguages ?? [];
+  const availablePricing = learningSummary?.availablePricing ?? [];
 
   const hasFilters =
     searchQuery.trim().length > 0 ||
@@ -209,8 +189,6 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
     setSelectedStatus('all');
     onNavigate('/learning', { replace: true, scrollTop: false });
   };
-
-  const transitionKey = `${searchQuery}-${selectedFormat}-${selectedDifficulty}-${selectedTopic}-${selectedLanguage}-${selectedPricing}-${selectedStatus}`;
 
   return (
     <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-2.5 sm:pt-5 pb-12 flex flex-col gap-3.5 sm:gap-7">
@@ -240,7 +218,6 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
               initialQuery={searchQuery}
               onChangeQuery={(q) => {
                 setSearchQuery(q);
-                syncLearningUrl({ q });
               }}
               onSubmitQuery={(q) => {
                 setSearchQuery(q);
@@ -278,7 +255,7 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
               : 'bg-daylight text-midnight-mouth hover:bg-sunshine-yellow'
           }`}
         >
-          All formats ({allLearning.length})
+          All formats ({totalLearningCount})
         </button>
         {availableFormats.map((fmt) => {
           const active = selectedFormat === fmt;
@@ -508,7 +485,14 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
       </section>
 
       {/* Results */}
-      {filtered.length === 0 ? (
+      {isInitialLoading && displayedLearning.length === 0 ? (
+        <CardGridSkeleton
+          count={6}
+          columnsClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4"
+        />
+      ) : error && displayedLearning.length === 0 ? (
+        <OffersErrorState message={error} onRetry={retry} />
+      ) : !isInitialLoading && !isTransitioning && displayedLearning.length === 0 ? (
         <div className="bg-daylight rounded-[20px] p-7 sm:p-9 text-center flex flex-col items-center gap-3 card-enter">
           <h2 className="font-[var(--font-wallop)] font-bold text-[19px] sm:text-[22px] text-midnight-mouth">
             No learning materials match those filters
@@ -527,34 +511,29 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
       ) : (
         <div className="flex flex-col gap-4">
           <div
-            key={transitionKey}
             data-testid="learning-results-grid"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4"
+            aria-busy={isTransitioning}
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4 transition-opacity duration-150 ${
+              isTransitioning ? 'opacity-75' : 'opacity-100'
+            }`}
           >
-            {filtered.slice(0, visibleCount).map((offer, idx) => (
+            {displayedLearning.map((offer, idx) => (
               <LearningCard
-                key={offer.identity.id}
+                key={offer.identity.slug}
                 offer={offer}
                 onNavigate={onNavigate}
                 wiggleIcon={idx % 3 === 0}
+                priority={idx < 4}
               />
             ))}
           </div>
 
-          {filtered.length > visibleCount && (
-            <div className="flex flex-col items-center gap-2 pt-2">
-              <p className="font-[var(--font-inter)] text-[13px] text-ink/70">
-                Showing {visibleCount} of {filtered.length} verified learning resources (most popular first)
-              </p>
-              <button
-                type="button"
-                onClick={() => setVisibleCount((prev) => prev + 24)}
-                className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-bold text-[14px] rounded-full px-6 py-2.5 min-h-[42px] cursor-pointer spring-pill"
-              >
-                Load more ({filtered.length - visibleCount} remaining)
-              </button>
-            </div>
-          )}
+          <InfiniteLoadMore
+            hasMore={hasMore}
+            isFetchingMore={isFetchingMore}
+            remainingCount={Math.max(0, totalFilteredCount - displayedLearning.length)}
+            onLoadMore={loadMore}
+          />
         </div>
       )}
     </div>

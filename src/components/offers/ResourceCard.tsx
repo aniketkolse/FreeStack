@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useRef, useState } from 'react';
 import {
   ArrowUpRight,
   Bookmark,
@@ -18,7 +18,7 @@ import {
   formatVerificationStatus,
   getPrimaryLimitSummary,
 } from '../../lib/utils/formatters';
-import { getCategoryBySlug } from '../../lib/data/resources';
+import { getCategoryBySlug, prefetchOfferDetail } from '../../lib/data/resources';
 import { shareOrCopyOffer, useSavedOffers } from '../../lib/saved/savedOffers';
 import { getCategoryBgClass } from '../illustrations/TocaStickers';
 import { OfferLogo } from './OfferLogo';
@@ -28,15 +28,18 @@ interface ResourceCardProps {
   offer: Offer;
   onNavigate: (path: string) => void;
   surface?: 'daylight' | 'paper';
+  priority?: boolean;
 }
 
-export function ResourceCard({
+export const ResourceCard = memo(function ResourceCard({
   offer,
   onNavigate,
   surface = 'daylight',
+  priority = false,
 }: ResourceCardProps) {
   const { isSaved, toggleSave } = useSavedOffers();
   const [sharedFeedback, setSharedFeedback] = useState(false);
+  const hoverTimerRef = useRef<number | null>(null);
 
   const saved = isSaved(offer.identity.slug);
   const requiresStudentId = offer.eligibility.student_access === 'exclusive';
@@ -71,6 +74,20 @@ export function ResourceCard({
     onNavigate(`/offer/${offer.identity.slug}`);
   };
 
+  const handlePrefetchStart = () => {
+    if (hoverTimerRef.current) window.clearTimeout(hoverTimerRef.current);
+    hoverTimerRef.current = window.setTimeout(() => {
+      prefetchOfferDetail(offer.identity.slug);
+    }, 100);
+  };
+
+  const handlePrefetchCancel = () => {
+    if (hoverTimerRef.current) {
+      window.clearTimeout(hoverTimerRef.current);
+      hoverTimerRef.current = null;
+    }
+  };
+
   const handleShare = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.stopPropagation();
@@ -84,47 +101,48 @@ export function ResourceCard({
   return (
     <article
       data-testid={`resource-card-${offer.identity.slug}`}
-      className={`${cardBgClass} rounded-[16px] sm:rounded-[24px] p-3 sm:p-5 flex flex-col justify-between gap-2.5 sm:gap-3.5 spring-card card-enter min-w-0`}
+      onMouseEnter={handlePrefetchStart}
+      onMouseLeave={handlePrefetchCancel}
+      onFocus={handlePrefetchStart}
+      onBlur={handlePrefetchCancel}
+      className={`${cardBgClass} rounded-[16px] sm:rounded-[24px] p-3 sm:p-5 flex flex-col justify-between gap-2.5 sm:gap-3.5 spring-card min-w-0`}
     >
-      {/* Mobile-Only Compact Header: Logo + Tool Name only (< 640px) */}
-      <div className="flex sm:hidden items-center gap-3 min-w-0">
+      <div className="flex flex-col gap-2.5 min-w-0">
+        {/* Unified Top Header Swatch — mounts a single OfferLogo for both Mobile and Desktop */}
         <div
-          className={`${bgSwatchClass} w-11 h-11 rounded-[12px] flex items-center justify-center shrink-0 p-1`}
+          className={`flex items-center gap-3 sm:justify-between min-w-0 sm:${bgSwatchClass} sm:rounded-[16px] sm:p-3.5`}
         >
-          <div className="w-full h-full rounded-[9px] bg-white shadow-2xs flex items-center justify-center overflow-hidden p-1">
-            <OfferLogo
-              offer={offer}
-              imgClassName="w-6 h-6 object-contain"
-              fallbackClassName="w-5 h-5"
-            />
+          <div
+            className={`${bgSwatchClass} sm:bg-white w-11 h-11 rounded-[12px] flex items-center justify-center shrink-0 p-1 sm:p-1.5 sm:shadow-xs`}
+          >
+            <div className="w-full h-full rounded-[9px] bg-white shadow-2xs sm:shadow-none flex items-center justify-center overflow-hidden p-1 sm:p-0">
+              <OfferLogo
+                offer={offer}
+                priority={priority}
+                imgClassName="w-6 h-6 sm:w-8 sm:h-8 object-contain"
+                fallbackClassName="w-5 h-5 sm:w-7 sm:h-7"
+              />
+            </div>
           </div>
-        </div>
-        <div className="min-w-0 flex-1">
-          <h3 className="font-[var(--font-wallop)] font-bold text-[15.5px] leading-[1.2] tracking-[-0.02em] text-midnight-mouth truncate">
-            <a
-              href={`/offer/${offer.identity.slug}`}
-              onClick={handleOpen}
-              className="hover:underline underline-offset-4"
-            >
-              {offer.identity.name}
-            </a>
-          </h3>
-          <span className="block font-[var(--font-inter)] text-[11.5px] leading-[1.2] text-ink/70 mt-0.5 truncate">
-            {offer.identity.provider} · {offer.classification.subcategory}
-          </span>
-        </div>
-      </div>
 
-      {/* Desktop / PC Top Content (>= 640px) — 100% unchanged */}
-      <div className="hidden sm:flex flex-col gap-2.5 min-w-0">
-        {/* Top Visual Header Swatch — compact rounded graphic block */}
-        <div
-          className={`${bgSwatchClass} rounded-[14px] sm:rounded-[16px] p-3 sm:p-3.5 flex items-center justify-between gap-3`}
-        >
-          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-[12px] bg-white shadow-xs flex items-center justify-center shrink-0 overflow-hidden p-1.5">
-            <OfferLogo offer={offer} imgClassName="w-7 h-7 sm:w-8 sm:h-8 object-contain" fallbackClassName="w-6 h-6 sm:w-7 sm:h-7" />
+          {/* Mobile-only compact title + provider (< 640px) */}
+          <div className="min-w-0 flex-1 sm:hidden">
+            <h3 className="font-[var(--font-wallop)] font-bold text-[15.5px] leading-[1.2] tracking-[-0.02em] text-midnight-mouth truncate">
+              <a
+                href={`/offer/${offer.identity.slug}`}
+                onClick={handleOpen}
+                className="hover:underline underline-offset-4"
+              >
+                {offer.identity.name}
+              </a>
+            </h3>
+            <span className="block font-[var(--font-inter)] text-[11.5px] leading-[1.2] text-ink/70 mt-0.5 truncate">
+              {offer.identity.provider} · {offer.classification.subcategory}
+            </span>
           </div>
-          <div className="text-right min-w-0">
+
+          {/* Desktop-only provider + subcategory (>= 640px) */}
+          <div className="hidden sm:block text-right min-w-0">
             <span className="block font-[var(--font-wallop)] font-semibold text-[13.5px] sm:text-[14px] leading-[1.15] text-midnight-mouth truncate">
               {offer.identity.provider}
             </span>
@@ -134,69 +152,70 @@ export function ResourceCard({
           </div>
         </div>
 
-        {/* Clean Unboxed Metadata Line + AI Modality/Context or Student Badge */}
-        <div className="flex flex-wrap items-center justify-between gap-1.5">
-          <div className="flex items-center gap-1.5 font-[var(--font-inter)] text-[11.5px] sm:text-[12px] leading-[1.2] text-ink/75">
-            {statusIcon}
-            <span>{formatVerificationStatus(offer.verification.status)}</span>
-            <span aria-hidden="true">·</span>
-            <span>{formatDate(offer.verification.last_verified_at)}</span>
+        {/* Desktop-only Metadata Line + Title & Summary */}
+        <div className="hidden sm:flex flex-col gap-2.5 min-w-0">
+          <div className="flex flex-wrap items-center justify-between gap-1.5">
+            <div className="flex items-center gap-1.5 font-[var(--font-inter)] text-[11.5px] sm:text-[12px] leading-[1.2] text-ink/75">
+              {statusIcon}
+              <span>{formatVerificationStatus(offer.verification.status)}</span>
+              <span aria-hidden="true">·</span>
+              <span>{formatDate(offer.verification.last_verified_at)}</span>
+            </div>
+
+            {aiModality && (
+              <div className="flex items-center gap-1 shrink-0">
+                <span
+                  data-testid={`ai-modality-badge-${offer.identity.slug}`}
+                  className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[10.5px] leading-none rounded-full px-2 py-1 border border-midnight-mouth/12"
+                >
+                  {aiModality.shortLabel}
+                </span>
+                {aiContext && (
+                  <span
+                    data-testid={`ai-context-badge-${offer.identity.slug}`}
+                    className="bg-sunshine-yellow text-[#101014] font-[var(--font-wallop)] font-bold text-[10.5px] leading-none rounded-full px-2 py-1 tabular-nums"
+                  >
+                    {aiContext.label}
+                  </span>
+                )}
+              </div>
+            )}
+
+            {requiresStudentId && (
+              <span
+                data-testid={`student-id-badge-${offer.identity.slug}`}
+                className="bg-sunshine-yellow text-[#101014] font-[var(--font-wallop)] font-semibold text-[11px] leading-none rounded-full px-2.5 py-1 inline-flex items-center gap-1 shrink-0"
+              >
+                <GraduationCap className="w-3 h-3 shrink-0" aria-hidden="true" />
+                <span>Student ID / .edu Req.</span>
+              </span>
+            )}
+
+            {isNoStudentIdStudentBenefit && (
+              <span
+                data-testid={`no-student-id-badge-${offer.identity.slug}`}
+                className="bg-grass-green text-[#101014] font-[var(--font-wallop)] font-semibold text-[11px] leading-none rounded-full px-2.5 py-1 inline-flex items-center gap-1 shrink-0"
+              >
+                <CheckCircle2 className="w-3 h-3 shrink-0" aria-hidden="true" />
+                <span>No Student ID Req.</span>
+              </span>
+            )}
           </div>
 
-          {aiModality && (
-            <div className="flex items-center gap-1 shrink-0">
-              <span
-                data-testid={`ai-modality-badge-${offer.identity.slug}`}
-                className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[10.5px] leading-none rounded-full px-2 py-1 border border-midnight-mouth/12"
+          <div className="min-w-0">
+            <h3 className="font-[var(--font-wallop)] font-bold text-[16.5px] sm:text-[18px] leading-[1.2] tracking-[-0.02em] text-midnight-mouth mb-1">
+              <a
+                href={`/offer/${offer.identity.slug}`}
+                onClick={handleOpen}
+                className="hover:underline underline-offset-4"
               >
-                {aiModality.shortLabel}
-              </span>
-              {aiContext && (
-                <span
-                  data-testid={`ai-context-badge-${offer.identity.slug}`}
-                  className="bg-sunshine-yellow text-[#101014] font-[var(--font-wallop)] font-bold text-[10.5px] leading-none rounded-full px-2 py-1 tabular-nums"
-                >
-                  {aiContext.label}
-                </span>
-              )}
-            </div>
-          )}
-
-          {requiresStudentId && (
-            <span
-              data-testid={`student-id-badge-${offer.identity.slug}`}
-              className="bg-sunshine-yellow text-[#101014] font-[var(--font-wallop)] font-semibold text-[11px] leading-none rounded-full px-2.5 py-1 inline-flex items-center gap-1 shrink-0"
-            >
-              <GraduationCap className="w-3 h-3 shrink-0" aria-hidden="true" />
-              <span>Student ID / .edu Req.</span>
-            </span>
-          )}
-
-          {isNoStudentIdStudentBenefit && (
-            <span
-              data-testid={`no-student-id-badge-${offer.identity.slug}`}
-              className="bg-grass-green text-[#101014] font-[var(--font-wallop)] font-semibold text-[11px] leading-none rounded-full px-2.5 py-1 inline-flex items-center gap-1 shrink-0"
-            >
-              <CheckCircle2 className="w-3 h-3 shrink-0" aria-hidden="true" />
-              <span>No Student ID Req.</span>
-            </span>
-          )}
-        </div>
-
-        {/* Title & Summary */}
-        <div className="min-w-0">
-          <h3 className="font-[var(--font-wallop)] font-bold text-[16.5px] sm:text-[18px] leading-[1.2] tracking-[-0.02em] text-midnight-mouth mb-1">
-            <a
-              href={`/offer/${offer.identity.slug}`}
-              onClick={handleOpen}
-              className="hover:underline underline-offset-4"
-            >
-              {offer.identity.name}
-            </a>
-          </h3>
-          <p className="font-[var(--font-inter)] text-[13px] sm:text-[13.5px] leading-[1.45] text-ink/85 line-clamp-3">
-            {offer.description}
-          </p>
+                {offer.identity.name}
+              </a>
+            </h3>
+            <p className="font-[var(--font-inter)] text-[13px] sm:text-[13.5px] leading-[1.45] text-ink/85 line-clamp-3">
+              {offer.description}
+            </p>
+          </div>
         </div>
       </div>
 
@@ -311,5 +330,4 @@ export function ResourceCard({
       </div>
     </article>
   );
-}
-
+});

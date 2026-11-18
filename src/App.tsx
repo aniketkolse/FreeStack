@@ -1,21 +1,111 @@
-import { useEffect, useState } from 'react';
+import React, { Component, Suspense, lazy, useEffect, useState, type ReactNode } from 'react';
 import { useRouter, type NavigateOptions } from './lib/router/useRouter';
 import { getBackNavigationMeta } from './lib/router/navigationHistory';
 import { getCategoryBySlug, getOfferBySlug } from './lib/data/resources';
 import { SiteHeader } from './components/layout/SiteHeader';
 import { SiteFooter } from './components/layout/SiteFooter';
 import { FreeStackIntroSplash } from './components/layout/FreeStackIntroSplash';
+import { CardGridSkeleton } from './components/offers/CardGridSkeleton';
 import { HomePage } from './pages/HomePage';
-import { ExplorePage } from './pages/ExplorePage';
-import { CategoriesPage } from './pages/CategoriesPage';
-import { CategoryDetailPage } from './pages/CategoryDetailPage';
-import { OfferDetailPage } from './pages/OfferDetailPage';
-import { LearningPage } from './pages/LearningPage';
-import { StudentsPage } from './pages/StudentsPage';
-import { AboutPage } from './pages/AboutPage';
-import { DesignSystemPage } from './pages/DesignSystemPage';
-import { LegalCenterPage } from './pages/LegalCenterPage';
-import { SavedOffersPage } from './pages/SavedOffersPage';
+
+// Route-level code splitting for all secondary routes
+const ExplorePage = lazy(() =>
+  import('./pages/ExplorePage').then((m) => ({ default: m.ExplorePage }))
+);
+const CategoriesPage = lazy(() =>
+  import('./pages/CategoriesPage').then((m) => ({ default: m.CategoriesPage }))
+);
+const CategoryDetailPage = lazy(() =>
+  import('./pages/CategoryDetailPage').then((m) => ({ default: m.CategoryDetailPage }))
+);
+const OfferDetailPage = lazy(() =>
+  import('./pages/OfferDetailPage').then((m) => ({ default: m.OfferDetailPage }))
+);
+const LearningPage = lazy(() =>
+  import('./pages/LearningPage').then((m) => ({ default: m.LearningPage }))
+);
+const StudentsPage = lazy(() =>
+  import('./pages/StudentsPage').then((m) => ({ default: m.StudentsPage }))
+);
+const SavedOffersPage = lazy(() =>
+  import('./pages/SavedOffersPage').then((m) => ({ default: m.SavedOffersPage }))
+);
+const AboutPage = lazy(() =>
+  import('./pages/AboutPage').then((m) => ({ default: m.AboutPage }))
+);
+const DesignSystemPage = lazy(() =>
+  import('./pages/DesignSystemPage').then((m) => ({ default: m.DesignSystemPage }))
+);
+const LegalCenterPage = lazy(() =>
+  import('./pages/LegalCenterPage').then((m) => ({ default: m.LegalCenterPage }))
+);
+
+function DelayedRouteSkeleton() {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setShow(true), 150);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  if (!show) {
+    return <div className="min-h-[60vh]" aria-busy="true" />;
+  }
+
+  return (
+    <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 flex flex-col gap-6">
+      <div className="h-32 sm:h-40 rounded-[24px] bg-daylight animate-pulse" />
+      <CardGridSkeleton count={6} />
+    </div>
+  );
+}
+
+interface RouteErrorBoundaryState {
+  hasError: boolean;
+}
+
+class RouteErrorBoundary extends Component<
+  { routeKey: string; children: ReactNode },
+  RouteErrorBoundaryState
+> {
+  state: RouteErrorBoundaryState = { hasError: false };
+
+  static getDerivedStateFromError(): RouteErrorBoundaryState {
+    return { hasError: true };
+  }
+
+  componentDidUpdate(prevProps: { routeKey: string }) {
+    if (prevProps.routeKey !== this.props.routeKey && this.state.hasError) {
+      this.setState({ hasError: false });
+    }
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center flex flex-col items-center gap-4">
+          <h2 className="font-[var(--font-wallop)] font-extrabold text-[28px] sm:text-[36px] text-midnight-mouth">
+            Unable to load this view
+          </h2>
+          <p className="font-[var(--font-inter)] text-[15px] text-ink/75 max-w-md">
+            A network hiccup interrupted loading this page. Try reloading the view.
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              this.setState({ hasError: false });
+              window.location.reload();
+            }}
+            className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[15px] rounded-full px-6 py-3 min-h-[42px] cursor-pointer spring-pill"
+          >
+            Reload page
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 export default function App() {
   const { pathname, params, previousPath, navigate, goBack } = useRouter();
@@ -169,7 +259,11 @@ export default function App() {
         onFinish={() => setReplaySplash(false)}
       />
       <SiteHeader currentPath={pathname} onNavigate={handleNavigate} />
-      <main className="flex-1 min-w-0">{renderPage()}</main>
+      <main className="flex-1 min-w-0">
+        <RouteErrorBoundary routeKey={pathname}>
+          <Suspense fallback={<DelayedRouteSkeleton />}>{renderPage()}</Suspense>
+        </RouteErrorBoundary>
+      </main>
       <SiteFooter
         onNavigate={handleNavigate}
         onReplayIntro={() => setReplaySplash(true)}

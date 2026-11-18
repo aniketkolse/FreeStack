@@ -42,7 +42,7 @@ export function SiteHeader({ currentPath, onNavigate }: SiteHeaderProps) {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-paper/90 backdrop-blur-md border-b border-midnight-mouth/8 dark:border-white/10">
+    <header className="sticky top-0 z-40 w-full bg-paper/98 border-b border-midnight-mouth/8 dark:border-white/10">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 h-[60px] sm:h-[68px] flex items-center justify-between gap-3 sm:gap-5">
         {/* Zone 1: Brand mark */}
         <a
@@ -195,4 +195,3 @@ export function SiteHeader({ currentPath, onNavigate }: SiteHeaderProps) {
     </header>
   );
 }
-
