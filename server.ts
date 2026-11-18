@@ -49,7 +49,7 @@ async function startServer() {
     app.get('*', async (req: Request, res: Response, next: NextFunction) => {
       try {
         const rawHtml = fs.readFileSync(devIndexHtmlPath, 'utf-8');
-        const transformed = await vite.transformIndexHtml(req.originalUrl, rawHtml);
+        const transformed = await vite.transformIndexHtml('/', rawHtml);
         const hasQuery = Object.keys(req.query).length > 0;
         const meta = resolveRouteMeta(
           req.path,

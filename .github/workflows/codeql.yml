@@ -2,7 +2,7 @@ name: CodeQL Security Analysis
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "pre-launch-hardening"]
   pull_request:
     branches: ["main"]
   schedule:
@@ -35,7 +35,81 @@ jobs:
         with:
           languages: javascript-typescript
 
-      - name: Perform CodeQL Analysis
+      - name: Perform CodeQL Analysis (generate SARIF without hard-failing if Code Scanning is disabled)
         uses: github/codeql-action/analyze@v4
         with:
+          category: "/language:javascript-typescript"
+          upload: false
+          output: sarif-results
+
+      - name: Evaluate CodeQL SARIF Findings
+        run: |
+          node -e '
+            const fs = require("fs");
+            const path = require("path");
+            const dir = "sarif-results";
+            if (!fs.existsSync(dir)) {
+              console.log("No SARIF directory generated.");
+              process.exit(0);
+            }
+            const files = fs.readdirSync(dir).filter((f) => f.endsWith(".sarif"));
+            let errorCount = 0;
+            for (const file of files) {
+              const sarif = JSON.parse(fs.readFileSync(path.join(dir, file), "utf8"));
+              for (const run of sarif.runs || []) {
+                const rules = new Map(((run.tool && run.tool.driver && run.tool.driver.rules) || []).map((r) => [r.id, r]));
+                for (const res of run.results || []) {
+                  const rule = rules.get(res.ruleId);
+                  const level = res.level || (rule && rule.defaultConfiguration && rule.defaultConfiguration.level) || "warning";
+                  const loc = res.locations && res.locations[0] && res.locations[0].physicalLocation;
+                  const uri = loc && loc.artifactLocation ? loc.artifactLocation.uri : "unknown";
+                  const line = loc && loc.region ? loc.region.startLine : 0;
+                  console.log(`[CodeQL ${level.toUpperCase()}] ${res.ruleId} at ${uri}:${line} — ${res.message && res.message.text}`);
+                  if (level === "error") errorCount++;
+                }
+              }
+            }
+            console.log(`CodeQL SARIF evaluation complete (${errorCount} error-level finding(s)).`);
+            if (errorCount > 0) process.exit(1);
+          '
+
+      - name: Upload CodeQL SARIF Artifact
+        if: always()
+        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
+        with:
+          name: codeql-sarif-results
+          path: sarif-results/*.sarif
+          retention-days: 14
+
+      - name: Check if GitHub Code Scanning is enabled on repository
+        id: check_code_scanning
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          status=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/code-scanning/alerts?per_page=1" || echo "000")
+          echo "Code scanning API status: $status"
+          if [ "$status" = "200" ] || [ "$status" = "404" ]; then
+            body=$(curl -s -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/${{ github.repository }}/code-scanning/alerts?per_page=1" || echo "")
+            if echo "$body" | grep -qi "Code scanning is not enabled"; then
+              echo "enabled=false" >> "$GITHUB_OUTPUT"
+              echo "GitHub Code Scanning is not enabled in repository settings; skipping SARIF API upload (SARIF artifact is saved above)."
+            elif [ "$status" = "200" ]; then
+              echo "enabled=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "enabled=false" >> "$GITHUB_OUTPUT"
+            fi
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "GitHub Code Scanning API not accessible (HTTP $status); skipping SARIF API upload."
+          fi
+
+      - name: Upload SARIF to GitHub Code Scanning
+        if: steps.check_code_scanning.outputs.enabled == 'true'
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: sarif-results
           category: "/language:javascript-typescript"

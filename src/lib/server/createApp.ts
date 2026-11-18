@@ -494,14 +494,22 @@ export function createApp(options: CreateAppOptions) {
 
   // Enforce HTTPS redirect in production when behind a TLS-terminating proxy
   if (isProd) {
+    const expectedOrigin = new URL(siteUrl).origin;
     app.use((req, res, next) => {
       const forwardedProto = req.headers['x-forwarded-proto'];
       if (forwardedProto === 'http') {
-        const safePath =
-          req.originalUrl.startsWith('/') && !req.originalUrl.startsWith('//')
-            ? req.originalUrl
-            : '/';
-        res.redirect(301, `${siteUrl}${safePath}`);
+        let redirectTarget = `${siteUrl}/`;
+        try {
+          if (req.originalUrl.startsWith('/') && !req.originalUrl.startsWith('//') && !req.originalUrl.startsWith('/\\')) {
+            const candidate = new URL(req.originalUrl, siteUrl);
+            if (candidate.origin === expectedOrigin) {
+              redirectTarget = `${expectedOrigin}${candidate.pathname}${candidate.search}`;
+            }
+          }
+        } catch {
+          redirectTarget = `${siteUrl}/`;
+        }
+        res.redirect(301, redirectTarget);
         return;
       }
       next();
@@ -1173,6 +1181,7 @@ export function createApp(options: CreateAppOptions) {
     const assetsPath = path.join(distPath, 'assets');
 
     if (fs.existsSync(assetsPath)) {
+      const resolvedAssetsRoot = path.resolve(assetsPath);
       // Serve precompressed .br / .gz assets when available
       app.use('/assets', (req, res, next) => {
         if (req.method !== 'GET' && req.method !== 'HEAD') {
@@ -1184,7 +1193,11 @@ export function createApp(options: CreateAppOptions) {
           next();
           return;
         }
-        const origFile = path.join(assetsPath, relPath);
+        const origFile = path.resolve(resolvedAssetsRoot, relPath);
+        if (!origFile.startsWith(`${resolvedAssetsRoot}${path.sep}`)) {
+          next();
+          return;
+        }
         const acceptEncoding = String(req.headers['accept-encoding'] ?? '');
         res.setHeader('Vary', 'Accept-Encoding');
 
