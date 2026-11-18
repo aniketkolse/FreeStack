@@ -1,4 +1,4 @@
-import type { Offer } from '../../types/resource';
+import type { Offer } from '../../types/resource.ts';
 
 export type AiModalityId =
   | 'text'

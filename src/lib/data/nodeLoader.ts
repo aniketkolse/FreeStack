@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import type { Category, Offer, SourceRegistry } from '../../types/resource';
+import type { Category, Offer, SourceRegistry } from '../../types/resource.ts';
 
 function walkJsonFiles(dir: string): string[] {
   const entries = fs.readdirSync(dir, { withFileTypes: true });

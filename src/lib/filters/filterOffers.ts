@@ -8,9 +8,9 @@ import type {
   SortOption,
   StudentAccessState,
   VerificationStatus,
-} from '../../types/resource';
-import { searchOffers } from '../search/searchOffers';
-import { getAiContextWindow } from '../ai/aiModelMetadata';
+} from '../../types/resource.ts';
+import { searchOffers } from '../search/searchOffers.ts';
+import { getAiContextWindow } from '../ai/aiModelMetadata.ts';
 
 export const DEFAULT_FILTER_STATE: FilterState = {
   query: '',

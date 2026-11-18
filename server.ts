@@ -5,13 +5,17 @@ import {
   loadCategoriesFromDisk,
   loadOffersFromDisk,
   loadSourceRegistryFromDisk,
-} from './src/lib/data/nodeLoader';
-import { createApp } from './src/lib/server/createApp';
-import { injectHtmlMeta, resolveRouteMeta } from './src/lib/server/htmlMeta';
+} from './src/lib/data/nodeLoader.ts';
+import { createApp } from './src/lib/server/createApp.ts';
+import { injectHtmlMeta, resolveRouteMeta } from './src/lib/server/htmlMeta.ts';
 
 const PORT = Number(process.env.PORT) || 3000;
 const ROOT_DIR = process.cwd();
-const isProd = process.env.NODE_ENV === 'production';
+const hasDistIndex = fs.existsSync(path.join(ROOT_DIR, 'dist', 'index.html'));
+const hasViteInstalled = fs.existsSync(path.join(ROOT_DIR, 'node_modules', 'vite'));
+const isProd =
+  process.env.NODE_ENV === 'production' ||
+  (hasDistIndex && (!hasViteInstalled || process.env.npm_lifecycle_event === 'start'));
 
 process.on('unhandledRejection', (reason) => {
   console.error('[FreeStack] Unhandled Rejection:', reason instanceof Error ? reason.message : 'unknown');

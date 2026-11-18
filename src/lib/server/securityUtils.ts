@@ -1,6 +1,6 @@
 import crypto from 'node:crypto';
 import net from 'node:net';
-import type { Offer } from '../../types/resource';
+import type { Offer } from '../../types/resource.ts';
 
 export const SHORTENER_HOSTS = new Set([
   'bit.ly',

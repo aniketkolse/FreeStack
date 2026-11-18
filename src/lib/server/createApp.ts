@@ -20,9 +20,9 @@ import type {
   SourceRegistry,
   StudentAccessState,
   VerificationStatus,
-} from '../../types/resource';
-import type { AiModalityId } from '../ai/aiModelMetadata';
-import { generateDataQualityReport } from '../validation/offerValidator';
+} from '../../types/resource.ts';
+import type { AiModalityId } from '../ai/aiModelMetadata.ts';
+import { generateDataQualityReport } from '../validation/offerValidator.ts';
 import {
   escapeXml,
   hasPollutedQuery,
@@ -31,9 +31,9 @@ import {
   stripControlChars,
   validateSiteUrl,
   verifyBearerAdminToken,
-} from './securityUtils';
-import { injectHtmlMeta, resolveRouteMeta } from './htmlMeta';
-import { OfferCatalogIndex } from './offerCatalogIndex';
+} from './securityUtils.ts';
+import { injectHtmlMeta, resolveRouteMeta } from './htmlMeta.ts';
+import { OfferCatalogIndex } from './offerCatalogIndex.ts';
 
 export interface CreateAppOptions {
   rootDir?: string;

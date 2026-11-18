@@ -1,4 +1,4 @@
-import type { Offer } from '../../types/resource';
+import type { Offer } from '../../types/resource.ts';
 
 const STOPWORDS = new Set([
   'a',

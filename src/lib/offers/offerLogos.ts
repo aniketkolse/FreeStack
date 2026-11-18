@@ -1,4 +1,4 @@
-import type { Offer } from '../../types/resource';
+import type { Offer } from '../../types/resource.ts';
 
 const SLUG_TO_LOGO_PATH: Record<string, string> = {
   // AI Models & Specific Model Logos

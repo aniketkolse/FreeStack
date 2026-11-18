@@ -11,21 +11,21 @@ import type {
   SortOption,
   StudentAccessState,
   VerificationStatus,
-} from '../../types/resource';
-import { DEFAULT_FILTER_STATE, filterAndSortOffers } from '../filters/filterOffers';
+} from '../../types/resource.ts';
+import { DEFAULT_FILTER_STATE, filterAndSortOffers } from '../filters/filterOffers.ts';
 import {
   getPopulatedPrimaryTypes,
   getTagSubtypesForOffers,
   hasMacroTypeGroups,
   type PopulatedPrimaryTypeGroup,
-} from '../filters/categoryGroups';
+} from '../filters/categoryGroups.ts';
 import {
   AI_CONTEXT_FILTER_OPTIONS,
   getAiContextWindow,
   getAiModality,
   type AiModalityId,
-} from '../ai/aiModelMetadata';
-import { resolveOfferLogoSrc } from '../offers/offerLogos';
+} from '../ai/aiModelMetadata.ts';
+import { resolveOfferLogoSrc } from '../offers/offerLogos.ts';
 
 function resolveOfferLogoUrl(offer: Offer): string | null {
   return resolveOfferLogoSrc(offer);

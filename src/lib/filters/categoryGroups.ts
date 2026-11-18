@@ -1,4 +1,4 @@
-import type { Category, CategorySlug, Offer } from '../../types/resource';
+import type { Category, CategorySlug, Offer } from '../../types/resource.ts';
 
 export interface PrimaryTypeGroup {
   id: string;

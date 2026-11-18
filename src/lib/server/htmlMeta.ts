@@ -1,9 +1,9 @@
-import type { Category, Offer } from '../../types/resource';
+import type { Category, Offer } from '../../types/resource.ts';
 import {
   escapeHtmlAttr,
   escapeHtmlText,
   safeJsonLdSerialize,
-} from './securityUtils';
+} from './securityUtils.ts';
 
 export interface RouteMetaResult {
   status: 200 | 404;

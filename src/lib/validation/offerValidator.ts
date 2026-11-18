@@ -3,7 +3,7 @@ import type {
   DataQualityReport,
   Offer,
   SourceRegistry,
-} from '../../types/resource';
+} from '../../types/resource.ts';
 
 export interface ValidationResult {
   valid: boolean;
