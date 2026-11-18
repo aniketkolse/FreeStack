@@ -134,7 +134,7 @@ test('Developer Tools category contains 106 verified strictly developer-tool off
   );
 });
 
-test('Frontend & Design Tools category contains 104 verified offers across 8 subcategories with GradientDeck UI, getdesign.md, and Kombai at top by default', async () => {
+test('Frontend & Design Tools category contains 104 verified offers across 8 subcategories ordered from Most Popular to Least Popular by default', async () => {
   const { filterAndSortOffers, DEFAULT_FILTER_STATE } = await import('../filters/filterOffers');
   const offers = loadOffersFromDisk();
   const designTools = offers.filter((o) => o.classification.category === 'design-creative');
@@ -164,13 +164,24 @@ test('Frontend & Design Tools category contains 104 verified offers across 8 sub
   });
 
   assert.deepEqual(
-    defaultSorted.slice(0, 3).map((o) => o.identity.slug),
+    defaultSorted.slice(0, 8).map((o) => o.identity.slug),
     [
-      'gradientdeck-ui-design-md',
-      'getdesign-md-website-library',
-      'kombai-ai-design-engineer',
+      'figma-starter-plan',
+      'tailwind-css-framework',
+      'canva-free-graphic-design',
+      'shadcn-ui-component-primitives',
+      'google-fonts-open-source-type',
+      'bootstrap-5-css-framework',
+      'blender-3d-creation-suite',
+      'lucide-icons',
     ],
-    'GradientDeck UI, getdesign.md, and Kombai must appear as the top 3 default offers in Frontend & Design Tools'
+    'Most popular Frontend & Design Tools (Figma, Tailwind CSS, Canva, shadcn/ui, Google Fonts, Bootstrap 5, Blender, Lucide) must appear at the top by default'
+  );
+
+  assert.equal(
+    defaultSorted[defaultSorted.length - 1].identity.slug,
+    'velvetyne-libre-type-foundry',
+    'Least popular Frontend & Design Tools offer in the curated 104-item popularity sequence must appear at the bottom (#104)'
   );
 });
 
@@ -359,16 +370,22 @@ test('Cloud & Hosting category contains 113 verified offers across 10 subcategor
   assert.deepEqual(
     defaultSorted.slice(0, 8).map((o) => o.identity.slug),
     [
+      'aws-free-tier-cloud-credits',
       'cloudflare-pages-workers',
       'vercel-hobby',
-      'aws-free-tier-cloud-credits',
       'google-cloud-free-program-300',
-      'oracle-cloud-always-free',
       'microsoft-azure-free-account-200',
+      'github-pages-static',
       'netlify-starter-free-hosting',
-      'render-free-web-services-static',
+      'cloudflare-free-cdn-dns-ssl',
     ],
-    'Most popular Cloud & Hosting tools (Cloudflare, Vercel, AWS, Google Cloud, Oracle Cloud, Azure, Netlify, Render) must appear at the top by default'
+    'Most popular Cloud & Hosting tools (AWS, Cloudflare, Vercel, Google Cloud, Azure, GitHub Pages, Netlify, Cloudflare CDN) must appear at the top by default'
+  );
+
+  assert.equal(
+    defaultSorted[defaultSorted.length - 1].identity.slug,
+    'serv00-free-freebsd-shell-hosting',
+    'Least popular Cloud & Hosting offer in the curated 113-item popularity sequence must appear at the bottom (#113)'
   );
 });
 
@@ -436,15 +453,21 @@ test('Student Benefits category contains 107 verified offers across 10 subcatego
     defaultSorted.slice(0, 8).map((o) => o.identity.slug),
     [
       'github-student-developer-pack',
-      'jetbrains-educational-pack',
-      'azure-for-students',
       'github-copilot-pro-students',
-      'cursor-pro-student-free',
+      'jetbrains-educational-pack',
       'figma-education',
       'notion-plus-education',
+      'canva-education-free',
+      'cursor-pro-student-free',
       'google-one-ai-premium-students',
     ],
-    'Most popular Student Benefits (GitHub Student Pack, JetBrains, Azure for Students, Copilot Pro, Cursor Pro, Figma Education, Notion Plus, Google Gemini Advanced) must appear at the top by default'
+    'Most popular Student Benefits (GitHub Student Pack, Copilot Pro, JetBrains, Figma Education, Notion Plus, Canva Education, Cursor Pro, Google Gemini Advanced) must appear at the top by default'
+  );
+
+  assert.equal(
+    defaultSorted[defaultSorted.length - 1].identity.slug,
+    'zyte-scrapy-cloud-student-forever',
+    'Least popular Student Benefits offer in the curated 107-item popularity sequence must appear at the bottom (#107)'
   );
 });
 

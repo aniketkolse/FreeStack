@@ -66,9 +66,9 @@ const SORT_OPTIONS: Array<{
   mcpOrAiOnly?: boolean;
   aiOnly?: boolean;
 }> = [
+  { value: 'relevance', label: 'Popular', icon: Sparkles },
   { value: 'use_case', label: 'Use Case', icon: Layers, mcpOrAiOnly: true },
   { value: 'context_desc', label: 'Context Size', icon: Cpu, aiOnly: true },
-  { value: 'relevance', label: 'Featured', icon: Sparkles },
   { value: 'recently_verified', label: 'Verified', icon: ShieldCheck },
   { value: 'recently_added', label: 'Newest', icon: Clock },
   { value: 'name_asc', label: 'A–Z', icon: ArrowDownAZ },
@@ -110,7 +110,7 @@ export function CategoryDetailPage({
   const isAiCategory = slug === 'ai-ml';
   const isStudentCategory = slug === 'student-benefits';
   const usesMacroGroups = category ? hasMacroTypeGroups(category.slug) : false;
-  const defaultSort: SortOption = isMcpCategory ? 'use_case' : 'relevance';
+  const defaultSort: SortOption = 'relevance';
 
   const initialQuery = searchParams?.get('q') || '';
   const initialTypeGroup = searchParams?.get('type') || 'all';
@@ -249,7 +249,7 @@ export function CategoryDetailPage({
   }, [category, categorySummary, usesMacroGroups]);
 
   useEffect(() => {
-    const nextDefaultSort: SortOption = slug === 'mcp' ? 'use_case' : 'relevance';
+    const nextDefaultSort: SortOption = 'relevance';
     const subParam = searchParams?.get('subcategory') || 'all';
     const typeParam = searchParams?.get('type') || 'all';
 

@@ -106,7 +106,7 @@ const QUICK_RESOURCE_TYPES: Array<{ value: ResourceType | 'all'; label: string }
 ];
 
 const SORT_ITEMS: Array<{ value: SortOption; label: string; shortLabel: string; icon: React.ComponentType<{ className?: string }> }> = [
-  { value: 'relevance', label: 'Relevance', shortLabel: 'Relevance', icon: Sparkles },
+  { value: 'relevance', label: 'Most Popular', shortLabel: 'Popular', icon: Sparkles },
   { value: 'recently_verified', label: 'Recently verified', shortLabel: 'Verified', icon: ShieldCheck },
   { value: 'recently_added', label: 'Recently added', shortLabel: 'Newest', icon: Clock },
   { value: 'name_asc', label: 'Name (A–Z)', shortLabel: 'A–Z', icon: ArrowDownAZ },

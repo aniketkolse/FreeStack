@@ -13,6 +13,7 @@ import type {
   VerificationStatus,
 } from '../../types/resource.ts';
 import { DEFAULT_FILTER_STATE, filterAndSortOffers } from '../filters/filterOffers.ts';
+import { compareOffersByPopularity } from '../filters/popularityRankings.ts';
 import {
   getPopulatedPrimaryTypes,
   getTagSubtypesForOffers,
@@ -349,6 +350,12 @@ export class OfferCatalogIndex {
     this.categoryCounts = catCounts;
     this.pricingCounts = prCounts;
 
+    // Sort every category bucket from Most Famous/Popular -> Least Popular
+    // so category summaries and related-offer lookups respect popularity too.
+    for (const catList of this.offersByCategory.values()) {
+      catList.sort(compareOffersByPopularity);
+    }
+
     // Precompute category facet summaries
     this.baseCategorySummaries = new Map();
     for (const cat of categories) {
@@ -411,7 +418,7 @@ export class OfferCatalogIndex {
           o.eligibility.student_access === 'eligible')
     ).length;
 
-    this.generalStudentEligibleCards = this.fullOffers
+    this.generalStudentEligibleCards = relevanceRanked
       .filter(
         (o) =>
           o.classification.category !== 'student-benefits' &&
@@ -522,11 +529,7 @@ export class OfferCatalogIndex {
     }
 
     const sampleNames = Array.from(
-      new Set(
-        [...catOffers]
-          .sort((a, b) => Number(Boolean(b.metadata.featured)) - Number(Boolean(a.metadata.featured)))
-          .map((o) => o.identity.provider)
-      )
+      new Set(catOffers.map((o) => o.identity.provider))
     )
       .slice(0, 3)
       .join(', ');
@@ -679,7 +682,7 @@ export class OfferCatalogIndex {
       resourceType: opts.resourceType ?? 'all',
       region: opts.region ?? 'all',
       verificationStatus: opts.status ?? 'all',
-      sortBy: opts.sort ?? (category === 'mcp' ? 'use_case' : 'relevance'),
+      sortBy: opts.sort ?? 'relevance',
     };
 
     let filtered = filterAndSortOffers(basePool, filterState);
