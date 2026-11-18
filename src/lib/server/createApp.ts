@@ -1,10 +1,11 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
+import net from 'node:net';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import express, { type NextFunction, type Request, type Response } from 'express';
 import helmet from 'helmet';
-import rateLimit from 'express-rate-limit';
+import rateLimit, { ipKeyGenerator } from 'express-rate-limit';
 import { z } from 'zod';
 import type {
   Category,
@@ -294,6 +295,50 @@ function writeReportsAtomic(reportsPath: string, reports: OutdatedReport[]): voi
   fs.renameSync(tmpPath, reportsPath);
 }
 
+function extractIpFromForwardedHeader(forwardedHeader: string | string[] | undefined): string | null {
+  if (!forwardedHeader) return null;
+  const raw = Array.isArray(forwardedHeader) ? forwardedHeader.join(',') : forwardedHeader;
+  const hops = raw.split(',');
+  // Read right-most hop added by our trusted proxy first so spoofed client prefixes cannot override it
+  for (let i = hops.length - 1; i >= 0; i--) {
+    const hop = hops[i];
+    const match = /(?:^|;\s*)for=([^;\s]+)/i.exec(hop);
+    if (!match) continue;
+    let candidate = match[1].replace(/^"|"$/g, '').trim();
+    if (candidate.startsWith('[')) {
+      const closeIdx = candidate.indexOf(']');
+      if (closeIdx > 1) {
+        candidate = candidate.slice(1, closeIdx);
+      }
+    } else if (/^\d{1,3}(?:\.\d{1,3}){3}:\d+$/.test(candidate)) {
+      candidate = candidate.replace(/:\d+$/, '');
+    }
+    if (net.isIP(candidate)) {
+      return candidate;
+    }
+  }
+  return null;
+}
+
+function resolveClientIpFromRequest(req: Request): string {
+  const trustProxySetting = req.app?.get('trust proxy');
+  const trustsProxy = trustProxySetting !== false && trustProxySetting !== 0;
+
+  if (trustsProxy) {
+    const remoteAddr = req.socket?.remoteAddress;
+    if (req.ip && req.ip !== remoteAddr && net.isIP(req.ip)) {
+      return req.ip;
+    }
+    const forwardedIp = extractIpFromForwardedHeader(req.headers.forwarded);
+    if (forwardedIp) {
+      return forwardedIp;
+    }
+  }
+
+  const fallback = req.ip ?? req.socket?.remoteAddress ?? '127.0.0.1';
+  return net.isIP(fallback) ? fallback : '127.0.0.1';
+}
+
 function buildSitemapXml(
   siteUrl: string,
   categories: Category[],
@@ -430,17 +475,21 @@ export function createApp(options: CreateAppOptions) {
   const app = express();
   app.disable('x-powered-by');
 
-  const trustProxyVal = options.trustProxy ?? process.env.TRUST_PROXY;
-  if (trustProxyVal !== undefined && trustProxyVal !== '' && trustProxyVal !== 'false') {
-    if (trustProxyVal === 'true' || trustProxyVal === true) {
-      app.set('trust proxy', 1);
-    } else if (typeof trustProxyVal === 'number') {
-      app.set('trust proxy', trustProxyVal);
-    } else if (/^\d+$/.test(String(trustProxyVal))) {
-      app.set('trust proxy', Number.parseInt(String(trustProxyVal), 10));
-    } else {
-      app.set('trust proxy', trustProxyVal);
-    }
+  // Default to 1 proxy hop (e.g., Cloud Run / AI Studio reverse proxy) unless explicitly disabled
+  const rawTrustProxy = options.trustProxy ?? process.env.TRUST_PROXY;
+  const trustProxyVal =
+    rawTrustProxy === undefined || rawTrustProxy === '' ? 1 : rawTrustProxy;
+
+  if (trustProxyVal === false || trustProxyVal === 'false' || trustProxyVal === 0 || trustProxyVal === '0') {
+    app.set('trust proxy', false);
+  } else if (trustProxyVal === 'true' || trustProxyVal === true) {
+    app.set('trust proxy', 1);
+  } else if (typeof trustProxyVal === 'number') {
+    app.set('trust proxy', trustProxyVal);
+  } else if (/^\d+$/.test(String(trustProxyVal))) {
+    app.set('trust proxy', Number.parseInt(String(trustProxyVal), 10));
+  } else {
+    app.set('trust proxy', trustProxyVal);
   }
 
   // Enforce HTTPS redirect in production when behind a TLS-terminating proxy
@@ -562,12 +611,15 @@ export function createApp(options: CreateAppOptions) {
     next();
   });
 
-  // Rate limiters
+  // Rate limiters (keyGenerator uses req.ip + RFC 7239 Forwarded + IPv6 subnet normalization)
+  const keyGenerator = (req: Request) => ipKeyGenerator(resolveClientIpFromRequest(req), 56);
+
   const globalLimiter = rateLimit({
     windowMs: 60 * 1000,
     limit: 600,
     standardHeaders: true,
     legacyHeaders: false,
+    keyGenerator,
     skip: (req) =>
       !enableRateLimits ||
       req.path.startsWith('/api/offers') ||
@@ -590,6 +642,7 @@ export function createApp(options: CreateAppOptions) {
     limit: 1200,
     standardHeaders: true,
     legacyHeaders: false,
+    keyGenerator,
     skip: () => !enableRateLimits,
     handler: (_req, res) => {
       res.status(429).json({ error: 'Too many search/filter requests. Please wait a moment.' });
@@ -601,6 +654,7 @@ export function createApp(options: CreateAppOptions) {
     limit: 5,
     standardHeaders: true,
     legacyHeaders: false,
+    keyGenerator,
     skip: () => !enableRateLimits,
     handler: (_req, res) => {
       res.status(429).json({
@@ -614,6 +668,7 @@ export function createApp(options: CreateAppOptions) {
     limit: 60,
     standardHeaders: true,
     legacyHeaders: false,
+    keyGenerator,
     skip: () => !enableRateLimits,
     handler: (_req, res) => {
       res.status(429).json({ error: 'Too many outbound redirect requests. Please slow down.' });

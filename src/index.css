@@ -362,6 +362,132 @@ html.dark .hover\:bg-tangerine:hover {
   animation: freestack-stamp-pop 240ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
+@keyframes freestack-float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(2deg);
+  }
+}
+
+@keyframes freestack-float-alt {
+  0%, 100% {
+    transform: translateY(-4px) rotate(3deg);
+  }
+  50% {
+    transform: translateY(7px) rotate(-2.5deg);
+  }
+}
+
+@keyframes freestack-cloud-drift {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+@keyframes freestack-plug-wobble {
+  0%, 100% {
+    transform: rotate(-8deg) translateX(0px);
+  }
+  50% {
+    transform: rotate(9deg) translateX(4px);
+  }
+}
+
+@keyframes freestack-spark-pulse {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.92) rotate(-4deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12) rotate(6deg);
+  }
+}
+
+@keyframes freestack-signal-wave {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.75);
+  }
+  70% {
+    opacity: 0.25;
+    transform: scale(1.22);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.32);
+  }
+}
+
+@keyframes freestack-boop-pop {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  30% {
+    transform: scale(0.92) rotate(-3deg);
+  }
+  65% {
+    transform: scale(1.07) rotate(2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.fs-float-slow {
+  animation: freestack-float-slow 4.2s ease-in-out infinite;
+}
+
+.fs-float-alt {
+  animation: freestack-float-alt 3.8s ease-in-out infinite;
+}
+
+.fs-cloud-drift {
+  animation: freestack-cloud-drift 3.4s ease-in-out infinite;
+}
+
+.fs-plug-wobble {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: freestack-plug-wobble 2.3s ease-in-out infinite;
+}
+
+.fs-spark-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: freestack-spark-pulse 1.9s ease-in-out infinite;
+}
+
+.fs-signal-wave {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: freestack-signal-wave 2.1s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.fs-boop-pop {
+  animation: freestack-boop-pop 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes freestack-eye-blink {
+  0%, 92%, 100% {
+    transform: scaleY(1);
+  }
+  96% {
+    transform: scaleY(0.15);
+  }
+}
+
+.fs-eye-blink {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: freestack-eye-blink 4.5s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .spring-pill,
   .spring-card,
@@ -373,7 +499,15 @@ html.dark .hover\:bg-tangerine:hover {
   .sticker-bob,
   .wiggle-tile,
   .freestack-cylinder-row,
-  .freestack-stamp-badge {
+  .freestack-stamp-badge,
+  .fs-float-slow,
+  .fs-float-alt,
+  .fs-cloud-drift,
+  .fs-plug-wobble,
+  .fs-spark-pulse,
+  .fs-signal-wave,
+  .fs-boop-pop,
+  .fs-eye-blink {
     animation: none !important;
     transition: none !important;
     transform: none !important;

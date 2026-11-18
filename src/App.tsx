@@ -2,9 +2,11 @@ import React, { Component, Suspense, lazy, useEffect, useState, type ReactNode }
 import { useRouter, type NavigateOptions } from './lib/router/useRouter';
 import { getBackNavigationMeta } from './lib/router/navigationHistory';
 import { getCategoryBySlug, getOfferBySlug } from './lib/data/resources';
+import { isLikelyNetworkOrLoadMessage } from './lib/errors/errorClassification';
 import { SiteHeader } from './components/layout/SiteHeader';
 import { SiteFooter } from './components/layout/SiteFooter';
 import { FreeStackIntroSplash } from './components/layout/FreeStackIntroSplash';
+import { ErrorFallbackPage } from './components/layout/ErrorFallbackPage';
 import { CardGridSkeleton } from './components/offers/CardGridSkeleton';
 import { HomePage } from './pages/HomePage';
 
@@ -62,45 +64,41 @@ function DelayedRouteSkeleton() {
 
 interface RouteErrorBoundaryState {
   hasError: boolean;
+  errorMessage: string | null;
 }
 
 class RouteErrorBoundary extends Component<
-  { routeKey: string; children: ReactNode },
+  { routeKey: string; onNavigate: (path: string) => void; children: ReactNode },
   RouteErrorBoundaryState
 > {
-  state: RouteErrorBoundaryState = { hasError: false };
+  state: RouteErrorBoundaryState = { hasError: false, errorMessage: null };
 
-  static getDerivedStateFromError(): RouteErrorBoundaryState {
-    return { hasError: true };
+  static getDerivedStateFromError(error: unknown): RouteErrorBoundaryState {
+    const msg = error instanceof Error ? error.message : 'Unable to load this view.';
+    return { hasError: true, errorMessage: msg };
   }
 
   componentDidUpdate(prevProps: { routeKey: string }) {
     if (prevProps.routeKey !== this.props.routeKey && this.state.hasError) {
-      this.setState({ hasError: false });
+      this.setState({ hasError: false, errorMessage: null });
     }
   }
 
   render() {
     if (this.state.hasError) {
+      const online = typeof navigator !== 'undefined' ? navigator.onLine : true;
       return (
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center flex flex-col items-center gap-4">
-          <h2 className="font-[var(--font-wallop)] font-extrabold text-[28px] sm:text-[36px] text-midnight-mouth">
-            Unable to load this view
-          </h2>
-          <p className="font-[var(--font-inter)] text-[15px] text-ink/75 max-w-md">
-            A network hiccup interrupted loading this page. Try reloading the view.
-          </p>
-          <button
-            type="button"
-            onClick={() => {
-              this.setState({ hasError: false });
+        <ErrorFallbackPage
+          explicitVariant={online ? 'load_error' : 'offline'}
+          errorMessage={this.state.errorMessage}
+          onNavigate={this.props.onNavigate}
+          onRetry={() => {
+            this.setState({ hasError: false, errorMessage: null });
+            if (typeof window !== 'undefined') {
               window.location.reload();
-            }}
-            className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[15px] rounded-full px-6 py-3 min-h-[42px] cursor-pointer spring-pill"
-          >
-            Reload page
-          </button>
-        </div>
+            }
+          }}
+        />
       );
     }
     return this.props.children;
@@ -110,8 +108,57 @@ class RouteErrorBoundary extends Component<
 export default function App() {
   const { pathname, params, previousPath, navigate, goBack } = useRouter();
   const [replaySplash, setReplaySplash] = useState(false);
+  const [isOnline, setIsOnline] = useState<boolean>(() =>
+    typeof navigator !== 'undefined' ? navigator.onLine : true
+  );
+  const [globalLoadError, setGlobalLoadError] = useState<string | null>(null);
+  const [retrySeed, setRetrySeed] = useState(0);
 
   useEffect(() => {
+    const handleOnline = () => {
+      setIsOnline(true);
+      setGlobalLoadError(null);
+    };
+    const handleOffline = () => {
+      setIsOnline(false);
+    };
+    const handleCustomLoadError = (event: Event) => {
+      const detail = (event as CustomEvent<{ message?: string }>).detail;
+      setGlobalLoadError(detail?.message || 'Failed to load website bundle.');
+    };
+    const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
+      const reason = event.reason;
+      const msg =
+        reason instanceof Error
+          ? reason.message
+          : typeof reason === 'string'
+            ? reason
+            : '';
+      if (isLikelyNetworkOrLoadMessage(msg) && /chunk|module|import/i.test(msg)) {
+        event.preventDefault();
+        setGlobalLoadError(msg);
+      }
+    };
+
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+    window.addEventListener('freestack:load-error', handleCustomLoadError);
+    window.addEventListener('unhandledrejection', handleUnhandledRejection);
+
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+      window.removeEventListener('freestack:load-error', handleCustomLoadError);
+      window.removeEventListener('unhandledrejection', handleUnhandledRejection);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isOnline || globalLoadError) {
+      document.title = 'Connection Issue (404) — FreeStack';
+      return;
+    }
+
     let title = 'FreeStack — Find more. Spend less. Build anything.';
     if (pathname === '/explore') title = 'Explore Free Resources — FreeStack';
     else if (pathname === '/search') title = 'Search Results — FreeStack';
@@ -126,18 +173,51 @@ export default function App() {
     else if (pathname === '/privacy-requests') title = 'Privacy Requests & Grievance Portal — FreeStack';
     else if (pathname === '/terms') title = 'Terms of Service — FreeStack';
     else if (pathname === '/design-system') title = 'Design System Showcase — FreeStack';
+    else if (pathname !== '/' && pathname !== '') title = '404 Page Not Found — FreeStack';
     document.title = title;
-  }, [pathname]);
+  }, [pathname, isOnline, globalLoadError]);
 
   const handleNavigate = (to: string, options?: NavigateOptions) => {
+    setGlobalLoadError(null);
     navigate(to, options);
   };
 
   const handleBack = (fallbackPath?: string) => {
+    setGlobalLoadError(null);
     goBack(fallbackPath);
   };
 
+  const handleRecoverConnection = async () => {
+    if (typeof navigator !== 'undefined' && navigator.onLine) {
+      setIsOnline(true);
+    }
+    try {
+      const res = await fetch('/api/health', { cache: 'no-store' });
+      if (res.ok) {
+        setIsOnline(true);
+        setGlobalLoadError(null);
+        setRetrySeed((s) => s + 1);
+        return;
+      }
+    } catch {
+      // Keep error state visible if still unreachable
+    }
+  };
+
   const renderPage = () => {
+    if (!isOnline || globalLoadError) {
+      return (
+        <ErrorFallbackPage
+          explicitVariant={!isOnline ? 'offline' : 'load_error'}
+          errorMessage={globalLoadError}
+          onRetry={handleRecoverConnection}
+          onNavigate={handleNavigate}
+          backLabel="Return Home"
+          backHref="/"
+        />
+      );
+    }
+
     if (pathname === '/' || pathname === '') {
       return <HomePage onNavigate={handleNavigate} />;
     }
@@ -219,36 +299,14 @@ export default function App() {
     });
 
     return (
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center flex flex-col items-center gap-6">
-        <h1 className="font-[var(--font-wallop)] font-extrabold text-[40px] sm:text-[64px] leading-[1] tracking-[-0.04em] text-midnight-mouth">
-          Page not found
-        </h1>
-        <p className="font-[var(--font-inter)] text-[17px] sm:text-[18px] text-ink/80 max-w-md">
-          That route does not exist in FreeStack. Try exploring all verified free tools or returning home.
-        </p>
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          <a
-            href={notFoundBackMeta.targetHref}
-            onClick={(e) => {
-              e.preventDefault();
-              handleBack('/');
-            }}
-            className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[17px] rounded-full px-6 py-3.5 min-h-[48px] inline-flex items-center spring-pill"
-          >
-            {notFoundBackMeta.label}
-          </a>
-          <a
-            href="/explore"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavigate('/explore');
-            }}
-            className="bg-daylight text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[17px] rounded-full px-6 py-3.5 min-h-[48px] inline-flex items-center spring-pill"
-          >
-            Explore Directory
-          </a>
-        </div>
-      </div>
+      <ErrorFallbackPage
+        explicitVariant="not_found"
+        notFound
+        onNavigate={handleNavigate}
+        onBack={() => handleBack('/')}
+        backLabel={notFoundBackMeta.label}
+        backHref={notFoundBackMeta.targetHref}
+      />
     );
   };
 
@@ -260,7 +318,7 @@ export default function App() {
       />
       <SiteHeader currentPath={pathname} onNavigate={handleNavigate} />
       <main className="flex-1 min-w-0">
-        <RouteErrorBoundary routeKey={pathname}>
+        <RouteErrorBoundary routeKey={`${pathname}-${retrySeed}`} onNavigate={handleNavigate}>
           <Suspense fallback={<DelayedRouteSkeleton />}>{renderPage()}</Suspense>
         </RouteErrorBoundary>
       </main>

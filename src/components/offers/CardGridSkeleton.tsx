@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { RotateCcw, AlertCircle } from 'lucide-react';
+import { ErrorFallbackPage } from '../layout/ErrorFallbackPage';
 
 interface CardGridSkeletonProps {
   count?: number;
@@ -48,30 +48,18 @@ export function CardGridSkeleton({
 interface OffersErrorStateProps {
   message: string;
   onRetry: () => void;
+  onNavigate?: (path: string) => void;
 }
 
-export function OffersErrorState({ message, onRetry }: OffersErrorStateProps) {
+export function OffersErrorState({ message, onRetry, onNavigate }: OffersErrorStateProps) {
   return (
-    <div
-      role="alert"
-      data-testid="offers-error-state"
-      className="bg-daylight rounded-[22px] p-7 sm:p-9 text-center flex flex-col items-center gap-3"
-    >
-      <AlertCircle className="w-7 h-7 text-midnight-mouth" aria-hidden="true" />
-      <h3 className="font-[var(--font-wallop)] font-bold text-[19px] sm:text-[22px] text-midnight-mouth">
-        Could not load resources
-      </h3>
-      <p className="font-[var(--font-inter)] text-[13.5px] sm:text-[14.5px] text-ink/80 max-w-md">
-        {message}
-      </p>
-      <button
-        type="button"
-        onClick={onRetry}
-        className="mt-1 bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13.5px] rounded-full px-5 py-2.5 min-h-[40px] inline-flex items-center gap-2 spring-pill cursor-pointer"
-      >
-        <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
-        <span>Retry loading</span>
-      </button>
+    <div data-testid="offers-error-state">
+      <ErrorFallbackPage
+        errorMessage={message}
+        onRetry={onRetry}
+        onNavigate={onNavigate}
+        compact
+      />
     </div>
   );
 }

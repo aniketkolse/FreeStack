@@ -333,4 +333,56 @@ describe('FreeStack Server Security & API Hardening (Phase 2 & 6)', () => {
     });
     assert.equal(r5.status, 429);
   });
+
+  it('handles X-Forwarded-For and Forwarded headers behind Cloud Run proxy without ValidationError', async () => {
+    const loggedErrors: string[] = [];
+    const origError = console.error;
+    const origWarn = console.warn;
+    console.error = (...args: unknown[]) => {
+      loggedErrors.push(args.map(String).join(' '));
+    };
+    console.warn = (...args: unknown[]) => {
+      loggedErrors.push(args.map(String).join(' '));
+    };
+
+    try {
+      const resXff = await fetch(`${baseUrl}/api/health`, {
+        headers: {
+          'X-Forwarded-For': '203.0.113.42',
+          Forwarded: 'for=203.0.113.42;proto=https',
+        },
+      });
+      assert.equal(resXff.status, 200);
+
+      const resForwardedOnly = await fetch(`${baseUrl}/api/offers?limit=1`, {
+        headers: {
+          Forwarded: 'for="198.51.100.7:443";proto=https',
+        },
+      });
+      assert.equal(resForwardedOnly.status, 200);
+
+      // Distinct client IP via X-Forwarded-For should have its own POST /api/reports quota
+      const resDistinctClientPost = await fetch(`${baseUrl}/api/reports`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Forwarded-For': '203.0.113.99',
+          Forwarded: 'for=203.0.113.99;proto=https',
+        },
+        body: JSON.stringify({
+          offerName: 'Proxy Header Test Tool',
+          reportType: 'new_resource',
+          details: 'Verifies proxy-forwarded client IPs are tracked independently.',
+        }),
+      });
+      assert.equal(resDistinctClientPost.status, 201);
+    } finally {
+      console.error = origError;
+      console.warn = origWarn;
+    }
+
+    const combined = loggedErrors.join('\n');
+    assert.ok(!combined.includes('ValidationError'), `Unexpected ValidationError: ${combined}`);
+    assert.ok(!combined.includes('ERR_ERL_'), `Unexpected ERR_ERL error: ${combined}`);
+  });
 });

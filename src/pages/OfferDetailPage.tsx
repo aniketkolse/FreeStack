@@ -22,6 +22,7 @@ import {
 } from '../lib/data/resources';
 import { useOfferDetailQuery } from '../lib/data/useOffersApi';
 import { OffersErrorState } from '../components/offers/CardGridSkeleton';
+import { ErrorFallbackPage } from '../components/layout/ErrorFallbackPage';
 import {
   formatAccountRequirement,
   formatCardRequirement,
@@ -104,30 +105,27 @@ export function OfferDetailPage({
   if (error && !offer && !notFound) {
     return (
       <div className="max-w-[1360px] mx-auto px-6 py-12">
-        <OffersErrorState message={error} onRetry={retry} />
+        <OffersErrorState message={error} onRetry={retry} onNavigate={onNavigate} />
       </div>
     );
   }
 
   if (!offer || notFound) {
     return (
-      <div className="max-w-[1360px] mx-auto px-6 py-16 text-center flex flex-col items-center gap-4">
-        <h1 className="font-[var(--font-wallop)] font-extrabold text-[32px] text-midnight-mouth">
-          Resource not found
-        </h1>
-        <p className="font-[var(--font-inter)] text-[15px] text-ink/80">
-          This listing could not be found in the FreeStack catalog.
-        </p>
-        <a
-          href={backMeta.targetHref}
-          data-testid="offer-not-found-back-btn"
-          onClick={handleBackClick}
-          className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[14px] rounded-full px-5 py-2.5 inline-flex items-center gap-1.5 spring-pill"
-        >
-          <ArrowLeft className="w-3.5 h-3.5" aria-hidden="true" />
-          <span>{backMeta.label}</span>
-        </a>
-      </div>
+      <ErrorFallbackPage
+        explicitVariant="not_found"
+        notFound
+        onNavigate={onNavigate}
+        onBack={() => {
+          if (onBack) {
+            onBack(fallbackPath);
+          } else {
+            onNavigate(backMeta.targetHref);
+          }
+        }}
+        backLabel={backMeta.label}
+        backHref={backMeta.targetHref}
+      />
     );
   }
 

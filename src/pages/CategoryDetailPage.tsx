@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   ArrowLeft,
-  Home,
   Sparkles,
   ShieldCheck,
   Clock,
@@ -43,6 +42,7 @@ import {
   InfiniteLoadMore,
   OffersErrorState,
 } from '../components/offers/CardGridSkeleton';
+import { ErrorFallbackPage } from '../components/layout/ErrorFallbackPage';
 import { SearchBar } from '../components/search/SearchBar';
 import { FilterDropdown } from '../components/ui/FilterDropdown';
 import {
@@ -492,41 +492,20 @@ export function CategoryDetailPage({
       getOfferName: (offerSlug) => getOfferBySlug(offerSlug)?.identity.name,
     });
     return (
-      <div className="max-w-[1360px] mx-auto px-6 py-16 text-center flex flex-col items-center gap-4">
-        <h1 className="font-[var(--font-wallop)] font-extrabold text-[32px] text-midnight-mouth">
-          Category not found
-        </h1>
-        <p className="font-[var(--font-inter)] text-[15px] text-ink/80">
-          The requested category does not exist in FreeStack&apos;s category registry.
-        </p>
-        <div className="flex items-center gap-2.5">
-          <a
-            href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              onNavigate('/');
-            }}
-            className="bg-daylight text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[14px] rounded-full px-5 py-2.5 inline-flex items-center gap-1.5 spring-pill"
-          >
-            <Home className="w-4 h-4" aria-hidden="true" />
-            <span>Home</span>
-          </a>
-          <a
-            href={notFoundBackMeta.targetHref}
-            onClick={(e) => {
-              e.preventDefault();
-              if (onBack) {
-                onBack('/categories');
-              } else {
-                onNavigate(notFoundBackMeta.targetHref);
-              }
-            }}
-            className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[14px] rounded-full px-5 py-2.5 spring-pill"
-          >
-            {notFoundBackMeta.label}
-          </a>
-        </div>
-      </div>
+      <ErrorFallbackPage
+        explicitVariant="not_found"
+        notFound
+        onNavigate={onNavigate}
+        onBack={() => {
+          if (onBack) {
+            onBack('/categories');
+          } else {
+            onNavigate(notFoundBackMeta.targetHref);
+          }
+        }}
+        backLabel={notFoundBackMeta.label}
+        backHref={notFoundBackMeta.targetHref}
+      />
     );
   }
 
@@ -1461,7 +1440,7 @@ export function CategoryDetailPage({
             columnsClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4"
           />
         ) : error && displayedOffers.length === 0 ? (
-          <OffersErrorState message={error} onRetry={retry} />
+          <OffersErrorState message={error} onRetry={retry} onNavigate={onNavigate} />
         ) : !isInitialLoading && !isTransitioning && displayedOffers.length === 0 ? (
           <div className="bg-daylight rounded-[20px] p-7 sm:p-8 text-center flex flex-col items-center gap-3 card-enter">
             <p className="font-[var(--font-inter)] text-[14px] sm:text-[15px] text-ink/85">
