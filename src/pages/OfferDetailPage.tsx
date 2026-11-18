@@ -620,7 +620,7 @@ export function OfferDetailPage({
 
         {/* Right Sidebar (~30%: 4 cols on PC, 1st on Mobile) */}
         <aside className="order-1 lg:order-2 lg:col-span-4 flex flex-col gap-4 lg:sticky lg:top-[82px]">
-          <div className="bg-daylight rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 flex flex-col gap-4">
+          <div className="bg-daylight rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 flex flex-col gap-3.5">
             <div className="flex items-center gap-2">
               {statusIcon}
               <span className="font-[var(--font-wallop)] font-bold text-[18px] sm:text-[20px] text-midnight-mouth">
@@ -628,13 +628,7 @@ export function OfferDetailPage({
               </span>
             </div>
 
-            {offer.verification.notes && (
-              <div className="bg-sunshine-yellow rounded-[14px] p-3.5 font-[var(--font-inter)] text-[13px] leading-[1.4] text-midnight-mouth">
-                {offer.verification.notes}
-              </div>
-            )}
-
-            <dl className="flex flex-col gap-2 pt-2 border-t border-midnight-mouth/10 font-[var(--font-inter)] text-[13.5px]">
+            <dl className="flex flex-col gap-2.5 pt-3.5 border-t border-midnight-mouth/10 font-[var(--font-inter)] text-[13.5px]">
               <div className="flex items-baseline justify-between gap-2">
                 <dt className="text-ink/70 shrink-0">Last verified</dt>
                 <dd className="font-semibold text-midnight-mouth tabular-nums text-right">
