@@ -11,6 +11,7 @@ interface OfferLogoProps {
 const CATEGORY_DEFAULT_LOGO: Record<string, string> = {
   'ai-ml': '/logos/huggingface.svg',
   mcp: '/logos/mcp.svg',
+  'apis-integrations': '/logos/postman.svg',
   'apis-data': '/logos/postman.svg',
   'cloud-hosting': '/logos/cloudflare.svg',
   'databases-backend': '/logos/supabase.svg',

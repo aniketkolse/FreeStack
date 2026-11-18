@@ -105,55 +105,35 @@ export const ResourceCard = memo(function ResourceCard({
       onMouseLeave={handlePrefetchCancel}
       onFocus={handlePrefetchStart}
       onBlur={handlePrefetchCancel}
-      className={`${cardBgClass} rounded-[16px] sm:rounded-[24px] p-3 sm:p-5 flex flex-col justify-between gap-2.5 sm:gap-3.5 spring-card min-w-0`}
+      className={`${cardBgClass} rounded-[18px] sm:rounded-[24px] p-3.5 sm:p-5 flex flex-col justify-between gap-3 sm:gap-3.5 spring-card min-w-0`}
     >
-      <div className="flex flex-col gap-2.5 min-w-0">
-        {/* Unified Top Header Swatch — mounts a single OfferLogo for both Mobile and Desktop */}
+      <div className="flex flex-col gap-2.5 sm:gap-3 min-w-0">
+        {/* Category-Colored Header Rectangle — White-backed Logo on Left + Tool Provider & Subcategory on Right */}
         <div
-          className={`flex items-center gap-3 sm:justify-between min-w-0 sm:${bgSwatchClass} sm:rounded-[16px] sm:p-3.5`}
+          data-testid={`resource-card-header-${offer.identity.slug}`}
+          className={`${bgSwatchClass} rounded-[14px] sm:rounded-[16px] p-3 sm:p-3.5 flex items-center justify-between gap-3 min-w-0`}
         >
-          <div
-            className={`${bgSwatchClass} sm:bg-white w-11 h-11 rounded-[12px] flex items-center justify-center shrink-0 p-1 sm:p-1.5 sm:shadow-xs`}
-          >
-            <div className="w-full h-full rounded-[9px] bg-white shadow-2xs sm:shadow-none flex items-center justify-center overflow-hidden p-1 sm:p-0">
-              <OfferLogo
-                offer={offer}
-                priority={priority}
-                imgClassName="w-6 h-6 sm:w-8 sm:h-8 object-contain"
-                fallbackClassName="w-5 h-5 sm:w-7 sm:h-7"
-              />
-            </div>
+          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-[10px] sm:rounded-[12px] bg-white shadow-2xs flex items-center justify-center shrink-0 overflow-hidden p-1.5">
+            <OfferLogo
+              offer={offer}
+              priority={priority}
+              imgClassName="w-7 h-7 sm:w-8 sm:h-8 object-contain"
+              fallbackClassName="w-6 h-6 sm:w-7 sm:h-7"
+            />
           </div>
 
-          {/* Mobile-only compact title + provider (< 640px) */}
-          <div className="min-w-0 flex-1 sm:hidden">
-            <h3 className="font-[var(--font-wallop)] font-bold text-[15.5px] leading-[1.2] tracking-[-0.02em] text-midnight-mouth truncate">
-              <a
-                href={`/offer/${offer.identity.slug}`}
-                onClick={handleOpen}
-                className="hover:underline underline-offset-4"
-              >
-                {offer.identity.name}
-              </a>
-            </h3>
-            <span className="block font-[var(--font-inter)] text-[11.5px] leading-[1.2] text-ink/70 mt-0.5 truncate">
-              {offer.identity.provider} · {offer.classification.subcategory}
-            </span>
-          </div>
-
-          {/* Desktop-only provider + subcategory (>= 640px) */}
-          <div className="hidden sm:block text-right min-w-0">
+          <div className="text-right min-w-0 flex-1">
             <span className="block font-[var(--font-wallop)] font-semibold text-[13.5px] sm:text-[14px] leading-[1.15] text-midnight-mouth truncate">
               {offer.identity.provider}
             </span>
-            <span className="block font-[var(--font-inter)] text-[12px] sm:text-[12.5px] leading-[1.2] text-ink/85 mt-0.5 truncate">
+            <span className="block font-[var(--font-inter)] text-[11.5px] sm:text-[12.5px] leading-[1.2] text-ink/85 mt-0.5 truncate">
               {offer.classification.subcategory}
             </span>
           </div>
         </div>
 
-        {/* Desktop-only Metadata Line + Title & Summary */}
-        <div className="hidden sm:flex flex-col gap-2.5 min-w-0">
+        {/* Verification Metadata Line + Title & Summary Below Header */}
+        <div className="flex flex-col gap-2 sm:gap-2.5 min-w-0">
           <div className="flex flex-wrap items-center justify-between gap-1.5">
             <div className="flex items-center gap-1.5 font-[var(--font-inter)] text-[11.5px] sm:text-[12px] leading-[1.2] text-ink/75">
               {statusIcon}
@@ -203,7 +183,7 @@ export const ResourceCard = memo(function ResourceCard({
           </div>
 
           <div className="min-w-0">
-            <h3 className="font-[var(--font-wallop)] font-bold text-[16.5px] sm:text-[18px] leading-[1.2] tracking-[-0.02em] text-midnight-mouth mb-1">
+            <h3 className="font-[var(--font-wallop)] font-bold text-[16px] sm:text-[18px] leading-[1.2] tracking-[-0.02em] text-midnight-mouth mb-1">
               <a
                 href={`/offer/${offer.identity.slug}`}
                 onClick={handleOpen}
@@ -212,16 +192,16 @@ export const ResourceCard = memo(function ResourceCard({
                 {offer.identity.name}
               </a>
             </h3>
-            <p className="font-[var(--font-inter)] text-[13px] sm:text-[13.5px] leading-[1.45] text-ink/85 line-clamp-3">
+            <p className="font-[var(--font-inter)] text-[13px] sm:text-[13.5px] leading-[1.45] text-ink/85 line-clamp-2 sm:line-clamp-3">
               {offer.description}
             </p>
           </div>
         </div>
       </div>
 
-      {/* Bottom Free-Tier Truth Summary (Desktop only) + Inspect + Save & Share Actions */}
-      <div className="flex flex-col gap-3 pt-2 sm:pt-2.5 border-t border-midnight-mouth/10 min-w-0">
-        <dl className="hidden sm:flex flex-col gap-1 font-[var(--font-inter)] text-[12px] sm:text-[12.5px] leading-[1.35] text-ink">
+      {/* Bottom Free-Tier Truth Summary + Inspect + Save & Share Actions */}
+      <div className="flex flex-col gap-2.5 sm:gap-3 pt-2.5 border-t border-midnight-mouth/10 min-w-0">
+        <dl className="flex flex-col gap-1 font-[var(--font-inter)] text-[12px] sm:text-[12.5px] leading-[1.35] text-ink">
           <div className="flex items-baseline justify-between gap-2">
             <dt className="text-ink/70 shrink-0">Access model</dt>
             <dd className="font-medium text-right text-midnight-mouth min-w-0 break-words">
@@ -265,7 +245,7 @@ export const ResourceCard = memo(function ResourceCard({
           </div>
         </dl>
 
-        <div className="flex items-center justify-between gap-1.5 sm:gap-2 pt-0 sm:pt-0.5">
+        <div className="flex items-center justify-between gap-1.5 sm:gap-2 pt-0.5">
           <a
             href={`/offer/${offer.identity.slug}`}
             onClick={handleOpen}
@@ -291,7 +271,7 @@ export const ResourceCard = memo(function ResourceCard({
               className={`inline-flex items-center justify-center gap-1 font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[12px] rounded-full px-2.5 sm:px-3 py-1.5 min-h-[34px] sm:min-h-[36px] filter-pill cursor-pointer border ${
                 saved
                   ? 'bg-sunshine-yellow text-[#101014] border-midnight-mouth/15'
-                  : 'bg-paper text-midnight-mouth border-midnight-mouth/10 hover:bg-sunshine-yellow/60'
+                  : 'bg-paper text-midnight-mouth border-midnight-mouth/10 hover:bg-sunshine-yellow hover:text-[#101014]'
               }`}
             >
               <Bookmark
@@ -310,7 +290,7 @@ export const ResourceCard = memo(function ResourceCard({
               className={`inline-flex items-center justify-center gap-1 font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[12px] rounded-full px-2.5 py-1.5 min-h-[34px] sm:min-h-[36px] filter-pill cursor-pointer border ${
                 sharedFeedback
                   ? 'bg-grass-green text-[#101014] border-midnight-mouth/15'
-                  : 'bg-paper text-midnight-mouth border-midnight-mouth/10 hover:bg-sky-blue/50'
+                  : 'bg-paper text-midnight-mouth border-midnight-mouth/10 hover:bg-sky-blue hover:text-[#101014]'
               }`}
             >
               {sharedFeedback ? (

@@ -20,16 +20,16 @@ export function CardGridSkeleton({
       {Array.from({ length: count }).map((_, idx) => (
         <div
           key={idx}
-          className="bg-daylight rounded-[16px] sm:rounded-[24px] p-3 sm:p-5 flex flex-col justify-between gap-3 min-h-[112px] sm:min-h-[270px] animate-pulse"
+          className="bg-daylight rounded-[18px] sm:rounded-[24px] p-3.5 sm:p-5 flex flex-col justify-between gap-3 min-h-[250px] sm:min-h-[270px] animate-pulse"
         >
-          <div className="flex items-center justify-between gap-3 bg-paper/75 rounded-[14px] p-3">
-            <div className="w-10 h-10 rounded-[12px] bg-midnight-mouth/10 shrink-0" />
+          <div className="flex items-center justify-between gap-3 bg-paper/75 rounded-[14px] sm:rounded-[16px] p-3 sm:p-3.5">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-[10px] sm:rounded-[12px] bg-midnight-mouth/10 shrink-0" />
             <div className="flex flex-col items-end gap-1.5 flex-1">
               <div className="h-3.5 w-24 rounded-full bg-midnight-mouth/10" />
               <div className="h-3 w-16 rounded-full bg-midnight-mouth/8" />
             </div>
           </div>
-          <div className="hidden sm:flex flex-col gap-2">
+          <div className="flex flex-col gap-2">
             <div className="h-4 w-3/4 rounded-full bg-midnight-mouth/12" />
             <div className="h-3 w-full rounded-full bg-midnight-mouth/8" />
             <div className="h-3 w-5/6 rounded-full bg-midnight-mouth/8" />
