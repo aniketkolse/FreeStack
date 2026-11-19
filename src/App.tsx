@@ -5,40 +5,70 @@ import { getCategoryBySlug, getOfferBySlug } from './lib/data/resources';
 import { isLikelyNetworkOrLoadMessage } from './lib/errors/errorClassification';
 import { SiteHeader } from './components/layout/SiteHeader';
 import { SiteFooter } from './components/layout/SiteFooter';
-import { FreeStackIntroSplash } from './components/layout/FreeStackIntroSplash';
 import { ErrorFallbackPage } from './components/layout/ErrorFallbackPage';
 import { CardGridSkeleton } from './components/offers/CardGridSkeleton';
 import { HomePage } from './pages/HomePage';
 
+function lazyWithRetry<T extends React.ComponentType<any>>(
+  importer: () => Promise<{ default: T }>
+) {
+  return lazy(async () => {
+    try {
+      return await importer();
+    } catch (error) {
+      const msg = error instanceof Error ? error.message : String(error ?? '');
+      if (
+        typeof window !== 'undefined' &&
+        (typeof navigator === 'undefined' || navigator.onLine) &&
+        /dynamically imported module|importing a module script|chunk/i.test(msg)
+      ) {
+        try {
+          const key = 'freestack-chunk-reload-ts';
+          const lastReload = Number(window.sessionStorage.getItem(key) || '0');
+          const now = Date.now();
+          if (now - lastReload > 15_000) {
+            window.sessionStorage.setItem(key, String(now));
+            window.location.reload();
+            return new Promise<never>(() => {});
+          }
+        } catch {
+          // Ignore storage errors
+        }
+      }
+      throw error;
+    }
+  });
+}
+
 // Route-level code splitting for all secondary routes
-const ExplorePage = lazy(() =>
+const ExplorePage = lazyWithRetry(() =>
   import('./pages/ExplorePage').then((m) => ({ default: m.ExplorePage }))
 );
-const CategoriesPage = lazy(() =>
+const CategoriesPage = lazyWithRetry(() =>
   import('./pages/CategoriesPage').then((m) => ({ default: m.CategoriesPage }))
 );
-const CategoryDetailPage = lazy(() =>
+const CategoryDetailPage = lazyWithRetry(() =>
   import('./pages/CategoryDetailPage').then((m) => ({ default: m.CategoryDetailPage }))
 );
-const OfferDetailPage = lazy(() =>
+const OfferDetailPage = lazyWithRetry(() =>
   import('./pages/OfferDetailPage').then((m) => ({ default: m.OfferDetailPage }))
 );
-const LearningPage = lazy(() =>
+const LearningPage = lazyWithRetry(() =>
   import('./pages/LearningPage').then((m) => ({ default: m.LearningPage }))
 );
-const StudentsPage = lazy(() =>
+const StudentsPage = lazyWithRetry(() =>
   import('./pages/StudentsPage').then((m) => ({ default: m.StudentsPage }))
 );
-const SavedOffersPage = lazy(() =>
+const SavedOffersPage = lazyWithRetry(() =>
   import('./pages/SavedOffersPage').then((m) => ({ default: m.SavedOffersPage }))
 );
-const AboutPage = lazy(() =>
+const AboutPage = lazyWithRetry(() =>
   import('./pages/AboutPage').then((m) => ({ default: m.AboutPage }))
 );
-const DesignSystemPage = lazy(() =>
+const DesignSystemPage = lazyWithRetry(() =>
   import('./pages/DesignSystemPage').then((m) => ({ default: m.DesignSystemPage }))
 );
-const LegalCenterPage = lazy(() =>
+const LegalCenterPage = lazyWithRetry(() =>
   import('./pages/LegalCenterPage').then((m) => ({ default: m.LegalCenterPage }))
 );
 
@@ -107,7 +137,6 @@ class RouteErrorBoundary extends Component<
 
 export default function App() {
   const { pathname, params, previousPath, navigate, goBack } = useRouter();
-  const [replaySplash, setReplaySplash] = useState(false);
   const [isOnline, setIsOnline] = useState<boolean>(() =>
     typeof navigator !== 'undefined' ? navigator.onLine : true
   );
@@ -288,7 +317,6 @@ export default function App() {
           onNavigate={handleNavigate}
           onBack={handleBack}
           previousPath={previousPath}
-          onReplayIntro={() => setReplaySplash(true)}
         />
       );
     }
@@ -312,20 +340,13 @@ export default function App() {
 
   return (
     <div className="min-h-dvh flex flex-col bg-paper text-ink overflow-x-clip">
-      <FreeStackIntroSplash
-        forceOpen={replaySplash}
-        onFinish={() => setReplaySplash(false)}
-      />
       <SiteHeader currentPath={pathname} onNavigate={handleNavigate} />
       <main className="flex-1 min-w-0">
         <RouteErrorBoundary routeKey={`${pathname}-${retrySeed}`} onNavigate={handleNavigate}>
           <Suspense fallback={<DelayedRouteSkeleton />}>{renderPage()}</Suspense>
         </RouteErrorBoundary>
       </main>
-      <SiteFooter
-        onNavigate={handleNavigate}
-        onReplayIntro={() => setReplaySplash(true)}
-      />
+      <SiteFooter onNavigate={handleNavigate} />
     </div>
   );
 }

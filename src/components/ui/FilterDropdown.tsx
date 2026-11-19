@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Check, ChevronDown } from 'lucide-react';
+import { FilterScrollArea } from './FilterScrollArea';
 
 export interface FilterDropdownOption {
   value: string;
@@ -384,10 +385,12 @@ export function FilterDropdown({
               </div>
             )}
 
-            <div
-              style={{ maxHeight: coords.maxHeight }}
-              className="overflow-y-auto p-1.5 flex flex-col gap-0.5"
+            <FilterScrollArea
+              size="compact"
+              viewportStyle={{ maxHeight: coords.maxHeight }}
+              viewportClassName="p-1.5"
             >
+              <div className="flex flex-col gap-0.5">
               {options.map((opt, idx) => {
                 const isSelected = opt.value === value;
                 const isHighlighted = idx === activeIndex;
@@ -461,7 +464,8 @@ export function FilterDropdown({
                   </button>
                 );
               })}
-            </div>
+              </div>
+            </FilterScrollArea>
           </div>,
           document.body
         )}

@@ -59,10 +59,7 @@ export function classifyLoadError(input: ErrorClassificationInput): ErrorPageMet
       code: '404',
       kicker: 'Loading Hiccup · Temporary Error',
       headline: 'Something tripped while loading this stack.',
-      description:
-        errorMessage && errorMessage.trim().length > 0
-          ? `We hit a bump fetching this page (${errorMessage.trim()}). Give it another quick try or jump back to a fresh stack.`
-          : 'A network blip or stale page bundle interrupted loading. Retry below or head back home.',
+      description: 'This page could not be loaded right now. Please retry or head back home.',
       primaryActionLabel: 'Retry loading',
     };
   }

@@ -206,6 +206,33 @@ export function CategoryFilterSidebar({
 
         {usesMacroGroups ? (
           <>
+            {primaryTypeGroups.length > 0 && (
+              <FilterDropdown
+                id={`${idPrefix}-type-group-select`}
+                label={isMcpCategory ? 'MCP category' : 'API category'}
+                value={selectedTypeGroup}
+                active={selectedTypeGroup !== 'all'}
+                size="sm"
+                minMenuWidth={258}
+                maxMenuHeight={320}
+                menuTitle={isMcpCategory ? 'MCP category' : 'API category'}
+                menuSubtitle={`${primaryTypeGroups.length} groups`}
+                onChange={(val) => onSelectTypeGroup(val)}
+                options={[
+                  {
+                    value: 'all',
+                    label: `All ${category.shortName}`,
+                    count: totalInCategoryCount,
+                  },
+                  ...primaryTypeGroups.map((group) => ({
+                    value: group.id,
+                    label: group.label,
+                    count: group.count,
+                  })),
+                ]}
+              />
+            )}
+
             <FilterDropdown
               id={`${idPrefix}-subcategory-select`}
               label={isMcpCategory ? 'Use case' : 'API domain'}
@@ -215,15 +242,19 @@ export function CategoryFilterSidebar({
               minMenuWidth={258}
               maxMenuHeight={320}
               menuTitle={isMcpCategory ? 'Jump to use case' : 'Jump to API domain'}
-              menuSubtitle={`${allPopulatedSubcategories.length} options`}
+              menuSubtitle={`${activeSubtypes.length} options`}
               onChange={(val) => onSelectSubcategory(val)}
               options={[
                 {
                   value: 'all',
-                  label: isMcpCategory ? 'All use cases' : 'All API domains',
-                  count: totalInCategoryCount,
+                  label: activePrimaryGroup
+                    ? `All in ${activePrimaryGroup.label}`
+                    : isMcpCategory
+                      ? 'All use cases'
+                      : 'All API domains',
+                  count: activePrimaryGroup ? activePrimaryGroup.count : totalInCategoryCount,
                 },
-                ...allPopulatedSubcategories.map((sub) => ({
+                ...activeSubtypes.map((sub) => ({
                   value: sub.name,
                   label: sub.name,
                   count: sub.count,

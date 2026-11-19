@@ -4,10 +4,9 @@ import { FreeStackLogo } from '../illustrations/TocaStickers';
 
 interface SiteFooterProps {
   onNavigate: (path: string) => void;
-  onReplayIntro?: () => void;
 }
 
-export function SiteFooter({ onNavigate, onReplayIntro }: SiteFooterProps) {
+export function SiteFooter({ onNavigate }: SiteFooterProps) {
   const go = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
     e.preventDefault();
     onNavigate(path);
@@ -127,17 +126,6 @@ export function SiteFooter({ onNavigate, onReplayIntro }: SiteFooterProps) {
                       Design System
                     </a>
                   </li>
-                  {onReplayIntro && (
-                    <li>
-                      <button
-                        type="button"
-                        onClick={onReplayIntro}
-                        className="inline-flex items-center min-h-[30px] py-0.5 font-[var(--font-wallop)] font-semibold text-[13.5px] text-midnight-mouth/90 hover:text-midnight-mouth hover:underline underline-offset-4 cursor-pointer"
-                      >
-                        Replay Stack Intro
-                      </button>
-                    </li>
-                  )}
                 </ul>
               </div>
 

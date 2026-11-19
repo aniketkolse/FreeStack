@@ -46,12 +46,6 @@ const KNOWN_LOCAL_KEYS = [
     category: 'Strictly Necessary UI Preference',
   },
   {
-    key: 'freestack-intro-seen-v1',
-    storage: 'sessionStorage',
-    purpose: 'Remembers that the FreeStack assembly splash animation has played during this tab session.',
-    category: 'Session UI State',
-  },
-  {
     key: 'freestack-saved-offers-v1',
     storage: 'localStorage',
     purpose: 'Stores your bookmarked offer slugs locally in your browser (capped at 500 slugs).',

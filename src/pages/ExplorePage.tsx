@@ -4,11 +4,7 @@ import {
   RotateCcw,
   X,
   Check,
-  Sparkles,
   ShieldCheck,
-  Clock,
-  ArrowDownAZ,
-  ChevronDown,
   Home,
   Layers,
   CreditCard,
@@ -40,7 +36,6 @@ import type {
   PricingModel,
   RequirementState,
   ResourceType,
-  SortOption,
   StudentAccessState,
   VerificationStatus,
 } from '../types/resource';
@@ -58,6 +53,7 @@ import {
 } from '../components/offers/CardGridSkeleton';
 import { CategoryStickerIcon, getCategoryBgClass } from '../components/illustrations/TocaStickers';
 import { FilterDropdown, type FilterDropdownOption } from '../components/ui/FilterDropdown';
+import { FilterScrollArea } from '../components/ui/FilterScrollArea';
 
 interface ExplorePageProps {
   searchParams: URLSearchParams;
@@ -103,13 +99,6 @@ const QUICK_RESOURCE_TYPES: Array<{ value: ResourceType | 'all'; label: string }
   { value: 'software', label: 'Software' },
   { value: 'course', label: 'Courses' },
   { value: 'student_benefit', label: 'Student' },
-];
-
-const SORT_ITEMS: Array<{ value: SortOption; label: string; shortLabel: string; icon: React.ComponentType<{ className?: string }> }> = [
-  { value: 'relevance', label: 'Most Popular', shortLabel: 'Popular', icon: Sparkles },
-  { value: 'recently_verified', label: 'Recently verified', shortLabel: 'Verified', icon: ShieldCheck },
-  { value: 'recently_added', label: 'Recently added', shortLabel: 'Newest', icon: Clock },
-  { value: 'name_asc', label: 'Name (A–Z)', shortLabel: 'A–Z', icon: ArrowDownAZ },
 ];
 
 const PAGE_SIZE = 24;
@@ -815,40 +804,20 @@ export function ExplorePage({
         })}
       </div>
 
-      {/* Mobile Filter Drawer Trigger + Quick Toggles */}
+      {/* Mobile Filter Drawer Trigger */}
       <div className="lg:hidden flex items-center justify-between gap-2">
-        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
-          <button
-            type="button"
-            data-testid="mobile-filter-trigger"
-            onClick={() => {
-              setDraftFilters(filters);
-              setDrawerOpen(true);
-            }}
-            className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13.5px] rounded-full px-4 py-2 min-h-[38px] inline-flex items-center gap-1.5 shrink-0 spring-pill cursor-pointer"
-          >
-            <SlidersHorizontal className="w-3.5 h-3.5" aria-hidden="true" />
-            <span>Filters{activeCount > 0 ? ` (${activeCount})` : ''}</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() =>
-              updateFilters((p) => ({
-                ...p,
-                cardRequired: p.cardRequired === 'not_required' ? 'all' : 'not_required',
-              }))
-            }
-            className={`font-[var(--font-wallop)] font-semibold text-[12.5px] rounded-full px-3.5 py-2 min-h-[38px] inline-flex items-center gap-1.5 shrink-0 filter-pill cursor-pointer ${
-              filters.cardRequired === 'not_required'
-                ? 'bg-grass-green text-[#101014]'
-                : 'bg-daylight text-midnight-mouth'
-            }`}
-          >
-            <ShieldCheck className="w-3.5 h-3.5" aria-hidden="true" />
-            <span>No Card</span>
-          </button>
-        </div>
+        <button
+          type="button"
+          data-testid="mobile-filter-trigger"
+          onClick={() => {
+            setDraftFilters(filters);
+            setDrawerOpen(true);
+          }}
+          className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13.5px] rounded-full px-4 py-2 min-h-[38px] inline-flex items-center gap-1.5 shrink-0 spring-pill cursor-pointer"
+        >
+          <SlidersHorizontal className="w-3.5 h-3.5" aria-hidden="true" />
+          <span>Filters{activeCount > 0 ? ` (${activeCount})` : ''}</span>
+        </button>
 
         {activeCount > 0 && (
           <button
@@ -867,9 +836,9 @@ export function ExplorePage({
         {/* Desktop Sticky Filter Sidebar */}
         <aside
           aria-label="Resource filters"
-          className="hidden lg:flex lg:col-span-3 lg:sticky lg:top-[82px] lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto no-scrollbar bg-daylight rounded-[22px] p-4 xl:p-5 flex-col gap-4"
+          className="hidden lg:flex lg:col-span-3 lg:sticky lg:top-[82px] lg:max-h-[calc(100vh-6rem)] bg-daylight rounded-[22px] p-4 xl:p-5 flex-col gap-3.5 overflow-hidden"
         >
-          <div className="flex items-center justify-between gap-2 pb-2 border-b border-midnight-mouth/10">
+          <div className="flex items-center justify-between gap-2 pb-2 border-b border-midnight-mouth/10 shrink-0">
             <div className="flex items-center gap-2">
               <SlidersHorizontal className="w-4 h-4 text-midnight-mouth" aria-hidden="true" />
               <h2 className="font-[var(--font-wallop)] font-bold text-[17px] leading-[1.2] text-midnight-mouth">
@@ -888,109 +857,16 @@ export function ExplorePage({
             )}
           </div>
 
-          {renderFilterControls(filters, (next) => updateFilters(next), 'desktop-filter')}
+          <FilterScrollArea
+            testId="explore-filter-scroll"
+            className="flex-1"
+          >
+            {renderFilterControls(filters, (next) => updateFilters(next), 'desktop-filter')}
+          </FilterScrollArea>
         </aside>
 
         {/* Results Column */}
-        <div className="lg:col-span-9 flex flex-col gap-4 min-w-0">
-          {/* Smooth Results Toolbar & Segmented Sort Bar */}
-          <div className="bg-daylight rounded-[18px] sm:rounded-[20px] px-3.5 sm:px-5 py-2.5 sm:py-3 flex flex-wrap items-center justify-between gap-3">
-            <div className="flex flex-wrap items-center gap-2.5">
-              <p
-                data-testid="explore-results-count"
-                className="font-[var(--font-wallop)] font-bold text-[14px] sm:text-[15px] text-midnight-mouth tabular-nums"
-              >
-                Showing {displayedResults.length} of {totalResultsCount}{' '}
-                {totalResultsCount === 1 ? 'resource' : 'resources'}
-              </p>
-
-              {/* Desktop One-Click No-Card Pill */}
-              <button
-                type="button"
-                onClick={() =>
-                  updateFilters((p) => ({
-                    ...p,
-                    cardRequired: p.cardRequired === 'not_required' ? 'all' : 'not_required',
-                  }))
-                }
-                className={`hidden sm:inline-flex items-center gap-1.5 font-[var(--font-wallop)] font-semibold text-[12px] rounded-full px-3 py-1 min-h-[28px] filter-pill cursor-pointer ${
-                  filters.cardRequired === 'not_required'
-                    ? 'bg-grass-green text-[#101014]'
-                    : 'bg-paper text-midnight-mouth hover:bg-sunshine-yellow/50'
-                }`}
-              >
-                <ShieldCheck className="w-3.5 h-3.5" aria-hidden="true" />
-                <span>No card required</span>
-              </button>
-            </div>
-
-            {/* Smooth Animated Segmented Sort Control + Synced Native Select */}
-            <div className="flex items-center gap-2">
-              <span className="font-[var(--font-inter)] text-[12.5px] text-ink/70 hidden xl:inline">
-                Sort:
-              </span>
-
-              {/* Segmented Sort Pills */}
-              <div
-                role="group"
-                aria-label="Sort resources"
-                className="hidden sm:inline-flex items-center bg-paper p-1 rounded-full border border-midnight-mouth/8 gap-0.5"
-              >
-                {SORT_ITEMS.map((item) => {
-                  const Icon = item.icon;
-                  const active = filters.sortBy === item.value;
-                  return (
-                    <button
-                      key={item.value}
-                      type="button"
-                      onClick={() =>
-                        updateFilters((prev) => ({
-                          ...prev,
-                          sortBy: item.value,
-                        }))
-                      }
-                      className={`inline-flex items-center gap-1 font-[var(--font-wallop)] font-semibold text-[12px] rounded-full px-3 py-1.5 min-h-[30px] filter-pill cursor-pointer ${
-                        active
-                          ? 'bg-midnight-mouth text-daylight shadow-xs'
-                          : 'text-midnight-mouth/80 hover:text-midnight-mouth hover:bg-daylight'
-                      }`}
-                    >
-                      <Icon className="w-3.5 h-3.5" aria-hidden="true" />
-                      <span>{item.shortLabel}</span>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Mobile Sort Dropdown */}
-              <div className="sm:hidden">
-                <FilterDropdown
-                  id="sort-offers"
-                  label="Sort by"
-                  variant="pill"
-                  triggerPrefix="Sort:"
-                  minMenuWidth={220}
-                  menuTitle="Sort results"
-                  value={filters.sortBy}
-                  onChange={(val) =>
-                    updateFilters((prev) => ({
-                      ...prev,
-                      sortBy: val as SortOption,
-                    }))
-                  }
-                  options={SORT_ITEMS.map((item) => {
-                    const Icon = item.icon;
-                    return {
-                      value: item.value,
-                      label: item.shortLabel,
-                      icon: <Icon className="w-3.5 h-3.5" />,
-                    };
-                  })}
-                />
-              </div>
-            </div>
-          </div>
-
+        <div className="lg:col-span-9 flex flex-col gap-3.5 min-w-0">
           {/* Active Filter Chips with Pop Animation */}
           {activeChips.length > 0 && (
             <div
@@ -1097,9 +973,12 @@ export function ExplorePage({
               </button>
             </div>
 
-            <div className="overflow-y-auto pr-1 flex-1">
+            <FilterScrollArea
+              testId="explore-mobile-filter-scroll"
+              className="flex-1"
+            >
               {renderFilterControls(draftFilters, setDraftFilters, 'mobile-filter')}
-            </div>
+            </FilterScrollArea>
 
             <div className="pt-2.5 border-t border-midnight-mouth/10 flex items-center gap-2.5">
               <button

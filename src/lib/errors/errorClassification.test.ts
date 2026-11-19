@@ -20,10 +20,13 @@ test('classifyLoadError classifies network, timeout, and chunk load errors as lo
 
   const meta = classifyLoadError({
     isOnline: true,
-    errorMessage: 'Failed to load resources (HTTP 503)',
+    errorMessage:
+      'Failed to fetch dynamically imported module: https://example.com/src/pages/CategoryDetailPage.tsx',
   });
   assert.equal(meta.variant, 'load_error');
-  assert.ok(meta.description.includes('HTTP 503'));
+  assert.equal(meta.description.includes('We hit a bump'), false);
+  assert.equal(meta.description.includes('Failed to fetch'), false);
+  assert.equal(meta.description.includes('CategoryDetailPage.tsx'), false);
 });
 
 test('classifyLoadError returns not_found when online and no network/load error exists', () => {

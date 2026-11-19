@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import {
   CATEGORIES,
   getCategoryBySlug,
@@ -16,7 +16,6 @@ interface DesignSystemPageProps {
   onNavigate: (path: string) => void;
   onBack?: (fallbackPath?: string) => void;
   previousPath?: string | null;
-  onReplayIntro: () => void;
 }
 
 const COLOR_SWATCHES = [
@@ -35,7 +34,6 @@ export function DesignSystemPage({
   onNavigate,
   onBack,
   previousPath = null,
-  onReplayIntro,
 }: DesignSystemPageProps) {
   const sampleOffer = getRecentlyVerifiedOffers(1)[0];
   const sampleLearning = getLearningOffers()[0];
@@ -63,15 +61,6 @@ export function DesignSystemPage({
           <ArrowLeft className="w-3.5 h-3.5" aria-hidden="true" />
           <span>{backMeta.label}</span>
         </a>
-
-        <button
-          type="button"
-          onClick={onReplayIntro}
-          className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[13.5px] rounded-full px-4 py-1.5 min-h-[34px] inline-flex items-center gap-1.5 cursor-pointer spring-pill"
-        >
-          <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
-          <span>Replay Stack Intro Animation</span>
-        </button>
       </div>
 
       {/* Hero Slab */}
