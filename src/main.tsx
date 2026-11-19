@@ -2,6 +2,19 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 
+// Enforce light-only appearance and clear any legacy dark-mode preference
+if (typeof document !== 'undefined') {
+  document.documentElement.classList.remove('dark');
+  document.documentElement.style.colorScheme = 'light only';
+}
+if (typeof window !== 'undefined') {
+  try {
+    window.localStorage.removeItem('freestack-theme');
+  } catch {
+    // Ignore storage errors in restricted environments
+  }
+}
+
 // Recover gracefully from stale chunk deploys or offline navigation without reload loops
 if (typeof window !== 'undefined') {
   window.addEventListener('vite:preloadError', (event) => {

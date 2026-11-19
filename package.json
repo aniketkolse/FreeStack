@@ -20,7 +20,7 @@
     "export:reports": "tsx scripts/export-reports.ts",
     "perf:check": "tsx scripts/perf-check.ts",
     "test:e2e": "tsx scripts/e2e-verify.ts",
-    "test": "tsx --test src/lib/ai/aiModelMetadata.test.ts src/lib/data/dataParity.test.ts src/lib/errors/errorClassification.test.ts src/lib/filters/categoryGroups.test.ts src/lib/filters/filterOffers.test.ts src/lib/legal/privacyRequests.test.ts src/lib/offers/offerLogos.test.ts src/lib/router/navigationHistory.test.ts src/lib/saved/savedOffers.test.ts src/lib/search/searchOffers.test.ts src/lib/server/server.test.ts src/lib/theme/themeUtils.test.ts src/lib/validation/offerValidator.test.ts src/lib/verification/changeDetector.test.ts",
+    "test": "tsx --test src/lib/ai/aiModelMetadata.test.ts src/lib/data/dataParity.test.ts src/lib/errors/errorClassification.test.ts src/lib/filters/categoryGroups.test.ts src/lib/filters/filterOffers.test.ts src/lib/legal/privacyRequests.test.ts src/lib/offers/offerLogos.test.ts src/lib/router/navigationHistory.test.ts src/lib/saved/savedOffers.test.ts src/lib/search/searchOffers.test.ts src/lib/server/server.test.ts src/lib/validation/offerValidator.test.ts src/lib/verification/changeDetector.test.ts",
     "verify": "npm run lint && npm test && npm run validate:data && npm run build && npm run perf:check",
     "audit:prod": "npm audit --omit=dev --audit-level=high"
   },

@@ -368,7 +368,7 @@ export function FilterDropdown({
               width: coords.width,
               zIndex: 80,
             }}
-            className="bg-paper text-midnight-mouth rounded-[18px] border border-midnight-mouth/14 shadow-[0_20px_50px_-12px_rgba(16,16,20,0.24),0_4px_14px_-4px_rgba(16,16,20,0.08)] dark:shadow-[0_24px_56px_-12px_rgba(0,0,0,0.7)] overflow-hidden outline-none dropdown-enter"
+            className="bg-paper text-midnight-mouth rounded-[18px] border border-midnight-mouth/14 shadow-[0_20px_50px_-12px_rgba(16,16,20,0.24),0_4px_14px_-4px_rgba(16,16,20,0.08)] overflow-hidden outline-none dropdown-enter"
           >
             {(menuTitle || menuSubtitle) && (
               <div className="px-3.5 py-2.5 border-b border-midnight-mouth/8 bg-daylight/55 flex items-center justify-between gap-2">

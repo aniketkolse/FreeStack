@@ -40,12 +40,6 @@ const STORAGE_KEY_REQUESTS = 'freestack-privacy-requests-v1';
 
 const KNOWN_LOCAL_KEYS = [
   {
-    key: 'freestack-theme',
-    storage: 'localStorage',
-    purpose: 'Stores your explicit Light / Dark mode preference on your device only.',
-    category: 'Strictly Necessary UI Preference',
-  },
-  {
     key: 'freestack-saved-offers-v1',
     storage: 'localStorage',
     purpose: 'Stores your bookmarked offer slugs locally in your browser (capped at 500 slugs).',

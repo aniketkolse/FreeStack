@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Bookmark, Home, Menu, Moon, Sun, X } from 'lucide-react';
+import { Bookmark, Home, Menu, X } from 'lucide-react';
 import { FreeStackLogo } from '../illustrations/TocaStickers';
-import { useTheme } from '../../lib/theme/useTheme';
 import { useSavedOffers } from '../../lib/saved/savedOffers';
 
 interface SiteHeaderProps {
@@ -23,7 +22,6 @@ const NAV_ITEMS = [
 
 export function SiteHeader({ currentPath, onNavigate }: SiteHeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { isDark, toggleTheme } = useTheme();
   const { savedCount } = useSavedOffers();
 
   useEffect(() => {
@@ -42,7 +40,7 @@ export function SiteHeader({ currentPath, onNavigate }: SiteHeaderProps) {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-paper/98 border-b border-midnight-mouth/8 dark:border-white/10">
+    <header className="sticky top-0 z-40 w-full bg-paper/98 border-b border-midnight-mouth/8">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 h-[60px] sm:h-[68px] flex items-center justify-between gap-3 sm:gap-5">
         {/* Zone 1: Brand mark */}
         <a
@@ -84,40 +82,24 @@ export function SiteHeader({ currentPath, onNavigate }: SiteHeaderProps) {
           })}
         </nav>
 
-        {/* Zone 3: Saved Stack + Theme Switcher + Primary Action + Mobile Menu Trigger */}
-        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        {/* Zone 3: Saved Stack + Primary Action + Mobile Menu Trigger */}
+        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
           <a
             href="/saved"
             data-testid="header-saved-link"
             onClick={(e) => handleLinkClick(e, '/saved')}
             aria-label={`Saved tools (${savedCount})`}
-            className="inline-flex items-center justify-center gap-1.5 font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[13px] leading-none rounded-full px-3 py-2 min-h-[36px] sm:min-h-[38px] bg-daylight text-midnight-mouth spring-pill"
+            className="inline-flex items-center justify-center gap-1.5 font-[var(--font-wallop)] font-semibold text-[13px] leading-none rounded-full px-3.5 py-2 min-h-[38px] bg-daylight text-midnight-mouth hover:bg-sunshine-yellow spring-pill"
           >
             <Bookmark className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
             <span className="hidden sm:inline">Saved</span>
             <span className="tabular-nums">({savedCount})</span>
           </a>
 
-          <button
-            type="button"
-            data-testid="theme-toggle"
-            onClick={toggleTheme}
-            aria-pressed={isDark}
-            aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-            title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-            className="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-daylight text-midnight-mouth hover:bg-sunshine-yellow spring-pill cursor-pointer"
-          >
-            {isDark ? (
-              <Sun className="w-4 h-4" aria-hidden="true" />
-            ) : (
-              <Moon className="w-4 h-4" aria-hidden="true" />
-            )}
-          </button>
-
           <a
             href="/explore"
             onClick={(e) => handleLinkClick(e, '/explore')}
-            className="hidden sm:inline-flex items-center justify-center bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13.5px] xl:text-[14px] leading-none rounded-full px-4 py-2.5 min-h-[38px] whitespace-nowrap shrink-0 spring-pill"
+            className="hidden sm:inline-flex items-center justify-center bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13.5px] xl:text-[14px] leading-none rounded-full px-4 sm:px-5 py-2.5 min-h-[38px] whitespace-nowrap shrink-0 spring-pill"
           >
             Browse Free
           </a>
@@ -170,18 +152,6 @@ export function SiteHeader({ currentPath, onNavigate }: SiteHeaderProps) {
               <span>Saved Tools</span>
               <span className="tabular-nums">({savedCount})</span>
             </a>
-            <button
-              type="button"
-              onClick={toggleTheme}
-              className="mt-1 inline-flex items-center justify-between bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[14px] rounded-[14px] px-3.5 py-2.5 min-h-[42px] cursor-pointer"
-            >
-              <span>{isDark ? 'Light mode' : 'Dark mode'}</span>
-              {isDark ? (
-                <Sun className="w-4 h-4" aria-hidden="true" />
-              ) : (
-                <Moon className="w-4 h-4" aria-hidden="true" />
-              )}
-            </button>
             <a
               href="/explore"
               onClick={(e) => handleLinkClick(e, '/explore')}

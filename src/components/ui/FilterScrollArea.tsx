@@ -236,8 +236,8 @@ export function FilterScrollArea({
             onPointerDown={handleTrackPointerDown}
             className={`relative rounded-full cursor-pointer transition-colors ${
               size === 'compact'
-                ? 'w-[7px] bg-midnight-mouth/[0.08] dark:bg-white/[0.1] p-[1.5px]'
-                : 'w-[10px] bg-midnight-mouth/[0.08] dark:bg-white/[0.1] border border-midnight-mouth/[0.07] dark:border-white/[0.08] p-[2px]'
+                ? 'w-[7px] bg-midnight-mouth/[0.08] p-[1.5px]'
+                : 'w-[10px] bg-midnight-mouth/[0.08] border border-midnight-mouth/[0.07] p-[2px]'
             }`}
           >
             <div
@@ -252,8 +252,8 @@ export function FilterScrollArea({
               }}
               className={`w-full rounded-full transition-colors duration-150 touch-none ${
                 isDragging
-                  ? 'bg-midnight-mouth dark:bg-white cursor-grabbing'
-                  : 'bg-midnight-mouth/40 hover:bg-sky-blue dark:bg-white/35 dark:hover:bg-sky-blue cursor-grab'
+                  ? 'bg-midnight-mouth cursor-grabbing'
+                  : 'bg-midnight-mouth/40 hover:bg-sky-blue cursor-grab'
               }`}
             />
           </div>

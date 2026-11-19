@@ -953,7 +953,7 @@ export function ExplorePage({
           role="dialog"
           aria-modal="true"
           aria-label="Filter resources"
-          className="fixed inset-0 z-50 bg-[#101014]/70 dark:bg-black/75 flex items-end lg:hidden"
+          className="fixed inset-0 z-50 bg-[#101014]/70 flex items-end lg:hidden"
           onClick={(e) => {
             if (e.target === e.currentTarget) setDrawerOpen(false);
           }}

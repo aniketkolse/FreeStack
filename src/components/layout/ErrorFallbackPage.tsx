@@ -193,7 +193,7 @@ export function ErrorFallbackPage({
               data-testid="error-fallback-stage"
               onClick={() => void handleStageBoop()}
               aria-label="Interactive 404 cloud illustration — click to bounce and check connection"
-              className={`group w-full bg-paper dark:bg-[#1e2436] text-midnight-mouth border-2 border-midnight-mouth/12 rounded-[22px] sm:rounded-[24px] p-4 sm:p-5 relative overflow-hidden cursor-pointer text-left transition-colors duration-200 hover:border-midnight-mouth/28 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-midnight-mouth ${
+              className={`group w-full bg-paper text-midnight-mouth border-2 border-midnight-mouth/12 rounded-[22px] sm:rounded-[24px] p-4 sm:p-5 relative overflow-hidden cursor-pointer text-left transition-colors duration-200 hover:border-midnight-mouth/28 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-midnight-mouth ${
                 isBooping ? 'fs-boop-pop' : ''
               }`}
             >

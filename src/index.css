@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 /* Self-hosted Latin variable WOFF2 fonts (73.8 KB critical total) + metric-matched fallback faces */
 @font-face {
   font-family: 'Plus Jakarta Sans';
@@ -112,38 +110,12 @@
   --space-80: 80px;
   --space-144: 112px;
   --space-160: 128px;
-  color-scheme: light;
-}
-
-html.dark {
-  color-scheme: dark;
-  --color-paper: #0d0f15;
-  --color-daylight: #171b26;
-  --color-midnight-mouth: #f3f5fc;
-  --color-ink: #d4d8e8;
-}
-
-/* Preserve dark readable ink and button contrast directly on bright pastel accent slabs */
-html.dark .bg-sky-blue,
-html.dark .bg-grass-green,
-html.dark .bg-sunshine-yellow,
-html.dark .bg-bubblegum-pink,
-html.dark .bg-tangerine {
-  --color-midnight-mouth: #101014;
-  --color-ink: #101014;
-  --color-daylight: #f2f2ff;
-  --color-paper: #ffffff;
-}
-
-/* Ensure dark-mode hover accent chips flip ink to dark when hovered bright yellow/green/orange */
-html.dark .hover\:bg-sunshine-yellow:hover,
-html.dark .hover\:bg-grass-green:hover,
-html.dark .hover\:bg-tangerine:hover {
-  color: #101014;
+  color-scheme: light only;
 }
 
 @layer base {
   html {
+    color-scheme: light only;
     font-family: var(--font-inter);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     -webkit-font-smoothing: antialiased;
@@ -154,7 +126,6 @@ html.dark .hover\:bg-tangerine:hover {
     scroll-behavior: smooth;
     overflow-x: clip;
     -webkit-text-size-adjust: 100%;
-    transition: background-color 200ms ease, color 200ms ease;
   }
 
   body {
