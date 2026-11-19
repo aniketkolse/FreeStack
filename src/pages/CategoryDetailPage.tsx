@@ -5,15 +5,11 @@ import {
   ShieldCheck,
   Clock,
   ArrowDownAZ,
-  ChevronDown,
-  Check,
   RotateCcw,
   Layers,
-  GraduationCap,
-  Code2,
   Cpu,
-  Globe,
   SlidersHorizontal,
+  X,
 } from 'lucide-react';
 import {
   CATEGORIES,
@@ -46,6 +42,12 @@ import { ErrorFallbackPage } from '../components/layout/ErrorFallbackPage';
 import { SearchBar } from '../components/search/SearchBar';
 import { FilterDropdown } from '../components/ui/FilterDropdown';
 import {
+  CategoryFilterSidebar,
+  MCP_LANGUAGE_OPTIONS,
+  MCP_OS_OPTIONS,
+  MCP_SCOPE_OPTIONS,
+} from '../components/offers/CategoryFilterSidebar';
+import {
   AI_CONTEXT_FILTER_OPTIONS,
   AI_MODALITY_OPTIONS,
   type AiModalityId,
@@ -68,35 +70,11 @@ const SORT_OPTIONS: Array<{
 }> = [
   { value: 'relevance', label: 'Popular', icon: Sparkles },
   { value: 'use_case', label: 'Use Case', icon: Layers, mcpOrAiOnly: true },
-  { value: 'context_desc', label: 'Context Size', icon: Cpu, aiOnly: true },
+  { value: 'context_desc', label: 'Context', icon: Cpu, aiOnly: true },
   { value: 'recently_verified', label: 'Verified', icon: ShieldCheck },
   { value: 'recently_added', label: 'Newest', icon: Clock },
   { value: 'name_asc', label: 'A–Z', icon: ArrowDownAZ },
 ];
-
-const MCP_LANGUAGE_OPTIONS = [
-  { value: 'typescript', label: '📇 TypeScript / JS', tag: 'lang:typescript' },
-  { value: 'python', label: '🐍 Python', tag: 'lang:python' },
-  { value: 'go', label: '🏎️ Go', tag: 'lang:go' },
-  { value: 'rust', label: '🦀 Rust', tag: 'lang:rust' },
-  { value: 'java', label: '☕ Java', tag: 'lang:java' },
-  { value: 'csharp', label: '#️⃣ C#', tag: 'lang:csharp' },
-  { value: 'cpp', label: '🌊 C/C++', tag: 'lang:cpp' },
-  { value: 'ruby', label: '💎 Ruby', tag: 'lang:ruby' },
-] as const;
-
-const MCP_SCOPE_OPTIONS = [
-  { value: 'all', label: 'All Scope', tag: '' },
-  { value: 'local', label: '🏠 Local', tag: 'scope:local' },
-  { value: 'cloud', label: '☁️ Cloud', tag: 'scope:cloud' },
-  { value: 'embedded', label: '📟 Embedded', tag: 'scope:embedded' },
-] as const;
-
-const MCP_OS_OPTIONS = [
-  { value: 'macos', label: '🍎 macOS', tag: 'os:macos' },
-  { value: 'windows', label: '🪟 Windows', tag: 'os:windows' },
-  { value: 'linux', label: '🐧 Linux', tag: 'os:linux' },
-] as const;
 
 export function CategoryDetailPage({
   slug,
@@ -132,9 +110,9 @@ export function CategoryDetailPage({
   const [studentFriendlyOnly, setStudentFriendlyOnly] = useState<boolean>(
     searchParams?.get('student') === '1'
   );
-  const [studentVerificationFilter, setStudentVerificationFilter] = useState<'all' | 'exclusive' | 'eligible'>(
-    (searchParams?.get('verify') as 'all' | 'exclusive' | 'eligible') || 'all'
-  );
+  const [studentVerificationFilter, setStudentVerificationFilter] = useState<
+    'all' | 'exclusive' | 'eligible'
+  >((searchParams?.get('verify') as 'all' | 'exclusive' | 'eligible') || 'all');
   const [mcpOfficialOnly, setMcpOfficialOnly] = useState<boolean>(
     searchParams?.get('official') === '1'
   );
@@ -148,8 +126,7 @@ export function CategoryDetailPage({
     searchParams?.get('ctx') || 'all'
   );
   const [sortBy, setSortBy] = useState<SortOption>(initialSort);
-  const [showAllSubtypes, setShowAllSubtypes] = useState<boolean>(false);
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState<boolean>(false);
+  const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   const debouncedQuery = useDebouncedValue(searchQuery, 150);
 
   const counts = getCategoryCounts();
@@ -233,7 +210,6 @@ export function CategoryDetailPage({
     ? (facets?.categorySummary ?? cachedSummaryBySlug[category.slug])
     : undefined;
 
-  // Row 1: Important Primary Types for this category
   const primaryTypeGroups = useMemo(() => {
     if (categorySummary?.primaryTypeGroups) {
       return categorySummary.primaryTypeGroups;
@@ -274,7 +250,9 @@ export function CategoryDetailPage({
     const rawPricing = searchParams?.get('pricing');
     setSelectedPricing(rawPricing ? (rawPricing.split(',').filter(Boolean) as PricingModel[]) : []);
     setStudentFriendlyOnly(searchParams?.get('student') === '1');
-    setStudentVerificationFilter((searchParams?.get('verify') as 'all' | 'exclusive' | 'eligible') || 'all');
+    setStudentVerificationFilter(
+      (searchParams?.get('verify') as 'all' | 'exclusive' | 'eligible') || 'all'
+    );
     setMcpOfficialOnly(searchParams?.get('official') === '1');
     setMcpScope(searchParams?.get('scope') || 'all');
     setMcpLang(searchParams?.get('lang') || 'all');
@@ -284,9 +262,22 @@ export function CategoryDetailPage({
   }, [slug, searchParams, category, primaryTypeGroups]);
 
   useEffect(() => {
-    setShowAllSubtypes(false);
-    setMobileFiltersOpen(false);
+    setDrawerOpen(false);
   }, [slug]);
+
+  useEffect(() => {
+    if (!drawerOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setDrawerOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [drawerOpen]);
 
   const syncUrl = (next: {
     q?: string;
@@ -344,7 +335,6 @@ export function CategoryDetailPage({
     });
   };
 
-  // Sync debounced search query to URL without blocking input typing
   useEffect(() => {
     const urlQ = searchParams?.get('q') || '';
     if (debouncedQuery.trim() === urlQ.trim()) return;
@@ -357,7 +347,6 @@ export function CategoryDetailPage({
     [primaryTypeGroups, selectedTypeGroup]
   );
 
-  // All populated subcategories across the category
   const allPopulatedSubcategories = useMemo(() => {
     if (categorySummary?.allPopulatedSubcategories) {
       return categorySummary.allPopulatedSubcategories;
@@ -365,32 +354,6 @@ export function CategoryDetailPage({
     if (!category) return [];
     return category.subcategories.map((sub) => ({ ...sub, count: 0 }));
   }, [category, categorySummary]);
-
-  const activeSubtypes = useMemo(() => {
-    if (!usesMacroGroups) return [];
-    if (activePrimaryGroup) {
-      return activePrimaryGroup.populatedSubcategories;
-    }
-    return allPopulatedSubcategories;
-  }, [usesMacroGroups, activePrimaryGroup, allPopulatedSubcategories]);
-
-  const inlineSubtypes = useMemo(() => {
-    const maxInline = isMcpCategory ? 5 : 6;
-    if (showAllSubtypes || activeSubtypes.length <= maxInline) {
-      return activeSubtypes;
-    }
-    const topSlice = activeSubtypes.slice(0, maxInline);
-    if (
-      selectedSubcategory !== 'all' &&
-      !topSlice.some((s) => s.name === selectedSubcategory)
-    ) {
-      const activeObj = activeSubtypes.find((s) => s.name === selectedSubcategory);
-      if (activeObj) {
-        return [activeObj, ...topSlice.slice(0, maxInline - 1)];
-      }
-    }
-    return topSlice;
-  }, [activeSubtypes, showAllSubtypes, selectedSubcategory, isMcpCategory]);
 
   const standardCategoryTagSubtypes = useMemo(
     () => categorySummary?.standardCategoryTagSubtypes ?? [],
@@ -433,6 +396,30 @@ export function CategoryDetailPage({
       : [...selectedPricing, model];
     setSelectedPricing(next);
     syncUrl({ pricing: next });
+  };
+
+  const handleSelectSubcategory = (nextSub: string) => {
+    if (usesMacroGroups) {
+      const ownerType =
+        nextSub !== 'all'
+          ? findPrimaryTypeForSubcategory(primaryTypeGroups, nextSub)
+          : selectedTypeGroup;
+      setSelectedSubcategory(nextSub);
+      if (nextSub !== 'all' && ownerType && selectedTypeGroup === 'all') {
+        setSelectedTypeGroup(ownerType);
+      }
+      syncUrl({
+        sub: nextSub,
+        type:
+          nextSub !== 'all' && ownerType && selectedTypeGroup === 'all'
+            ? ownerType
+            : selectedTypeGroup,
+      });
+    } else {
+      setSelectedSubcategory(nextSub);
+      setSelectedTagSubtype('all');
+      syncUrl({ sub: nextSub, subtype: 'all' });
+    }
   };
 
   const hasActiveFilters =
@@ -481,8 +468,8 @@ export function CategoryDetailPage({
     setMcpOs('all');
     setAiModality('all');
     setAiMinContext('all');
-    setShowAllSubtypes(false);
     setSortBy(defaultSort);
+    setDrawerOpen(false);
     onNavigate(`/category/${slug}`, { replace: true, scrollTop: false });
   };
 
@@ -519,9 +506,9 @@ export function CategoryDetailPage({
     return true;
   });
 
-  const displayCount = isInitialLoading && !hasActiveFilters ? totalInCategoryCount : totalFilteredCount;
+  const displayCount =
+    isInitialLoading && !hasActiveFilters ? totalInCategoryCount : totalFilteredCount;
 
-  // Heading title reflecting active Primary Type or Subtype
   const activeResultsTitle =
     selectedSubcategory !== 'all'
       ? `${selectedSubcategory} (${displayCount})`
@@ -543,9 +530,243 @@ export function CategoryDetailPage({
     }
   };
 
+  // Build Explore-style active filter chips
+  const activeChips: Array<{ key: string; label: string; onClear: () => void }> = [];
+  if (searchQuery.trim()) {
+    activeChips.push({
+      key: 'q',
+      label: `"${searchQuery.trim()}"`,
+      onClear: () => {
+        setSearchQuery('');
+        syncUrl({ q: '' });
+      },
+    });
+  }
+  if (usesMacroGroups && activePrimaryGroup) {
+    activeChips.push({
+      key: 'type',
+      label: activePrimaryGroup.label,
+      onClear: () => {
+        setSelectedTypeGroup('all');
+        setSelectedSubcategory('all');
+        syncUrl({ type: 'all', sub: 'all' });
+      },
+    });
+  }
+  if (selectedSubcategory !== 'all') {
+    activeChips.push({
+      key: 'sub',
+      label: selectedSubcategory,
+      onClear: () => {
+        setSelectedSubcategory('all');
+        syncUrl({ sub: 'all' });
+      },
+    });
+  }
+  if (selectedTagSubtype !== 'all') {
+    const tagObj = standardCategoryTagSubtypes.find((t) => t.tag === selectedTagSubtype);
+    activeChips.push({
+      key: 'subtype',
+      label: tagObj?.label ?? selectedTagSubtype,
+      onClear: () => {
+        setSelectedTagSubtype('all');
+        syncUrl({ subtype: 'all' });
+      },
+    });
+  }
+  if (aiModality !== 'all') {
+    const modObj = AI_MODALITY_OPTIONS.find((m) => m.id === aiModality);
+    activeChips.push({
+      key: 'modality',
+      label: modObj?.label ?? aiModality,
+      onClear: () => {
+        setAiModality('all');
+        syncUrl({ modality: 'all' });
+      },
+    });
+  }
+  if (aiMinContext !== 'all') {
+    const ctxObj = AI_CONTEXT_FILTER_OPTIONS.find((c) => c.value === aiMinContext);
+    activeChips.push({
+      key: 'ctx',
+      label: ctxObj?.label ?? aiMinContext,
+      onClear: () => {
+        setAiMinContext('all');
+        syncUrl({ ctx: 'all' });
+      },
+    });
+  }
+  if (mcpOfficialOnly) {
+    activeChips.push({
+      key: 'official',
+      label: 'Official MCP',
+      onClear: () => {
+        setMcpOfficialOnly(false);
+        syncUrl({ official: false });
+      },
+    });
+  }
+  if (mcpScope !== 'all') {
+    const scopeObj = MCP_SCOPE_OPTIONS.find((s) => s.value === mcpScope);
+    activeChips.push({
+      key: 'scope',
+      label: `Scope: ${scopeObj?.label ?? mcpScope}`,
+      onClear: () => {
+        setMcpScope('all');
+        syncUrl({ scope: 'all' });
+      },
+    });
+  }
+  if (mcpLang !== 'all') {
+    const langObj = MCP_LANGUAGE_OPTIONS.find((l) => l.value === mcpLang);
+    activeChips.push({
+      key: 'lang',
+      label: langObj?.label ?? mcpLang,
+      onClear: () => {
+        setMcpLang('all');
+        syncUrl({ lang: 'all' });
+      },
+    });
+  }
+  if (mcpOs !== 'all') {
+    const osObj = MCP_OS_OPTIONS.find((o) => o.value === mcpOs);
+    activeChips.push({
+      key: 'os',
+      label: osObj?.label ?? mcpOs,
+      onClear: () => {
+        setMcpOs('all');
+        syncUrl({ os: 'all' });
+      },
+    });
+  }
+  if (studentVerificationFilter !== 'all') {
+    activeChips.push({
+      key: 'verify',
+      label:
+        studentVerificationFilter === 'exclusive'
+          ? 'Student ID / .edu Req.'
+          : 'No Student ID Req.',
+      onClear: () => {
+        setStudentVerificationFilter('all');
+        syncUrl({ verify: 'all' });
+      },
+    });
+  }
+  if (cardFilter !== 'all') {
+    activeChips.push({
+      key: 'card',
+      label:
+        cardFilter === 'not_required'
+          ? 'No card required'
+          : cardFilter === 'required'
+            ? 'Card required'
+            : 'Card unknown',
+      onClear: () => {
+        setCardFilter('all');
+        syncUrl({ card: 'all' });
+      },
+    });
+  }
+  for (const model of selectedPricing) {
+    activeChips.push({
+      key: `pricing-${model}`,
+      label: formatPricingModel(model),
+      onClear: () => togglePricing(model),
+    });
+  }
+  if (studentFriendlyOnly) {
+    activeChips.push({
+      key: 'student',
+      label: 'Student friendly',
+      onClear: () => {
+        setStudentFriendlyOnly(false);
+        syncUrl({ student: false });
+      },
+    });
+  }
+
+  const sidebarSharedProps = {
+    category,
+    totalInCategoryCount,
+    usesMacroGroups,
+    primaryTypeGroups,
+    activePrimaryGroup,
+    allPopulatedSubcategories,
+    standardCategoryTagSubtypes,
+    categoryPricingOptions,
+    mcpFilterCounts,
+    studentVerificationCounts,
+    selectedTypeGroup,
+    selectedSubcategory,
+    selectedTagSubtype,
+    cardFilter,
+    selectedPricing,
+    studentFriendlyOnly,
+    studentVerificationFilter,
+    mcpOfficialOnly,
+    mcpScope,
+    mcpLang,
+    mcpOs,
+    aiModality,
+    aiMinContext,
+    onSelectTypeGroup: (typeId: string) => {
+      setSelectedTypeGroup(typeId);
+      setSelectedSubcategory('all');
+      syncUrl({ type: typeId, sub: 'all' });
+    },
+    onSelectSubcategory: handleSelectSubcategory,
+    onSelectTagSubtype: (tag: string) => {
+      setSelectedTagSubtype(tag);
+      syncUrl({ subtype: tag });
+    },
+    onSelectCardFilter: (card: RequirementState | 'all') => {
+      setCardFilter(card);
+      syncUrl({ card });
+    },
+    onTogglePricing: togglePricing,
+    onClearPricing: () => {
+      setSelectedPricing([]);
+      syncUrl({ pricing: [] });
+    },
+    onToggleStudentFriendly: () => {
+      const next = !studentFriendlyOnly;
+      setStudentFriendlyOnly(next);
+      syncUrl({ student: next });
+    },
+    onSelectStudentVerification: (val: 'all' | 'exclusive' | 'eligible') => {
+      setStudentVerificationFilter(val);
+      syncUrl({ verify: val });
+    },
+    onToggleMcpOfficial: () => {
+      const next = !mcpOfficialOnly;
+      setMcpOfficialOnly(next);
+      syncUrl({ official: next });
+    },
+    onSelectMcpScope: (scope: string) => {
+      setMcpScope(scope);
+      syncUrl({ scope });
+    },
+    onSelectMcpLang: (lang: string) => {
+      setMcpLang(lang);
+      syncUrl({ lang });
+    },
+    onSelectMcpOs: (os: string) => {
+      setMcpOs(os);
+      syncUrl({ os });
+    },
+    onSelectAiModality: (modality: AiModalityId | 'all') => {
+      setAiModality(modality);
+      syncUrl({ modality });
+    },
+    onSelectAiMinContext: (ctx: string) => {
+      setAiMinContext(ctx);
+      syncUrl({ ctx });
+    },
+  };
+
   return (
-    <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-2.5 sm:pt-4 pb-12 flex flex-col gap-3 sm:gap-3.5">
-      {/* Top Back Button & Quick Navigation Bar */}
+    <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-2.5 sm:pt-4 pb-12 sm:pb-16 flex flex-col gap-4 sm:gap-5">
+      {/* Top Back Button & Breadcrumb Bar */}
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2 min-w-0">
           <a
@@ -600,763 +821,281 @@ export function CategoryDetailPage({
         </nav>
       </div>
 
-      {/* Unified Category Header, Search & Systematic 2-Tier Filter/Sort Card */}
+      {/* Compact Category Header Slab (Clean, Focused — No Bloated Filter Wall Inside) */}
       <section
-        aria-label="Category header, search, and filters"
-        className={`${bgClass} rounded-[20px] sm:rounded-[24px] p-3.5 sm:p-5 flex flex-col gap-3`}
+        aria-label="Category header and search"
+        className={`${bgClass} rounded-[18px] sm:rounded-[24px] p-4 sm:p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-3.5 lg:gap-6`}
       >
-        {/* Top Row: Category Icon + Title + Description on Left, Search Bar on Right */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-5">
-          <div className="flex items-center gap-3 min-w-0">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-[12px] bg-paper flex items-center justify-center shrink-0 shadow-xs">
-              <CategoryStickerIcon slug={category.slug} className="w-5 h-5 sm:w-6 sm:h-6" />
-            </div>
-            <div className="min-w-0 flex flex-col gap-0.5">
-              <h1 className="font-[var(--font-wallop)] font-extrabold text-[22px] sm:text-[26px] lg:text-[28px] leading-[1.06] tracking-[-0.03em] text-midnight-mouth truncate">
-                {category.name}
-              </h1>
-              <p className="font-[var(--font-inter)] text-[12.5px] sm:text-[13px] leading-[1.35] text-ink/85 line-clamp-1">
-                {category.description}
-              </p>
-            </div>
+        <div className="flex items-center gap-3.5 min-w-0">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-[12px] sm:rounded-[14px] bg-paper flex items-center justify-center shrink-0 shadow-xs">
+            <CategoryStickerIcon slug={category.slug} className="w-6 h-6 sm:w-7 sm:h-7" />
           </div>
-
-          {/* Category Search Bar */}
-          <div className="w-full lg:w-[430px] xl:w-[470px] shrink-0">
-            <SearchBar
-              inputId="category-search-input"
-              initialQuery={searchQuery}
-              onChangeQuery={(q) => {
-                setSearchQuery(q);
-              }}
-              onSubmitQuery={(q) => {
-                setSearchQuery(q);
-                syncUrl({ q });
-              }}
-              placeholder={
-                sampleNames
-                  ? `Search in ${category.shortName} (${sampleNames})...`
-                  : `Search in ${category.shortName}...`
-              }
-              label={`Search resources in ${category.name}`}
-              showSuggestions={false}
-              suggestions={categorySuggestions}
-            />
+          <div className="min-w-0 flex flex-col gap-1">
+            <h1 className="font-[var(--font-wallop)] font-extrabold text-[22px] sm:text-[28px] lg:text-[32px] leading-[1.08] tracking-[-0.03em] text-midnight-mouth truncate">
+              {category.name}
+            </h1>
+            <p className="font-[var(--font-inter)] text-[13px] sm:text-[14px] leading-[1.4] text-ink/85 line-clamp-2 sm:truncate">
+              {category.description}
+            </p>
           </div>
         </div>
 
-        {/* Mobile-Only Compact Filter & Sort Bar (< 640px) — keeps filters from taking full screen on mobile */}
-        <div className="flex sm:hidden items-center justify-between gap-2">
-          <div className="flex items-center gap-1.5 min-w-0">
+        <div className="w-full lg:w-[420px] xl:w-[460px] shrink-0">
+          <SearchBar
+            inputId="category-search-input"
+            initialQuery={searchQuery}
+            onChangeQuery={(q) => setSearchQuery(q)}
+            onSubmitQuery={(q) => {
+              setSearchQuery(q);
+              syncUrl({ q });
+            }}
+            placeholder={
+              sampleNames
+                ? `Search in ${category.shortName} (${sampleNames})...`
+                : `Search in ${category.shortName}...`
+            }
+            label={`Search resources in ${category.name}`}
+            showSuggestions={false}
+            suggestions={categorySuggestions}
+          />
+        </div>
+      </section>
+
+      {/* Smooth Single-Row Quick-Type Pill Rail (Inspired by Explore's Quick-Category Rail) */}
+      {primaryTypeGroups.length > 0 && (
+        <div className="relative -mx-4 sm:mx-0">
+          <div
+            role="tablist"
+            aria-label={`${category.name} subcategories`}
+            data-testid="primary-types-row"
+            className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar px-4 sm:px-0 sm:pr-8 py-0.5"
+          >
+          <button
+            type="button"
+            role="tab"
+            aria-selected={
+              usesMacroGroups
+                ? selectedTypeGroup === 'all' && selectedSubcategory === 'all'
+                : selectedSubcategory === 'all'
+            }
+            onClick={() => {
+              setSelectedTypeGroup('all');
+              setSelectedSubcategory('all');
+              setSelectedTagSubtype('all');
+              syncUrl({ type: 'all', sub: 'all', subtype: 'all' });
+            }}
+            className={`font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[13px] rounded-full px-3.5 py-1.5 min-h-[34px] sm:min-h-[36px] whitespace-nowrap shrink-0 filter-pill cursor-pointer inline-flex items-center gap-1.5 ${
+              (
+                usesMacroGroups
+                  ? selectedTypeGroup === 'all' && selectedSubcategory === 'all'
+                  : selectedSubcategory === 'all'
+              )
+                ? 'bg-midnight-mouth text-daylight shadow-xs'
+                : 'bg-daylight text-midnight-mouth hover:bg-sunshine-yellow'
+            }`}
+          >
+            <span>All {category.shortName}</span>
+            <span className="text-[11px] opacity-75 tabular-nums">({totalInCategoryCount})</span>
+          </button>
+
+          {primaryTypeGroups.map((group) => {
+            const active = usesMacroGroups
+              ? selectedTypeGroup === group.id
+              : selectedSubcategory === group.label;
+
+            return (
+              <button
+                key={group.id}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                onClick={() => {
+                  if (usesMacroGroups) {
+                    const nextType = active ? 'all' : group.id;
+                    setSelectedTypeGroup(nextType);
+                    setSelectedSubcategory('all');
+                    syncUrl({ type: nextType, sub: 'all' });
+                  } else {
+                    const nextSub = active ? 'all' : group.label;
+                    setSelectedSubcategory(nextSub);
+                    setSelectedTagSubtype('all');
+                    syncUrl({ sub: nextSub, subtype: 'all' });
+                  }
+                }}
+                className={`font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[13px] rounded-full px-3.5 py-1.5 min-h-[34px] sm:min-h-[36px] whitespace-nowrap shrink-0 filter-pill cursor-pointer inline-flex items-center gap-1.5 ${
+                  active
+                    ? 'bg-midnight-mouth text-daylight shadow-xs'
+                    : 'bg-daylight text-midnight-mouth hover:bg-sunshine-yellow'
+                }`}
+              >
+                <span>{group.label}</span>
+                <span className="text-[11px] opacity-70 tabular-nums">({group.count})</span>
+              </button>
+            );
+          })}
+          </div>
+          <div
+            aria-hidden="true"
+            className="hidden sm:block pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-paper to-transparent"
+          />
+        </div>
+      )}
+
+      {/* Mobile / Tablet Filter Trigger Bar (< lg) — Matches Explore's Drawer UX */}
+      <div className="lg:hidden flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
+          <button
+            type="button"
+            data-testid="mobile-filter-toggle"
+            onClick={() => setDrawerOpen(true)}
+            className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13.5px] rounded-full px-4 py-2 min-h-[38px] inline-flex items-center gap-1.5 shrink-0 spring-pill cursor-pointer"
+          >
+            <SlidersHorizontal className="w-3.5 h-3.5" aria-hidden="true" />
+            <span>Filters{activeFilterCount > 0 ? ` (${activeFilterCount})` : ''}</span>
+          </button>
+
+          {isMcpCategory ? (
             <button
               type="button"
-              data-testid="mobile-filter-toggle"
-              aria-expanded={mobileFiltersOpen}
-              onClick={() => setMobileFiltersOpen((prev) => !prev)}
-              className={`inline-flex items-center gap-1.5 font-[var(--font-wallop)] font-semibold text-[12px] rounded-full px-3 py-1.5 min-h-[34px] cursor-pointer filter-pill border ${
-                mobileFiltersOpen || activeFilterCount > 0
-                  ? 'bg-midnight-mouth text-daylight border-midnight-mouth shadow-2xs'
-                  : 'bg-paper text-midnight-mouth border-midnight-mouth/15'
+              onClick={() => {
+                const next = !mcpOfficialOnly;
+                setMcpOfficialOnly(next);
+                syncUrl({ official: next });
+              }}
+              className={`font-[var(--font-wallop)] font-semibold text-[12.5px] rounded-full px-3.5 py-2 min-h-[38px] inline-flex items-center gap-1.5 shrink-0 filter-pill cursor-pointer ${
+                mcpOfficialOnly
+                  ? 'bg-grass-green text-[#101014]'
+                  : 'bg-daylight text-midnight-mouth'
               }`}
             >
-              <SlidersHorizontal className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-              <span>Filters &amp; Types</span>
-              {activeFilterCount > 0 && (
-                <span className="bg-sunshine-yellow text-[#101014] text-[10.5px] font-bold rounded-full px-1.5 py-0.5 leading-none tabular-nums">
-                  {activeFilterCount}
-                </span>
-              )}
-              <ChevronDown
-                className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 ${
-                  mobileFiltersOpen ? 'rotate-180' : ''
-                }`}
-                aria-hidden="true"
-              />
+              <ShieldCheck className="w-3.5 h-3.5" aria-hidden="true" />
+              <span>Official</span>
             </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => {
+                const next: RequirementState | 'all' =
+                  cardFilter === 'not_required' ? 'all' : 'not_required';
+                setCardFilter(next);
+                syncUrl({ card: next });
+              }}
+              className={`font-[var(--font-wallop)] font-semibold text-[12.5px] rounded-full px-3.5 py-2 min-h-[38px] inline-flex items-center gap-1.5 shrink-0 filter-pill cursor-pointer ${
+                cardFilter === 'not_required'
+                  ? 'bg-grass-green text-[#101014]'
+                  : 'bg-daylight text-midnight-mouth'
+              }`}
+            >
+              <ShieldCheck className="w-3.5 h-3.5" aria-hidden="true" />
+              <span>No Card</span>
+            </button>
+          )}
+        </div>
 
-            {hasActiveFilters && (
+        {hasActiveFilters && (
+          <button
+            type="button"
+            onClick={resetCategoryFilters}
+            className="bg-daylight text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12.5px] rounded-full px-3.5 py-2 min-h-[38px] inline-flex items-center gap-1 shrink-0 cursor-pointer"
+          >
+            <RotateCcw className="w-3 h-3" aria-hidden="true" />
+            <span>Reset</span>
+          </button>
+        )}
+      </div>
+
+      {/* Main 2-Column Explore-Inspired Layout: Sticky Category Filter Sidebar + Results Column */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 items-start">
+        {/* Desktop Sticky Category Filter Sidebar */}
+        <aside
+          aria-label={`${category.name} filters`}
+          data-testid="systematic-filter-panel"
+          className="hidden lg:flex lg:col-span-3 lg:sticky lg:top-[82px] lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto no-scrollbar bg-daylight rounded-[22px] p-4 xl:p-5 flex-col gap-3.5"
+        >
+          <div className="flex items-center justify-between gap-2 pb-2 border-b border-midnight-mouth/10">
+            <div className="flex items-center gap-2">
+              <SlidersHorizontal className="w-4 h-4 text-midnight-mouth" aria-hidden="true" />
+              <h2 className="font-[var(--font-wallop)] font-bold text-[17px] leading-[1.2] text-midnight-mouth">
+                Filters
+              </h2>
+            </div>
+            {activeFilterCount > 0 && (
               <button
                 type="button"
                 onClick={resetCategoryFilters}
-                className="inline-flex items-center gap-1 font-[var(--font-wallop)] font-semibold text-[11.5px] text-[#101014] bg-sunshine-yellow rounded-full px-2.5 py-1.5 min-h-[34px] shrink-0 filter-pill cursor-pointer border border-midnight-mouth/15"
+                className="inline-flex items-center gap-1 font-[var(--font-wallop)] font-semibold text-[12px] text-midnight-mouth bg-paper rounded-full px-2.5 py-1 hover:bg-sunshine-yellow transition-colors cursor-pointer"
               >
                 <RotateCcw className="w-3 h-3" aria-hidden="true" />
-                <span>Reset</span>
+                <span>Reset ({activeFilterCount})</span>
               </button>
             )}
           </div>
 
-          <FilterDropdown
-            id="cat-sort-mobile"
-            label="Sort by"
-            variant="pill"
-            value={sortBy}
-            triggerPrefix="Sort:"
-            minMenuWidth={210}
-            menuTitle="Sort results"
-            onChange={(nextVal) => {
-              const next = nextVal as SortOption;
-              setSortBy(next);
-              syncUrl({ sort: next });
-            }}
-            options={visibleSortOptions.map((opt) => {
-              const Icon = opt.icon;
-              return {
-                value: opt.value,
-                label: opt.label,
-                icon: <Icon className="w-3.5 h-3.5" />,
-              };
-            })}
-          />
-        </div>
+          <CategoryFilterSidebar idPrefix="desktop" {...sidebarSharedProps} />
+        </aside>
 
-        {/* Systematic 3-Row Panel: Row 1 = Important Types, Row 2 = Subtypes under it, Row 3 = Filter & Sort */}
-        <div
-          data-testid="systematic-filter-panel"
-          className={`bg-paper/95 rounded-[16px] px-3 py-2.5 border border-midnight-mouth/10 ${
-            mobileFiltersOpen ? 'flex' : 'hidden'
-          } sm:flex flex-col gap-2 shadow-2xs`}
-        >
-          {/* ROW 1: Important Primary Types (Wraps cleanly so zero pills are clipped) */}
-          <div
-            role="tablist"
-            aria-label="Important types"
-            data-testid="primary-types-row"
-            className="flex flex-wrap items-center gap-1.5 min-w-0 py-0.5"
-          >
-            <span className="font-[var(--font-wallop)] font-bold text-[10.5px] uppercase tracking-[0.06em] text-midnight-mouth/55 w-[62px] shrink-0 select-none">
-              Types
-            </span>
+        {/* Results Column */}
+        <div className="lg:col-span-9 flex flex-col gap-4 min-w-0">
+          {/* Explore-Style Results Toolbar & Segmented Sort Bar */}
+          <div className="bg-daylight rounded-[18px] sm:rounded-[20px] px-3.5 sm:px-5 py-2.5 sm:py-3 flex flex-wrap items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center gap-2.5">
+              <h2
+                data-testid="category-results-heading"
+                className="font-[var(--font-wallop)] font-bold text-[14.5px] sm:text-[15.5px] text-midnight-mouth tabular-nums"
+              >
+                {activeResultsTitle}
+              </h2>
 
-            <button
-              type="button"
-              role="tab"
-              aria-selected={
-                usesMacroGroups
-                  ? selectedTypeGroup === 'all' && selectedSubcategory === 'all'
-                  : selectedSubcategory === 'all'
-              }
-              onClick={() => {
-                setSelectedTypeGroup('all');
-                setSelectedSubcategory('all');
-                setSelectedTagSubtype('all');
-                syncUrl({ type: 'all', sub: 'all', subtype: 'all' });
-              }}
-              className={`font-[var(--font-wallop)] font-semibold text-[11.5px] rounded-full px-2.5 py-1 min-h-[26px] whitespace-nowrap shrink-0 cursor-pointer filter-pill inline-flex items-center gap-1 border ${
-                (
-                  usesMacroGroups
-                    ? selectedTypeGroup === 'all' && selectedSubcategory === 'all'
-                    : selectedSubcategory === 'all'
-                )
-                  ? 'bg-midnight-mouth text-daylight border-midnight-mouth shadow-2xs'
-                  : 'bg-daylight/75 text-midnight-mouth border-midnight-mouth/10 hover:bg-sunshine-yellow/55'
-              }`}
-            >
-              <span>All</span>
-              <span className="text-[10px] opacity-75 tabular-nums">
-                ({totalInCategoryCount})
-              </span>
-            </button>
-
-            {primaryTypeGroups.map((group) => {
-              const active = usesMacroGroups
-                ? selectedTypeGroup === group.id
-                : selectedSubcategory === group.label;
-
-              return (
+              {/* Desktop One-Click Quick Toggle Pill */}
+              {isMcpCategory ? (
                 <button
-                  key={group.id}
                   type="button"
-                  role="tab"
-                  aria-selected={active}
                   onClick={() => {
-                    if (usesMacroGroups) {
-                      const nextType = active ? 'all' : group.id;
-                      setSelectedTypeGroup(nextType);
-                      setSelectedSubcategory('all');
-                      syncUrl({ type: nextType, sub: 'all' });
-                    } else {
-                      const nextSub = active ? 'all' : group.label;
-                      setSelectedSubcategory(nextSub);
-                      setSelectedTagSubtype('all');
-                      syncUrl({ sub: nextSub, subtype: 'all' });
-                    }
+                    const next = !mcpOfficialOnly;
+                    setMcpOfficialOnly(next);
+                    syncUrl({ official: next });
                   }}
-                  className={`font-[var(--font-wallop)] font-semibold text-[11.5px] rounded-full px-2.5 py-1 min-h-[26px] max-w-full text-left leading-tight sm:whitespace-nowrap shrink-0 cursor-pointer filter-pill inline-flex items-center gap-1 border ${
-                    active
-                      ? 'bg-midnight-mouth text-daylight border-midnight-mouth shadow-2xs'
-                      : 'bg-daylight/75 text-midnight-mouth border-midnight-mouth/10 hover:bg-sunshine-yellow/55'
+                  className={`hidden sm:inline-flex items-center gap-1.5 font-[var(--font-wallop)] font-semibold text-[12px] rounded-full px-3 py-1 min-h-[28px] filter-pill cursor-pointer ${
+                    mcpOfficialOnly
+                      ? 'bg-grass-green text-[#101014]'
+                      : 'bg-paper text-midnight-mouth hover:bg-sunshine-yellow/50'
                   }`}
                 >
-                  <span className="truncate sm:overflow-visible">{group.label}</span>
-                  <span className="text-[10px] opacity-70 tabular-nums shrink-0">({group.count})</span>
+                  <ShieldCheck className="w-3.5 h-3.5" aria-hidden="true" />
+                  <span>Official only</span>
                 </button>
-              );
-            })}
-          </div>
-
-          {/* ROW 2: Subtypes Directly Under Important Types (Full Width) */}
-          <div
-            data-testid="subtypes-row"
-            className="flex flex-col gap-2 pt-2 border-t border-midnight-mouth/10"
-          >
-            <div className="flex items-center justify-between gap-2 min-w-0">
-              <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar flex-1 min-w-0 py-0.5">
-                <span className="font-[var(--font-wallop)] font-bold text-[10.5px] uppercase tracking-[0.06em] text-midnight-mouth/55 w-[62px] shrink-0 select-none">
-                  Subtypes
-                </span>
-
-                {usesMacroGroups ? (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setSelectedSubcategory('all');
-                        syncUrl({ sub: 'all' });
-                      }}
-                      className={`font-[var(--font-wallop)] font-semibold text-[11px] rounded-full px-2.5 py-0.5 min-h-[25px] whitespace-nowrap shrink-0 cursor-pointer filter-pill inline-flex items-center gap-1 border ${
-                        selectedSubcategory === 'all'
-                          ? 'bg-midnight-mouth text-daylight border-midnight-mouth'
-                          : 'bg-daylight/65 text-midnight-mouth border-midnight-mouth/10 hover:bg-sunshine-yellow/45'
-                      }`}
-                    >
-                      <span>
-                        {activePrimaryGroup
-                          ? `All ${activePrimaryGroup.label}`
-                          : 'All Subtypes'}
-                      </span>
-                      <span className="text-[10px] opacity-75 tabular-nums">
-                        ({activePrimaryGroup ? activePrimaryGroup.count : totalInCategoryCount})
-                      </span>
-                    </button>
-
-                    {inlineSubtypes.map((sub) => {
-                      const active = selectedSubcategory === sub.name;
-                      return (
-                        <button
-                          key={sub.slug}
-                          type="button"
-                          onClick={() => {
-                            const nextSub = active ? 'all' : sub.name;
-                            const ownerType =
-                              nextSub !== 'all'
-                                ? findPrimaryTypeForSubcategory(primaryTypeGroups, nextSub)
-                                : selectedTypeGroup;
-                            setSelectedSubcategory(nextSub);
-                            if (ownerType && selectedTypeGroup === 'all') {
-                              setSelectedTypeGroup(ownerType);
-                            }
-                            syncUrl({
-                              sub: nextSub,
-                              type:
-                                ownerType && selectedTypeGroup === 'all'
-                                  ? ownerType
-                                  : selectedTypeGroup,
-                            });
-                          }}
-                          className={`font-[var(--font-wallop)] font-semibold text-[11px] rounded-full px-2.5 py-0.5 min-h-[25px] whitespace-nowrap shrink-0 cursor-pointer filter-pill inline-flex items-center gap-1 border ${
-                            active
-                              ? 'bg-midnight-mouth text-daylight border-midnight-mouth'
-                              : 'bg-daylight/65 text-midnight-mouth border-midnight-mouth/10 hover:bg-sunshine-yellow/45'
-                          }`}
-                        >
-                          <span>{sub.name}</span>
-                          <span className="text-[10px] opacity-70 tabular-nums">({sub.count})</span>
-                        </button>
-                      );
-                    })}
-                  </>
-                ) : (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setSelectedTagSubtype('all');
-                        syncUrl({ subtype: 'all' });
-                      }}
-                      className={`font-[var(--font-wallop)] font-semibold text-[11px] rounded-full px-2.5 py-0.5 min-h-[25px] whitespace-nowrap shrink-0 cursor-pointer filter-pill inline-flex items-center gap-1 border ${
-                        selectedTagSubtype === 'all'
-                          ? 'bg-midnight-mouth text-daylight border-midnight-mouth'
-                          : 'bg-daylight/65 text-midnight-mouth border-midnight-mouth/10 hover:bg-sunshine-yellow/45'
-                      }`}
-                    >
-                      <span>All Subtypes</span>
-                    </button>
-
-                    {standardCategoryTagSubtypes.map((item) => {
-                      const active = selectedTagSubtype === item.tag;
-                      return (
-                        <button
-                          key={item.tag}
-                          type="button"
-                          onClick={() => {
-                            const next = active ? 'all' : item.tag;
-                            setSelectedTagSubtype(next);
-                            syncUrl({ subtype: next });
-                          }}
-                          className={`font-[var(--font-wallop)] font-semibold text-[11px] rounded-full px-2.5 py-0.5 min-h-[25px] whitespace-nowrap shrink-0 cursor-pointer filter-pill inline-flex items-center gap-1 border ${
-                            active
-                              ? 'bg-midnight-mouth text-daylight border-midnight-mouth'
-                              : 'bg-daylight/65 text-midnight-mouth border-midnight-mouth/10 hover:bg-sunshine-yellow/45'
-                          }`}
-                        >
-                          <span>{item.label}</span>
-                          <span className="text-[10px] opacity-70 tabular-nums">
-                            ({item.count})
-                          </span>
-                        </button>
-                      );
-                    })}
-                  </>
-                )}
-              </div>
-
-              {/* Right Side of Subtypes Row: Expand Toggle + Subtype Jump Select */}
-              <div className="flex items-center gap-1.5 shrink-0">
-                {usesMacroGroups && activeSubtypes.length > 8 && (
-                  <button
-                    type="button"
-                    onClick={() => setShowAllSubtypes((prev) => !prev)}
-                    className="font-[var(--font-wallop)] font-semibold text-[11px] text-midnight-mouth bg-sunshine-yellow/55 hover:bg-sunshine-yellow/85 border border-midnight-mouth/12 rounded-full px-2.5 py-0.5 min-h-[25px] whitespace-nowrap shrink-0 cursor-pointer filter-pill inline-flex items-center gap-1"
-                  >
-                    <span>
-                      {showAllSubtypes
-                        ? 'Hide list'
-                        : `+${activeSubtypes.length - inlineSubtypes.length} more`}
-                    </span>
-                    <ChevronDown
-                      className={`w-3 h-3 transition-transform duration-200 ${
-                        showAllSubtypes ? 'rotate-180' : ''
-                      }`}
-                      aria-hidden="true"
-                    />
-                  </button>
-                )}
-
-                {usesMacroGroups && allPopulatedSubcategories.length > 0 && (
-                  <FilterDropdown
-                    id="cat-subcategory-select"
-                    label={isMcpCategory ? 'Use Case' : 'Subtype'}
-                    variant="pill"
-                    value={selectedSubcategory}
-                    active={selectedSubcategory !== 'all'}
-                    triggerIcon={<Layers className="w-3 h-3" />}
-                    maxTriggerWidthClass="max-w-[185px]"
-                    minMenuWidth={310}
-                    maxMenuHeight={360}
-                    menuTitle={isMcpCategory ? 'Jump to use case' : 'Jump to subtype'}
-                    menuSubtitle={`${allPopulatedSubcategories.length} ${isMcpCategory ? 'use cases' : 'subtypes'}`}
-                    onChange={(nextSub) => {
-                      const ownerType =
-                        nextSub !== 'all'
-                          ? findPrimaryTypeForSubcategory(primaryTypeGroups, nextSub)
-                          : 'all';
-                      setSelectedSubcategory(nextSub);
-                      if (usesMacroGroups) {
-                        setSelectedTypeGroup(ownerType || 'all');
-                      }
-                      syncUrl({
-                        sub: nextSub,
-                        type: usesMacroGroups ? ownerType || 'all' : selectedTypeGroup,
-                      });
-                    }}
-                    options={[
-                      {
-                        value: 'all',
-                        label: isMcpCategory ? 'Jump to use case' : 'Jump to subtype',
-                        count: allPopulatedSubcategories.length,
-                        icon: <Layers className="w-3.5 h-3.5" />,
-                      },
-                      ...allPopulatedSubcategories.map((sub) => ({
-                        value: sub.name,
-                        label: sub.name,
-                        count: sub.count,
-                      })),
-                    ]}
-                  />
-                )}
-              </div>
-            </div>
-
-            {/* Expandable Full Subtypes Drawer (Only open when user clicks "+N more") */}
-            {usesMacroGroups && showAllSubtypes && activeSubtypes.length > 8 && (
-              <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-midnight-mouth/8">
-                {activeSubtypes.map((sub) => {
-                  const active = selectedSubcategory === sub.name;
-                  return (
-                    <button
-                      key={`expanded-${sub.slug}`}
-                      type="button"
-                      onClick={() => {
-                        const nextSub = active ? 'all' : sub.name;
-                        setSelectedSubcategory(nextSub);
-                        syncUrl({ sub: nextSub });
-                      }}
-                      className={`font-[var(--font-wallop)] font-semibold text-[11px] rounded-full px-2.5 py-0.5 min-h-[24px] whitespace-nowrap cursor-pointer filter-pill inline-flex items-center gap-1 border ${
-                        active
-                          ? 'bg-midnight-mouth text-daylight border-midnight-mouth'
-                          : 'bg-daylight/65 text-midnight-mouth border-midnight-mouth/10 hover:bg-sunshine-yellow/45'
-                      }`}
-                    >
-                      <span>{sub.name}</span>
-                      <span className="text-[10px] opacity-70 tabular-nums">({sub.count})</span>
-                    </button>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-
-          {/* ROW 3: Filter Controls (Left) + Sort Switcher (Right) */}
-          <div
-            data-testid="filters-sort-row"
-            className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-midnight-mouth/10"
-          >
-            {/* Left Side: Technical / Access Filters */}
-            <div className="flex flex-wrap items-center gap-1.5 min-w-0">
-              <span className="font-[var(--font-wallop)] font-bold text-[10.5px] uppercase tracking-[0.06em] text-midnight-mouth/55 w-[62px] shrink-0 select-none">
-                Filters
-              </span>
-
-              {isMcpCategory ? (
-                <>
-                  {/* Official Implementation Toggle */}
-                  <button
-                    type="button"
-                    data-testid="mcp-official-filter"
-                    aria-pressed={mcpOfficialOnly}
-                    onClick={() => {
-                      const next = !mcpOfficialOnly;
-                      setMcpOfficialOnly(next);
-                      syncUrl({ official: next });
-                    }}
-                    className={`inline-flex items-center gap-1 font-[var(--font-wallop)] font-semibold text-[11px] rounded-full px-2.5 py-0.5 min-h-[25px] whitespace-nowrap filter-pill cursor-pointer border ${
-                      mcpOfficialOnly
-                        ? 'bg-midnight-mouth text-daylight border-midnight-mouth'
-                        : 'bg-daylight/75 text-midnight-mouth border-midnight-mouth/10 hover:bg-sunshine-yellow/45'
-                    }`}
-                  >
-                    <span aria-hidden="true">🎖️</span>
-                    <span>Official</span>
-                    <span className="text-[10px] opacity-75 tabular-nums">
-                      ({mcpFilterCounts.officialCount})
-                    </span>
-                  </button>
-
-                  {/* Compact MCP Scope Dropdown */}
-                  <FilterDropdown
-                    id="mcp-scope-select"
-                    testId="mcp-scope-select"
-                    label="MCP Scope"
-                    variant="pill"
-                    value={mcpScope}
-                    active={mcpScope !== 'all'}
-                    triggerIcon={<Globe className="w-3 h-3" />}
-                    minMenuWidth={230}
-                    menuTitle="Execution scope"
-                    menuSubtitle="Deployment environment"
-                    onChange={(next) => {
-                      setMcpScope(next);
-                      syncUrl({ scope: next });
-                    }}
-                    options={MCP_SCOPE_OPTIONS.map((opt) => ({
-                      value: opt.value,
-                      label: opt.label,
-                      count:
-                        opt.value === 'all'
-                          ? totalInCategoryCount
-                          : mcpFilterCounts.scopes.get(opt.value) ?? 0,
-                    }))}
-                  />
-
-                  {/* Compact MCP Language Dropdown */}
-                  <FilterDropdown
-                    id="mcp-lang-select"
-                    testId="mcp-lang-select"
-                    label="Codebase language"
-                    variant="pill"
-                    value={mcpLang}
-                    active={mcpLang !== 'all'}
-                    triggerIcon={<Code2 className="w-3 h-3" />}
-                    minMenuWidth={240}
-                    menuTitle="Codebase language"
-                    menuSubtitle="SDK / runtime"
-                    onChange={(next) => {
-                      setMcpLang(next);
-                      syncUrl({ lang: next });
-                    }}
-                    options={[
-                      { value: 'all', label: 'All Languages' },
-                      ...MCP_LANGUAGE_OPTIONS.map((lang) => ({
-                        value: lang.value,
-                        label: lang.label,
-                        count: mcpFilterCounts.langs.get(lang.value) ?? 0,
-                      })),
-                    ]}
-                  />
-
-                  {/* Compact MCP OS Dropdown */}
-                  <FilterDropdown
-                    id="mcp-os-select"
-                    testId="mcp-os-select"
-                    label="Operating system"
-                    variant="pill"
-                    value={mcpOs}
-                    active={mcpOs !== 'all'}
-                    triggerIcon={<Cpu className="w-3 h-3" />}
-                    minMenuWidth={220}
-                    menuTitle="Operating system"
-                    menuSubtitle="Host support"
-                    onChange={(next) => {
-                      setMcpOs(next);
-                      syncUrl({ os: next });
-                    }}
-                    options={[
-                      { value: 'all', label: 'All OS' },
-                      ...MCP_OS_OPTIONS.map((osOpt) => ({
-                        value: osOpt.value,
-                        label: osOpt.label,
-                        count: mcpFilterCounts.os.get(osOpt.value) ?? 0,
-                      })),
-                    ]}
-                  />
-
-                  {/* Compact MCP Access Model Dropdown */}
-                  <FilterDropdown
-                    id="mcp-access-select"
-                    label="Access model"
-                    variant="pill"
-                    value={selectedPricing[0] || 'all'}
-                    active={selectedPricing.length > 0}
-                    triggerIcon={<Sparkles className="w-3 h-3" />}
-                    minMenuWidth={240}
-                    menuTitle="Access model"
-                    menuSubtitle="Pricing rule"
-                    onChange={(val) => {
-                      const next = val === 'all' ? [] : ([val] as PricingModel[]);
-                      setSelectedPricing(next);
-                      syncUrl({ pricing: next });
-                    }}
-                    options={[
-                      { value: 'all', label: 'All Access', count: totalInCategoryCount },
-                      ...categoryPricingOptions.map(({ model, count }) => ({
-                        value: model,
-                        label: formatPricingModel(model),
-                        count,
-                      })),
-                    ]}
-                  />
-                </>
               ) : (
-                <>
-                  {isAiCategory && (
-                    <>
-                      {/* AI Modality Dropdown */}
-                      <FilterDropdown
-                        id="ai-modality-select"
-                        testId="ai-modality-select"
-                        label="AI Modality"
-                        variant="pill"
-                        value={aiModality}
-                        active={aiModality !== 'all'}
-                        triggerIcon={<Sparkles className="w-3 h-3" />}
-                        minMenuWidth={250}
-                        menuTitle="Model modality"
-                        menuSubtitle="Input & output capability"
-                        onChange={(next) => {
-                          const typed = next as AiModalityId | 'all';
-                          setAiModality(typed);
-                          syncUrl({ modality: typed });
-                        }}
-                        options={AI_MODALITY_OPTIONS.map((opt) => ({
-                          value: opt.id,
-                          label: opt.label,
-                        }))}
-                      />
-
-                      {/* AI Context Window Filter Dropdown */}
-                      <FilterDropdown
-                        id="ai-context-select"
-                        testId="ai-context-select"
-                        label="Minimum context window"
-                        variant="pill"
-                        value={aiMinContext}
-                        active={aiMinContext !== 'all'}
-                        triggerIcon={<Cpu className="w-3 h-3" />}
-                        minMenuWidth={240}
-                        menuTitle="Context window"
-                        menuSubtitle="Minimum token limit"
-                        onChange={(next) => {
-                          setAiMinContext(next);
-                          syncUrl({ ctx: next });
-                        }}
-                        options={AI_CONTEXT_FILTER_OPTIONS.map((opt) => ({
-                          value: opt.value,
-                          label: opt.label,
-                        }))}
-                      />
-                    </>
-                  )}
-
-                  {isStudentCategory && (
-                    <div
-                      role="group"
-                      aria-label="Student ID requirement filter"
-                      data-testid="student-verification-filter-group"
-                      className="inline-flex flex-wrap items-center max-w-full bg-daylight/90 p-0.5 rounded-[14px] sm:rounded-full border border-midnight-mouth/15 gap-0.5"
-                    >
-                      {[
-                        {
-                          val: 'all' as const,
-                          label: `All Verification (${studentVerificationCounts.total})`,
-                        },
-                        {
-                          val: 'exclusive' as const,
-                          label: `Student ID / .edu Req. (${studentVerificationCounts.exclusive})`,
-                        },
-                        {
-                          val: 'eligible' as const,
-                          label: `No Student ID Req. (${studentVerificationCounts.eligible})`,
-                        },
-                      ].map((opt) => {
-                        const active = studentVerificationFilter === opt.val;
-                        return (
-                          <button
-                            key={opt.val}
-                            type="button"
-                            data-testid={`student-verify-filter-${opt.val}`}
-                            onClick={() => {
-                              setStudentVerificationFilter(opt.val);
-                              syncUrl({ verify: opt.val });
-                            }}
-                            className={`font-[var(--font-wallop)] font-semibold text-[11px] rounded-full px-2.5 py-0.5 min-h-[24px] whitespace-nowrap filter-pill cursor-pointer ${
-                              active
-                                ? 'bg-midnight-mouth text-daylight shadow-2xs'
-                                : 'text-midnight-mouth/85 hover:bg-sunshine-yellow/55'
-                            }`}
-                          >
-                            {opt.label}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
-
-                  {/* Pricing Model Quick Toggles */}
-                  {categoryPricingOptions.map(({ model, count }) => {
-                    const checked = selectedPricing.includes(model);
-                    return (
-                      <button
-                        key={model}
-                        type="button"
-                        role="checkbox"
-                        aria-checked={checked}
-                        onClick={() => togglePricing(model)}
-                        className={`inline-flex items-center gap-1 font-[var(--font-wallop)] font-semibold text-[11px] rounded-full px-2.5 py-0.5 min-h-[25px] whitespace-nowrap filter-pill cursor-pointer border ${
-                          checked
-                            ? 'bg-midnight-mouth text-daylight border-midnight-mouth'
-                            : 'bg-daylight/75 text-midnight-mouth border-midnight-mouth/10 hover:bg-sunshine-yellow/45'
-                        }`}
-                      >
-                        {checked && (
-                          <Check
-                            className="w-2.5 h-2.5 text-grass-green stroke-[3]"
-                            aria-hidden="true"
-                          />
-                        )}
-                        <span>{formatPricingModel(model)}</span>
-                        <span className="text-[10px] opacity-70 tabular-nums">({count})</span>
-                      </button>
-                    );
-                  })}
-
-                  {/* Card Policy Segmented Switch */}
-                  <div
-                    role="group"
-                    aria-label="Card requirement filter"
-                    className="inline-flex items-center bg-daylight/75 p-0.5 rounded-full border border-midnight-mouth/10 gap-0.5"
-                  >
-                    {[
-                      { val: 'all', label: 'Any Card' },
-                      { val: 'not_required', label: 'No Card' },
-                      { val: 'required', label: 'Card Req.' },
-                    ].map((opt) => {
-                      const active = cardFilter === opt.val;
-                      return (
-                        <button
-                          key={opt.val}
-                          type="button"
-                          onClick={() => {
-                            const next = opt.val as RequirementState | 'all';
-                            setCardFilter(next);
-                            syncUrl({ card: next });
-                          }}
-                          className={`font-[var(--font-wallop)] font-semibold text-[10.5px] rounded-full px-2 py-0.5 min-h-[22px] whitespace-nowrap filter-pill cursor-pointer ${
-                            active
-                              ? 'bg-midnight-mouth text-daylight'
-                              : 'text-midnight-mouth/80 hover:bg-paper'
-                          }`}
-                        >
-                          {opt.label}
-                        </button>
-                      );
-                    })}
-                  </div>
-
-                  <button
-                    type="button"
-                    aria-pressed={studentFriendlyOnly}
-                    onClick={() => {
-                      const next = !studentFriendlyOnly;
-                      setStudentFriendlyOnly(next);
-                      syncUrl({ student: next });
-                    }}
-                    className={`inline-flex items-center gap-1 font-[var(--font-wallop)] font-semibold text-[11px] rounded-full px-2.5 py-0.5 min-h-[25px] whitespace-nowrap filter-pill cursor-pointer border ${
-                      studentFriendlyOnly
-                        ? 'bg-grass-green text-[#101014] border-midnight-mouth/15'
-                        : 'bg-daylight/75 text-midnight-mouth border-midnight-mouth/10 hover:bg-grass-green/40'
-                    }`}
-                  >
-                    <GraduationCap className="w-3 h-3" aria-hidden="true" />
-                    <span>Students</span>
-                  </button>
-                </>
-              )}
-
-              <label htmlFor="cat-card-filter" className="sr-only">
-                Card rule
-              </label>
-              <select
-                id="cat-card-filter"
-                value={cardFilter}
-                onChange={(e) => {
-                  const next = e.target.value as RequirementState | 'all';
-                  setCardFilter(next);
-                  syncUrl({ card: next });
-                }}
-                className="sr-only"
-              >
-                <option value="all">Any card policy</option>
-                <option value="not_required">No credit card required</option>
-                <option value="required">Card required</option>
-                <option value="unknown">Card rule unknown</option>
-              </select>
-            </div>
-
-            {/* Right Side: Reset + Sort Switcher */}
-            <div className="flex items-center gap-1.5 shrink-0 ml-auto">
-              {hasActiveFilters && (
                 <button
                   type="button"
-                  onClick={resetCategoryFilters}
-                  className="inline-flex items-center gap-1 font-[var(--font-wallop)] font-semibold text-[11px] text-[#101014] bg-sunshine-yellow hover:bg-tangerine rounded-full px-2.5 py-0.5 min-h-[25px] shrink-0 filter-pill cursor-pointer border border-midnight-mouth/15"
+                  onClick={() => {
+                    const next: RequirementState | 'all' =
+                      cardFilter === 'not_required' ? 'all' : 'not_required';
+                    setCardFilter(next);
+                    syncUrl({ card: next });
+                  }}
+                  className={`hidden sm:inline-flex items-center gap-1.5 font-[var(--font-wallop)] font-semibold text-[12px] rounded-full px-3 py-1 min-h-[28px] filter-pill cursor-pointer ${
+                    cardFilter === 'not_required'
+                      ? 'bg-grass-green text-[#101014]'
+                      : 'bg-paper text-midnight-mouth hover:bg-sunshine-yellow/50'
+                  }`}
                 >
-                  <RotateCcw className="w-3 h-3" aria-hidden="true" />
-                  <span>Reset</span>
+                  <ShieldCheck className="w-3.5 h-3.5" aria-hidden="true" />
+                  <span>No card required</span>
                 </button>
               )}
+            </div>
 
-              <div className="hidden sm:inline-flex items-center bg-daylight/75 p-0.5 rounded-full border border-midnight-mouth/10 gap-0.5">
+            {/* Segmented Sort Pills (Desktop) + Sort Dropdown (Mobile) */}
+            <div className="flex items-center gap-2">
+              <span className="font-[var(--font-inter)] text-[12.5px] text-ink/70 hidden xl:inline">
+                Sort:
+              </span>
+
+              <div
+                role="group"
+                aria-label="Sort resources"
+                className="hidden sm:inline-flex items-center bg-paper p-1 rounded-full border border-midnight-mouth/8 gap-0.5"
+              >
                 {visibleSortOptions.map((opt) => {
                   const Icon = opt.icon;
                   const active = sortBy === opt.value;
@@ -1368,13 +1107,13 @@ export function CategoryDetailPage({
                         setSortBy(opt.value);
                         syncUrl({ sort: opt.value });
                       }}
-                      className={`inline-flex items-center gap-1 font-[var(--font-wallop)] font-semibold text-[10.5px] rounded-full px-2 py-0.5 min-h-[22px] whitespace-nowrap filter-pill cursor-pointer ${
+                      className={`inline-flex items-center gap-1 font-[var(--font-wallop)] font-semibold text-[12px] rounded-full px-2.5 py-1.5 min-h-[30px] whitespace-nowrap filter-pill cursor-pointer ${
                         active
-                          ? 'bg-midnight-mouth text-daylight'
-                          : 'text-midnight-mouth/80 hover:bg-paper'
+                          ? 'bg-midnight-mouth text-daylight shadow-xs'
+                          : 'text-midnight-mouth/80 hover:text-midnight-mouth hover:bg-daylight'
                       }`}
                     >
-                      <Icon className="w-2.5 h-2.5" aria-hidden="true" />
+                      <Icon className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
                       <span>{opt.label}</span>
                     </button>
                   );
@@ -1383,12 +1122,12 @@ export function CategoryDetailPage({
 
               <div className="sm:hidden">
                 <FilterDropdown
-                  id="cat-sort"
+                  id="cat-sort-mobile"
                   label="Sort by"
                   variant="pill"
                   value={sortBy}
                   triggerPrefix="Sort:"
-                  minMenuWidth={220}
+                  minMenuWidth={210}
                   menuTitle="Sort results"
                   onChange={(nextVal) => {
                     const next = nextVal as SortOption;
@@ -1407,83 +1146,88 @@ export function CategoryDetailPage({
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Main Category Grid directly below the compact combined header */}
-      <section className="flex flex-col gap-3">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <div className="flex flex-wrap items-center gap-2">
-            <h2
-              data-testid="category-results-heading"
-              className="font-[var(--font-wallop)] font-bold text-[17px] sm:text-[19px] tracking-[-0.02em] text-midnight-mouth"
-            >
-              {activeResultsTitle}
-            </h2>
-            {sortBy === 'use_case' && selectedSubcategory === 'all' && (
-              <span className="inline-flex items-center gap-1 bg-daylight text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[11px] rounded-full px-2.5 py-0.5 border border-midnight-mouth/10">
-                <Layers className="w-3 h-3" aria-hidden="true" />
-                <span>Sorted by Use Case ({activeSubtypes.length} subtypes)</span>
-              </span>
-            )}
-          </div>
-          {searchQuery.trim() && (
-            <span className="font-[var(--font-inter)] text-[12px] text-ink/75">
-              Matching &ldquo;{searchQuery.trim()}&rdquo;
-            </span>
+          {/* Active Filter Chips */}
+          {activeChips.length > 0 && (
+            <div aria-label="Active filters" className="flex flex-wrap items-center gap-1.5">
+              {activeChips.map((chip) => (
+                <button
+                  key={chip.key}
+                  type="button"
+                  onClick={chip.onClear}
+                  className="chip-enter bg-sunshine-yellow hover:bg-tangerine text-[#101014] font-[var(--font-wallop)] font-semibold text-[12.5px] rounded-full px-3 py-1 min-h-[30px] inline-flex items-center gap-1.5 filter-pill cursor-pointer"
+                >
+                  <span>{chip.label}</span>
+                  <X className="w-3 h-3" aria-hidden="true" />
+                </button>
+              ))}
+              {activeChips.length > 1 && (
+                <button
+                  type="button"
+                  onClick={resetCategoryFilters}
+                  className="font-[var(--font-wallop)] font-semibold text-[12px] text-midnight-mouth/80 hover:text-midnight-mouth underline underline-offset-4 px-2 py-1 cursor-pointer"
+                >
+                  Clear all
+                </button>
+              )}
+            </div>
+          )}
+
+          {/* Resource Grid, Skeleton, Error, or Empty State */}
+          {isInitialLoading && displayedOffers.length === 0 ? (
+            <CardGridSkeleton
+              count={6}
+              columnsClassName="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2.5 sm:gap-4"
+            />
+          ) : error && displayedOffers.length === 0 ? (
+            <OffersErrorState message={error} onRetry={retry} onNavigate={onNavigate} />
+          ) : !isInitialLoading && !isTransitioning && displayedOffers.length === 0 ? (
+            <div className="bg-daylight rounded-[22px] p-8 sm:p-10 text-center flex flex-col items-center gap-3 card-enter">
+              <h3 className="font-[var(--font-wallop)] font-bold text-[19px] sm:text-[22px] text-midnight-mouth">
+                No matching resources in {category.name}
+              </h3>
+              <p className="font-[var(--font-inter)] text-[14px] text-ink/80 max-w-md">
+                Try clearing a filter or searching with broader keywords.
+              </p>
+              <button
+                type="button"
+                onClick={resetCategoryFilters}
+                className="mt-1 bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13.5px] rounded-full px-5 py-2.5 min-h-[40px] cursor-pointer spring-pill"
+              >
+                Show all in {category.shortName}
+              </button>
+            </div>
+          ) : (
+            <>
+              <div
+                data-testid="category-results-grid"
+                aria-busy={isTransitioning}
+                className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2.5 sm:gap-4 transition-opacity duration-150 ${
+                  isTransitioning ? 'opacity-75' : 'opacity-100'
+                }`}
+              >
+                {displayedOffers.map((offer, idx) => (
+                  <ResourceCard
+                    key={offer.identity.slug}
+                    offer={offer}
+                    onNavigate={onNavigate}
+                    priority={idx < 4}
+                  />
+                ))}
+              </div>
+              <InfiniteLoadMore
+                hasMore={hasMore}
+                isFetchingMore={isFetchingMore}
+                remainingCount={Math.max(0, totalFilteredCount - displayedOffers.length)}
+                onLoadMore={loadMore}
+              />
+            </>
           )}
         </div>
-
-        {isInitialLoading && displayedOffers.length === 0 ? (
-          <CardGridSkeleton
-            count={6}
-            columnsClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4"
-          />
-        ) : error && displayedOffers.length === 0 ? (
-          <OffersErrorState message={error} onRetry={retry} onNavigate={onNavigate} />
-        ) : !isInitialLoading && !isTransitioning && displayedOffers.length === 0 ? (
-          <div className="bg-daylight rounded-[20px] p-7 sm:p-8 text-center flex flex-col items-center gap-3 card-enter">
-            <p className="font-[var(--font-inter)] text-[14px] sm:text-[15px] text-ink/85">
-              No resources in {category.name} match your search or subtype filters yet.
-            </p>
-            <button
-              type="button"
-              onClick={resetCategoryFilters}
-              className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13.5px] rounded-full px-4 py-2 min-h-[38px] cursor-pointer spring-pill"
-            >
-              Show all in {category.shortName}
-            </button>
-          </div>
-        ) : (
-          <>
-            <div
-              data-testid="category-results-grid"
-              aria-busy={isTransitioning}
-              className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4 transition-opacity duration-150 ${
-                isTransitioning ? 'opacity-75' : 'opacity-100'
-              }`}
-            >
-              {displayedOffers.map((offer, idx) => (
-                <ResourceCard
-                  key={offer.identity.slug}
-                  offer={offer}
-                  onNavigate={onNavigate}
-                  priority={idx < 4}
-                />
-              ))}
-            </div>
-            <InfiniteLoadMore
-              hasMore={hasMore}
-              isFetchingMore={isFetchingMore}
-              remainingCount={Math.max(0, totalFilteredCount - displayedOffers.length)}
-              onLoadMore={loadMore}
-            />
-          </>
-        )}
-      </section>
+      </div>
 
       {/* Related Categories */}
-      <section className="flex flex-col gap-3.5 sm:gap-4 pt-2">
+      <section className="flex flex-col gap-3.5 sm:gap-4 pt-3">
         <h2 className="font-[var(--font-wallop)] font-extrabold text-[20px] sm:text-[26px] leading-[1.1] tracking-[-0.025em] text-midnight-mouth">
           Related categories
         </h2>
@@ -1499,6 +1243,56 @@ export function CategoryDetailPage({
           ))}
         </div>
       </section>
+
+      {/* Mobile / Tablet Accessible Bottom Filter Drawer */}
+      {drawerOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Filter ${category.name}`}
+          className="fixed inset-0 z-50 bg-[#101014]/70 dark:bg-black/75 flex items-end lg:hidden"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setDrawerOpen(false);
+          }}
+        >
+          <div className="bg-daylight w-full rounded-t-[24px] p-4 sm:p-5 pb-[max(1rem,env(safe-area-inset-bottom))] max-h-[86dvh] flex flex-col gap-3.5 drawer-enter">
+            <div className="flex items-center justify-between gap-3 pb-2 border-b border-midnight-mouth/10">
+              <h2 className="font-[var(--font-wallop)] font-bold text-[18px] sm:text-[20px] text-midnight-mouth">
+                Filter {category.shortName}
+              </h2>
+              <button
+                type="button"
+                onClick={() => setDrawerOpen(false)}
+                aria-label="Close filters drawer"
+                className="w-9 h-9 rounded-full bg-paper text-midnight-mouth inline-flex items-center justify-center cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="overflow-y-auto pr-1 flex-1">
+              <CategoryFilterSidebar idPrefix="mobile" {...sidebarSharedProps} />
+            </div>
+
+            <div className="pt-2.5 border-t border-midnight-mouth/10 flex items-center gap-2.5">
+              <button
+                type="button"
+                onClick={resetCategoryFilters}
+                className="flex-1 bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[14px] rounded-full px-4 py-2.5 min-h-[42px] cursor-pointer"
+              >
+                Reset
+              </button>
+              <button
+                type="button"
+                onClick={() => setDrawerOpen(false)}
+                className="flex-[2] bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[14px] rounded-full px-4 py-2.5 min-h-[42px] cursor-pointer"
+              >
+                Show {displayCount} {displayCount === 1 ? 'result' : 'results'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

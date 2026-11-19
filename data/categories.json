@@ -3,7 +3,7 @@
     "slug": "ai-ml",
     "name": "AI Models",
     "shortName": "AI Models",
-    "description": "Verified free AI models sorted by modality and use case — Text & Reasoning, Text + Image (Vision), Image & Video Generation, Code & Agents, Audio & Speech, Embeddings, and Free Inference APIs.",
+    "description": "Free LLMs, vision, audio, and inference APIs.",
     "color": "sky-blue",
     "popular": true,
     "subcategories": [
@@ -57,7 +57,7 @@
     "slug": "mcp",
     "name": "MCP",
     "shortName": "MCP",
-    "description": "Official Model Context Protocol (MCP) servers, SDKs, remote edge MCP connectors, database context tools, and inspectors.",
+    "description": "Official MCP servers, SDKs, and context tools.",
     "color": "sunshine-yellow",
     "popular": true,
     "subcategories": [
@@ -323,7 +323,7 @@
     "slug": "apis-integrations",
     "name": "APIs",
     "shortName": "APIs",
-    "description": "Free public REST and GraphQL APIs, SDKs and webhooks, weather and location endpoints, email APIs, and testing sandboxes.",
+    "description": "Public REST & GraphQL APIs, webhooks, and sandboxes.",
     "color": "sky-blue",
     "popular": true,
     "subcategories": [
@@ -557,7 +557,7 @@
     "slug": "design-creative",
     "name": "Frontend & Design Tools",
     "shortName": "Frontend & Design",
-    "description": "AI design engineering & DESIGN.md libraries, frontend CSS & React UI frameworks, interface design platforms, colors & gradients, motion & 3D, vector icons, typography, and mockup tools.",
+    "description": "UI frameworks, design systems, icons, and fonts.",
     "color": "bubblegum-pink",
     "popular": true,
     "subcategories": [
@@ -598,8 +598,8 @@
   {
     "slug": "cloud-hosting",
     "name": "Cloud & Hosting",
-    "shortName": "Cloud & Host",
-    "description": "Deployment platforms, serverless & edge compute, cloud credits & free tiers, VPS & web hosting, S3 object & block storage, self-hosted PaaS panels, Kubernetes orchestration, Infrastructure as Code, CDN/DNS, and virtualization.",
+    "shortName": "Cloud & Hosting",
+    "description": "Hosting, serverless compute, cloud credits, and CDN.",
     "color": "grass-green",
     "popular": true,
     "subcategories": [
@@ -649,7 +649,7 @@
     "slug": "databases-backend",
     "name": "Databases & Backend",
     "shortName": "Databases",
-    "description": "Backend-as-a-Service, serverless SQL and NoSQL databases, vector & graph engines, time-series OLAP, ORMs & schema tooling, authentication, S3 object storage, queues & workflows, and headless CMS backends.",
+    "description": "Serverless SQL, NoSQL, BaaS, auth, and storage.",
     "color": "tangerine",
     "popular": true,
     "subcategories": [
@@ -699,7 +699,7 @@
     "slug": "developer-tools",
     "name": "Developer Tools",
     "shortName": "Dev Tools",
-    "description": "IDEs and code editors, Git collaboration, API testing, debugging, CI/CD, observability & static analysis, CLI & terminals, build tools & runtimes, testing frameworks, and container environments.",
+    "description": "IDEs, Git collaboration, CI/CD, and testing tools.",
     "color": "bubblegum-pink",
     "popular": true,
     "subcategories": [
@@ -749,7 +749,7 @@
     "slug": "learning",
     "name": "Learning & Study Materials",
     "shortName": "Learning",
-    "description": "Programming courses, university CS lectures, official documentation & tutorials, free technical books, developer roadmaps, coding practice & interview prep, AI/ML courses, Cloud/DevOps/Linux labs, interactive algorithm visualizers, and system design guides — ordered from most popular to least popular.",
+    "description": "Free courses, CS lectures, docs, books, and roadmaps.",
     "color": "sunshine-yellow",
     "popular": true,
     "subcategories": [
@@ -799,7 +799,7 @@
     "slug": "student-benefits",
     "name": "Student Benefits",
     "shortName": "Students",
-    "description": "Student developer packs, academic AI & IDE licenses, student cloud credits, educational CAD & design software, free student domains & hosting, certifications, coding courses, observability/API perks, academic research tools, and student fellowships — classified by Student ID / .edu requirement.",
+    "description": "Student packs, IDE licenses, and cloud credits.",
     "color": "grass-green",
     "popular": true,
     "subcategories": [
@@ -849,7 +849,7 @@
     "slug": "security-networking",
     "name": "Security & Networking",
     "shortName": "Security",
-    "description": "Network packet & protocol analyzers, Zero Trust & WireGuard mesh VPNs, penetration testing & web security scanners, TLS/PKI & secrets management, DNS/WAF/firewalls, reverse proxies & service mesh, SIEM/IDS threat intelligence, cloud/container security, and CTF practice labs.",
+    "description": "VPNs, scanners, TLS/secrets, DNS, and WAF tools.",
     "color": "tangerine",
     "popular": true,
     "subcategories": [
@@ -899,7 +899,7 @@
     "slug": "productivity-collaboration",
     "name": "Productivity & Collaboration",
     "shortName": "Productivity",
-    "description": "Notes, wikis & knowledge graphs, agile project management & issue tracking, collaborative whiteboards & diagramming, team chat & video, workflow automation, no-code databases & forms, scheduling & time tracking, async screen recording, developer docs & slides, and desktop productivity.",
+    "description": "Notes, docs, whiteboards, chat, and automation.",
     "color": "sunshine-yellow",
     "popular": true,
     "subcategories": [
