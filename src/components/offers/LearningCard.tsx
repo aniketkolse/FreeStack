@@ -80,32 +80,32 @@ export const LearningCard = memo(function LearningCard({
       onMouseLeave={handlePrefetchCancel}
       onFocus={handlePrefetchStart}
       onBlur={handlePrefetchCancel}
-      className={`${cardBgClass} rounded-[18px] sm:rounded-[24px] p-3.5 sm:p-5 flex flex-col justify-between gap-2.5 sm:gap-3 spring-card min-w-0`}
+      className={`${cardBgClass} rounded-[18px] sm:rounded-[24px] p-3.5 sm:p-4 h-[286px] sm:h-[304px] flex flex-col justify-between gap-2 sm:gap-2.5 spring-card min-w-0`}
     >
       <div className="flex flex-col gap-2.5 min-w-0">
         {/* Category-Colored Header Rectangle — White-backed Logo on Left + Provider & Format on Right */}
         <div
           data-testid={`learning-card-header-${offer.identity.slug}`}
-          className={`${bgSwatchClass} rounded-[14px] sm:rounded-[16px] p-3 sm:p-3.5 flex items-center justify-between gap-3 min-w-0`}
+          className={`${bgSwatchClass} rounded-[14px] sm:rounded-[16px] p-2.5 sm:p-3 flex items-center justify-between gap-3 min-w-0`}
         >
           <div
-            className={`w-10 h-10 sm:w-11 sm:h-11 rounded-[10px] sm:rounded-[12px] bg-white shadow-2xs flex items-center justify-center shrink-0 overflow-hidden p-1.5 ${
+            className={`w-10 h-10 rounded-[10px] sm:rounded-[12px] bg-white shadow-2xs flex items-center justify-center shrink-0 overflow-hidden p-1.5 ${
               wiggleIcon ? 'wiggle-tile' : ''
             }`}
           >
             <OfferLogo
               offer={offer}
               priority={priority}
-              imgClassName="w-7 h-7 sm:w-8 sm:h-8 object-contain"
-              fallbackClassName="w-6 h-6 sm:w-7 sm:h-7"
+              imgClassName="w-7 h-7 object-contain"
+              fallbackClassName="w-6 h-6"
             />
           </div>
 
-          <div className="text-right min-w-0 flex-1">
-            <span className="block font-[var(--font-wallop)] font-semibold text-[13.5px] sm:text-[14px] leading-[1.15] text-midnight-mouth truncate">
+          <div className="text-right min-w-0 flex-1 flex flex-col justify-center gap-1.5 sm:gap-2">
+            <span className="block font-[var(--font-wallop)] font-semibold text-[13.5px] sm:text-[14px] leading-[1.2] text-midnight-mouth truncate">
               {offer.identity.provider}
             </span>
-            <span className="block font-[var(--font-inter)] text-[11.5px] sm:text-[12.5px] leading-[1.2] text-ink/85 mt-0.5 truncate">
+            <span className="block font-[var(--font-inter)] text-[11.5px] sm:text-[12.5px] leading-[1.25] text-ink/85 truncate">
               {learning ? formatLearningFormat(learning.format) : offer.classification.subcategory}
             </span>
           </div>
@@ -113,18 +113,21 @@ export const LearningCard = memo(function LearningCard({
 
         {/* Verification + Title Below Header */}
         <div className="flex flex-col gap-1.5 sm:gap-2 min-w-0">
-          <div className="flex items-center gap-1.5 font-[var(--font-inter)] text-[11.5px] sm:text-[12px] leading-[1.2] text-ink/75">
+          <div className="flex items-center gap-1.5 font-[var(--font-inter)] text-[11.5px] sm:text-[12px] leading-[1.3] text-ink/75 min-w-0 truncate">
             {offer.verification.status === 'verified' ? (
               <CheckCircle2 className="w-3.5 h-3.5 text-midnight-mouth shrink-0" aria-hidden="true" />
             ) : (
               <AlertCircle className="w-3.5 h-3.5 text-midnight-mouth shrink-0" aria-hidden="true" />
             )}
-            <span>{formatVerificationStatus(offer.verification.status)}</span>
-            <span aria-hidden="true">·</span>
-            <span>{formatDate(offer.verification.last_verified_at)}</span>
+            <span className="shrink-0">{formatVerificationStatus(offer.verification.status)}</span>
+            <span aria-hidden="true" className="shrink-0">·</span>
+            <span className="truncate">{formatDate(offer.verification.last_verified_at)}</span>
           </div>
 
-          <h3 className="font-[var(--font-wallop)] font-bold text-[16px] sm:text-[18px] leading-[1.22] tracking-[-0.02em] text-midnight-mouth min-w-0">
+          <h3
+            title={offer.identity.name}
+            className="font-[var(--font-wallop)] font-bold text-[15.5px] sm:text-[17px] leading-[1.3] tracking-[-0.015em] text-midnight-mouth min-w-0 line-clamp-2"
+          >
             <a
               href={`/offer/${offer.identity.slug}`}
               onClick={handleOpen}
@@ -136,29 +139,31 @@ export const LearningCard = memo(function LearningCard({
         </div>
       </div>
 
-      {/* Focused Learning Metadata + Save & Share Actions */}
-      <div className="flex flex-col gap-2.5 sm:gap-3 pt-2.5 sm:pt-3 border-t border-midnight-mouth/10 min-w-0">
-        <dl className="flex flex-col gap-1 font-[var(--font-inter)] text-[12px] sm:text-[12.5px] leading-[1.35] text-ink">
-          <div className="flex items-baseline justify-between gap-2">
+      {/* Middle Learning Metadata */}
+      <div className="pt-2.5 border-t border-midnight-mouth/10 min-w-0 sm:mb-1">
+        <dl className="flex flex-col gap-1.5 font-[var(--font-inter)] text-[12px] sm:text-[12.5px] leading-[1.38] text-ink">
+          <div className="flex items-baseline justify-between gap-2.5 min-w-0">
             <dt className="text-ink/70 shrink-0">Difficulty</dt>
-            <dd className="font-medium text-midnight-mouth text-right min-w-0 break-words">
+            <dd className="font-medium text-midnight-mouth text-right min-w-0 truncate">
               {learning ? formatLearningDifficulty(learning.difficulty) : 'All levels'}
             </dd>
           </div>
-          <div className="flex items-baseline justify-between gap-2">
+          <div className="flex items-baseline justify-between gap-2.5 min-w-0">
             <dt className="text-ink/70 shrink-0">Language</dt>
-            <dd className="font-medium text-midnight-mouth text-right min-w-0 break-words">
+            <dd className="font-medium text-midnight-mouth text-right min-w-0 truncate">
               {learning?.language ?? 'Unknown'}
             </dd>
           </div>
           {learning && learning.topics.length > 0 && (
-            <div className="pt-0.5 text-midnight-mouth font-semibold break-words line-clamp-1">
+            <div className="pt-0.5 leading-[1.38] text-midnight-mouth font-semibold truncate">
               {learning.topics.slice(0, 4).join(' · ')}
             </div>
           )}
         </dl>
+      </div>
 
-        <div className="flex items-center justify-between gap-1.5 sm:gap-2 pt-0.5">
+      {/* Bottom View Guide + Save & Share Actions */}
+      <div className="flex items-center justify-between gap-1.5 sm:gap-2 min-w-0">
           <a
             href={`/offer/${offer.identity.slug}`}
             onClick={handleOpen}
@@ -219,7 +224,6 @@ export const LearningCard = memo(function LearningCard({
               )}
             </button>
           </div>
-        </div>
       </div>
     </article>
   );

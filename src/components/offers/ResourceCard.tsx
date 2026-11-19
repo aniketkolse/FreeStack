@@ -16,13 +16,12 @@ import {
   formatDate,
   formatPricingModel,
   formatVerificationStatus,
-  getPrimaryLimitSummary,
+  getCompactLimitPair,
 } from '../../lib/utils/formatters';
 import { getCategoryBySlug, prefetchOfferDetail } from '../../lib/data/resources';
 import { shareOrCopyOffer, useSavedOffers } from '../../lib/saved/savedOffers';
 import { getCategoryBgClass } from '../illustrations/TocaStickers';
 import { OfferLogo } from './OfferLogo';
-import { getAiContextWindow, getAiModality } from '../../lib/ai/aiModelMetadata';
 
 interface ResourceCardProps {
   offer: Offer;
@@ -51,12 +50,7 @@ export const ResourceCard = memo(function ResourceCard({
   const bgSwatchClass = category ? getCategoryBgClass(category.color) : 'bg-sky-blue';
   const cardBgClass = surface === 'paper' ? 'bg-paper' : 'bg-daylight';
 
-  const aiModality = getAiModality(offer);
-  const aiContext = getAiContextWindow(offer);
-  const aiRateLimit =
-    offer.classification.category === 'ai-ml'
-      ? offer.access.free_limits.find((l) => /rate\s*limit|requests|quota|neurons|local/i.test(l.name))
-      : undefined;
+  const compactLimit = getCompactLimitPair(offer);
 
   const statusIcon =
     offer.verification.status === 'verified' ? (
@@ -105,28 +99,28 @@ export const ResourceCard = memo(function ResourceCard({
       onMouseLeave={handlePrefetchCancel}
       onFocus={handlePrefetchStart}
       onBlur={handlePrefetchCancel}
-      className={`${cardBgClass} rounded-[18px] sm:rounded-[24px] p-3.5 sm:p-5 flex flex-col justify-between gap-2.5 sm:gap-3 spring-card min-w-0`}
+      className={`${cardBgClass} rounded-[18px] sm:rounded-[24px] p-3.5 sm:p-4 h-[286px] sm:h-[304px] flex flex-col justify-between gap-2 sm:gap-2.5 spring-card min-w-0`}
     >
       <div className="flex flex-col gap-2.5 min-w-0">
         {/* Category-Colored Header Rectangle — White-backed Logo on Left + Tool Provider & Subcategory on Right */}
         <div
           data-testid={`resource-card-header-${offer.identity.slug}`}
-          className={`${bgSwatchClass} rounded-[14px] sm:rounded-[16px] p-3 sm:p-3.5 flex items-center justify-between gap-3 min-w-0`}
+          className={`${bgSwatchClass} rounded-[14px] sm:rounded-[16px] p-2.5 sm:p-3 flex items-center justify-between gap-3 min-w-0`}
         >
-          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-[10px] sm:rounded-[12px] bg-white shadow-2xs flex items-center justify-center shrink-0 overflow-hidden p-1.5">
+          <div className="w-10 h-10 rounded-[10px] sm:rounded-[12px] bg-white shadow-2xs flex items-center justify-center shrink-0 overflow-hidden p-1.5">
             <OfferLogo
               offer={offer}
               priority={priority}
-              imgClassName="w-7 h-7 sm:w-8 sm:h-8 object-contain"
-              fallbackClassName="w-6 h-6 sm:w-7 sm:h-7"
+              imgClassName="w-7 h-7 object-contain"
+              fallbackClassName="w-6 h-6"
             />
           </div>
 
-          <div className="text-right min-w-0 flex-1">
-            <span className="block font-[var(--font-wallop)] font-semibold text-[13.5px] sm:text-[14px] leading-[1.15] text-midnight-mouth truncate">
+          <div className="text-right min-w-0 flex-1 flex flex-col justify-center gap-1.5 sm:gap-2">
+            <span className="block font-[var(--font-wallop)] font-semibold text-[13.5px] sm:text-[14px] leading-[1.2] text-midnight-mouth truncate">
               {offer.identity.provider}
             </span>
-            <span className="block font-[var(--font-inter)] text-[11.5px] sm:text-[12.5px] leading-[1.2] text-ink/85 mt-0.5 truncate">
+            <span className="block font-[var(--font-inter)] text-[11.5px] sm:text-[12.5px] leading-[1.25] text-ink/85 truncate">
               {offer.classification.subcategory}
             </span>
           </div>
@@ -134,37 +128,18 @@ export const ResourceCard = memo(function ResourceCard({
 
         {/* Verification Metadata Line + Title Below Header */}
         <div className="flex flex-col gap-1.5 sm:gap-2 min-w-0">
-          <div className="flex flex-wrap items-center justify-between gap-1.5">
-            <div className="flex items-center gap-1.5 font-[var(--font-inter)] text-[11.5px] sm:text-[12px] leading-[1.2] text-ink/75">
+          <div className="flex flex-nowrap items-center justify-between gap-2 min-w-0">
+            <div className="flex items-center gap-1.5 font-[var(--font-inter)] text-[11.5px] sm:text-[12px] leading-[1.3] text-ink/75 min-w-0 truncate">
               {statusIcon}
-              <span>{formatVerificationStatus(offer.verification.status)}</span>
-              <span aria-hidden="true">·</span>
-              <span>{formatDate(offer.verification.last_verified_at)}</span>
+              <span className="shrink-0">{formatVerificationStatus(offer.verification.status)}</span>
+              <span aria-hidden="true" className="shrink-0">·</span>
+              <span className="truncate">{formatDate(offer.verification.last_verified_at)}</span>
             </div>
-
-            {aiModality && (
-              <div className="flex items-center gap-1 shrink-0">
-                <span
-                  data-testid={`ai-modality-badge-${offer.identity.slug}`}
-                  className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[10.5px] leading-none rounded-full px-2 py-1 border border-midnight-mouth/12"
-                >
-                  {aiModality.shortLabel}
-                </span>
-                {aiContext && (
-                  <span
-                    data-testid={`ai-context-badge-${offer.identity.slug}`}
-                    className="bg-sunshine-yellow text-[#101014] font-[var(--font-wallop)] font-bold text-[10.5px] leading-none rounded-full px-2 py-1 tabular-nums"
-                  >
-                    {aiContext.label}
-                  </span>
-                )}
-              </div>
-            )}
 
             {requiresStudentId && (
               <span
                 data-testid={`student-id-badge-${offer.identity.slug}`}
-                className="bg-sunshine-yellow text-[#101014] font-[var(--font-wallop)] font-semibold text-[11px] leading-none rounded-full px-2.5 py-1 inline-flex items-center gap-1 shrink-0"
+                className="bg-sunshine-yellow text-[#101014] font-[var(--font-wallop)] font-semibold text-[10.5px] sm:text-[11px] leading-none rounded-full px-2 sm:px-2.5 py-1 inline-flex items-center gap-1 shrink-0 whitespace-nowrap"
               >
                 <GraduationCap className="w-3 h-3 shrink-0" aria-hidden="true" />
                 <span>Student ID / .edu Req.</span>
@@ -174,7 +149,7 @@ export const ResourceCard = memo(function ResourceCard({
             {isNoStudentIdStudentBenefit && (
               <span
                 data-testid={`no-student-id-badge-${offer.identity.slug}`}
-                className="bg-grass-green text-[#101014] font-[var(--font-wallop)] font-semibold text-[11px] leading-none rounded-full px-2.5 py-1 inline-flex items-center gap-1 shrink-0"
+                className="bg-grass-green text-[#101014] font-[var(--font-wallop)] font-semibold text-[10.5px] sm:text-[11px] leading-none rounded-full px-2 sm:px-2.5 py-1 inline-flex items-center gap-1 shrink-0 whitespace-nowrap"
               >
                 <CheckCircle2 className="w-3 h-3 shrink-0" aria-hidden="true" />
                 <span>No Student ID Req.</span>
@@ -182,7 +157,10 @@ export const ResourceCard = memo(function ResourceCard({
             )}
           </div>
 
-          <h3 className="font-[var(--font-wallop)] font-bold text-[16px] sm:text-[18px] leading-[1.22] tracking-[-0.02em] text-midnight-mouth min-w-0">
+          <h3
+            title={offer.identity.name}
+            className="font-[var(--font-wallop)] font-bold text-[15.5px] sm:text-[17px] leading-[1.3] tracking-[-0.015em] text-midnight-mouth min-w-0 line-clamp-2"
+          >
             <a
               href={`/offer/${offer.identity.slug}`}
               onClick={handleOpen}
@@ -194,53 +172,53 @@ export const ResourceCard = memo(function ResourceCard({
         </div>
       </div>
 
-      {/* Bottom Free-Tier Truth Summary + Inspect + Save & Share Actions */}
-      <div className="flex flex-col gap-2.5 sm:gap-3 pt-2.5 sm:pt-3 border-t border-midnight-mouth/10 min-w-0">
-        <dl className="flex flex-col gap-1 font-[var(--font-inter)] text-[12px] sm:text-[12.5px] leading-[1.35] text-ink">
-          <div className="flex items-baseline justify-between gap-2">
+      {/* Middle Free-Tier Truth Summary */}
+      <div className="pt-2.5 border-t border-midnight-mouth/10 min-w-0 sm:mb-1">
+        <dl className="flex flex-col gap-1.5 font-[var(--font-inter)] text-[12px] sm:text-[12.5px] leading-[1.38] text-ink">
+          <div className="flex items-baseline justify-between gap-2.5 min-w-0">
             <dt className="text-ink/70 shrink-0">Access model</dt>
-            <dd className="font-medium text-right text-midnight-mouth min-w-0 break-words">
+            <dd className="font-medium text-right text-midnight-mouth min-w-0 truncate">
               {formatPricingModel(offer.classification.pricing_model)}
             </dd>
           </div>
-          <div className="flex items-baseline justify-between gap-2">
-            <dt className="text-ink/70 shrink-0">Payment card</dt>
-            <dd className="font-medium text-right text-midnight-mouth min-w-0 break-words">
-              {formatCardRequirement(offer.access.requirements.card_required)}
-            </dd>
-          </div>
-          {aiContext && (
-            <div className="flex items-baseline justify-between gap-2">
-              <dt className="text-ink/70 shrink-0">Context window</dt>
-              <dd className="font-semibold text-right text-midnight-mouth tabular-nums min-w-0 break-words">
-                {aiContext.label.replace(' ctx', ' tokens')}
+          {offer.access.requirements.card_required === 'required' && (
+            <div className="flex items-baseline justify-between gap-2.5 min-w-0">
+              <dt className="text-ink/70 shrink-0">Payment card</dt>
+              <dd className="font-medium text-right text-midnight-mouth min-w-0 truncate">
+                {formatCardRequirement(offer.access.requirements.card_required)}
               </dd>
             </div>
           )}
-          {requiresStudentId && (
-            <div className="flex items-baseline justify-between gap-2">
+          <div className="flex items-baseline justify-between gap-2.5 min-w-0">
+            <dt className="text-ink/70 shrink-0">{compactLimit.label}</dt>
+            <dd
+              title={compactLimit.value}
+              className="font-normal text-right text-midnight-mouth tabular-nums min-w-0 truncate"
+            >
+              {compactLimit.value}
+            </dd>
+          </div>
+          {requiresStudentId && offer.access.requirements.card_required !== 'required' && (
+            <div className="flex items-baseline justify-between gap-2.5 min-w-0">
               <dt className="text-ink/70 shrink-0">Verification</dt>
-              <dd className="font-semibold text-right text-midnight-mouth min-w-0 break-words">
+              <dd className="font-semibold text-right text-midnight-mouth min-w-0 truncate">
                 Student ID / .edu email needed
               </dd>
             </div>
           )}
-          {isNoStudentIdStudentBenefit && (
-            <div className="flex items-baseline justify-between gap-2">
+          {isNoStudentIdStudentBenefit && offer.access.requirements.card_required !== 'required' && (
+            <div className="flex items-baseline justify-between gap-2.5 min-w-0">
               <dt className="text-ink/70 shrink-0">Verification</dt>
-              <dd className="font-semibold text-right text-midnight-mouth min-w-0 break-words">
+              <dd className="font-semibold text-right text-midnight-mouth min-w-0 truncate">
                 No Student ID / .edu needed
               </dd>
             </div>
           )}
-          <div className="pt-0.5 text-midnight-mouth font-semibold tabular-nums break-words line-clamp-1">
-            {aiRateLimit
-              ? `${aiRateLimit.name}: ${aiRateLimit.value}${aiRateLimit.period ? ` ${aiRateLimit.period}` : ''}`
-              : getPrimaryLimitSummary(offer)}
-          </div>
         </dl>
+      </div>
 
-        <div className="flex items-center justify-between gap-1.5 sm:gap-2 pt-0.5">
+      {/* Bottom Inspect + Save & Share Actions */}
+      <div className="flex items-center justify-between gap-1.5 sm:gap-2 min-w-0">
           <a
             href={`/offer/${offer.identity.slug}`}
             onClick={handleOpen}
@@ -301,7 +279,6 @@ export const ResourceCard = memo(function ResourceCard({
               )}
             </button>
           </div>
-        </div>
       </div>
     </article>
   );

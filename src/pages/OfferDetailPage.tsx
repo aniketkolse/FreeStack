@@ -251,7 +251,7 @@ export function OfferDetailPage({
                   </span>
                 )}
               </div>
-              <p className="font-[var(--font-inter)] text-[12.5px] sm:text-[13.5px] text-ink/85">
+              <p className="font-[var(--font-inter)] text-[12.5px] sm:text-[13.5px] text-ink/85 mt-1">
                 {category?.name ?? offer.classification.category} · {offer.classification.subcategory} ·{' '}
                 {formatResourceType(offer.classification.resource_type)}
               </p>

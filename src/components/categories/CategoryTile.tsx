@@ -47,9 +47,9 @@ export function CategoryTile({
         <HandDrawnWaveDoodle className="hidden sm:block w-16 sm:w-20 -mt-2 mb-0.5 pointer-events-none" />
       )}
 
-      <div className="flex flex-col gap-1 min-w-0">
+      <div className="flex flex-col gap-2 min-w-0">
         <div className="flex items-start justify-between gap-2.5">
-          <h3 className="font-[var(--font-wallop)] font-bold text-[17.5px] sm:text-[20px] leading-[1.18] tracking-[-0.025em] text-midnight-mouth">
+          <h3 className="font-[var(--font-wallop)] font-bold text-[17.5px] sm:text-[20px] leading-[1.28] tracking-[-0.02em] text-midnight-mouth">
             {detailed ? category.name : category.shortName}
           </h3>
           <span className="w-8 h-8 rounded-full bg-midnight-mouth text-daylight inline-flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
@@ -58,7 +58,7 @@ export function CategoryTile({
         </div>
 
         {detailed && (
-          <p className="font-[var(--font-inter)] text-[13px] sm:text-[14px] leading-[1.45] text-ink/85 mt-0.5 line-clamp-1 sm:line-clamp-2">
+          <p className="font-[var(--font-inter)] text-[13px] sm:text-[14px] leading-[1.55] text-ink/85 line-clamp-1 sm:line-clamp-2">
             {category.description}
           </p>
         )}
