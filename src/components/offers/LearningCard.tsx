@@ -80,9 +80,9 @@ export const LearningCard = memo(function LearningCard({
       onMouseLeave={handlePrefetchCancel}
       onFocus={handlePrefetchStart}
       onBlur={handlePrefetchCancel}
-      className={`${cardBgClass} rounded-[18px] sm:rounded-[24px] p-3.5 sm:p-5 flex flex-col justify-between gap-3 sm:gap-4 spring-card min-w-0`}
+      className={`${cardBgClass} rounded-[18px] sm:rounded-[24px] p-3.5 sm:p-5 flex flex-col justify-between gap-2.5 sm:gap-3 spring-card min-w-0`}
     >
-      <div className="flex flex-col gap-2.5 sm:gap-3 min-w-0">
+      <div className="flex flex-col gap-2.5 min-w-0">
         {/* Category-Colored Header Rectangle — White-backed Logo on Left + Provider & Format on Right */}
         <div
           data-testid={`learning-card-header-${offer.identity.slug}`}
@@ -111,8 +111,8 @@ export const LearningCard = memo(function LearningCard({
           </div>
         </div>
 
-        {/* Verification + Title + Description Below Header */}
-        <div className="flex flex-col gap-2 sm:gap-3 min-w-0">
+        {/* Verification + Title Below Header */}
+        <div className="flex flex-col gap-1.5 sm:gap-2 min-w-0">
           <div className="flex items-center gap-1.5 font-[var(--font-inter)] text-[11.5px] sm:text-[12px] leading-[1.2] text-ink/75">
             {offer.verification.status === 'verified' ? (
               <CheckCircle2 className="w-3.5 h-3.5 text-midnight-mouth shrink-0" aria-hidden="true" />
@@ -124,20 +124,15 @@ export const LearningCard = memo(function LearningCard({
             <span>{formatDate(offer.verification.last_verified_at)}</span>
           </div>
 
-          <div className="min-w-0">
-            <h3 className="font-[var(--font-wallop)] font-bold text-[16px] sm:text-[18px] leading-[1.2] tracking-[-0.02em] text-midnight-mouth mb-1 sm:mb-1.5">
-              <a
-                href={`/offer/${offer.identity.slug}`}
-                onClick={handleOpen}
-                className="hover:underline underline-offset-4"
-              >
-                {offer.identity.name}
-              </a>
-            </h3>
-            <p className="font-[var(--font-inter)] text-[13px] sm:text-[13.5px] leading-[1.45] text-ink/85 line-clamp-2 sm:line-clamp-3">
-              {offer.description}
-            </p>
-          </div>
+          <h3 className="font-[var(--font-wallop)] font-bold text-[16px] sm:text-[18px] leading-[1.22] tracking-[-0.02em] text-midnight-mouth min-w-0">
+            <a
+              href={`/offer/${offer.identity.slug}`}
+              onClick={handleOpen}
+              className="hover:underline underline-offset-4"
+            >
+              {offer.identity.name}
+            </a>
+          </h3>
         </div>
       </div>
 
