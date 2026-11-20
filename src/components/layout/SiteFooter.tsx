@@ -1,5 +1,4 @@
 import React from 'react';
-import { ShieldCheck } from 'lucide-react';
 import { FreeStackLogo } from '../illustrations/TocaStickers';
 
 interface SiteFooterProps {
@@ -30,12 +29,6 @@ export function SiteFooter({ onNavigate }: SiteFooterProps) {
               <p className="font-[var(--font-inter)] text-[13.5px] sm:text-[14.5px] leading-[1.5] text-ink/85 max-w-sm">
                 One place for everything free that helps you build, learn and create — with real limits, card rules, and source evidence.
               </p>
-              <div className="inline-flex items-center gap-1.5 bg-paper rounded-full px-3 py-1.5 w-fit border border-midnight-mouth/8">
-                <ShieldCheck className="w-3.5 h-3.5 text-midnight-mouth shrink-0" aria-hidden="true" />
-                <span className="font-[var(--font-inter)] font-medium text-[11.5px] text-midnight-mouth">
-                  Privacy-first · No accounts · Local-first storage
-                </span>
-              </div>
             </div>
 
             {/* Right: 4 columns including Legal & Privacy */}

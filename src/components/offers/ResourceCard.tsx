@@ -99,7 +99,7 @@ export const ResourceCard = memo(function ResourceCard({
       onMouseLeave={handlePrefetchCancel}
       onFocus={handlePrefetchStart}
       onBlur={handlePrefetchCancel}
-      className={`${cardBgClass} rounded-[18px] sm:rounded-[24px] p-3.5 sm:p-4 h-[286px] sm:h-[304px] flex flex-col justify-between gap-2 sm:gap-2.5 spring-card min-w-0`}
+      className={`${cardBgClass} rounded-[18px] sm:rounded-[24px] p-3.5 sm:p-4 min-h-[286px] sm:min-h-[304px] h-full flex flex-col justify-between gap-2 sm:gap-2.5 spring-card min-w-0 overflow-hidden`}
     >
       <div className="flex flex-col gap-2.5 min-w-0">
         {/* Category-Colored Header Rectangle — White-backed Logo on Left + Tool Provider & Subcategory on Right */}
@@ -218,14 +218,14 @@ export const ResourceCard = memo(function ResourceCard({
       </div>
 
       {/* Bottom Inspect + Save & Share Actions */}
-      <div className="flex items-center justify-between gap-1.5 sm:gap-2 min-w-0">
+      <div className="flex items-center justify-between gap-1.5 min-w-0 w-full">
           <a
             href={`/offer/${offer.identity.slug}`}
             onClick={handleOpen}
-            className="flex-1 inline-flex items-center justify-center gap-1.5 bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[13.5px] leading-none rounded-full px-3 sm:px-3.5 py-1.5 sm:py-2 min-h-[34px] sm:min-h-[36px] whitespace-nowrap spring-pill"
+            className="flex-1 min-w-0 inline-flex items-center justify-center gap-1 bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[12.5px] leading-none rounded-full px-2.5 sm:px-3 py-1.5 sm:py-2 min-h-[34px] sm:min-h-[36px] whitespace-nowrap spring-pill"
           >
-            <span className="sm:hidden">Inspect</span>
-            <span className="hidden sm:inline">Inspect offer</span>
+            <span>Inspect</span>
+            <span className="hidden sm:inline lg:hidden 2xl:inline">offer</span>
             <ArrowUpRight className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
           </a>
 
@@ -241,7 +241,7 @@ export const ResourceCard = memo(function ResourceCard({
                 e.stopPropagation();
                 toggleSave(offer.identity.slug);
               }}
-              className={`inline-flex items-center justify-center gap-1 font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[12px] rounded-full px-2.5 sm:px-3 py-1.5 min-h-[34px] sm:min-h-[36px] filter-pill cursor-pointer border ${
+              className={`inline-flex items-center justify-center gap-1 font-[var(--font-wallop)] font-semibold text-[11.5px] leading-none rounded-full px-2.5 py-1.5 min-h-[34px] sm:min-h-[36px] whitespace-nowrap filter-pill cursor-pointer border ${
                 saved
                   ? 'bg-sunshine-yellow text-[#101014] border-midnight-mouth/15'
                   : 'bg-paper text-midnight-mouth border-midnight-mouth/10 hover:bg-sunshine-yellow hover:text-[#101014]'
@@ -260,7 +260,7 @@ export const ResourceCard = memo(function ResourceCard({
               aria-label={`Share ${offer.identity.name}`}
               title="Share tool link"
               onClick={handleShare}
-              className={`inline-flex items-center justify-center gap-1 font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[12px] rounded-full px-2.5 py-1.5 min-h-[34px] sm:min-h-[36px] filter-pill cursor-pointer border ${
+              className={`inline-flex items-center justify-center gap-1 font-[var(--font-wallop)] font-semibold text-[11.5px] leading-none rounded-full px-2.5 py-1.5 min-h-[34px] sm:min-h-[36px] whitespace-nowrap filter-pill cursor-pointer border ${
                 sharedFeedback
                   ? 'bg-grass-green text-[#101014] border-midnight-mouth/15'
                   : 'bg-paper text-midnight-mouth border-midnight-mouth/10 hover:bg-sky-blue hover:text-[#101014]'

@@ -137,7 +137,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 mb-4 sm:mb-7">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-2.5 sm:gap-4 mb-4 sm:mb-7">
             {learningHighlights.map((item, idx) => (
               <LearningCard
                 key={item.identity.slug}
@@ -173,7 +173,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-2.5 sm:gap-4">
           {recentlyVerified.map((offer) => (
             <ResourceCard key={offer.identity.slug} offer={offer} onNavigate={onNavigate} />
           ))}
