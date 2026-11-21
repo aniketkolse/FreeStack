@@ -3,9 +3,11 @@ import assert from 'node:assert/strict';
 import {
   canGoBackInStack,
   createInitialHistoryState,
+  findPreviousDistinctIndex,
   getBackNavigationMeta,
   getCurrentHistoryEntry,
   getPreviousUrl,
+  popHistoryEntry,
   pushHistoryEntry,
   replaceHistoryEntry,
   sanitizeInternalPath,
@@ -75,6 +77,25 @@ test('navigating after going back truncates forward history without loops', () =
   assert.equal(state.entries.length, 2);
   assert.equal(getPreviousUrl(state), '/explore?q=redis');
   assert.equal(getCurrentHistoryEntry(state).url, '/offer/redis-cloud-free-plan');
+});
+
+test('popHistoryEntry skips duplicate consecutive URLs so Back never freezes on same page', () => {
+  let state = createInitialHistoryState('/');
+  state = pushHistoryEntry(state, '/category/ai-ml', 180);
+  state = pushHistoryEntry(state, '/category/ai-ml', 350);
+
+  assert.equal(findPreviousDistinctIndex(state), 0);
+  assert.equal(getPreviousUrl(state), '/');
+
+  const popped = popHistoryEntry(state);
+  assert.equal(popped.delta, -2);
+  assert.equal(popped.targetEntry?.url, '/');
+  assert.equal(popped.targetEntry?.scrollY, 180);
+  assert.equal(canGoBackInStack(popped.nextState), false);
+
+  const emptyPop = popHistoryEntry(popped.nextState);
+  assert.equal(emptyPop.targetEntry, null);
+  assert.equal(emptyPop.delta, 0);
 });
 
 test('getBackNavigationMeta resolves accurate contextual labels and preserves query strings', () => {

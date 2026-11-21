@@ -64,4 +64,4 @@ npm run verify
 2. Make your changes and run `npm run verify`.
 3. Open a Pull Request completing all sections of `.github/pull_request_template.md`, including the official HTTPS pricing/docs URLs used to verify your change.
 
-By submitting a contribution to FreeStack, you agree that your contribution is licensed under the project's [FreeStack Source-Available Non-Commercial License v1.0](./LICENSE) and that you will abide by our [Code of Conduct](./CODE_OF_CONDUCT.md).
+By submitting a contribution to FreeStack, you agree that your contribution is licensed under the project's [GNU Affero General Public License v3.0 (AGPL-3.0)](./LICENSE) and that you will abide by our [Code of Conduct](./CODE_OF_CONDUCT.md).

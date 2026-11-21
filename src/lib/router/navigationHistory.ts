@@ -150,13 +150,48 @@ export function syncPopStateEntry(
   };
 }
 
+export function findPreviousDistinctIndex(state: NavigationStackState): number {
+  const currentUrl = state.entries[state.cursor]?.url;
+  for (let i = state.cursor - 1; i >= 0; i--) {
+    if (state.entries[i] && state.entries[i].url !== currentUrl) {
+      return i;
+    }
+  }
+  return -1;
+}
+
 export function canGoBackInStack(state: NavigationStackState): boolean {
-  return state.cursor > 0;
+  return findPreviousDistinctIndex(state) >= 0;
 }
 
 export function getPreviousUrl(state: NavigationStackState): string | null {
-  if (state.cursor <= 0) return null;
-  return state.entries[state.cursor - 1]?.url ?? null;
+  const prevIdx = findPreviousDistinctIndex(state);
+  if (prevIdx < 0) return null;
+  return state.entries[prevIdx]?.url ?? null;
+}
+
+export function popHistoryEntry(state: NavigationStackState): {
+  nextState: NavigationStackState;
+  targetEntry: HistoryEntry | null;
+  delta: number;
+} {
+  const prevIdx = findPreviousDistinctIndex(state);
+  if (prevIdx < 0) {
+    return {
+      nextState: state,
+      targetEntry: null,
+      delta: 0,
+    };
+  }
+  const targetEntry = state.entries[prevIdx];
+  return {
+    nextState: {
+      ...state,
+      cursor: prevIdx,
+    },
+    targetEntry,
+    delta: prevIdx - state.cursor,
+  };
 }
 
 export function getCurrentHistoryEntry(state: NavigationStackState): HistoryEntry {

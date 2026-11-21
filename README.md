@@ -20,7 +20,7 @@
 [![React 19](https://img.shields.io/badge/React-19-FFE359?style=for-the-badge&logo=react&logoColor=101014&labelColor=101014)](./package.json)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-FF8CBC?style=for-the-badge&logo=typescript&logoColor=white&labelColor=101014)](./tsconfig.json)
 [![Tailwind v4](https://img.shields.io/badge/Tailwind-v4-FFA94D?style=for-the-badge&logo=tailwindcss&logoColor=white&labelColor=101014)](./src/index.css)
-[![Custom License](https://img.shields.io/badge/License-Source--Available_NC-59ACFF?style=for-the-badge&labelColor=101014)](./LICENSE)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL--3.0-59ACFF?style=for-the-badge&labelColor=101014)](./LICENSE)
 
 [**Visit freestack.ai.studio**](https://freestack.ai.studio) · [**What Makes It Different**](#-what-makes-freestack-different) · [**Zero-Dollar Blueprints**](#-ship-for-0-mix--match-blueprints) · [**The 11 Stacks**](#-explore-all-11-stacks) · [**Run Locally**](#-run-locally-in-60-seconds) · [**API & Integrity**](#-api-endpoints--catalog-rules) · [**License**](#-license--attributions)
 
@@ -188,10 +188,9 @@ Before opening a Pull Request:
 
 ## 📄 License & Attributions
 
-- **License**: FreeStack is protected under the **FreeStack Source-Available Non-Commercial License v1.0** (Copyright © 2026 **Aniket Kolse**) — see [**LICENSE**](./LICENSE) and [**NOTICE**](./NOTICE).
-  - **You may** freely use the live website ([freestack.ai.studio](https://freestack.ai.studio)) to discover tools for your personal or commercial projects, and clone/run this repository locally for personal, educational, or contribution purposes.
-  - **You must** give clear credit to **Aniket Kolse** with a link to **[freestack.ai.studio](https://freestack.ai.studio)** whenever you reference or cite FreeStack.
-  - **You may not** deploy a clone, mirror, rebrand, or replica of FreeStack, or use this codebase, design, or curated catalog for commercial purposes without prior written permission (`aniketkolse07@gmail.com`).
+- **License**: FreeStack is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)** (Copyright © 2026 **Aniket Kolse**) — see [**LICENSE**](./LICENSE) and [**NOTICE**](./NOTICE).
+  - Anyone can freely browse [freestack.ai.studio](https://freestack.ai.studio), run FreeStack locally, or build upon the codebase under AGPL-3.0 terms.
+  - Any modified version or network-hosted instance (including forks, mirrors, or SaaS deployments) must preserve attribution and copyright notices, remain licensed under **AGPL-3.0**, and make its complete corresponding source code publicly available to all users interacting with it over a network.
 - **Third-Party Catalog & Font Attributions**: See [**THIRD_PARTY_NOTICES.md**](./THIRD_PARTY_NOTICES.md) for MIT/ISC/BSD/OFL upstream dataset and font attributions.
 - **Non-Affiliation Disclaimer**: All third-party product names and logos belong to their respective owners and are used strictly for nominative identification. Free tiers, quotas, and card requirements can change at any time — always verify current pricing on the provider's official documentation before deploying workloads.
 

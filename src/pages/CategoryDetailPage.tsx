@@ -837,7 +837,7 @@ export function CategoryDetailPage({
           className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13.5px] rounded-full px-4 py-2 min-h-[38px] inline-flex items-center gap-1.5 shrink-0 spring-pill cursor-pointer"
         >
           <SlidersHorizontal className="w-3.5 h-3.5" aria-hidden="true" />
-          <span>Filters{activeFilterCount > 0 ? ` (${activeFilterCount})` : ''}</span>
+          <span>Filters</span>
         </button>
 
         {hasActiveFilters && (
@@ -874,7 +874,7 @@ export function CategoryDetailPage({
                 className="inline-flex items-center gap-1 font-[var(--font-wallop)] font-semibold text-[12px] text-midnight-mouth bg-paper rounded-full px-2.5 py-1 hover:bg-sunshine-yellow transition-colors cursor-pointer"
               >
                 <RotateCcw className="w-3 h-3" aria-hidden="true" />
-                <span>Reset ({activeFilterCount})</span>
+                <span>Reset</span>
               </button>
             )}
           </div>
@@ -1032,7 +1032,7 @@ export function CategoryDetailPage({
                 onClick={() => setDrawerOpen(false)}
                 className="flex-[2] bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[14px] rounded-full px-4 py-2.5 min-h-[42px] cursor-pointer"
               >
-                Show {displayCount} {displayCount === 1 ? 'result' : 'results'}
+                Show results
               </button>
             </div>
           </div>

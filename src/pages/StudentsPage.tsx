@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { GraduationCap, Home, CheckCircle2 } from 'lucide-react';
-import { getCategoryCounts } from '../lib/data/resources';
 import {
   useDebouncedValue,
   usePaginatedOffersQuery,
@@ -35,7 +34,6 @@ const STUDENT_TRACKS = [
 ];
 
 export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
-  const counts = getCategoryCounts();
   const [selectedTrack, setSelectedTrack] = useState<string>(
     searchParams?.get('track') || 'all'
   );
@@ -106,9 +104,6 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
   } = usePaginatedOffersQuery(apiFilterQuery, 24);
 
   const studentsSummary = facets?.studentsSummary;
-  const totalStudentCount = studentsSummary?.totalStudentOffers ?? counts['student-benefits'] ?? 0;
-  const studentIdRequiredCount = studentsSummary?.studentIdRequiredCount ?? 0;
-  const noStudentIdCount = studentsSummary?.noStudentIdCount ?? 0;
   const generalStudentEligible = studentsSummary?.generalStudentEligible ?? [];
 
   return (
@@ -179,7 +174,7 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
                 : 'bg-daylight text-midnight-mouth hover:bg-grass-green/40'
             }`}
           >
-            <span>All Verification ({totalStudentCount})</span>
+            <span>All Verification</span>
           </button>
           <button
             type="button"
@@ -194,7 +189,7 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
             }`}
           >
             <GraduationCap className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-            <span>Student ID / .edu Req. ({studentIdRequiredCount})</span>
+            <span>Student ID / .edu Req.</span>
           </button>
           <button
             type="button"
@@ -209,7 +204,7 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
             }`}
           >
             <CheckCircle2 className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-            <span>No Student ID Req. ({noStudentIdCount})</span>
+            <span>No Student ID Req.</span>
           </button>
         </div>
 

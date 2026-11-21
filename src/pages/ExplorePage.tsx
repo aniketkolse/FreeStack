@@ -14,10 +14,7 @@ import {
 } from 'lucide-react';
 import {
   CATEGORIES,
-  PRICING_COUNTS,
-  TOTAL_OFFERS_COUNT,
   getCategoryBySlug,
-  getCategoryCounts,
 } from '../lib/data/resources';
 import {
   useDebouncedValue,
@@ -109,7 +106,6 @@ export function ExplorePage({
   mode = 'explore',
 }: ExplorePageProps) {
   const filters = useMemo(() => searchParamsToFilters(searchParams), [searchParams]);
-  const counts = useMemo(() => getCategoryCounts(), []);
   const [searchInput, setSearchInput] = useState(filters.query);
   const debouncedQuery = useDebouncedValue(searchInput, 150);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -119,26 +115,22 @@ export function ExplorePage({
     setSearchInput((prev) => (prev.trim() === filters.query.trim() ? prev : filters.query));
   }, [filters.query]);
 
-  const pricingCounts = PRICING_COUNTS;
-
   const categoryDropdownOptions = useMemo<FilterDropdownOption[]>(() => {
     return [
       {
         value: 'all',
         label: 'All categories',
-        count: TOTAL_OFFERS_COUNT,
         icon: <Layers className="w-3.5 h-3.5 text-midnight-mouth" aria-hidden="true" />,
         iconBgClass: 'bg-paper border border-midnight-mouth/12',
       },
       ...CATEGORIES.map((cat) => ({
         value: cat.slug,
         label: cat.name,
-        count: counts[cat.slug] ?? 0,
         icon: <CategoryStickerIcon slug={cat.slug} className="w-4.5 h-4.5" />,
         iconBgClass: `${getCategoryBgClass(cat.color)} border border-midnight-mouth/10`,
       })),
     ];
-  }, [counts]);
+  }, []);
 
   const resourceTypeDropdownOptions = useMemo<FilterDropdownOption[]>(() => {
     return [
@@ -352,7 +344,6 @@ export function ExplorePage({
             value={current.category}
             options={categoryDropdownOptions}
             menuTitle="Browse by category"
-            menuSubtitle={`${CATEGORIES.length} stacks`}
             minMenuWidth={286}
             maxMenuHeight={380}
             onChange={(val) =>
@@ -462,7 +453,7 @@ export function ExplorePage({
           </label>
           <div className="grid grid-cols-2 gap-1 bg-daylight p-1 rounded-[12px] border border-midnight-mouth/8">
             {[
-              { val: 'all', label: 'Any Rule' },
+              { val: 'all', label: 'All Types' },
               { val: 'not_required', label: 'No Card' },
               { val: 'required', label: 'Card Req.' },
               { val: 'unknown', label: 'Unknown' },
@@ -500,7 +491,7 @@ export function ExplorePage({
             }
             className="sr-only"
           >
-            <option value="all">Any card requirement</option>
+            <option value="all">All Types</option>
             <option value="not_required">No credit card required</option>
             <option value="required">Credit card required</option>
             <option value="unknown">Unknown (explicitly unconfirmed)</option>
@@ -587,14 +578,13 @@ export function ExplorePage({
                 onClick={() => setCurrent({ ...current, pricingModels: [] })}
                 className="font-[var(--font-wallop)] font-semibold text-[11px] text-midnight-mouth/70 hover:text-midnight-mouth underline cursor-pointer"
               >
-                Clear ({current.pricingModels.length})
+                Clear
               </button>
             )}
           </div>
           <div className="grid grid-cols-1 gap-1">
             {PRICING_OPTIONS.map((type) => {
               const checked = current.pricingModels.includes(type);
-              const count = pricingCounts[type] ?? 0;
               return (
                 <button
                   key={type}
@@ -612,9 +602,6 @@ export function ExplorePage({
                     {formatPricingModel(type)}
                   </span>
                   <span className="inline-flex items-center gap-1.5 shrink-0">
-                    <span className="font-[var(--font-mono)] text-[10.5px] opacity-65 tabular-nums">
-                      {count}
-                    </span>
                     <span
                       className={`w-4 h-4 rounded-full inline-flex items-center justify-center shrink-0 transition-transform ${
                         checked
@@ -772,7 +759,6 @@ export function ExplorePage({
           }`}
         >
           <span>All Stacks</span>
-          <span className="text-[11px] opacity-75 tabular-nums">({TOTAL_OFFERS_COUNT})</span>
         </button>
 
         {CATEGORIES.map((cat) => {
@@ -798,7 +784,6 @@ export function ExplorePage({
             >
               <CategoryStickerIcon slug={cat.slug} className="w-4 h-4 shrink-0" />
               <span>{cat.name}</span>
-              <span className="text-[11px] opacity-70 tabular-nums">({counts[cat.slug] ?? 0})</span>
             </button>
           );
         })}
@@ -816,7 +801,7 @@ export function ExplorePage({
           className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13.5px] rounded-full px-4 py-2 min-h-[38px] inline-flex items-center gap-1.5 shrink-0 spring-pill cursor-pointer"
         >
           <SlidersHorizontal className="w-3.5 h-3.5" aria-hidden="true" />
-          <span>Filters{activeCount > 0 ? ` (${activeCount})` : ''}</span>
+          <span>Filters</span>
         </button>
 
         {activeCount > 0 && (
@@ -852,7 +837,7 @@ export function ExplorePage({
                 className="inline-flex items-center gap-1 font-[var(--font-wallop)] font-semibold text-[12px] text-midnight-mouth bg-paper rounded-full px-2.5 py-1 hover:bg-sunshine-yellow transition-colors cursor-pointer"
               >
                 <RotateCcw className="w-3 h-3" aria-hidden="true" />
-                <span>Reset ({activeCount})</span>
+                <span>Reset</span>
               </button>
             )}
           </div>

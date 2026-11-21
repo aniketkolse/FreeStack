@@ -216,18 +216,15 @@ export function CategoryFilterSidebar({
                 minMenuWidth={258}
                 maxMenuHeight={320}
                 menuTitle={isMcpCategory ? 'MCP category' : 'API category'}
-                menuSubtitle={`${primaryTypeGroups.length} groups`}
                 onChange={(val) => onSelectTypeGroup(val)}
                 options={[
                   {
                     value: 'all',
                     label: `All ${category.shortName}`,
-                    count: totalInCategoryCount,
                   },
                   ...primaryTypeGroups.map((group) => ({
                     value: group.id,
                     label: group.label,
-                    count: group.count,
                   })),
                 ]}
               />
@@ -242,7 +239,6 @@ export function CategoryFilterSidebar({
               minMenuWidth={258}
               maxMenuHeight={320}
               menuTitle={isMcpCategory ? 'Jump to use case' : 'Jump to API domain'}
-              menuSubtitle={`${activeSubtypes.length} options`}
               onChange={(val) => onSelectSubcategory(val)}
               options={[
                 {
@@ -252,12 +248,10 @@ export function CategoryFilterSidebar({
                     : isMcpCategory
                       ? 'All use cases'
                       : 'All API domains',
-                  count: activePrimaryGroup ? activePrimaryGroup.count : totalInCategoryCount,
                 },
                 ...activeSubtypes.map((sub) => ({
                   value: sub.name,
                   label: sub.name,
-                  count: sub.count,
                 })),
               ]}
             />
@@ -285,8 +279,7 @@ export function CategoryFilterSidebar({
                             : 'bg-daylight text-midnight-mouth/85 hover:bg-sunshine-yellow/55'
                         }`}
                       >
-                        <span className="truncate max-w-[155px]">{sub.name}</span>
-                        <span className="text-[10px] opacity-65 tabular-nums">{sub.count}</span>
+                        <span className="truncate max-w-[165px]">{sub.name}</span>
                       </button>
                     );
                   })}
@@ -305,18 +298,15 @@ export function CategoryFilterSidebar({
               minMenuWidth={258}
               maxMenuHeight={320}
               menuTitle={focusLabel}
-              menuSubtitle={`${primaryTypeGroups.length} areas`}
               onChange={(val) => onSelectSubcategory(val)}
               options={[
                 {
                   value: 'all',
                   label: `All ${category.shortName}`,
-                  count: totalInCategoryCount,
                 },
                 ...primaryTypeGroups.map((group) => ({
                   value: group.label,
                   label: group.label,
-                  count: group.count,
                 })),
               ]}
             />
@@ -352,7 +342,6 @@ export function CategoryFilterSidebar({
                         }`}
                       >
                         <span>{item.label}</span>
-                        <span className="text-[10px] opacity-65 tabular-nums">{item.count}</span>
                       </button>
                     );
                   })}
@@ -474,9 +463,6 @@ export function CategoryFilterSidebar({
               <span>Official servers only</span>
             </span>
             <span className="inline-flex items-center gap-1.5 shrink-0">
-              <span className="font-[var(--font-mono)] text-[10.5px] opacity-65 tabular-nums">
-                {mcpFilterCounts.officialCount}
-              </span>
               <span
                 className={`w-4 h-4 rounded-full inline-flex items-center justify-center shrink-0 transition-transform ${
                   mcpOfficialOnly
@@ -540,7 +526,6 @@ export function CategoryFilterSidebar({
                 ...MCP_LANGUAGE_OPTIONS.map((lang) => ({
                   value: lang.value,
                   label: lang.label,
-                  count: mcpFilterCounts.langs.get(lang.value) ?? 0,
                 })),
               ]}
             />
@@ -633,9 +618,6 @@ export function CategoryFilterSidebar({
                   <span className="font-[var(--font-inter)] font-medium text-[12px] truncate">
                     {opt.label}
                   </span>
-                  <span className="font-[var(--font-mono)] text-[10.5px] opacity-65 tabular-nums shrink-0">
-                    {opt.count}
-                  </span>
                 </button>
               );
             })}
@@ -655,7 +637,7 @@ export function CategoryFilterSidebar({
           </label>
           <div className="grid grid-cols-2 gap-1 bg-daylight p-1 rounded-[12px] border border-midnight-mouth/8">
             {[
-              { val: 'all', label: 'Any Rule' },
+              { val: 'all', label: 'All Types' },
               { val: 'not_required', label: 'No Card' },
               { val: 'required', label: 'Card Req.' },
               { val: 'unknown', label: 'Unknown' },
@@ -683,7 +665,7 @@ export function CategoryFilterSidebar({
             onChange={(e) => onSelectCardFilter(e.target.value as RequirementState | 'all')}
             className="sr-only"
           >
-            <option value="all">Any card policy</option>
+            <option value="all">All Types</option>
             <option value="not_required">No credit card required</option>
             <option value="required">Card required</option>
             <option value="unknown">Card rule unknown</option>
@@ -705,12 +687,12 @@ export function CategoryFilterSidebar({
                 onClick={onClearPricing}
                 className="font-[var(--font-wallop)] font-semibold text-[11px] text-midnight-mouth/70 hover:text-midnight-mouth underline cursor-pointer"
               >
-                Clear ({selectedPricing.length})
+                Clear
               </button>
             )}
           </div>
           <div className="grid grid-cols-1 gap-1">
-            {categoryPricingOptions.map(({ model, count }) => {
+            {categoryPricingOptions.map(({ model }) => {
               const checked = selectedPricing.includes(model);
               return (
                 <button
@@ -729,9 +711,6 @@ export function CategoryFilterSidebar({
                     {formatPricingModel(model)}
                   </span>
                   <span className="inline-flex items-center gap-1.5 shrink-0">
-                    <span className="font-[var(--font-mono)] text-[10.5px] opacity-65 tabular-nums">
-                      {count}
-                    </span>
                     <span
                       className={`w-4 h-4 rounded-full inline-flex items-center justify-center shrink-0 transition-transform ${
                         checked

@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { RotateCcw, Home, SlidersHorizontal, ChevronDown } from 'lucide-react';
-import { getCategoryCounts } from '../lib/data/resources';
 import {
   useDebouncedValue,
   usePaginatedOffersQuery,
@@ -54,7 +53,6 @@ const DIFFICULTY_OPTIONS: LearningDifficulty[] = [
 ];
 
 export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
-  const counts = getCategoryCounts();
   const [searchQuery, setSearchQuery] = useState<string>(searchParams?.get('q') || '');
   const debouncedQuery = useDebouncedValue(searchQuery, 150);
   const [selectedFormat, setSelectedFormat] = useState<LearningFormat | 'all'>(
@@ -164,7 +162,6 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
   } = usePaginatedOffersQuery(apiFilterQuery, 24);
 
   const learningSummary = facets?.learningSummary;
-  const totalLearningCount = learningSummary?.totalLearning ?? counts.learning ?? 0;
   const availableFormats = learningSummary?.availableFormats ?? FORMAT_OPTIONS;
   const availableTopics = learningSummary?.availableTopics ?? [];
   const availableLanguages = learningSummary?.availableLanguages ?? [];
@@ -255,7 +252,7 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
               : 'bg-daylight text-midnight-mouth hover:bg-sunshine-yellow'
           }`}
         >
-          All formats ({totalLearningCount})
+          All formats
         </button>
         {availableFormats.map((fmt) => {
           const active = selectedFormat === fmt;
@@ -365,7 +362,6 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
             size="sm"
             minMenuWidth={250}
             menuTitle="Learning topic"
-            menuSubtitle={`${availableTopics.length} topics`}
             value={selectedTopic}
             onChange={(next) => {
               setSelectedTopic(next);
@@ -395,7 +391,6 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
             size="sm"
             minMenuWidth={220}
             menuTitle="Language"
-            menuSubtitle={`${availableLanguages.length} languages`}
             value={selectedLanguage}
             onChange={(next) => {
               setSelectedLanguage(next);

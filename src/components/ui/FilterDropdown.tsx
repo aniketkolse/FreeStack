@@ -294,15 +294,6 @@ export function FilterDropdown({
             <span className="truncate">
               {triggerPrefix ? `${triggerPrefix} ${selectedOption?.label ?? ''}` : selectedOption?.label}
             </span>
-            {selectedOption?.count !== undefined && (
-              <span
-                className={`text-[10px] tabular-nums shrink-0 ${
-                  active ? 'opacity-80' : 'opacity-65'
-                }`}
-              >
-                ({selectedOption.count})
-              </span>
-            )}
             <ChevronDown
               className={`w-3 h-3 shrink-0 transition-transform duration-200 ${
                 active ? 'text-daylight/80' : 'text-midnight-mouth/70'
@@ -333,11 +324,6 @@ export function FilterDropdown({
             </span>
 
             <span className="inline-flex items-center gap-1.5 shrink-0">
-              {selectedOption?.count !== undefined && (
-                <span className="font-[var(--font-mono)] text-[10.5px] font-medium text-midnight-mouth/65 bg-paper/90 border border-midnight-mouth/8 rounded-full px-1.5 py-0.5 leading-none tabular-nums">
-                  {selectedOption.count}
-                </span>
-              )}
               <ChevronDown
                 className={`w-3.5 h-3.5 text-midnight-mouth/70 transition-transform duration-200 ${
                   open ? 'rotate-180 text-midnight-mouth' : ''
@@ -446,15 +432,6 @@ export function FilterDropdown({
                     </span>
 
                     <span className="inline-flex items-center gap-2 shrink-0">
-                      {opt.count !== undefined && (
-                        <span
-                          className={`font-[var(--font-mono)] text-[11px] tabular-nums ${
-                            isSelected ? 'text-daylight/80' : 'text-midnight-mouth/60'
-                          }`}
-                        >
-                          {opt.count}
-                        </span>
-                      )}
                       {isSelected && (
                         <span className="w-4 h-4 rounded-full bg-grass-green text-[#101014] inline-flex items-center justify-center shrink-0">
                           <Check className="w-2.5 h-2.5 stroke-[3]" aria-hidden="true" />
