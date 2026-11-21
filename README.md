@@ -1,26 +1,28 @@
 <div align="center">
 
-```
- ███████╗██████╗ ███████╗███████╗███████╗████████╗ █████╗  ██████╗██╗  ██╗
- ██╔════╝██╔══██╗██╔════╝██╔════╝██╔════╝╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝
- █████╗  ██████╔╝█████╗  █████╗  ███████╗   ██║   ███████║██║     █████╔╝ 
- ██╔══╝  ██╔══██╗██╔══╝  ██╔══╝  ╚════██║   ██║   ██╔══██║██║     ██╔═██╗ 
- ██║     ██║  ██║███████╗███████╗███████║   ██║   ██║  ██║╚██████╗██║  ██╗
- ╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
-```
+<a href="https://freestack.ai.studio">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./public/assets/freestack-banner-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="./public/assets/freestack-banner-light.svg" />
+    <img alt="FREESTACK" src="./public/assets/freestack-banner-dark.svg" width="680" />
+  </picture>
+</a>
 
 ### **Find more. Spend less. Build anything.**
 
+**🌐 Official Website: [freestack.ai.studio](https://freestack.ai.studio)**
+
 > **One verified workbench for `7,881` genuinely free developer tools, AI inference APIs, MCP servers, cloud tiers, and student perks across `11` stacks — real quotas, explicit card rules, zero trial traps.**
 
-[![Catalog](https://img.shields.io/badge/Verified_Catalog-7%2C881_Offers-59ACFF?style=for-the-badge&labelColor=101014)](./data/offers)
-[![Stacks](https://img.shields.io/badge/Taxonomy-11_Stacks_%C2%B7_209_Subcategories-62D962?style=for-the-badge&labelColor=101014)](./data/categories.json)
+[![Live Website](https://img.shields.io/badge/Visit_Website-freestack.ai.studio-FFE359?style=for-the-badge&labelColor=101014)](https://freestack.ai.studio)
+[![Catalog](https://img.shields.io/badge/Verified_Catalog-7%2C881_Offers-59ACFF?style=for-the-badge&labelColor=101014)](https://freestack.ai.studio/explore)
+[![Stacks](https://img.shields.io/badge/Taxonomy-11_Stacks_%C2%B7_209_Subcategories-62D962?style=for-the-badge&labelColor=101014)](https://freestack.ai.studio/categories)
 [![React 19](https://img.shields.io/badge/React-19-FFE359?style=for-the-badge&logo=react&logoColor=101014&labelColor=101014)](./package.json)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-FF8CBC?style=for-the-badge&logo=typescript&logoColor=white&labelColor=101014)](./tsconfig.json)
 [![Tailwind v4](https://img.shields.io/badge/Tailwind-v4-FFA94D?style=for-the-badge&logo=tailwindcss&logoColor=white&labelColor=101014)](./src/index.css)
-[![Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-59ACFF?style=for-the-badge&labelColor=101014)](./LICENSE)
+[![Custom License](https://img.shields.io/badge/License-Source--Available_NC-59ACFF?style=for-the-badge&labelColor=101014)](./LICENSE)
 
-[**What Makes It Different**](#-what-makes-freestack-different) · [**Zero-Dollar Blueprints**](#-ship-for-0-mix--match-blueprints) · [**The 11 Stacks**](#-explore-all-11-stacks) · [**Run Locally**](#-run-locally-in-60-seconds) · [**API & Integrity**](#-api-endpoints--catalog-rules) · [**License**](#-license)
+[**Visit freestack.ai.studio**](https://freestack.ai.studio) · [**What Makes It Different**](#-what-makes-freestack-different) · [**Zero-Dollar Blueprints**](#-ship-for-0-mix--match-blueprints) · [**The 11 Stacks**](#-explore-all-11-stacks) · [**Run Locally**](#-run-locally-in-60-seconds) · [**API & Integrity**](#-api-endpoints--catalog-rules) · [**License**](#-license--attributions)
 
 </div>
 
@@ -28,8 +30,7 @@
 
 ## ⚡ What Makes FreeStack Different
 
-> [!NOTE]
-> Most "Awesome Free" lists mix 14-day trials with permanent free tiers, leave stale 2022 limits untouched, and hide whether you need a credit card just to test an API. **FreeStack treats free-tier terms as structured, source-cited engineering contracts.**
+FreeStack verifies every listing directly against official provider documentation—surfacing real rate limits, exact credit-card rules, and permanent free tiers with zero hidden trial traps or guesswork. Explore the live catalog anytime at **[freestack.ai.studio](https://freestack.ai.studio)**.
 
 <table>
   <tr>
@@ -75,17 +76,17 @@ Ordered **Most Popular → Least Popular** so everyday builder essentials appear
 
 | # | Stack | Route | Verified Offers | Subtypes | Featured Standouts |
 | :-: | :--- | :--- | :---: | :---: | :--- |
-| `01` | **AI Models** | [`/category/ai-ml`](/category/ai-ml) | `86` | `11` | **NVIDIA Build Models (Free NIM API)**, Google Gemini API, GroqCloud, OpenRouter, Ollama, Hugging Face |
-| `02` | **MCP** | [`/category/mcp`](/category/mcp) | `4,645` | `64` | Official Model Context Protocol servers, inspectors, TypeScript/Python/Rust SDKs, database & browser connectors |
-| `03` | **APIs** | [`/category/apis-integrations`](/category/apis-integrations) | `2,226` | `56` | Public REST & GraphQL APIs, weather, geocoding, finance, developer utilities, webhooks, testing sandboxes |
-| `04` | **Frontend & Design Tools** | [`/category/design-creative`](/category/design-creative) | `104` | `8` | **GradientDeck UI**, **getdesign.md**, **Kombai**, Tailwind kits, Figma Education, Lucide, Motion |
-| `05` | **Cloud & Hosting** | [`/category/cloud-hosting`](/category/cloud-hosting) | `113` | `10` | Cloudflare Pages & Workers, Vercel, Render, Fly.io, Coolify, serverless & container runtimes |
-| `06` | **Databases & Backend** | [`/category/databases-backend`](/category/databases-backend) | `125` | `10` | Supabase, Neon Serverless Postgres, Upstash Redis, Turso, Drizzle ORM, Appwrite |
-| `07` | **Developer Tools** | [`/category/developer-tools`](/category/developer-tools) | `106` | `10` | VS Code, GitHub Actions, Postman/Bruno, Docker, Biome, Playwright |
-| `08` | **Learning & Study Materials** | [`/category/learning`](/category/learning) | `119` | `10` | Harvard CS50x, freeCodeCamp, MDN Web Docs, The Odin Project, roadmap.sh, MIT OCW |
-| `09` | **Student Benefits** | [`/category/student-benefits`](/category/student-benefits) | `107` | `10` | GitHub Student Pack, JetBrains, Azure $100, AWS Educate, Exercism, fellowships |
-| `10` | **Security & Networking** | [`/category/security-networking`](/category/security-networking) | `125` | `10` | Cloudflare Zero Trust, Tailscale Mesh VPN, Let's Encrypt, OWASP ZAP, HashiCorp Vault |
-| `11` | **Productivity & Collaboration** | [`/category/productivity-collaboration`](/category/productivity-collaboration) | `125` | `10` | Notion Free Workspace, Linear, Excalidraw, Obsidian, n8n, Cal.com, Raycast |
+| `01` | **AI Models** | [`/category/ai-ml`](https://freestack.ai.studio/category/ai-ml) | `86` | `11` | **NVIDIA Build Models (Free NIM API)**, Google Gemini API, GroqCloud, OpenRouter, Ollama, Hugging Face |
+| `02` | **MCP** | [`/category/mcp`](https://freestack.ai.studio/category/mcp) | `4,645` | `64` | Official Model Context Protocol servers, inspectors, TypeScript/Python/Rust SDKs, database & browser connectors |
+| `03` | **APIs** | [`/category/apis-integrations`](https://freestack.ai.studio/category/apis-integrations) | `2,226` | `56` | Public REST & GraphQL APIs, weather, geocoding, finance, developer utilities, webhooks, testing sandboxes |
+| `04` | **Frontend & Design Tools** | [`/category/design-creative`](https://freestack.ai.studio/category/design-creative) | `104` | `8` | **GradientDeck UI**, **getdesign.md**, **Kombai**, Tailwind kits, Figma Education, Lucide, Motion |
+| `05` | **Cloud & Hosting** | [`/category/cloud-hosting`](https://freestack.ai.studio/category/cloud-hosting) | `113` | `10` | Cloudflare Pages & Workers, Vercel, Render, Fly.io, Coolify, serverless & container runtimes |
+| `06` | **Databases & Backend** | [`/category/databases-backend`](https://freestack.ai.studio/category/databases-backend) | `125` | `10` | Supabase, Neon Serverless Postgres, Upstash Redis, Turso, Drizzle ORM, Appwrite |
+| `07` | **Developer Tools** | [`/category/developer-tools`](https://freestack.ai.studio/category/developer-tools) | `106` | `10` | VS Code, GitHub Actions, Postman/Bruno, Docker, Biome, Playwright |
+| `08` | **Learning & Study Materials** | [`/category/learning`](https://freestack.ai.studio/category/learning) | `119` | `10` | Harvard CS50x, freeCodeCamp, MDN Web Docs, The Odin Project, roadmap.sh, MIT OCW |
+| `09` | **Student Benefits** | [`/category/student-benefits`](https://freestack.ai.studio/category/student-benefits) | `107` | `10` | GitHub Student Pack, JetBrains, Azure $100, AWS Educate, Exercism, fellowships |
+| `10` | **Security & Networking** | [`/category/security-networking`](https://freestack.ai.studio/category/security-networking) | `125` | `10` | Cloudflare Zero Trust, Tailscale Mesh VPN, Let's Encrypt, OWASP ZAP, HashiCorp Vault |
+| `11` | **Productivity & Collaboration** | [`/category/productivity-collaboration`](https://freestack.ai.studio/category/productivity-collaboration) | `125` | `10` | Notion Free Workspace, Linear, Excalidraw, Obsidian, n8n, Cal.com, Raycast |
 
 ---
 
@@ -94,7 +95,7 @@ Ordered **Most Popular → Least Popular** so everyday builder essentials appear
 - **Portal-Rendered Custom Filter Dropdowns** — Accessible `listbox` menus with tabular resource counts, sticker glyphs, keyboard navigation (`↑`, `↓`, `Home`, `End`, `Enter`, `Esc`), and centered popover alignment across Explore, Category, Learning, and Legal views.
 - **Contextual Single-Step Back Navigation** — Jump from any search query into an offer breakdown and step straight back without losing your filters or search text.
 - **Instant Saved Toolkit** — Bookmark tools locally in your browser (`localStorage`) at `/saved` — zero sign-up required.
-- **Tactile Light & Dark Mode** — High-contrast editorial typography paired with tabular monospace counts (`Plus Jakarta Sans`, `Inter`, `JetBrains Mono`) built on React 19, TypeScript, Tailwind CSS v4, and Express.
+- **Crisp Light-First Interface** — High-contrast editorial typography paired with tabular monospace counts (`Plus Jakarta Sans`, `Inter`, `JetBrains Mono`) built on React 19, TypeScript, Tailwind CSS v4, and Express.
 - **Zero Auth & Zero Runtime AI Keys** — Everything runs out of the box from a Git-versioned JSON catalog with schema contracts and automated link verification.
 
 ---
@@ -133,7 +134,7 @@ SITE_URL=https://your-domain.example.com NODE_ENV=production npm run start:prod
 | `npm run dev` | Starts Express + Vite middleware on port `3000` |
 | `npm run build` | Compiles client bundle (`dist/`) and server bundle (`dist-server/server.js`) |
 | `npm run start:prod` | Runs the compiled production server (`node dist-server/server.js`) |
-| `npm run verify` | Full release gate: `lint` + `test` (`65` tests) + `validate:data` (`7,881` offers) + `build` |
+| `npm run verify` | Full release gate: `lint` + `test` (`75` tests) + `validate:data` (`7,881` offers) + `build` |
 | `npm run lint` | Runs strict TypeScript compiler checks (`tsc --noEmit`) |
 | `npm test` | Executes the unit, catalog contract, and server security test suite |
 | `npm run validate:data` | Validates all `7,881` offers against schema, HTTPS, and XSS/URL safety rules |
@@ -187,13 +188,18 @@ Before opening a Pull Request:
 
 ## 📄 License & Attributions
 
-- **License**: FreeStack is open-source software licensed under the **Apache License, Version 2.0** — see [**LICENSE**](./LICENSE) and [**NOTICE**](./NOTICE).
-- **Third-Party Catalog & Font Attributions**: See [**THIRD_PARTY_NOTICES.md**](./THIRD_PARTY_NOTICES.md) for MIT/OFL upstream dataset and font attributions.
+- **License**: FreeStack is protected under the **FreeStack Source-Available Non-Commercial License v1.0** (Copyright © 2026 **Aniket Kolse**) — see [**LICENSE**](./LICENSE) and [**NOTICE**](./NOTICE).
+  - **You may** freely use the live website ([freestack.ai.studio](https://freestack.ai.studio)) to discover tools for your personal or commercial projects, and clone/run this repository locally for personal, educational, or contribution purposes.
+  - **You must** give clear credit to **Aniket Kolse** with a link to **[freestack.ai.studio](https://freestack.ai.studio)** whenever you reference or cite FreeStack.
+  - **You may not** deploy a clone, mirror, rebrand, or replica of FreeStack, or use this codebase, design, or curated catalog for commercial purposes without prior written permission (`aniketkolse07@gmail.com`).
+- **Third-Party Catalog & Font Attributions**: See [**THIRD_PARTY_NOTICES.md**](./THIRD_PARTY_NOTICES.md) for MIT/ISC/BSD/OFL upstream dataset and font attributions.
 - **Non-Affiliation Disclaimer**: All third-party product names and logos belong to their respective owners and are used strictly for nominative identification. Free tiers, quotas, and card requirements can change at any time — always verify current pricing on the provider's official documentation before deploying workloads.
 
 ---
 
 <div align="center">
+
+**🌐 Explore the live directory at [freestack.ai.studio](https://freestack.ai.studio)**
 
 **Star ⭐ the repo if FreeStack helped you ship your next project for `$0`.**
 

@@ -184,7 +184,7 @@ export function SiteFooter({ onNavigate }: SiteFooterProps) {
             </p>
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
               <p>
-                © {new Date().getFullYear()} FreeStack Contributors (Apache-2.0). Designed to support privacy rights under India DPDP, US State Privacy Laws, and EU/UK GDPR.
+                © {new Date().getFullYear()} Aniket Kolse · FreeStack (Source-Available Non-Commercial License). Designed to support privacy rights under India DPDP, US State Privacy Laws, and EU/UK GDPR.
               </p>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1 font-[var(--font-wallop)] font-semibold text-[12.5px] text-midnight-mouth">
                 <a

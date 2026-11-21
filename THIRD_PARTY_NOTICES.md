@@ -1,6 +1,6 @@
 # Third-Party Notices & License Inventory
 
-FreeStack is licensed under the [Apache License 2.0](./LICENSE). All production runtime dependencies and upstream open-source data sources use permissive licenses compatible with Apache-2.0 (no GPL/AGPL dependencies).
+FreeStack is licensed under the [FreeStack Source-Available Non-Commercial License v1.0](./LICENSE) (Copyright © 2026 Aniket Kolse). All production runtime dependencies and upstream open-source data sources use permissive licenses (MIT, ISC, BSD-2-Clause, OFL-1.1) whose original copyright notices and terms remain preserved below.
 
 ---
 
@@ -29,7 +29,7 @@ FreeStack is licensed under the [Apache License 2.0](./LICENSE). All production 
 | :--- | :--- | :--- | :--- |
 | **Public APIs** | [`public-apis/public-apis`](https://github.com/public-apis/public-apis) | MIT | Copyright (c) Public APIs Contributors |
 | **Awesome MCP Servers** | [`punkpeye/awesome-mcp-servers`](https://github.com/punkpeye/awesome-mcp-servers) | MIT | Copyright (c) Frank Fiegel (punkpeye) and Contributors |
-| **FreeStack Curated Offers** | `data/offers/**` | Apache-2.0 | Verified against official provider documentation & pricing pages |
+| **FreeStack Curated Offers** | `data/offers/**` | FreeStack License v1.0 | Copyright © 2026 Aniket Kolse — verified against official provider documentation & pricing pages |
 
 ---
 
