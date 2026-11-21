@@ -41,12 +41,12 @@ export function SiteHeader({ currentPath, onNavigate }: SiteHeaderProps) {
 
   return (
     <header className="sticky top-0 z-40 w-full bg-paper/98 border-b border-midnight-mouth/8">
-      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 h-[60px] sm:h-[68px] flex items-center justify-between gap-3 sm:gap-5">
+      <div className="max-w-[1360px] mx-auto px-3 sm:px-6 lg:px-8 h-[52px] sm:h-[68px] flex items-center justify-between gap-2.5 sm:gap-5">
         {/* Zone 1: Brand mark */}
         <a
           href="/"
           onClick={(e) => handleLinkClick(e, '/')}
-          className="shrink-0 whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-4 rounded-full min-h-[38px] inline-flex items-center"
+          className="shrink-0 whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-4 rounded-full min-h-[34px] sm:min-h-[38px] inline-flex items-center"
           aria-label="FreeStack Home"
         >
           <FreeStackLogo size="sm" />
@@ -83,13 +83,13 @@ export function SiteHeader({ currentPath, onNavigate }: SiteHeaderProps) {
         </nav>
 
         {/* Zone 3: Saved Stack + Primary Action + Mobile Menu Trigger */}
-        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           <a
             href="/saved"
             data-testid="header-saved-link"
             onClick={(e) => handleLinkClick(e, '/saved')}
             aria-label={`Saved tools (${savedCount})`}
-            className="inline-flex items-center justify-center gap-1.5 font-[var(--font-wallop)] font-semibold text-[13px] leading-none rounded-full px-3.5 py-2 min-h-[38px] bg-daylight text-midnight-mouth hover:bg-sunshine-yellow spring-pill"
+            className="inline-flex items-center justify-center gap-1 sm:gap-1.5 font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13px] leading-none rounded-full px-2.5 sm:px-3.5 py-1.5 sm:py-2 min-h-[34px] sm:min-h-[38px] bg-daylight text-midnight-mouth hover:bg-sunshine-yellow spring-pill"
           >
             <Bookmark className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
             <span className="hidden sm:inline">Saved</span>
@@ -110,9 +110,9 @@ export function SiteHeader({ currentPath, onNavigate }: SiteHeaderProps) {
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav-menu"
             aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
-            className="lg:hidden inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-daylight text-midnight-mouth spring-pill cursor-pointer"
+            className="lg:hidden inline-flex items-center justify-center w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-full bg-daylight text-midnight-mouth spring-pill cursor-pointer"
           >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileOpen ? <X className="w-4.5 h-4.5 sm:w-5 sm:h-5" /> : <Menu className="w-4.5 h-4.5 sm:w-5 sm:h-5" />}
           </button>
         </div>
       </div>
@@ -122,9 +122,9 @@ export function SiteHeader({ currentPath, onNavigate }: SiteHeaderProps) {
         <nav
           id="mobile-nav-menu"
           aria-label="Mobile Navigation"
-          className="lg:hidden max-w-[1360px] mx-auto px-4 sm:px-6 pb-4 pt-1 drawer-enter"
+          className="lg:hidden max-w-[1360px] mx-auto px-3 sm:px-6 pb-3 sm:pb-4 pt-1 drawer-enter"
         >
-          <div className="bg-daylight rounded-[22px] p-3.5 sm:p-4 flex flex-col gap-1">
+          <div className="bg-daylight rounded-[18px] sm:rounded-[22px] p-2.5 sm:p-4 flex flex-col gap-0.5 sm:gap-1">
             {NAV_ITEMS.map((item) => {
               const isActive =
                 currentPath === item.href ||
@@ -136,7 +136,7 @@ export function SiteHeader({ currentPath, onNavigate }: SiteHeaderProps) {
                   href={item.href}
                   onClick={(e) => handleLinkClick(e, item.href)}
                   aria-current={isActive ? 'page' : undefined}
-                  className={`font-[var(--font-wallop)] font-semibold text-[15px] text-midnight-mouth px-3.5 py-2.5 min-h-[42px] flex items-center rounded-[14px] ${
+                  className={`font-[var(--font-wallop)] font-semibold text-[14px] sm:text-[15px] text-midnight-mouth px-3 sm:px-3.5 py-2 sm:py-2.5 min-h-[38px] sm:min-h-[42px] flex items-center rounded-[12px] sm:rounded-[14px] ${
                     isActive ? 'bg-paper' : 'hover:bg-paper/60'
                   }`}
                 >
@@ -147,7 +147,7 @@ export function SiteHeader({ currentPath, onNavigate }: SiteHeaderProps) {
             <a
               href="/saved"
               onClick={(e) => handleLinkClick(e, '/saved')}
-              className="font-[var(--font-wallop)] font-semibold text-[15px] text-midnight-mouth px-3.5 py-2.5 min-h-[42px] flex items-center justify-between rounded-[14px] hover:bg-paper/60"
+              className="font-[var(--font-wallop)] font-semibold text-[14px] sm:text-[15px] text-midnight-mouth px-3 sm:px-3.5 py-2 sm:py-2.5 min-h-[38px] sm:min-h-[42px] flex items-center justify-between rounded-[12px] sm:rounded-[14px] hover:bg-paper/60"
             >
               <span>Saved Tools</span>
               <span className="tabular-nums">({savedCount})</span>
@@ -155,7 +155,7 @@ export function SiteHeader({ currentPath, onNavigate }: SiteHeaderProps) {
             <a
               href="/explore"
               onClick={(e) => handleLinkClick(e, '/explore')}
-              className="mt-1.5 inline-flex items-center justify-center bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[14px] rounded-full px-5 py-2.5 min-h-[42px]"
+              className="mt-1 sm:mt-1.5 inline-flex items-center justify-center bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13.5px] sm:text-[14px] rounded-full px-4 sm:px-5 py-2 sm:py-2.5 min-h-[38px] sm:min-h-[42px]"
             >
               Browse Directory
             </a>

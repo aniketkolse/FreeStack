@@ -65,9 +65,9 @@ export function SearchBar({
       <form
         role="search"
         onSubmit={handleSubmit}
-        className="w-full bg-daylight rounded-full p-1.5 pl-4 sm:pl-5 flex items-center gap-2 border border-midnight-mouth/12 focus-within:border-midnight-mouth/35 shadow-xs transition-all"
+        className="w-full bg-daylight rounded-full p-1 sm:p-1.5 pl-3 sm:pl-5 flex items-center gap-1.5 sm:gap-2 border border-midnight-mouth/12 focus-within:border-midnight-mouth/35 shadow-xs transition-all"
       >
-        <Search className="w-4 h-4 sm:w-5 sm:h-5 text-midnight-mouth shrink-0" aria-hidden="true" />
+        <Search className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-midnight-mouth shrink-0" aria-hidden="true" />
         <label htmlFor={inputId} className="sr-only">
           {label}
         </label>
@@ -78,7 +78,7 @@ export function SearchBar({
           value={value}
           onChange={(e) => handleChange(e.target.value)}
           placeholder={placeholder}
-          className="w-full min-w-0 bg-transparent text-midnight-mouth placeholder:text-ink/55 font-[var(--font-inter)] text-[13.5px] sm:text-[14.5px] leading-[1.2] py-1.5 sm:py-2 focus:outline-none"
+          className="w-full min-w-0 bg-transparent text-midnight-mouth placeholder:text-ink/55 font-[var(--font-inter)] text-[13px] sm:text-[14.5px] leading-[1.2] py-1 sm:py-2 focus:outline-none"
         />
         {value.length > 0 && (
           <button
@@ -89,14 +89,14 @@ export function SearchBar({
               onSubmitQuery('');
             }}
             aria-label="Clear search query"
-            className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-paper text-midnight-mouth inline-flex items-center justify-center shrink-0 hover:bg-sunshine-yellow transition-colors cursor-pointer"
+            className="w-6.5 h-6.5 sm:w-8 sm:h-8 rounded-full bg-paper text-midnight-mouth inline-flex items-center justify-center shrink-0 hover:bg-sunshine-yellow transition-colors cursor-pointer"
           >
-            <X className="w-3.5 h-3.5" />
+            <X className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
           </button>
         )}
         <button
           type="submit"
-          className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[13.5px] leading-none rounded-full px-4 sm:px-5 py-2 sm:py-2.5 min-h-[36px] sm:min-h-[38px] inline-flex items-center gap-1.5 whitespace-nowrap shrink-0 spring-pill cursor-pointer"
+          className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13.5px] leading-none rounded-full px-3 sm:px-5 py-1.5 sm:py-2.5 min-h-[32px] sm:min-h-[38px] inline-flex items-center gap-1.5 whitespace-nowrap shrink-0 spring-pill cursor-pointer"
         >
           <span>Search</span>
           <ArrowRight className="hidden sm:block w-3.5 h-3.5" aria-hidden="true" />
@@ -106,9 +106,9 @@ export function SearchBar({
       {showSuggestions && suggestionList.length > 0 && (
         <div
           aria-label="Suggested searches"
-          className="mt-2.5 flex flex-nowrap sm:flex-wrap items-center justify-start sm:justify-center gap-1.5 overflow-x-auto sm:overflow-visible no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 py-0.5"
+          className="mt-2 sm:mt-2.5 flex flex-nowrap sm:flex-wrap items-center justify-start sm:justify-center gap-1.5 overflow-x-auto sm:overflow-visible no-scrollbar -mx-3 px-3 sm:mx-0 sm:px-0 py-0.5"
         >
-          <span className="font-[var(--font-inter)] font-medium text-[12px] text-midnight-mouth/75 mr-0.5 shrink-0">
+          <span className="font-[var(--font-inter)] font-medium text-[11px] sm:text-[12px] text-midnight-mouth/75 mr-0.5 shrink-0">
             Quick search:
           </span>
           {suggestionList.map((example) => {
@@ -118,7 +118,7 @@ export function SearchBar({
                 key={example}
                 type="button"
                 onClick={() => handleSuggestion(example)}
-                className={`font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[12.5px] rounded-full px-3 py-1 min-h-[28px] filter-pill whitespace-nowrap shrink-0 cursor-pointer ${
+                className={`font-[var(--font-wallop)] font-semibold text-[11px] sm:text-[12.5px] rounded-full px-2.5 sm:px-3 py-0.5 sm:py-1 min-h-[26px] sm:min-h-[28px] filter-pill whitespace-nowrap shrink-0 cursor-pointer ${
                   isSelected
                     ? 'bg-midnight-mouth text-daylight shadow-xs'
                     : 'bg-daylight/90 hover:bg-sunshine-yellow text-midnight-mouth'

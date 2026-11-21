@@ -732,18 +732,18 @@ export function CategoryDetailPage({
   };
 
   return (
-    <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-2.5 sm:pt-4 pb-12 sm:pb-16 flex flex-col gap-4 sm:gap-5">
+    <div className="max-w-[1360px] mx-auto px-3 sm:px-6 lg:px-8 pt-2 sm:pt-4 pb-8 sm:pb-16 flex flex-col gap-3 sm:gap-5">
       {/* Top Back Button & Breadcrumb Bar */}
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-2 min-w-0">
+        <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
           <a
             href={backMeta.targetHref}
             data-testid="category-back-btn"
             onClick={handleBackClick}
-            className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[13.5px] rounded-full px-3.5 sm:px-4 py-1.5 min-h-[34px] sm:min-h-[36px] inline-flex items-center gap-1.5 spring-pill shadow-2xs max-w-full"
+            className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13.5px] rounded-full px-3 sm:px-4 py-1 sm:py-1.5 min-h-[30px] sm:min-h-[36px] inline-flex items-center gap-1.5 spring-pill shadow-2xs max-w-full"
           >
-            <ArrowLeft className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-            <span className="truncate max-w-[200px] sm:max-w-[320px]">{backMeta.label}</span>
+            <ArrowLeft className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" aria-hidden="true" />
+            <span className="truncate max-w-[180px] sm:max-w-[320px]">{backMeta.label}</span>
           </a>
           <a
             href="/categories"
@@ -751,9 +751,9 @@ export function CategoryDetailPage({
               e.preventDefault();
               onNavigate('/categories');
             }}
-            className="bg-daylight text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[13px] rounded-full px-3.5 py-1.5 min-h-[34px] sm:min-h-[36px] inline-flex items-center gap-1.5 spring-pill border border-midnight-mouth/10"
+            className="bg-daylight text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[13px] rounded-full px-2.5 sm:px-3.5 py-1 sm:py-1.5 min-h-[30px] sm:min-h-[36px] inline-flex items-center gap-1.5 spring-pill border border-midnight-mouth/10"
           >
-            <Layers className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+            <Layers className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" aria-hidden="true" />
             <span>All Categories</span>
           </a>
         </div>
@@ -791,17 +791,17 @@ export function CategoryDetailPage({
       {/* Compact Category Header Slab (Clean, Focused — No Bloated Filter Wall Inside) */}
       <section
         aria-label="Category header and search"
-        className={`${bgClass} rounded-[18px] sm:rounded-[24px] p-4 sm:p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-3.5 lg:gap-6`}
+        className={`${bgClass} rounded-[15px] sm:rounded-[24px] p-3 sm:p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-2.5 sm:gap-3.5 lg:gap-6`}
       >
-        <div className="flex items-center gap-3.5 min-w-0">
-          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-[12px] sm:rounded-[14px] bg-paper flex items-center justify-center shrink-0 shadow-xs">
-            <CategoryStickerIcon slug={category.slug} className="w-6 h-6 sm:w-7 sm:h-7" />
+        <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
+          <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-[10px] sm:rounded-[14px] bg-paper flex items-center justify-center shrink-0 shadow-xs">
+            <CategoryStickerIcon slug={category.slug} className="w-5.5 h-5.5 sm:w-7 sm:h-7" />
           </div>
-          <div className="min-w-0 flex flex-col gap-1">
-            <h1 className="font-[var(--font-wallop)] font-extrabold text-[22px] sm:text-[28px] lg:text-[32px] leading-[1.08] tracking-[-0.03em] text-midnight-mouth truncate">
+          <div className="min-w-0 flex flex-col gap-0.5 sm:gap-1">
+            <h1 className="font-[var(--font-wallop)] font-extrabold text-[19px] sm:text-[28px] lg:text-[32px] leading-[1.08] tracking-[-0.03em] text-midnight-mouth truncate">
               {category.name}
             </h1>
-            <p className="font-[var(--font-inter)] text-[13px] sm:text-[14px] leading-[1.4] text-ink/85 line-clamp-2 sm:truncate">
+            <p className="font-[var(--font-inter)] text-[12px] sm:text-[14px] leading-[1.35] sm:leading-[1.4] text-ink/85 line-clamp-2 sm:truncate">
               {category.description}
             </p>
           </div>
@@ -834,7 +834,7 @@ export function CategoryDetailPage({
           type="button"
           data-testid="mobile-filter-toggle"
           onClick={() => setDrawerOpen(true)}
-          className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13.5px] rounded-full px-4 py-2 min-h-[38px] inline-flex items-center gap-1.5 shrink-0 spring-pill cursor-pointer"
+          className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[13.5px] rounded-full px-3.5 sm:px-4 py-1.5 sm:py-2 min-h-[34px] sm:min-h-[38px] inline-flex items-center gap-1.5 shrink-0 spring-pill cursor-pointer"
         >
           <SlidersHorizontal className="w-3.5 h-3.5" aria-hidden="true" />
           <span>Filters</span>
@@ -844,7 +844,7 @@ export function CategoryDetailPage({
           <button
             type="button"
             onClick={resetCategoryFilters}
-            className="bg-daylight text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12.5px] rounded-full px-3.5 py-2 min-h-[38px] inline-flex items-center gap-1 shrink-0 cursor-pointer"
+            className="bg-daylight text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[12.5px] rounded-full px-3 sm:px-3.5 py-1.5 sm:py-2 min-h-[34px] sm:min-h-[38px] inline-flex items-center gap-1 shrink-0 cursor-pointer"
           >
             <RotateCcw className="w-3 h-3" aria-hidden="true" />
             <span>Reset</span>
@@ -853,7 +853,7 @@ export function CategoryDetailPage({
       </div>
 
       {/* Main 2-Column Layout: Sticky Category Filter Sidebar + Results Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 lg:gap-6 items-start">
         {/* Desktop Sticky Category Filter Sidebar */}
         <aside
           aria-label={`${category.name} filters`}
@@ -888,7 +888,7 @@ export function CategoryDetailPage({
         </aside>
 
         {/* Results Column */}
-        <div className="lg:col-span-9 flex flex-col gap-3.5 min-w-0">
+        <div className="lg:col-span-9 flex flex-col gap-2.5 sm:gap-3.5 min-w-0">
           {/* Active Filter Chips */}
           {activeChips.length > 0 && (
             <div aria-label="Active filters" className="flex flex-wrap items-center gap-1.5">
@@ -897,7 +897,7 @@ export function CategoryDetailPage({
                   key={chip.key}
                   type="button"
                   onClick={chip.onClear}
-                  className="chip-enter bg-sunshine-yellow hover:bg-tangerine text-[#101014] font-[var(--font-wallop)] font-semibold text-[12.5px] rounded-full px-3 py-1 min-h-[30px] inline-flex items-center gap-1.5 filter-pill cursor-pointer"
+                  className="chip-enter bg-sunshine-yellow hover:bg-tangerine text-[#101014] font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[12.5px] rounded-full px-2.5 sm:px-3 py-1 min-h-[28px] sm:min-h-[30px] inline-flex items-center gap-1.5 filter-pill cursor-pointer"
                 >
                   <span>{chip.label}</span>
                   <X className="w-3 h-3" aria-hidden="true" />
@@ -907,7 +907,7 @@ export function CategoryDetailPage({
                 <button
                   type="button"
                   onClick={resetCategoryFilters}
-                  className="font-[var(--font-wallop)] font-semibold text-[12px] text-midnight-mouth/80 hover:text-midnight-mouth underline underline-offset-4 px-2 py-1 cursor-pointer"
+                  className="font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[12px] text-midnight-mouth/80 hover:text-midnight-mouth underline underline-offset-4 px-2 py-1 cursor-pointer"
                 >
                   Clear all
                 </button>
@@ -919,22 +919,22 @@ export function CategoryDetailPage({
           {isInitialLoading && displayedOffers.length === 0 ? (
             <CardGridSkeleton
               count={6}
-              columnsClassName="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2.5 sm:gap-4"
+              columnsClassName="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 sm:gap-4"
             />
           ) : error && displayedOffers.length === 0 ? (
             <OffersErrorState message={error} onRetry={retry} onNavigate={onNavigate} />
           ) : !isInitialLoading && !isTransitioning && displayedOffers.length === 0 ? (
-            <div className="bg-daylight rounded-[22px] p-8 sm:p-10 text-center flex flex-col items-center gap-3 card-enter">
-              <h3 className="font-[var(--font-wallop)] font-bold text-[19px] sm:text-[22px] text-midnight-mouth">
+            <div className="bg-daylight rounded-[18px] sm:rounded-[22px] p-6 sm:p-10 text-center flex flex-col items-center gap-2.5 sm:gap-3 card-enter">
+              <h3 className="font-[var(--font-wallop)] font-bold text-[17.5px] sm:text-[22px] text-midnight-mouth">
                 No matching resources in {category.name}
               </h3>
-              <p className="font-[var(--font-inter)] text-[14px] text-ink/80 max-w-md">
+              <p className="font-[var(--font-inter)] text-[13px] sm:text-[14px] text-ink/80 max-w-md">
                 Try clearing a filter or searching with broader keywords.
               </p>
               <button
                 type="button"
                 onClick={resetCategoryFilters}
-                className="mt-1 bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13.5px] rounded-full px-5 py-2.5 min-h-[40px] cursor-pointer spring-pill"
+                className="mt-1 bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[13.5px] rounded-full px-4 sm:px-5 py-2 sm:py-2.5 min-h-[36px] sm:min-h-[40px] cursor-pointer spring-pill"
               >
                 Show all in {category.shortName}
               </button>
@@ -944,7 +944,7 @@ export function CategoryDetailPage({
               <div
                 data-testid="category-results-grid"
                 aria-busy={isTransitioning}
-                className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2.5 sm:gap-4 transition-opacity duration-150 ${
+                className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 sm:gap-4 transition-opacity duration-150 ${
                   isTransitioning ? 'opacity-75' : 'opacity-100'
                 }`}
               >
@@ -969,11 +969,11 @@ export function CategoryDetailPage({
       </div>
 
       {/* Related Categories */}
-      <section className="flex flex-col gap-3.5 sm:gap-4 pt-3">
-        <h2 className="font-[var(--font-wallop)] font-extrabold text-[20px] sm:text-[26px] leading-[1.1] tracking-[-0.025em] text-midnight-mouth">
+      <section className="flex flex-col gap-2.5 sm:gap-4 pt-2 sm:pt-3">
+        <h2 className="font-[var(--font-wallop)] font-extrabold text-[18px] sm:text-[26px] leading-[1.1] tracking-[-0.025em] text-midnight-mouth">
           Related categories
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5 sm:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-4">
           {relatedCategories.map((cat) => (
             <CategoryTile
               key={cat.slug}
@@ -997,16 +997,16 @@ export function CategoryDetailPage({
             if (e.target === e.currentTarget) setDrawerOpen(false);
           }}
         >
-          <div className="bg-daylight w-full rounded-t-[24px] p-4 sm:p-5 pb-[max(1rem,env(safe-area-inset-bottom))] max-h-[86dvh] flex flex-col gap-3.5 drawer-enter">
+          <div className="bg-daylight w-full rounded-t-[20px] sm:rounded-t-[24px] p-3.5 sm:p-5 pb-[max(0.875rem,env(safe-area-inset-bottom))] sm:pb-[max(1rem,env(safe-area-inset-bottom))] max-h-[84dvh] sm:max-h-[86dvh] flex flex-col gap-3 sm:gap-3.5 drawer-enter">
             <div className="flex items-center justify-between gap-3 pb-2 border-b border-midnight-mouth/10">
-              <h2 className="font-[var(--font-wallop)] font-bold text-[18px] sm:text-[20px] text-midnight-mouth">
+              <h2 className="font-[var(--font-wallop)] font-bold text-[16.5px] sm:text-[20px] text-midnight-mouth">
                 Filter {category.shortName}
               </h2>
               <button
                 type="button"
                 onClick={() => setDrawerOpen(false)}
                 aria-label="Close filters drawer"
-                className="w-9 h-9 rounded-full bg-paper text-midnight-mouth inline-flex items-center justify-center cursor-pointer"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-paper text-midnight-mouth inline-flex items-center justify-center cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -1019,18 +1019,18 @@ export function CategoryDetailPage({
               <CategoryFilterSidebar idPrefix="mobile" {...sidebarSharedProps} />
             </FilterScrollArea>
 
-            <div className="pt-2.5 border-t border-midnight-mouth/10 flex items-center gap-2.5">
+            <div className="pt-2 sm:pt-2.5 border-t border-midnight-mouth/10 flex items-center gap-2 sm:gap-2.5">
               <button
                 type="button"
                 onClick={resetCategoryFilters}
-                className="flex-1 bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[14px] rounded-full px-4 py-2.5 min-h-[42px] cursor-pointer"
+                className="flex-1 bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[14px] rounded-full px-3.5 sm:px-4 py-2 sm:py-2.5 min-h-[38px] sm:min-h-[42px] cursor-pointer"
               >
                 Reset
               </button>
               <button
                 type="button"
                 onClick={() => setDrawerOpen(false)}
-                className="flex-[2] bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[14px] rounded-full px-4 py-2.5 min-h-[42px] cursor-pointer"
+                className="flex-[2] bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[14px] rounded-full px-3.5 sm:px-4 py-2 sm:py-2.5 min-h-[38px] sm:min-h-[42px] cursor-pointer"
               >
                 Show results
               </button>

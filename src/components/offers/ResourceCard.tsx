@@ -54,13 +54,13 @@ export const ResourceCard = memo(function ResourceCard({
 
   const statusIcon =
     offer.verification.status === 'verified' ? (
-      <CheckCircle2 className="w-3.5 h-3.5 text-midnight-mouth shrink-0" aria-hidden="true" />
+      <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-midnight-mouth shrink-0" aria-hidden="true" />
     ) : offer.verification.status === 'needs_review' ? (
-      <AlertCircle className="w-3.5 h-3.5 text-midnight-mouth shrink-0" aria-hidden="true" />
+      <AlertCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-midnight-mouth shrink-0" aria-hidden="true" />
     ) : offer.verification.status === 'unverified' ? (
-      <HelpCircle className="w-3.5 h-3.5 text-midnight-mouth shrink-0" aria-hidden="true" />
+      <HelpCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-midnight-mouth shrink-0" aria-hidden="true" />
     ) : (
-      <Clock className="w-3.5 h-3.5 text-midnight-mouth shrink-0" aria-hidden="true" />
+      <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-midnight-mouth shrink-0" aria-hidden="true" />
     );
 
   const handleOpen = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -99,37 +99,37 @@ export const ResourceCard = memo(function ResourceCard({
       onMouseLeave={handlePrefetchCancel}
       onFocus={handlePrefetchStart}
       onBlur={handlePrefetchCancel}
-      className={`${cardBgClass} rounded-[18px] sm:rounded-[24px] p-3.5 sm:p-4 min-h-[286px] sm:min-h-[304px] h-full flex flex-col justify-between gap-2 sm:gap-2.5 spring-card min-w-0 overflow-hidden`}
+      className={`${cardBgClass} rounded-[15px] sm:rounded-[24px] p-2.5 sm:p-4 min-h-0 sm:min-h-[304px] h-full flex flex-col justify-between gap-2 sm:gap-2.5 spring-card min-w-0 overflow-hidden`}
     >
-      <div className="flex flex-col gap-2.5 min-w-0">
+      <div className="flex flex-col gap-2 sm:gap-2.5 min-w-0">
         {/* Category-Colored Header Rectangle — White-backed Logo on Left + Tool Provider & Subcategory on Right */}
         <div
           data-testid={`resource-card-header-${offer.identity.slug}`}
-          className={`${bgSwatchClass} rounded-[14px] sm:rounded-[16px] p-2.5 sm:p-3 flex items-center justify-between gap-3 min-w-0`}
+          className={`${bgSwatchClass} rounded-[11px] sm:rounded-[16px] px-2.5 py-2 sm:p-3 flex items-center justify-between gap-2.5 sm:gap-3 min-w-0`}
         >
-          <div className="w-10 h-10 rounded-[10px] sm:rounded-[12px] bg-white shadow-2xs flex items-center justify-center shrink-0 overflow-hidden p-1.5">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-[8px] sm:rounded-[12px] bg-white shadow-2xs flex items-center justify-center shrink-0 overflow-hidden p-1 sm:p-1.5">
             <OfferLogo
               offer={offer}
               priority={priority}
-              imgClassName="w-7 h-7 object-contain"
-              fallbackClassName="w-6 h-6"
+              imgClassName="w-5.5 h-5.5 sm:w-7 sm:h-7 object-contain"
+              fallbackClassName="w-4.5 h-4.5 sm:w-6 sm:h-6"
             />
           </div>
 
-          <div className="text-right min-w-0 flex-1 flex flex-col justify-center gap-1.5 sm:gap-2">
-            <span className="block font-[var(--font-wallop)] font-semibold text-[13.5px] sm:text-[14px] leading-[1.2] text-midnight-mouth truncate">
+          <div className="text-right min-w-0 flex-1 flex flex-col justify-center gap-0.5 sm:gap-2">
+            <span className="block font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[14px] leading-[1.2] text-midnight-mouth truncate">
               {offer.identity.provider}
             </span>
-            <span className="block font-[var(--font-inter)] text-[11.5px] sm:text-[12.5px] leading-[1.25] text-ink/85 truncate">
+            <span className="block font-[var(--font-inter)] text-[11px] sm:text-[12.5px] leading-[1.2] sm:leading-[1.25] text-ink/85 truncate">
               {offer.classification.subcategory}
             </span>
           </div>
         </div>
 
         {/* Verification Metadata Line + Title Below Header */}
-        <div className="flex flex-col gap-1.5 sm:gap-2 min-w-0">
-          <div className="flex flex-nowrap items-center justify-between gap-2 min-w-0">
-            <div className="flex items-center gap-1.5 font-[var(--font-inter)] text-[11.5px] sm:text-[12px] leading-[1.3] text-ink/75 min-w-0 truncate">
+        <div className="flex flex-col gap-1 sm:gap-2 min-w-0">
+          <div className="flex flex-nowrap items-center justify-between gap-1.5 sm:gap-2 min-w-0">
+            <div className="flex items-center gap-1 sm:gap-1.5 font-[var(--font-inter)] text-[11px] sm:text-[12px] leading-[1.25] sm:leading-[1.3] text-ink/75 min-w-0 truncate">
               {statusIcon}
               <span className="shrink-0">{formatVerificationStatus(offer.verification.status)}</span>
               <span aria-hidden="true" className="shrink-0">·</span>
@@ -139,9 +139,9 @@ export const ResourceCard = memo(function ResourceCard({
             {requiresStudentId && (
               <span
                 data-testid={`student-id-badge-${offer.identity.slug}`}
-                className="bg-sunshine-yellow text-[#101014] font-[var(--font-wallop)] font-semibold text-[10.5px] sm:text-[11px] leading-none rounded-full px-2 sm:px-2.5 py-1 inline-flex items-center gap-1 shrink-0 whitespace-nowrap"
+                className="bg-sunshine-yellow text-[#101014] font-[var(--font-wallop)] font-semibold text-[10px] sm:text-[11px] leading-none rounded-full px-1.5 sm:px-2.5 py-0.5 sm:py-1 inline-flex items-center gap-1 shrink-0 whitespace-nowrap"
               >
-                <GraduationCap className="w-3 h-3 shrink-0" aria-hidden="true" />
+                <GraduationCap className="w-2.5 h-2.5 sm:w-3 sm:h-3 shrink-0" aria-hidden="true" />
                 <span>Student ID / .edu Req.</span>
               </span>
             )}
@@ -149,9 +149,9 @@ export const ResourceCard = memo(function ResourceCard({
             {isNoStudentIdStudentBenefit && (
               <span
                 data-testid={`no-student-id-badge-${offer.identity.slug}`}
-                className="bg-grass-green text-[#101014] font-[var(--font-wallop)] font-semibold text-[10.5px] sm:text-[11px] leading-none rounded-full px-2 sm:px-2.5 py-1 inline-flex items-center gap-1 shrink-0 whitespace-nowrap"
+                className="bg-grass-green text-[#101014] font-[var(--font-wallop)] font-semibold text-[10px] sm:text-[11px] leading-none rounded-full px-1.5 sm:px-2.5 py-0.5 sm:py-1 inline-flex items-center gap-1 shrink-0 whitespace-nowrap"
               >
-                <CheckCircle2 className="w-3 h-3 shrink-0" aria-hidden="true" />
+                <CheckCircle2 className="w-2.5 h-2.5 sm:w-3 sm:h-3 shrink-0" aria-hidden="true" />
                 <span>No Student ID Req.</span>
               </span>
             )}
@@ -159,7 +159,7 @@ export const ResourceCard = memo(function ResourceCard({
 
           <h3
             title={offer.identity.name}
-            className="font-[var(--font-wallop)] font-bold text-[15.5px] sm:text-[17px] leading-[1.3] tracking-[-0.015em] text-midnight-mouth min-w-0 line-clamp-2"
+            className="font-[var(--font-wallop)] font-bold text-[14.5px] sm:text-[17px] leading-[1.24] sm:leading-[1.3] tracking-[-0.015em] text-midnight-mouth min-w-0 line-clamp-2"
           >
             <a
               href={`/offer/${offer.identity.slug}`}
@@ -173,23 +173,23 @@ export const ResourceCard = memo(function ResourceCard({
       </div>
 
       {/* Middle Free-Tier Truth Summary */}
-      <div className="pt-2.5 border-t border-midnight-mouth/10 min-w-0 sm:mb-1">
-        <dl className="flex flex-col gap-1.5 font-[var(--font-inter)] text-[12px] sm:text-[12.5px] leading-[1.38] text-ink">
-          <div className="flex items-baseline justify-between gap-2.5 min-w-0">
+      <div className="pt-2 sm:pt-2.5 border-t border-midnight-mouth/10 min-w-0 sm:mb-1">
+        <dl className="flex flex-col gap-1 sm:gap-1.5 font-[var(--font-inter)] text-[11.5px] sm:text-[12.5px] leading-[1.3] sm:leading-[1.38] text-ink">
+          <div className="flex items-baseline justify-between gap-2 sm:gap-2.5 min-w-0">
             <dt className="text-ink/70 shrink-0">Access model</dt>
             <dd className="font-medium text-right text-midnight-mouth min-w-0 truncate">
               {formatPricingModel(offer.classification.pricing_model)}
             </dd>
           </div>
           {offer.access.requirements.card_required === 'required' && (
-            <div className="flex items-baseline justify-between gap-2.5 min-w-0">
+            <div className="flex items-baseline justify-between gap-2 sm:gap-2.5 min-w-0">
               <dt className="text-ink/70 shrink-0">Payment card</dt>
               <dd className="font-medium text-right text-midnight-mouth min-w-0 truncate">
                 {formatCardRequirement(offer.access.requirements.card_required)}
               </dd>
             </div>
           )}
-          <div className="flex items-baseline justify-between gap-2.5 min-w-0">
+          <div className="flex items-baseline justify-between gap-2 sm:gap-2.5 min-w-0">
             <dt className="text-ink/70 shrink-0">{compactLimit.label}</dt>
             <dd
               title={compactLimit.value}
@@ -199,7 +199,7 @@ export const ResourceCard = memo(function ResourceCard({
             </dd>
           </div>
           {requiresStudentId && offer.access.requirements.card_required !== 'required' && (
-            <div className="flex items-baseline justify-between gap-2.5 min-w-0">
+            <div className="flex items-baseline justify-between gap-2 sm:gap-2.5 min-w-0">
               <dt className="text-ink/70 shrink-0">Verification</dt>
               <dd className="font-semibold text-right text-midnight-mouth min-w-0 truncate">
                 Student ID / .edu email needed
@@ -207,7 +207,7 @@ export const ResourceCard = memo(function ResourceCard({
             </div>
           )}
           {isNoStudentIdStudentBenefit && offer.access.requirements.card_required !== 'required' && (
-            <div className="flex items-baseline justify-between gap-2.5 min-w-0">
+            <div className="flex items-baseline justify-between gap-2 sm:gap-2.5 min-w-0">
               <dt className="text-ink/70 shrink-0">Verification</dt>
               <dd className="font-semibold text-right text-midnight-mouth min-w-0 truncate">
                 No Student ID / .edu needed
@@ -222,14 +222,14 @@ export const ResourceCard = memo(function ResourceCard({
           <a
             href={`/offer/${offer.identity.slug}`}
             onClick={handleOpen}
-            className="flex-1 min-w-0 inline-flex items-center justify-center gap-1 bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[12.5px] leading-none rounded-full px-2.5 sm:px-3 py-1.5 sm:py-2 min-h-[34px] sm:min-h-[36px] whitespace-nowrap spring-pill"
+            className="flex-1 min-w-0 inline-flex items-center justify-center gap-1 bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[12.5px] leading-none rounded-full px-2.5 sm:px-3 py-1.5 sm:py-2 min-h-[32px] sm:min-h-[36px] whitespace-nowrap spring-pill"
           >
             <span>Inspect</span>
             <span className="hidden sm:inline lg:hidden 2xl:inline">offer</span>
-            <ArrowUpRight className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+            <ArrowUpRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" aria-hidden="true" />
           </a>
 
-          <div className="flex items-center gap-1.5 shrink-0">
+          <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
             <button
               type="button"
               data-testid={`save-btn-${offer.identity.slug}`}
@@ -241,14 +241,14 @@ export const ResourceCard = memo(function ResourceCard({
                 e.stopPropagation();
                 toggleSave(offer.identity.slug);
               }}
-              className={`inline-flex items-center justify-center gap-1 font-[var(--font-wallop)] font-semibold text-[11.5px] leading-none rounded-full px-2.5 py-1.5 min-h-[34px] sm:min-h-[36px] whitespace-nowrap filter-pill cursor-pointer border ${
+              className={`inline-flex items-center justify-center gap-1 font-[var(--font-wallop)] font-semibold text-[11px] sm:text-[11.5px] leading-none rounded-full px-2 sm:px-2.5 py-1 sm:py-1.5 min-h-[32px] sm:min-h-[36px] whitespace-nowrap filter-pill cursor-pointer border ${
                 saved
                   ? 'bg-sunshine-yellow text-[#101014] border-midnight-mouth/15'
                   : 'bg-paper text-midnight-mouth border-midnight-mouth/10 hover:bg-sunshine-yellow hover:text-[#101014]'
               }`}
             >
               <Bookmark
-                className={`w-3.5 h-3.5 shrink-0 ${saved ? 'fill-current' : ''}`}
+                className={`w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 ${saved ? 'fill-current' : ''}`}
                 aria-hidden="true"
               />
               <span>{saved ? 'Saved' : 'Save'}</span>
@@ -260,7 +260,7 @@ export const ResourceCard = memo(function ResourceCard({
               aria-label={`Share ${offer.identity.name}`}
               title="Share tool link"
               onClick={handleShare}
-              className={`inline-flex items-center justify-center gap-1 font-[var(--font-wallop)] font-semibold text-[11.5px] leading-none rounded-full px-2.5 py-1.5 min-h-[34px] sm:min-h-[36px] whitespace-nowrap filter-pill cursor-pointer border ${
+              className={`inline-flex items-center justify-center gap-1 font-[var(--font-wallop)] font-semibold text-[11px] sm:text-[11.5px] leading-none rounded-full px-2 sm:px-2.5 py-1 sm:py-1.5 min-h-[32px] sm:min-h-[36px] whitespace-nowrap filter-pill cursor-pointer border ${
                 sharedFeedback
                   ? 'bg-grass-green text-[#101014] border-midnight-mouth/15'
                   : 'bg-paper text-midnight-mouth border-midnight-mouth/10 hover:bg-sky-blue hover:text-[#101014]'
@@ -268,12 +268,12 @@ export const ResourceCard = memo(function ResourceCard({
             >
               {sharedFeedback ? (
                 <>
-                  <Check className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+                  <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" aria-hidden="true" />
                   <span>Copied</span>
                 </>
               ) : (
                 <>
-                  <Share2 className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+                  <Share2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" aria-hidden="true" />
                   <span>Share</span>
                 </>
               )}

@@ -83,20 +83,20 @@ export function OfferDetailPage({
       <div
         data-testid="offer-detail-skeleton"
         aria-busy="true"
-        className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-5 pb-12 flex flex-col gap-5 sm:gap-7 animate-pulse"
+        className="max-w-[1360px] mx-auto px-3 sm:px-6 lg:px-8 pt-2 sm:pt-5 pb-8 sm:pb-12 flex flex-col gap-3.5 sm:gap-7 animate-pulse"
       >
-        <div className="h-9 w-40 rounded-full bg-daylight" />
-        <div className="bg-daylight rounded-[22px] sm:rounded-[26px] p-6 sm:p-8 min-h-[210px] flex flex-col justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-[14px] bg-paper" />
-            <div className="h-5 w-48 rounded-full bg-paper" />
+        <div className="h-8 sm:h-9 w-36 sm:w-40 rounded-full bg-daylight" />
+        <div className="bg-daylight rounded-[16px] sm:rounded-[26px] p-4 sm:p-8 min-h-[160px] sm:min-h-[210px] flex flex-col justify-between gap-3 sm:gap-4">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-[11px] sm:rounded-[14px] bg-paper" />
+            <div className="h-4 sm:h-5 w-40 sm:w-48 rounded-full bg-paper" />
           </div>
-          <div className="h-9 w-2/3 rounded-full bg-paper" />
-          <div className="h-4 w-3/4 rounded-full bg-paper" />
+          <div className="h-7 sm:h-9 w-2/3 rounded-full bg-paper" />
+          <div className="h-3.5 sm:h-4 w-3/4 rounded-full bg-paper" />
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6">
-          <div className="lg:col-span-8 h-80 rounded-[24px] bg-daylight" />
-          <div className="lg:col-span-4 h-72 rounded-[24px] bg-daylight" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-3.5 sm:gap-5 lg:gap-6">
+          <div className="lg:col-span-8 h-64 sm:h-80 rounded-[16px] sm:rounded-[24px] bg-daylight" />
+          <div className="lg:col-span-4 h-56 sm:h-72 rounded-[16px] sm:rounded-[24px] bg-daylight" />
         </div>
       </div>
     );
@@ -165,18 +165,18 @@ export function OfferDetailPage({
     : null;
 
   return (
-    <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-5 pb-12 flex flex-col gap-5 sm:gap-7">
+    <div className="max-w-[1360px] mx-auto px-3 sm:px-6 lg:px-8 pt-2 sm:pt-5 pb-8 sm:pb-12 flex flex-col gap-3.5 sm:gap-7">
       {/* Top Back & Breadcrumb */}
-      <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3">
-        <div className="flex flex-wrap items-center gap-2 min-w-0">
+      <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3">
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 min-w-0">
           <a
             href={backMeta.targetHref}
             data-testid="offer-back-btn"
             onClick={handleBackClick}
-            className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[13.5px] rounded-full px-4 py-1.5 min-h-[36px] inline-flex items-center gap-1.5 spring-pill shadow-2xs max-w-full"
+            className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13.5px] rounded-full px-3 sm:px-4 py-1 sm:py-1.5 min-h-[32px] sm:min-h-[36px] inline-flex items-center gap-1.5 spring-pill shadow-2xs max-w-full"
           >
             <ArrowLeft className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-            <span className="truncate max-w-[240px] sm:max-w-[360px]">{backMeta.label}</span>
+            <span className="truncate max-w-[200px] sm:max-w-[360px]">{backMeta.label}</span>
           </a>
 
           {category && (
@@ -186,7 +186,7 @@ export function OfferDetailPage({
                 e.preventDefault();
                 onNavigate(`/category/${category.slug}`);
               }}
-              className="bg-daylight text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[13px] rounded-full px-3.5 py-1.5 min-h-[36px] inline-flex items-center gap-1.5 spring-pill border border-midnight-mouth/10"
+              className="bg-daylight text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[13px] rounded-full px-2.5 sm:px-3.5 py-1 sm:py-1.5 min-h-[32px] sm:min-h-[36px] inline-flex items-center gap-1.5 spring-pill border border-midnight-mouth/10"
             >
               <span>{category.name}</span>
             </a>
@@ -195,7 +195,7 @@ export function OfferDetailPage({
 
         <nav
           aria-label="Breadcrumb"
-          className="font-[var(--font-inter)] text-[12.5px] sm:text-[13px] text-ink/75 flex flex-wrap items-center gap-1.5"
+          className="hidden sm:flex font-[var(--font-inter)] text-[12.5px] sm:text-[13px] text-ink/75 flex-wrap items-center gap-1.5"
         >
           <a
             href="/"
@@ -228,49 +228,49 @@ export function OfferDetailPage({
       </div>
 
       {/* Compact Hero Intro Slab */}
-      <section className={`${bgClass} rounded-[22px] sm:rounded-[26px] p-5 sm:p-7 md:p-9 flex flex-col gap-3.5 sm:gap-4`}>
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div className="flex items-center gap-3 min-w-0">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[14px] sm:rounded-[16px] bg-white shadow-xs flex items-center justify-center shrink-0 overflow-hidden p-2">
+      <section className={`${bgClass} rounded-[16px] sm:rounded-[26px] p-3.5 sm:p-7 md:p-9 flex flex-col gap-2.5 sm:gap-4`}>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-[11px] sm:rounded-[16px] bg-white shadow-xs flex items-center justify-center shrink-0 overflow-hidden p-1.5 sm:p-2">
               <OfferLogo
                 offer={offer}
                 priority
-                imgClassName="w-8 h-8 sm:w-9 sm:h-9 object-contain"
-                fallbackClassName="w-7 h-7 sm:w-8 sm:h-8"
+                imgClassName="w-6 h-6 sm:w-9 sm:h-9 object-contain"
+                fallbackClassName="w-6 h-6 sm:w-8 sm:h-8"
               />
             </div>
             <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2">
-                <p className="font-[var(--font-wallop)] font-semibold text-[15px] sm:text-[16px] text-midnight-mouth truncate">
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                <p className="font-[var(--font-wallop)] font-semibold text-[13.5px] sm:text-[16px] text-midnight-mouth truncate">
                   {offer.identity.provider}
                 </p>
                 {requiresStudentId && (
-                  <span className="bg-sunshine-yellow text-[#101014] font-[var(--font-wallop)] font-semibold text-[11.5px] rounded-full px-2.5 py-0.5 inline-flex items-center gap-1">
-                    <GraduationCap className="w-3.5 h-3.5" aria-hidden="true" />
+                  <span className="bg-sunshine-yellow text-[#101014] font-[var(--font-wallop)] font-semibold text-[10.5px] sm:text-[11.5px] rounded-full px-2 sm:px-2.5 py-0.5 inline-flex items-center gap-1">
+                    <GraduationCap className="w-3 h-3 sm:w-3.5 sm:h-3.5" aria-hidden="true" />
                     <span>Student ID / .edu Required</span>
                   </span>
                 )}
               </div>
-              <p className="font-[var(--font-inter)] text-[12.5px] sm:text-[13.5px] text-ink/85 mt-1">
+              <p className="font-[var(--font-inter)] text-[11.5px] sm:text-[13.5px] text-ink/85 mt-0.5 sm:mt-1 truncate">
                 {category?.name ?? offer.classification.category} · {offer.classification.subcategory} ·{' '}
                 {formatResourceType(offer.classification.resource_type)}
               </p>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2 shrink-0">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 shrink-0">
             <button
               type="button"
               data-testid="detail-save-btn"
               aria-pressed={saved}
               onClick={() => toggleSave(offer.identity.slug)}
-              className={`font-[var(--font-wallop)] font-semibold text-[13px] rounded-full px-4 py-2 min-h-[36px] inline-flex items-center justify-center gap-1.5 cursor-pointer spring-pill ${
+              className={`font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[13px] rounded-full px-3 sm:px-4 py-1.5 sm:py-2 min-h-[32px] sm:min-h-[36px] inline-flex items-center justify-center gap-1 sm:gap-1.5 cursor-pointer spring-pill ${
                 saved
                   ? 'bg-midnight-mouth text-daylight'
                   : 'bg-paper text-midnight-mouth hover:bg-sunshine-yellow'
               }`}
             >
-              <Bookmark className={`w-3.5 h-3.5 ${saved ? 'fill-current' : ''}`} aria-hidden="true" />
+              <Bookmark className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${saved ? 'fill-current' : ''}`} aria-hidden="true" />
               <span>{saved ? 'Saved to stack' : 'Save tool'}</span>
             </button>
 
@@ -278,7 +278,7 @@ export function OfferDetailPage({
               type="button"
               data-testid="detail-share-btn"
               onClick={handleShare}
-              className={`font-[var(--font-wallop)] font-semibold text-[13px] rounded-full px-4 py-2 min-h-[36px] inline-flex items-center justify-center gap-1.5 cursor-pointer spring-pill ${
+              className={`font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[13px] rounded-full px-3 sm:px-4 py-1.5 sm:py-2 min-h-[32px] sm:min-h-[36px] inline-flex items-center justify-center gap-1 sm:gap-1.5 cursor-pointer spring-pill ${
                 sharedFeedback
                   ? 'bg-grass-green text-[#101014]'
                   : 'bg-paper text-midnight-mouth hover:bg-sunshine-yellow'
@@ -286,12 +286,12 @@ export function OfferDetailPage({
             >
               {sharedFeedback ? (
                 <>
-                  <Check className="w-3.5 h-3.5" aria-hidden="true" />
+                  <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5" aria-hidden="true" />
                   <span>Link copied!</span>
                 </>
               ) : (
                 <>
-                  <Share2 className="w-3.5 h-3.5" aria-hidden="true" />
+                  <Share2 className="w-3 h-3 sm:w-3.5 sm:h-3.5" aria-hidden="true" />
                   <span>Share tool</span>
                 </>
               )}
@@ -301,34 +301,34 @@ export function OfferDetailPage({
               type="button"
               data-testid="open-report-modal-btn"
               onClick={() => setReportOpen(true)}
-              className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[13px] rounded-full px-4 py-2 min-h-[36px] inline-flex items-center justify-center gap-1.5 cursor-pointer spring-pill"
+              className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[13px] rounded-full px-3 sm:px-4 py-1.5 sm:py-2 min-h-[32px] sm:min-h-[36px] inline-flex items-center justify-center gap-1 sm:gap-1.5 cursor-pointer spring-pill"
             >
-              <Flag className="w-3.5 h-3.5" aria-hidden="true" />
+              <Flag className="w-3 h-3 sm:w-3.5 sm:h-3.5" aria-hidden="true" />
               <span>Report outdated info</span>
             </button>
           </div>
         </div>
 
-        <h1 className="font-[var(--font-wallop)] font-extrabold text-[24px] sm:text-[36px] lg:text-[44px] leading-[1.05] tracking-[-0.03em] text-midnight-mouth">
+        <h1 className="font-[var(--font-wallop)] font-extrabold text-[20px] sm:text-[36px] lg:text-[44px] leading-[1.08] sm:leading-[1.05] tracking-[-0.03em] text-midnight-mouth">
           {offer.identity.name}
         </h1>
 
-        <p className="font-[var(--font-inter)] text-[14px] sm:text-[15.5px] leading-[1.5] text-ink max-w-3xl">
+        <p className="font-[var(--font-inter)] text-[12.5px] sm:text-[15.5px] leading-[1.45] sm:leading-[1.5] text-ink max-w-3xl">
           {offer.description}
         </p>
       </section>
 
       {/* 70/30 Desktop Main/Sidebar Arrangement */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-3.5 sm:gap-5 lg:gap-6 items-start">
         {/* Main Column (~70%: 8 cols on PC, 2nd on mobile) */}
-        <div className="order-2 lg:order-1 lg:col-span-8 flex flex-col gap-5 sm:gap-6 min-w-0">
+        <div className="order-2 lg:order-1 lg:col-span-8 flex flex-col gap-3.5 sm:gap-6 min-w-0">
           {/* Free-Tier Usage Limits */}
-          <section className="bg-daylight rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 md:p-7 flex flex-col gap-4">
+          <section className="bg-daylight rounded-[15px] sm:rounded-[24px] p-3.5 sm:p-6 md:p-7 flex flex-col gap-3 sm:gap-4">
             <div>
-              <h2 className="font-[var(--font-wallop)] font-bold text-[19px] sm:text-[22px] leading-[1.15] tracking-[-0.02em] text-midnight-mouth">
+              <h2 className="font-[var(--font-wallop)] font-bold text-[16.5px] sm:text-[22px] leading-[1.15] tracking-[-0.02em] text-midnight-mouth">
                 What is actually free
               </h2>
-              <p className="font-[var(--font-inter)] text-[13.5px] sm:text-[14px] text-ink/80 mt-1">
+              <p className="font-[var(--font-inter)] text-[12px] sm:text-[14px] text-ink/80 mt-0.5 sm:mt-1">
                 Classification:{' '}
                 <strong className="text-midnight-mouth">
                   {formatPricingModel(offer.classification.pricing_model)}
@@ -337,16 +337,16 @@ export function OfferDetailPage({
             </div>
 
             {offer.access.free_limits.length > 0 ? (
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1.5 sm:gap-2">
                 {offer.access.free_limits.map((limit) => (
                   <div
                     key={limit.name}
-                    className="bg-paper rounded-[14px] px-4 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-3"
+                    className="bg-paper rounded-[11px] sm:rounded-[14px] px-3 sm:px-4 py-2 sm:py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-0.5 sm:gap-3"
                   >
-                    <span className="font-[var(--font-inter)] font-medium text-[13.5px] sm:text-[14px] text-ink">
+                    <span className="font-[var(--font-inter)] font-medium text-[12px] sm:text-[14px] text-ink">
                       {limit.name}
                     </span>
-                    <span className="font-[var(--font-wallop)] font-bold text-[14.5px] sm:text-[15.5px] text-midnight-mouth tabular-nums sm:text-right break-words">
+                    <span className="font-[var(--font-wallop)] font-bold text-[13px] sm:text-[15.5px] text-midnight-mouth tabular-nums sm:text-right break-words">
                       {limit.value === null ? 'Unknown' : String(limit.value)}
                       {limit.period ? ` · ${limit.period}` : ''}
                     </span>
@@ -354,18 +354,18 @@ export function OfferDetailPage({
                 ))}
               </div>
             ) : (
-              <p className="bg-paper rounded-[14px] p-4 font-[var(--font-inter)] text-[14px] text-ink/80">
+              <p className="bg-paper rounded-[11px] sm:rounded-[14px] p-3 sm:p-4 font-[var(--font-inter)] text-[12.5px] sm:text-[14px] text-ink/80">
                 Specific quota numbers not published by provider.
               </p>
             )}
 
             {/* Restrictions & Conditions */}
             {offer.access.restrictions.length > 0 && (
-              <div className="bg-paper rounded-[16px] p-4 sm:p-5 flex flex-col gap-2">
-                <h3 className="font-[var(--font-wallop)] font-semibold text-[15px] text-midnight-mouth">
+              <div className="bg-paper rounded-[12px] sm:rounded-[16px] p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-2">
+                <h3 className="font-[var(--font-wallop)] font-semibold text-[13.5px] sm:text-[15px] text-midnight-mouth">
                   Conditions &amp; restrictions
                 </h3>
-                <ul className="flex flex-col gap-1.5 font-[var(--font-inter)] text-[13.5px] leading-[1.45] text-ink/90 list-disc pl-4">
+                <ul className="flex flex-col gap-1 sm:gap-1.5 font-[var(--font-inter)] text-[12px] sm:text-[13.5px] leading-[1.45] text-ink/90 list-disc pl-4">
                   {offer.access.restrictions.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
@@ -376,91 +376,91 @@ export function OfferDetailPage({
 
           {/* Learning Metadata Panel when present */}
           {offer.learning && (
-            <section className="bg-sunshine-yellow rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 md:p-7 flex flex-col gap-4">
+            <section className="bg-sunshine-yellow rounded-[15px] sm:rounded-[24px] p-3.5 sm:p-6 md:p-7 flex flex-col gap-3 sm:gap-4">
               <div className="flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-midnight-mouth shrink-0" aria-hidden="true" />
-                <h2 className="font-[var(--font-wallop)] font-bold text-[19px] sm:text-[22px] leading-[1.15] text-midnight-mouth">
+                <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-midnight-mouth shrink-0" aria-hidden="true" />
+                <h2 className="font-[var(--font-wallop)] font-bold text-[16.5px] sm:text-[22px] leading-[1.15] text-midnight-mouth">
                   Study material profile
                 </h2>
               </div>
-              <dl className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
-                <div className="bg-paper rounded-[14px] p-3.5">
-                  <dt className="font-[var(--font-inter)] text-[12px] text-ink/70">Format</dt>
-                  <dd className="font-[var(--font-wallop)] font-bold text-[15px] text-midnight-mouth mt-0.5">
+              <dl className="grid grid-cols-3 gap-1.5 sm:gap-3">
+                <div className="bg-paper rounded-[11px] sm:rounded-[14px] p-2.5 sm:p-3.5">
+                  <dt className="font-[var(--font-inter)] text-[11px] sm:text-[12px] text-ink/70">Format</dt>
+                  <dd className="font-[var(--font-wallop)] font-bold text-[12.5px] sm:text-[15px] text-midnight-mouth mt-0.5">
                     {formatLearningFormat(offer.learning.format)}
                   </dd>
                 </div>
-                <div className="bg-paper rounded-[14px] p-3.5">
-                  <dt className="font-[var(--font-inter)] text-[12px] text-ink/70">Difficulty</dt>
-                  <dd className="font-[var(--font-wallop)] font-bold text-[15px] text-midnight-mouth mt-0.5">
+                <div className="bg-paper rounded-[11px] sm:rounded-[14px] p-2.5 sm:p-3.5">
+                  <dt className="font-[var(--font-inter)] text-[11px] sm:text-[12px] text-ink/70">Difficulty</dt>
+                  <dd className="font-[var(--font-wallop)] font-bold text-[12.5px] sm:text-[15px] text-midnight-mouth mt-0.5">
                     {formatLearningDifficulty(offer.learning.difficulty)}
                   </dd>
                 </div>
-                <div className="bg-paper rounded-[14px] p-3.5">
-                  <dt className="font-[var(--font-inter)] text-[12px] text-ink/70">Language</dt>
-                  <dd className="font-[var(--font-wallop)] font-bold text-[15px] text-midnight-mouth mt-0.5">
+                <div className="bg-paper rounded-[11px] sm:rounded-[14px] p-2.5 sm:p-3.5">
+                  <dt className="font-[var(--font-inter)] text-[11px] sm:text-[12px] text-ink/70">Language</dt>
+                  <dd className="font-[var(--font-wallop)] font-bold text-[12.5px] sm:text-[15px] text-midnight-mouth mt-0.5">
                     {offer.learning.language ?? 'Unknown'}
                   </dd>
                 </div>
               </dl>
-              <div className="font-[var(--font-inter)] text-[13.5px] text-midnight-mouth">
+              <div className="font-[var(--font-inter)] text-[12px] sm:text-[13.5px] text-midnight-mouth">
                 <strong>Topics:</strong> {offer.learning.topics.join(' · ')}
               </div>
             </section>
           )}
 
           {/* Eligibility, Validity & Auto-Renewal */}
-          <section className="bg-daylight rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 md:p-7 flex flex-col gap-4">
-            <h2 className="font-[var(--font-wallop)] font-bold text-[19px] sm:text-[22px] leading-[1.15] tracking-[-0.02em] text-midnight-mouth">
+          <section className="bg-daylight rounded-[15px] sm:rounded-[24px] p-3.5 sm:p-6 md:p-7 flex flex-col gap-3 sm:gap-4">
+            <h2 className="font-[var(--font-wallop)] font-bold text-[16.5px] sm:text-[22px] leading-[1.15] tracking-[-0.02em] text-midnight-mouth">
               Eligibility, validity &amp; expiry rules
             </h2>
 
-            <dl className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <div className="bg-paper rounded-[14px] p-4">
-                <dt className="font-[var(--font-wallop)] font-semibold text-[14px] text-midnight-mouth mb-0.5">
+            <dl className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3">
+              <div className="bg-paper rounded-[11px] sm:rounded-[14px] p-3 sm:p-4">
+                <dt className="font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[14px] text-midnight-mouth mb-0.5">
                   Student eligibility
                 </dt>
-                <dd className="font-[var(--font-inter)] text-[13.5px] leading-[1.45] text-ink/90">
+                <dd className="font-[var(--font-inter)] text-[12px] sm:text-[13.5px] leading-[1.45] text-ink/90">
                   {formatStudentAccess(offer.eligibility.student_access)}
                 </dd>
               </div>
 
-              <div className="bg-paper rounded-[14px] p-4">
-                <dt className="font-[var(--font-wallop)] font-semibold text-[14px] text-midnight-mouth mb-0.5">
+              <div className="bg-paper rounded-[11px] sm:rounded-[14px] p-3 sm:p-4">
+                <dt className="font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[14px] text-midnight-mouth mb-0.5">
                   Supported regions
                 </dt>
-                <dd className="font-[var(--font-inter)] text-[13.5px] leading-[1.45] text-ink/90">
+                <dd className="font-[var(--font-inter)] text-[12px] sm:text-[13.5px] leading-[1.45] text-ink/90">
                   {offer.eligibility.regions.length > 0
                     ? offer.eligibility.regions.join(', ')
                     : 'Region availability unknown'}
                 </dd>
               </div>
 
-              <div className="bg-paper rounded-[14px] p-4">
-                <dt className="font-[var(--font-wallop)] font-semibold text-[14px] text-midnight-mouth mb-0.5">
+              <div className="bg-paper rounded-[11px] sm:rounded-[14px] p-3 sm:p-4">
+                <dt className="font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[14px] text-midnight-mouth mb-0.5">
                   Validity &amp; duration
                 </dt>
-                <dd className="font-[var(--font-inter)] text-[13.5px] leading-[1.45] text-ink/90">
+                <dd className="font-[var(--font-inter)] text-[12px] sm:text-[13.5px] leading-[1.45] text-ink/90">
                   {formatValidityType(offer.access.validity.type)}
                   {offer.access.validity.duration ? ` — ${offer.access.validity.duration}` : ''}
                 </dd>
               </div>
 
-              <div className="bg-paper rounded-[14px] p-4">
-                <dt className="font-[var(--font-wallop)] font-semibold text-[14px] text-midnight-mouth mb-0.5">
+              <div className="bg-paper rounded-[11px] sm:rounded-[14px] p-3 sm:p-4">
+                <dt className="font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[14px] text-midnight-mouth mb-0.5">
                   Auto-renewal &amp; overages
                 </dt>
-                <dd className="font-[var(--font-inter)] text-[13.5px] leading-[1.45] text-ink/90">
+                <dd className="font-[var(--font-inter)] text-[12px] sm:text-[13.5px] leading-[1.45] text-ink/90">
                   {offer.access.validity.auto_renewal ?? 'Unknown / not specified by provider'}
                 </dd>
               </div>
             </dl>
 
-            <div className="bg-paper rounded-[14px] p-4">
-              <h3 className="font-[var(--font-wallop)] font-semibold text-[14px] text-midnight-mouth mb-0.5">
+            <div className="bg-paper rounded-[11px] sm:rounded-[14px] p-3 sm:p-4">
+              <h3 className="font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[14px] text-midnight-mouth mb-0.5">
                 Who qualifies
               </h3>
-              <p className="font-[var(--font-inter)] text-[13.5px] leading-[1.45] text-ink/90">
+              <p className="font-[var(--font-inter)] text-[12px] sm:text-[13.5px] leading-[1.45] text-ink/90">
                 {offer.eligibility.conditions ?? 'Unknown / not explicitly stated.'}
               </p>
             </div>
@@ -469,18 +469,18 @@ export function OfferDetailPage({
           {/* Section 21: 10-Question FreeStack Standard Summary */}
           <section
             data-testid="ten-point-checklist"
-            className="bg-daylight rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 md:p-7 flex flex-col gap-4"
+            className="bg-daylight rounded-[15px] sm:rounded-[24px] p-3.5 sm:p-6 md:p-7 flex flex-col gap-3 sm:gap-4"
           >
             <div>
-              <h2 className="font-[var(--font-wallop)] font-bold text-[19px] sm:text-[22px] leading-[1.15] tracking-[-0.02em] text-midnight-mouth">
+              <h2 className="font-[var(--font-wallop)] font-bold text-[16.5px] sm:text-[22px] leading-[1.15] tracking-[-0.02em] text-midnight-mouth">
                 10-point FreeStack verification summary
               </h2>
-              <p className="font-[var(--font-inter)] text-[13.5px] text-ink/80 mt-1">
+              <p className="font-[var(--font-inter)] text-[12px] sm:text-[13.5px] text-ink/80 mt-0.5 sm:mt-1">
                 Every listing in FreeStack answers these 10 core questions without hidden assumptions.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2.5">
               {[
                 {
                   q: '01. What is this resource?',
@@ -531,11 +531,11 @@ export function OfferDetailPage({
                   a: `${formatVerificationStatus(offer.verification.status)} on ${formatDate(offer.verification.last_verified_at)}`,
                 },
               ].map((item) => (
-                <div key={item.q} className="bg-paper rounded-[14px] p-3.5 flex flex-col gap-0.5">
-                  <span className="font-[var(--font-wallop)] font-bold text-[13.5px] text-midnight-mouth">
+                <div key={item.q} className="bg-paper rounded-[11px] sm:rounded-[14px] p-2.5 sm:p-3.5 flex flex-col gap-0.5">
+                  <span className="font-[var(--font-wallop)] font-bold text-[12px] sm:text-[13.5px] text-midnight-mouth">
                     {item.q}
                   </span>
-                  <span className="font-[var(--font-inter)] text-[12.5px] sm:text-[13px] leading-[1.45] text-ink/90 break-words">
+                  <span className="font-[var(--font-inter)] text-[11.5px] sm:text-[13px] leading-[1.4] sm:leading-[1.45] text-ink/90 break-words">
                     {item.a}
                   </span>
                 </div>
@@ -544,43 +544,43 @@ export function OfferDetailPage({
           </section>
 
           {/* Evidence & Official Sources */}
-          <section className="bg-daylight rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 md:p-7 flex flex-col gap-4">
-            <div className="flex flex-wrap items-center justify-between gap-2.5">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-midnight-mouth shrink-0" aria-hidden="true" />
-                <h2 className="font-[var(--font-wallop)] font-bold text-[19px] sm:text-[22px] leading-[1.15] tracking-[-0.02em] text-midnight-mouth">
+          <section className="bg-daylight rounded-[15px] sm:rounded-[24px] p-3.5 sm:p-6 md:p-7 flex flex-col gap-3 sm:gap-4">
+            <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-2.5">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-midnight-mouth shrink-0" aria-hidden="true" />
+                <h2 className="font-[var(--font-wallop)] font-bold text-[16.5px] sm:text-[22px] leading-[1.15] tracking-[-0.02em] text-midnight-mouth">
                   Official evidence &amp; sources
                 </h2>
               </div>
-              <span className="font-[var(--font-inter)] text-[12.5px] text-ink/75 tabular-nums">
+              <span className="font-[var(--font-inter)] text-[11px] sm:text-[12.5px] text-ink/75 tabular-nums">
                 Schema v{offer.schema_version} · Updated {formatDate(offer.metadata.updated_at)}
               </span>
             </div>
 
             {offer.evidence.claims.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3">
                 {offer.evidence.claims.map((claim, idx) => {
                   const src = sourceById.get(claim.source_id);
                   return (
                     <blockquote
                       key={`${claim.field_path}-${idx}`}
-                      className="bg-paper rounded-[16px] p-4 flex flex-col justify-between gap-3"
+                      className="bg-paper rounded-[12px] sm:rounded-[16px] p-3 sm:p-4 flex flex-col justify-between gap-2 sm:gap-3"
                     >
                       <div>
-                        <div className="flex items-center justify-between gap-2 mb-1.5">
-                          <span className="font-[var(--font-wallop)] font-semibold text-[13px] text-midnight-mouth flex items-center gap-1.5">
-                            <FileText className="w-3.5 h-3.5" aria-hidden="true" />
+                        <div className="flex items-center justify-between gap-2 mb-1 sm:mb-1.5">
+                          <span className="font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13px] text-midnight-mouth flex items-center gap-1.5">
+                            <FileText className="w-3 h-3 sm:w-3.5 sm:h-3.5" aria-hidden="true" />
                             {claim.field_path}
                           </span>
-                          <span className="font-[var(--font-inter)] text-[11px] text-ink/70 uppercase tracking-wide">
+                          <span className="font-[var(--font-inter)] text-[10px] sm:text-[11px] text-ink/70 uppercase tracking-wide">
                             {claim.confidence} confidence
                           </span>
                         </div>
-                        <p className="font-[var(--font-inter)] text-[13.5px] leading-[1.45] text-ink">
+                        <p className="font-[var(--font-inter)] text-[12px] sm:text-[13.5px] leading-[1.42] sm:leading-[1.45] text-ink">
                           &ldquo;{claim.quote}&rdquo;
                         </p>
                         {claim.notes && (
-                          <p className="font-[var(--font-inter)] text-[12px] text-ink/75 mt-1.5">
+                          <p className="font-[var(--font-inter)] text-[11px] sm:text-[12px] text-ink/75 mt-1 sm:mt-1.5">
                             Note: {claim.notes}
                           </p>
                         )}
@@ -591,7 +591,7 @@ export function OfferDetailPage({
                           href={safeExternalUrl(src.url)!}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="font-[var(--font-inter)] text-[12px] text-midnight-mouth underline underline-offset-4 break-all inline-flex items-center gap-1"
+                          className="font-[var(--font-inter)] text-[11px] sm:text-[12px] text-midnight-mouth underline underline-offset-4 break-all inline-flex items-center gap-1"
                         >
                           <span>
                             {src.source_type.replace('_', ' ')} (checked {formatDate(src.checked_at)}):{' '}
@@ -605,13 +605,13 @@ export function OfferDetailPage({
                 })}
               </div>
             ) : (
-              <p className="font-[var(--font-inter)] text-[14px] text-ink/80 bg-paper rounded-[14px] p-4">
+              <p className="font-[var(--font-inter)] text-[12.5px] sm:text-[14px] text-ink/80 bg-paper rounded-[11px] sm:rounded-[14px] p-3 sm:p-4">
                 No verbatim claim quotes recorded yet. Verify directly on the official provider links before relying on limits.
               </p>
             )}
 
             {offer.classification.tags.length > 0 && (
-              <div className="font-[var(--font-inter)] text-[12.5px] text-ink/75">
+              <div className="font-[var(--font-inter)] text-[11.5px] sm:text-[12.5px] text-ink/75">
                 Tags: {offer.classification.tags.join(' · ')}
               </div>
             )}
@@ -619,16 +619,16 @@ export function OfferDetailPage({
         </div>
 
         {/* Right Sidebar (~30%: 4 cols on PC, 1st on Mobile) */}
-        <aside className="order-1 lg:order-2 lg:col-span-4 flex flex-col gap-4 lg:sticky lg:top-[82px]">
-          <div className="bg-daylight rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 flex flex-col gap-3.5">
-            <div className="flex items-center gap-2">
+        <aside className="order-1 lg:order-2 lg:col-span-4 flex flex-col gap-3 sm:gap-4 lg:sticky lg:top-[82px]">
+          <div className="bg-daylight rounded-[15px] sm:rounded-[24px] p-3.5 sm:p-6 flex flex-col gap-2.5 sm:gap-3.5">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               {statusIcon}
-              <span className="font-[var(--font-wallop)] font-bold text-[18px] sm:text-[20px] text-midnight-mouth">
+              <span className="font-[var(--font-wallop)] font-bold text-[16px] sm:text-[20px] text-midnight-mouth">
                 {formatVerificationStatus(offer.verification.status)}
               </span>
             </div>
 
-            <dl className="flex flex-col gap-2.5 pt-3.5 border-t border-midnight-mouth/10 font-[var(--font-inter)] text-[13.5px]">
+            <dl className="flex flex-col gap-1.5 sm:gap-2.5 pt-2.5 sm:pt-3.5 border-t border-midnight-mouth/10 font-[var(--font-inter)] text-[12px] sm:text-[13.5px]">
               <div className="flex items-baseline justify-between gap-2">
                 <dt className="text-ink/70 shrink-0">Last verified</dt>
                 <dd className="font-semibold text-midnight-mouth tabular-nums text-right">
@@ -656,22 +656,22 @@ export function OfferDetailPage({
             </dl>
 
             {offer.access.requirements.payment_method_notes && (
-              <p className="font-[var(--font-inter)] text-[13px] leading-[1.45] text-ink/85 bg-paper rounded-[14px] p-3.5">
+              <p className="font-[var(--font-inter)] text-[11.5px] sm:text-[13px] leading-[1.4] sm:leading-[1.45] text-ink/85 bg-paper rounded-[11px] sm:rounded-[14px] p-2.5 sm:p-3.5">
                 {offer.access.requirements.payment_method_notes}
               </p>
             )}
 
             {/* Safe /go/:slug Outbound Redirect Links */}
-            <div className="flex flex-col gap-2 pt-1">
+            <div className="flex flex-col gap-1.5 sm:gap-2 pt-0.5 sm:pt-1">
               {goOfficial && (
                 <a
                   href={`/go/${encodeURIComponent(offer.identity.slug)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[14px] rounded-full px-5 py-2.5 min-h-[40px] inline-flex items-center justify-center gap-1.5 spring-pill"
+                  className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[14px] rounded-full px-4 sm:px-5 py-2 sm:py-2.5 min-h-[36px] sm:min-h-[40px] inline-flex items-center justify-center gap-1.5 spring-pill"
                 >
                   <span>Visit official site</span>
-                  <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+                  <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true" />
                 </a>
               )}
               {goSignup && (
@@ -679,10 +679,10 @@ export function OfferDetailPage({
                   href={`/go/${encodeURIComponent(offer.identity.slug)}?target=signup`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[13.5px] rounded-full px-4 py-2 min-h-[38px] inline-flex items-center justify-center gap-1.5 spring-pill"
+                  className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13.5px] rounded-full px-3.5 sm:px-4 py-1.5 sm:py-2 min-h-[34px] sm:min-h-[38px] inline-flex items-center justify-center gap-1.5 spring-pill"
                 >
                   <span>Direct signup</span>
-                  <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+                  <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5" aria-hidden="true" />
                 </a>
               )}
               {goPricing && (
@@ -690,10 +690,10 @@ export function OfferDetailPage({
                   href={`/go/${encodeURIComponent(offer.identity.slug)}?target=pricing`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[13.5px] rounded-full px-4 py-2 min-h-[38px] inline-flex items-center justify-center gap-1.5 spring-pill"
+                  className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13.5px] rounded-full px-3.5 sm:px-4 py-1.5 sm:py-2 min-h-[34px] sm:min-h-[38px] inline-flex items-center justify-center gap-1.5 spring-pill"
                 >
                   <span>Official pricing page</span>
-                  <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+                  <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5" aria-hidden="true" />
                 </a>
               )}
               {goDocs && (
@@ -701,22 +701,22 @@ export function OfferDetailPage({
                   href={`/go/${encodeURIComponent(offer.identity.slug)}?target=docs`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[13.5px] rounded-full px-4 py-2 min-h-[38px] inline-flex items-center justify-center gap-1.5 spring-pill"
+                  className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13.5px] rounded-full px-3.5 sm:px-4 py-1.5 sm:py-2 min-h-[34px] sm:min-h-[38px] inline-flex items-center justify-center gap-1.5 spring-pill"
                 >
                   <span>Documentation</span>
-                  <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+                  <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5" aria-hidden="true" />
                 </a>
               )}
             </div>
 
-            <div className="bg-paper rounded-[14px] p-3.5 font-[var(--font-inter)] text-[12px] leading-[1.45] text-ink/80">
+            <div className="bg-paper rounded-[11px] sm:rounded-[14px] p-2.5 sm:p-3.5 font-[var(--font-inter)] text-[11px] sm:text-[12px] leading-[1.4] sm:leading-[1.45] text-ink/80">
               <strong className="text-midnight-mouth">Independent notice:</strong> FreeStack is not affiliated with {offer.identity.provider}. Free quotas, pricing, and card rules can change at any time—verify on the official page before use. Listing a tool, API, or MCP server is not a security audit; review permissions and source code before connecting credentials.
             </div>
 
             <button
               type="button"
               onClick={() => setReportOpen(true)}
-              className="mt-0.5 min-h-[34px] text-center font-[var(--font-inter)] text-[13px] text-midnight-mouth underline underline-offset-4 cursor-pointer hover:text-ink"
+              className="mt-0.5 min-h-[30px] sm:min-h-[34px] text-center font-[var(--font-inter)] text-[12px] sm:text-[13px] text-midnight-mouth underline underline-offset-4 cursor-pointer hover:text-ink"
             >
               Spot a change? Report outdated info
             </button>
@@ -726,21 +726,21 @@ export function OfferDetailPage({
 
       {/* Related Resources */}
       {related.length > 0 && (
-        <section className="flex flex-col gap-4 pt-2">
+        <section className="flex flex-col gap-2.5 sm:gap-4 pt-1 sm:pt-2">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <h2 className="font-[var(--font-wallop)] font-extrabold text-[22px] sm:text-[28px] leading-[1.1] tracking-[-0.025em] text-midnight-mouth">
+            <h2 className="font-[var(--font-wallop)] font-extrabold text-[18px] sm:text-[28px] leading-[1.1] tracking-[-0.025em] text-midnight-mouth">
               More in {category?.name}
             </h2>
             <a
               href={backMeta.targetHref}
               onClick={handleBackClick}
-              className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[13.5px] rounded-full px-4 py-1.5 min-h-[36px] inline-flex items-center gap-1.5 spring-pill"
+              className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13.5px] rounded-full px-3 sm:px-4 py-1 sm:py-1.5 min-h-[32px] sm:min-h-[36px] inline-flex items-center gap-1.5 spring-pill"
             >
-              <ArrowLeft className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+              <ArrowLeft className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" aria-hidden="true" />
               <span>{backMeta.label}</span>
             </a>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-4">
             {related.map((item) => (
               <ResourceCard key={item.identity.id} offer={item} onNavigate={onNavigate} />
             ))}

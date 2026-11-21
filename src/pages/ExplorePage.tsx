@@ -705,9 +705,9 @@ export function ExplorePage({
   };
 
   return (
-    <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-5 pb-12 sm:pb-16 flex flex-col gap-4 sm:gap-6">
+    <div className="max-w-[1360px] mx-auto px-3 sm:px-6 lg:px-8 pt-2.5 sm:pt-5 pb-8 sm:pb-16 flex flex-col gap-3 sm:gap-6">
       {/* Compact Sky Blue Header Slab */}
-      <section className="bg-sky-blue rounded-[18px] sm:rounded-[26px] p-3.5 sm:p-7 md:p-8 text-center flex flex-col items-center gap-2 sm:gap-3">
+      <section className="bg-sky-blue rounded-[16px] sm:rounded-[26px] p-3 sm:p-7 md:p-8 text-center flex flex-col items-center gap-1.5 sm:gap-3">
         <div className="flex items-center justify-center gap-2">
           <a
             href="/"
@@ -715,18 +715,18 @@ export function ExplorePage({
               e.preventDefault();
               onNavigate('/');
             }}
-            className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13px] rounded-full px-3 sm:px-3.5 py-1 sm:py-1.5 min-h-[30px] sm:min-h-[32px] inline-flex items-center gap-1.5 spring-pill"
+            className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[13px] rounded-full px-2.5 sm:px-3.5 py-1 sm:py-1.5 min-h-[28px] sm:min-h-[32px] inline-flex items-center gap-1.5 spring-pill"
           >
-            <Home className="w-3.5 h-3.5" aria-hidden="true" />
+            <Home className="w-3 h-3 sm:w-3.5 sm:h-3.5" aria-hidden="true" />
             <span>Home</span>
           </a>
         </div>
-        <h1 className="font-[var(--font-wallop)] font-extrabold text-[23px] sm:text-[36px] lg:text-[44px] leading-[1.04] tracking-[-0.03em] text-midnight-mouth">
+        <h1 className="font-[var(--font-wallop)] font-extrabold text-[20px] sm:text-[36px] lg:text-[44px] leading-[1.06] sm:leading-[1.04] tracking-[-0.03em] text-midnight-mouth">
           {mode === 'search' && filters.query
             ? `Results for "${filters.query}"`
             : 'Explore FreeStack'}
         </h1>
-        <p className="font-[var(--font-inter)] text-[13px] sm:text-[15px] leading-[1.4] sm:leading-[1.45] text-ink max-w-xl line-clamp-2 sm:line-clamp-none">
+        <p className="font-[var(--font-inter)] text-[12px] sm:text-[15px] leading-[1.38] sm:leading-[1.45] text-ink max-w-xl line-clamp-2 sm:line-clamp-none">
           Instant, URL-synced filtering across AI Models, MCP servers, APIs, Frontend &amp; Design tools, pricing rules, and card requirements.
         </p>
         <div className="w-full pt-0.5">
@@ -745,14 +745,14 @@ export function ExplorePage({
       <div
         role="tablist"
         aria-label="Quick category filter"
-        className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 py-1"
+        className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar -mx-3 px-3 sm:mx-0 sm:px-0 py-0.5 sm:py-1"
       >
         <button
           type="button"
           role="tab"
           aria-selected={filters.category === 'all'}
           onClick={() => updateFilters((p) => ({ ...p, category: 'all', subcategory: 'all' }))}
-          className={`font-[var(--font-wallop)] font-semibold text-[13px] rounded-full px-3.5 py-2 min-h-[36px] whitespace-nowrap shrink-0 filter-pill cursor-pointer inline-flex items-center gap-1.5 ${
+          className={`font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13px] rounded-full px-3 sm:px-3.5 py-1.5 sm:py-2 min-h-[32px] sm:min-h-[36px] whitespace-nowrap shrink-0 filter-pill cursor-pointer inline-flex items-center gap-1.5 ${
             filters.category === 'all'
               ? 'bg-midnight-mouth text-daylight shadow-xs'
               : 'bg-daylight text-midnight-mouth hover:bg-sunshine-yellow'
@@ -776,13 +776,13 @@ export function ExplorePage({
                   subcategory: 'all',
                 }))
               }
-              className={`font-[var(--font-wallop)] font-semibold text-[13px] rounded-full pl-2.5 pr-3.5 py-1.5 min-h-[36px] whitespace-nowrap shrink-0 filter-pill cursor-pointer inline-flex items-center gap-1.5 ${
+              className={`font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13px] rounded-full pl-2 pr-3 sm:pl-2.5 sm:pr-3.5 py-1 sm:py-1.5 min-h-[32px] sm:min-h-[36px] whitespace-nowrap shrink-0 filter-pill cursor-pointer inline-flex items-center gap-1.5 ${
                 active
                   ? 'bg-midnight-mouth text-daylight shadow-xs'
                   : 'bg-daylight text-midnight-mouth hover:bg-sunshine-yellow'
               }`}
             >
-              <CategoryStickerIcon slug={cat.slug} className="w-4 h-4 shrink-0" />
+              <CategoryStickerIcon slug={cat.slug} className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
               <span>{cat.name}</span>
             </button>
           );
@@ -798,7 +798,7 @@ export function ExplorePage({
             setDraftFilters(filters);
             setDrawerOpen(true);
           }}
-          className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13.5px] rounded-full px-4 py-2 min-h-[38px] inline-flex items-center gap-1.5 shrink-0 spring-pill cursor-pointer"
+          className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[13.5px] rounded-full px-3.5 sm:px-4 py-1.5 sm:py-2 min-h-[34px] sm:min-h-[38px] inline-flex items-center gap-1.5 shrink-0 spring-pill cursor-pointer"
         >
           <SlidersHorizontal className="w-3.5 h-3.5" aria-hidden="true" />
           <span>Filters</span>
@@ -808,7 +808,7 @@ export function ExplorePage({
           <button
             type="button"
             onClick={resetAll}
-            className="bg-daylight text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12.5px] rounded-full px-3.5 py-2 min-h-[38px] inline-flex items-center gap-1 shrink-0 cursor-pointer"
+            className="bg-daylight text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[12.5px] rounded-full px-3 sm:px-3.5 py-1.5 sm:py-2 min-h-[34px] sm:min-h-[38px] inline-flex items-center gap-1 shrink-0 cursor-pointer"
           >
             <RotateCcw className="w-3 h-3" aria-hidden="true" />
             <span>Reset</span>
@@ -817,7 +817,7 @@ export function ExplorePage({
       </div>
 
       {/* Filter Sidebar + Results Area */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 lg:gap-6 items-start">
         {/* Desktop Sticky Filter Sidebar */}
         <aside
           aria-label="Resource filters"
@@ -851,7 +851,7 @@ export function ExplorePage({
         </aside>
 
         {/* Results Column */}
-        <div className="lg:col-span-9 flex flex-col gap-3.5 min-w-0">
+        <div className="lg:col-span-9 flex flex-col gap-2.5 sm:gap-3.5 min-w-0">
           {/* Active Filter Chips with Pop Animation */}
           {activeChips.length > 0 && (
             <div
@@ -863,7 +863,7 @@ export function ExplorePage({
                   key={chip.key}
                   type="button"
                   onClick={chip.onClear}
-                  className="chip-enter bg-sunshine-yellow hover:bg-tangerine text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12.5px] rounded-full px-3 py-1 min-h-[30px] inline-flex items-center gap-1.5 filter-pill cursor-pointer"
+                  className="chip-enter bg-sunshine-yellow hover:bg-tangerine text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[12.5px] rounded-full px-2.5 sm:px-3 py-1 min-h-[28px] sm:min-h-[30px] inline-flex items-center gap-1.5 filter-pill cursor-pointer"
                 >
                   <span>{chip.label}</span>
                   <X className="w-3 h-3" aria-hidden="true" />
@@ -873,7 +873,7 @@ export function ExplorePage({
                 <button
                   type="button"
                   onClick={resetAll}
-                  className="font-[var(--font-wallop)] font-semibold text-[12px] text-midnight-mouth/80 hover:text-midnight-mouth underline underline-offset-4 px-2 py-1 cursor-pointer"
+                  className="font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[12px] text-midnight-mouth/80 hover:text-midnight-mouth underline underline-offset-4 px-2 py-1 cursor-pointer"
                 >
                   Clear all
                 </button>
@@ -887,17 +887,17 @@ export function ExplorePage({
           ) : error && displayedResults.length === 0 ? (
             <OffersErrorState message={error} onRetry={retry} />
           ) : !isInitialLoading && !isTransitioning && displayedResults.length === 0 ? (
-            <div className="bg-daylight rounded-[22px] p-8 sm:p-10 text-center flex flex-col items-center gap-3 card-enter">
-              <h3 className="font-[var(--font-wallop)] font-bold text-[20px] sm:text-[24px] text-midnight-mouth">
+            <div className="bg-daylight rounded-[18px] sm:rounded-[22px] p-6 sm:p-10 text-center flex flex-col items-center gap-2.5 sm:gap-3 card-enter">
+              <h3 className="font-[var(--font-wallop)] font-bold text-[18px] sm:text-[24px] text-midnight-mouth">
                 No matching free resources
               </h3>
-              <p className="font-[var(--font-inter)] text-[14px] sm:text-[15px] text-ink/80 max-w-md">
+              <p className="font-[var(--font-inter)] text-[13px] sm:text-[15px] text-ink/80 max-w-md">
                 Try clearing a filter or searching with broader keywords like &ldquo;MCP&rdquo;, &ldquo;LLM&rdquo;, &ldquo;PostgreSQL&rdquo;, or &ldquo;Tailwind&rdquo;.
               </p>
               <button
                 type="button"
                 onClick={resetAll}
-                className="mt-1 bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[14px] rounded-full px-5 py-2.5 min-h-[40px] spring-pill cursor-pointer"
+                className="mt-1 bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[14px] rounded-full px-4 sm:px-5 py-2 sm:py-2.5 min-h-[36px] sm:min-h-[40px] spring-pill cursor-pointer"
               >
                 Reset all filters
               </button>
@@ -907,7 +907,7 @@ export function ExplorePage({
               <div
                 data-testid="explore-results-grid"
                 aria-busy={isTransitioning}
-                className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2.5 sm:gap-4 transition-opacity duration-150 ${
+                className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 sm:gap-4 transition-opacity duration-150 ${
                   isTransitioning ? 'opacity-75' : 'opacity-100'
                 }`}
               >
@@ -943,16 +943,16 @@ export function ExplorePage({
             if (e.target === e.currentTarget) setDrawerOpen(false);
           }}
         >
-          <div className="bg-daylight w-full rounded-t-[24px] p-4 sm:p-5 pb-[max(1rem,env(safe-area-inset-bottom))] max-h-[86dvh] flex flex-col gap-3.5 drawer-enter">
+          <div className="bg-daylight w-full rounded-t-[20px] sm:rounded-t-[24px] p-3.5 sm:p-5 pb-[max(0.875rem,env(safe-area-inset-bottom))] sm:pb-[max(1rem,env(safe-area-inset-bottom))] max-h-[84dvh] sm:max-h-[86dvh] flex flex-col gap-3 sm:gap-3.5 drawer-enter">
             <div className="flex items-center justify-between gap-3 pb-2 border-b border-midnight-mouth/10">
-              <h2 className="font-[var(--font-wallop)] font-bold text-[18px] sm:text-[20px] text-midnight-mouth">
+              <h2 className="font-[var(--font-wallop)] font-bold text-[16.5px] sm:text-[20px] text-midnight-mouth">
                 Filter resources
               </h2>
               <button
                 type="button"
                 onClick={() => setDrawerOpen(false)}
                 aria-label="Close filters drawer"
-                className="w-9 h-9 rounded-full bg-paper text-midnight-mouth inline-flex items-center justify-center cursor-pointer"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-paper text-midnight-mouth inline-flex items-center justify-center cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -965,14 +965,14 @@ export function ExplorePage({
               {renderFilterControls(draftFilters, setDraftFilters, 'mobile-filter')}
             </FilterScrollArea>
 
-            <div className="pt-2.5 border-t border-midnight-mouth/10 flex items-center gap-2.5">
+            <div className="pt-2 sm:pt-2.5 border-t border-midnight-mouth/10 flex items-center gap-2 sm:gap-2.5">
               <button
                 type="button"
                 onClick={() => {
                   setDraftFilters(DEFAULT_FILTER_STATE);
                   resetAll();
                 }}
-                className="flex-1 bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[14px] rounded-full px-4 py-2.5 min-h-[42px] cursor-pointer"
+                className="flex-1 bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[14px] rounded-full px-3.5 sm:px-4 py-2 sm:py-2.5 min-h-[38px] sm:min-h-[42px] cursor-pointer"
               >
                 Reset
               </button>
@@ -982,7 +982,7 @@ export function ExplorePage({
                   updateFilters(draftFilters);
                   setDrawerOpen(false);
                 }}
-                className="flex-[2] bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[14px] rounded-full px-4 py-2.5 min-h-[42px] cursor-pointer"
+                className="flex-[2] bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[14px] rounded-full px-3.5 sm:px-4 py-2 sm:py-2.5 min-h-[38px] sm:min-h-[42px] cursor-pointer"
               >
                 Apply filters
               </button>

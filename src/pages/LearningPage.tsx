@@ -188,25 +188,25 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
   };
 
   return (
-    <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-2.5 sm:pt-5 pb-12 flex flex-col gap-3.5 sm:gap-7">
+    <div className="max-w-[1360px] mx-auto px-3 sm:px-6 lg:px-8 pt-2 sm:pt-5 pb-8 sm:pb-12 flex flex-col gap-3 sm:gap-7">
       {/* Compact Sunshine Yellow Hero Slab */}
-      <section className="bg-sunshine-yellow rounded-[18px] sm:rounded-[26px] p-3.5 sm:p-7 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center">
-        <div className="lg:col-span-7 flex flex-col items-start gap-2 sm:gap-3">
+      <section className="bg-sunshine-yellow rounded-[16px] sm:rounded-[26px] p-3 sm:p-7 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 lg:gap-8 items-center">
+        <div className="lg:col-span-7 flex flex-col items-start gap-1.5 sm:gap-3">
           <a
             href="/"
             onClick={(e) => {
               e.preventDefault();
               onNavigate('/');
             }}
-            className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13px] rounded-full px-3 sm:px-3.5 py-1 sm:py-1.5 min-h-[30px] sm:min-h-[32px] inline-flex items-center gap-1.5 spring-pill"
+            className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[13px] rounded-full px-2.5 sm:px-3.5 py-1 sm:py-1.5 min-h-[28px] sm:min-h-[32px] inline-flex items-center gap-1.5 spring-pill"
           >
-            <Home className="w-3.5 h-3.5" aria-hidden="true" />
+            <Home className="w-3 h-3 sm:w-3.5 sm:h-3.5" aria-hidden="true" />
             <span>Home</span>
           </a>
-          <h1 className="font-[var(--font-wallop)] font-extrabold text-[23px] sm:text-[36px] lg:text-[44px] leading-[1.04] tracking-[-0.03em] text-midnight-mouth">
+          <h1 className="font-[var(--font-wallop)] font-extrabold text-[20px] sm:text-[36px] lg:text-[44px] leading-[1.06] sm:leading-[1.04] tracking-[-0.03em] text-midnight-mouth">
             Learning &amp; study materials
           </h1>
-          <p className="font-[var(--font-inter)] text-[13px] sm:text-[15px] leading-[1.4] sm:leading-[1.45] text-ink max-w-xl line-clamp-2 sm:line-clamp-none">
+          <p className="font-[var(--font-inter)] text-[12px] sm:text-[15px] leading-[1.38] sm:leading-[1.45] text-ink max-w-xl line-clamp-2 sm:line-clamp-none">
             Curated programming courses, reference docs, technical books, developer roadmaps, CS lectures, and algorithm practice without paywalls.
           </p>
           <div className="w-full pt-0.5 sm:pt-1">
@@ -236,7 +236,7 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
       <div
         role="tablist"
         aria-label="Learning format"
-        className="flex flex-nowrap sm:flex-wrap items-center gap-1.5 sm:gap-2 overflow-x-auto sm:overflow-visible no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 py-0.5"
+        className="flex flex-nowrap sm:flex-wrap items-center gap-1.5 sm:gap-2 overflow-x-auto sm:overflow-visible no-scrollbar -mx-3 px-3 sm:mx-0 sm:px-0 py-0.5"
       >
         <button
           type="button"
@@ -246,7 +246,7 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
             setSelectedFormat('all');
             syncLearningUrl({ format: 'all' });
           }}
-          className={`font-[var(--font-wallop)] font-semibold text-[13px] rounded-full px-4 py-1.5 min-h-[36px] whitespace-nowrap shrink-0 filter-pill cursor-pointer ${
+          className={`font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13px] rounded-full px-3 sm:px-4 py-1 sm:py-1.5 min-h-[32px] sm:min-h-[36px] whitespace-nowrap shrink-0 filter-pill cursor-pointer ${
             selectedFormat === 'all'
               ? 'bg-midnight-mouth text-daylight shadow-xs'
               : 'bg-daylight text-midnight-mouth hover:bg-sunshine-yellow'
@@ -266,7 +266,7 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
                 setSelectedFormat(fmt);
                 syncLearningUrl({ format: fmt });
               }}
-              className={`font-[var(--font-wallop)] font-semibold text-[13px] rounded-full px-4 py-1.5 min-h-[36px] whitespace-nowrap shrink-0 filter-pill cursor-pointer ${
+              className={`font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13px] rounded-full px-3 sm:px-4 py-1 sm:py-1.5 min-h-[32px] sm:min-h-[36px] whitespace-nowrap shrink-0 filter-pill cursor-pointer ${
                 active
                   ? 'bg-midnight-mouth text-daylight shadow-xs'
                   : 'bg-daylight text-midnight-mouth hover:bg-sunshine-yellow'
@@ -283,14 +283,14 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
         <button
           type="button"
           onClick={() => setMobileFiltersOpen((prev) => !prev)}
-          className={`inline-flex items-center gap-1.5 font-[var(--font-wallop)] font-semibold text-[12px] rounded-full px-3.5 py-1.5 min-h-[34px] cursor-pointer filter-pill border ${
+          className={`inline-flex items-center gap-1.5 font-[var(--font-wallop)] font-semibold text-[12px] rounded-full px-3 py-1.5 min-h-[32px] cursor-pointer filter-pill border ${
             mobileFiltersOpen || hasFilters
               ? 'bg-midnight-mouth text-daylight border-midnight-mouth'
               : 'bg-daylight text-midnight-mouth border-midnight-mouth/15'
           }`}
         >
           <SlidersHorizontal className="w-3.5 h-3.5" aria-hidden="true" />
-          <span>Filters (Difficulty, Topic, Language)</span>
+          <span>Filters</span>
           <ChevronDown
             className={`w-3.5 h-3.5 transition-transform duration-200 ${
               mobileFiltersOpen ? 'rotate-180' : ''
@@ -303,7 +303,7 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
           <button
             type="button"
             onClick={resetAll}
-            className="inline-flex items-center gap-1 font-[var(--font-wallop)] font-semibold text-[11.5px] bg-sunshine-yellow text-midnight-mouth rounded-full px-3 py-1.5 min-h-[34px] cursor-pointer"
+            className="inline-flex items-center gap-1 font-[var(--font-wallop)] font-semibold text-[11.5px] bg-sunshine-yellow text-midnight-mouth rounded-full px-3 py-1.5 min-h-[32px] cursor-pointer"
           >
             <RotateCcw className="w-3 h-3" aria-hidden="true" />
             <span>Reset</span>
@@ -314,9 +314,9 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
       {/* Multi-Criteria Learning Filters Bar */}
       <section
         aria-label="Learning filters"
-        className={`bg-daylight rounded-[18px] sm:rounded-[22px] p-3.5 sm:p-4 ${
+        className={`bg-daylight rounded-[15px] sm:rounded-[22px] p-3 sm:p-4 ${
           mobileFiltersOpen ? 'grid' : 'hidden'
-        } sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 items-end`}
+        } sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 sm:gap-3 items-end`}
       >
         <div className="flex flex-col gap-1">
           <label
@@ -483,32 +483,32 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
       {isInitialLoading && displayedLearning.length === 0 ? (
         <CardGridSkeleton
           count={6}
-          columnsClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4"
+          columnsClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4"
         />
       ) : error && displayedLearning.length === 0 ? (
         <OffersErrorState message={error} onRetry={retry} />
       ) : !isInitialLoading && !isTransitioning && displayedLearning.length === 0 ? (
-        <div className="bg-daylight rounded-[20px] p-7 sm:p-9 text-center flex flex-col items-center gap-3 card-enter">
-          <h2 className="font-[var(--font-wallop)] font-bold text-[19px] sm:text-[22px] text-midnight-mouth">
+        <div className="bg-daylight rounded-[16px] sm:rounded-[20px] p-5 sm:p-9 text-center flex flex-col items-center gap-2.5 sm:gap-3 card-enter">
+          <h2 className="font-[var(--font-wallop)] font-bold text-[16px] sm:text-[22px] text-midnight-mouth">
             No learning materials match those filters
           </h2>
-          <p className="font-[var(--font-inter)] text-[14px] text-ink/80 max-w-md">
+          <p className="font-[var(--font-inter)] text-[12.5px] sm:text-[14px] text-ink/80 max-w-md">
             Reset filters to view all curated courses, books, documentation, roadmaps, and practice sets.
           </p>
           <button
             type="button"
             onClick={resetAll}
-            className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13.5px] rounded-full px-5 py-2 min-h-[38px] cursor-pointer spring-pill"
+            className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[13.5px] rounded-full px-4 sm:px-5 py-1.5 sm:py-2 min-h-[34px] sm:min-h-[38px] cursor-pointer spring-pill"
           >
             Reset filters
           </button>
         </div>
       ) : (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3 sm:gap-4">
           <div
             data-testid="learning-results-grid"
             aria-busy={isTransitioning}
-            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4 transition-opacity duration-150 ${
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 transition-opacity duration-150 ${
               isTransitioning ? 'opacity-75' : 'opacity-100'
             }`}
           >
