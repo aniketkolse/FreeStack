@@ -6,6 +6,7 @@ import {
   getCategoryBgClass,
   HandDrawnWaveDoodle,
 } from '../illustrations/TocaStickers';
+import { prefetchRouteWithData } from '../../lib/router/routePrefetch';
 
 interface CategoryTileProps {
   category: Category;
@@ -25,17 +26,26 @@ export function CategoryTile({
   className = '',
 }: CategoryTileProps) {
   const bgClass = getCategoryBgClass(category.color);
+  const targetPath = `/category/${category.slug}`;
+
+  const handlePrefetch = () => {
+    prefetchRouteWithData(targetPath);
+  };
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    onNavigate(`/category/${category.slug}`);
+    onNavigate(targetPath);
   };
 
   return (
     <a
-      href={`/category/${category.slug}`}
+      href={targetPath}
       onClick={handleClick}
-      className={`${bgClass} rounded-[14px] sm:rounded-[24px] p-2.5 sm:p-5 flex flex-col justify-between gap-2 sm:gap-4 spring-card card-enter relative overflow-hidden group focus-visible:outline-2 focus-visible:outline-offset-4 min-w-0 ${className}`}
+      onMouseEnter={handlePrefetch}
+      onFocus={handlePrefetch}
+      onPointerDown={handlePrefetch}
+      onTouchStart={handlePrefetch}
+      className={`${bgClass} rounded-[14px] sm:rounded-[24px] p-2.5 sm:p-5 flex flex-col justify-between gap-2 sm:gap-4 spring-card relative overflow-hidden group focus-visible:outline-2 focus-visible:outline-offset-4 min-w-0 ${className}`}
     >
       {/* Rounded inner image frame */}
       <div className="bg-paper rounded-[10px] sm:rounded-[16px] px-2 py-1.5 sm:px-4 sm:py-3 flex items-center justify-between gap-1.5 sm:gap-3 relative min-w-0">

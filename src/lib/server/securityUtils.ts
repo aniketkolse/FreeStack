@@ -195,7 +195,7 @@ export function validateSiteUrl(
         'FATAL: SITE_URL environment variable is required in production and must be a valid https:// origin.'
       );
     }
-    return isProduction ? 'https://freestack.dev' : 'http://localhost:3000';
+    return isProduction ? 'https://freestack.ai.studio' : 'http://localhost:3000';
   }
 
   let parsed: URL;
@@ -205,7 +205,7 @@ export function validateSiteUrl(
     if (strictSiteUrl) {
       throw new Error(`FATAL: Invalid SITE_URL "${candidate}". Must be a valid origin URL.`);
     }
-    return isProduction ? 'https://freestack.dev' : 'http://localhost:3000';
+    return isProduction ? 'https://freestack.ai.studio' : 'http://localhost:3000';
   }
 
   if (isProduction && parsed.protocol !== 'https:') {

@@ -344,8 +344,8 @@ export function LegalCenterPage({ activeTab, onNavigate }: LegalCenterPageProps)
             <p className="font-[var(--font-wallop)] font-bold text-[13.5px] text-midnight-mouth mt-0.5">
               {currentSpec.officerTitle}
             </p>
-            <p className="font-[var(--font-mono)] text-[12px] text-ink/85 mt-0.5">
-              {currentSpec.officerEmail}
+            <p className="font-[var(--font-inter)] text-[12px] text-ink/80 mt-0.5">
+              SLA: {currentSpec.ackWindowHours}h Ack · {currentSpec.resolutionDays}d Resolution
             </p>
           </div>
           <div>
@@ -564,30 +564,24 @@ export function LegalCenterPage({ activeTab, onNavigate }: LegalCenterPageProps)
                 <div className="flex items-center gap-2 text-midnight-mouth">
                   <Building2 className="w-4 h-4 shrink-0" aria-hidden="true" />
                   <h3 className="font-[var(--font-wallop)] font-bold text-[16px]">
-                    Operator Privacy &amp; Grievance Contacts
+                    Statutory Privacy &amp; Grievance SLAs
                   </h3>
                 </div>
-                <div className="font-[var(--font-inter)] text-[12.5px] text-midnight-mouth space-y-1.5">
+                <div className="font-[var(--font-inter)] text-[12.5px] text-midnight-mouth space-y-2">
                   <p>
                     <strong>India Grievance Officer (IT Rules &amp; DPDP Act):</strong>
-                    <br />
-                    Maintainer: Aniket Kolse (<a href="https://github.com/aniketkolse" target="_blank" rel="noopener noreferrer" className="underline">github.com/aniketkolse</a>)
-                    <br />
-                    Email: <code className="font-[var(--font-mono)]">aniketkolse07@gmail.com</code>
                     <br />
                     Target SLA: 24h Acknowledgement · 15 Days Resolution
                   </p>
                   <p>
-                    <strong>US Privacy &amp; DMCA Contact:</strong>
-                    <br />
-                    Email: <code className="font-[var(--font-mono)]">aniketkolse07@gmail.com</code>
+                    <strong>US Privacy &amp; DMCA Compliance:</strong>
                     <br />
                     Target SLA: 10 Business Days Ack · 45 Days Resolution
                   </p>
                   <p>
-                    <strong>EU / UK / Global Privacy Contact:</strong>
+                    <strong>EU / UK / Global Privacy Compliance:</strong>
                     <br />
-                    Email: <code className="font-[var(--font-mono)]">aniketkolse07@gmail.com</code>
+                    Target SLA: 72h Acknowledgement · 30 Days Resolution
                   </p>
                 </div>
               </div>
@@ -618,7 +612,7 @@ export function LegalCenterPage({ activeTab, onNavigate }: LegalCenterPageProps)
             </div>
 
             <div className="bg-paper rounded-[14px] p-3.5 text-[12.5px] font-[var(--font-inter)] text-ink/90 border border-midnight-mouth/8">
-              <strong>How this portal works (Local-First Architecture):</strong> Submitting this form creates a timestamped receipt in your browser&apos;s <code className="font-[var(--font-mono)]">localStorage</code> and prepares a formatted email to the designated privacy contact (<code className="font-[var(--font-mono)]">{currentSpec.officerEmail}</code>). No personal data from this form is transmitted to FreeStack&apos;s server unless you send the generated email.
+              <strong>How this portal works (Local-First Architecture):</strong> Submitting this form creates a timestamped receipt in your browser&apos;s <code className="font-[var(--font-mono)]">localStorage</code> for your statutory records. No personal data from this form is transmitted to FreeStack&apos;s server.
             </div>
 
             {latestTicket && (
@@ -641,17 +635,8 @@ export function LegalCenterPage({ activeTab, onNavigate }: LegalCenterPageProps)
                 <p className="font-[var(--font-inter)] text-[12.5px] leading-[1.45]">
                   Saved locally in your browser under <strong>{latestTicket.applicableLaw}</strong>. Target acknowledgement window:{' '}
                   <strong>{formatDate(latestTicket.ackDueBy)}</strong>; target resolution window:{' '}
-                  <strong>{formatDate(latestTicket.resolutionDueBy)}</strong>. To transmit this request to the site operator, click below to send via your email client:
+                  <strong>{formatDate(latestTicket.resolutionDueBy)}</strong>.
                 </p>
-                <div>
-                  <a
-                    href={`mailto:${encodeURIComponent(currentSpec.officerEmail)}?subject=${encodeURIComponent(`[${latestTicket.ticketId}] Privacy Request (${latestTicket.requestType})`)}&body=${encodeURIComponent(`Ticket ID: ${latestTicket.ticketId}\nJurisdiction: ${latestTicket.jurisdiction}\nRequest Type: ${latestTicket.requestType}\nName: ${latestTicket.fullName}\nEmail: ${latestTicket.email}\nDetails: ${latestTicket.details}`)}`}
-                    className="inline-flex items-center gap-1.5 bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[12px] rounded-full px-3.5 py-1.5"
-                  >
-                    <Send className="w-3 h-3" aria-hidden="true" />
-                    <span>Email Receipt to {currentSpec.officerEmail}</span>
-                  </a>
-                </div>
               </div>
             )}
 
@@ -1058,7 +1043,7 @@ export function LegalCenterPage({ activeTab, onNavigate }: LegalCenterPageProps)
                     <strong>User Obligations under Rule 3(1)(b) of IT (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021:</strong> When submitting community corrections or resource links, you shall not host, display, upload, modify, publish, transmit, store, update, or share any information that belongs to another person without right, is defamatory, obscene, invasive of privacy, infringes any patent/trademark/copyright, deceives or misleads the addressee, contains software viruses or malicious code, or threatens the unity, integrity, defence, security or sovereignty of India.
                   </li>
                   <li>
-                    <strong>Intermediary Safe Harbour (Section 79, IT Act 2000):</strong> With respect to third-party links and community-submitted correction reports, FreeStack operates as an information curator/intermediary and responds promptly to lawful takedown notices sent to <code className="font-[var(--font-mono)]">aniketkolse07@gmail.com</code> within 24 hours.
+                    <strong>Intermediary Safe Harbour (Section 79, IT Act 2000):</strong> With respect to third-party links and directory listings, FreeStack operates as an information curator/intermediary and responds promptly to lawful takedown notices submitted via the Privacy Requests &amp; Grievance Portal within 24 hours.
                   </li>
                 </ul>
               </article>
@@ -1078,7 +1063,7 @@ export function LegalCenterPage({ activeTab, onNavigate }: LegalCenterPageProps)
                     <strong>47 U.S.C. § 230 Protection:</strong> FreeStack is an interactive computer service cataloging third-party provider offerings and documentation. FreeStack shall not be treated as the publisher or speaker of any information provided by third-party information content providers.
                   </li>
                   <li>
-                    <strong>DMCA Copyright Policy (17 U.S.C. § 512):</strong> If you believe any content or metadata on FreeStack infringes your copyright, please send a written notice containing the elements required by 17 U.S.C. § 512(c)(3) to our Designated DMCA Contact at <code className="font-[var(--font-mono)]">aniketkolse07@gmail.com</code>.
+                    <strong>DMCA Copyright Policy (17 U.S.C. § 512):</strong> If you believe any content or metadata on FreeStack infringes your copyright, please submit a written notice containing the elements required by 17 U.S.C. § 512(c)(3) through the Privacy Requests &amp; Grievance Portal.
                   </li>
                   <li>
                     <strong>“AS-IS” Disclaimer of Warranties &amp; Limitation of Liability:</strong> TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW IN THE UNITED STATES, INDIA, AND GLOBALLY, FREESTACK IS PROVIDED “AS IS” AND “AS AVAILABLE” WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. IN NO EVENT SHALL FREESTACK OR ITS CONTRIBUTORS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, OR UNEXPECTED CLOUD BILLING DAMAGES.

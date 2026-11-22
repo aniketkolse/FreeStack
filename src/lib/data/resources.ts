@@ -168,6 +168,27 @@ export function isSaveDataEnabled(): boolean {
   return Boolean(conn.saveData) || conn.effectiveType === 'slow-2g' || conn.effectiveType === '2g';
 }
 
+function waitWithSignal<T>(promise: Promise<T>, signal?: AbortSignal): Promise<T> {
+  if (!signal) return promise;
+  if (signal.aborted) {
+    return Promise.reject(new DOMException('Aborted', 'AbortError'));
+  }
+  return new Promise<T>((resolve, reject) => {
+    const onAbort = () => reject(new DOMException('Aborted', 'AbortError'));
+    signal.addEventListener('abort', onAbort, { once: true });
+    promise.then(
+      (value) => {
+        signal.removeEventListener('abort', onAbort);
+        resolve(value);
+      },
+      (err) => {
+        signal.removeEventListener('abort', onAbort);
+        reject(err);
+      }
+    );
+  });
+}
+
 export async function fetchOffersApi(
   queryString: string,
   externalSignal?: AbortSignal,
@@ -178,22 +199,14 @@ export async function fetchOffersApi(
     return cached;
   }
 
-  // If no external signal is passed, deduplicate identical in-flight requests
-  if (!externalSignal && inFlightQueryPromises.has(queryString)) {
-    return inFlightQueryPromises.get(queryString)!;
+  // Reuse an identical in-flight prefetch or fetch instead of firing a duplicate request
+  const existing = inFlightQueryPromises.get(queryString);
+  if (existing) {
+    return waitWithSignal(existing, externalSignal);
   }
 
   const controller = new AbortController();
   const timeoutId = globalThis.setTimeout(() => controller.abort(new Error('Request timed out')), timeoutMs);
-
-  const onExternalAbort = () => controller.abort(externalSignal?.reason);
-  if (externalSignal) {
-    if (externalSignal.aborted) {
-      globalThis.clearTimeout(timeoutId);
-      throw new DOMException('Aborted', 'AbortError');
-    }
-    externalSignal.addEventListener('abort', onExternalAbort, { once: true });
-  }
 
   const url = queryString ? `/api/offers?${queryString}` : '/api/offers';
   const reqPromise = (async () => {
@@ -212,18 +225,12 @@ export async function fetchOffersApi(
       return data;
     } finally {
       globalThis.clearTimeout(timeoutId);
-      if (externalSignal) {
-        externalSignal.removeEventListener('abort', onExternalAbort);
-      }
       inFlightQueryPromises.delete(queryString);
     }
   })();
 
-  if (!externalSignal) {
-    inFlightQueryPromises.set(queryString, reqPromise);
-  }
-
-  return reqPromise;
+  inFlightQueryPromises.set(queryString, reqPromise);
+  return waitWithSignal(reqPromise, externalSignal);
 }
 
 export async function fetchOfferDetailApi(
@@ -236,21 +243,13 @@ export async function fetchOfferDetailApi(
     return cached;
   }
 
-  if (!externalSignal && inFlightDetailPromises.has(slug)) {
-    return inFlightDetailPromises.get(slug)!;
+  const existing = inFlightDetailPromises.get(slug);
+  if (existing) {
+    return waitWithSignal(existing, externalSignal);
   }
 
   const controller = new AbortController();
   const timeoutId = globalThis.setTimeout(() => controller.abort(new Error('Request timed out')), timeoutMs);
-
-  const onExternalAbort = () => controller.abort(externalSignal?.reason);
-  if (externalSignal) {
-    if (externalSignal.aborted) {
-      globalThis.clearTimeout(timeoutId);
-      throw new DOMException('Aborted', 'AbortError');
-    }
-    externalSignal.addEventListener('abort', onExternalAbort, { once: true });
-  }
 
   const url = `/api/offers/${encodeURIComponent(slug)}`;
   const reqPromise = (async () => {
@@ -272,18 +271,12 @@ export async function fetchOfferDetailApi(
       return data;
     } finally {
       globalThis.clearTimeout(timeoutId);
-      if (externalSignal) {
-        externalSignal.removeEventListener('abort', onExternalAbort);
-      }
       inFlightDetailPromises.delete(slug);
     }
   })();
 
-  if (!externalSignal) {
-    inFlightDetailPromises.set(slug, reqPromise);
-  }
-
-  return reqPromise;
+  inFlightDetailPromises.set(slug, reqPromise);
+  return waitWithSignal(reqPromise, externalSignal);
 }
 
 export function prefetchOfferDetail(slug: string): void {

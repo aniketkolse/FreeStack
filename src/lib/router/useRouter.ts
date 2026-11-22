@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { startTransition, useCallback, useEffect, useRef, useState } from 'react';
 import {
   canGoBackInStack,
   createInitialHistoryState,
@@ -113,7 +113,9 @@ export function useRouter() {
       navSeqRef.current += 1;
       window.history.replaceState(buildHistoryState(targetEntry.id), '', targetEntry.url);
       syncMetaFromStack(nextState);
-      setLocation(readLocation());
+      startTransition(() => {
+        setLocation(readLocation());
+      });
       restoreScrollPosition(targetEntry.scrollY);
     },
     [clearPendingBack, syncMetaFromStack]
@@ -142,7 +144,9 @@ export function useRouter() {
       const stateId = readStateId(event.state);
       const nextStack = syncPopStateEntry(stackRef.current!, targetUrl, stateId);
       syncMetaFromStack(nextStack);
-      setLocation(readLocation());
+      startTransition(() => {
+        setLocation(readLocation());
+      });
 
       const restoredScrollY = getCurrentHistoryEntry(nextStack).scrollY;
       restoreScrollPosition(restoredScrollY);
@@ -182,7 +186,9 @@ export function useRouter() {
         syncMetaFromStack(nextStack);
       }
 
-      setLocation(readLocation());
+      startTransition(() => {
+        setLocation(readLocation());
+      });
 
       if (scrollTop) {
         window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });

@@ -1627,6 +1627,65 @@ const DESCRIPTION_SKIP_PATTERNS = new Set([
   '/logos/brand-debian.svg',
 ]);
 
+interface FallbackChunk {
+  combined: RegExp;
+  items: Array<[RegExp, string]>;
+}
+
+function buildFallbackChunks(entries: Array<[RegExp, string]>, chunkSize = 24): FallbackChunk[] {
+  const chunks: FallbackChunk[] = [];
+  for (let i = 0; i < entries.length; i += chunkSize) {
+    const items = entries.slice(i, i + chunkSize);
+    const combined = new RegExp(
+      items.map(([pattern]) => `(?:${pattern.source})`).join('|'),
+      'i'
+    );
+    chunks.push({ combined, items });
+  }
+  return chunks;
+}
+
+const PROVIDER_FALLBACK_CHUNKS = buildFallbackChunks(PROVIDER_FALLBACKS, 24);
+const PROVIDER_FALLBACK_MASTER = new RegExp(
+  PROVIDER_FALLBACK_CHUNKS.map((c) => c.combined.source).join('|'),
+  'i'
+);
+
+const DESCRIPTION_FALLBACK_ENTRIES = PROVIDER_FALLBACKS.filter(
+  ([, logoPath]) => !DESCRIPTION_SKIP_PATTERNS.has(logoPath)
+);
+const DESCRIPTION_FALLBACK_CHUNKS = buildFallbackChunks(DESCRIPTION_FALLBACK_ENTRIES, 24);
+const DESCRIPTION_FALLBACK_MASTER = new RegExp(
+  DESCRIPTION_FALLBACK_CHUNKS.map((c) => c.combined.source).join('|'),
+  'i'
+);
+
+function matchProviderFallback(text: string): string | null {
+  if (!PROVIDER_FALLBACK_MASTER.test(text)) return null;
+  for (const chunk of PROVIDER_FALLBACK_CHUNKS) {
+    if (!chunk.combined.test(text)) continue;
+    for (const [pattern, logoPath] of chunk.items) {
+      if (pattern.test(text)) {
+        return logoPath;
+      }
+    }
+  }
+  return null;
+}
+
+function matchDescriptionFallback(text: string): string | null {
+  if (!DESCRIPTION_FALLBACK_MASTER.test(text)) return null;
+  for (const chunk of DESCRIPTION_FALLBACK_CHUNKS) {
+    if (!chunk.combined.test(text)) continue;
+    for (const [pattern, logoPath] of chunk.items) {
+      if (pattern.test(text)) {
+        return logoPath;
+      }
+    }
+  }
+  return null;
+}
+
 /**
  * Resolves a local official company or specific AI model logo if matched.
  * Also matches 3rd-party MCP servers and APIs that reference a company name in their title, slug, provider, URL, or description.
@@ -1638,11 +1697,8 @@ export function resolveOfferBrandLogoSrc(
   if (mapped) return mapped;
 
   const primaryText = `${offer.identity.name} ${offer.identity.provider} ${offer.identity.slug}`;
-  for (const [pattern, logoPath] of PROVIDER_FALLBACKS) {
-    if (pattern.test(primaryText)) {
-      return logoPath;
-    }
-  }
+  const primaryMatch = matchProviderFallback(primaryText);
+  if (primaryMatch) return primaryMatch;
 
   const officialUrl = offer.links?.official || offer.links?.documentation || '';
   let nonGithubHost = '';
@@ -1658,23 +1714,19 @@ export function resolveOfferBrandLogoSrc(
   }
 
   if (nonGithubHost) {
-    for (const [pattern, logoPath] of PROVIDER_FALLBACKS) {
-      if (pattern.test(nonGithubHost)) {
-        return logoPath;
-      }
-    }
+    const hostMatch = matchProviderFallback(nonGithubHost);
+    if (hostMatch) return hostMatch;
   }
 
-  const cleanedDesc = (offer.description || '')
-    .replace(/(?:Official|Verified)?\s*[^.]*MCP server\s*\([^)]*\)\.?/gi, '')
-    .replace(/\bgit-history\b/gi, '');
+  const rawDesc = offer.description;
+  if (rawDesc) {
+    const cleanedDesc = rawDesc
+      .replace(/(?:Official|Verified)?\s*[^.]*MCP server\s*\([^)]*\)\.?/gi, '')
+      .replace(/\bgit-history\b/gi, '');
 
-  if (cleanedDesc.trim()) {
-    for (const [pattern, logoPath] of PROVIDER_FALLBACKS) {
-      if (DESCRIPTION_SKIP_PATTERNS.has(logoPath)) continue;
-      if (pattern.test(cleanedDesc)) {
-        return logoPath;
-      }
+    if (cleanedDesc.trim()) {
+      const descMatch = matchDescriptionFallback(cleanedDesc);
+      if (descMatch) return descMatch;
     }
   }
 

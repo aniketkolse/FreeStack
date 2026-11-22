@@ -401,8 +401,20 @@ export function createApp(options: CreateAppOptions) {
   const catalogIndex = new OfferCatalogIndex(offers, categories);
   const offerBySlug = catalogIndex.fullBySlug;
   const categoryBySlug = catalogIndex.categoryBySlug;
-  const qualityReport = generateDataQualityReport(offers, categories);
-  const cachedSitemapXml = buildSitemapXml(siteUrl, categories, offers);
+  let cachedQualityReport: ReturnType<typeof generateDataQualityReport> | null = null;
+  const getQualityReport = () => {
+    if (!cachedQualityReport) {
+      cachedQualityReport = generateDataQualityReport(offers, categories);
+    }
+    return cachedQualityReport;
+  };
+  let cachedSitemapXml: string | null = null;
+  const getSitemapXml = () => {
+    if (!cachedSitemapXml) {
+      cachedSitemapXml = buildSitemapXml(siteUrl, categories, offers);
+    }
+    return cachedSitemapXml;
+  };
 
   function sendCompressedPayload(
     req: Request,
@@ -496,8 +508,11 @@ export function createApp(options: CreateAppOptions) {
   if (isProd) {
     const expectedOrigin = new URL(siteUrl).origin;
     app.use((req, res, next) => {
-      const forwardedProto = req.headers['x-forwarded-proto'];
-      if (forwardedProto === 'http') {
+      const forwardedProtoHeader = req.headers['x-forwarded-proto'];
+      const forwardedHeader = String(req.headers.forwarded ?? '');
+      const isHttpForwarded =
+        forwardedProtoHeader === 'http' || /\bproto=http\b/i.test(forwardedHeader);
+      if (isHttpForwarded) {
         let redirectTarget = `${siteUrl}/`;
         try {
           if (req.originalUrl.startsWith('/') && !req.originalUrl.startsWith('//') && !req.originalUrl.startsWith('/\\')) {
@@ -710,6 +725,7 @@ export function createApp(options: CreateAppOptions) {
 
   // Data Quality & Verification Summary Endpoint (includes verified, unverified, needs_review, expired counts)
   app.get('/api/quality-report', (_req, res) => {
+    const qualityReport = getQualityReport();
     res.json({
       ...qualityReport,
       statusBreakdown: {
@@ -1119,7 +1135,7 @@ export function createApp(options: CreateAppOptions) {
   });
 
   app.get('/sitemap.xml', (req, res) => {
-    sendCompressedPayload(req, res, 'application/xml; charset=utf-8', cachedSitemapXml, {
+    sendCompressedPayload(req, res, 'application/xml; charset=utf-8', getSitemapXml(), {
       cacheControl: 'public, max-age=3600',
     });
   });
@@ -1303,6 +1319,8 @@ export function createApp(options: CreateAppOptions) {
     siteUrl,
     offerBySlug,
     categoryBySlug,
-    qualityReport,
+    get qualityReport() {
+      return getQualityReport();
+    },
   };
 }

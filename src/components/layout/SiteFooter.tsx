@@ -189,27 +189,27 @@ export function SiteFooter({ onNavigate }: SiteFooterProps) {
             </p>
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-3">
               <p>
-                © {new Date().getFullYear()} Aniket Kolse · FreeStack (AGPL-3.0 License). Designed to support privacy rights under India DPDP, US State Privacy Laws, and EU/UK GDPR.
+                FreeStack (AGPL-3.0 License). Designed to support privacy rights under India DPDP, US State Privacy Laws, and EU/UK GDPR.
               </p>
               <div className="flex flex-wrap items-center gap-x-3.5 sm:gap-x-4 gap-y-1 font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[12.5px] text-midnight-mouth">
                 <a
                   href="/privacy"
                   onClick={(e) => go(e, '/privacy')}
-                  className="hover:underline underline-offset-4"
+                  className="inline-flex items-center min-h-[26px] sm:min-h-[28px] hover:underline underline-offset-4"
                 >
                   Privacy Policy
                 </a>
                 <a
                   href="/privacy-requests"
                   onClick={(e) => go(e, '/privacy-requests')}
-                  className="hover:underline underline-offset-4"
+                  className="inline-flex items-center min-h-[26px] sm:min-h-[28px] hover:underline underline-offset-4"
                 >
                   Privacy Requests
                 </a>
                 <a
                   href="/terms"
                   onClick={(e) => go(e, '/terms')}
-                  className="hover:underline underline-offset-4"
+                  className="inline-flex items-center min-h-[26px] sm:min-h-[28px] hover:underline underline-offset-4"
                 >
                   Terms of Service
                 </a>

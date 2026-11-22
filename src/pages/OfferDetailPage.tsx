@@ -13,7 +13,6 @@ import {
   Share2,
   ShieldCheck,
   FileText,
-  Flag,
   BookOpen,
 } from 'lucide-react';
 import {
@@ -42,7 +41,6 @@ import { safeExternalUrl } from '../lib/utils/safeExternalUrl';
 import { getCategoryBgClass } from '../components/illustrations/TocaStickers';
 import { OfferLogo } from '../components/offers/OfferLogo';
 import { ResourceCard } from '../components/offers/ResourceCard';
-import { ReportOutdatedModal } from '../components/offers/ReportOutdatedModal';
 
 interface OfferDetailPageProps {
   slug: string;
@@ -57,7 +55,6 @@ export function OfferDetailPage({
   onBack,
   previousPath = null,
 }: OfferDetailPageProps) {
-  const [reportOpen, setReportOpen] = useState(false);
   const [sharedFeedback, setSharedFeedback] = useState(false);
   const { isSaved, toggleSave } = useSavedOffers();
 
@@ -295,16 +292,6 @@ export function OfferDetailPage({
                   <span>Share tool</span>
                 </>
               )}
-            </button>
-
-            <button
-              type="button"
-              data-testid="open-report-modal-btn"
-              onClick={() => setReportOpen(true)}
-              className="bg-paper text-midnight-mouth font-[var(--font-wallop)] font-semibold text-[11.5px] sm:text-[13px] rounded-full px-3 sm:px-4 py-1.5 sm:py-2 min-h-[32px] sm:min-h-[36px] inline-flex items-center justify-center gap-1 sm:gap-1.5 cursor-pointer spring-pill"
-            >
-              <Flag className="w-3 h-3 sm:w-3.5 sm:h-3.5" aria-hidden="true" />
-              <span>Report outdated info</span>
             </button>
           </div>
         </div>
@@ -712,14 +699,6 @@ export function OfferDetailPage({
             <div className="bg-paper rounded-[11px] sm:rounded-[14px] p-2.5 sm:p-3.5 font-[var(--font-inter)] text-[11px] sm:text-[12px] leading-[1.4] sm:leading-[1.45] text-ink/80">
               <strong className="text-midnight-mouth">Independent notice:</strong> FreeStack is not affiliated with {offer.identity.provider}. Free quotas, pricing, and card rules can change at any time—verify on the official page before use. Listing a tool, API, or MCP server is not a security audit; review permissions and source code before connecting credentials.
             </div>
-
-            <button
-              type="button"
-              onClick={() => setReportOpen(true)}
-              className="mt-0.5 min-h-[30px] sm:min-h-[34px] text-center font-[var(--font-inter)] text-[12px] sm:text-[13px] text-midnight-mouth underline underline-offset-4 cursor-pointer hover:text-ink"
-            >
-              Spot a change? Report outdated info
-            </button>
           </div>
         </aside>
       </div>
@@ -747,13 +726,6 @@ export function OfferDetailPage({
           </div>
         </section>
       )}
-
-      <ReportOutdatedModal
-        open={reportOpen}
-        onClose={() => setReportOpen(false)}
-        offerSlug={offer.identity.slug}
-        offerName={offer.identity.name}
-      />
     </div>
   );
 }

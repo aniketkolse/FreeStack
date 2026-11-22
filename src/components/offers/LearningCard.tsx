@@ -15,6 +15,7 @@ import {
   formatVerificationStatus,
 } from '../../lib/utils/formatters';
 import { getCategoryBySlug, prefetchOfferDetail } from '../../lib/data/resources';
+import { prefetchRouteChunk } from '../../lib/router/routePrefetch';
 import { shareOrCopyOffer, useSavedOffers } from '../../lib/saved/savedOffers';
 import { getCategoryBgClass } from '../illustrations/TocaStickers';
 import { OfferLogo } from './OfferLogo';
@@ -49,11 +50,21 @@ export const LearningCard = memo(function LearningCard({
     onNavigate(`/offer/${offer.identity.slug}`);
   };
 
+  const handlePrefetchNow = () => {
+    if (hoverTimerRef.current) {
+      window.clearTimeout(hoverTimerRef.current);
+      hoverTimerRef.current = null;
+    }
+    prefetchRouteChunk('offer');
+    prefetchOfferDetail(offer.identity.slug);
+  };
+
   const handlePrefetchStart = () => {
+    prefetchRouteChunk('offer');
     if (hoverTimerRef.current) window.clearTimeout(hoverTimerRef.current);
     hoverTimerRef.current = window.setTimeout(() => {
       prefetchOfferDetail(offer.identity.slug);
-    }, 100);
+    }, 40);
   };
 
   const handlePrefetchCancel = () => {
@@ -80,6 +91,8 @@ export const LearningCard = memo(function LearningCard({
       onMouseLeave={handlePrefetchCancel}
       onFocus={handlePrefetchStart}
       onBlur={handlePrefetchCancel}
+      onPointerDown={handlePrefetchNow}
+      onTouchStart={handlePrefetchNow}
       className={`${cardBgClass} rounded-[15px] sm:rounded-[24px] p-2.5 sm:p-4 min-h-0 sm:min-h-[304px] h-full flex flex-col justify-between gap-2 sm:gap-2.5 spring-card min-w-0 overflow-hidden`}
     >
       <div className="flex flex-col gap-2 sm:gap-2.5 min-w-0">
@@ -140,8 +153,8 @@ export const LearningCard = memo(function LearningCard({
       </div>
 
       {/* Middle Learning Metadata */}
-      <div className="pt-2 sm:pt-2.5 border-t border-midnight-mouth/10 min-w-0 w-full sm:mb-1">
-        <dl className="w-full min-w-0 flex flex-col gap-1 sm:gap-1.5 font-[var(--font-inter)] text-[11.5px] sm:text-[12.5px] leading-[1.3] sm:leading-[1.38] text-ink">
+      <div className="pt-2 sm:pt-2.5 border-t border-midnight-mouth/10 min-w-0 w-full sm:mb-1 flex flex-col gap-1 sm:gap-1.5 font-[var(--font-inter)] text-[11.5px] sm:text-[12.5px] leading-[1.3] sm:leading-[1.38] text-ink">
+        <dl className="w-full min-w-0 flex flex-col gap-1 sm:gap-1.5">
           <div className="flex items-baseline justify-between gap-2 sm:gap-2.5 min-w-0">
             <dt className="text-ink/70 shrink-0">Difficulty</dt>
             <dd className="font-medium text-midnight-mouth text-right min-w-0 truncate pr-0.5 sm:pr-0">
@@ -154,12 +167,12 @@ export const LearningCard = memo(function LearningCard({
               {learning?.language ?? 'Unknown'}
             </dd>
           </div>
-          {learning && learning.topics.length > 0 && (
-            <div className="pt-0.5 leading-[1.3] sm:leading-[1.38] text-midnight-mouth font-semibold truncate">
-              {learning.topics.slice(0, 4).join(' · ')}
-            </div>
-          )}
         </dl>
+        {learning && learning.topics.length > 0 && (
+          <p className="pt-0.5 leading-[1.3] sm:leading-[1.38] text-midnight-mouth font-semibold truncate">
+            {learning.topics.slice(0, 4).join(' · ')}
+          </p>
+        )}
       </div>
 
       {/* Bottom View Guide + Save & Share Actions */}

@@ -60,7 +60,7 @@ export const JURISDICTION_SPECS: Record<LegalJurisdiction, JurisdictionSpec> = {
     ackWindowHours: 24,
     resolutionDays: 15,
     officerTitle: 'Grievance Officer & Data Protection Officer (India)',
-    officerEmail: 'aniketkolse07@gmail.com',
+    officerEmail: 'Privacy Requests Portal (/privacy-requests)',
   },
   usa: {
     id: 'usa',
@@ -77,7 +77,7 @@ export const JURISDICTION_SPECS: Record<LegalJurisdiction, JurisdictionSpec> = {
     ackWindowHours: 240, // 10 business days statutory max
     resolutionDays: 45,
     officerTitle: 'US Privacy Compliance Officer',
-    officerEmail: 'aniketkolse07@gmail.com',
+    officerEmail: 'Privacy Requests Portal (/privacy-requests)',
   },
   eu_uk: {
     id: 'eu_uk',
@@ -94,7 +94,7 @@ export const JURISDICTION_SPECS: Record<LegalJurisdiction, JurisdictionSpec> = {
     ackWindowHours: 72,
     resolutionDays: 30,
     officerTitle: 'EU / UK Data Protection Officer (DPO)',
-    officerEmail: 'aniketkolse07@gmail.com',
+    officerEmail: 'Privacy Requests Portal (/privacy-requests)',
   },
   global: {
     id: 'global',
@@ -111,7 +111,7 @@ export const JURISDICTION_SPECS: Record<LegalJurisdiction, JurisdictionSpec> = {
     ackWindowHours: 72,
     resolutionDays: 30,
     officerTitle: 'Global Privacy & Trust Counsel',
-    officerEmail: 'aniketkolse07@gmail.com',
+    officerEmail: 'Privacy Requests Portal (/privacy-requests)',
   },
 };
 

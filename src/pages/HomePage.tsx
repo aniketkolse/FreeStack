@@ -1,12 +1,12 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import {
   CATEGORIES,
   getCategoryCounts,
   getLearningOffers,
   getRecentlyVerifiedOffers,
-  prefetchOffersQuery,
 } from '../lib/data/resources';
+import { prefetchRouteWithData } from '../lib/router/routePrefetch';
 import {
   computeActiveSlideIndex,
   computeSlideScrollLeft,
@@ -26,14 +26,38 @@ interface HomePageProps {
   onNavigate: (path: string) => void;
 }
 
+const HOME_POPULAR_CATEGORY_ORDER: string[] = [
+  'ai-ml',
+  'mcp',
+  'apis-integrations',
+  'design-creative',
+  'cloud-hosting',
+  'databases-backend',
+  'developer-tools',
+  'security-networking',
+  'productivity-collaboration',
+  'learning',
+  'student-benefits',
+];
+
 export function HomePage({ onNavigate }: HomePageProps) {
   const counts = getCategoryCounts();
-  const popularCategories = CATEGORIES.filter((c) => c.popular);
+  const popularCategories = useMemo(() => {
+    const base = CATEGORIES.filter((c) => c.popular);
+    return [...base].sort((a, b) => {
+      const ia = HOME_POPULAR_CATEGORY_ORDER.indexOf(a.slug);
+      const ib = HOME_POPULAR_CATEGORY_ORDER.indexOf(b.slug);
+      return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
+    });
+  }, []);
   const learningHighlights = getLearningOffers().slice(0, 4);
   const recentlyVerified = getRecentlyVerifiedOffers(4);
 
   const learningRailRef = useRef<HTMLDivElement | null>(null);
   const [activeLearningSlide, setActiveLearningSlide] = useState(0);
+
+  const recentRailRef = useRef<HTMLDivElement | null>(null);
+  const [activeRecentSlide, setActiveRecentSlide] = useState(0);
 
   const handleLearningScroll = useCallback(() => {
     const rail = learningRailRef.current;
@@ -63,14 +87,33 @@ export function HomePage({ onNavigate }: HomePageProps) {
     [learningHighlights.length]
   );
 
-  // Idle-prefetch Explore page chunk and page-1 data when not on Save-Data
-  useEffect(() => {
-    const timer = window.setTimeout(() => {
-      import('./ExplorePage').catch(() => {});
-      prefetchOffersQuery('limit=48&offset=0&fields=card&facets=1');
-    }, 1500);
-    return () => window.clearTimeout(timer);
-  }, []);
+  const handleRecentScroll = useCallback(() => {
+    const rail = recentRailRef.current;
+    if (!rail) return;
+    const nextIndex = computeActiveSlideIndex({
+      scrollLeft: rail.scrollLeft,
+      scrollWidth: rail.scrollWidth,
+      clientWidth: rail.clientWidth,
+      slideCount: recentlyVerified.length,
+    });
+    setActiveRecentSlide((prev) => (prev === nextIndex ? prev : nextIndex));
+  }, [recentlyVerified.length]);
+
+  const scrollToRecentSlide = useCallback(
+    (index: number) => {
+      const rail = recentRailRef.current;
+      if (!rail) return;
+      const targetLeft = computeSlideScrollLeft({
+        targetIndex: index,
+        scrollWidth: rail.scrollWidth,
+        clientWidth: rail.clientWidth,
+        slideCount: recentlyVerified.length,
+      });
+      rail.scrollTo({ left: targetLeft, behavior: 'smooth' });
+      setActiveRecentSlide(index);
+    },
+    [recentlyVerified.length]
+  );
 
   const handleSearch = (query: string) => {
     if (!query) {
@@ -112,7 +155,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
           <span className="relative inline-block mt-0.5 sm:mt-2">
             <span>Build anything.</span>
-            <SparkBurstDoodle className="absolute left-full -top-1.5 sm:-top-3.5 ml-1 sm:ml-1.5 w-5 h-5 sm:w-9 sm:h-9 lg:w-11 lg:h-11 pointer-events-none" />
+            <SparkBurstDoodle className="absolute left-full top-0.5 sm:top-1.5 lg:top-2 ml-0.5 sm:ml-1 w-5 h-5 sm:w-9 sm:h-9 lg:w-11 lg:h-11 pointer-events-none" />
           </span>
         </h1>
 
@@ -157,6 +200,9 @@ export function HomePage({ onNavigate }: HomePageProps) {
           <a
             href="/categories"
             onClick={(e) => go(e, '/categories')}
+            onMouseEnter={() => prefetchRouteWithData('/categories')}
+            onFocus={() => prefetchRouteWithData('/categories')}
+            onPointerDown={() => prefetchRouteWithData('/categories')}
             className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13px] sm:text-[15px] rounded-full px-4 sm:px-5 py-2 sm:py-2.5 min-h-[36px] sm:min-h-[40px] inline-flex items-center gap-1.5 sm:gap-2 spring-pill"
           >
             <span>View all {CATEGORIES.length} categories</span>
@@ -167,7 +213,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
       {/* 4. Learning Highlights (Mobile-Only Horizontal Touch Swipe Carousel; Desktop Grid Unchanged) */}
       <section className="max-w-[1360px] w-full mx-auto px-3 sm:px-6 lg:px-8 content-visibility-auto">
-        <div className="bg-sunshine-yellow rounded-[16px] sm:rounded-[26px] p-3 sm:p-8 md:p-10">
+        <div className="bg-sunshine-yellow rounded-[16px] sm:rounded-[26px] p-3 sm:p-8 md:p-10 overflow-hidden sm:overflow-visible">
           <div className="text-center max-w-2xl mx-auto mb-3 sm:mb-8">
             <h2 className="font-[var(--font-wallop)] font-extrabold text-[19px] sm:text-[32px] lg:text-[38px] leading-[1.08] tracking-[-0.03em] text-midnight-mouth">
               Learning highlights
@@ -182,13 +228,13 @@ export function HomePage({ onNavigate }: HomePageProps) {
             data-testid="learning-highlights-carousel"
             onScroll={handleLearningScroll}
             aria-label="Learning highlights"
-            className="flex sm:grid sm:grid-cols-2 xl:grid-cols-4 gap-2.5 sm:gap-4 overflow-x-auto sm:overflow-visible snap-x snap-mandatory scroll-px-3 sm:scroll-px-0 -mx-3 px-3 sm:mx-0 sm:px-0 pb-1 sm:pb-0 no-scrollbar touch-pan-x overscroll-x-contain mb-2.5 sm:mb-7"
+            className="flex sm:grid sm:grid-cols-2 xl:grid-cols-4 gap-2.5 sm:gap-4 overflow-x-auto sm:overflow-visible snap-x snap-mandatory scroll-px-[11%] sm:scroll-px-0 -mx-3 px-[11%] sm:mx-0 sm:px-0 pb-1 sm:pb-0 no-scrollbar touch-pan-x overscroll-x-contain mb-1 sm:mb-7"
           >
             {learningHighlights.map((item, idx) => (
               <div
                 key={item.identity.slug}
                 data-testid={`learning-highlight-slide-${idx}`}
-                className="w-[82%] max-w-[296px] shrink-0 snap-start sm:w-auto sm:max-w-none sm:shrink"
+                className="w-full shrink-0 snap-center sm:w-auto sm:shrink"
               >
                 <LearningCard
                   offer={item}
@@ -200,37 +246,52 @@ export function HomePage({ onNavigate }: HomePageProps) {
             ))}
           </div>
 
-          {/* Mobile-only interactive swipe dot indicators */}
-          <div
-            data-testid="learning-carousel-dots"
-            className="flex sm:hidden items-center justify-center gap-1.5 mb-3"
-            role="tablist"
-            aria-label="Learning highlight slides"
-          >
-            {learningHighlights.map((item, idx) => {
-              const active = idx === activeLearningSlide;
-              return (
-                <button
-                  key={item.identity.slug}
-                  type="button"
-                  role="tab"
-                  aria-selected={active}
-                  aria-label={`View learning highlight ${idx + 1}: ${item.identity.name}`}
-                  onClick={() => scrollToLearningSlide(idx)}
-                  className={`h-1.5 rounded-full transition-all duration-200 cursor-pointer ${
-                    active
-                      ? 'w-5 bg-midnight-mouth'
-                      : 'w-1.5 bg-midnight-mouth/28'
-                  }`}
-                />
-              );
-            })}
+          {/* Mobile-only compact dot & active pill indicator inside single >=28px touch target */}
+          <div className="flex sm:hidden items-center justify-center mb-1.5">
+            <button
+              type="button"
+              data-testid="learning-carousel-dots"
+              aria-label={`Learning highlight ${activeLearningSlide + 1} of ${learningHighlights.length}. Tap to switch slide.`}
+              onClick={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                if (e.clientX > 0 && rect.width > 0) {
+                  const idx = Math.min(
+                    learningHighlights.length - 1,
+                    Math.max(
+                      0,
+                      Math.floor(((e.clientX - rect.left) / rect.width) * learningHighlights.length)
+                    )
+                  );
+                  scrollToLearningSlide(idx);
+                } else {
+                  scrollToLearningSlide((activeLearningSlide + 1) % learningHighlights.length);
+                }
+              }}
+              className="min-h-[28px] px-2.5 inline-flex items-center justify-center gap-1.5 rounded-full cursor-pointer"
+            >
+              {learningHighlights.map((item, idx) => {
+                const active = idx === activeLearningSlide;
+                return (
+                  <span
+                    key={item.identity.slug}
+                    data-slide-index={idx}
+                    data-active={active ? 'true' : 'false'}
+                    className={`h-1.5 rounded-full transition-all duration-200 ${
+                      active ? 'w-5 bg-midnight-mouth' : 'w-1.5 bg-midnight-mouth/25'
+                    }`}
+                  />
+                );
+              })}
+            </button>
           </div>
 
           <div className="flex justify-center">
             <a
               href="/learning"
               onClick={(e) => go(e, '/learning')}
+              onMouseEnter={() => prefetchRouteWithData('/learning')}
+              onFocus={() => prefetchRouteWithData('/learning')}
+              onPointerDown={() => prefetchRouteWithData('/learning')}
               className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[15px] rounded-full px-4 sm:px-5 py-1.5 sm:py-2.5 min-h-[34px] sm:min-h-[40px] inline-flex items-center gap-1.5 sm:gap-2 spring-pill"
             >
               <span>Browse Learning Hub</span>
@@ -240,21 +301,74 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* 5. Recently Verified Resources */}
+      {/* 5. Recently Verified Resources (Grey Daylight Frame Box matching Learning Highlights & About Unverified) */}
       <section className="max-w-[1360px] w-full mx-auto px-3 sm:px-6 lg:px-8 content-visibility-auto">
-        <div className="text-center max-w-2xl mx-auto mb-3 sm:mb-8">
-          <h2 className="font-[var(--font-wallop)] font-extrabold text-[19px] sm:text-[32px] lg:text-[38px] leading-[1.08] tracking-[-0.03em] text-midnight-mouth">
-            Recently verified
-          </h2>
-          <p className="font-[var(--font-inter)] text-[12px] sm:text-[15.5px] leading-[1.38] sm:leading-[1.45] text-ink/80 mt-1 sm:mt-2">
-            Checked directly against provider pricing and official documentation.
-          </p>
-        </div>
+        <div className="bg-daylight rounded-[16px] sm:rounded-[26px] p-3 sm:p-8 md:p-10 overflow-hidden sm:overflow-visible">
+          <div className="text-center max-w-2xl mx-auto mb-3 sm:mb-8">
+            <h2 className="font-[var(--font-wallop)] font-extrabold text-[19px] sm:text-[32px] lg:text-[38px] leading-[1.08] tracking-[-0.03em] text-midnight-mouth">
+              Recently verified
+            </h2>
+            <p className="font-[var(--font-inter)] text-[12px] sm:text-[15.5px] leading-[1.38] sm:leading-[1.45] text-ink/80 mt-1 sm:mt-2">
+              Checked directly against provider pricing and official documentation.
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-2 sm:gap-4">
-          {recentlyVerified.map((offer) => (
-            <ResourceCard key={offer.identity.slug} offer={offer} onNavigate={onNavigate} />
-          ))}
+          <div
+            ref={recentRailRef}
+            data-testid="recently-verified-carousel"
+            onScroll={handleRecentScroll}
+            aria-label="Recently verified resources"
+            className="flex sm:grid sm:grid-cols-2 xl:grid-cols-4 gap-2.5 sm:gap-4 overflow-x-auto sm:overflow-visible snap-x snap-mandatory scroll-px-[11%] sm:scroll-px-0 -mx-3 px-[11%] sm:mx-0 sm:px-0 pb-1 sm:pb-0 no-scrollbar touch-pan-x overscroll-x-contain mb-1 sm:mb-0"
+          >
+            {recentlyVerified.map((offer, idx) => (
+              <div
+                key={offer.identity.slug}
+                data-testid={`recently-verified-slide-${idx}`}
+                className="w-full shrink-0 snap-center sm:w-auto sm:shrink"
+              >
+                <ResourceCard offer={offer} onNavigate={onNavigate} surface="paper" />
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile-only compact dot & active pill indicator inside single >=28px touch target */}
+          <div className="flex sm:hidden items-center justify-center mt-1">
+            <button
+              type="button"
+              data-testid="recent-carousel-dots"
+              aria-label={`Recently verified item ${activeRecentSlide + 1} of ${recentlyVerified.length}. Tap to switch slide.`}
+              onClick={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                if (e.clientX > 0 && rect.width > 0) {
+                  const idx = Math.min(
+                    recentlyVerified.length - 1,
+                    Math.max(
+                      0,
+                      Math.floor(((e.clientX - rect.left) / rect.width) * recentlyVerified.length)
+                    )
+                  );
+                  scrollToRecentSlide(idx);
+                } else {
+                  scrollToRecentSlide((activeRecentSlide + 1) % recentlyVerified.length);
+                }
+              }}
+              className="min-h-[28px] px-2.5 inline-flex items-center justify-center gap-1.5 rounded-full cursor-pointer"
+            >
+              {recentlyVerified.map((offer, idx) => {
+                const active = idx === activeRecentSlide;
+                return (
+                  <span
+                    key={offer.identity.slug}
+                    data-slide-index={idx}
+                    data-active={active ? 'true' : 'false'}
+                    className={`h-1.5 rounded-full transition-all duration-200 ${
+                      active ? 'w-5 bg-midnight-mouth' : 'w-1.5 bg-midnight-mouth/25'
+                    }`}
+                  />
+                );
+              })}
+            </button>
+          </div>
         </div>
       </section>
 
@@ -266,26 +380,22 @@ export function HomePage({ onNavigate }: HomePageProps) {
           </div>
           <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-2 sm:gap-4">
             <h2 className="font-[var(--font-wallop)] font-extrabold text-[18.5px] sm:text-[34px] lg:text-[42px] leading-[1.08] sm:leading-[1.06] tracking-[-0.03em] text-midnight-mouth">
-              Know a limit that changed — or a gem we missed?
+              Ready to build your stack for $0?
             </h2>
             <p className="font-[var(--font-inter)] text-[12.5px] sm:text-[15.5px] leading-[1.4] sm:leading-[1.5] text-ink max-w-xl">
-              Every listing explains real quotas, payment card rules, and eligibility without hidden trials or login walls. Spot an update or suggest a resource anytime.
+              Every listing explains real quotas, payment card rules, and eligibility without hidden trials or login walls.
             </p>
             <div className="w-full sm:w-auto flex flex-row flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 pt-0.5 sm:pt-1">
               <a
                 href="/explore"
                 onClick={(e) => go(e, '/explore')}
-                className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[15px] rounded-full px-3.5 sm:px-5 py-1.5 sm:py-2.5 min-h-[34px] sm:min-h-[40px] inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap spring-pill"
+                onMouseEnter={() => prefetchRouteWithData('/explore')}
+                onFocus={() => prefetchRouteWithData('/explore')}
+                onPointerDown={() => prefetchRouteWithData('/explore')}
+                className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[15px] rounded-full px-4 sm:px-5 py-1.5 sm:py-2.5 min-h-[34px] sm:min-h-[40px] inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap spring-pill"
               >
                 <span>Start exploring</span>
                 <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true" />
-              </a>
-              <a
-                href="/about"
-                onClick={(e) => go(e, '/about')}
-                className="bg-daylight text-ink font-[var(--font-wallop)] font-semibold text-[12.5px] sm:text-[15px] rounded-full px-3.5 sm:px-5 py-1.5 sm:py-2.5 min-h-[34px] sm:min-h-[40px] inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap spring-pill"
-              >
-                <span>Report info / Contribute</span>
               </a>
             </div>
           </div>

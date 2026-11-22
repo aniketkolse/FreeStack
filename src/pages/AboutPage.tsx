@@ -136,7 +136,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             Official terms change
           </h2>
           <p className="font-[var(--font-inter)] text-[12px] sm:text-[14px] leading-[1.42] sm:leading-[1.45] text-ink/90">
-            Providers update quotas, regional eligibility, and billing checks over time. Each listing displays a last-verified date and supports community correction reports.
+            Providers update quotas, regional eligibility, and billing checks over time. Each listing displays a last-verified date backed by direct official provider documentation.
           </p>
         </div>
       </section>

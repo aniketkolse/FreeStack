@@ -27,6 +27,15 @@ process.on('uncaughtException', (err) => {
 });
 
 async function startServer() {
+  const vitePromise = !isProd
+    ? import('vite').then(({ createServer: createViteServer }) =>
+        createViteServer({
+          server: { middlewareMode: true },
+          appType: 'custom',
+        })
+      )
+    : Promise.resolve(null);
+
   const categories = loadCategoriesFromDisk(ROOT_DIR);
   const sourceRegistry = loadSourceRegistryFromDisk(ROOT_DIR);
   const offers = loadOffersFromDisk(ROOT_DIR);
@@ -39,14 +48,8 @@ async function startServer() {
     sourceRegistry,
   });
 
-  if (!isProd) {
-    // Dynamically import Vite only in development mode so production never loads Vite
-    const { createServer: createViteServer } = await import('vite');
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: 'custom',
-    });
-
+  const vite = await vitePromise;
+  if (vite) {
     app.use(vite.middlewares);
 
     const devIndexHtmlPath = path.join(ROOT_DIR, 'index.html');
@@ -95,4 +98,7 @@ async function startServer() {
   process.on('SIGINT', () => shutdown('SIGINT'));
 }
 
-startServer();
+startServer().catch((err) => {
+  console.error('[FreeStack] Fatal startup error:', err);
+  process.exit(1);
+});

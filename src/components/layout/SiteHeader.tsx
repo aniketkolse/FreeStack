@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Bookmark, Home, Menu, X } from 'lucide-react';
 import { FreeStackLogo } from '../illustrations/TocaStickers';
 import { useSavedOffers } from '../../lib/saved/savedOffers';
+import { prefetchRouteWithData } from '../../lib/router/routePrefetch';
 
 interface SiteHeaderProps {
   currentPath: string;
@@ -68,6 +69,9 @@ export function SiteHeader({ currentPath, onNavigate }: SiteHeaderProps) {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleLinkClick(e, item.href)}
+                onMouseEnter={() => prefetchRouteWithData(item.href)}
+                onFocus={() => prefetchRouteWithData(item.href)}
+                onPointerDown={() => prefetchRouteWithData(item.href)}
                 aria-current={isActive ? 'page' : undefined}
                 className={`font-[var(--font-wallop)] font-semibold text-[13px] xl:text-[13.5px] leading-none whitespace-nowrap shrink-0 px-2.5 xl:px-3 py-2 rounded-full inline-flex items-center gap-1.5 filter-pill ${
                   isActive
@@ -88,6 +92,9 @@ export function SiteHeader({ currentPath, onNavigate }: SiteHeaderProps) {
             href="/saved"
             data-testid="header-saved-link"
             onClick={(e) => handleLinkClick(e, '/saved')}
+            onMouseEnter={() => prefetchRouteWithData('/saved')}
+            onFocus={() => prefetchRouteWithData('/saved')}
+            onPointerDown={() => prefetchRouteWithData('/saved')}
             aria-label={`Saved tools (${savedCount})`}
             className="inline-flex items-center justify-center gap-1 sm:gap-1.5 font-[var(--font-wallop)] font-semibold text-[12px] sm:text-[13px] leading-none rounded-full px-2.5 sm:px-3.5 py-1.5 sm:py-2 min-h-[34px] sm:min-h-[38px] bg-daylight text-midnight-mouth hover:bg-sunshine-yellow spring-pill"
           >
@@ -99,6 +106,9 @@ export function SiteHeader({ currentPath, onNavigate }: SiteHeaderProps) {
           <a
             href="/explore"
             onClick={(e) => handleLinkClick(e, '/explore')}
+            onMouseEnter={() => prefetchRouteWithData('/explore')}
+            onFocus={() => prefetchRouteWithData('/explore')}
+            onPointerDown={() => prefetchRouteWithData('/explore')}
             className="hidden sm:inline-flex items-center justify-center bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-[13.5px] xl:text-[14px] leading-none rounded-full px-4 sm:px-5 py-2.5 min-h-[38px] whitespace-nowrap shrink-0 spring-pill"
           >
             Browse Free

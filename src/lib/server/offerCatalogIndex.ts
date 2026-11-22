@@ -172,8 +172,13 @@ export function truncateCardDescription(desc: string, maxChars = 140): string {
  * Projects a full Offer into a compact card Offer (~350-450 bytes vs ~2.4 KB)
  * while preserving the exact Offer interface expected by ResourceCard and LearningCard.
  */
-export function toCardOffer(offer: Offer, popularityRank = 0): Offer & { _card?: CardProjectionMeta } {
-  const resolvedLogo = resolveOfferLogoUrl(offer);
+export function toCardOffer(
+  offer: Offer,
+  popularityRank = 0,
+  preResolvedLogo?: string | null
+): Offer & { _card?: CardProjectionMeta } {
+  const resolvedLogo =
+    preResolvedLogo !== undefined ? preResolvedLogo : resolveOfferLogoUrl(offer);
   const cappedDescription = truncateCardDescription(offer.description, 140);
 
   // Keep primary limit + AI rate limit if applicable
@@ -334,7 +339,7 @@ export class OfferCatalogIndex {
       const slug = offer.identity.slug;
       this.fullBySlug.set(slug, offer);
       const rank = rankBySlug.get(slug) ?? this.fullOffers.length;
-      this.cardBySlug.set(slug, toCardOffer(offer, rank));
+      this.cardBySlug.set(slug, toCardOffer(offer, rank, offer.identity.logo_url ?? null));
 
       const catSlug = offer.classification.category;
       catCounts[catSlug] = (catCounts[catSlug] ?? 0) + 1;

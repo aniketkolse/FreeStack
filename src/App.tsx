@@ -1,12 +1,11 @@
 import React, { Component, Suspense, lazy, useEffect, useState, type ReactNode } from 'react';
 import { useRouter, type NavigateOptions } from './lib/router/useRouter';
 import { getBackNavigationMeta } from './lib/router/navigationHistory';
+import { attachFirstInteractionRouteWarmup } from './lib/router/routePrefetch';
 import { getCategoryBySlug, getOfferBySlug } from './lib/data/resources';
 import { isLikelyNetworkOrLoadMessage } from './lib/errors/errorClassification';
 import { SiteHeader } from './components/layout/SiteHeader';
 import { SiteFooter } from './components/layout/SiteFooter';
-import { ErrorFallbackPage } from './components/layout/ErrorFallbackPage';
-import { CardGridSkeleton } from './components/offers/CardGridSkeleton';
 import { HomePage } from './pages/HomePage';
 
 function lazyWithRetry<T extends React.ComponentType<any>>(
@@ -71,6 +70,11 @@ const DesignSystemPage = lazyWithRetry(() =>
 const LegalCenterPage = lazyWithRetry(() =>
   import('./pages/LegalCenterPage').then((m) => ({ default: m.LegalCenterPage }))
 );
+const ErrorFallbackPage = lazyWithRetry(() =>
+  import('./components/layout/ErrorFallbackPage').then((m) => ({
+    default: m.ErrorFallbackPage,
+  }))
+);
 
 function DelayedRouteSkeleton() {
   const [show, setShow] = useState(false);
@@ -85,9 +89,30 @@ function DelayedRouteSkeleton() {
   }
 
   return (
-    <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 flex flex-col gap-6">
+    <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 flex flex-col gap-6" aria-busy="true">
       <div className="h-32 sm:h-40 rounded-[24px] bg-daylight animate-pulse" />
-      <CardGridSkeleton count={6} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {Array.from({ length: 6 }).map((_, idx) => (
+          <div key={idx} className="h-[280px] rounded-[24px] bg-daylight animate-pulse" />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MinimalBoundaryFallback({ onRetry }: { onRetry: () => void }) {
+  return (
+    <div className="max-w-xl mx-auto px-4 py-16 text-center flex flex-col items-center gap-4">
+      <h1 className="font-[var(--font-wallop)] font-bold text-2xl text-midnight-mouth">
+        Unable to load this view
+      </h1>
+      <button
+        type="button"
+        onClick={onRetry}
+        className="bg-midnight-mouth text-daylight font-[var(--font-wallop)] font-semibold text-sm rounded-full px-5 py-2.5 cursor-pointer"
+      >
+        Reload page
+      </button>
     </div>
   );
 }
@@ -117,18 +142,21 @@ class RouteErrorBoundary extends Component<
   render() {
     if (this.state.hasError) {
       const online = typeof navigator !== 'undefined' ? navigator.onLine : true;
+      const handleRetry = () => {
+        this.setState({ hasError: false, errorMessage: null });
+        if (typeof window !== 'undefined') {
+          window.location.reload();
+        }
+      };
       return (
-        <ErrorFallbackPage
-          explicitVariant={online ? 'load_error' : 'offline'}
-          errorMessage={this.state.errorMessage}
-          onNavigate={this.props.onNavigate}
-          onRetry={() => {
-            this.setState({ hasError: false, errorMessage: null });
-            if (typeof window !== 'undefined') {
-              window.location.reload();
-            }
-          }}
-        />
+        <Suspense fallback={<MinimalBoundaryFallback onRetry={handleRetry} />}>
+          <ErrorFallbackPage
+            explicitVariant={online ? 'load_error' : 'offline'}
+            errorMessage={this.state.errorMessage}
+            onNavigate={this.props.onNavigate}
+            onRetry={handleRetry}
+          />
+        </Suspense>
       );
     }
     return this.props.children;
@@ -142,6 +170,10 @@ export default function App() {
   );
   const [globalLoadError, setGlobalLoadError] = useState<string | null>(null);
   const [retrySeed, setRetrySeed] = useState(0);
+
+  useEffect(() => {
+    return attachFirstInteractionRouteWarmup();
+  }, []);
 
   useEffect(() => {
     const handleOnline = () => {

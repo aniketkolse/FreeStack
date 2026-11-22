@@ -19,6 +19,7 @@ import {
   getCompactLimitPair,
 } from '../../lib/utils/formatters';
 import { getCategoryBySlug, prefetchOfferDetail } from '../../lib/data/resources';
+import { prefetchRouteChunk } from '../../lib/router/routePrefetch';
 import { shareOrCopyOffer, useSavedOffers } from '../../lib/saved/savedOffers';
 import { getCategoryBgClass } from '../illustrations/TocaStickers';
 import { OfferLogo } from './OfferLogo';
@@ -68,11 +69,21 @@ export const ResourceCard = memo(function ResourceCard({
     onNavigate(`/offer/${offer.identity.slug}`);
   };
 
+  const handlePrefetchNow = () => {
+    if (hoverTimerRef.current) {
+      window.clearTimeout(hoverTimerRef.current);
+      hoverTimerRef.current = null;
+    }
+    prefetchRouteChunk('offer');
+    prefetchOfferDetail(offer.identity.slug);
+  };
+
   const handlePrefetchStart = () => {
+    prefetchRouteChunk('offer');
     if (hoverTimerRef.current) window.clearTimeout(hoverTimerRef.current);
     hoverTimerRef.current = window.setTimeout(() => {
       prefetchOfferDetail(offer.identity.slug);
-    }, 100);
+    }, 40);
   };
 
   const handlePrefetchCancel = () => {
@@ -99,6 +110,8 @@ export const ResourceCard = memo(function ResourceCard({
       onMouseLeave={handlePrefetchCancel}
       onFocus={handlePrefetchStart}
       onBlur={handlePrefetchCancel}
+      onPointerDown={handlePrefetchNow}
+      onTouchStart={handlePrefetchNow}
       className={`${cardBgClass} rounded-[15px] sm:rounded-[24px] p-2.5 sm:p-4 min-h-0 sm:min-h-[304px] h-full flex flex-col justify-between gap-2 sm:gap-2.5 spring-card min-w-0 overflow-hidden`}
     >
       <div className="flex flex-col gap-2 sm:gap-2.5 min-w-0">
