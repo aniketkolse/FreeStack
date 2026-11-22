@@ -232,6 +232,29 @@ function renderStaticRouteSnapshot(normalizedPath: string, ctx: SsrSnapshotConte
   return `<main><h1>Page Not Found</h1><p>The requested FreeStack page could not be found. Explore our ${totalCount} verified free developer resources across ${categories.length} categories from the navigation links above.</p></main>`;
 }
 
+export function buildHomeSsrAsideHtml(ctx: { categories: Category[]; offers: Offer[] }): string {
+  const { categories, offers } = ctx;
+  const totalCount = offers.length.toLocaleString('en-US');
+
+  return [
+    `<aside data-freestack-ssr="true" data-freestack-ssr-context="true" class="fs-ssr-only" aria-label="Catalog verification summary">`,
+    `<img src="/favicon.svg" alt="FreeStack verified free developer directory logo" width="32" height="32" />`,
+    `<h2>About FreeStack Catalog (${totalCount} Verified Free Resources)</h2>`,
+    `<p>FreeStack is a verified, login-free directory of ${totalCount} free developer resources across ${categories.length} stack categories, backed by cited official HTTPS pricing pages, real free-tier quotas, and clear payment card rules.</p>`,
+    `<p><strong>Catalog Freshness:</strong> Updated continuously and last audited November 2026 directly from official HTTPS pricing pages and developer documentation.</p>`,
+    `<h2>Trust Signals &amp; Verification Methodology</h2>`,
+    `<ul>`,
+    `<li><strong>Primary Official Documentation:</strong> Every verified listing links directly to official HTTPS pricing or documentation pages with timestamped verification dates.</li>`,
+    `<li><strong>No Fake Permanent Freebies:</strong> Temporary trials and expiring credits are clearly separated from permanently free developer tiers and open-source licenses.</li>`,
+    `<li><strong>Explicit Card &amp; Student Rules:</strong> Unknown card requirements remain labeled unknown rather than guessed, and academic .edu rules are highlighted upfront.</li>`,
+    `<li><strong>Zero Login &amp; Open Source (AGPL-3.0):</strong> Local-first bookmarks stay in your browser with no account required. Read our <a href="/about">Trust &amp; Verification Policy</a> and <a href="/privacy">Privacy Policy</a>.</li>`,
+    `</ul>`,
+    `<h2>Next Steps to Build Your $0 Stack</h2>`,
+    `<p>Ready to assemble a production stack or study track? <a href="/explore">Explore all ${totalCount} verified free resources</a>, <a href="/categories">compare all ${categories.length} developer categories</a>, <a href="/learning">start a free computer science course</a>, or <a href="/students">check eligible student developer packs</a>.</p>`,
+    `</aside>`,
+  ].join('');
+}
+
 /**
  * Generates semantic, crawlable, route-specific HTML for search engines and AI crawlers.
  * Wrapped in `.fs-ssr-only` (visually hidden via inline head CSS) so users never see an

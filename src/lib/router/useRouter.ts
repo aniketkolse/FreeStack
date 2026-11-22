@@ -25,6 +25,13 @@ export interface NavigateOptions {
 }
 
 function readLocation(): RouteLocation {
+  if (typeof window === 'undefined') {
+    return {
+      pathname: '/',
+      search: '',
+      params: new URLSearchParams(),
+    };
+  }
   const pathname = sanitizeInternalPath(window.location.pathname || '/', '/');
   const rawSearch = window.location.search || '';
   const search = rawSearch.length <= 512 ? rawSearch : rawSearch.slice(0, 512);
@@ -36,6 +43,9 @@ function readLocation(): RouteLocation {
 }
 
 function readFullUrl(): string {
+  if (typeof window === 'undefined') {
+    return '/';
+  }
   return sanitizeInternalPath(
     (window.location.pathname || '/') + (window.location.search || ''),
     '/'
@@ -74,7 +84,7 @@ export function useRouter() {
   if (!stackRef.current) {
     stackRef.current = createInitialHistoryState(
       readFullUrl(),
-      readStateId(window.history.state)
+      typeof window !== 'undefined' ? readStateId(window.history.state) : undefined
     );
   }
 

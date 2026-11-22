@@ -240,9 +240,23 @@ describe('On-Page SEO, SSR Crawlability & AI Visibility', () => {
         headers: { 'X-Forwarded-Host': 'freestack.ai.studio' },
       });
       assert.equal(okRes.status, 200);
+      assert.ok(
+        (okRes.headers.get('cache-control') ?? '').includes('s-maxage=300'),
+        'Public Home HTML should be edge-cacheable with s-maxage'
+      );
       const okHtml = await okRes.text();
       assert.ok(okHtml.includes('<link rel="canonical" href="https://freestack.ai.studio/" />'));
-      assert.ok(okHtml.includes('<h1>Find more. Spend less. Build anything.</h1>'));
+      assert.ok(okHtml.includes('data-freestack-home-ssr="true"'));
+      const h1Matches = okHtml.match(/<h1\b[^>]*>[\s\S]*?<\/h1>/gi) ?? [];
+      assert.equal(h1Matches.length, 1, 'Expected exactly 1 <h1> in rendered Home HTML');
+      assert.ok(h1Matches[0].includes('Find more.'));
+      assert.ok(h1Matches[0].includes('Spend less.'));
+      assert.ok(h1Matches[0].includes('Build anything.'));
+      assert.ok(
+        okHtml.includes('Discover verified free AI models, MCP servers, APIs'),
+        'Expected visible hero LCP subtext in SSR HTML'
+      );
+      assert.ok(okHtml.includes('alt="FreeStack verified free developer directory logo"'));
 
       // Also verify direct HTTP Host header (since fetch() strips Host as a forbidden header)
       const http = await import('node:http');

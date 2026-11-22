@@ -164,13 +164,14 @@ class RouteErrorBoundary extends Component<
 
 export default function App() {
   const { pathname, params, previousPath, navigate, goBack } = useRouter();
-  const [isOnline, setIsOnline] = useState<boolean>(() =>
-    typeof navigator !== 'undefined' ? navigator.onLine : true
-  );
+  const [isOnline, setIsOnline] = useState<boolean>(true);
   const [globalLoadError, setGlobalLoadError] = useState<string | null>(null);
   const [retrySeed, setRetrySeed] = useState(0);
 
   useEffect(() => {
+    if (typeof navigator !== 'undefined' && !navigator.onLine) {
+      setIsOnline(false);
+    }
     const handleOnline = () => {
       setIsOnline(true);
       setGlobalLoadError(null);

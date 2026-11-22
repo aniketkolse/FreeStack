@@ -32,9 +32,12 @@ import {
   validateSiteUrl,
   verifyBearerAdminToken,
 } from './securityUtils.ts';
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import App from '../../App.tsx';
 import { injectHtmlMeta, resolveRouteMeta } from './htmlMeta.ts';
 import { OfferCatalogIndex } from './offerCatalogIndex.ts';
-import { buildRouteSsrSnapshot } from './ssrSnapshot.ts';
+import { buildHomeSsrAsideHtml, buildRouteSsrSnapshot } from './ssrSnapshot.ts';
 
 export interface CreateAppOptions {
   rootDir?: string;
@@ -1370,30 +1373,155 @@ export function createApp(options: CreateAppOptions) {
       ? fs.readFileSync(indexHtmlPath, 'utf-8')
       : '<!doctype html><html lang="en"><head><title>FreeStack</title><meta name="description" content="" /><meta property="og:title" content="" /><meta property="og:description" content="" /></head><body><div id="root"></div></body></html>';
 
-    app.get('*', (req, res) => {
-      const hasQuery = Object.keys(req.query).length > 0;
-      const effectiveOrigin = resolveRequestSiteUrl(req);
+    // Pre-render the visible Home React SSR tree + supplementary SEO context once at boot
+    // so Hero <h1> and LCP <p> paint immediately in initial HTML without waiting on client JS.
+    let cachedHomeSsrBody: string | null = null;
+    try {
+      cachedHomeSsrBody = renderToString(React.createElement(App));
+    } catch {
+      cachedHomeSsrBody = null;
+    }
+    const cachedHomeSsrAside = buildHomeSsrAsideHtml({
+      categories,
+      offers: catalogIndex.fullOffers,
+    });
+
+    interface CachedHtmlEntry {
+      status: number;
+      cacheControl: string;
+      etag: string;
+      rawBuf: Buffer;
+      brBuf: Buffer | null;
+      gzBuf: Buffer | null;
+    }
+
+    const htmlResponseCache = new Map<string, CachedHtmlEntry>();
+    const MAX_HTML_CACHE_ENTRIES = 500;
+    const HOME_FONT_PRELOAD_LINK =
+      '</fonts/plus-jakarta-sans-latin-wght-normal.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin, </fonts/inter-latin-wght-normal.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin';
+
+    const buildAndCompressHtmlEntry = (
+      pathname: string,
+      hasQuery: boolean,
+      effectiveOrigin: string
+    ): CachedHtmlEntry => {
       const meta = resolveRouteMeta(
-        req.path,
+        pathname,
         hasQuery,
         effectiveOrigin,
         offerBySlug,
         categoryBySlug
       );
-      const ssrSnapshot = buildRouteSsrSnapshot({
-        pathname: req.path,
-        categories,
-        offers: catalogIndex.fullOffers,
-        offerBySlug,
-        categoryBySlug,
-        categoryCounts: catalogIndex.categoryCounts,
-      });
 
-      const renderedHtml = injectHtmlMeta(cachedTemplateHtml, meta, ssrSnapshot);
-      sendCompressedPayload(req, res, 'text/html; charset=utf-8', renderedHtml, {
+      const isHomeRoute = pathname === '/' || pathname === '';
+      let renderedHtml: string;
+      if (isHomeRoute && cachedHomeSsrBody) {
+        renderedHtml = injectHtmlMeta(cachedTemplateHtml, meta, cachedHomeSsrBody, {
+          isHomeSsr: true,
+          ssrAsideHtml: cachedHomeSsrAside,
+        });
+      } else {
+        const ssrSnapshot = buildRouteSsrSnapshot({
+          pathname,
+          categories,
+          offers: catalogIndex.fullOffers,
+          offerBySlug,
+          categoryBySlug,
+          categoryCounts: catalogIndex.categoryCounts,
+        });
+        renderedHtml = injectHtmlMeta(cachedTemplateHtml, meta, ssrSnapshot);
+      }
+
+      const rawBuf = Buffer.from(renderedHtml, 'utf-8');
+      const etag = `W/"${crypto.createHash('sha1').update(rawBuf).digest('hex').slice(0, 20)}"`;
+      const isEdgeCacheable =
+        meta.status === 200 && meta.robots === 'index, follow' && !hasQuery;
+      const cacheControl = isEdgeCacheable
+        ? 'public, max-age=60, s-maxage=300, stale-while-revalidate=86400'
+        : 'no-cache';
+
+      const brBuf =
+        rawBuf.byteLength >= 512
+          ? zlib.brotliCompressSync(rawBuf, {
+              params: { [zlib.constants.BROTLI_PARAM_QUALITY]: 6 },
+            })
+          : null;
+      const gzBuf =
+        rawBuf.byteLength >= 512 ? zlib.gzipSync(rawBuf, { level: 6 }) : null;
+
+      return {
         status: meta.status,
-        cacheControl: 'no-cache',
-      });
+        cacheControl,
+        etag,
+        rawBuf,
+        brBuf,
+        gzBuf,
+      };
+    };
+
+    const getCachedHtmlEntry = (pathname: string, effectiveOrigin: string): CachedHtmlEntry => {
+      const normalizedPath = pathname === '' ? '/' : pathname;
+      const cacheKey = `${effectiveOrigin}|${normalizedPath}`;
+      const existing = htmlResponseCache.get(cacheKey);
+      if (existing) {
+        return existing;
+      }
+      const entry = buildAndCompressHtmlEntry(normalizedPath, false, effectiveOrigin);
+      if (entry.status === 200) {
+        if (htmlResponseCache.size >= MAX_HTML_CACHE_ENTRIES) {
+          const oldestKey = htmlResponseCache.keys().next().value;
+          if (oldestKey) htmlResponseCache.delete(oldestKey);
+        }
+        htmlResponseCache.set(cacheKey, entry);
+      }
+      return entry;
+    };
+
+    // Pre-warm Home HTML + precompressed buffers at startup so the first request pays 0ms compute
+    getCachedHtmlEntry('/', siteUrl);
+    if (!explicitSiteUrl && siteUrl !== 'https://freestack.ai.studio') {
+      getCachedHtmlEntry('/', 'https://freestack.ai.studio');
+    }
+
+    app.get('*', (req, res) => {
+      const hasQuery = Object.keys(req.query).length > 0;
+      const effectiveOrigin = resolveRequestSiteUrl(req);
+      const entry = hasQuery
+        ? buildAndCompressHtmlEntry(req.path, true, effectiveOrigin)
+        : getCachedHtmlEntry(req.path, effectiveOrigin);
+
+      if (req.path === '/' || req.path === '') {
+        res.setHeader('Link', HOME_FONT_PRELOAD_LINK);
+      }
+      res.setHeader('Cache-Control', entry.cacheControl);
+      res.setHeader('ETag', entry.etag);
+      res.setHeader('Vary', 'Accept-Encoding');
+
+      const ifNoneMatch = req.headers['if-none-match'];
+      if (ifNoneMatch && ifNoneMatch.includes(entry.etag) && entry.status === 200) {
+        res.status(304).end();
+        return;
+      }
+
+      res.status(entry.status).setHeader('Content-Type', 'text/html; charset=utf-8');
+      if (req.method === 'HEAD') {
+        res.end();
+        return;
+      }
+
+      const acceptEncoding = String(req.headers['accept-encoding'] ?? '');
+      if (entry.brBuf && /\bbr\b/.test(acceptEncoding)) {
+        res.setHeader('Content-Encoding', 'br');
+        res.send(entry.brBuf);
+        return;
+      }
+      if (entry.gzBuf && /\bgzip\b/.test(acceptEncoding)) {
+        res.setHeader('Content-Encoding', 'gzip');
+        res.send(entry.gzBuf);
+        return;
+      }
+
+      res.send(entry.rawBuf);
     });
   }
 

@@ -232,10 +232,16 @@ export function resolveRouteMeta(
   };
 }
 
+export interface InjectHtmlMetaOptions {
+  isHomeSsr?: boolean;
+  ssrAsideHtml?: string;
+}
+
 export function injectHtmlMeta(
   rawHtml: string,
   meta: RouteMetaResult,
-  ssrBodyHtml?: string
+  ssrBodyHtml?: string,
+  options?: InjectHtmlMetaOptions
 ): string {
   const safeTitle = escapeHtmlText(meta.title);
   const safeTitleAttr = escapeHtmlAttr(meta.title);
@@ -246,42 +252,42 @@ export function injectHtmlMeta(
   const safeOgImageAttr = escapeHtmlAttr(`${canonicalOrigin}/og-image.png`);
 
   let html = rawHtml
-    .replace(/<title>[\s\S]*?<\/title>/i, `<title>${safeTitle}</title>`)
+    .replace(/<title>[\s\S]*?<\/title>/i, () => `<title>${safeTitle}</title>`)
     .replace(
       /<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i,
-      `<meta name="description" content="${safeDescAttr}" />`
+      () => `<meta name="description" content="${safeDescAttr}" />`
     )
     .replace(
       /<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/i,
-      `<meta property="og:title" content="${safeTitleAttr}" />`
+      () => `<meta property="og:title" content="${safeTitleAttr}" />`
     )
     .replace(
       /<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/i,
-      `<meta property="og:description" content="${safeDescAttr}" />`
+      () => `<meta property="og:description" content="${safeDescAttr}" />`
     )
     .replace(
       /<meta\s+property="og:image"\s+content="[^"]*"\s*\/?>/i,
-      `<meta property="og:image" content="${safeOgImageAttr}" />`
+      () => `<meta property="og:image" content="${safeOgImageAttr}" />`
     )
     .replace(
       /<meta\s+property="og:image:alt"\s+content="[^"]*"\s*\/?>/i,
-      `<meta property="og:image:alt" content="${safeTitleAttr}" />`
+      () => `<meta property="og:image:alt" content="${safeTitleAttr}" />`
     )
     .replace(
       /<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/i,
-      `<meta name="twitter:title" content="${safeTitleAttr}" />`
+      () => `<meta name="twitter:title" content="${safeTitleAttr}" />`
     )
     .replace(
       /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/i,
-      `<meta name="twitter:description" content="${safeDescAttr}" />`
+      () => `<meta name="twitter:description" content="${safeDescAttr}" />`
     )
     .replace(
       /<meta\s+name="twitter:image"\s+content="[^"]*"\s*\/?>/i,
-      `<meta name="twitter:image" content="${safeOgImageAttr}" />`
+      () => `<meta name="twitter:image" content="${safeOgImageAttr}" />`
     )
     .replace(
       /<meta\s+name="twitter:image:alt"\s+content="[^"]*"\s*\/?>/i,
-      `<meta name="twitter:image:alt" content="${safeTitleAttr}" />`
+      () => `<meta name="twitter:image:alt" content="${safeTitleAttr}" />`
     );
 
   const extraTags = [
@@ -319,10 +325,13 @@ export function injectHtmlMeta(
     );
   }
 
-  html = html.replace('</head>', `  ${extraTags.join('\n    ')}\n  </head>`);
+  html = html.replace('</head>', () => `  ${extraTags.join('\n    ')}\n  </head>`);
 
   if (ssrBodyHtml) {
-    html = html.replace('<div id="root"></div>', `<div id="root">${ssrBodyHtml}</div>`);
+    const rootReplacement = options?.isHomeSsr
+      ? `<div id="root" data-freestack-home-ssr="true">${ssrBodyHtml}</div>${options.ssrAsideHtml ?? ''}`
+      : `<div id="root">${ssrBodyHtml}</div>`;
+    html = html.replace('<div id="root"></div>', () => rootReplacement);
   }
 
   return html;

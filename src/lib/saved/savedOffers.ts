@@ -101,12 +101,13 @@ function writeStoredSavedSlugs(slugs: string[]): void {
  * React hook to read and mutate saved tool slugs across all components in real time.
  */
 export function useSavedOffers() {
-  const [savedSlugs, setSavedSlugs] = useState<string[]>(() => readStoredSavedSlugs());
+  const [savedSlugs, setSavedSlugs] = useState<string[]>([]);
 
   useEffect(() => {
     const sync = () => {
       setSavedSlugs(readStoredSavedSlugs());
     };
+    sync();
     window.addEventListener(SAVED_OFFERS_EVENT, sync);
     window.addEventListener('storage', sync);
     return () => {

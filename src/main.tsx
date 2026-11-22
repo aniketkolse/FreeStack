@@ -1,4 +1,4 @@
-import { createRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 
@@ -47,4 +47,13 @@ if (typeof window !== 'undefined') {
   });
 }
 
-createRoot(document.getElementById('root')!).render(<App />);
+const rootElement = document.getElementById('root')!;
+const normalizedPath = typeof window !== 'undefined' ? window.location.pathname : '/';
+if (
+  rootElement.dataset.freestackHomeSsr === 'true' &&
+  (normalizedPath === '/' || normalizedPath === '')
+) {
+  hydrateRoot(rootElement, <App />);
+} else {
+  createRoot(rootElement).render(<App />);
+}
