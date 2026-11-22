@@ -32,9 +32,6 @@ import {
   validateSiteUrl,
   verifyBearerAdminToken,
 } from './securityUtils.ts';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import App from '../../App.tsx';
 import { injectHtmlMeta, resolveRouteMeta } from './htmlMeta.ts';
 import { OfferCatalogIndex } from './offerCatalogIndex.ts';
 import { buildHomeSsrAsideHtml, buildRouteSsrSnapshot } from './ssrSnapshot.ts';
@@ -1373,13 +1370,21 @@ export function createApp(options: CreateAppOptions) {
       ? fs.readFileSync(indexHtmlPath, 'utf-8')
       : '<!doctype html><html lang="en"><head><title>FreeStack</title><meta name="description" content="" /><meta property="og:title" content="" /><meta property="og:description" content="" /></head><body><div id="root"></div></body></html>';
 
-    // Pre-render the visible Home React SSR tree + supplementary SEO context once at boot
-    // so Hero <h1> and LCP <p> paint immediately in initial HTML without waiting on client JS.
+    // Load build-time pre-rendered Home React SSR tree + supplementary SEO context once at boot
+    // so Hero <h1> and LCP <p> paint immediately in initial HTML without runtime .tsx imports.
     let cachedHomeSsrBody: string | null = null;
-    try {
-      cachedHomeSsrBody = renderToString(React.createElement(App));
-    } catch {
-      cachedHomeSsrBody = null;
+    const homeSsrCandidates = [
+      path.join(distPath, 'home-ssr.html'),
+      path.join(rootDir, 'src', 'lib', 'server', 'homeSsrBody.html'),
+    ];
+    for (const candidatePath of homeSsrCandidates) {
+      if (fs.existsSync(candidatePath)) {
+        const rawSsr = fs.readFileSync(candidatePath, 'utf-8').trim();
+        if (rawSsr.length > 0) {
+          cachedHomeSsrBody = rawSsr;
+          break;
+        }
+      }
     }
     const cachedHomeSsrAside = buildHomeSsrAsideHtml({
       categories,

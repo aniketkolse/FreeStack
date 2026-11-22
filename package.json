@@ -11,7 +11,7 @@
     "dev": "tsx server.ts",
     "start": "node server.ts",
     "start:prod": "node dist-server/server.js",
-    "build": "tsx scripts/build-bootstrap.ts && vite build && esbuild server.ts --bundle --platform=node --format=esm --packages=external --outfile=dist-server/server.js && tsx scripts/precompress-dist.ts",
+    "build": "tsx scripts/build-bootstrap.ts && tsx scripts/build-home-ssr.ts && vite build && esbuild server.ts --bundle --platform=node --format=esm --packages=external --outfile=dist-server/server.js && tsx scripts/precompress-dist.ts",
     "preview": "vite preview",
     "clean": "node -e \"fs.rmSync('dist',{recursive:true,force:true});fs.rmSync('dist-server',{recursive:true,force:true});fs.rmSync('server.js',{force:true})\"",
     "lint": "tsc --noEmit",
