@@ -1,0 +1,282 @@
+import { describe, it, before, after } from 'node:test';
+import assert from 'node:assert/strict';
+import type { Server } from 'node:http';
+import { createApp } from './createApp';
+import { resolveRouteMeta, injectHtmlMeta } from './htmlMeta';
+import { buildRouteSsrSnapshot } from './ssrSnapshot';
+import {
+  loadCategoriesFromDisk,
+  loadOffersFromDisk,
+  loadSourceRegistryFromDisk,
+} from '../data/nodeLoader';
+
+const CATEGORIES = loadCategoriesFromDisk();
+const ALL_OFFERS = loadOffersFromDisk();
+const SOURCE_REGISTRY = loadSourceRegistryFromDisk();
+
+function stripHtmlToWords(html: string): string[] {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&[a-z0-9#]+;/gi, ' ')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+describe('On-Page SEO, SSR Crawlability & AI Visibility', () => {
+  const offerBySlug = new Map(ALL_OFFERS.map((o) => [o.identity.slug, o]));
+  const categoryBySlug = new Map(CATEGORIES.map((c) => [c.slug, c]));
+
+  it('keeps titles <= 60 chars and meta descriptions <= 160 chars across static, category, and offer routes', () => {
+    const routesToCheck = [
+      '/',
+      '/explore',
+      '/categories',
+      '/learning',
+      '/students',
+      '/about',
+      '/privacy',
+      '/privacy-requests',
+      '/terms',
+      '/design-system',
+      ...CATEGORIES.map((c) => `/category/${c.slug}`),
+      ...ALL_OFFERS.slice(0, 30).map((o) => `/offer/${o.identity.slug}`),
+    ];
+
+    for (const route of routesToCheck) {
+      const meta = resolveRouteMeta(
+        route,
+        false,
+        'https://freestack.ai.studio',
+        offerBySlug,
+        categoryBySlug
+      );
+      assert.equal(meta.status, 200, `Expected 200 for ${route}`);
+      assert.ok(
+        meta.title.length >= 30 && meta.title.length <= 60,
+        `Title for ${route} should be 30..60 chars, got ${meta.title.length}: "${meta.title}"`
+      );
+      assert.ok(
+        meta.description.length >= 60 && meta.description.length <= 160,
+        `Description for ${route} should be 60..160 chars, got ${meta.description.length}: "${meta.description}"`
+      );
+      assert.ok(
+        meta.canonicalUrl.startsWith('https://freestack.ai.studio'),
+        `Canonical for ${route} should use https://freestack.ai.studio`
+      );
+    }
+  });
+
+  it('generates exact 1 H1, 300+ words, and rich internal links in SSR semantic snapshots', () => {
+    const categoryCounts: Record<string, number> = {};
+    for (const o of ALL_OFFERS) {
+      categoryCounts[o.classification.category] =
+        (categoryCounts[o.classification.category] ?? 0) + 1;
+    }
+
+    const indexableRoutes = [
+      '/',
+      '/explore',
+      '/categories',
+      '/learning',
+      '/students',
+      '/about',
+      '/privacy',
+      '/privacy-requests',
+      '/terms',
+      '/category/ai-ml',
+      '/category/mcp',
+      `/offer/${ALL_OFFERS[0].identity.slug}`,
+    ];
+
+    for (const pathname of indexableRoutes) {
+      const snapshot = buildRouteSsrSnapshot({
+        pathname,
+        categories: CATEGORIES,
+        offers: ALL_OFFERS,
+        offerBySlug,
+        categoryBySlug,
+        categoryCounts,
+      });
+
+      const h1Matches = snapshot.match(/<h1\b[^>]*>[\s\S]*?<\/h1>/gi) ?? [];
+      assert.equal(h1Matches.length, 1, `Expected exactly 1 <h1> for ${pathname}`);
+
+      const words = stripHtmlToWords(snapshot);
+      assert.ok(
+        words.length >= 300,
+        `Expected >= 300 words for ${pathname}, got ${words.length}`
+      );
+
+      const internalLinks = snapshot.match(/href="\/[^"]*"/g) ?? [];
+      assert.ok(
+        internalLinks.length >= 15,
+        `Expected >= 15 internal links for ${pathname}, got ${internalLinks.length}`
+      );
+
+      assert.ok(
+        snapshot.includes('class="fs-ssr-only"'),
+        'SSR snapshot must be wrapped in .fs-ssr-only to prevent unstyled visual flash'
+      );
+    }
+  });
+
+  it('injects OpenGraph, Twitter Card tags, JSON-LD, and SSR snapshot cleanly into HTML', () => {
+    const template =
+      '<!doctype html><html><head><title>T</title><meta name="description" content="" /><meta property="og:title" content="" /><meta property="og:description" content="" /></head><body><div id="root"></div></body></html>';
+    const meta = resolveRouteMeta(
+      '/',
+      false,
+      'https://freestack.ai.studio',
+      offerBySlug,
+      categoryBySlug
+    );
+    const snapshot = buildRouteSsrSnapshot({
+      pathname: '/',
+      categories: CATEGORIES,
+      offers: ALL_OFFERS.slice(0, 40),
+      offerBySlug,
+      categoryBySlug,
+    });
+    const html = injectHtmlMeta(template, meta, snapshot);
+    assert.ok(html.includes('<meta property="og:site_name" content="FreeStack" />'));
+    assert.ok(html.includes('<meta name="twitter:title"'));
+    assert.ok(html.includes('<meta name="twitter:description"'));
+    assert.ok(html.includes('application/ld+json'));
+    assert.ok(html.includes('SearchAction'));
+    assert.ok(html.includes('<h1>Find more. Spend less. Build anything.</h1>'));
+  });
+
+  describe('Live HTTP endpoints (/robots.txt, /llms.txt, canonical origin, /api X-Robots-Tag)', () => {
+    let server: Server;
+    let baseUrl: string;
+    let port = 0;
+
+    before(async () => {
+      const prevSiteUrl = process.env.SITE_URL;
+      const prevAppUrl = process.env.APP_URL;
+      delete process.env.SITE_URL;
+      process.env.APP_URL = 'https://freestack-fallback.asia-east1.run.app';
+
+      const { app } = createApp({
+        isProduction: true,
+        offers: ALL_OFFERS.slice(0, 60),
+        categories: CATEGORIES,
+        sourceRegistry: SOURCE_REGISTRY,
+        enableRateLimits: false,
+      });
+
+      if (prevSiteUrl !== undefined) process.env.SITE_URL = prevSiteUrl;
+      if (prevAppUrl !== undefined) process.env.APP_URL = prevAppUrl;
+      else delete process.env.APP_URL;
+
+      await new Promise<void>((resolve) => {
+        server = app.listen(0, '127.0.0.1', () => {
+          const addr = server.address();
+          if (addr && typeof addr === 'object') {
+            port = addr.port;
+            baseUrl = `http://127.0.0.1:${addr.port}`;
+          }
+          resolve();
+        });
+      });
+    });
+
+    after(async () => {
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+    });
+
+    it('allows all 15 AI bots in /robots.txt without Disallow restrictions and serves /llms.txt', async () => {
+      const res = await fetch(`${baseUrl}/robots.txt`, {
+        headers: { 'X-Forwarded-Host': 'freestack.ai.studio' },
+      });
+      assert.equal(res.status, 200);
+      const txt = await res.text();
+      assert.ok(!/^Disallow:/m.test(txt), 'robots.txt should not have Disallow lines restricting AI bots');
+      for (const bot of [
+        'OAI-SearchBot',
+        'PerplexityBot',
+        'ChatGPT-User',
+        'anthropic-ai',
+        'Claude-Web',
+        'Perplexity-User',
+        'Amazonbot',
+        'MistralAI-User',
+        'GPTBot',
+        'Google-Extended',
+        'ClaudeBot',
+        'CCBot',
+        'Applebot-Extended',
+        'Bytespider',
+        'Meta-ExternalAgent',
+      ]) {
+        assert.ok(txt.includes(`User-agent: ${bot}`), `Missing explicit rule for ${bot}`);
+      }
+      assert.ok(txt.includes('Sitemap: https://freestack.ai.studio/sitemap.xml'));
+
+      const llmsRes = await fetch(`${baseUrl}/llms.txt`, {
+        headers: { 'X-Forwarded-Host': 'freestack.ai.studio' },
+      });
+      assert.equal(llmsRes.status, 200);
+      const llmsTxt = await llmsRes.text();
+      assert.ok(llmsTxt.includes('# FreeStack'));
+      assert.ok(llmsTxt.includes('https://freestack.ai.studio/category/ai-ml'));
+      assert.ok(llmsTxt.includes('https://freestack.ai.studio/sitemap.xml'));
+    });
+
+    it('uses freestack.ai.studio canonical for allowlisted host while rejecting untrusted Host headers', async () => {
+      const okRes = await fetch(`${baseUrl}/`, {
+        headers: { 'X-Forwarded-Host': 'freestack.ai.studio' },
+      });
+      assert.equal(okRes.status, 200);
+      const okHtml = await okRes.text();
+      assert.ok(okHtml.includes('<link rel="canonical" href="https://freestack.ai.studio/" />'));
+      assert.ok(okHtml.includes('<h1>Find more. Spend less. Build anything.</h1>'));
+
+      // Also verify direct HTTP Host header (since fetch() strips Host as a forbidden header)
+      const http = await import('node:http');
+      const rawHostHtml = await new Promise<string>((resolve, reject) => {
+        const req = http.request(
+          {
+            hostname: '127.0.0.1',
+            port,
+            path: '/',
+            method: 'GET',
+            headers: { Host: 'freestack.ai.studio' },
+          },
+          (res) => {
+            let body = '';
+            res.setEncoding('utf8');
+            res.on('data', (chunk) => {
+              body += chunk;
+            });
+            res.on('end', () => resolve(body));
+          }
+        );
+        req.on('error', reject);
+        req.end();
+      });
+      assert.ok(
+        rawHostHtml.includes('<link rel="canonical" href="https://freestack.ai.studio/" />')
+      );
+
+      const evilRes = await fetch(`${baseUrl}/`, {
+        headers: { 'X-Forwarded-Host': 'evil-attacker.example.org' },
+      });
+      assert.equal(evilRes.status, 200);
+      const evilHtml = await evilRes.text();
+      assert.ok(!evilHtml.includes('evil-attacker.example.org'));
+      assert.ok(
+        evilHtml.includes('https://freestack-fallback.asia-east1.run.app/')
+      );
+    });
+
+    it('sets X-Robots-Tag: noindex, nofollow on /api/* responses', async () => {
+      const apiRes = await fetch(`${baseUrl}/api/health`);
+      assert.equal(apiRes.status, 200);
+      assert.equal(apiRes.headers.get('x-robots-tag'), 'noindex, nofollow');
+    });
+  });
+});

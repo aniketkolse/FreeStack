@@ -34,6 +34,7 @@ import {
 } from './securityUtils.ts';
 import { injectHtmlMeta, resolveRouteMeta } from './htmlMeta.ts';
 import { OfferCatalogIndex } from './offerCatalogIndex.ts';
+import { buildRouteSsrSnapshot } from './ssrSnapshot.ts';
 
 export interface CreateAppOptions {
   rootDir?: string;
@@ -385,11 +386,29 @@ export function createApp(options: CreateAppOptions) {
   const isProd = options.isProduction ?? process.env.NODE_ENV === 'production';
   const strictSiteUrl = options.strictSiteUrl ?? process.env.STRICT_SITE_URL === 'true';
   const denyFraming = options.denyFraming ?? process.env.DENY_FRAMING === 'true';
+  const explicitSiteUrl = Boolean(
+    (options.siteUrl && options.siteUrl.trim()) ||
+      (process.env.SITE_URL && process.env.SITE_URL.trim())
+  );
   const siteUrl = validateSiteUrl(
     options.siteUrl ?? process.env.SITE_URL ?? process.env.APP_URL,
     isProd,
     strictSiteUrl
   );
+  const ALLOWED_PUBLIC_CUSTOM_HOSTS = new Set(['freestack.ai.studio', 'www.freestack.ai.studio']);
+  const resolveRequestSiteUrl = (req: Request): string => {
+    if (!explicitSiteUrl) {
+      const rawHost = String(req.headers['x-forwarded-host'] ?? req.headers.host ?? '')
+        .split(',')[0]
+        .trim()
+        .toLowerCase()
+        .replace(/:\d+$/, '');
+      if (ALLOWED_PUBLIC_CUSTOM_HOSTS.has(rawHost)) {
+        return 'https://freestack.ai.studio';
+      }
+    }
+    return siteUrl;
+  };
   const reportsPath =
     options.reportsPath ??
     process.env.REPORTS_PATH ??
@@ -408,12 +427,80 @@ export function createApp(options: CreateAppOptions) {
     }
     return cachedQualityReport;
   };
-  let cachedSitemapXml: string | null = null;
-  const getSitemapXml = () => {
-    if (!cachedSitemapXml) {
-      cachedSitemapXml = buildSitemapXml(siteUrl, categories, offers);
+  const cachedSitemapByOrigin = new Map<string, string>();
+  const getSitemapXml = (origin: string) => {
+    let xml = cachedSitemapByOrigin.get(origin);
+    if (!xml) {
+      xml = buildSitemapXml(origin, categories, offers);
+      cachedSitemapByOrigin.set(origin, xml);
     }
-    return cachedSitemapXml;
+    return xml;
+  };
+  const cachedRobotsByOrigin = new Map<string, string>();
+  const getRobotsTxt = (origin: string) => {
+    let txt = cachedRobotsByOrigin.get(origin);
+    if (!txt) {
+      const aiBots = [
+        'OAI-SearchBot',
+        'PerplexityBot',
+        'ChatGPT-User',
+        'anthropic-ai',
+        'Claude-Web',
+        'Perplexity-User',
+        'Amazonbot',
+        'MistralAI-User',
+        'GPTBot',
+        'Google-Extended',
+        'ClaudeBot',
+        'CCBot',
+        'Applebot-Extended',
+        'Bytespider',
+        'Meta-ExternalAgent',
+      ];
+      const botBlocks = aiBots.flatMap((bot) => [`User-agent: ${bot}`, 'Allow: /', '']);
+      txt = [
+        'User-agent: *',
+        'Allow: /',
+        '',
+        ...botBlocks,
+        `Sitemap: ${origin}/sitemap.xml`,
+        '',
+      ].join('\n');
+      cachedRobotsByOrigin.set(origin, txt);
+    }
+    return txt;
+  };
+  const cachedLlmsByOrigin = new Map<string, string>();
+  const getLlmsTxt = (origin: string) => {
+    let txt = cachedLlmsByOrigin.get(origin);
+    if (!txt) {
+      const categoryLines = categories.map(
+        (c) =>
+          `- [${c.name}](${origin}/category/${c.slug}): ${c.description} (${
+            catalogIndex.categoryCounts[c.slug] ?? 0
+          } verified offers)`
+      );
+      txt = [
+        '# FreeStack',
+        '',
+        `> FreeStack is a verified, account-free directory of ${offers.length.toLocaleString('en-US')} free developer tools, AI models, MCP servers, public APIs, cloud tiers, learning materials, and student packs with clear limits and payment card rules.`,
+        '',
+        '## Key Pages',
+        `- [Home](${origin}/)`,
+        `- [Explore All Resources](${origin}/explore)`,
+        `- [All Categories](${origin}/categories)`,
+        `- [Free Learning Hub](${origin}/learning)`,
+        `- [Student Benefits & Packs](${origin}/students)`,
+        `- [About & Verification Policy](${origin}/about)`,
+        `- [XML Sitemap](${origin}/sitemap.xml)`,
+        '',
+        '## Categories',
+        ...categoryLines,
+        '',
+      ].join('\n');
+      cachedLlmsByOrigin.set(origin, txt);
+    }
+    return txt;
   };
 
   function sendCompressedPayload(
@@ -473,19 +560,14 @@ export function createApp(options: CreateAppOptions) {
 
     res.send(bodyBuf);
   }
-  const cachedRobotsTxt = [
-    'User-agent: *',
-    'Allow: /',
-    'Disallow: /go/',
-    'Disallow: /api/',
-    'Disallow: /search',
-    'Disallow: /saved',
-    `Sitemap: ${siteUrl}/sitemap.xml`,
-    '',
-  ].join('\n');
-
   const app = express();
   app.disable('x-powered-by');
+
+  // Keep API JSON responses out of search engine indexes without blocking crawlers in robots.txt
+  app.use('/api', (_req, res, next) => {
+    res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+    next();
+  });
 
   // Default to 1 proxy hop (e.g., Cloud Run / AI Studio reverse proxy) unless explicitly disabled
   const rawTrustProxy = options.trustProxy ?? process.env.TRUST_PROXY;
@@ -506,23 +588,24 @@ export function createApp(options: CreateAppOptions) {
 
   // Enforce HTTPS redirect in production when behind a TLS-terminating proxy
   if (isProd) {
-    const expectedOrigin = new URL(siteUrl).origin;
     app.use((req, res, next) => {
       const forwardedProtoHeader = req.headers['x-forwarded-proto'];
       const forwardedHeader = String(req.headers.forwarded ?? '');
       const isHttpForwarded =
         forwardedProtoHeader === 'http' || /\bproto=http\b/i.test(forwardedHeader);
       if (isHttpForwarded) {
-        let redirectTarget = `${siteUrl}/`;
+        const effectiveOrigin = resolveRequestSiteUrl(req);
+        const expectedOrigin = new URL(effectiveOrigin).origin;
+        let redirectTarget = `${expectedOrigin}/`;
         try {
           if (req.originalUrl.startsWith('/') && !req.originalUrl.startsWith('//') && !req.originalUrl.startsWith('/\\')) {
-            const candidate = new URL(req.originalUrl, siteUrl);
+            const candidate = new URL(req.originalUrl, expectedOrigin);
             if (candidate.origin === expectedOrigin) {
               redirectTarget = `${expectedOrigin}${candidate.pathname}${candidate.search}`;
             }
           }
         } catch {
-          redirectTarget = `${siteUrl}/`;
+          redirectTarget = `${expectedOrigin}/`;
         }
         res.redirect(301, redirectTarget);
         return;
@@ -1127,15 +1210,24 @@ export function createApp(options: CreateAppOptions) {
     res.redirect(302, destination!);
   });
 
-  // Cached robots.txt & sitemap.xml using SITE_URL (never Host header)
+  // Cached robots.txt, llms.txt & sitemap.xml using validated SITE_URL (never untrusted Host header)
   app.get('/robots.txt', (req, res) => {
-    sendCompressedPayload(req, res, 'text/plain; charset=utf-8', cachedRobotsTxt, {
+    const effectiveOrigin = resolveRequestSiteUrl(req);
+    sendCompressedPayload(req, res, 'text/plain; charset=utf-8', getRobotsTxt(effectiveOrigin), {
+      cacheControl: 'public, max-age=3600',
+    });
+  });
+
+  app.get('/llms.txt', (req, res) => {
+    const effectiveOrigin = resolveRequestSiteUrl(req);
+    sendCompressedPayload(req, res, 'text/plain; charset=utf-8', getLlmsTxt(effectiveOrigin), {
       cacheControl: 'public, max-age=3600',
     });
   });
 
   app.get('/sitemap.xml', (req, res) => {
-    sendCompressedPayload(req, res, 'application/xml; charset=utf-8', getSitemapXml(), {
+    const effectiveOrigin = resolveRequestSiteUrl(req);
+    sendCompressedPayload(req, res, 'application/xml; charset=utf-8', getSitemapXml(effectiveOrigin), {
       cacheControl: 'public, max-age=3600',
     });
   });
@@ -1280,15 +1372,24 @@ export function createApp(options: CreateAppOptions) {
 
     app.get('*', (req, res) => {
       const hasQuery = Object.keys(req.query).length > 0;
+      const effectiveOrigin = resolveRequestSiteUrl(req);
       const meta = resolveRouteMeta(
         req.path,
         hasQuery,
-        siteUrl,
+        effectiveOrigin,
         offerBySlug,
         categoryBySlug
       );
+      const ssrSnapshot = buildRouteSsrSnapshot({
+        pathname: req.path,
+        categories,
+        offers: catalogIndex.fullOffers,
+        offerBySlug,
+        categoryBySlug,
+        categoryCounts: catalogIndex.categoryCounts,
+      });
 
-      const renderedHtml = injectHtmlMeta(cachedTemplateHtml, meta);
+      const renderedHtml = injectHtmlMeta(cachedTemplateHtml, meta, ssrSnapshot);
       sendCompressedPayload(req, res, 'text/html; charset=utf-8', renderedHtml, {
         status: meta.status,
         cacheControl: 'no-cache',
@@ -1317,8 +1418,10 @@ export function createApp(options: CreateAppOptions) {
   return {
     app,
     siteUrl,
+    resolveRequestSiteUrl,
     offerBySlug,
     categoryBySlug,
+    catalogIndex,
     get qualityReport() {
       return getQualityReport();
     },

@@ -220,21 +220,27 @@ export default function App() {
       return;
     }
 
-    let title = 'FreeStack — Find more. Spend less. Build anything.';
-    if (pathname === '/explore') title = 'Explore Free Resources — FreeStack';
-    else if (pathname === '/search') title = 'Search Results — FreeStack';
-    else if (pathname === '/categories') title = 'All Categories — FreeStack';
-    else if (pathname.startsWith('/category/')) title = 'Category Resources — FreeStack';
-    else if (pathname.startsWith('/offer/')) title = 'Resource Details — FreeStack';
-    else if (pathname === '/learning') title = 'Free Learning & Study Materials — FreeStack';
-    else if (pathname === '/students') title = 'Student Benefits & Credits — FreeStack';
-    else if (pathname === '/saved') title = 'Saved Tools & Stack — FreeStack';
-    else if (pathname === '/about') title = 'About & Verification Policy — FreeStack';
-    else if (pathname === '/privacy') title = 'Privacy Policy (India DPDP, US CCPA, Global GDPR) — FreeStack';
-    else if (pathname === '/privacy-requests') title = 'Privacy Requests & Grievance Portal — FreeStack';
-    else if (pathname === '/terms') title = 'Terms of Service — FreeStack';
-    else if (pathname === '/design-system') title = 'Design System Showcase — FreeStack';
-    else if (pathname !== '/' && pathname !== '') title = '404 Page Not Found — FreeStack';
+    let title = 'FreeStack — Free Developer Tools, AI Models, MCP & APIs';
+    if (pathname === '/explore') title = 'Explore Free Developer Tools, AI & APIs — FreeStack';
+    else if (pathname === '/search') title = 'Search Free Developer Resources — FreeStack';
+    else if (pathname === '/categories') title = 'All 11 Free Developer Tool Categories — FreeStack';
+    else if (pathname.startsWith('/category/')) {
+      const slug = pathname.replace('/category/', '').replace(/\/$/, '');
+      const catName = getCategoryBySlug(slug)?.name;
+      title = catName ? `${catName} — Free Tools | FreeStack` : 'Category Resources — FreeStack';
+    } else if (pathname.startsWith('/offer/')) {
+      const slug = pathname.replace('/offer/', '').replace(/\/$/, '');
+      const offerName = getOfferBySlug(slug)?.identity.name;
+      title = offerName ? `${offerName} Free Limits | FreeStack` : 'Resource Details — FreeStack';
+    } else if (pathname === '/learning') title = 'Free Coding Courses, Books & Roadmaps — FreeStack';
+    else if (pathname === '/students') title = 'Free Student Developer Packs & Credits — FreeStack';
+    else if (pathname === '/saved') title = 'Saved Free Developer Stack — FreeStack';
+    else if (pathname === '/about') title = 'About FreeStack & Verification Policy — FreeStack';
+    else if (pathname === '/privacy') title = 'Privacy Policy (GDPR, CCPA & DPDP) — FreeStack';
+    else if (pathname === '/privacy-requests') title = 'Privacy Requests & Data Controls — FreeStack';
+    else if (pathname === '/terms') title = 'Terms of Service & Disclaimers — FreeStack';
+    else if (pathname === '/design-system') title = 'FreeStack UI Design System & Tokens — FreeStack';
+    else if (pathname !== '/' && pathname !== '') title = 'Page Not Found (404) — FreeStack';
     document.title = title;
   }, [pathname, isOnline, globalLoadError]);
 

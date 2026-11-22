@@ -8,6 +8,7 @@ import {
 } from './src/lib/data/nodeLoader.ts';
 import { createApp } from './src/lib/server/createApp.ts';
 import { injectHtmlMeta, resolveRouteMeta } from './src/lib/server/htmlMeta.ts';
+import { buildRouteSsrSnapshot } from './src/lib/server/ssrSnapshot.ts';
 
 const PORT = Number(process.env.PORT) || 3000;
 const ROOT_DIR = process.cwd();
@@ -40,7 +41,7 @@ async function startServer() {
   const sourceRegistry = loadSourceRegistryFromDisk(ROOT_DIR);
   const offers = loadOffersFromDisk(ROOT_DIR);
 
-  const { app, siteUrl, offerBySlug, categoryBySlug } = createApp({
+  const { app, resolveRequestSiteUrl, offerBySlug, categoryBySlug, catalogIndex } = createApp({
     rootDir: ROOT_DIR,
     isProduction: isProd,
     offers,
@@ -58,15 +59,27 @@ async function startServer() {
         const rawHtml = fs.readFileSync(devIndexHtmlPath, 'utf-8');
         const transformed = await vite.transformIndexHtml('/', rawHtml);
         const hasQuery = Object.keys(req.query).length > 0;
+        const effectiveOrigin = resolveRequestSiteUrl(req);
         const meta = resolveRouteMeta(
           req.path,
           hasQuery,
-          siteUrl,
+          effectiveOrigin,
           offerBySlug,
           categoryBySlug
         );
+        const ssrSnapshot = buildRouteSsrSnapshot({
+          pathname: req.path,
+          categories,
+          offers: catalogIndex.fullOffers,
+          offerBySlug,
+          categoryBySlug,
+          categoryCounts: catalogIndex.categoryCounts,
+        });
         res.setHeader('Cache-Control', 'no-cache');
-        res.status(meta.status).type('text/html; charset=utf-8').send(injectHtmlMeta(transformed, meta));
+        res
+          .status(meta.status)
+          .type('text/html; charset=utf-8')
+          .send(injectHtmlMeta(transformed, meta, ssrSnapshot));
       } catch (err) {
         next(err);
       }
