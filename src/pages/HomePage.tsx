@@ -228,7 +228,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             data-testid="learning-highlights-carousel"
             onScroll={handleLearningScroll}
             aria-label="Learning highlights"
-            className="flex sm:grid sm:grid-cols-2 xl:grid-cols-4 gap-2.5 sm:gap-4 overflow-x-auto sm:overflow-visible snap-x snap-mandatory scroll-px-[11%] sm:scroll-px-0 -mx-3 px-[11%] sm:mx-0 sm:px-0 pb-1 sm:pb-0 no-scrollbar touch-pan-x overscroll-x-contain mb-1 sm:mb-7"
+            className="flex sm:grid sm:grid-cols-2 xl:grid-cols-4 gap-2.5 sm:gap-4 overflow-x-auto sm:overflow-visible snap-x snap-mandatory scroll-px-[11%] sm:scroll-px-0 -mx-3 px-[11%] sm:mx-0 sm:px-0 pb-1 sm:pb-0 no-scrollbar touch-manipulation overscroll-x-contain mb-1 sm:mb-7"
           >
             {learningHighlights.map((item, idx) => (
               <div
@@ -318,7 +318,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             data-testid="recently-verified-carousel"
             onScroll={handleRecentScroll}
             aria-label="Recently verified resources"
-            className="flex sm:grid sm:grid-cols-2 xl:grid-cols-4 gap-2.5 sm:gap-4 overflow-x-auto sm:overflow-visible snap-x snap-mandatory scroll-px-[11%] sm:scroll-px-0 -mx-3 px-[11%] sm:mx-0 sm:px-0 pb-1 sm:pb-0 no-scrollbar touch-pan-x overscroll-x-contain mb-1 sm:mb-0"
+            className="flex sm:grid sm:grid-cols-2 xl:grid-cols-4 gap-2.5 sm:gap-4 overflow-x-auto sm:overflow-visible snap-x snap-mandatory scroll-px-[11%] sm:scroll-px-0 -mx-3 px-[11%] sm:mx-0 sm:px-0 pb-1 sm:pb-0 no-scrollbar touch-manipulation overscroll-x-contain mb-1 sm:mb-0"
           >
             {recentlyVerified.map((offer, idx) => (
               <div
