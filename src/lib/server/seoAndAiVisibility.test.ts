@@ -142,11 +142,20 @@ describe('On-Page SEO, SSR Crawlability & AI Visibility', () => {
     });
     const html = injectHtmlMeta(template, meta, snapshot);
     assert.ok(html.includes('<meta property="og:site_name" content="FreeStack" />'));
+    assert.ok(
+      html.includes('<meta property="og:image" content="https://freestack.ai.studio/og-image.png" />')
+    );
+    assert.ok(html.includes('<meta property="og:image:width" content="1200" />'));
+    assert.ok(html.includes('<meta property="og:image:height" content="630" />'));
     assert.ok(html.includes('<meta name="twitter:title"'));
     assert.ok(html.includes('<meta name="twitter:description"'));
+    assert.ok(
+      html.includes('<meta name="twitter:image" content="https://freestack.ai.studio/og-image.png" />')
+    );
     assert.ok(html.includes('application/ld+json'));
     assert.ok(html.includes('SearchAction'));
     assert.ok(html.includes('<h1>Find more. Spend less. Build anything.</h1>'));
+    assert.ok(html.includes('alt="FreeStack verified free developer directory logo"'));
   });
 
   describe('Live HTTP endpoints (/robots.txt, /llms.txt, canonical origin, /api X-Robots-Tag)', () => {
@@ -273,10 +282,19 @@ describe('On-Page SEO, SSR Crawlability & AI Visibility', () => {
       );
     });
 
-    it('sets X-Robots-Tag: noindex, nofollow on /api/* responses', async () => {
+    it('sets X-Robots-Tag: noindex, nofollow on /api/* responses and serves /sitemap.xml', async () => {
       const apiRes = await fetch(`${baseUrl}/api/health`);
       assert.equal(apiRes.status, 200);
       assert.equal(apiRes.headers.get('x-robots-tag'), 'noindex, nofollow');
+
+      const sitemapRes = await fetch(`${baseUrl}/sitemap.xml`, {
+        headers: { 'X-Forwarded-Host': 'freestack.ai.studio' },
+      });
+      assert.equal(sitemapRes.status, 200);
+      const sitemapXml = await sitemapRes.text();
+      assert.ok(sitemapXml.includes('<urlset'));
+      assert.ok(sitemapXml.includes('https://freestack.ai.studio/'));
+      assert.ok(sitemapXml.includes('https://freestack.ai.studio/category/ai-ml'));
     });
   });
 });

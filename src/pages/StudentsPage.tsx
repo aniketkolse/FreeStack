@@ -11,7 +11,7 @@ import {
   InfiniteLoadMore,
   OffersErrorState,
 } from '../components/offers/CardGridSkeleton';
-import { SlabIllustration } from '../components/illustrations/TocaStickers';
+import { SecondarySlabIllustration } from '../components/illustrations/SecondarySlabIllustrations';
 import { SearchBar } from '../components/search/SearchBar';
 
 interface StudentsPageProps {
@@ -148,7 +148,7 @@ export function StudentsPage({ searchParams, onNavigate }: StudentsPageProps) {
           </div>
         </div>
         <div className="hidden lg:block lg:col-span-5">
-          <SlabIllustration variant="students" />
+          <SecondarySlabIllustration variant="students" />
         </div>
       </section>
 

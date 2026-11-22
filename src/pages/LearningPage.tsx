@@ -23,7 +23,7 @@ import {
   InfiniteLoadMore,
   OffersErrorState,
 } from '../components/offers/CardGridSkeleton';
-import { SlabIllustration } from '../components/illustrations/TocaStickers';
+import { SecondarySlabIllustration } from '../components/illustrations/SecondarySlabIllustrations';
 import { SearchBar } from '../components/search/SearchBar';
 import { FilterDropdown } from '../components/ui/FilterDropdown';
 
@@ -228,7 +228,7 @@ export function LearningPage({ searchParams, onNavigate }: LearningPageProps) {
           </div>
         </div>
         <div className="hidden lg:block lg:col-span-5">
-          <SlabIllustration variant="learning" />
+          <SecondarySlabIllustration variant="learning" />
         </div>
       </section>
 

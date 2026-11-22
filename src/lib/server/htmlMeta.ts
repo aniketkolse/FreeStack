@@ -242,6 +242,8 @@ export function injectHtmlMeta(
   const safeDescAttr = escapeHtmlAttr(meta.description);
   const safeCanonicalAttr = escapeHtmlAttr(meta.canonicalUrl);
   const safeRobotsAttr = escapeHtmlAttr(meta.robots);
+  const canonicalOrigin = new URL(meta.canonicalUrl).origin;
+  const safeOgImageAttr = escapeHtmlAttr(`${canonicalOrigin}/og-image.png`);
 
   let html = rawHtml
     .replace(/<title>[\s\S]*?<\/title>/i, `<title>${safeTitle}</title>`)
@@ -258,12 +260,28 @@ export function injectHtmlMeta(
       `<meta property="og:description" content="${safeDescAttr}" />`
     )
     .replace(
+      /<meta\s+property="og:image"\s+content="[^"]*"\s*\/?>/i,
+      `<meta property="og:image" content="${safeOgImageAttr}" />`
+    )
+    .replace(
+      /<meta\s+property="og:image:alt"\s+content="[^"]*"\s*\/?>/i,
+      `<meta property="og:image:alt" content="${safeTitleAttr}" />`
+    )
+    .replace(
       /<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/i,
       `<meta name="twitter:title" content="${safeTitleAttr}" />`
     )
     .replace(
       /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/i,
       `<meta name="twitter:description" content="${safeDescAttr}" />`
+    )
+    .replace(
+      /<meta\s+name="twitter:image"\s+content="[^"]*"\s*\/?>/i,
+      `<meta name="twitter:image" content="${safeOgImageAttr}" />`
+    )
+    .replace(
+      /<meta\s+name="twitter:image:alt"\s+content="[^"]*"\s*\/?>/i,
+      `<meta name="twitter:image:alt" content="${safeTitleAttr}" />`
     );
 
   const extraTags = [
@@ -275,11 +293,24 @@ export function injectHtmlMeta(
   if (!/property="og:site_name"/i.test(html)) {
     extraTags.push(`<meta property="og:site_name" content="FreeStack" />`);
   }
+  if (!/property="og:image"/i.test(html)) {
+    extraTags.push(`<meta property="og:image" content="${safeOgImageAttr}" />`);
+    extraTags.push(`<meta property="og:image:width" content="1200" />`);
+    extraTags.push(`<meta property="og:image:height" content="630" />`);
+    extraTags.push(`<meta property="og:image:alt" content="${safeTitleAttr}" />`);
+  }
+  if (!/name="twitter:card"/i.test(html)) {
+    extraTags.push(`<meta name="twitter:card" content="summary_large_image" />`);
+  }
   if (!/name="twitter:title"/i.test(html)) {
     extraTags.push(`<meta name="twitter:title" content="${safeTitleAttr}" />`);
   }
   if (!/name="twitter:description"/i.test(html)) {
     extraTags.push(`<meta name="twitter:description" content="${safeDescAttr}" />`);
+  }
+  if (!/name="twitter:image"/i.test(html)) {
+    extraTags.push(`<meta name="twitter:image" content="${safeOgImageAttr}" />`);
+    extraTags.push(`<meta name="twitter:image:alt" content="${safeTitleAttr}" />`);
   }
 
   if (meta.jsonLd) {

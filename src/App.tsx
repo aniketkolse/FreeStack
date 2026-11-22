@@ -1,7 +1,6 @@
 import React, { Component, Suspense, lazy, useEffect, useState, type ReactNode } from 'react';
 import { useRouter, type NavigateOptions } from './lib/router/useRouter';
 import { getBackNavigationMeta } from './lib/router/navigationHistory';
-import { attachFirstInteractionRouteWarmup } from './lib/router/routePrefetch';
 import { getCategoryBySlug, getOfferBySlug } from './lib/data/resources';
 import { isLikelyNetworkOrLoadMessage } from './lib/errors/errorClassification';
 import { SiteHeader } from './components/layout/SiteHeader';
@@ -170,10 +169,6 @@ export default function App() {
   );
   const [globalLoadError, setGlobalLoadError] = useState<string | null>(null);
   const [retrySeed, setRetrySeed] = useState(0);
-
-  useEffect(() => {
-    return attachFirstInteractionRouteWarmup();
-  }, []);
 
   useEffect(() => {
     const handleOnline = () => {

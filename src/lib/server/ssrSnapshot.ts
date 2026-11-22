@@ -33,7 +33,7 @@ function renderNavLinks(categories: Category[]): string {
     )
     .join(' ');
 
-  return `<header><nav aria-label="Primary Navigation">${primaryHtml}</nav><nav aria-label="Categories">${catHtml}</nav></header>`;
+  return `<header><a href="/" aria-label="FreeStack Home"><img src="/favicon.svg" alt="FreeStack verified free developer directory logo" width="32" height="32" /><span>FreeStack</span></a><nav aria-label="Primary Navigation">${primaryHtml}</nav><nav aria-label="Categories">${catHtml}</nav></header>`;
 }
 
 function renderFooter(): string {
@@ -83,10 +83,12 @@ function renderHomeSnapshot(ctx: SsrSnapshotContext): string {
     `<main>`,
     `<h1>Find more. Spend less. Build anything.</h1>`,
     `<p>FreeStack is a verified, login-free directory of ${totalCount} free developer resources across ${categories.length} stack categories. Discover free AI models, Model Context Protocol (MCP) servers, public REST and GraphQL APIs, frontend and design tools, cloud hosting credits, serverless databases, developer tooling, security utilities, productivity apps, open computer science courses, and student developer packs—every single listing backed by cited official documentation, real free-tier quotas, and clear payment card rules.</p>`,
+    `<p><strong>Catalog Freshness:</strong> Updated continuously and last audited November 2026 directly from official HTTPS pricing pages and developer documentation.</p>`,
     `<section><h2>Popular Categories</h2><p>Browse verified free developer tools, infrastructure limits, and learning resources organized by technology stack so you can assemble a complete production workflow for zero dollars.</p><ul>${categoryItems}</ul></section>`,
     `<section><h2>Learning Highlights</h2><p>Build software engineering fundamentals without paywalls using full university lecture series, interactive web development curriculums, developer roadmaps, and open-access technical books.</p>${renderOfferSummaryList(learningHighlights)}</section>`,
-    `<section><h2>Featured Verified Resources</h2><p>Each resource listed on FreeStack is checked against official provider pricing pages and developer documentation so you know upfront whether a credit card is required, which usage quotas reset monthly or daily, and whether free access is permanent, open source, or time-limited.</p>${renderOfferSummaryList(featuredTools)}</section>`,
-    `<section><h2>Why Developers &amp; Students Use FreeStack</h2><p>Modern software teams and learners waste hours clicking through marketing pages only to hit hidden trials or surprise billing walls. FreeStack separates permanently free tiers, open-source software, non-expiring developer sandboxes, educational packs, and time-bound cloud credits into clear structured records. Filter instantly by no-credit-card requirement, category, pricing model, AI context window, or student eligibility without creating an account or sharing personal data.</p></section>`,
+    `<section><h2>Recently Verified &amp; Featured Resources</h2><p>Each resource listed on FreeStack is checked against official provider pricing pages and developer documentation so you know upfront whether a credit card is required, which usage quotas reset monthly or daily, and whether free access is permanent, open source, or time-limited.</p>${renderOfferSummaryList(featuredTools)}</section>`,
+    `<section><h2>Trust Signals &amp; Verification Methodology</h2><ul><li><strong>Primary Official Documentation:</strong> Every verified listing links directly to official HTTPS pricing or documentation pages with timestamped verification dates.</li><li><strong>No Fake Permanent Freebies:</strong> Temporary trials and expiring credits are clearly separated from permanently free developer tiers and open-source licenses.</li><li><strong>Explicit Card &amp; Student Rules:</strong> Unknown card requirements remain labeled unknown rather than guessed, and academic .edu rules are highlighted upfront.</li><li><strong>Zero Login &amp; Open Source (AGPL-3.0):</strong> Local-first bookmarks stay in your browser with no account required. Read our <a href="/about">Trust &amp; Verification Policy</a> and <a href="/privacy">Privacy Policy</a>.</li></ul></section>`,
+    `<section><h2>Next Steps to Build Your $0 Stack</h2><p>Ready to assemble a production stack or study track? <a href="/explore">Explore all ${totalCount} verified free resources</a>, <a href="/categories">compare all ${categories.length} developer categories</a>, <a href="/learning">start a free computer science course</a>, or <a href="/students">check eligible student developer packs</a>.</p></section>`,
     `</main>`,
   ].join('');
 }

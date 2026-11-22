@@ -14,17 +14,14 @@ interface BootstrapPayload {
   totalOffers: number;
   categories: Category[];
   categoryCounts: Record<CategorySlug, number>;
-  pricingCounts: Record<string, number>;
   learningHighlights: Offer[];
   recentlyVerified: Offer[];
-  sourceCount: number;
 }
 
 const typedBootstrap = bootstrapData as unknown as BootstrapPayload;
 
 export const CATEGORIES: Category[] = typedBootstrap.categories;
 export const TOTAL_OFFERS_COUNT: number = typedBootstrap.totalOffers;
-export const PRICING_COUNTS: Record<string, number> = typedBootstrap.pricingCounts;
 
 // Client-side in-memory offer registry seeded with bootstrap highlights
 // and progressively enriched as pages load from /api/offers and /api/offers/:slug.
@@ -38,11 +35,6 @@ for (const item of [
 ]) {
   clientOfferBySlug.set(item.identity.slug, item);
 }
-
-// Keep a lightweight array proxy of known offers for legacy callers (AboutPage count, DesignSystemPage sample)
-// Note: create a proxy/array whose .length reflects TOTAL_OFFERS_COUNT if accessed for catalog count,
-// or provide explicit items for iteration.
-export const OFFERS: Offer[] = Array.from(clientOfferBySlug.values());
 
 export function registerClientOffers(items: Offer[]): void {
   for (const item of items) {
