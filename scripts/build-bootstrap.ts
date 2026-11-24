@@ -59,11 +59,28 @@ const learningHighlights = index.learningOffersSorted
   .slice(0, 4)
   .map((o) => stripUnusedOfferFields(index.cardBySlug.get(o.identity.slug) ?? o));
 
-const recentlyVerified = [...index.fullOffers]
+// Editorially curated order for the home "Recently verified" rail. Curated slugs lead the
+// list in this order; any remaining slots fall back to the most recently verified offers.
+const CURATED_RECENTLY_VERIFIED_SLUGS: string[] = [
+  'nvidia-nim-free-api-catalog',
+  'supabase-free-plan',
+  'figma-starter-plan',
+  'aws-free-tier-cloud-credits',
+];
+
+const verifiedByRecency = [...index.fullOffers]
   .filter((o) => o.verification.status === 'verified' && o.verification.last_verified_at)
   .sort((a, b) =>
     (b.verification.last_verified_at ?? '').localeCompare(a.verification.last_verified_at ?? '')
-  )
+  );
+
+const verifiedBySlug = new Map(verifiedByRecency.map((o) => [o.identity.slug, o]));
+const curatedRecentlyVerified = CURATED_RECENTLY_VERIFIED_SLUGS.map((slug) =>
+  verifiedBySlug.get(slug)
+).filter((o): o is Offer => Boolean(o));
+
+const recentlyVerified = [...curatedRecentlyVerified, ...verifiedByRecency]
+  .filter((o, i, list) => list.findIndex((x) => x.identity.slug === o.identity.slug) === i)
   .slice(0, 4)
   .map((o) => stripUnusedOfferFields(index.cardBySlug.get(o.identity.slug) ?? o));
 
