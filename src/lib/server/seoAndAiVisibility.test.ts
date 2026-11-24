@@ -394,6 +394,10 @@ describe('On-Page SEO, SSR Crawlability & AI Visibility', () => {
         categories: CATEGORIES,
         sourceRegistry: SOURCE_REGISTRY,
         enableRateLimits: false,
+        // The home pre-render is a build artifact that does not exist in a fresh
+        // CI checkout (tests run before `npm run build`). Inject it explicitly so
+        // this suite is self-contained and tests the same path production uses.
+        homeSsrBody: renderToString(React.createElement(App)),
       });
 
       if (prevSiteUrl !== undefined) process.env.SITE_URL = prevSiteUrl;

@@ -53,6 +53,8 @@ export interface CreateAppOptions {
   categories: Category[];
   sourceRegistry: SourceRegistry;
   enableRateLimits?: boolean;
+  /** Pre-rendered home React tree; injected by tests, loaded from disk in production builds. */
+  homeSsrBody?: string;
 }
 
 const VALID_CATEGORY_SLUGS = [
@@ -1475,13 +1477,13 @@ export function createApp(options: CreateAppOptions) {
 
     // Load build-time pre-rendered Home React SSR tree + supplementary SEO context once at boot
     // so Hero <h1> and LCP <p> paint immediately in initial HTML without runtime .tsx imports.
-    let cachedHomeSsrBody: string | null = null;
+    let cachedHomeSsrBody: string | null = options.homeSsrBody?.trim() || null;
     const homeSsrCandidates = [
       path.join(distPath, 'home-ssr.html'),
       path.join(rootDir, 'src', 'lib', 'server', 'homeSsrBody.html'),
     ];
     for (const candidatePath of homeSsrCandidates) {
-      if (fs.existsSync(candidatePath)) {
+      if (!cachedHomeSsrBody && fs.existsSync(candidatePath)) {
         const rawSsr = fs.readFileSync(candidatePath, 'utf-8').trim();
         if (rawSsr.length > 0) {
           cachedHomeSsrBody = rawSsr;
