@@ -95,6 +95,44 @@ function buildClampedTitle(prefix: string, suffix: string, maxLen = 60): string 
   return `${clampText(prefix, available)}${suffix}`;
 }
 
+/**
+ * Builds an offer title in <= 60 chars without ever cutting mid-phrase.
+ * Order: full name + richest fitting suffix, full name alone, name without a
+ * trailing parenthetical + suffix, that base alone, then the untouched name.
+ * Never appends "Free Limits" to a name that already says "Free".
+ */
+function buildOfferTitle(name: string): string {
+  const clean = name.replace(/\s+/g, ' ').trim();
+  const alreadyFree = /\bFree\b/i.test(clean);
+  const suffixes = alreadyFree
+    ? [' — Limits & Card Rules | FreeStack', ' — Limits | FreeStack', ' | FreeStack']
+    : [
+        ' — Free Limits & Card Rules | FreeStack',
+        ' — Free Tier Limits | FreeStack',
+        ' — Free Limits | FreeStack',
+        ' | FreeStack',
+      ];
+  const shortest = suffixes[suffixes.length - 1];
+
+  if (clean.length + shortest.length <= 60) {
+    for (const suffix of suffixes) {
+      if (clean.length + suffix.length <= 60) return `${clean}${suffix}`;
+    }
+  }
+  if (clean.length <= 60) return clean;
+
+  const parenIdx = clean.indexOf(' (');
+  if (parenIdx >= 3) {
+    const base = clean.slice(0, parenIdx).trim();
+    for (const suffix of suffixes) {
+      if (base.length + suffix.length <= 60) return `${base}${suffix}`;
+    }
+    if (base.length <= 60) return base;
+  }
+
+  return clean;
+}
+
 export function resolveRouteMeta(
   pathname: string,
   hasQueryParams: boolean,
@@ -181,11 +219,7 @@ export function resolveRouteMeta(
       const offer = Map.prototype.get.call(offerBySlug, slug) as Offer | undefined;
       if (offer) {
         const canonicalUrl = `${cleanSiteUrl}/offer/${encodeURIComponent(offer.identity.slug)}`;
-        const offerSuffix =
-          offer.identity.name.length <= 12
-            ? ' — Free Tier & Limits | FreeStack'
-            : ' Free Limits | FreeStack';
-        const title = buildClampedTitle(offer.identity.name, offerSuffix, 60);
+        const title = buildOfferTitle(offer.identity.name);
         const rawDesc = offer.description.trim();
         const enrichedDesc =
           rawDesc.length < 75

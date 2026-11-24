@@ -69,6 +69,82 @@ describe('On-Page SEO, SSR Crawlability & AI Visibility', () => {
     }
   });
 
+  it('never truncates an offer title with an ellipsis and never doubles the word Free', () => {
+    for (const offer of ALL_OFFERS) {
+      const meta = resolveRouteMeta(
+        `/offer/${offer.identity.slug}`,
+        false,
+        'https://freestack.ai.studio',
+        offerBySlug,
+        categoryBySlug
+      );
+      const label = `${offer.identity.slug} -> "${meta.title}"`;
+      assert.equal(meta.status, 200, label);
+      assert.ok(!meta.title.includes('…'), `Offer title must not be ellipsis-clamped: ${label}`);
+      assert.ok(
+        meta.title.length <= 60 || meta.title === offer.identity.name.trim(),
+        `Offer title must fit 60 chars unless it is the untouched offer name: ${label}`
+      );
+      assert.ok(meta.title.length >= 30, `Offer title must be >= 30 chars: ${label}`);
+      if (/\bFree\b/i.test(offer.identity.name)) {
+        const suffixOnly = meta.title.split(offer.identity.name).join('');
+        assert.ok(
+          !/free limits/i.test(suffixOnly),
+          `Offer title repeats "Free" before "Free Limits": ${label}`
+        );
+      }
+    }
+  });
+
+  it('omits the canonical link and BreadcrumbList gaps on 404 responses', () => {
+    const meta = resolveRouteMeta(
+      '/this-page-does-not-exist',
+      false,
+      'https://freestack.ai.studio',
+      offerBySlug,
+      categoryBySlug
+    );
+    assert.equal(meta.status, 404);
+    assert.equal(meta.canonicalUrl, '', '404 responses must not claim a canonical URL');
+    const html = injectHtmlMeta(
+      '<html><head><title>x</title><meta name="description" content="" /></head><body></body></html>',
+      meta
+    );
+    assert.ok(!/rel="canonical"/i.test(html), '404 HTML must not contain a canonical link');
+  });
+
+  it('emits BreadcrumbList, item counts, and last-verified dates in structured data', () => {
+    const offer = ALL_OFFERS[0];
+    const offerMeta = resolveRouteMeta(
+      `/offer/${offer.identity.slug}`,
+      false,
+      'https://freestack.ai.studio',
+      offerBySlug,
+      categoryBySlug
+    );
+    const offerJson = JSON.stringify(offerMeta.jsonLd);
+    assert.ok(offerJson.includes('BreadcrumbList'), 'Offer JSON-LD should include BreadcrumbList');
+    assert.ok(offerJson.includes('dateModified'), 'Offer JSON-LD should include dateModified');
+    assert.ok(offerJson.includes('/categories'), 'Offer breadcrumb should include the category hub');
+
+    const catMeta = resolveRouteMeta(
+      '/category/mcp',
+      false,
+      'https://freestack.ai.studio',
+      offerBySlug,
+      categoryBySlug,
+      ALL_OFFERS
+    );
+    const catJson = JSON.stringify(catMeta.jsonLd);
+    assert.ok(catJson.includes('BreadcrumbList'), 'Category JSON-LD should include BreadcrumbList');
+    assert.ok(catJson.includes('numberOfItems'), 'Category JSON-LD should expose its item count');
+    const mcpCount = ALL_OFFERS.filter((o) => o.classification.category === 'mcp').length;
+    assert.ok(
+      catJson.includes(`"numberOfItems":${mcpCount}`),
+      `Category JSON-LD should report ${mcpCount} MCP items`
+    );
+  });
+
   it('generates exact 1 H1, 300+ words, and rich internal links in SSR semantic snapshots', () => {
     const categoryCounts: Record<string, number> = {};
     for (const o of ALL_OFFERS) {
