@@ -99,6 +99,32 @@ describe('On-Page SEO, SSR Crawlability & AI Visibility', () => {
     }
   });
 
+  it('renders cited official sources and verification claims in the offer SSR snapshot', () => {
+    const offer = ALL_OFFERS.find(
+      (o) => (o.evidence?.sources?.length ?? 0) > 0 && (o.evidence?.claims?.length ?? 0) > 0
+    );
+    assert.ok(offer, 'Expected at least one offer with evidence');
+    const snapshot = buildRouteSsrSnapshot({
+      pathname: `/offer/${offer.identity.slug}`,
+      categories: CATEGORIES,
+      offers: ALL_OFFERS,
+      offerBySlug,
+      categoryBySlug,
+    });
+    assert.ok(snapshot.includes('Official Evidence &amp; Sources'), 'Evidence section is missing');
+    for (const source of offer.evidence.sources.slice(0, 2)) {
+      assert.ok(
+        snapshot.includes(`href="${source.url.replace(/&/g, '&amp;')}"`),
+        `Missing official source link ${source.url}`
+      );
+    }
+    const quote = offer.evidence.claims[0].quote.slice(0, 60);
+    assert.ok(
+      snapshot.includes(quote.replace(/&/g, '&amp;')),
+      'The first evidence claim quote should be present in the SSR HTML'
+    );
+  });
+
   it('gives category H1s an intent-bearing heading with a real offer count', () => {
     const categoryCounts: Record<string, number> = {};
     for (const o of ALL_OFFERS) {

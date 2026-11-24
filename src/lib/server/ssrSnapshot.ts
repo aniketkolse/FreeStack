@@ -60,6 +60,46 @@ function renderOfferSummaryList(items: Offer[]): string {
   return `<ul>${listItems}</ul>`;
 }
 
+function renderEvidenceSection(offer: Offer): string {
+  const sources = offer.evidence?.sources ?? [];
+  const claims = offer.evidence?.claims ?? [];
+  if (sources.length === 0 && claims.length === 0) return '';
+
+  const safeHttpUrl = (url: string): string | null =>
+    /^https:\/\/[^\s<>"']+$/.test(url) ? escapeHtmlAttr(url) : null;
+
+  const sourceLinks = sources
+    .map((source) => {
+      const href = safeHttpUrl(source.url);
+      if (!href) return '';
+      return `<li><a href="${href}" rel="noopener noreferrer">${escapeHtmlText(
+        source.source_type.replace(/_/g, ' ')
+      )} documentation</a> — checked ${escapeHtmlText(source.checked_at)}</li>`;
+    })
+    .filter(Boolean)
+    .join('');
+
+  const claimItems = claims
+    .slice(0, 8)
+    .map((claim) => {
+      const source = sources.find((s) => s.id === claim.source_id);
+      const href = source ? safeHttpUrl(source.url) : null;
+      const quote = claim.quote.replace(/\s+/g, ' ').trim().slice(0, 240);
+      return `<li><strong>${escapeHtmlText(claim.field_path)}:</strong> “${escapeHtmlText(
+        quote
+      )}”${href ? ` (<a href="${href}" rel="noopener noreferrer">official source</a>)` : ''}</li>`;
+    })
+    .join('');
+
+  return [
+    `<section><h2>Official Evidence &amp; Sources</h2>`,
+    `<p>Every stated quota, card rule, and eligibility detail is checked against primary provider documentation. Follow the official sources below to confirm current terms before adopting a service.</p>`,
+    sourceLinks ? `<ul>${sourceLinks}</ul>` : '',
+    claimItems ? `<h3>Verification Claims</h3><ul>${claimItems}</ul>` : '',
+    `</section>`,
+  ].join('');
+}
+
 function renderHomeSnapshot(ctx: SsrSnapshotContext): string {
   const { categories, offers, categoryCounts } = ctx;
   const totalCount = offers.length.toLocaleString('en-US');
@@ -161,6 +201,7 @@ function renderOfferSnapshot(offer: Offer, ctx: SsrSnapshotContext): string {
     }<p>Official website: <a href="${officialHref}" rel="noopener noreferrer">${escapeHtmlText(
       offer.identity.provider
     )}</a>.</p></section>`,
+    renderEvidenceSection(offer),
     related.length > 0
       ? `<section><h2>Related Free ${escapeHtmlText(cat?.name ?? 'Developer')} Alternatives</h2><p>Compare similar verified free tools, APIs, and tiers in the same category on FreeStack to find the best quota and card-free option for your stack.</p>${renderOfferSummaryList(related)}</section>`
       : '',
