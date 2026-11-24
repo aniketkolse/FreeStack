@@ -133,26 +133,20 @@ export function HomePage({ onNavigate }: HomePageProps) {
       {/* 1 & 2. Spacious, Expressive Hero Section & Search Bar */}
       <section className="max-w-[1360px] w-full mx-auto px-3 sm:px-6 lg:px-8 pt-3 sm:pt-8 md:pt-10 pb-0 text-center flex flex-col items-center">
         <h1 className="font-[var(--font-wallop)] font-extrabold text-[26px] sm:text-[42px] md:text-[48px] lg:text-[60px] xl:text-[68px] leading-[1.1] sm:leading-[1.08] tracking-[-0.032em] text-midnight-mouth max-w-[1040px] flex flex-col items-center text-center">
-          {/* Mobile: stack Find more. <heart> and Spend less. <cloud> centered as balanced text+sticker lockups */}
-          <span className="sm:hidden flex flex-col items-center">
+          {/* One text instance for crawlers and screen readers; flex-wrap reflows
+              the two word+sticker lockups onto separate lines on small screens. */}
+          <span className="inline-flex flex-wrap items-center justify-center gap-x-1 gap-y-0.5 sm:gap-x-2">
             <span className="inline-flex items-center justify-center whitespace-nowrap">
               <span>Find more.</span>
-              <HeroHeartSticker className="ml-1.5 w-8 h-6.5 -mt-0.5 shrink-0 pointer-events-none" />
+              <HeroHeartSticker className="ml-1.5 sm:ml-0 sm:mx-2 md:mx-2.5 w-8 h-6.5 sm:w-14 sm:h-11 md:w-16 md:h-13 lg:w-22 lg:h-18 xl:w-[94px] xl:h-[74px] -mt-0.5 sm:-mt-1 shrink-0 pointer-events-none" />
             </span>
-            <span className="inline-flex items-center justify-center whitespace-nowrap mt-0.5">
+            {' '}
+            <span className="inline-flex items-center justify-center whitespace-nowrap">
               <span>Spend less.</span>
-              <HeroBoltSticker className="ml-1.5 w-8 h-6.5 -mt-0.5 shrink-0 pointer-events-none" />
+              <HeroBoltSticker className="ml-1.5 sm:ml-2 md:ml-2.5 lg:ml-3 w-8 h-6.5 sm:w-12 sm:h-10 md:w-16 md:h-13 lg:w-21 lg:h-17 xl:w-[92px] xl:h-[74px] -mt-0.5 sm:-mt-1 shrink-0 pointer-events-none" />
             </span>
           </span>
-
-          {/* Tablet & Desktop: Find more. <heart> Spend less. <cloud> centered as one lockup */}
-          <span className="hidden sm:inline-flex items-center justify-center whitespace-nowrap">
-            <span>Find more.</span>
-            <HeroHeartSticker className="w-14 h-11 md:w-16 md:h-13 lg:w-22 lg:h-18 xl:w-[94px] xl:h-[74px] mx-2 md:mx-2.5 align-middle -mt-1 shrink-0 pointer-events-none" />
-            <span>Spend less.</span>
-            <HeroBoltSticker className="ml-2 md:ml-2.5 lg:ml-3 w-12 h-10 md:w-16 md:h-13 lg:w-21 lg:h-17 xl:w-[92px] xl:h-[74px] align-middle -mt-1 shrink-0 pointer-events-none" />
-          </span>
-
+          {' '}
           <span className="relative inline-block mt-0.5 sm:mt-2">
             <span>Build anything.</span>
             <SparkBurstDoodle className="absolute left-full top-0.5 sm:top-1.5 lg:top-2 ml-0.5 sm:ml-1 w-5 h-5 sm:w-9 sm:h-9 lg:w-11 lg:h-11 pointer-events-none" />

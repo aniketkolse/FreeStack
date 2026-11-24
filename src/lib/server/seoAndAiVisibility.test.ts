@@ -1,6 +1,9 @@
 import { describe, it, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import type { Server } from 'node:http';
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import App from '../../App.tsx';
 import { createApp } from './createApp';
 import { resolveRouteMeta, injectHtmlMeta } from './htmlMeta';
 import { buildRouteSsrSnapshot } from './ssrSnapshot';
@@ -94,6 +97,18 @@ describe('On-Page SEO, SSR Crawlability & AI Visibility', () => {
         );
       }
     }
+  });
+
+  it('renders the homepage H1 text exactly once in the React pre-render', () => {
+    const html = renderToString(React.createElement(App));
+    const h1 = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i);
+    assert.ok(h1, 'Homepage pre-render must contain an H1');
+    const text = h1[1]
+      .replace(/<[^>]+>/g, '')
+      .replace(/&amp;/g, '&')
+      .replace(/\s+/g, ' ')
+      .trim();
+    assert.equal(text, 'Find more. Spend less. Build anything.');
   });
 
   it('omits the canonical link and BreadcrumbList gaps on 404 responses', () => {
