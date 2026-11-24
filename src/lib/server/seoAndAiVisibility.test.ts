@@ -443,6 +443,26 @@ describe('On-Page SEO, SSR Crawlability & AI Visibility', () => {
       assert.equal(res.headers.get('location'), '/');
     });
 
+    it('includes /design-system and lastmod on core and category sitemap entries', async () => {
+      const sitemapRes = await fetch(`${baseUrl}/sitemap.xml`, {
+        headers: { 'X-Forwarded-Host': 'freestack.ai.studio' },
+      });
+      assert.equal(sitemapRes.status, 200);
+      const xml = await sitemapRes.text();
+      const entries = xml.split('<url>').slice(1);
+      const entryFor = (route: string) =>
+        entries.find((e) => e.includes(`<loc>https://freestack.ai.studio${route}</loc>`));
+      for (const route of ['/', '/categories', '/design-system', '/category/ai-ml']) {
+        const entry = entryFor(route);
+        assert.ok(entry, `Sitemap should contain ${route}`);
+        assert.match(
+          entry,
+          /<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/,
+          `Sitemap entry for ${route} should carry lastmod`
+        );
+      }
+    });
+
     it('sets X-Robots-Tag: noindex, nofollow on /api/* responses and serves /sitemap.xml', async () => {
       const apiRes = await fetch(`${baseUrl}/api/health`);
       assert.equal(apiRes.status, 200);

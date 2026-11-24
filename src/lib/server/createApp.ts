@@ -360,14 +360,37 @@ function buildSitemapXml(
     '/privacy',
     '/privacy-requests',
     '/terms',
+    '/design-system',
   ];
+  const isIsoDate = (value: string | undefined): value is string =>
+    typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value);
+  const latestUpdate = offers
+    .map((o) => o.metadata?.updated_at)
+    .filter(isIsoDate)
+    .sort()
+    .pop();
+  const categoryLastmod = new Map<string, string>();
+  for (const o of offers) {
+    const updated = o.metadata?.updated_at;
+    if (!isIsoDate(updated)) continue;
+    const slug = o.classification.category;
+    const previous = categoryLastmod.get(slug);
+    if (!previous || updated > previous) categoryLastmod.set(slug, updated);
+  }
+
   const categoryRoutes = categories
     .filter((c) => /^[a-z0-9-]+$/.test(c.slug))
-    .map((c) => `/category/${encodeURIComponent(c.slug)}`);
+    .map((c) => ({ path: `/category/${encodeURIComponent(c.slug)}`, slug: c.slug }));
 
   const urls: string[] = [];
-  for (const r of [...staticRoutes, ...categoryRoutes]) {
-    urls.push(`  <url><loc>${escapeXml(`${cleanSiteUrl}${r}`)}</loc></url>`);
+  for (const route of staticRoutes) {
+    const lastmod = latestUpdate ? `<lastmod>${escapeXml(latestUpdate)}</lastmod>` : '';
+    urls.push(`  <url><loc>${escapeXml(`${cleanSiteUrl}${route}`)}</loc>${lastmod}</url>`);
+  }
+  for (const { path, slug } of categoryRoutes) {
+    const updated = categoryLastmod.get(slug) ?? latestUpdate;
+    const lastmod = updated ? `<lastmod>${escapeXml(updated)}</lastmod>` : '';
+    urls.push(`  <url><loc>${escapeXml(`${cleanSiteUrl}${path}`)}</loc>${lastmod}</url>`);
   }
 
   for (const o of offers) {
