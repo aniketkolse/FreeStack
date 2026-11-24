@@ -99,6 +99,34 @@ describe('On-Page SEO, SSR Crawlability & AI Visibility', () => {
     }
   });
 
+  it('publishes editorial ownership, a correction route and a review date on /about', () => {
+    const snapshot = buildRouteSsrSnapshot({
+      pathname: '/about',
+      categories: CATEGORIES,
+      offers: ALL_OFFERS,
+      offerBySlug,
+      categoryBySlug,
+    });
+    assert.match(snapshot, /Editorial ownership/i, 'About page needs a named owner');
+    assert.ok(
+      snapshot.includes('github.com/aniketkolse/FreeStack/issues/new'),
+      'About page needs a public correction route'
+    );
+    assert.match(snapshot, /Last reviewed: \d{4}-\d{2}-\d{2}/, 'About page needs a visible date');
+
+    const meta = resolveRouteMeta(
+      '/about',
+      false,
+      'https://freestack.ai.studio',
+      offerBySlug,
+      categoryBySlug
+    );
+    assert.ok(
+      JSON.stringify(meta.jsonLd).includes('dateModified'),
+      'About page JSON-LD needs dateModified'
+    );
+  });
+
   it('renders cited official sources and verification claims in the offer SSR snapshot', () => {
     const offer = ALL_OFFERS.find(
       (o) => (o.evidence?.sources?.length ?? 0) > 0 && (o.evidence?.claims?.length ?? 0) > 0

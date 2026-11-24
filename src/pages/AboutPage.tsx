@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { TOTAL_OFFERS_COUNT, CATEGORIES } from '../lib/data/resources';
 import { SlabIllustration } from '../components/illustrations/TocaStickers';
+import { EDITORIAL_POLICY } from '../lib/verification/editorialPolicy';
 
 interface AboutPageProps {
   onNavigate: (path: string) => void;
@@ -167,6 +168,33 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             );
           })}
         </div>
+      </section>
+
+      {/* Editorial ownership, methodology and corrections */}
+      <section className="bg-daylight rounded-[16px] sm:rounded-[26px] p-3.5 sm:p-7 md:p-9 flex flex-col gap-2.5 sm:gap-4">
+        <h2 className="font-[var(--font-wallop)] font-extrabold text-[19px] sm:text-[30px] leading-[1.08] tracking-[-0.025em] text-midnight-mouth">
+          Editorial Ownership &amp; Corrections
+        </h2>
+        <p className="font-[var(--font-inter)] text-[12.5px] sm:text-[15px] leading-[1.45] text-ink">
+          {EDITORIAL_POLICY.maintainer}. Last reviewed: {EDITORIAL_POLICY.lastReviewed}.
+        </p>
+        <ol className="list-decimal pl-5 flex flex-col gap-1 font-[var(--font-inter)] text-[12px] sm:text-[14px] leading-[1.45] text-ink">
+          {EDITORIAL_POLICY.methodology.map((step) => (
+            <li key={step}>{step}</li>
+          ))}
+        </ol>
+        <p className="font-[var(--font-inter)] text-[12px] sm:text-[14px] leading-[1.45] text-ink">
+          If a quota, card rule, or source is wrong or out of date, report it in the public{' '}
+          <a
+            href={EDITORIAL_POLICY.contactUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2"
+          >
+            FreeStack issue tracker
+          </a>
+          . Reports are reviewed in the open.
+        </p>
       </section>
     </div>
   );

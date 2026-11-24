@@ -4,6 +4,7 @@ import {
   escapeHtmlText,
   safeJsonLdSerialize,
 } from './securityUtils.ts';
+import { EDITORIAL_POLICY } from '../verification/editorialPolicy.ts';
 
 export interface RouteMetaResult {
   status: 200 | 404;
@@ -177,7 +178,16 @@ export function resolveRouteMeta(
                 },
               ],
             }
-          : null,
+          : normalizedPath === '/about'
+            ? {
+                '@context': 'https://schema.org',
+                '@type': 'WebPage',
+                name: spec.title,
+                url: `${cleanSiteUrl}/about`,
+                dateModified: EDITORIAL_POLICY.lastReviewed,
+                about: { '@type': 'Organization', name: 'FreeStack' },
+              }
+            : null,
     };
   }
 
