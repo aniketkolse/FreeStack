@@ -463,6 +463,29 @@ describe('On-Page SEO, SSR Crawlability & AI Visibility', () => {
       }
     });
 
+    it('serves a machine-readable AI catalog and an llms-full.txt', async () => {
+      const headers = { 'X-Forwarded-Host': 'freestack.ai.studio' };
+      const catalogRes = await fetch(`${baseUrl}/.well-known/ai-catalog.json`, { headers });
+      assert.equal(catalogRes.status, 200);
+      assert.match(catalogRes.headers.get('content-type') ?? '', /application\/json/);
+      const catalog = (await catalogRes.json()) as {
+        name: string;
+        sitemap: string;
+        categories: Array<{ url: string; offers: number }>;
+      };
+      assert.equal(catalog.name, 'FreeStack');
+      assert.ok(catalog.sitemap.endsWith('/sitemap.xml'));
+      assert.ok(catalog.categories.length >= 11, 'AI catalog should enumerate all categories');
+      assert.ok(catalog.categories.every((c) => c.url.startsWith('https://freestack.ai.studio/')));
+
+      const fullRes = await fetch(`${baseUrl}/llms-full.txt`, { headers });
+      assert.equal(fullRes.status, 200);
+      const fullTxt = await fullRes.text();
+      assert.ok(fullTxt.includes('# FreeStack'));
+      assert.ok(fullTxt.includes('https://freestack.ai.studio/category/mcp'));
+      assert.ok(fullTxt.includes('https://freestack.ai.studio/sitemap.xml'));
+    });
+
     it('sets X-Robots-Tag: noindex, nofollow on /api/* responses and serves /sitemap.xml', async () => {
       const apiRes = await fetch(`${baseUrl}/api/health`);
       assert.equal(apiRes.status, 200);

@@ -530,6 +530,65 @@ export function createApp(options: CreateAppOptions) {
     return txt;
   };
 
+  const cachedAiCatalogByOrigin = new Map<string, string>();
+  const getAiCatalogJson = (origin: string): string => {
+    let json = cachedAiCatalogByOrigin.get(origin);
+    if (!json) {
+      json = JSON.stringify({
+        name: 'FreeStack',
+        description:
+          'Verified, account-free directory of free developer tools, AI models, MCP servers, APIs, cloud tiers, learning materials, and student packs.',
+        url: `${origin}/`,
+        sitemap: `${origin}/sitemap.xml`,
+        llms: `${origin}/llms.txt`,
+        counts: { offers: offers.length, categories: categories.length },
+        categories: categories.map((c) => ({
+          name: c.name,
+          slug: c.slug,
+          url: `${origin}/category/${encodeURIComponent(c.slug)}`,
+          offers: catalogIndex.categoryCounts[c.slug] ?? 0,
+          subcategories: c.subcategories.map((s) => s.name),
+        })),
+      });
+      cachedAiCatalogByOrigin.set(origin, json);
+    }
+    return json;
+  };
+
+  const cachedLlmsFullByOrigin = new Map<string, string>();
+  const getLlmsFullTxt = (origin: string): string => {
+    let txt = cachedLlmsFullByOrigin.get(origin);
+    if (!txt) {
+      const sections = categories.map((c) => {
+        const subNames = c.subcategories.slice(0, 25).map((s) => s.name).join(', ');
+        return [
+          `## ${c.name}`,
+          `- URL: ${origin}/category/${encodeURIComponent(c.slug)}`,
+          `- Verified offers: ${catalogIndex.categoryCounts[c.slug] ?? 0}`,
+          `- Subcategories: ${subNames}`,
+          '',
+        ].join('\n');
+      });
+      txt = [
+        '# FreeStack',
+        '',
+        `> A verified, account-free directory of ${offers.length.toLocaleString('en-US')} free developer resources across ${categories.length} categories.`,
+        '',
+        '## Key Pages',
+        `- [Home](${origin}/)`,
+        `- [Explore All Resources](${origin}/explore)`,
+        `- [All Categories](${origin}/categories)`,
+        `- [About & Verification Policy](${origin}/about)`,
+        `- [Machine-readable catalog](${origin}/.well-known/ai-catalog.json)`,
+        `- [XML Sitemap](${origin}/sitemap.xml)`,
+        '',
+        ...sections,
+      ].join('\n');
+      cachedLlmsFullByOrigin.set(origin, txt);
+    }
+    return txt;
+  };
+
   function sendCompressedPayload(
     req: Request,
     res: Response,
@@ -699,7 +758,8 @@ export function createApp(options: CreateAppOptions) {
     }
 
     const lower = decodedPath.toLowerCase();
-    const isWellKnownSecurityTxt = lower === '/.well-known/security.txt';
+    const isAllowedWellKnown =
+      lower === '/.well-known/security.txt' || lower === '/.well-known/ai-catalog.json';
     const isViteDevDep = !isProd && lower.startsWith('/node_modules/.vite/');
     const isViteDevDataImport =
       !isProd &&
@@ -710,7 +770,7 @@ export function createApp(options: CreateAppOptions) {
       Object.prototype.hasOwnProperty.call(req.query, 'import');
 
     if (
-      (!isWellKnownSecurityTxt && !isViteDevDep && /(?:^|\/)\.[^/]+/.test(lower)) ||
+      (!isAllowedWellKnown && !isViteDevDep && /(?:^|\/)\.[^/]+/.test(lower)) ||
       lower === '/server.ts' ||
       lower === '/server.js' ||
       lower === '/package.json' ||
@@ -1240,6 +1300,24 @@ export function createApp(options: CreateAppOptions) {
     sendCompressedPayload(req, res, 'text/plain; charset=utf-8', getLlmsTxt(effectiveOrigin), {
       cacheControl: 'public, max-age=3600',
     });
+  });
+
+  app.get('/llms-full.txt', (req, res) => {
+    const effectiveOrigin = resolveRequestSiteUrl(req);
+    sendCompressedPayload(req, res, 'text/plain; charset=utf-8', getLlmsFullTxt(effectiveOrigin), {
+      cacheControl: 'public, max-age=3600',
+    });
+  });
+
+  app.get('/.well-known/ai-catalog.json', (req, res) => {
+    const effectiveOrigin = resolveRequestSiteUrl(req);
+    sendCompressedPayload(
+      req,
+      res,
+      'application/json; charset=utf-8',
+      getAiCatalogJson(effectiveOrigin),
+      { cacheControl: 'public, max-age=3600' }
+    );
   });
 
   app.get('/sitemap.xml', (req, res) => {
