@@ -437,6 +437,12 @@ describe('On-Page SEO, SSR Crawlability & AI Visibility', () => {
       );
     });
 
+    it('301-redirects /index.html to the canonical homepage', async () => {
+      const res = await fetch(`${baseUrl}/index.html`, { redirect: 'manual' });
+      assert.equal(res.status, 301, '/index.html must not be served as an indexable duplicate');
+      assert.equal(res.headers.get('location'), '/');
+    });
+
     it('sets X-Robots-Tag: noindex, nofollow on /api/* responses and serves /sitemap.xml', async () => {
       const apiRes = await fetch(`${baseUrl}/api/health`);
       assert.equal(apiRes.status, 200);

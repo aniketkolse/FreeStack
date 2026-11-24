@@ -1279,6 +1279,12 @@ export function createApp(options: CreateAppOptions) {
 
   // Production static asset & SPA route handler
   if (isProd) {
+    // dist/index.html is the untemplated Vite shell: same title as /, no H1,
+    // no canonical, no robots meta. Never expose it as an indexable page.
+    app.get('/index.html', (_req, res) => {
+      res.redirect(301, '/');
+    });
+
     const distPath = path.join(rootDir, 'dist');
     const assetsPath = path.join(distPath, 'assets');
 
