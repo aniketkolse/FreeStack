@@ -800,6 +800,10 @@ export function CategoryDetailPage({
           <div className="min-w-0 flex flex-col gap-0.5 sm:gap-1">
             <h1 className="font-[var(--font-wallop)] font-extrabold text-[19px] sm:text-[28px] lg:text-[32px] leading-[1.08] tracking-[-0.03em] text-midnight-mouth truncate">
               {category.name}
+              <span className="sr-only">
+                {' — '}
+                {totalInCategoryCount.toLocaleString('en-US')} free &amp; verified options
+              </span>
             </h1>
             <p className="font-[var(--font-inter)] text-[12px] sm:text-[14px] leading-[1.35] sm:leading-[1.4] text-ink/85 line-clamp-2 sm:truncate">
               {category.description}

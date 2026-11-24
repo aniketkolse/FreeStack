@@ -103,7 +103,9 @@ function renderCategorySnapshot(cat: Category, ctx: SsrSnapshotContext): string 
 
   return [
     `<main>`,
-    `<h1>${escapeHtmlText(cat.name)}</h1>`,
+    `<h1>${escapeHtmlText(cat.name)} — ${catOffers.length.toLocaleString(
+      'en-US'
+    )} Free &amp; Verified Options</h1>`,
     `<p>${escapeHtmlText(cat.description)} Explore ${catOffers.length.toLocaleString('en-US')} verified free ${escapeHtmlText(cat.name.toLowerCase())} resources on FreeStack with clear free-tier limits, credit card rules, eligibility details, and direct official links.</p>`,
     subcatList
       ? `<section><h2>Covered Subcategories</h2><p>Browse free offerings across ${subcatList}. Every listing documents real usage quotas, regional availability, and verification status directly from official provider documentation.</p></section>`

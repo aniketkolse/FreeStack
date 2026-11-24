@@ -99,6 +99,30 @@ describe('On-Page SEO, SSR Crawlability & AI Visibility', () => {
     }
   });
 
+  it('gives category H1s an intent-bearing heading with a real offer count', () => {
+    const categoryCounts: Record<string, number> = {};
+    for (const o of ALL_OFFERS) {
+      categoryCounts[o.classification.category] =
+        (categoryCounts[o.classification.category] ?? 0) + 1;
+    }
+    const snapshot = buildRouteSsrSnapshot({
+      pathname: '/category/mcp',
+      categories: CATEGORIES,
+      offers: ALL_OFFERS,
+      offerBySlug,
+      categoryBySlug,
+      categoryCounts,
+    });
+    const h1 = snapshot.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i);
+    assert.ok(h1, 'Category snapshot must have an H1');
+    const text = h1[1].replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').trim();
+    assert.equal(
+      text,
+      `MCP — ${categoryCounts.mcp.toLocaleString('en-US')} Free & Verified Options`,
+      'Category H1 should lead with the category, then free intent and the real count'
+    );
+  });
+
   it('renders the homepage H1 text exactly once in the React pre-render', () => {
     const html = renderToString(React.createElement(App));
     const h1 = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i);
