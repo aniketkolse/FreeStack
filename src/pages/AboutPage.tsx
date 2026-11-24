@@ -31,7 +31,7 @@ const VERIFICATION_STATUSES = [
   {
     name: 'Unverified',
     icon: HelpCircle,
-    color: 'bg-daylight',
+    color: 'bg-sky-blue',
     meaning:
       'Newly discovered or incomplete entry awaiting source evidence confirmation.',
   },
@@ -144,7 +144,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
       {/* Verification Status Definitions */}
       <section className="flex flex-col gap-2.5 sm:gap-4">
         <h2 className="font-[var(--font-wallop)] font-extrabold text-[19px] sm:text-[30px] leading-[1.08] tracking-[-0.025em] text-midnight-mouth">
-          Verification statuses
+          Verification Status
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-2 sm:gap-3">
           {VERIFICATION_STATUSES.map((status) => {
