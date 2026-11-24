@@ -4,6 +4,7 @@ import type { Server } from 'node:http';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import App from '../../App.tsx';
+import { escapeHtmlText } from './securityUtils.ts';
 import { createApp } from './createApp';
 import { resolveRouteMeta, injectHtmlMeta } from './htmlMeta';
 import { buildRouteSsrSnapshot } from './ssrSnapshot';
@@ -32,15 +33,34 @@ describe('On-Page SEO, SSR Crawlability & AI Visibility', () => {
   const offerBySlug = new Map(ALL_OFFERS.map((o) => [o.identity.slug, o]));
   const categoryBySlug = new Map(CATEGORIES.map((c) => [c.slug, c]));
 
-  it('does not ship duplicate offer names', () => {
+  it('does not ship duplicate offer names (case-insensitive)', () => {
     const seen = new Map<string, string>();
     for (const offer of ALL_OFFERS) {
-      const name = offer.identity.name;
+      const key = offer.identity.name.trim().replace(/\s+/g, ' ').toLowerCase();
       assert.ok(
-        !seen.has(name),
-        `Duplicate offer name "${name}": ${seen.get(name)} and ${offer.identity.slug}`
+        !seen.has(key),
+        `Duplicate offer name "${offer.identity.name}": ${seen.get(key)} and ${offer.identity.slug}`
       );
-      seen.set(name, offer.identity.slug);
+      seen.set(key, offer.identity.slug);
+    }
+  });
+
+  it('does not emit identical titles for distinct offers', () => {
+    const seen = new Map<string, string>();
+    for (const offer of ALL_OFFERS) {
+      const title = resolveRouteMeta(
+        `/offer/${offer.identity.slug}`,
+        false,
+        'https://freestack.ai.studio',
+        offerBySlug,
+        categoryBySlug
+      ).title;
+      const key = title.toLowerCase();
+      assert.ok(
+        !seen.has(key),
+        `Duplicate title "${title}": ${seen.get(key)} and ${offer.identity.slug}`
+      );
+      seen.set(key, offer.identity.slug);
     }
   });
 
@@ -162,6 +182,24 @@ describe('On-Page SEO, SSR Crawlability & AI Visibility', () => {
     assert.ok(
       snapshot.includes(quote.replace(/&/g, '&amp;')),
       'The first evidence claim quote should be present in the SSR HTML'
+    );
+  });
+
+  it('marks truncated evidence quotes as truncated', () => {
+    const offer = ALL_OFFERS.find((o) => (o.evidence?.claims ?? []).some((c) => c.quote.length > 240));
+    assert.ok(offer, 'Expected a long evidence quote in the catalog');
+    const claim = offer.evidence.claims.find((c) => c.quote.length > 240)!;
+    const expected = escapeHtmlText(`${claim.quote.replace(/\s+/g, ' ').trim().slice(0, 240)}…`);
+    const snapshot = buildRouteSsrSnapshot({
+      pathname: `/offer/${offer.identity.slug}`,
+      categories: CATEGORIES,
+      offers: ALL_OFFERS,
+      offerBySlug,
+      categoryBySlug,
+    });
+    assert.ok(
+      snapshot.includes(expected),
+      'A quote cut at 240 chars must include an ellipsis rather than look verbatim'
     );
   });
 
@@ -414,6 +452,14 @@ describe('On-Page SEO, SSR Crawlability & AI Visibility', () => {
       assert.ok(llmsTxt.includes('# FreeStack'));
       assert.ok(llmsTxt.includes('https://freestack.ai.studio/category/ai-ml'));
       assert.ok(llmsTxt.includes('https://freestack.ai.studio/sitemap.xml'));
+      assert.ok(
+        llmsTxt.includes('https://freestack.ai.studio/llms-full.txt'),
+        'llms.txt should link to llms-full.txt'
+      );
+      assert.ok(
+        llmsTxt.includes('https://freestack.ai.studio/.well-known/ai-catalog.json'),
+        'llms.txt should link to the machine-readable catalog'
+      );
     });
 
     it('uses freestack.ai.studio canonical for allowlisted host while rejecting untrusted Host headers', async () => {

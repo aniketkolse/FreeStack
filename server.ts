@@ -65,7 +65,8 @@ async function startServer() {
           hasQuery,
           effectiveOrigin,
           offerBySlug,
-          categoryBySlug
+          categoryBySlug,
+          catalogIndex.fullOffers
         );
         const ssrSnapshot = buildRouteSsrSnapshot({
           pathname: req.path,

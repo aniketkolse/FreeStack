@@ -124,11 +124,23 @@ function buildOfferTitle(name: string): string {
 
   const parenIdx = clean.indexOf(' (');
   if (parenIdx >= 3) {
-    const base = clean.slice(0, parenIdx).trim();
-    for (const suffix of suffixes) {
-      if (base.length + suffix.length <= 60) return `${base}${suffix}`;
+    const prefix = clean.slice(0, parenIdx).trim();
+    const closing = clean.lastIndexOf(')');
+    const inner = closing > parenIdx ? clean.slice(parenIdx + 2, closing) : '';
+    const words = inner.split(/\s+/).filter(Boolean);
+    // Keep the tail of the parenthetical: it usually carries the distinguishing
+    // detail (e.g. "S3 Object Storage" vs "S3 Cloud Storage") that a bare prefix
+    // would drop, producing duplicate titles for distinct offers.
+    for (let keep = Math.min(3, words.length); keep > 0; keep--) {
+      const base = `${prefix} (${words.slice(-keep).join(' ')})`;
+      for (const suffix of suffixes) {
+        if (base.length + suffix.length <= 60) return `${base}${suffix}`;
+      }
     }
-    if (base.length <= 60) return base;
+    for (const suffix of suffixes) {
+      if (prefix.length + suffix.length <= 60) return `${prefix}${suffix}`;
+    }
+    if (prefix.length <= 60) return prefix;
   }
 
   return clean;

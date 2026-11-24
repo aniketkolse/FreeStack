@@ -519,6 +519,8 @@ export function createApp(options: CreateAppOptions) {
         `- [Free Learning Hub](${origin}/learning)`,
         `- [Student Benefits & Packs](${origin}/students)`,
         `- [About & Verification Policy](${origin}/about)`,
+        `- [Full Category & Subcategory Map](${origin}/llms-full.txt)`,
+        `- [Machine-readable catalog](${origin}/.well-known/ai-catalog.json)`,
         `- [XML Sitemap](${origin}/sitemap.xml)`,
         '',
         '## Categories',

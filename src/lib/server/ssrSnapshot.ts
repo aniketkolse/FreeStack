@@ -1,5 +1,6 @@
 import type { Category, Offer } from '../../types/resource.ts';
 import { escapeHtmlAttr, escapeHtmlText } from './securityUtils.ts';
+import { isSafeExternalHttpsUrl } from './securityUtils.ts';
 import { EDITORIAL_POLICY } from '../verification/editorialPolicy.ts';
 
 export interface SsrSnapshotContext {
@@ -67,7 +68,7 @@ function renderEvidenceSection(offer: Offer): string {
   if (sources.length === 0 && claims.length === 0) return '';
 
   const safeHttpUrl = (url: string): string | null =>
-    /^https:\/\/[^\s<>"']+$/.test(url) ? escapeHtmlAttr(url) : null;
+    isSafeExternalHttpsUrl(url, { rejectTrackingParams: true }) ? escapeHtmlAttr(url) : null;
 
   const sourceLinks = sources
     .map((source) => {
@@ -85,7 +86,8 @@ function renderEvidenceSection(offer: Offer): string {
     .map((claim) => {
       const source = sources.find((s) => s.id === claim.source_id);
       const href = source ? safeHttpUrl(source.url) : null;
-      const quote = claim.quote.replace(/\s+/g, ' ').trim().slice(0, 240);
+      const rawQuote = claim.quote.replace(/\s+/g, ' ').trim();
+      const quote = rawQuote.length > 240 ? `${rawQuote.slice(0, 240)}…` : rawQuote;
       return `<li><strong>${escapeHtmlText(claim.field_path)}:</strong> “${escapeHtmlText(
         quote
       )}”${href ? ` (<a href="${href}" rel="noopener noreferrer">official source</a>)` : ''}</li>`;
