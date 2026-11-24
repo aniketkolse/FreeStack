@@ -138,7 +138,8 @@ export function resolveRouteMeta(
   hasQueryParams: boolean,
   siteUrl: string,
   offerBySlug: Map<string, Offer>,
-  categoryBySlug: Map<string, Category>
+  categoryBySlug: Map<string, Category>,
+  offers?: Offer[]
 ): RouteMetaResult {
   const cleanSiteUrl = siteUrl.replace(/\/+$/, '');
   const normalizedPath = pathname === '/' ? '/' : pathname.replace(/\/+$/, '');
@@ -191,6 +192,7 @@ export function resolveRouteMeta(
             ? ' — Free Developer Tools | FreeStack'
             : ' — Free Tools | FreeStack';
         const title = buildClampedTitle(cat.name, categorySuffix, 60);
+        const itemCount = offers?.filter((o) => o.classification.category === cat.slug).length;
         const description = clampText(
           `${cat.description} Compare verified free ${cat.name.toLowerCase()} quotas, card rules, and official sources on FreeStack.`,
           156
@@ -203,10 +205,28 @@ export function resolveRouteMeta(
           robots: hasQueryParams ? 'noindex, follow' : 'index, follow',
           jsonLd: {
             '@context': 'https://schema.org',
-            '@type': 'CollectionPage',
-            name: `${cat.name} — FreeStack`,
-            description,
-            url: canonicalUrl,
+            '@graph': [
+              {
+                '@type': 'CollectionPage',
+                name: `${cat.name} — FreeStack`,
+                description,
+                url: canonicalUrl,
+                ...(typeof itemCount === 'number' ? { numberOfItems: itemCount } : {}),
+              },
+              {
+                '@type': 'BreadcrumbList',
+                itemListElement: [
+                  { '@type': 'ListItem', position: 1, name: 'Home', item: `${cleanSiteUrl}/` },
+                  {
+                    '@type': 'ListItem',
+                    position: 2,
+                    name: 'All Categories',
+                    item: `${cleanSiteUrl}/categories`,
+                  },
+                  { '@type': 'ListItem', position: 3, name: cat.name, item: canonicalUrl },
+                ],
+              },
+            ],
           },
         };
       }
@@ -220,6 +240,11 @@ export function resolveRouteMeta(
       if (offer) {
         const canonicalUrl = `${cleanSiteUrl}/offer/${encodeURIComponent(offer.identity.slug)}`;
         const title = buildOfferTitle(offer.identity.name);
+        const offerCategory = categoryBySlug.get(offer.classification.category);
+        const candidateDate = offer.verification.last_verified_at ?? offer.metadata.updated_at;
+        const lastVerified = /^\d{4}-\d{2}-\d{2}$/.test(candidateDate ?? '')
+          ? candidateDate
+          : undefined;
         const rawDesc = offer.description.trim();
         const enrichedDesc =
           rawDesc.length < 75
@@ -234,21 +259,46 @@ export function resolveRouteMeta(
           robots: hasQueryParams ? 'noindex, follow' : 'index, follow',
           jsonLd: {
             '@context': 'https://schema.org',
-            '@type': 'SoftwareApplication',
-            name: offer.identity.name,
-            applicationCategory: offer.classification.category,
-            operatingSystem: 'Web, Cross-platform',
-            description,
-            url: canonicalUrl,
-            author: {
-              '@type': 'Organization',
-              name: offer.identity.provider,
-            },
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD',
-            },
+            '@graph': [
+              {
+                '@type': 'SoftwareApplication',
+                name: offer.identity.name,
+                applicationCategory: offer.classification.category,
+                operatingSystem: 'Web, Cross-platform',
+                description,
+                url: canonicalUrl,
+                author: {
+                  '@type': 'Organization',
+                  name: offer.identity.provider,
+                },
+                offers: {
+                  '@type': 'Offer',
+                  price: '0',
+                  priceCurrency: 'USD',
+                },
+                ...(lastVerified ? { dateModified: lastVerified } : {}),
+              },
+              {
+                '@type': 'BreadcrumbList',
+                itemListElement: [
+                  { '@type': 'ListItem', position: 1, name: 'Home', item: `${cleanSiteUrl}/` },
+                  {
+                    '@type': 'ListItem',
+                    position: 2,
+                    name: offerCategory?.name ?? 'All Categories',
+                    item: offerCategory
+                      ? `${cleanSiteUrl}/category/${encodeURIComponent(offerCategory.slug)}`
+                      : `${cleanSiteUrl}/categories`,
+                  },
+                  {
+                    '@type': 'ListItem',
+                    position: 3,
+                    name: offer.identity.name,
+                    item: canonicalUrl,
+                  },
+                ],
+              },
+            ],
           },
         };
       }
@@ -260,7 +310,7 @@ export function resolveRouteMeta(
     title: 'Page Not Found (404) — FreeStack',
     description:
       'The requested page or resource could not be found in the FreeStack catalog of verified free developer tools and learning materials.',
-    canonicalUrl: `${cleanSiteUrl}/`,
+    canonicalUrl: '',
     robots: 'noindex, follow',
     jsonLd: null,
   };
@@ -282,7 +332,9 @@ export function injectHtmlMeta(
   const safeDescAttr = escapeHtmlAttr(meta.description);
   const safeCanonicalAttr = escapeHtmlAttr(meta.canonicalUrl);
   const safeRobotsAttr = escapeHtmlAttr(meta.robots);
-  const canonicalOrigin = new URL(meta.canonicalUrl).origin;
+  const canonicalOrigin = meta.canonicalUrl
+    ? new URL(meta.canonicalUrl).origin
+    : 'https://freestack.ai.studio';
   const safeOgImageAttr = escapeHtmlAttr(`${canonicalOrigin}/og-image.png`);
 
   let html = rawHtml
@@ -324,11 +376,12 @@ export function injectHtmlMeta(
       () => `<meta name="twitter:image:alt" content="${safeTitleAttr}" />`
     );
 
-  const extraTags = [
-    `<link rel="canonical" href="${safeCanonicalAttr}" />`,
-    `<meta property="og:url" content="${safeCanonicalAttr}" />`,
-    `<meta name="robots" content="${safeRobotsAttr}" />`,
-  ];
+  const extraTags = [`<meta name="robots" content="${safeRobotsAttr}" />`];
+
+  if (meta.canonicalUrl) {
+    extraTags.unshift(`<link rel="canonical" href="${safeCanonicalAttr}" />`);
+    extraTags.push(`<meta property="og:url" content="${safeCanonicalAttr}" />`);
+  }
 
   if (!/property="og:site_name"/i.test(html)) {
     extraTags.push(`<meta property="og:site_name" content="FreeStack" />`);

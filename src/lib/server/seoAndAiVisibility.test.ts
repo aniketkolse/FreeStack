@@ -125,7 +125,7 @@ describe('On-Page SEO, SSR Crawlability & AI Visibility', () => {
     const offerJson = JSON.stringify(offerMeta.jsonLd);
     assert.ok(offerJson.includes('BreadcrumbList'), 'Offer JSON-LD should include BreadcrumbList');
     assert.ok(offerJson.includes('dateModified'), 'Offer JSON-LD should include dateModified');
-    assert.ok(offerJson.includes('/categories'), 'Offer breadcrumb should include the category hub');
+    assert.ok(offerJson.includes('/category/'), 'Offer breadcrumb should include its category');
 
     const catMeta = resolveRouteMeta(
       '/category/mcp',

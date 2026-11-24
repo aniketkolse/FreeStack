@@ -1410,7 +1410,8 @@ export function createApp(options: CreateAppOptions) {
         hasQuery,
         effectiveOrigin,
         offerBySlug,
-        categoryBySlug
+        categoryBySlug,
+        catalogIndex.fullOffers
       );
 
       const isHomeRoute = pathname === '/' || pathname === '';
