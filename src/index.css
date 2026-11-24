@@ -284,8 +284,25 @@
   }
 }
 
+/* Same slow bob, scaled for the much larger desktop stickers so the motion
+   stays visible instead of disappearing into the larger artwork. */
+@keyframes sticker-bob-desktop {
+  0%, 100% {
+    transform: translateY(0px) rotate(-4deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
 .sticker-bob {
   animation: sticker-bob 3.6s ease-in-out infinite;
+}
+
+@media (min-width: 640px) {
+  .sticker-bob {
+    animation-name: sticker-bob-desktop;
+  }
 }
 
 @keyframes wiggle-tile {
