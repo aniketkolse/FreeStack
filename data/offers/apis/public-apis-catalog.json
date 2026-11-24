@@ -179,7 +179,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-cat-facts-animals-api",
-      "name": "Cat Facts API",
+      "name": "Cat Facts API (alexwohlbruck.github.io)",
       "slug": "cat-facts-animals-api",
       "provider": "Cat Facts",
       "logo_url": null
@@ -267,7 +267,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-cat-facts-animals-api-2",
-      "name": "Cat Facts API",
+      "name": "Cat Facts API (catfact.ninja)",
       "slug": "cat-facts-animals-api-2",
       "provider": "Cat Facts",
       "logo_url": null
@@ -443,7 +443,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-dog-facts-animals-api",
-      "name": "Dog Facts API",
+      "name": "Dog Facts API (dukengn.github.io)",
       "slug": "dog-facts-animals-api",
       "provider": "Dog Facts",
       "logo_url": null
@@ -531,7 +531,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-dog-facts-animals-api-2",
-      "name": "Dog Facts API",
+      "name": "Dog Facts API (kinduff.github.io)",
       "slug": "dog-facts-animals-api-2",
       "provider": "Dog Facts",
       "logo_url": null
@@ -4843,7 +4843,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-urlhaus-anti-malware-api",
-      "name": "URLhaus API",
+      "name": "URLhaus API (Anti-Malware)",
       "slug": "urlhaus-anti-malware-api",
       "provider": "URLhaus",
       "logo_url": null
@@ -9067,7 +9067,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-helium-blockchain-api",
-      "name": "Helium API",
+      "name": "Helium API (Blockchain)",
       "slug": "helium-blockchain-api",
       "provider": "Helium",
       "logo_url": null
@@ -17779,7 +17779,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-non-working-days-calendar-api",
-      "name": "Non-Working Days API",
+      "name": "Non-Working Days API (github.com)",
       "slug": "non-working-days-calendar-api",
       "provider": "Non-Working Days",
       "logo_url": null
@@ -17867,7 +17867,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-non-working-days-calendar-api-2",
-      "name": "Non-Working Days API",
+      "name": "Non-Working Days API (isdayoff.ru)",
       "slug": "non-working-days-calendar-api-2",
       "provider": "Non-Working Days",
       "logo_url": null
@@ -34499,7 +34499,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-answerline-development-api",
-      "name": "AnswerLine API",
+      "name": "AnswerLine API (Development)",
       "slug": "answerline-development-api",
       "provider": "AnswerLine",
       "logo_url": null
@@ -61427,7 +61427,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-cloudmersive-validate-email-api",
-      "name": "Cloudmersive Validate API",
+      "name": "Cloudmersive Validate API (Email)",
       "slug": "cloudmersive-validate-email-api",
       "provider": "Cloudmersive Validate",
       "logo_url": null
@@ -65651,7 +65651,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-jokeapi-entertainment-api",
-      "name": "JokeAPI",
+      "name": "JokeAPI (Entertainment)",
       "slug": "jokeapi-entertainment-api",
       "provider": "JokeAPI",
       "logo_url": null
@@ -73659,7 +73659,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-helium-finance-api",
-      "name": "Helium API",
+      "name": "Helium API (Finance)",
       "slug": "helium-finance-api",
       "provider": "Helium",
       "logo_url": null
@@ -86507,7 +86507,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-jokeapi-games-comics-api",
-      "name": "JokeAPI",
+      "name": "JokeAPI (Games & Comics)",
       "slug": "jokeapi-games-comics-api",
       "provider": "JokeAPI",
       "logo_url": null
@@ -89851,7 +89851,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-steam-games-comics-api",
-      "name": "Steam API",
+      "name": "Steam API (steamapi.xpaw.me)",
       "slug": "steam-games-comics-api",
       "provider": "Steam",
       "logo_url": null
@@ -89939,7 +89939,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-steam-games-comics-api-2",
-      "name": "Steam API",
+      "name": "Steam API (github.com)",
       "slug": "steam-games-comics-api-2",
       "provider": "Steam",
       "logo_url": null
@@ -97067,7 +97067,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-mapbox-geocoding-api",
-      "name": "Mapbox API",
+      "name": "Mapbox API (Geocoding)",
       "slug": "mapbox-geocoding-api",
       "provider": "Mapbox",
       "logo_url": null
@@ -107891,7 +107891,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-open-government-mexico-government-api",
-      "name": "Open Government, Mexico API",
+      "name": "Open Government, Mexico API (inegi.org.mx)",
       "slug": "open-government-mexico-government-api",
       "provider": "Open Government, Mexico",
       "logo_url": null
@@ -107979,7 +107979,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-open-government-mexico-government-api-2",
-      "name": "Open Government, Mexico API",
+      "name": "Open Government, Mexico API (datos.gob.mx)",
       "slug": "open-government-mexico-government-api-2",
       "provider": "Open Government, Mexico",
       "logo_url": null
@@ -112731,7 +112731,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-covid-19-health-api",
-      "name": "Covid-19 API",
+      "name": "Covid-19 API (covid19api.com)",
       "slug": "covid-19-health-api",
       "provider": "Covid-19",
       "logo_url": null
@@ -112819,7 +112819,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-covid-19-health-api-2",
-      "name": "Covid-19 API",
+      "name": "Covid-19 API (github.com)",
       "slug": "covid-19-health-api-2",
       "provider": "Covid-19",
       "logo_url": null
@@ -120739,7 +120739,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-answerline-machine-learning-api",
-      "name": "AnswerLine API",
+      "name": "AnswerLine API (Machine Learning)",
       "slug": "answerline-machine-learning-api",
       "provider": "AnswerLine",
       "logo_url": null
@@ -141771,7 +141771,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-cloudmersive-validate-phone-api",
-      "name": "Cloudmersive Validate API",
+      "name": "Cloudmersive Validate API (Phone)",
       "slug": "cloudmersive-validate-phone-api",
       "provider": "Cloudmersive Validate",
       "logo_url": null
@@ -150131,7 +150131,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-spacex-science-math-api",
-      "name": "SpaceX API",
+      "name": "SpaceX API (github.com)",
       "slug": "spacex-science-math-api",
       "provider": "SpaceX",
       "logo_url": null
@@ -150219,7 +150219,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-spacex-science-math-api-2",
-      "name": "SpaceX API",
+      "name": "SpaceX API (api.spacex.land)",
       "slug": "spacex-science-math-api-2",
       "provider": "SpaceX",
       "logo_url": null
@@ -156643,7 +156643,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-urlhaus-security-api",
-      "name": "URLhaus API",
+      "name": "URLhaus API (Security)",
       "slug": "urlhaus-security-api",
       "provider": "URLhaus",
       "logo_url": null
@@ -176179,7 +176179,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-mapbox-tracking-api",
-      "name": "Mapbox API",
+      "name": "Mapbox API (Tracking)",
       "slug": "mapbox-tracking-api",
       "provider": "Mapbox",
       "logo_url": null
@@ -182691,7 +182691,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-transport-for-switzerland-transportation-api",
-      "name": "Transport for Switzerland API",
+      "name": "Transport for Switzerland API (opentransportdata.swiss)",
       "slug": "transport-for-switzerland-transportation-api",
       "provider": "Transport for Switzerland",
       "logo_url": null
@@ -182779,7 +182779,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-transport-for-switzerland-transportation-api-2",
-      "name": "Transport for Switzerland API",
+      "name": "Transport for Switzerland API (transport.opendata.ch)",
       "slug": "transport-for-switzerland-transportation-api-2",
       "provider": "Transport for Switzerland",
       "logo_url": null
@@ -190171,7 +190171,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-swapi-video-api",
-      "name": "SWAPI",
+      "name": "SWAPI (swapi.dev)",
       "slug": "swapi-video-api",
       "provider": "SWAPI",
       "logo_url": null
@@ -190259,7 +190259,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-pubapi-swapi-video-api-2",
-      "name": "SWAPI",
+      "name": "SWAPI (swapi.tech)",
       "slug": "swapi-video-api-2",
       "provider": "SWAPI",
       "logo_url": null

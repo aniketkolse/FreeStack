@@ -32,6 +32,18 @@ describe('On-Page SEO, SSR Crawlability & AI Visibility', () => {
   const offerBySlug = new Map(ALL_OFFERS.map((o) => [o.identity.slug, o]));
   const categoryBySlug = new Map(CATEGORIES.map((c) => [c.slug, c]));
 
+  it('does not ship duplicate offer names', () => {
+    const seen = new Map<string, string>();
+    for (const offer of ALL_OFFERS) {
+      const name = offer.identity.name;
+      assert.ok(
+        !seen.has(name),
+        `Duplicate offer name "${name}": ${seen.get(name)} and ${offer.identity.slug}`
+      );
+      seen.set(name, offer.identity.slug);
+    }
+  });
+
   it('keeps titles <= 60 chars and meta descriptions <= 160 chars across static, category, and offer routes', () => {
     const routesToCheck = [
       '/',

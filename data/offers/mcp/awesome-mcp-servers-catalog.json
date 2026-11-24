@@ -296034,7 +296034,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-awesomemcp-mcp-fastmcp",
-      "name": "FastMCP",
+      "name": "FastMCP (Python)",
       "slug": "mcp-fastmcp",
       "provider": "FastMCP",
       "logo_url": null
@@ -296125,7 +296125,7 @@
     "schema_version": "1.0.0",
     "identity": {
       "id": "offer-awesomemcp-mcp-fastmcp-2",
-      "name": "FastMCP",
+      "name": "FastMCP (TypeScript)",
       "slug": "mcp-fastmcp-2",
       "provider": "FastMCP",
       "logo_url": null
