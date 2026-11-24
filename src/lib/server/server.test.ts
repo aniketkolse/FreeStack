@@ -8,6 +8,7 @@ import { createApp } from './createApp';
 import { loadCategoriesFromDisk, loadOffersFromDisk, loadSourceRegistryFromDisk } from '../data/nodeLoader';
 import { safeJsonLdSerialize, escapeHtmlAttr } from './securityUtils';
 import { resolveRouteMeta, injectHtmlMeta } from './htmlMeta';
+import { extractInlineCspHashes } from './contentSecurityPolicy';
 import type { Offer } from '../../types/resource';
 
 const CATEGORIES = loadCategoriesFromDisk();
@@ -106,11 +107,39 @@ describe('FreeStack Server Security & API Hardening (Phase 2 & 6)', () => {
     assert.ok(res.headers.get('permissions-policy')?.includes('camera=()'));
 
     const csp = res.headers.get('content-security-policy') ?? '';
+    const directive = (name: string) =>
+      csp
+        .split(';')
+        .map((part) => part.trim())
+        .find((part) => part.startsWith(`${name} `)) ?? '';
     assert.ok(csp.includes("default-src 'self'"));
     assert.ok(csp.includes("script-src 'self'"));
     assert.ok(!csp.includes('unsafe-eval'));
     assert.ok(csp.includes("object-src 'none'"));
     assert.ok(csp.includes("frame-ancestors 'none'"));
+    assert.ok(!csp.includes('*'), 'CSP must not contain wildcard sources');
+    assert.ok(!directive('script-src').includes("'unsafe-inline'"));
+    assert.ok(!directive('style-src').includes("'unsafe-inline'"));
+    assert.ok(directive('style-src-attr').includes("'unsafe-inline'"));
+  });
+
+  it('hashes inline style and script blocks so CSP can avoid unsafe-inline', () => {
+    const hashes = extractInlineCspHashes(
+      '<style>.fs-ssr-only{display:none}</style><script type="application/ld+json">{"@type":"WebSite"}</script><script src="/assets/app.js"></script>'
+    );
+    assert.equal(hashes.styleHashes.length, 1);
+    assert.equal(hashes.scriptHashes.length, 1);
+    assert.match(hashes.styleHashes[0], /^'sha256-[A-Za-z0-9+/=]+'$/);
+    assert.match(hashes.scriptHashes[0], /^'sha256-[A-Za-z0-9+/=]+'$/);
+  });
+
+  it('serves HTML with a hash-based CSP that does not allow wildcards or unsafe-inline scripts', async () => {
+    const res = await fetch(`${baseUrl}/`);
+    assert.equal(res.status, 200);
+    const csp = res.headers.get('content-security-policy') ?? '';
+    assert.ok(!csp.includes('*'));
+    assert.match(csp, /script-src[^;]*'sha256-/);
+    assert.ok(!csp.includes("script-src 'self' 'unsafe-inline'"));
   });
 
   it('blocks access to dotfiles, server source files, and internal repo directories while serving /.well-known/security.txt', async () => {

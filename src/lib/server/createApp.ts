@@ -32,6 +32,10 @@ import {
   validateSiteUrl,
   verifyBearerAdminToken,
 } from './securityUtils.ts';
+import {
+  buildContentSecurityPolicy,
+  extractInlineCspHashes,
+} from './contentSecurityPolicy.ts';
 import { injectHtmlMeta, resolveRouteMeta } from './htmlMeta.ts';
 import { OfferCatalogIndex } from './offerCatalogIndex.ts';
 import { buildHomeSsrAsideHtml, buildRouteSsrSnapshot } from './ssrSnapshot.ts';
@@ -618,30 +622,10 @@ export function createApp(options: CreateAppOptions) {
   // Allows Google AI Studio preview iframe embedding by default while blocking arbitrary third-party clickjacking frames.
   app.use(
     helmet({
-      contentSecurityPolicy: {
-        useDefaults: false,
-        directives: {
-          defaultSrc: ["'self'"],
-          scriptSrc: isProd ? ["'self'"] : ["'self'", "'unsafe-inline'"],
-          styleSrc: ["'self'", "'unsafe-inline'"],
-          imgSrc: ["'self'", 'data:', 'blob:'],
-          fontSrc: ["'self'", 'data:'],
-          connectSrc: isProd ? ["'self'"] : ["'self'", 'ws:', 'wss:'],
-          objectSrc: ["'none'"],
-          baseUri: ["'none'"],
-          formAction: ["'self'"],
-          frameAncestors: denyFraming
-            ? ["'none'"]
-            : [
-                "'self'",
-                'https://aistudio.google.com',
-                'https://*.google.com',
-                'https://*.usercontent.goog',
-                'https://*.run.app',
-              ],
-          ...(isProd ? { upgradeInsecureRequests: [] } : {}),
-        },
-      },
+      // The CSP is emitted per response below so inline <style>/<script> blocks can be
+      // allowed by SHA-256 hash instead of 'unsafe-inline', and so cached HTML keeps
+      // a policy that matches its exact inline content.
+      contentSecurityPolicy: false,
       strictTransportSecurity: isProd
         ? {
             maxAge: 15552000, // 6 months
@@ -656,6 +640,16 @@ export function createApp(options: CreateAppOptions) {
       crossOriginResourcePolicy: { policy: denyFraming ? 'same-origin' : 'cross-origin' },
     })
   );
+
+  // Baseline CSP for non-HTML responses (API, assets, redirects). HTML responses replace
+  // this with a policy that carries the hashes of their inline style/script blocks.
+  app.use((_req, res, next) => {
+    res.setHeader(
+      'Content-Security-Policy',
+      buildContentSecurityPolicy({ isProduction: isProd, denyFraming })
+    );
+    next();
+  });
 
   // Explicit Permissions-Policy header
   app.use((_req, res, next) => {
@@ -1395,6 +1389,7 @@ export function createApp(options: CreateAppOptions) {
       status: number;
       cacheControl: string;
       etag: string;
+      csp: string;
       rawBuf: Buffer;
       brBuf: Buffer | null;
       gzBuf: Buffer | null;
@@ -1438,6 +1433,13 @@ export function createApp(options: CreateAppOptions) {
       }
 
       const rawBuf = Buffer.from(renderedHtml, 'utf-8');
+      const inlineHashes = extractInlineCspHashes(renderedHtml);
+      const csp = buildContentSecurityPolicy({
+        isProduction: isProd,
+        denyFraming,
+        scriptHashes: inlineHashes.scriptHashes,
+        styleHashes: inlineHashes.styleHashes,
+      });
       const etag = `W/"${crypto.createHash('sha1').update(rawBuf).digest('hex').slice(0, 20)}"`;
       const isEdgeCacheable =
         meta.status === 200 && meta.robots === 'index, follow' && !hasQuery;
@@ -1458,6 +1460,7 @@ export function createApp(options: CreateAppOptions) {
         status: meta.status,
         cacheControl,
         etag,
+        csp,
         rawBuf,
         brBuf,
         gzBuf,
@@ -1500,6 +1503,7 @@ export function createApp(options: CreateAppOptions) {
       }
       res.setHeader('Cache-Control', entry.cacheControl);
       res.setHeader('ETag', entry.etag);
+      res.setHeader('Content-Security-Policy', entry.csp);
       res.setHeader('Vary', 'Accept-Encoding');
 
       const ifNoneMatch = req.headers['if-none-match'];
